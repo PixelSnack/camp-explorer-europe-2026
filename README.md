@@ -206,7 +206,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**Project Maintainer:** [PixelSnack]
+**Project Maintainer:** PixelSnack
 - GitHub: [@PixelSnack](https://github.com/PixelSnack)
 - Email: sorenthoning@gmail.com
 
