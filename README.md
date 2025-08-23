@@ -21,7 +21,7 @@ A sophisticated, research-driven web application showcasing 100+ verified Europe
 - **Responsive results display** with "no results" handling
 
 ### 🎨 **Professional UX Design**
-- **Modern, responsive design** optimized for all devices
+- **Modern, responsive design** optimized for all devices 
 - **Sophisticated visual hierarchy** with color-coded categories
 - **Interactive elements** with smooth hover effects and transitions
 - **Professional typography** and spacing throughout
