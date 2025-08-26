@@ -13,6 +13,8 @@ function App() {
   const [selectedFilter, setSelectedFilter] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [showFilters, setShowFilters] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
+  const [selectedCamps, setSelectedCamps] = useState([])
 
   // Comprehensive camp data based on our ultimate research
   const allCamps = [
@@ -36,7 +38,8 @@ function App() {
       languages: ["English", "French", "German", "Spanish", "Mandarin"],
       specialFeatures: ["24/7 Medical Center", "Traditional Swiss Chalets", "Montreux Jazz Festival"],
       established: 1987,
-      capacity: 120
+      capacity: 120,
+      bookingUrl: "https://www.leselfes.com/summer-camps/"
     },
     {
       id: 2,
@@ -57,7 +60,8 @@ function App() {
       languages: ["English", "French"],
       specialFeatures: ["On-site Health Center", "Age-grouped Programs", "Academic Focus"],
       established: 1947,
-      capacity: 80
+      capacity: 80,
+      bookingUrl: "https://www.lagarenne.ch/summer-camp/"
     },
     {
       id: 3,
@@ -78,7 +82,8 @@ function App() {
       languages: ["French", "Spanish", "English", "German"],
       specialFeatures: ["Leadership Training", "Environmental Education", "Cultural Excursions"],
       established: 1982,
-      capacity: 100
+      capacity: 100,
+      bookingUrl: "https://www.campsuisse.ch/"
     },
     {
       id: 4,
@@ -99,7 +104,8 @@ function App() {
       languages: ["English", "French"],
       specialFeatures: ["Marmot Program (3-5 years)", "Family Cabins", "Day Camp Options"],
       established: 2008,
-      capacity: 60
+      capacity: 60,
+      bookingUrl: "https://www.altitudecamps.com/"
     },
     // Academic Excellence
     {
@@ -121,7 +127,8 @@ function App() {
       languages: ["English"],
       specialFeatures: ["College Accommodation", "University Application Guidance", "Academic Excellence"],
       established: 1985,
-      capacity: 200
+      capacity: 200,
+      bookingUrl: "https://www.oxfordsummercourses.com/"
     },
     {
       id: 6,
@@ -142,7 +149,8 @@ function App() {
       languages: ["English"],
       specialFeatures: ["Little Explorers (6-11)", "Specialist Tracks", "Parent Programme"],
       established: 1993,
-      capacity: 1700
+      capacity: 1700,
+      bookingUrl: "https://www.bedessummerschool.co.uk/"
     },
     // Language Immersion
     {
@@ -164,7 +172,8 @@ function App() {
       languages: ["Spanish", "English"],
       specialFeatures: ["Beach Activities", "Cultural Exchange", "Local Integration"],
       established: 1989,
-      capacity: 150
+      capacity: 150,
+      bookingUrl: "https://www.enforex.com/summer-camps/spain/"
     },
     {
       id: 8,
@@ -185,7 +194,8 @@ function App() {
       languages: ["French", "English"],
       specialFeatures: ["Mountain Adventure", "Cultural Workshops", "Native Instructors"],
       established: 2001,
-      capacity: 80
+      capacity: 80,
+      bookingUrl: "https://www.alpinefrenchschool.com/"
     },
     // Budget Excellence
     {
@@ -207,7 +217,8 @@ function App() {
       languages: ["English", "Czech"],
       specialFeatures: ["Bilingual Approach", "River Setting", "Cultural Immersion"],
       established: 1995,
-      capacity: 120
+      capacity: 120,
+      bookingUrl: "https://www.eurocam.cz/"
     },
     {
       id: 10,
@@ -228,7 +239,8 @@ function App() {
       languages: ["German", "English"],
       specialFeatures: ["Traditional Crafts", "Castle Visits", "Folk Culture"],
       established: 2003,
-      capacity: 90
+      capacity: 90,
+      bookingUrl: "https://www.adventure-camp-bavaria.de/"
     },
     // Sports Specialty
     {
@@ -250,7 +262,8 @@ function App() {
       languages: ["English", "Italian"],
       specialFeatures: ["Professional Coaching", "Stadium Access", "Player Meetings"],
       established: 2010,
-      capacity: 60
+      capacity: 60,
+      bookingUrl: "https://www.acmilan.com/academy/"
     },
     // Unique Programs
     {
@@ -272,7 +285,8 @@ function App() {
       languages: ["English", "French"],
       specialFeatures: ["Yacht Living", "Navigation Skills", "Marine Ecology"],
       established: 2015,
-      capacity: 24
+      capacity: 24,
+      bookingUrl: "https://www.mediterranean-sailing.com/"
     }
   ]
 
@@ -302,6 +316,36 @@ function App() {
     { icon: Shield, label: "Safety", value: "100%", description: "Accredited" }
   ]
 
+  // Navigation handlers
+  const handleNavigation = (section) => {
+    setActiveSection(section)
+    window.location.hash = section
+  }
+
+  const handleCampSelection = (camp) => {
+    const isSelected = selectedCamps.find(c => c.id === camp.id)
+    if (isSelected) {
+      setSelectedCamps(selectedCamps.filter(c => c.id !== camp.id))
+    } else if (selectedCamps.length < 3) {
+      setSelectedCamps([...selectedCamps, camp])
+    }
+  }
+
+  // Listen for hash changes
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1)
+      if (hash) {
+        setActiveSection(hash)
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    handleHashChange() // Check initial hash
+
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -316,11 +360,11 @@ function App() {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#home" className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                <a href="#discover" className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Discover Camps</a>
-                <a href="#compare" className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Compare</a>
-                <a href="#plan" className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Plan Your Summer</a>
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white">Get Started</Button>
+                <button onClick={() => handleNavigation('home')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'home' ? 'text-blue-600' : 'text-gray-900 hover:text-blue-600'}`}>Home</button>
+                <button onClick={() => handleNavigation('discover')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'discover' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Discover Camps</button>
+                <button onClick={() => handleNavigation('compare')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'compare' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Compare</button>
+                <button onClick={() => handleNavigation('plan')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'plan' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Plan Your Summer</button>
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white" onClick={() => handleNavigation('discover')}>Get Started</Button>
               </div>
             </div>
 
@@ -341,17 +385,20 @@ function App() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              <a href="#home" className="text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-              <a href="#discover" className="text-gray-500 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Discover Camps</a>
-              <a href="#compare" className="text-gray-500 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Compare</a>
-              <a href="#plan" className="text-gray-500 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Plan Your Summer</a>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full mt-2">Get Started</Button>
+              <button onClick={() => { handleNavigation('home'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'home' ? 'text-blue-600' : 'text-gray-900'}`}>Home</button>
+              <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'discover' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Discover Camps</button>
+              <button onClick={() => { handleNavigation('compare'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'compare' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Compare</button>
+              <button onClick={() => { handleNavigation('plan'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'plan' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Plan Your Summer</button>
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full mt-2" onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }}>Get Started</Button>
             </div>
           </div>
         )}
       </nav>
 
-      {/* Hero Section */}
+      {/* Conditional Section Rendering */}
+      {activeSection === 'home' && (
+        <>
+        {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -378,10 +425,19 @@ function App() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold">
+            <Button 
+              size="lg" 
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
+              onClick={() => handleNavigation('discover')}
+            >
               Explore 100+ Camps
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg"
+              onClick={() => alert('PDF Guide will be available for download soon! Please check back later or contact us for more information.')}
+            >
               Download Guide
             </Button>
           </div>
@@ -484,11 +540,19 @@ function App() {
                       {camp.type}
                     </Badge>
                   </div>
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 flex gap-2">
                     <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
                       <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
                       {camp.rating}
                     </Badge>
+                    <Button
+                      size="sm"
+                      variant={selectedCamps.find(c => c.id === camp.id) ? "default" : "outline"}
+                      className="h-8 px-2"
+                      onClick={(e) => { e.stopPropagation(); handleCampSelection(camp); }}
+                    >
+                      {selectedCamps.find(c => c.id === camp.id) ? '✓' : '+'}
+                    </Button>
                   </div>
                   <div className="absolute bottom-4 left-4">
                     <Badge className="bg-black/70 text-white backdrop-blur-sm">
@@ -576,7 +640,10 @@ function App() {
                       </div>
                     </div>
                     
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                    <Button 
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                      onClick={() => window.open(camp.bookingUrl, '_blank')}
+                    >
                       View Details & Book
                     </Button>
                   </div>
@@ -739,15 +806,570 @@ function App() {
             Early bird discounts available until October 2025!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg">
+            <Button 
+              size="lg" 
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg"
+              onClick={() => handleNavigation('discover')}
+            >
               Start Your Search
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg"
+              onClick={() => alert('Complete PDF Guide coming soon! In the meantime, explore our camps to get started with your planning.')}
+            >
               Download Complete Guide
             </Button>
           </div>
         </div>
       </section>
+        </>
+      )}
+
+      {/* Discover Section */}
+      {activeSection === 'discover' && (
+        <>
+        {/* Search and Filter Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Find Your Perfect Camp
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Filter by type, budget, age, or location to discover camps that match your family's needs
+              </p>
+            </div>
+            
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto mb-8">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <input
+                  type="text"
+                  placeholder="Search camps, locations, or countries..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+                />
+              </div>
+            </div>
+            
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              {filterOptions.map((option) => (
+                <Button
+                  key={option.value}
+                  variant={selectedFilter === option.value ? "default" : "outline"}
+                  onClick={() => setSelectedFilter(option.value)}
+                  className={`${
+                    selectedFilter === option.value 
+                      ? "bg-blue-600 text-white" 
+                      : "border-gray-300 text-gray-700 hover:bg-gray-50"
+                  } px-4 py-2`}
+                >
+                  {option.label} ({option.count})
+                </Button>
+              ))}
+            </div>
+            
+            {/* Results Count */}
+            <div className="text-center mb-8">
+              <p className="text-gray-600">
+                Showing <span className="font-semibold text-blue-600">{filteredCamps.length}</span> camps
+                {selectedFilter !== 'all' && (
+                  <span> in <span className="font-semibold">{filterOptions.find(f => f.value === selectedFilter)?.label}</span></span>
+                )}
+                {searchTerm && (
+                  <span> matching "<span className="font-semibold">{searchTerm}</span>"</span>
+                )}
+              </p>
+              {selectedCamps.length > 0 && (
+                <div className="mt-4">
+                  <Button 
+                    onClick={() => handleNavigation('compare')} 
+                    className="bg-orange-500 hover:bg-orange-600 text-white"
+                  >
+                    Compare {selectedCamps.length} Camp{selectedCamps.length > 1 ? 's' : ''}
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+        {/* Enhanced Camps Grid */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredCamps.map((camp) => (
+                <Card key={camp.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group border-0 shadow-lg">
+                  <div className="relative h-56 overflow-hidden">
+                    <img 
+                      src={camp.image} 
+                      alt={camp.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge className={`${
+                        camp.priceRange === 'luxury' ? 'bg-purple-500' :
+                        camp.priceRange === 'premium' ? 'bg-blue-500' :
+                        camp.priceRange === 'mid' ? 'bg-green-500' : 'bg-orange-500'
+                      } text-white px-3 py-1`}>
+                        {camp.type}
+                      </Badge>
+                    </div>
+                    <div className="absolute top-4 right-4 flex gap-2">
+                      <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
+                        <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
+                        {camp.rating}
+                      </Badge>
+                      <Button
+                        size="sm"
+                        variant={selectedCamps.find(c => c.id === camp.id) ? "default" : "outline"}
+                        className="h-8 px-2"
+                        onClick={(e) => { e.stopPropagation(); handleCampSelection(camp); }}
+                      >
+                        {selectedCamps.find(c => c.id === camp.id) ? '✓' : '+'}
+                      </Button>
+                    </div>
+                    <div className="absolute bottom-4 left-4">
+                      <Badge className="bg-black/70 text-white backdrop-blur-sm">
+                        <Calendar className="w-3 h-3 mr-1" />
+                        {camp.dates}
+                      </Badge>
+                    </div>
+                  </div>
+                  
+                  <CardHeader className="pb-3">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">
+                          {camp.name}
+                        </CardTitle>
+                        <CardDescription className="flex items-center text-gray-600 mt-1">
+                          <MapPin className="w-4 h-4 mr-1" />
+                          {camp.location}
+                        </CardDescription>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-2xl font-bold text-blue-600">{camp.price}</div>
+                        <div className="text-xs text-gray-500">per 2 weeks</div>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  
+                  <CardContent className="pt-0">
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-gray-600 flex items-center">
+                          <Users className="w-4 h-4 mr-1" />
+                          Ages {camp.ages}
+                        </span>
+                        <span className="text-gray-600 flex items-center">
+                          <Globe className="w-4 h-4 mr-1" />
+                          {camp.capacity} max
+                        </span>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-1">
+                        {camp.activities.slice(0, 3).map((activity, index) => (
+                          <Badge key={index} variant="secondary" className="text-xs">
+                            {activity}
+                          </Badge>
+                        ))}
+                        {camp.activities.length > 3 && (
+                          <Badge variant="secondary" className="text-xs">
+                            +{camp.activities.length - 3} more
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <div className="text-sm font-medium text-gray-900">Languages:</div>
+                        <div className="flex flex-wrap gap-1">
+                          {camp.languages.map((lang, index) => (
+                            <Badge key={index} variant="outline" className="text-xs">
+                              {lang}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <div className="text-sm font-medium text-gray-900">Highlights:</div>
+                        <ul className="text-sm text-gray-600 space-y-1">
+                          {camp.highlights.slice(0, 2).map((highlight, index) => (
+                            <li key={index} className="flex items-center">
+                              <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2"></div>
+                              {highlight}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className="flex items-center justify-between pt-4 border-t">
+                        <div className="flex items-center text-sm text-gray-500">
+                          <Award className="w-4 h-4 mr-1" />
+                          Est. {camp.established}
+                        </div>
+                        <div className="flex items-center text-sm text-gray-500">
+                          <Heart className="w-4 h-4 mr-1" />
+                          {camp.reviews} reviews
+                        </div>
+                      </div>
+                      
+                      <Button 
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                        onClick={() => window.open(camp.bookingUrl, '_blank')}
+                      >
+                        View Details & Book
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            
+            {filteredCamps.length === 0 && (
+              <div className="text-center py-16">
+                <div className="text-gray-400 mb-4">
+                  <Search className="h-16 w-16 mx-auto" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">No camps found</h3>
+                <p className="text-gray-600 mb-4">
+                  Try adjusting your search terms or filters to find more camps.
+                </p>
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setSearchTerm('')
+                    setSelectedFilter('all')
+                  }}
+                >
+                  Clear Filters
+                </Button>
+              </div>
+            )}
+          </div>
+        </section>
+        </>
+      )}
+
+      {/* Compare Section */}
+      {activeSection === 'compare' && (
+        <section className="py-20 bg-gray-50 min-h-screen">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Compare Summer Camps
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Compare up to 3 camps side by side to find the perfect match for your child
+              </p>
+            </div>
+
+            {selectedCamps.length === 0 ? (
+              <div className="text-center py-16">
+                <div className="text-gray-400 mb-4">
+                  <Users className="h-16 w-16 mx-auto" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">No camps selected</h3>
+                <p className="text-gray-600 mb-4">
+                  Go back to Discover Camps and select camps using the '+' button to compare them
+                </p>
+                <Button 
+                  onClick={() => handleNavigation('discover')}
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  Discover Camps
+                </Button>
+              </div>
+            ) : (
+              <div className="space-y-8">
+                <div className="flex justify-center mb-8">
+                  <Badge className="bg-blue-100 text-blue-800 px-4 py-2">
+                    Comparing {selectedCamps.length} camp{selectedCamps.length > 1 ? 's' : ''}
+                  </Badge>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {selectedCamps.map((camp) => (
+                    <Card key={camp.id} className="relative border-2 border-blue-200">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="absolute top-2 right-2 h-6 w-6 p-0"
+                        onClick={() => handleCampSelection(camp)}
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                      
+                      <div className="p-6">
+                        <img 
+                          src={camp.image} 
+                          alt={camp.name}
+                          className="w-full h-32 object-cover rounded-lg mb-4"
+                        />
+                        
+                        <h3 className="font-bold text-lg text-gray-900 mb-2">{camp.name}</h3>
+                        <p className="text-gray-600 text-sm mb-4 flex items-center">
+                          <MapPin className="w-4 h-4 mr-1" />
+                          {camp.location}
+                        </p>
+
+                        <div className="space-y-3 text-sm">
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Price:</span>
+                            <span className="font-semibold text-blue-600">{camp.price}</span>
+                          </div>
+                          
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Ages:</span>
+                            <span className="font-semibold">{camp.ages}</span>
+                          </div>
+                          
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Rating:</span>
+                            <span className="font-semibold flex items-center">
+                              <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
+                              {camp.rating}
+                            </span>
+                          </div>
+                          
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Capacity:</span>
+                            <span className="font-semibold">{camp.capacity}</span>
+                          </div>
+                          
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">Type:</span>
+                            <span className="font-semibold">{camp.type}</span>
+                          </div>
+
+                          <div>
+                            <span className="text-gray-600 block mb-2">Languages:</span>
+                            <div className="flex flex-wrap gap-1">
+                              {camp.languages.map((lang, index) => (
+                                <Badge key={index} variant="outline" className="text-xs">
+                                  {lang}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div>
+                            <span className="text-gray-600 block mb-2">Activities:</span>
+                            <div className="flex flex-wrap gap-1">
+                              {camp.activities.slice(0, 4).map((activity, index) => (
+                                <Badge key={index} variant="secondary" className="text-xs">
+                                  {activity}
+                                </Badge>
+                              ))}
+                              {camp.activities.length > 4 && (
+                                <Badge variant="secondary" className="text-xs">
+                                  +{camp.activities.length - 4}
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+
+                          <Button 
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-4"
+                            onClick={() => window.open(camp.bookingUrl, '_blank')}
+                          >
+                            Book Now
+                          </Button>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+
+                <div className="text-center pt-8">
+                  <Button 
+                    onClick={() => handleNavigation('discover')}
+                    variant="outline"
+                    className="mr-4"
+                  >
+                    Add More Camps
+                  </Button>
+                  <Button 
+                    onClick={() => setSelectedCamps([])}
+                    variant="outline"
+                  >
+                    Clear All
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Plan Your Summer Section */}
+      {activeSection === 'plan' && (
+        <section className="py-20 bg-white min-h-screen">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Plan Your Perfect Summer 2026
+              </h2>
+              <p className="text-xl text-gray-600">
+                Follow our expert timeline to secure the best camps and get early bird discounts
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {/* Timeline */}
+              <Card className="p-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Booking Timeline</h3>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Calendar className="w-6 h-6 text-green-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-gray-900">September - October 2025</h4>
+                      <p className="text-gray-600">Research and shortlist camps. Early bird discounts available!</p>
+                      <ul className="mt-2 text-sm text-gray-500">
+                        <li>• Browse camp options</li>
+                        <li>• Compare programs and prices</li>
+                        <li>• Contact camps for detailed information</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Award className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-gray-900">November - December 2025</h4>
+                      <p className="text-gray-600">Secure your preferred camps with deposits</p>
+                      <ul className="mt-2 text-sm text-gray-500">
+                        <li>• Submit applications</li>
+                        <li>• Pay deposits to secure spots</li>
+                        <li>• Take advantage of early bird pricing</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Globe className="w-6 h-6 text-orange-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-gray-900">January - March 2026</h4>
+                      <p className="text-gray-600">Complete documentation and preparations</p>
+                      <ul className="mt-2 text-sm text-gray-500">
+                        <li>• Arrange travel and visas</li>
+                        <li>• Complete health and insurance forms</li>
+                        <li>• Final payment due</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Star className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-gray-900">April - May 2026</h4>
+                      <p className="text-gray-600">Final preparations and packing</p>
+                      <ul className="mt-2 text-sm text-gray-500">
+                        <li>• Receive detailed information packets</li>
+                        <li>• Prepare clothing and equipment lists</li>
+                        <li>• Attend parent information sessions</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Budget Planner */}
+              <Card className="p-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Budget Planning</h3>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-4">Average Costs by Category</h4>
+                    <div className="space-y-3">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Budget Excellence</span>
+                        <span className="font-semibold">€330 - €400</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Mid-Range Programs</span>
+                        <span className="font-semibold">€1,500 - €3,500</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Premium Alpine</span>
+                        <span className="font-semibold">CHF 4,000 - 5,000</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Luxury Experiences</span>
+                        <span className="font-semibold">CHF 6,000+</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-4">Additional Costs</h4>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Travel to/from camp</span>
+                        <span>€200 - €800</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Pocket money</span>
+                        <span>€100 - €300</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Optional activities</span>
+                        <span>€50 - €200</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Equipment/clothing</span>
+                        <span>€100 - €400</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Travel insurance</span>
+                        <span>€30 - €100</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Action Items */}
+              <Card className="p-6 bg-blue-50">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Get Started?</h3>
+                <p className="text-gray-600 mb-6">
+                  Take these steps to begin your summer camp journey
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    onClick={() => handleNavigation('discover')}
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    Browse All Camps
+                  </Button>
+                  <Button 
+                    onClick={() => handleNavigation('compare')}
+                    variant="outline"
+                    className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                  >
+                    Compare Selected Camps
+                  </Button>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Enhanced Footer */}
       <footer className="bg-gray-900 text-white py-16">
