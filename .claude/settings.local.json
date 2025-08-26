@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/d:\\d\\OneDrive\\Documents\\GitHub/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\public/**)",
+      "Bash(cp:*)",
+      "Bash(python:*)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\public"
+    ]
+  }
+}
