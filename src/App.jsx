@@ -364,6 +364,7 @@ function App() {
                 <button onClick={() => handleNavigation('discover')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'discover' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Discover Camps</button>
                 <button onClick={() => handleNavigation('compare')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'compare' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Compare</button>
                 <button onClick={() => handleNavigation('plan')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'plan' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Plan Your Summer</button>
+                <button onClick={() => handleNavigation('guide')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'guide' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Guide</button>
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white" onClick={() => handleNavigation('discover')}>Get Started</Button>
               </div>
             </div>
@@ -389,6 +390,7 @@ function App() {
               <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'discover' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Discover Camps</button>
               <button onClick={() => { handleNavigation('compare'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'compare' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Compare</button>
               <button onClick={() => { handleNavigation('plan'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'plan' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Plan Your Summer</button>
+              <button onClick={() => { handleNavigation('guide'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'guide' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Guide</button>
               <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full mt-2" onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }}>Get Started</Button>
             </div>
           </div>
@@ -436,7 +438,7 @@ function App() {
               size="lg" 
               variant="outline" 
               className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg"
-              onClick={() => alert('PDF Guide will be available for download soon! Please check back later or contact us for more information.')}
+              onClick={() => handleNavigation('guide')}
             >
               Download Guide
             </Button>
@@ -817,7 +819,7 @@ function App() {
               size="lg" 
               variant="outline" 
               className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg"
-              onClick={() => alert('Complete PDF Guide coming soon! In the meantime, explore our camps to get started with your planning.')}
+              onClick={() => handleNavigation('guide')}
             >
               Download Complete Guide
             </Button>
@@ -1366,6 +1368,180 @@ function App() {
                   </Button>
                 </div>
               </Card>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Guide Section */}
+      {activeSection === 'guide' && (
+        <section className="py-20 bg-gradient-to-br from-blue-50 to-orange-50 min-h-screen">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="mb-8">
+                <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                    <div className="text-2xl">📚</div>
+                  </div>
+                </div>
+              </div>
+              
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                Complete Summer Camp
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600">
+                  Planning Guide
+                </span>
+              </h1>
+              
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+                Your comprehensive PDF guide to European summer camps is being carefully crafted with the latest information, 
+                insider tips, and expert recommendations to help you make the perfect choice for your child.
+              </p>
+
+              <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full text-lg font-semibold text-gray-800 mb-12">
+                <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse mr-3"></div>
+                Coming Soon
+              </div>
+            </div>
+
+            {/* What's Included Preview */}
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                    <MapPin className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">Complete Camp Directory</h3>
+                </div>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                    100+ verified summer camps across 12 European countries
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                    Detailed camp profiles with photos and contact information
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                    Pricing, dates, and booking deadline information
+                  </li>
+                </ul>
+              </Card>
+
+              <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                    <Calendar className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">Expert Planning Tools</h3>
+                </div>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                    Month-by-month booking timeline and checklists
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                    Budget planning worksheets and cost calculators
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                    Packing lists and preparation guides by camp type
+                  </li>
+                </ul>
+              </Card>
+
+              <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                    <Users className="w-6 h-6 text-green-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">Parent Resources</h3>
+                </div>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                    Real parent reviews and testimonials
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                    Age-appropriate camp recommendations
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                    Safety standards and accreditation information
+                  </li>
+                </ul>
+              </Card>
+
+              <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                    <Globe className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">Cultural Insights</h3>
+                </div>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                    Country-specific camp traditions and cultures
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                    Language immersion program details
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                    Travel tips and cultural preparation guides
+                  </li>
+                </ul>
+              </Card>
+            </div>
+
+            {/* Call to Action */}
+            <Card className="p-8 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-center">
+              <h3 className="text-2xl font-bold mb-4">Get Notified When It's Ready</h3>
+              <p className="text-blue-100 mb-6">
+                Be the first to receive our comprehensive 50+ page planning guide when it launches.
+                In the meantime, start exploring camps and building your shortlist!
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg"
+                  className="bg-white text-blue-600 hover:bg-gray-100"
+                  onClick={() => handleNavigation('discover')}
+                >
+                  <Search className="w-5 h-5 mr-2" />
+                  Start Exploring Camps
+                </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-blue-600"
+                  onClick={() => handleNavigation('compare')}
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  Compare Your Selections
+                </Button>
+              </div>
+            </Card>
+
+            {/* Progress Indicator */}
+            <div className="mt-16 text-center">
+              <div className="max-w-md mx-auto">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-sm text-gray-600">Guide Progress</span>
+                  <span className="text-sm font-semibold text-gray-900">75% Complete</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="bg-gradient-to-r from-blue-500 to-orange-500 h-3 rounded-full animate-pulse" style={{width: '75%'}}></div>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  Final reviews and formatting in progress
+                </p>
+              </div>
             </div>
           </div>
         </section>
