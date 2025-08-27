@@ -29,7 +29,10 @@
       "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\src\\assets/**)",
       "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\src\\assets/**)",
       "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
-      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)"
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": [],
