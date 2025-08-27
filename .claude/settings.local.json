@@ -33,7 +33,11 @@
       "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
       "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\src\\assets/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\src/**)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": [],
