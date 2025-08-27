@@ -60,7 +60,10 @@
       "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
       "WebFetch(domain:www.europeansummercamps.com)",
       "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\dist/**)",
-      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)"
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "WebFetch(domain:www.pinwormguide.com)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\pinworm-guide/**)"
     ],
     "deny": [],
     "ask": [],
