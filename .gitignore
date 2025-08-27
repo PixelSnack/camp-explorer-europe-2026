@@ -114,3 +114,6 @@ $RECYCLE.BIN/
 
 
 .vercel
+
+# Claude Code settings
+.claude/
