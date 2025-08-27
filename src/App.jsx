@@ -1375,173 +1375,536 @@ function App() {
 
       {/* Guide Section */}
       {activeSection === 'guide' && (
-        <section className="py-20 bg-gradient-to-br from-blue-50 to-orange-50 min-h-screen">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 bg-white min-h-screen">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* Header */}
             <div className="text-center mb-16">
               <div className="mb-8">
-                <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                    <div className="text-2xl">📚</div>
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
+                    <div className="text-xl">📚</div>
                   </div>
                 </div>
               </div>
               
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                Complete Summer Camp
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Comprehensive Guide to 
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600">
-                  Planning Guide
+                  European Kids Summer Camps 2026
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-                Your comprehensive PDF guide to European summer camps is being carefully crafted with the latest information, 
-                insider tips, and expert recommendations to help you make the perfect choice for your child.
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+                European summer camps in 2026 offer children unparalleled opportunities to learn, play, and grow in some of the world's most stunning locations. From Alpine adventure bases to Mediterranean beach retreats, there are options tailored to every age (3–16) and interest.
               </p>
 
-              <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full text-lg font-semibold text-gray-800 mb-12">
-                <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse mr-3"></div>
-                Coming Soon
+              <div className="flex flex-wrap justify-center gap-4 mb-12">
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">100+ Verified Camps</Badge>
+                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">13 Countries</Badge>
+                <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
+                <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
               </div>
             </div>
 
-            {/* What's Included Preview */}
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+            {/* Introduction & Why Europe */}
+            <div className="grid lg:grid-cols-2 gap-12 mb-16">
+              <Card className="p-8 border-0 shadow-lg">
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                    <MapPin className="w-6 h-6 text-blue-600" />
+                    <Globe className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">Complete Camp Directory</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Why Choose Europe?</h3>
                 </div>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                    100+ verified summer camps across 12 European countries
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                    Detailed camp profiles with photos and contact information
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                    Pricing, dates, and booking deadline information
-                  </li>
-                </ul>
+                
+                <div className="prose text-gray-600 mb-6">
+                  <p>European camps blend language immersion, cultural diversity, and world-class instruction in safe, beautiful environments. Campers often come from dozens of countries, forming international friendships while exploring Alpine peaks, medieval castles, or sunny coastlines.</p>
+                  
+                  <p>Europe's rich history and multilingual context mean that a camp day might include learning survival skills in the mountains, practicing French at a château, or sailing past ancient islands – experiences hard to replicate elsewhere.</p>
+                </div>
+
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-900 mb-2">Key Benefits</h4>
+                  <ul className="text-sm text-blue-800 space-y-1">
+                    <li>• High safety standards & low staff ratios</li>
+                    <li>• 75+ nationalities represented</li>
+                    <li>• Natural language immersion</li>
+                    <li>• Historic & stunning locations</li>
+                  </ul>
+                </div>
               </Card>
 
-              <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                    <Calendar className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">Expert Planning Tools</h3>
-                </div>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
-                    Month-by-month booking timeline and checklists
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
-                    Budget planning worksheets and cost calculators
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
-                    Packing lists and preparation guides by camp type
-                  </li>
-                </ul>
-              </Card>
-
-              <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+              <Card className="p-8 border-0 shadow-lg">
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                    <Users className="w-6 h-6 text-green-600" />
+                    <Award className="w-6 h-6 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">Parent Resources</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Cost Range Guide</h3>
                 </div>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                    Real parent reviews and testimonials
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                    Age-appropriate camp recommendations
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                    Safety standards and accreditation information
-                  </li>
-                </ul>
-              </Card>
-
-              <Card className="p-8 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
-                    <Globe className="w-6 h-6 text-purple-600" />
+                
+                <div className="space-y-4">
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-green-900 mb-3">Budget Categories</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span>🏆 Luxury (CHF 6,000+)</span>
+                        <span className="font-semibold">Premium facilities</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>💎 Premium (€3,000-6,000)</span>
+                        <span className="font-semibold">High-end programs</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>🎯 Mid-Range (€1,500-3,500)</span>
+                        <span className="font-semibold">Excellent value</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>💰 Budget (€330-800)</span>
+                        <span className="font-semibold">Outstanding bargains</span>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">Cultural Insights</h3>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-3">Additional Costs</h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Travel to/from camp: €200-800</li>
+                      <li>• Travel insurance: €30-100</li>
+                      <li>• Pocket money: €100-300</li>
+                      <li>• Equipment/gear: €75-400</li>
+                    </ul>
+                  </div>
                 </div>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                    Country-specific camp traditions and cultures
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                    Language immersion program details
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                    Travel tips and cultural preparation guides
-                  </li>
-                </ul>
               </Card>
             </div>
 
+            {/* Age Groups Overview */}
+            <Card className="p-8 mb-16 border-0 shadow-lg bg-gradient-to-br from-blue-50 to-orange-50">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Camps by Age Group</h2>
+              <p className="text-center text-lg text-gray-600 mb-8">Each age group has different needs and readiness levels for camp experiences</p>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="bg-white p-6 rounded-lg border border-blue-100">
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-blue-600 font-bold text-sm">3-6</span>
+                    </div>
+                    <h4 className="font-bold text-lg">Early Childhood</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Day camps or parent-child programs focused on play-based learning</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• Arts & crafts, outdoor play</div>
+                    <div>• High staff-to-child ratios</div>
+                    <div>• Gentle language introduction</div>
+                  </div>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg border border-green-100">
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-green-600 font-bold text-sm">7-10</span>
+                    </div>
+                    <h4 className="font-bold text-lg">Primary School</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Ready for short overnight camps and bigger adventures</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• Multi-activity programs</div>
+                    <div>• Language immersion starts</div>
+                    <div>• Building confidence</div>
+                  </div>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg border border-orange-100">
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-orange-600 font-bold text-sm">11-14</span>
+                    </div>
+                    <h4 className="font-bold text-lg">Early Teens</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Ready for specialized programs and increased independence</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• Academic enrichment</div>
+                    <div>• Adventure expeditions</div>
+                    <div>• Cultural immersion</div>
+                  </div>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg border border-purple-100">
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-purple-600 font-bold text-sm">15-16</span>
+                    </div>
+                    <h4 className="font-bold text-lg">Older Teens</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Pre-college academics, leadership, and portfolio-building</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• Career exploration</div>
+                    <div>• Leadership training</div>
+                    <div>• University preparation</div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* Country Breakdown */}
+            <Card className="p-8 mb-16 border-0 shadow-lg">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">Featured Countries & Camp Types</h3>
+                <p className="text-lg text-gray-600">Explore camps across 13 European countries, each offering unique experiences</p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="bg-gradient-to-br from-red-50 to-white p-6 rounded-lg border border-red-100">
+                  <div className="flex items-center mb-4">
+                    <span className="text-2xl mr-3">🇨🇭</span>
+                    <h4 className="font-bold text-lg">Switzerland</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Premium Alpine experiences with world-class facilities. Home to Les Elfes International and Camp Suisse.</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• CHF 975 - 6,980</div>
+                    <div>• Ages 3-17</div>
+                    <div>• Multilingual programs</div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-lg border border-blue-100">
+                  <div className="flex items-center mb-4">
+                    <span className="text-2xl mr-3">🇬🇧</span>
+                    <h4 className="font-bold text-lg">United Kingdom</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Academic excellence and university preparation. Oxford Summer Courses and Bede's Summer School.</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• £1,575 - 6,220</div>
+                    <div>• Ages 6-20</div>
+                    <div>• Historic locations</div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-br from-yellow-50 to-white p-6 rounded-lg border border-yellow-100">
+                  <div className="flex items-center mb-4">
+                    <span className="text-2xl mr-3">🇪🇸</span>
+                    <h4 className="font-bold text-lg">Spain</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Spanish immersion with beach activities. Enforex camps blend language learning with Mediterranean fun.</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• €1,200 - 3,800</div>
+                    <div>• Ages 5-17</div>
+                    <div>• 50% local integration</div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-lg border border-blue-100">
+                  <div className="flex items-center mb-4">
+                    <span className="text-2xl mr-3">🇫🇷</span>
+                    <h4 className="font-bold text-lg">France</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">French language immersion in châteaux and Alps. Alpine French School and château programs.</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• €1,200 - 4,500</div>
+                    <div>• Ages 8-18</div>
+                    <div>• Historic settings</div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-br from-green-50 to-white p-6 rounded-lg border border-green-100">
+                  <div className="flex items-center mb-4">
+                    <span className="text-2xl mr-3">🇨🇿</span>
+                    <h4 className="font-bold text-lg">Czech Republic</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Exceptional value programs. EUROCAM Bohemia offers 10-day adventures for incredible prices.</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• €330 (10 days!)</div>
+                    <div>• Ages 7-17</div>
+                    <div>• Bilingual environment</div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
+                  <div className="flex items-center mb-4">
+                    <span className="text-2xl mr-3">🇮🇹</span>
+                    <h4 className="font-bold text-lg">Italy</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Arts, sports academies, and cultural immersion. AC Milan camps and Renaissance art programs.</p>
+                  <div className="text-xs text-gray-500">
+                    <div>• €1,200 - 2,800</div>
+                    <div>• Ages 8-16</div>
+                    <div>• Cultural heritage focus</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8 text-center">
+                <p className="text-gray-600 mb-4">Plus camps in Germany, Austria, Netherlands, Belgium, Denmark, Sweden, Norway, and Greece!</p>
+                <Button 
+                  onClick={() => handleNavigation('discover')}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
+                >
+                  Explore All Countries
+                </Button>
+              </div>
+            </Card>
+
+            {/* Camp Types */}
+            <div className="grid lg:grid-cols-2 gap-12 mb-16">
+              <Card className="p-8 border-0 shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                    <Star className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Camp Types & Specialties</h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800">Academic & Language</h5>
+                      <p className="text-sm">University prep, language immersion, STEM programs</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mt-1">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800">Adventure & Nature</h5>
+                      <p className="text-sm">Alpine trekking, sailing, outdoor leadership</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mt-1">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800">Arts & Performance</h5>
+                      <p className="text-sm">Theater, music, visual arts, portfolio building</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mt-1">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-gray-800">Sports Specialty</h5>
+                      <p className="text-sm">Football academies, tennis, equestrian, motorsports</p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-8 border-0 shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                    <Calendar className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Booking Timeline 2026</h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-purple-900 mb-3">Critical Dates</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center">
+                        <div className="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
+                        <span><strong>Sept-Oct 2025:</strong> Research & early bird discounts</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full mr-3"></div>
+                        <span><strong>Nov-Jan 2026:</strong> Prime booking period</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-4 h-4 bg-orange-500 rounded-full mr-3"></div>
+                        <span><strong>Feb 2026:</strong> Final call for most camps</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-4 h-4 bg-red-500 rounded-full mr-3"></div>
+                        <span><strong>After May:</strong> Very limited options</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-3">Early Bird Benefits</h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Save 10-20% on camp fees</li>
+                      <li>• First choice of dates & activities</li>
+                      <li>• Payment plan options</li>
+                      <li>• Better accommodation selection</li>
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Safety & Standards */}
+            <Card className="p-8 mb-16 border-0 shadow-lg bg-gradient-to-br from-gray-50 to-white">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">Safety & Standards</h3>
+                <p className="text-lg text-gray-600">European camps maintain world-class safety protocols and staff training</p>
+              </div>
+              
+              <div className="grid lg:grid-cols-3 gap-8">
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
+                      <Shield className="w-5 h-5 mr-2 text-green-600" />
+                      Accreditations
+                    </h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Swiss Jeunesse+Sport certification</li>
+                      <li>• UK BAPA membership</li>
+                      <li>• EU youth camp licensing</li>
+                      <li>• International insurance coverage</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
+                      <Users className="w-5 h-5 mr-2 text-blue-600" />
+                      Staff Standards
+                    </h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• 1:5 to 1:8 staff-to-camper ratios</li>
+                      <li>• Background checks required</li>
+                      <li>• First aid & CPR certified</li>
+                      <li>• Multilingual capabilities</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
+                      <Heart className="w-5 h-5 mr-2 text-red-600" />
+                      Medical Care
+                    </h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• On-site medical staff</li>
+                      <li>• 24/7 emergency protocols</li>
+                      <li>• Hospital partnerships</li>
+                      <li>• Comprehensive insurance</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* Featured Camp Examples */}
+            <Card className="p-8 mb-16 border-0 shadow-lg">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">Featured Camp Examples</h3>
+                <p className="text-lg text-gray-600">Standout programs across different categories and price ranges</p>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-8">
+                <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-lg">
+                  <div className="flex items-center mb-4">
+                    <Badge className="bg-blue-500 text-white px-3 py-1 mr-3">Premium</Badge>
+                    <h4 className="font-bold text-lg">Les Elfes International</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Switzerland's gold-standard Alpine camp with 37+ years experience. 25,000+ alumni from 75+ countries.</p>
+                  <div className="grid grid-cols-2 gap-4 text-xs">
+                    <div><strong>Ages:</strong> 6-17</div>
+                    <div><strong>Price:</strong> CHF 4,990</div>
+                    <div><strong>Languages:</strong> 5+ languages</div>
+                    <div><strong>Special:</strong> 24/7 medical center</div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-br from-green-50 to-white p-6 rounded-lg">
+                  <div className="flex items-center mb-4">
+                    <Badge className="bg-green-500 text-white px-3 py-1 mr-3">Budget</Badge>
+                    <h4 className="font-bold text-lg">EUROCAM Bohemia</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Czech Republic's hidden gem offering incredible value. 30+ years experience with bilingual programming.</p>
+                  <div className="grid grid-cols-2 gap-4 text-xs">
+                    <div><strong>Ages:</strong> 7-17</div>
+                    <div><strong>Price:</strong> €330 (10 days!)</div>
+                    <div><strong>Languages:</strong> English/Czech</div>
+                    <div><strong>Special:</strong> River activities, caves</div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-lg">
+                  <div className="flex items-center mb-4">
+                    <Badge className="bg-orange-500 text-white px-3 py-1 mr-3">Academic</Badge>
+                    <h4 className="font-bold text-lg">Oxford Summer Courses</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">University preparation in Oxford's historic colleges. Medicine, engineering, and business programs.</p>
+                  <div className="grid grid-cols-2 gap-4 text-xs">
+                    <div><strong>Ages:</strong> 13-18</div>
+                    <div><strong>Price:</strong> £6,220</div>
+                    <div><strong>Languages:</strong> English</div>
+                    <div><strong>Special:</strong> College accommodation</div>
+                  </div>
+                </div>
+                
+                <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg">
+                  <div className="flex items-center mb-4">
+                    <Badge className="bg-purple-500 text-white px-3 py-1 mr-3">Sports</Badge>
+                    <h4 className="font-bold text-lg">AC Milan Academy</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">Train with official AC Milan coaches at professional facilities. San Siro stadium tours included.</p>
+                  <div className="grid grid-cols-2 gap-4 text-xs">
+                    <div><strong>Ages:</strong> 8-16</div>
+                    <div><strong>Price:</strong> €1,950</div>
+                    <div><strong>Languages:</strong> English/Italian</div>
+                    <div><strong>Special:</strong> Pro coaching, stadium access</div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
             {/* Call to Action */}
             <Card className="p-8 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-center">
-              <h3 className="text-2xl font-bold mb-4">Get Notified When It's Ready</h3>
-              <p className="text-blue-100 mb-6">
-                Be the first to receive our comprehensive 50+ page planning guide when it launches.
-                In the meantime, start exploring camps and building your shortlist!
+              <h3 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Camp?</h3>
+              <p className="text-blue-100 mb-8 text-lg">
+                Use our interactive tools to explore 100+ verified camps, compare options, and start planning your child's unforgettable European summer adventure for 2026.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   size="lg"
-                  className="bg-white text-blue-600 hover:bg-gray-100"
+                  className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4"
                   onClick={() => handleNavigation('discover')}
                 >
                   <Search className="w-5 h-5 mr-2" />
-                  Start Exploring Camps
+                  Discover All Camps
                 </Button>
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-blue-600"
+                  className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4"
                   onClick={() => handleNavigation('compare')}
                 >
                   <Users className="w-5 h-5 mr-2" />
-                  Compare Your Selections
+                  Compare Favorites
+                </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4"
+                  onClick={() => handleNavigation('plan')}
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Plan Timeline
                 </Button>
               </div>
             </Card>
 
-            {/* Progress Indicator */}
+            {/* Final Message */}
             <div className="mt-16 text-center">
-              <div className="max-w-md mx-auto">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-sm text-gray-600">Guide Progress</span>
-                  <span className="text-sm font-semibold text-gray-900">75% Complete</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div className="bg-gradient-to-r from-blue-500 to-orange-500 h-3 rounded-full animate-pulse" style={{width: '75%'}}></div>
-                </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  Final reviews and formatting in progress
-                </p>
-              </div>
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+                This comprehensive guide is based on extensive research from official camp websites, industry reports, and cross-verification of multiple sources. All information is current as of August 2025. 
+                <strong className="text-gray-800"> Start early, plan ahead, and give your child the gift of an unforgettable European summer adventure!</strong>
+              </p>
             </div>
           </div>
         </section>
