@@ -54,7 +54,13 @@
       "WebSearch",
       "WebSearch",
       "Bash(vercel:*)",
-      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\.vercel/**)"
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\.vercel/**)",
+      "Bash(npm install:*)",
+      "Bash(wrangler:*)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)",
+      "WebFetch(domain:www.europeansummercamps.com)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\dist/**)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026/**)"
     ],
     "deny": [],
     "ask": [],
