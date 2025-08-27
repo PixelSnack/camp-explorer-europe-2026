@@ -64,7 +64,7 @@ function App() {
       specialFeatures: ["On-site Health Center", "Age-grouped Programs", "Academic Focus"],
       established: 1947,
       capacity: 80,
-      bookingUrl: "https://www.lagarenne.ch/summer-camp/"
+      bookingUrl: "https://summer.la-garenne.ch/"
     },
     {
       id: 3,
@@ -86,7 +86,7 @@ function App() {
       specialFeatures: ["Leadership Training", "Environmental Education", "Cultural Excursions"],
       established: 1982,
       capacity: 100,
-      bookingUrl: "https://www.campsuisse.ch/"
+      bookingUrl: "https://www.campsuisse.com/"
     },
     {
       id: 4,
@@ -108,7 +108,7 @@ function App() {
       specialFeatures: ["Marmot Program (3-5 years)", "Family Cabins", "Day Camp Options"],
       established: 2008,
       capacity: 60,
-      bookingUrl: "https://www.altitudecamps.com/"
+      bookingUrl: "https://www.altitude-camps.com/"
     },
     // Academic Excellence
     {
@@ -153,7 +153,7 @@ function App() {
       specialFeatures: ["Little Explorers (6-11)", "Specialist Tracks", "Parent Programme"],
       established: 1993,
       capacity: 1700,
-      bookingUrl: "https://www.bedessummerschool.co.uk/"
+      bookingUrl: "https://www.bedessummerschool.org/"
     },
     // Language Immersion
     {
@@ -176,7 +176,7 @@ function App() {
       specialFeatures: ["Beach Activities", "Cultural Exchange", "Local Integration"],
       established: 1989,
       capacity: 150,
-      bookingUrl: "https://www.enforex.com/summer-camps/spain/"
+      bookingUrl: "https://www.enforex.com/summercamps/"
     },
     {
       id: 8,
@@ -221,7 +221,7 @@ function App() {
       specialFeatures: ["Bilingual Approach", "River Setting", "Cultural Immersion"],
       established: 1995,
       capacity: 120,
-      bookingUrl: "https://www.eurocam.cz/"
+      bookingUrl: "https://www.euro-camp.eu/"
     },
     {
       id: 10,
@@ -243,7 +243,7 @@ function App() {
       specialFeatures: ["Traditional Crafts", "Castle Visits", "Folk Culture"],
       established: 2003,
       capacity: 90,
-      bookingUrl: "https://www.adventure-camp-bavaria.de/"
+      bookingUrl: "https://www.campadventure.de/en/destinations/germany-adventure-camp-bayerischer-wald"
     },
     // Sports Specialty
     {
@@ -266,7 +266,7 @@ function App() {
       specialFeatures: ["Professional Coaching", "Stadium Access", "Player Meetings"],
       established: 2010,
       capacity: 60,
-      bookingUrl: "https://www.acmilan.com/academy/"
+      bookingUrl: "https://www.milancamp.com/en-us/"
     },
     // Unique Programs
     {
@@ -289,7 +289,7 @@ function App() {
       specialFeatures: ["Yacht Living", "Navigation Skills", "Marine Ecology"],
       established: 2015,
       capacity: 24,
-      bookingUrl: "https://www.mediterranean-sailing.com/"
+      bookingUrl: "https://wildwind.co.uk/"
     }
   ]
 
