@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart } from 'lucide-react'
-import heroImage from './assets/hero_image.png'
-import activitiesImage from './assets/camp_activities_collage.png'
-import mapImage from './assets/european_map_illustration.png'
+import heroImage from './assets/european-summer-camps-hero.png'
+import activitiesImage from './assets/european-camp-activities-collage.png'
+import mapImage from './assets/european-summer-camps-map.png'
 import './App.css'
 
 function App() {
@@ -389,8 +389,14 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Skip to main content for accessibility */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">
+        Skip to main content
+      </a>
+      
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
+      <header>
+        <nav className="bg-white shadow-sm border-b sticky top-0 z-50" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -437,7 +443,10 @@ function App() {
           </div>
         )}
       </nav>
+      </header>
 
+      {/* Main Content */}
+      <main id="main-content" role="main">
       {/* Conditional Section Rendering */}
       {activeSection === 'home' && (
         <>
@@ -571,8 +580,10 @@ function App() {
                 <div className="relative h-56 overflow-hidden">
                   <img 
                     src={camp.image} 
-                    alt={camp.name}
+                    alt={`${camp.name} - ${camp.type} summer camp in ${camp.location} for ages ${camp.ages}`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    title={`${camp.name} - European Summer Camp ${camp.ages}`}
+                    loading="lazy"
                   />
                   <div className="absolute top-4 left-4">
                     <Badge className={`${
@@ -824,8 +835,10 @@ function App() {
             <div className="relative">
               <img 
                 src={activitiesImage} 
-                alt="Camp Activities" 
+                alt="European summer camp activities collage showing children engaged in outdoor adventures, sports, arts and cultural activities across beautiful European locations" 
                 className="rounded-lg shadow-2xl"
+                title="European Summer Camp Activities - Adventure, Sports, Arts & Culture"
+                loading="lazy"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl">
                 <div className="text-center">
@@ -950,8 +963,10 @@ function App() {
                   <div className="relative h-56 overflow-hidden">
                     <img 
                       src={camp.image} 
-                      alt={camp.name}
+                      alt={`${camp.name} - ${camp.type} summer camp in ${camp.location} for ages ${camp.ages}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      title={`${camp.name} - European Summer Camp ${camp.ages}`}
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <Badge className={`${
@@ -1151,8 +1166,10 @@ function App() {
                       <div className="p-6">
                         <img 
                           src={camp.image} 
-                          alt={camp.name}
+                          alt={`${camp.name} - ${camp.type} summer camp in ${camp.location} for ages ${camp.ages}`}
                           className="w-full h-32 object-cover rounded-lg mb-4"
+                          title={`${camp.name} - European Summer Camp ${camp.ages}`}
+                          loading="lazy"
                         />
                         
                         <h3 className="font-bold text-lg text-gray-900 mb-2">{camp.name}</h3>
@@ -2534,7 +2551,7 @@ function App() {
       )}
 
       {/* Enhanced Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-gray-900 text-white py-16" role="contentinfo" aria-label="Site footer">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
@@ -2635,6 +2652,7 @@ function App() {
           </div>
         </div>
       </footer>
+      </main>
     </div>
   )
 }
