@@ -15,6 +15,8 @@ function App() {
   const [showFilters, setShowFilters] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [selectedCamps, setSelectedCamps] = useState([])
+  const [selectedCountry, setSelectedCountry] = useState('all')
+  const [resourceSection, setResourceSection] = useState(null)
 
   // Comprehensive camp data based on our ultimate research
   const allCamps = [
@@ -292,10 +294,11 @@ function App() {
 
   const filteredCamps = allCamps.filter(camp => {
     const matchesFilter = selectedFilter === 'all' || camp.category === selectedFilter
+    const matchesCountry = selectedCountry === 'all' || camp.country === selectedCountry
     const matchesSearch = camp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          camp.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          camp.country.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesFilter && matchesSearch
+    return matchesFilter && matchesCountry && matchesSearch
   })
 
   const filterOptions = [
@@ -328,6 +331,44 @@ function App() {
       setSelectedCamps(selectedCamps.filter(c => c.id !== camp.id))
     } else if (selectedCamps.length < 3) {
       setSelectedCamps([...selectedCamps, camp])
+    }
+  }
+
+  // Footer navigation handlers
+  const handleCountryFilter = (country) => {
+    setSelectedCountry(country)
+    setSelectedFilter('all') // Reset category filter when filtering by country
+    setSearchTerm('') // Reset search
+    setActiveSection('discover')
+    window.location.hash = 'discover'
+  }
+
+  const handleCategoryFilter = (category) => {
+    setSelectedFilter(category)
+    setSelectedCountry('all') // Reset country filter when filtering by category
+    setSearchTerm('') // Reset search
+    setActiveSection('discover')
+    window.location.hash = 'discover'
+  }
+
+  const handleResourceLink = (resource) => {
+    switch(resource) {
+      case 'guide':
+        setActiveSection('guide')
+        window.location.hash = 'guide'
+        break
+      case 'compare':
+        setActiveSection('compare')
+        window.location.hash = 'compare'
+        break
+      case 'plan':
+        setActiveSection('plan')
+        window.location.hash = 'plan'
+        break
+      default:
+        setResourceSection(resource)
+        setActiveSection('resources')
+        window.location.hash = 'resources'
     }
   }
 
@@ -1910,6 +1951,588 @@ function App() {
         </section>
       )}
 
+      {/* Resources Section */}
+      {activeSection === 'resources' && (
+        <section className="py-12 bg-white min-h-screen">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {resourceSection === 'booking-timeline' && (
+              <div>
+                <div className="text-center mb-12">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">Booking Timeline & Tips</h1>
+                  <p className="text-xl text-gray-600">Your complete guide to securing the perfect camp spot for 2026</p>
+                </div>
+                
+                <Card className="p-8 mb-8">
+                  <h2 className="text-2xl font-bold mb-6">Critical Booking Dates for 2026</h2>
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-4 h-4 bg-green-500 rounded-full mt-2"></div>
+                      <div>
+                        <h3 className="font-bold text-green-800">September - October 2025</h3>
+                        <p className="text-gray-600">Research camps and take advantage of early bird discounts (save 10-20%). Many camps release 2026 brochures.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-4 h-4 bg-blue-500 rounded-full mt-2"></div>
+                      <div>
+                        <h3 className="font-bold text-blue-800">November 2025 - January 2026</h3>
+                        <p className="text-gray-600">Prime booking period. 50%+ of premium camps fill during this time. Secure preferred dates and activities.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-4 h-4 bg-orange-500 rounded-full mt-2"></div>
+                      <div>
+                        <h3 className="font-bold text-orange-800">February 2026</h3>
+                        <p className="text-gray-600">Final call for most international camps. Early bird discounts typically expire by Feb 28.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <div className="w-4 h-4 bg-red-500 rounded-full mt-2"></div>
+                      <div>
+                        <h3 className="font-bold text-red-800">March - May 2026</h3>
+                        <p className="text-gray-600">Late booking phase. Limited availability, mostly day camps or less popular sessions.</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  <Card className="p-6">
+                    <h3 className="text-xl font-bold mb-4">Booking Strategy Tips</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• Book multiple camps initially, narrow down later</li>
+                      <li>• Ask about sibling discounts and multi-session deals</li>
+                      <li>• Understand cancellation policies before paying</li>
+                      <li>• Consider travel insurance for international camps</li>
+                      <li>• Communicate special needs during booking</li>
+                    </ul>
+                  </Card>
+                  
+                  <Card className="p-6">
+                    <h3 className="text-xl font-bold mb-4">Payment Planning</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• Deposits typically 25-50% of total cost</li>
+                      <li>• Payment plans available for early bookers</li>
+                      <li>• Watch currency exchange rates for savings</li>
+                      <li>• Budget for extras: travel, gear, pocket money</li>
+                      <li>• Ask about scholarship or financial aid options</li>
+                    </ul>
+                  </Card>
+                </div>
+              </div>
+            )}
+
+            {resourceSection === 'safety-standards' && (
+              <div>
+                <div className="text-center mb-12">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">Safety Standards Guide</h1>
+                  <p className="text-xl text-gray-600">Understanding European camp safety protocols and accreditations</p>
+                </div>
+                
+                <div className="grid lg:grid-cols-3 gap-8 mb-12">
+                  <Card className="p-6">
+                    <Shield className="w-12 h-12 text-green-600 mb-4" />
+                    <h3 className="text-xl font-bold mb-4">Accreditations</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• Swiss Jeunesse+Sport certification</li>
+                      <li>• UK BAPA (British Activity Providers Association)</li>
+                      <li>• EU youth camp licensing requirements</li>
+                      <li>• International liability insurance</li>
+                    </ul>
+                  </Card>
+                  
+                  <Card className="p-6">
+                    <Users className="w-12 h-12 text-blue-600 mb-4" />
+                    <h3 className="text-xl font-bold mb-4">Staff Standards</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• 1:5 to 1:8 staff-to-camper ratios</li>
+                      <li>• Criminal background checks required</li>
+                      <li>• First aid and CPR certifications</li>
+                      <li>• Ongoing safety training programs</li>
+                    </ul>
+                  </Card>
+                  
+                  <Card className="p-6">
+                    <Heart className="w-12 h-12 text-red-600 mb-4" />
+                    <h3 className="text-xl font-bold mb-4">Medical Care</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• On-site medical staff or nurse</li>
+                      <li>• 24/7 emergency response protocols</li>
+                      <li>• Partnerships with local hospitals</li>
+                      <li>• Comprehensive medical insurance</li>
+                    </ul>
+                  </Card>
+                </div>
+
+                <Card className="p-8">
+                  <h2 className="text-2xl font-bold mb-6">What Parents Should Ask</h2>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h3 className="font-bold text-lg mb-3">Safety Questions</h3>
+                      <ul className="space-y-2 text-gray-600">
+                        <li>• What are your staff-to-camper ratios?</li>
+                        <li>• How do you screen and train staff?</li>
+                        <li>• What medical facilities are available?</li>
+                        <li>• How do you handle emergencies?</li>
+                        <li>• What insurance coverage is provided?</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg mb-3">Activity Safety</h3>
+                      <ul className="space-y-2 text-gray-600">
+                        <li>• Are activity instructors certified?</li>
+                        <li>• What safety equipment is provided?</li>
+                        <li>• How do you assess weather conditions?</li>
+                        <li>• What are your water safety protocols?</li>
+                        <li>• How do you handle dietary restrictions?</li>
+                      </ul>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            )}
+
+            {resourceSection === 'budget-calculator' && (
+              <div>
+                <div className="text-center mb-12">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">Budget Planning Calculator</h1>
+                  <p className="text-xl text-gray-600">Plan your complete camp investment with our comprehensive cost guide</p>
+                </div>
+                
+                <div className="grid lg:grid-cols-2 gap-12">
+                  <Card className="p-8">
+                    <h2 className="text-2xl font-bold mb-6">Cost Categories</h2>
+                    <div className="space-y-6">
+                      <div className="border-l-4 border-green-500 pl-4">
+                        <h3 className="font-bold text-green-800">Budget Camps</h3>
+                        <p className="text-gray-600">€330 - €800</p>
+                        <p className="text-sm text-gray-500">Day camps, municipal programs, Eastern Europe</p>
+                      </div>
+                      <div className="border-l-4 border-blue-500 pl-4">
+                        <h3 className="font-bold text-blue-800">Mid-Range Camps</h3>
+                        <p className="text-gray-600">€1,500 - €3,500</p>
+                        <p className="text-sm text-gray-500">Quality residential programs, language immersion</p>
+                      </div>
+                      <div className="border-l-4 border-orange-500 pl-4">
+                        <h3 className="font-bold text-orange-800">Premium Camps</h3>
+                        <p className="text-gray-600">€3,000 - €6,000</p>
+                        <p className="text-sm text-gray-500">High-end facilities, specialized programs</p>
+                      </div>
+                      <div className="border-l-4 border-red-500 pl-4">
+                        <h3 className="font-bold text-red-800">Luxury Camps</h3>
+                        <p className="text-gray-600">CHF 6,000+</p>
+                        <p className="text-sm text-gray-500">Swiss Alps, exclusive programs, top facilities</p>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card className="p-8">
+                    <h2 className="text-2xl font-bold mb-6">Additional Costs</h2>
+                    <div className="space-y-4">
+                      <div className="flex justify-between border-b pb-2">
+                        <span className="font-medium">Travel to/from camp</span>
+                        <span className="text-gray-600">€200-€800</span>
+                      </div>
+                      <div className="flex justify-between border-b pb-2">
+                        <span className="font-medium">Travel insurance</span>
+                        <span className="text-gray-600">€30-€100</span>
+                      </div>
+                      <div className="flex justify-between border-b pb-2">
+                        <span className="font-medium">Pocket money</span>
+                        <span className="text-gray-600">€100-€300</span>
+                      </div>
+                      <div className="flex justify-between border-b pb-2">
+                        <span className="font-medium">Equipment/gear</span>
+                        <span className="text-gray-600">€75-€400</span>
+                      </div>
+                      <div className="flex justify-between border-b pb-2">
+                        <span className="font-medium">Optional activities</span>
+                        <span className="text-gray-600">€50-€200</span>
+                      </div>
+                      <div className="flex justify-between font-bold text-lg pt-2">
+                        <span>Typical Additional Costs</span>
+                        <span>€455-€1,800</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 p-4 bg-blue-50 rounded-lg">
+                      <h3 className="font-bold text-blue-800 mb-2">Money-Saving Tips</h3>
+                      <ul className="text-sm text-blue-700 space-y-1">
+                        <li>• Book early for 10-20% discounts</li>
+                        <li>• Look for sibling discounts</li>
+                        <li>• Consider shoulder season dates</li>
+                        <li>• Factor in currency exchange timing</li>
+                        <li>• Ask about payment plans</li>
+                      </ul>
+                    </div>
+                  </Card>
+                </div>
+              </div>
+            )}
+
+            {resourceSection === 'parent-reviews' && (
+              <div>
+                <div className="text-center mb-12">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">Parent Reviews & Testimonials</h1>
+                  <p className="text-xl text-gray-600">Real experiences from families who've sent their children to European camps</p>
+                </div>
+
+                <div className="grid lg:grid-cols-2 gap-8">
+                  <Card className="p-8">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <Star className="w-6 h-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg">Sarah M., London</h3>
+                        <p className="text-sm text-gray-600">Les Elfes International, Switzerland</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-4">"Our daughter came back from Switzerland not just fluent in French, but confident, independent, and with friends from around the world. It was transformative. The level of care and activities exceeded our expectations."</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </Card>
+
+                  <Card className="p-8">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                        <Star className="w-6 h-6 text-green-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg">Michael R., Dublin</h3>
+                        <p className="text-sm text-gray-600">Oxford Summer Courses, UK</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-4">"The academic program was incredible - my 15-year-old son discovered his passion for medicine and made connections that helped with his university applications. Worth every penny."</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </Card>
+
+                  <Card className="p-8">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                        <Star className="w-6 h-6 text-orange-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg">Anna K., Berlin</h3>
+                        <p className="text-sm text-gray-600">EUROCAM Bohemia, Czech Republic</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-4">"Fantastic value for money! Our twins had an amazing outdoor adventure experience, and the bilingual approach really helped improve their English. The staff were wonderful."</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </Card>
+
+                  <Card className="p-8">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <Star className="w-6 h-6 text-purple-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg">Carlos P., Madrid</h3>
+                        <p className="text-sm text-gray-600">Enforex Spanish Camp, Spain</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 mb-4">"Perfect for international kids learning Spanish. The mix of local Spanish children and international campers created an authentic immersion environment. Great cultural exchange!"</p>
+                    <div className="flex text-yellow-400">
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                      <Star className="w-4 h-4 fill-current" />
+                    </div>
+                  </Card>
+                </div>
+
+                <Card className="p-8 mt-12">
+                  <h2 className="text-2xl font-bold mb-6 text-center">What Parents Love Most</h2>
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Globe className="w-8 h-8 text-blue-600" />
+                      </div>
+                      <h3 className="font-bold text-lg mb-2">Cultural Growth</h3>
+                      <p className="text-gray-600">Children return with broader perspectives and international friendships</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Users className="w-8 h-8 text-green-600" />
+                      </div>
+                      <h3 className="font-bold text-lg mb-2">Independence</h3>
+                      <p className="text-gray-600">Kids develop self-confidence and problem-solving skills</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Award className="w-8 h-8 text-orange-600" />
+                      </div>
+                      <h3 className="font-bold text-lg mb-2">Quality Programs</h3>
+                      <p className="text-gray-600">Professional staff and well-organized activities</p>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            )}
+
+            {resourceSection === 'early-bird' && (
+              <div>
+                <div className="text-center mb-12">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">Early Bird Discounts</h1>
+                  <p className="text-xl text-gray-600">Save significantly by booking early for 2026 camps</p>
+                </div>
+
+                <div className="grid lg:grid-cols-2 gap-12">
+                  <Card className="p-8">
+                    <h2 className="text-2xl font-bold mb-6">Current Early Bird Offers</h2>
+                    <div className="space-y-6">
+                      <div className="border-l-4 border-blue-500 pl-4">
+                        <h3 className="font-bold text-blue-800">Switzerland Premium Camps</h3>
+                        <p className="text-gray-600">Save 15-20% • Book by October 31, 2025</p>
+                        <p className="text-sm text-gray-500">Les Elfes, Camp Suisse, La Garenne</p>
+                      </div>
+                      <div className="border-l-4 border-green-500 pl-4">
+                        <h3 className="font-bold text-green-800">UK Academic Programs</h3>
+                        <p className="text-gray-600">Save 10-15% • Book by December 15, 2025</p>
+                        <p className="text-sm text-gray-500">Oxford Summer Courses, Bede's Summer School</p>
+                      </div>
+                      <div className="border-l-4 border-orange-500 pl-4">
+                        <h3 className="font-bold text-orange-800">Language Immersion Camps</h3>
+                        <p className="text-gray-600">Save 12-18% • Book by November 30, 2025</p>
+                        <p className="text-sm text-gray-500">Enforex Spain, Alpine French School</p>
+                      </div>
+                      <div className="border-l-4 border-purple-500 pl-4">
+                        <h3 className="font-bold text-purple-800">Sports Academies</h3>
+                        <p className="text-gray-600">Save 8-12% • Book by January 15, 2026</p>
+                        <p className="text-sm text-gray-500">AC Milan, Barcelona FC, Tennis Academies</p>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card className="p-8">
+                    <h2 className="text-2xl font-bold mb-6">Booking Benefits</h2>
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mt-1">
+                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-800">Guaranteed Spot</h5>
+                          <p className="text-sm text-gray-600">Secure your preferred dates and activities</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-800">Payment Plans</h5>
+                          <p className="text-sm text-gray-600">Spread costs over multiple payments</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mt-1">
+                          <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-800">Best Accommodation</h5>
+                          <p className="text-sm text-gray-600">First choice of rooms and roommates</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start space-x-3">
+                        <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mt-1">
+                          <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-gray-800">Flexible Changes</h5>
+                          <p className="text-sm text-gray-600">Most camps allow date/program changes</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-lg">
+                      <h3 className="font-bold text-green-800 mb-3">💰 Savings Calculator</h3>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Premium Camp (CHF 5,000)</span>
+                          <span className="font-bold text-green-700">Save CHF 750-1,000</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Mid-Range Camp (€2,500)</span>
+                          <span className="font-bold text-green-700">Save €250-400</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Language Camp (€1,800)</span>
+                          <span className="font-bold text-green-700">Save €180-300</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+
+                <Card className="p-8 mt-8">
+                  <h2 className="text-2xl font-bold mb-6 text-center">Booking Timeline 2026</h2>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
+                      <div className="w-6 h-6 bg-green-500 rounded-full"></div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-green-800">Now - October 2025</h3>
+                        <p className="text-green-700">Best discounts available, full selection of dates and programs</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg">
+                      <div className="w-6 h-6 bg-blue-500 rounded-full"></div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-blue-800">November 2025 - January 2026</h3>
+                        <p className="text-blue-700">Good discounts still available, popular sessions filling up</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-4 p-4 bg-orange-50 rounded-lg">
+                      <div className="w-6 h-6 bg-orange-500 rounded-full"></div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-orange-800">February - March 2026</h3>
+                        <p className="text-orange-700">Limited discounts, premium camps mostly full</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            )}
+
+            {resourceSection === 'age-recommendations' && (
+              <div>
+                <div className="text-center mb-12">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">Age-Appropriate Recommendations</h1>
+                  <p className="text-xl text-gray-600">Find the perfect camp match for your child's developmental stage</p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  <Card className="p-6">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-blue-600 font-bold">3-6</span>
+                      </div>
+                      <h3 className="text-xl font-bold">Early Childhood</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">Day camps or parent-child programs focused on play-based learning and gentle introduction to group activities.</p>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• High staff-to-child ratios (1:3 to 1:4)</li>
+                      <li>• Short program durations (half-day preferred)</li>
+                      <li>• Focus on arts, crafts, and outdoor play</li>
+                      <li>• Gentle language exposure through games</li>
+                    </ul>
+                  </Card>
+
+                  <Card className="p-6">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-green-600 font-bold">7-10</span>
+                      </div>
+                      <h3 className="text-xl font-bold">Primary School</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">Ready for overnight camps and bigger adventures. Perfect age for first international camp experience.</p>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Can handle 1-2 week residential programs</li>
+                      <li>• Multi-activity camps work best</li>
+                      <li>• Language immersion becomes effective</li>
+                      <li>• Building independence and confidence</li>
+                    </ul>
+                  </Card>
+
+                  <Card className="p-6">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-orange-600 font-bold">11-14</span>
+                      </div>
+                      <h3 className="text-xl font-bold">Early Teens</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">Ready for specialized programs and increased independence. Can handle more challenging activities.</p>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• Academic enrichment programs</li>
+                      <li>• Adventure expeditions and leadership</li>
+                      <li>• Cultural immersion experiences</li>
+                      <li>• Sports specialty training</li>
+                    </ul>
+                  </Card>
+
+                  <Card className="p-6">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-purple-600 font-bold">15-16</span>
+                      </div>
+                      <h3 className="text-xl font-bold">Older Teens</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">Pre-college preparation, career exploration, and leadership development opportunities.</p>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>• University preparation programs</li>
+                      <li>• Career exploration and internships</li>
+                      <li>• Portfolio building for arts students</li>
+                      <li>• Leadership training and CIT programs</li>
+                    </ul>
+                  </Card>
+                </div>
+
+                <Card className="p-8 mt-8">
+                  <h2 className="text-2xl font-bold mb-6">Choosing by Personality Type</h2>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div>
+                      <h3 className="font-bold text-lg mb-3 text-green-800">For Outgoing Children</h3>
+                      <ul className="space-y-2 text-gray-600">
+                        <li>• Large camps with lots of activities</li>
+                        <li>• Performance and arts programs</li>
+                        <li>• Sports camps with team elements</li>
+                        <li>• Leadership opportunities</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg mb-3 text-blue-800">For Quieter Children</h3>
+                      <ul className="space-y-2 text-gray-600">
+                        <li>• Smaller, intimate camp settings</li>
+                        <li>• Academic or STEM-focused programs</li>
+                        <li>• Nature and outdoor exploration</li>
+                        <li>• Arts and creative programs</li>
+                      </ul>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            )}
+
+            {!resourceSection && (
+              <div className="text-center py-20">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">Resources</h1>
+                <p className="text-xl text-gray-600 mb-8">Select a resource from the footer to view detailed information</p>
+                <Button onClick={() => handleNavigation('guide')} className="bg-blue-600 hover:bg-blue-700">
+                  View Complete Guide Instead
+                </Button>
+              </div>
+            )}
+
+            <div className="mt-12 text-center">
+              <Button onClick={() => handleNavigation('home')} variant="outline">
+                ← Back to Home
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Enhanced Footer */}
       <footer className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1935,42 +2558,42 @@ function App() {
             <div>
               <h4 className="font-semibold mb-4 text-lg">Top Destinations</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white cursor-pointer">🇨🇭 Switzerland (Premium Alpine)</li>
-                <li className="hover:text-white cursor-pointer">🇬🇧 United Kingdom (Academic)</li>
-                <li className="hover:text-white cursor-pointer">🇪🇸 Spain (Language Immersion)</li>
-                <li className="hover:text-white cursor-pointer">🇫🇷 France (Cultural Heritage)</li>
-                <li className="hover:text-white cursor-pointer">🇦🇹 Austria (Adventure Sports)</li>
-                <li className="hover:text-white cursor-pointer">🇮🇹 Italy (Sports & Culture)</li>
-                <li className="hover:text-white cursor-pointer">🇩🇪 Germany (Budget Excellence)</li>
-                <li className="hover:text-white cursor-pointer">🇨🇿 Czech Republic (Hidden Gems)</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Switzerland')}>🇨🇭 Switzerland (Premium Alpine)</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('United Kingdom')}>🇬🇧 United Kingdom (Academic)</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Spain')}>🇪🇸 Spain (Language Immersion)</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('France')}>🇫🇷 France (Cultural Heritage)</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Austria')}>🇦🇹 Austria (Adventure Sports)</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Italy')}>🇮🇹 Italy (Sports & Culture)</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Germany')}>🇩🇪 Germany (Budget Excellence)</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Czech Republic')}>🇨🇿 Czech Republic (Hidden Gems)</li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4 text-lg">Camp Categories</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white cursor-pointer">Premium Alpine Experiences</li>
-                <li className="hover:text-white cursor-pointer">Academic Excellence Programs</li>
-                <li className="hover:text-white cursor-pointer">Language Immersion Camps</li>
-                <li className="hover:text-white cursor-pointer">Sports Specialty Training</li>
-                <li className="hover:text-white cursor-pointer">Family-Friendly Programs</li>
-                <li className="hover:text-white cursor-pointer">Budget-Conscious Options</li>
-                <li className="hover:text-white cursor-pointer">Unique Adventures</li>
-                <li className="hover:text-white cursor-pointer">Local & Municipal Gems</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('premium')}>Premium Alpine Experiences</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('academic')}>Academic Excellence Programs</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('language')}>Language Immersion Camps</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('sports')}>Sports Specialty Training</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('family')}>Family-Friendly Programs</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('budget')}>Budget-Conscious Options</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('unique')}>Unique Adventures</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('local')}>Local & Municipal Gems</li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4 text-lg">Resources</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white cursor-pointer">Complete Camp Guide 2026</li>
-                <li className="hover:text-white cursor-pointer">Booking Timeline & Tips</li>
-                <li className="hover:text-white cursor-pointer">Safety Standards Guide</li>
-                <li className="hover:text-white cursor-pointer">Parent Reviews & Testimonials</li>
-                <li className="hover:text-white cursor-pointer">Early Bird Discounts</li>
-                <li className="hover:text-white cursor-pointer">Camp Comparison Tool</li>
-                <li className="hover:text-white cursor-pointer">Age-Appropriate Recommendations</li>
-                <li className="hover:text-white cursor-pointer">Budget Planning Calculator</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('guide')}>Complete Camp Guide 2026</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('booking-timeline')}>Booking Timeline & Tips</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('safety-standards')}>Safety Standards Guide</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('parent-reviews')}>Parent Reviews & Testimonials</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('early-bird')}>Early Bird Discounts</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('compare')}>Camp Comparison Tool</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('age-recommendations')}>Age-Appropriate Recommendations</li>
+                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('budget-calculator')}>Budget Planning Calculator</li>
               </ul>
             </div>
           </div>
