@@ -52,7 +52,9 @@
       "WebFetch(domain:www.mediterranean-sailing.com)",
       "WebSearch",
       "WebSearch",
-      "WebSearch"
+      "WebSearch",
+      "Bash(vercel:*)",
+      "Read(/D:\\OneDrive\\Documents\\GitHub\\camp-explorer-europe-2026\\.vercel/**)"
     ],
     "deny": [],
     "ask": [],
