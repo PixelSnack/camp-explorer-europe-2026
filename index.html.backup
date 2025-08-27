@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>European Summer Camps 2026 | 100+ Verified Programs | Camp Explorer Europe</title>
+    <meta name="title" content="European Summer Camps 2026 | 100+ Verified Programs | Camp Explorer Europe" />
+    <meta name="description" content="The ultimate guide to European summer camps 2026. Compare 100+ verified camps across Switzerland, UK, France, Spain & more. Expert reviews, pricing, safety standards & booking guides included." />
+    <meta name="keywords" content="european summer camps 2026, kids summer camps europe, youth programs switzerland, language immersion camps, alpine adventure camps, academic summer programs, international summer camps, children camps france, spain summer camps, uk summer camps, camp booking guide, european camp reviews" />
+    <meta name="author" content="Camp Explorer Europe" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    
+    <!-- Enhanced Authority and Content Signals -->
+    <meta name="content-type" content="educational-information" />
+    <meta name="target-audience" content="parents, caregivers, families, education seekers" />
+    <meta name="content-rating" content="general" />
+    <meta name="content-category" content="family travel, education, youth development" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.europeansummercamps.com/" />
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20250827" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20250827" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20250827" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20250827" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png?v=20250827" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-32x32.png?v=20250827" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-32x32.png?v=20250827" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Camp Explorer Europe" />
+    <meta property="og:title" content="European Summer Camps 2026 | 100+ Verified Programs | Camp Explorer Europe" />
+    <meta property="og:description" content="The ultimate guide to European summer camps 2026. Compare 100+ verified camps across Switzerland, UK, France, Spain & more. Expert reviews, pricing & booking guides." />
+    <meta property="og:url" content="https://www.europeansummercamps.com/" />
+    <meta property="og:image" content="https://www.europeansummercamps.com/european-summer-camps-hero.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="European Summer Camps 2026 - Children enjoying outdoor activities in beautiful European locations" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@CampExplorerEU" />
+    <meta name="twitter:title" content="European Summer Camps 2026 | 100+ Verified Programs" />
+    <meta name="twitter:description" content="The ultimate guide to European summer camps 2026. Compare 100+ verified camps across Switzerland, UK, France, Spain & more." />
+    <meta name="twitter:image" content="https://www.europeansummercamps.com/european-summer-camps-hero.png" />
+    <meta name="twitter:image:alt" content="European Summer Camps 2026 - Children enjoying outdoor activities in beautiful European locations" />
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="color-scheme" content="light" />
+    <meta name="rating" content="general" />
+    <meta name="distribution" content="global" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="EU" />
+    <meta name="geo.placename" content="Europe" />
+    <meta name="target" content="all" />
+    <meta name="audience" content="parents, families, children, teenagers" />
+    
+    <!-- Enhanced Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://vercel.live" />
+    
+    <!-- Enhanced Canonical and Alternate URLs -->
+    <link rel="alternate" href="https://www.europeansummercamps.com/" hreflang="en" />
+    <link rel="alternate" href="https://www.europeansummercamps.com/de/" hreflang="de" />
+    <link rel="alternate" href="https://www.europeansummercamps.com/fr/" hreflang="fr" />
+    <link rel="alternate" href="https://www.europeansummercamps.com/es/" hreflang="es" />
+    <link rel="alternate" hreflang="x-default" href="https://www.europeansummercamps.com/" />
+    
+    <!-- Enhanced Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    
+    <!-- Professional Multi-Schema Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.europeansummercamps.com/#website",
+      "name": "Camp Explorer Europe",
+      "alternateName": "European Summer Camps 2026",
+      "url": "https://camp-explorer-europe-2026.vercel.app",
+      "description": "The ultimate guide to European summer camps 2026. Compare 100+ verified camps across Switzerland, UK, France, Spain and more.",
+      "keywords": "european summer camps, kids camps, youth programs, language immersion, adventure camps",
+      "author": {
+        "@type": "Organization",
+        "name": "Camp Explorer Europe",
+        "url": "https://camp-explorer-europe-2026.vercel.app"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Camp Explorer Europe",
+        "url": "https://camp-explorer-europe-2026.vercel.app"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://camp-explorer-europe-2026.vercel.app/#discover?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "European Summer Camps 2026",
+        "description": "Comprehensive list of verified European summer camps for children and teenagers",
+        "numberOfItems": "100+",
+        "itemListElement": [
+          {
+            "@type": "Product",
+            "name": "Premium Alpine Summer Camps",
+            "description": "High-end Swiss and Austrian Alpine adventure camps",
+            "category": "Premium Summer Camps"
+          },
+          {
+            "@type": "Product", 
+            "name": "Academic Excellence Programs",
+            "description": "University preparation and academic enrichment camps",
+            "category": "Academic Summer Camps"
+          },
+          {
+            "@type": "Product",
+            "name": "Language Immersion Camps",
+            "description": "Natural language learning in European settings",
+            "category": "Language Summer Camps"
+          },
+          {
+            "@type": "Product",
+            "name": "Sports Specialty Camps",
+            "description": "Professional sports training and academies",
+            "category": "Sports Summer Camps"
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Additional Structured Data for Featured Camps -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Featured European Summer Camps 2026",
+      "description": "Top-rated summer camps across Europe for children and teenagers",
+      "itemListElement": [
+        {
+          "@type": "Product",
+          "position": 1,
+          "name": "Les Elfes International",
+          "description": "Premium Alpine adventure summer camp in Verbier, Switzerland for ages 6-17 years",
+          "brand": {
+            "@type": "Brand",
+            "name": "Les Elfes International"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "4990",
+            "priceCurrency": "CHF",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2025-09-01",
+            "validThrough": "2026-06-07"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "847"
+          },
+          "category": "Summer Camp",
+          "audience": {
+            "@type": "PeopleAudience",
+            "suggestedMinAge": 6,
+            "suggestedMaxAge": 17
+          }
+        },
+        {
+          "@type": "Product", 
+          "position": 2,
+          "name": "Oxford Summer Courses",
+          "description": "Academic excellence program for university preparation in Oxford, UK for ages 13-18",
+          "brand": {
+            "@type": "Brand",
+            "name": "Oxford Summer Courses"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "6220",
+            "priceCurrency": "GBP",
+            "availability": "https://schema.org/InStock"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8", 
+            "reviewCount": "432"
+          },
+          "category": "Academic Summer Program"
+        },
+        {
+          "@type": "Product",
+          "position": 3, 
+          "name": "EUROCAM Bohemia",
+          "description": "Budget-friendly English immersion camp in South Bohemia, Czech Republic for ages 7-17",
+          "brand": {
+            "@type": "Brand",
+            "name": "EUROCAM"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "330",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "267"
+          },
+          "category": "Language Immersion Camp"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Organization Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Camp Explorer Europe",
+      "alternateName": "European Summer Camps Guide", 
+      "url": "https://camp-explorer-europe-2026.vercel.app",
+      "description": "The ultimate resource for European summer camps, featuring 100+ verified programs across 12 countries with expert reviews and booking guides.",
+      "foundingDate": "2025",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Europe"
+      },
+      "serviceType": "Summer Camp Directory and Booking Guide",
+      "knowsAbout": [
+        "European Summer Camps",
+        "Youth Programs", 
+        "Language Immersion",
+        "Adventure Camps",
+        "Academic Programs",
+        "Sports Camps"
+      ]
+    }
+    </script>
+    
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//vercel.app" />
+    <link rel="dns-prefetch" href="//vercel.com" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
