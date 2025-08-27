@@ -342,6 +342,8 @@ function App() {
     setSearchTerm('') // Reset search
     setActiveSection('discover')
     window.location.hash = 'discover'
+    // Scroll to top for better UX
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleCategoryFilter = (category) => {
@@ -350,6 +352,8 @@ function App() {
     setSearchTerm('') // Reset search
     setActiveSection('discover')
     window.location.hash = 'discover'
+    // Scroll to top for better UX
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleResourceLink = (resource) => {
@@ -371,6 +375,8 @@ function App() {
         setActiveSection('resources')
         window.location.hash = 'resources'
     }
+    // Scroll to top for better UX
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   // Listen for hash changes
@@ -434,11 +440,11 @@ function App() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              <button onClick={() => { handleNavigation('home'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'home' ? 'text-blue-600' : 'text-gray-900'}`}>Home</button>
-              <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'discover' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Discover Camps</button>
-              <button onClick={() => { handleNavigation('compare'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'compare' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Compare</button>
-              <button onClick={() => { handleNavigation('plan'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'plan' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Plan Your Summer</button>
-              <button onClick={() => { handleNavigation('guide'); setIsMenuOpen(false); }} className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${activeSection === 'guide' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Guide</button>
+              <button onClick={() => { handleNavigation('home'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'home' ? 'text-blue-600' : 'text-gray-900'}`}>Home</button>
+              <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'discover' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Discover Camps</button>
+              <button onClick={() => { handleNavigation('compare'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'compare' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Compare</button>
+              <button onClick={() => { handleNavigation('plan'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'plan' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Plan Your Summer</button>
+              <button onClick={() => { handleNavigation('guide'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'guide' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Guide</button>
               <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full mt-2" onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }}>Get Started</Button>
             </div>
           </div>
@@ -467,13 +473,13 @@ function App() {
             </Badge>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Europe's Most
             <span className="block text-orange-400">Comprehensive</span>
-            <span className="block text-4xl md:text-5xl">Summer Camp Guide</span>
+            <span className="block text-3xl sm:text-4xl md:text-5xl">Summer Camp Guide</span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed px-4">
             From Swiss Alpine adventures to Spanish beach immersion, discover the perfect summer experience for your child. Research-driven recommendations, verified pricing, and authentic parent reviews.
           </p>
           
@@ -496,7 +502,7 @@ function App() {
           </div>
           
           {/* Stats Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto px-4">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon
               return (
@@ -504,9 +510,9 @@ function App() {
                   <div className="flex justify-center mb-2">
                     <IconComponent className="h-8 w-8 text-orange-400" />
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
-                  <div className="text-sm text-gray-300">{stat.label}</div>
-                  <div className="text-xs text-gray-400">{stat.description}</div>
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{stat.value}</div>
+                  <div className="text-sm sm:text-base text-gray-300">{stat.label}</div>
+                  <div className="text-xs sm:text-sm text-gray-400">{stat.description}</div>
                 </div>
               )
             })}
@@ -575,7 +581,7 @@ function App() {
       {/* Enhanced Camps Grid */}
       <section id="discover" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {filteredCamps.map((camp) => (
               <Card key={camp.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group border-0 shadow-lg">
                 <div className="relative h-56 overflow-hidden">
