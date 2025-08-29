@@ -64,7 +64,12 @@
       "WebFetch(domain:www.pinwormguide.com)",
       "Read(/D:\\OneDrive\\Documents\\GitHub/**)",
       "Read(/D:\\OneDrive\\Documents\\GitHub\\pinworm-guide/**)",
-      "WebFetch(domain:who.is)"
+      "WebFetch(domain:who.is)",
+      "Bash(git push:*)",
+      "Bash(gh auth:*)",
+      "Bash(where gh)",
+      "Bash(gh:*)",
+      "Bash(git --version)"
     ],
     "deny": [],
     "ask": [],
