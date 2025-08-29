@@ -69,7 +69,8 @@
       "Bash(gh auth:*)",
       "Bash(where gh)",
       "Bash(gh:*)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Read(C:\\Users\\Soda\\Downloads/**)"
     ],
     "deny": [],
     "ask": [],
