@@ -16,6 +16,8 @@ export default defineConfig({
               outDir: 'dist',
               assetsDir: 'assets',
               sourcemap: false,
+              minify: 'esbuild',
+              cssMinify: true,
               rollupOptions: {
                         output: {
                                     manualChunks: {
@@ -23,6 +25,9 @@ export default defineConfig({
                                                   ui: ['lucide-react']
                                     }
                         }
+              },
+              esbuild: {
+                        drop: ['console', 'debugger']
               }
       },
       server: {

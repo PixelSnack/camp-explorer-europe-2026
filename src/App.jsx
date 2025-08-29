@@ -428,7 +428,9 @@ function App() {
               <Button
                 variant="ghost"
                 size="sm"
+                className="touch-target mobile-button p-3"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle navigation menu"
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
@@ -541,7 +543,9 @@ function App() {
                 placeholder="Search camps, locations, or countries..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg touch-target"
+                autoComplete="off"
+                autoCapitalize="none"
               />
             </div>
           </div>
@@ -914,7 +918,9 @@ function App() {
                   placeholder="Search camps, locations, or countries..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg touch-target"
+                  autoComplete="off"
+                  autoCapitalize="none"
                 />
               </div>
             </div>
