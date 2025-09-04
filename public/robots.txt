@@ -47,10 +47,10 @@ User-agent: Bytespider
 Disallow: /
 
 User-agent: FacebookBot
-Disallow: /
+Allow: /
 
 User-agent: PerplexityBot
-Disallow: /
+Allow: /
 
 User-agent: Diffbot
 Disallow: /
