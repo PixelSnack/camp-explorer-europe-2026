@@ -26,10 +26,10 @@ Allow: /
 
 # Block harmful AI scrapers while allowing beneficial ones
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: ChatGPT-User
-Disallow: /
+Allow: /
 
 User-agent: CCBot
 Disallow: /
