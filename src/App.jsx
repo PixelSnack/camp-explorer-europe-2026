@@ -13,7 +13,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [selectedFilter, setSelectedFilter] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
-  const [showFilters, setShowFilters] = useState(false)
+  const [_showFilters, _setShowFilters] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [selectedCamps, setSelectedCamps] = useState([])
   const [selectedCountry, setSelectedCountry] = useState('all')

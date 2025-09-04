@@ -70,7 +70,16 @@
       "Bash(where gh)",
       "Bash(gh:*)",
       "Bash(git --version)",
-      "Read(C:\\Users\\Soda\\Downloads/**)"
+      "Read(C:\\Users\\Soda\\Downloads/**)",
+      "Read(C:\\Users\\Soda\\Downloads\\Console issues/**)",
+      "Read(C:\\Users\\Soda\\Downloads\\Console issues/**)",
+      "Read(C:\\Users\\Soda\\Downloads\\Console issues/**)",
+      "Read(C:\\Users\\Soda\\Downloads\\Console issues/**)",
+      "Read(C:\\Users\\Soda\\Downloads\\Console issues/**)",
+      "Read(C:\\Users\\Soda\\Downloads\\Console issues/**)",
+      "Bash(node:*)",
+      "Bash(npm run lint)",
+      "Read(C:\\Users\\Soda\\Downloads\\Console issues/**)"
     ],
     "deny": [],
     "ask": [],
