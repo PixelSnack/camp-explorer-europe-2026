@@ -2746,14 +2746,78 @@ function App() {
             <div>
               <h4 className="font-semibold mb-4 text-lg">Resources</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('guide')}>Complete Camp Guide 2026</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('booking-timeline')}>Booking Timeline & Tips</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('safety-standards')}>Safety Standards Guide</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('parent-reviews')}>Parent Reviews & Testimonials</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('early-bird')}>Early Bird Discounts</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('compare')}>Camp Comparison Tool</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('age-recommendations')}>Age-Appropriate Recommendations</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleResourceLink('budget-calculator')}>Budget Planning Calculator</li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('guide')}
+                    aria-label="View complete camp guide 2026"
+                  >
+                    Complete Camp Guide 2026
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('booking-timeline')}
+                    aria-label="View booking timeline and tips"
+                  >
+                    Booking Timeline & Tips
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('safety-standards')}
+                    aria-label="View safety standards guide"
+                  >
+                    Safety Standards Guide
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('parent-reviews')}
+                    aria-label="View parent reviews and testimonials"
+                  >
+                    Parent Reviews & Testimonials
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('early-bird')}
+                    aria-label="View early bird discounts"
+                  >
+                    Early Bird Discounts
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('compare')}
+                    aria-label="View camp comparison tool"
+                  >
+                    Camp Comparison Tool
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('age-recommendations')}
+                    aria-label="View age-appropriate recommendations"
+                  >
+                    Age-Appropriate Recommendations
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('budget-calculator')}
+                    aria-label="View budget planning calculator"
+                  >
+                    Budget Planning Calculator
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
