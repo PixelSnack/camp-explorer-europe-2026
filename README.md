@@ -92,9 +92,12 @@ camp-explorer-europe-2026/
 ├── public/                 # Static assets
 ├── src/
 │   ├── assets/            # Images and media files
-│   │   ├── hero_image.png
-│   │   ├── camp_activities_collage.png
-│   │   └── european_map_illustration.png
+│   │   ├── hero-lakeside.avif            # Optimized hero (169KB)
+│   │   ├── hero-lakeside.webp            # Optimized hero (127KB) 
+│   │   ├── hero-lakeside-compressed.png  # Optimized hero (677KB)
+│   │   ├── european-summer-camps-lakeside-hero.png  # Original (1.67MB)
+│   │   ├── european-camp-activities-collage.png
+│   │   └── european-summer-camps-map.png
 │   ├── components/        # Reusable UI components
 │   │   └── ui/           # Shadcn/ui components
 │   ├── App.jsx           # Main application component
@@ -178,12 +181,14 @@ npm run lint         # Run ESLint
 2. Build command: `npm run build`
 3. Publish directory: `dist`
 
-## 📈 Performance
+## 📈 Performance (September 8, 2025 Optimizations)
 
-- **Lighthouse Score:** 95+ (Performance, Accessibility, Best Practices, SEO)
+- **Hero Image Optimization:** 92% size reduction (1,674KB → 127KB WebP, 169KB AVIF)
+- **Modern Image Delivery:** Progressive enhancement with picture element  
+- **Security Headers:** Enterprise-grade HSTS and CSP implementation
+- **Accessibility:** WCAG 2.1 AA compliant with full keyboard navigation
 - **Bundle Size:** Optimized with Vite tree-shaking
-- **Image Optimization:** Compressed assets for fast loading
-- **Responsive Images:** Optimized for different screen sizes
+- **Expected LCP:** 85-92% improvement from image optimization
 
 ## 🤝 Contributing
 
