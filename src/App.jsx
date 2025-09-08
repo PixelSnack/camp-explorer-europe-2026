@@ -708,6 +708,7 @@ function App() {
                     <Button 
                       className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                       onClick={() => window.open(camp.bookingUrl, '_blank')}
+                      aria-label={`View details and book ${camp.name}`}
                     >
                       View Details & Book
                     </Button>
@@ -1093,6 +1094,7 @@ function App() {
                       <Button 
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                         onClick={() => window.open(camp.bookingUrl, '_blank')}
+                        aria-label={`View details and book ${camp.name}`}
                       >
                         View Details & Book
                       </Button>
@@ -2588,28 +2590,156 @@ function App() {
             <div>
               <h4 className="font-semibold mb-4 text-lg">Top Destinations</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Switzerland')}>🇨🇭 Switzerland (Premium Alpine)</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('United Kingdom')}>🇬🇧 United Kingdom (Academic)</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Spain')}>🇪🇸 Spain (Language Immersion)</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('France')}>🇫🇷 France (Cultural Heritage)</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Austria')}>🇦🇹 Austria (Adventure Sports)</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Italy')}>🇮🇹 Italy (Sports & Culture)</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Germany')}>🇩🇪 Germany (Budget Excellence)</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCountryFilter('Czech Republic')}>🇨🇿 Czech Republic (Hidden Gems)</li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Switzerland')}
+                    aria-label="Filter camps in Switzerland"
+                  >
+                    🇨🇭 Switzerland (Premium Alpine)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('United Kingdom')}
+                    aria-label="Filter camps in United Kingdom"
+                  >
+                    🇬🇧 United Kingdom (Academic)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Spain')}
+                    aria-label="Filter camps in Spain"
+                  >
+                    🇪🇸 Spain (Language Immersion)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('France')}
+                    aria-label="Filter camps in France"
+                  >
+                    🇫🇷 France (Cultural Heritage)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Austria')}
+                    aria-label="Filter camps in Austria"
+                  >
+                    🇦🇹 Austria (Adventure Sports)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Italy')}
+                    aria-label="Filter camps in Italy"
+                  >
+                    🇮🇹 Italy (Sports & Culture)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Germany')}
+                    aria-label="Filter camps in Germany"
+                  >
+                    🇩🇪 Germany (Budget Excellence)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Czech Republic')}
+                    aria-label="Filter camps in Czech Republic"
+                  >
+                    🇨🇿 Czech Republic (Hidden Gems)
+                  </button>
+                </li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4 text-lg">Camp Categories</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('premium')}>Premium Alpine Experiences</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('academic')}>Academic Excellence Programs</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('language')}>Language Immersion Camps</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('sports')}>Sports Specialty Training</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('family')}>Family-Friendly Programs</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('budget')}>Budget-Conscious Options</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('unique')}>Unique Adventures</li>
-                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => handleCategoryFilter('local')}>Local & Municipal Gems</li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCategoryFilter('premium')}
+                    aria-label="Filter premium category camps"
+                  >
+                    Premium Alpine Experiences
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCategoryFilter('academic')}
+                    aria-label="Filter academic category camps"
+                  >
+                    Academic Excellence Programs
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCategoryFilter('language')}
+                    aria-label="Filter language category camps"
+                  >
+                    Language Immersion Camps
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCategoryFilter('sports')}
+                    aria-label="Filter sports category camps"
+                  >
+                    Sports Specialty Training
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCategoryFilter('family')}
+                    aria-label="Filter family category camps"
+                  >
+                    Family-Friendly Programs
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCategoryFilter('budget')}
+                    aria-label="Filter budget category camps"
+                  >
+                    Budget-Conscious Options
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCategoryFilter('unique')}
+                    aria-label="Filter unique category camps"
+                  >
+                    Unique Adventures
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCategoryFilter('local')}
+                    aria-label="Filter local category camps"
+                  >
+                    Local & Municipal Gems
+                  </button>
+                </li>
               </ul>
             </div>
             
