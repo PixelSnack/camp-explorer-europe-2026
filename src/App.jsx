@@ -351,7 +351,8 @@ function App() {
 
   const handleCategoryFilter = (category) => {
     setSelectedFilter(category)
-    setSelectedCountry('all') // Reset country filter when filtering by category
+    // Always reset country filter when filtering by category (including 'all')
+    setSelectedCountry('all') 
     setSearchTerm('') // Reset search
     setActiveSection('discover')
     window.location.hash = 'discover'
@@ -568,7 +569,7 @@ function App() {
               <Button
                 key={option.value}
                 variant={selectedFilter === option.value ? "default" : "outline"}
-                onClick={() => setSelectedFilter(option.value)}
+                onClick={() => handleCategoryFilter(option.value)}
                 className={`${
                   selectedFilter === option.value 
                     ? "bg-blue-600 text-white" 
@@ -944,7 +945,7 @@ function App() {
                 <Button
                   key={option.value}
                   variant={selectedFilter === option.value ? "default" : "outline"}
-                  onClick={() => setSelectedFilter(option.value)}
+                  onClick={() => handleCategoryFilter(option.value)}
                   className={`${
                     selectedFilter === option.value 
                       ? "bg-blue-600 text-white" 
