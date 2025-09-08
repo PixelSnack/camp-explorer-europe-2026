@@ -5,6 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge.jsx'
 import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart } from 'lucide-react'
 import heroImage from './assets/european-summer-camps-lakeside-hero.png'
+import heroLakesideAvif from './assets/hero-lakeside.avif'
+import heroLakesideWebp from './assets/hero-lakeside.webp'
+import heroLakesideCompressed from './assets/hero-lakeside-compressed.png'
 import activitiesImage from './assets/european-camp-activities-collage.png'
 import mapImage from './assets/european-summer-camps-map.png'
 import './App.css'
@@ -461,12 +464,21 @@ function App() {
         <>
         {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
-        </div>
+        <picture className="absolute inset-0 w-full h-full">
+          <source srcSet={heroLakesideAvif} type="image/avif" />
+          <source srcSet={heroLakesideWebp} type="image/webp" />
+          <img 
+            src={heroLakesideCompressed} 
+            alt="Scenic lakeside European summer camp setting with mountains and clear water"
+            className="w-full h-full object-cover"
+            width="1680" 
+            height="720"
+            fetchPriority="high"
+            loading="eager"
+            style={{aspectRatio: '16/9'}}
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
         
         <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
           <div className="mb-6">
