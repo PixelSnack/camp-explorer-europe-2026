@@ -320,10 +320,10 @@ Read README.md                    # Public-facing project overview
 ```bash
 # Read only if needed for historical context:
 Read site-analysis-report.md      # Original analysis (August 2025)
-Read FEATURES.md                  # Technical feature documentation  
-Read DEPLOYMENT-GUIDE.md          # Deployment instructions
-Read PACKAGE-CONTENTS.md          # Package structure documentation
-Read QUICK-START.md               # Installation quick guide
+Read FEATURES.md                  # Technical feature documentation ✅ CURRENT  
+Read DEPLOYMENT-GUIDE.md          # Comprehensive deployment guide ✅ CURRENT (Updated Sept 2025)
+Read PACKAGE-CONTENTS.md          # Package structure documentation ✅ CURRENT (Updated Sept 2025)
+Read QUICK-START.md               # Rapid deployment guide ✅ CURRENT (Updated Sept 2025)
 ```
 
 ## 📋 DOCUMENTATION HIERARCHY & PURPOSE
@@ -371,10 +371,25 @@ Read QUICK-START.md               # Installation quick guide
 
 ### **📖 REFERENCE DOCUMENTS (Stable)**
 
-#### **FEATURES.md, DEPLOYMENT-GUIDE.md, PACKAGE-CONTENTS.md, QUICK-START.md**
-- **Purpose**: Technical reference and documentation
-- **Update Frequency**: Rarely (only when core features change)
-- **Contains**: Feature specifications, deployment procedures, package contents, installation guides
+#### **FEATURES.md** ✅ CURRENT
+- **Purpose**: Technical feature documentation and specifications
+- **Status**: Accurate and up-to-date with current implementation
+- **Contains**: Feature breakdown, technical architecture, development capabilities
+
+#### **DEPLOYMENT-GUIDE.md** ✅ CURRENT (Updated September 2025)
+- **Purpose**: Comprehensive deployment walkthrough using GitHub Desktop + Vercel
+- **Status**: Complete rewrite reflecting current production workflow
+- **Contains**: Step-by-step GitHub Desktop workflow, Vercel deployment, troubleshooting
+
+#### **PACKAGE-CONTENTS.md** ✅ CURRENT (Updated September 2025)
+- **Purpose**: Current package documentation with accurate specifications
+- **Status**: Completely updated with correct file sizes, Vercel workflow, enterprise features
+- **Contains**: Accurate package structure, current deployment methods, performance metrics
+
+#### **QUICK-START.md** ✅ CURRENT (Updated September 2025)
+- **Purpose**: Rapid 5-minute deployment guide using Vercel
+- **Status**: Updated for current GitHub Desktop + Vercel workflow
+- **Contains**: Quick deployment steps, live production example, current tech stack
 
 ---
 
