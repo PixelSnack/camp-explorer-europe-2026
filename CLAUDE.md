@@ -105,9 +105,11 @@ This site is part of **ResourceHub** - an umbrella project for building authorit
 - **Traffic Goal**: Become #1 Google result for European summer camp searches
 
 ### Technical Deployment Workflow
-- **Development**: GitHub → GitHub Desktop → Push to Vercel
+- **Primary Workflow**: GitHub Desktop → Vercel (NO command-line git push)
+- **Development Process**: Local changes → GitHub Desktop commit → GitHub Desktop push → Automatic Vercel deployment
 - **Infrastructure**: GitHub (PixelSnack), Vercel deployment, CloudFlare domains
-- **Tools Available**: GitHub CLI and Vercel CLI configured in Claude Code environment
+- **Important**: Always use GitHub Desktop for commits and pushes, not command-line git push
+- **Tools Available**: GitHub CLI and Vercel CLI configured in Claude Code environment (for reference only)
 
 ### Recent Technical Updates (September 8, 2025)
 
@@ -425,6 +427,7 @@ npm run dev      # Should start on http://localhost:5173
 - **Phase 2 Readiness**: Waiting for 1,000+ monthly sessions
 - **Current Focus**: Content expansion, SEO optimization, business growth
 - **Technical Debt**: Minimal - excellent code quality maintained
+- **⚠️ DEPLOYMENT WORKFLOW**: Always use GitHub Desktop for commits/pushes, NOT command-line git push
 
 ### **Step 5: Follow Development Guidelines**
 - **Zero-Breakage Principle**: Never break existing functionality
@@ -442,6 +445,8 @@ npm run dev      # Should start on http://localhost:5173
 git status                    # Check for uncommitted changes
 npm run build && npm run dev  # Test build and dev server
 git log --oneline -5          # See recent commits
+
+# ⚠️ IMPORTANT: For commits/pushes, use GitHub Desktop, NOT command-line git push
 ```
 
 ## **Document Updates Needed?**
