@@ -268,10 +268,11 @@ For each new niche site: Start with comprehensive data collection → Implement 
 
 ### Key Files to Reference
 - `CLAUDE.md` - This file (comprehensive project documentation)
-- `src/App.jsx` - Main component (2,675 lines, well-structured)
-- `public/sitemap.xml` - Contains 22 fake hash URLs (needs cleaning)
-- `public/_headers` - Security headers (needs HSTS, CSP additions)
-- `index.html` - Contains incorrect Product schema (lines 121-279)
+- `DEVELOPMENT_GUIDELINES.md` - **MANDATORY** enterprise development standards
+- `src/App.jsx` - Main component (2,675 lines, well-structured)  
+- `public/sitemap.xml` - ✅ Clean single URL structure (optimized)
+- `public/_headers` - ✅ Enterprise security headers (HSTS + CSP)
+- `index.html` - Contains Product schema (Organization schema pending Phase 2)
 
 ### Implementation Safety Notes
 - **PRESERVE existing functionality** - filtering, search, navigation all work excellently
@@ -284,3 +285,165 @@ For each new niche site: Start with comprehensive data collection → Implement 
 - **Target**: Become #1 for "European summer camps" on Google  
 - **Current traffic**: 20 visitors/week, 70% bounce (single-page issue)
 - **Monetization**: Eventually through data sales, site sales, or premium listings
+
+---
+
+# 📚 CLAUDE CODE SESSION STARTUP PROTOCOL
+
+## 🚨 MANDATORY READING FOR EVERY SESSION
+
+**CRITICAL**: When starting a new Claude Code session, ALWAYS read these documents in order:
+
+### **1. IMMEDIATE READING (Essential Context)**
+```bash
+# Read these FIRST in every session:
+Read CLAUDE.md                    # This file - comprehensive overview
+Read DEVELOPMENT_GUIDELINES.md    # MANDATORY development standards
+Read QUICK_REFERENCE.md          # Current status and quick facts
+```
+
+### **2. CURRENT STATUS FILES (As Needed)**
+```bash
+# Read when working on implementation:
+Read IMPLEMENTATION_CHECKLIST.md  # Phase 1 complete status
+Read IMAGE_OPTIMIZATION_TODO.md   # Performance optimization status
+```
+
+### **3. STRATEGIC DOCUMENTS (Business Context)**
+```bash
+# Read when making strategic decisions:
+Read MONETIZATION_STRATEGY.md     # Revenue planning and timeline
+Read README.md                    # Public-facing project overview
+```
+
+### **4. HISTORICAL REFERENCE (Background Only)**
+```bash
+# Read only if needed for historical context:
+Read site-analysis-report.md      # Original analysis (August 2025)
+Read FEATURES.md                  # Technical feature documentation  
+Read DEPLOYMENT-GUIDE.md          # Deployment instructions
+```
+
+## 📋 DOCUMENTATION HIERARCHY & PURPOSE
+
+### **🔥 CRITICAL DOCUMENTS (Always Current)**
+
+#### **CLAUDE.md** (This File)
+- **Purpose**: Master project documentation and technical overview
+- **When to Update**: After major changes or optimizations
+- **Contains**: Architecture, implementation status, business context
+
+#### **DEVELOPMENT_GUIDELINES.md** ⭐ MANDATORY ⭐
+- **Purpose**: Enterprise development standards for ALL code changes
+- **When to Update**: When establishing new development patterns
+- **Contains**: Zero-breakage rules, SEO requirements, testing protocols
+
+#### **QUICK_REFERENCE.md**
+- **Purpose**: Current status snapshot and quick reference
+- **When to Update**: After completing any implementation phase
+- **Contains**: Current status, success metrics, emergency commands
+
+### **📈 IMPLEMENTATION DOCUMENTS (Phase-Specific)**
+
+#### **IMPLEMENTATION_CHECKLIST.md**
+- **Purpose**: Step-by-step implementation guide and completion tracking
+- **Status**: Phase 1 COMPLETE ✅
+- **Contains**: Detailed implementation steps, testing procedures, rollback plans
+
+#### **IMAGE_OPTIMIZATION_TODO.md**
+- **Purpose**: Hero image optimization documentation
+- **Status**: COMPLETE ✅ (92% size reduction achieved)
+- **Contains**: Optimization results, performance impact, technical details
+
+### **💰 BUSINESS STRATEGY DOCUMENTS**
+
+#### **MONETIZATION_STRATEGY.md**
+- **Purpose**: Revenue roadmap and business strategy
+- **When to Update**: When business model evolves or milestones reached
+- **Contains**: Traffic thresholds, revenue streams, exit strategy
+
+#### **README.md**
+- **Purpose**: Public-facing project documentation
+- **When to Update**: After major feature additions or performance improvements
+- **Contains**: Feature overview, installation guide, performance claims
+
+### **📖 REFERENCE DOCUMENTS (Stable)**
+
+#### **FEATURES.md, DEPLOYMENT-GUIDE.md, PACKAGE-CONTENTS.md**
+- **Purpose**: Technical reference and documentation
+- **Update Frequency**: Rarely (only when core features change)
+- **Contains**: Feature specifications, deployment procedures, package contents
+
+---
+
+# 🎯 SESSION CONTINUATION CHECKLIST
+
+## **Starting a New Session? Follow This Protocol:**
+
+### **Step 1: Context Restoration**
+```bash
+# MANDATORY: Read these three files first
+✅ Read CLAUDE.md (comprehensive overview)
+✅ Read DEVELOPMENT_GUIDELINES.md (development standards)  
+✅ Read QUICK_REFERENCE.md (current status)
+```
+
+### **Step 2: Current Status Assessment**
+- **Phase 1 Status**: ✅ COMPLETE (all optimizations deployed)
+- **Code Quality**: ✅ EXCELLENT (enterprise-level, 2,675 lines App.jsx)
+- **Performance**: ✅ OPTIMIZED (92% image reduction, modern delivery)
+- **Security**: ✅ ENTERPRISE (HSTS + CSP headers)
+- **Accessibility**: ✅ WCAG 2.1 AA COMPLIANT
+- **SEO**: ✅ FOUNDATION READY (clean sitemap, structured data)
+
+### **Step 3: Verify Current Build Status**
+```bash
+# Always verify the codebase is working:
+npm run build    # Should complete in ~7 seconds
+npm run lint     # Should pass (6 safe shadcn warnings OK)
+npm run dev      # Should start on http://localhost:5173
+```
+
+### **Step 4: Understand Current Priorities**
+- **Phase 2 Readiness**: Waiting for 1,000+ monthly sessions
+- **Current Focus**: Content expansion, SEO optimization, business growth
+- **Technical Debt**: Minimal - excellent code quality maintained
+
+### **Step 5: Follow Development Guidelines**
+- **Zero-Breakage Principle**: Never break existing functionality
+- **SEO-First Mindset**: Every change should support #1 Google ranking goal  
+- **Enterprise Quality**: Maintain performance, accessibility, security standards
+- **Testing Protocol**: Build + Lint + Manual + Deploy verification required
+
+---
+
+# ⚡ QUICK SESSION COMMANDS
+
+## **Emergency Status Check**
+```bash
+# If something seems broken:
+git status                    # Check for uncommitted changes
+npm run build && npm run dev  # Test build and dev server
+git log --oneline -5          # See recent commits
+```
+
+## **Document Updates Needed?**
+```bash
+# After making changes, update relevant docs:
+# - QUICK_REFERENCE.md (status changes)
+# - CLAUDE.md (major technical changes)
+# - README.md (public-facing changes)
+# - DEVELOPMENT_GUIDELINES.md (new standards)
+```
+
+## **Business Context Refresh**
+- **Current State**: Fully optimized SPA with enterprise-level foundation
+- **Traffic Goal**: 1,000+ monthly sessions to justify Phase 2
+- **Revenue Strategy**: Multiple streams from €15K-2M depending on growth
+- **Exit Strategy**: 3-5x annual revenue (€500K-2M range)
+
+---
+
+**📌 REMEMBER**: This project is a sophisticated, well-architected foundation ready for scale. Every decision should consider: SEO impact, performance implications, business value, and technical debt. Follow DEVELOPMENT_GUIDELINES.md religiously.**
+
+*Last Updated: September 8, 2025 - Phase 1 Complete*
