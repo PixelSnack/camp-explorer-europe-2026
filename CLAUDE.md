@@ -322,6 +322,8 @@ Read README.md                    # Public-facing project overview
 Read site-analysis-report.md      # Original analysis (August 2025)
 Read FEATURES.md                  # Technical feature documentation  
 Read DEPLOYMENT-GUIDE.md          # Deployment instructions
+Read PACKAGE-CONTENTS.md          # Package structure documentation
+Read QUICK-START.md               # Installation quick guide
 ```
 
 ## 📋 DOCUMENTATION HIERARCHY & PURPOSE
@@ -369,10 +371,10 @@ Read DEPLOYMENT-GUIDE.md          # Deployment instructions
 
 ### **📖 REFERENCE DOCUMENTS (Stable)**
 
-#### **FEATURES.md, DEPLOYMENT-GUIDE.md, PACKAGE-CONTENTS.md**
+#### **FEATURES.md, DEPLOYMENT-GUIDE.md, PACKAGE-CONTENTS.md, QUICK-START.md**
 - **Purpose**: Technical reference and documentation
 - **Update Frequency**: Rarely (only when core features change)
-- **Contains**: Feature specifications, deployment procedures, package contents
+- **Contains**: Feature specifications, deployment procedures, package contents, installation guides
 
 ---
 
