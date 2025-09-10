@@ -706,7 +706,7 @@ function App() {
         <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
           <div className="mb-6">
             <Badge className="bg-orange-500/90 text-white px-4 py-2 text-sm font-semibold">
-              100+ Verified Camps • 12 Countries • 2026 Bookings Open
+              22 Verified Camps • 13 Countries • 2026 Bookings Open
             </Badge>
           </div>
           
@@ -726,7 +726,7 @@ function App() {
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
               onClick={() => handleNavigation('discover')}
             >
-              Explore 100+ Camps
+              Explore 22 Premium Camps
             </Button>
             <Button 
               size="lg" 
@@ -1708,7 +1708,7 @@ function App() {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">100+ Verified Camps</Badge>
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">22 Verified Camps</Badge>
                 <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">13 Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
                 <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
@@ -2174,7 +2174,7 @@ function App() {
             <Card className="p-8 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-center">
               <h3 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Camp?</h3>
               <p className="text-blue-100 mb-8 text-lg">
-                Use our interactive tools to explore 100+ verified camps, compare options, and start planning your child's unforgettable European summer adventure for 2026.
+                Use our interactive tools to explore 22 verified camps, compare options, and start planning your child's unforgettable European summer adventure for 2026.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -2807,7 +2807,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 108 camps across 12 countries including premium Nordic programs.
+                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 22 camps across 13 countries including premium Nordic programs.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -3112,7 +3112,7 @@ function App() {
               <div className="text-center">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
-                    <div className="text-2xl font-bold text-white">100+</div>
+                    <div className="text-2xl font-bold text-white">22</div>
                     <div>Verified Camps</div>
                   </div>
                   <div>
@@ -3135,7 +3135,7 @@ function App() {
           
           <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
             <p>&copy; 2025 Camp Explorer Europe. Research-driven recommendations for European summer camps. All pricing verified as of August 2025.</p>
-            <p className="mt-2 text-sm">Built with comprehensive research across 100+ camps • Verified pricing • Authentic parent reviews</p>
+            <p className="mt-2 text-sm">Built with comprehensive research across 22 camps • Verified pricing • Authentic parent reviews</p>
           </div>
         </div>
       </footer>
