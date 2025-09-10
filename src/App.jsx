@@ -80,7 +80,7 @@ function App() {
       rating: 4.8,
       reviews: 356,
       image: mapImage,
-      category: "premium",
+      category: "family",
       type: "Adventure Sports",
       activities: ["Multi-Sport", "Language Learning", "Leadership Training", "Environmental Ed"],
       dates: "June 21-July 5, 2026",
@@ -113,7 +113,7 @@ function App() {
       capacity: 60,
       bookingUrl: "https://www.altitude-camps.com/"
     },
-    // Academic Excellence
+    // Academic & STEM Programs
     {
       id: 5,
       name: "Oxford Summer Courses",
@@ -147,7 +147,7 @@ function App() {
       rating: 4.8,
       reviews: 892,
       image: mapImage,
-      category: "academic",
+      category: "family",
       type: "Comprehensive Education",
       activities: ["English Classes", "Sports Specialties", "Arts & Crafts", "Cultural Excursions"],
       dates: "July 13-27, 2026",
@@ -530,12 +530,12 @@ function App() {
   const filterOptions = [
     { value: 'all', label: 'All Camps', count: allCamps.length },
     { value: 'premium', label: 'Premium Alpine', count: allCamps.filter(c => c.category === 'premium').length },
-    { value: 'academic', label: 'Academic Excellence', count: allCamps.filter(c => c.category === 'academic').length },
+    { value: 'academic', label: 'Academic & STEM', count: allCamps.filter(c => c.category === 'academic').length },
     { value: 'language', label: 'Language Immersion', count: allCamps.filter(c => c.category === 'language').length },
     { value: 'sports', label: 'Sports Specialty', count: allCamps.filter(c => c.category === 'sports').length },
     { value: 'family', label: 'Family Programs', count: allCamps.filter(c => c.category === 'family').length },
     { value: 'budget', label: 'Budget Excellence', count: allCamps.filter(c => c.category === 'budget').length },
-    { value: 'unique', label: 'Unique Adventures', count: allCamps.filter(c => c.category === 'unique').length }
+    { value: 'unique', label: 'Outdoor Adventures', count: allCamps.filter(c => c.category === 'unique').length }
   ]
 
   const stats = [
@@ -1880,7 +1880,7 @@ function App() {
                     <span className="text-2xl mr-3">🇬🇧</span>
                     <h4 className="font-bold text-lg">United Kingdom</h4>
                   </div>
-                  <p className="text-sm text-gray-600 mb-3">Academic excellence and university preparation. Oxford Summer Courses and Bede's Summer School.</p>
+                  <p className="text-sm text-gray-600 mb-3">Academic excellence and comprehensive family programs. Oxford Summer Courses and Bede's Summer School.</p>
                   <div className="text-xs text-gray-500">
                     <div>• £1,575 - 6,220</div>
                     <div>• Ages 6-20</div>
@@ -2572,7 +2572,7 @@ function App() {
                         <p className="text-sm text-gray-500">Les Elfes, Camp Suisse, La Garenne</p>
                       </div>
                       <div className="border-l-4 border-green-500 pl-4">
-                        <h3 className="font-bold text-green-800">UK Academic Programs</h3>
+                        <h3 className="font-bold text-green-800">UK Academic & Family Programs</h3>
                         <p className="text-gray-600">Save 10-15% • Book by December 15, 2025</p>
                         <p className="text-sm text-gray-500">Oxford Summer Courses, Bede's Summer School</p>
                       </div>
@@ -2963,7 +2963,7 @@ function App() {
                     onClick={() => handleCategoryFilter('academic')}
                     aria-label="Filter academic category camps"
                   >
-                    Academic Excellence Programs
+                    Academic & STEM Programs
                   </button>
                 </li>
                 <li>
@@ -3008,7 +3008,7 @@ function App() {
                     onClick={() => handleCategoryFilter('unique')}
                     aria-label="Filter unique category camps"
                   >
-                    Unique Adventures
+                    Outdoor Adventures
                   </button>
                 </li>
                 <li>
