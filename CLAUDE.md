@@ -159,7 +159,7 @@ This site is part of **ResourceHub** - an umbrella project for building authorit
    - `/#discover?country=Switzerland` etc.
    - Google marks these as "Discovered - not indexed"
 
-3. **Schema.org Product Misuse**: Using Product/Offer schema for camps in index.html is incorrect - camps aren't e-commerce products. Should use Organization/EducationalOrganization.
+3. **Schema.org Compliance**: ✅ FIXED - Replaced Product/Offer schema with proper Event schema for camps and ListItem for categories (Phase 1.7 complete)
 
 ### IMMEDIATE IMPLEMENTATION PLAN (Approved September 2025)
 
@@ -204,7 +204,7 @@ This site is part of **ResourceHub** - an umbrella project for building authorit
 ### Search Engine Optimization (Completed Sept 8, 2025)
 - **✅ Sitemap**: Clean single-URL structure with optimized 127KB WebP image reference
 - **✅ Security Headers**: Enterprise-grade HSTS and CSP implementation
-- **🔄 Structured Data**: Clean on homepage (Product schema correction pending Phase 2)
+- **✅ Structured Data**: Event and ListItem schema properly implemented for directory portal compliance
 - **✅ Open Graph Tags**: Properly configured with correct hero image references
 - **✅ Meta Tags**: Complete title, description, keywords, and social media optimization
 - **✅ Accessibility**: WCAG 2.1 AA compliance achieved across entire site
@@ -286,6 +286,13 @@ For each new niche site: Start with comprehensive data collection → Implement 
 - **✅ Label Improvements**: "Academic Excellence" → "Academic & STEM", "Unique Adventures" → "Outdoor Adventures"
 - **✅ Family Programs Enhanced**: Tripled representation (1→3 camps) for better family-friendly discovery
 - **✅ Automated Documentation**: Enhanced CLAUDE.md with category breakdown and SEO distinctions
+
+### Phase 1.7 Critical Schema Fix: COMPLETE ✅ (September 11, 2025)
+- **✅ Product Schema Misuse Fixed**: Replaced inappropriate Product/Offer schema with proper Event schema for camps
+- **✅ Directory Portal Compliance**: Converted category listings to ListItem schema with URL references
+- **✅ Google Policy Compliance**: Eliminated risk of manual penalties for e-commerce schema misuse on directory site
+- **✅ 2025 Best Practices**: Implemented proper Event schema following Google's updated guidelines for camps/events
+- **✅ Business Model Alignment**: Schema now correctly reflects directory portal vs e-commerce merchant model
 
 ### Technical Foundation Status
 - **Code Quality**: Exceptional (2,850+ lines, well-structured, maintainable)
@@ -510,4 +517,4 @@ git commit -m "comprehensive summary"  # Create detailed commit with business im
 
 **📌 REMEMBER**: This project is a sophisticated, well-architected foundation ready for scale. Every decision should consider: SEO impact, performance implications, business value, and technical debt. Follow DEVELOPMENT_GUIDELINES.md religiously.**
 
-*Last Updated: September 10, 2025 - Phase 1.6 UX Optimization & Category Rebalancing Complete*
+*Last Updated: September 11, 2025 - Phase 1.7 Critical Schema Fix Complete*
