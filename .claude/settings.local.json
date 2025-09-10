@@ -104,7 +104,15 @@
       "Bash(dir:*)",
       "Bash(claude --version)",
       "WebFetch(domain:www.npmjs.com)",
-      "Read(//c/Users/Soda/Downloads/More Camps/**)"
+      "Read(//c/Users/Soda/Downloads/More Camps/**)",
+      "WebFetch(domain:www.campadventure.dk)",
+      "WebFetch(domain:www.campberjes.se)",
+      "WebFetch(domain:www.bjontegaard.no)",
+      "WebFetch(domain:sommerleir.no)",
+      "WebFetch(domain:www.summercampfinland.fi)",
+      "WebFetch(domain:www.boldearth.com)",
+      "WebFetch(domain:www.rotary.org)",
+      "WebFetch(domain:www.leirikoulu.fi)"
     ],
     "deny": [],
     "ask": [],
