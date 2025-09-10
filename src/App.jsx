@@ -539,8 +539,8 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "12", description: "Across Europe" },
-    { icon: Award, label: "Camps", value: "108", description: "Verified programs" },
+    { icon: Globe, label: "Countries", value: "13", description: "Across Europe" },
+    { icon: Award, label: "Camps", value: "100+", description: "Verified programs" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Safety", value: "100%", description: "Accredited" }
   ]
