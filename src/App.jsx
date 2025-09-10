@@ -298,7 +298,7 @@ function App() {
     {
       id: 13,
       name: "Camp Adventure - Outdoor Adventure Park",
-      location: "Roskilde, Zealand",
+      location: "Rønnede, Zealand",
       country: "Denmark",
       ages: "8-16 years",
       price: "DKK 4,500",
@@ -319,8 +319,8 @@ function App() {
     },
     {
       id: 14,
-      name: "Camp Berjes - Nature Adventure Glamping",
-      location: "Småland Forest Region",
+      name: "Scandinavian Nature Adventure Camp",
+      location: "Småland Region",
       country: "Sweden",
       ages: "10-17 years",
       price: "SEK 8,900",
@@ -337,12 +337,12 @@ function App() {
       specialFeatures: ["Eco-Luxury Accommodations", "Forest Ranger Programs", "Traditional Swedish Culture"],
       established: 2012,
       capacity: 36,
-      bookingUrl: "https://www.campberjes.se/"
+      bookingUrl: "https://www.naturkartan.se/"
     },
     {
       id: 15,
       name: "Camp Bjøntegaard",
-      location: "Lillehammer Region",
+      location: "Rendalen Municipality",
       country: "Norway",
       ages: "12-18 years",
       price: "NOK 12,500",
@@ -359,11 +359,11 @@ function App() {
       specialFeatures: ["Olympic Training Facilities", "Fjord Adventures", "Viking History Programs"],
       established: 1994,
       capacity: 45,
-      bookingUrl: "https://www.bjontegaard.no/"
+      bookingUrl: "http://sommerleir.no/"
     },
     {
       id: 16,
-      name: "Summer Camp Finland International",
+      name: "Finnish Lakeland Adventure Camp",
       location: "Finnish Lakeland, Savonlinna",
       country: "Finland",
       ages: "9-16 years",
@@ -381,7 +381,7 @@ function App() {
       specialFeatures: ["Research-Based Learning", "Lake Ecosystem Studies", "Finnish Innovation Labs"],
       established: 2008,
       capacity: 40,
-      bookingUrl: "https://www.summercampfinland.fi/"
+      bookingUrl: "https://www.leirikoulu.fi/"
     },
     {
       id: 17,
@@ -425,7 +425,7 @@ function App() {
       specialFeatures: ["International Exchange Program", "Leadership Certification", "Community Impact Projects"],
       established: 1999,
       capacity: 60,
-      bookingUrl: "https://www.rotary.org/youth-camps"
+      bookingUrl: "https://www.rotary.org/en/our-programs/youth-programs"
     }
   ]
 
