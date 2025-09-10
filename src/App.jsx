@@ -21,6 +21,10 @@ function App() {
   const [selectedCamps, setSelectedCamps] = useState([])
   const [selectedCountry, setSelectedCountry] = useState('all')
   const [resourceSection, setResourceSection] = useState(null)
+  
+  // GDPR Cookie Consent Management
+  const [cookieConsent, setCookieConsent] = useState(null) // null = not decided, true = accepted, false = rejected
+  const [showCookieBanner, setShowCookieBanner] = useState(false)
 
   // Comprehensive camp data based on our ultimate research
   const allCamps = [
@@ -619,6 +623,32 @@ function App() {
 
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
+
+  // GDPR Cookie Consent Check
+  useEffect(() => {
+    const savedConsent = localStorage.getItem('cookieConsent')
+    if (savedConsent === 'true') {
+      setCookieConsent(true)
+    } else if (savedConsent === 'false') {
+      setCookieConsent(false)
+    } else {
+      // No consent stored, show banner after user shows engagement
+      setTimeout(() => setShowCookieBanner(true), 5000)
+    }
+  }, [])
+
+  // Cookie Consent Handlers
+  const handleCookieAccept = () => {
+    setCookieConsent(true)
+    localStorage.setItem('cookieConsent', 'true')
+    setShowCookieBanner(false)
+  }
+
+  const handleCookieReject = () => {
+    setCookieConsent(false)
+    localStorage.setItem('cookieConsent', 'false')
+    setShowCookieBanner(false)
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -2800,6 +2830,58 @@ function App() {
         </section>
       )}
 
+      {/* Privacy Policy Section */}
+      {activeSection === 'privacy' && (
+        <section className="py-12 bg-white min-h-screen">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+              <p className="text-xl text-gray-600">How we protect your privacy while helping you find the perfect camp</p>
+            </div>
+            
+            <div className="prose prose-lg max-w-none">
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">Cookie Usage</h2>
+                <p className="mb-4">We use two types of cookies:</p>
+                <ul className="mb-4">
+                  <li><strong>Essential Cookies:</strong> Required for the website to function properly (search, navigation, filters)</li>
+                  <li><strong>Analytics Cookies:</strong> Help us understand which camps are most popular to improve your experience</li>
+                </ul>
+                <p>You can choose to accept or decline analytics cookies at any time.</p>
+              </Card>
+              
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">Data We Collect</h2>
+                <p className="mb-4">We only collect:</p>
+                <ul className="mb-4">
+                  <li>Anonymous usage statistics (which camps you view, search terms)</li>
+                  <li>Technical information (browser type, device type for optimization)</li>
+                  <li>Your cookie preferences</li>
+                </ul>
+                <p><strong>We never collect:</strong> Personal information, email addresses, or any identifying data.</p>
+              </Card>
+              
+              <Card className="p-8">
+                <h2 className="text-2xl font-bold mb-4">Your Rights</h2>
+                <p className="mb-4">You have the right to:</p>
+                <ul className="mb-4">
+                  <li>Accept or decline analytics cookies</li>
+                  <li>Change your cookie preferences at any time</li>
+                  <li>Browse our site with essential cookies only</li>
+                </ul>
+                <p>For questions about privacy, contact us at sorenthoning@gmail.com</p>
+              </Card>
+            </div>
+            
+            <div className="text-center mt-12">
+              <Button onClick={() => handleNavigation('home')} className="bg-blue-600 hover:bg-blue-700">
+                Back to Home
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Enhanced Footer */}
       <footer className="bg-gray-900 text-white py-16" role="contentinfo" aria-label="Site footer">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -3140,7 +3222,51 @@ function App() {
         </div>
       </footer>
       </main>
-      <Analytics />
+      
+      {/* GDPR-Compliant Cookie Banner - UX Optimized */}
+      {showCookieBanner && (
+        <div className="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg z-50 border-b-2 border-blue-600" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex-1">
+              <h3 id="cookie-title" className="font-semibold text-lg mb-2 flex items-center">
+                <span className="mr-2">🍪</span>
+                Help Us Improve Your Camp Discovery Experience
+              </h3>
+              <p id="cookie-description" className="text-blue-100 text-sm leading-relaxed">
+                We use essential cookies to make our site work perfectly, plus analytics to understand which camps families love most. 
+                This helps us show you the most relevant options first! 
+                <button 
+                  onClick={() => setActiveSection('privacy')} 
+                  className="underline text-white hover:text-blue-200 ml-1 font-medium"
+                  aria-label="View our privacy policy"
+                >
+                  Learn more
+                </button>
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 min-w-fit">
+              <Button 
+                onClick={handleCookieReject}
+                variant="outline"
+                className="bg-transparent border-blue-300 text-blue-100 hover:bg-blue-700 hover:border-blue-200 hover:text-white"
+                aria-label="Use essential cookies only"
+              >
+                Essential Only
+              </Button>
+              <Button 
+                onClick={handleCookieAccept}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6"
+                aria-label="Accept all cookies to help us improve your experience"
+              >
+                Accept & Continue
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Conditional Analytics - Only load if consent given */}
+      {cookieConsent === true && <Analytics />}
     </div>
   )
 }
