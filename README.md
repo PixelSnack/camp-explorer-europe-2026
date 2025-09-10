@@ -181,14 +181,22 @@ npm run lint         # Run ESLint
 2. Build command: `npm run build`
 3. Publish directory: `dist`
 
-## 📈 Performance (September 8, 2025 Optimizations)
+## 📈 Performance & SEO (September 2025 Optimizations)
 
+### **Performance (September 8, 2025)**
 - **Hero Image Optimization:** 92% size reduction (1,674KB → 127KB WebP, 169KB AVIF)
 - **Modern Image Delivery:** Progressive enhancement with picture element  
 - **Security Headers:** Enterprise-grade HSTS and CSP implementation
 - **Accessibility:** WCAG 2.1 AA compliant with full keyboard navigation
 - **Bundle Size:** Optimized with Vite tree-shaking
 - **Expected LCP:** 85-92% improvement from image optimization
+
+### **SEO & Schema Compliance (September 11, 2025)**
+- **Structured Data:** Proper Event schema for camps, ListItem for categories
+- **Google Policy Compliance:** Eliminated Product schema misuse for directory portal
+- **Search Console Ready:** Schema changes eliminate validation errors
+- **Directory Portal Schema:** Correctly represents curation vs e-commerce model
+- **Price Information:** User-facing pricing (€330-CHF 7,000) preserved throughout site
 
 ## 🤝 Contributing
 

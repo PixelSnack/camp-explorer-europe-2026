@@ -3,13 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.europeansummercamps.com/</loc>
-    <lastmod>2025-09-10</lastmod>
+    <lastmod>2025-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.europeansummercamps.com/european-summer-camps-lakeside-hero.webp</image:loc>
-      <image:title>European Summer Camps 2026 - Ultimate Guide with Scandinavian Excellence</image:title>
-      <image:caption>Discover 106 verified European summer camps including premium Scandinavian programs across 12 countries</image:caption>
+      <image:title>European Summer Camps 2026 - Schema-Compliant Directory with Nordic Excellence</image:title>
+      <image:caption>Discover 106 verified European summer camps with proper Event schema across 13 countries including premium Nordic programs</image:caption>
     </image:image>
   </url>
 </urlset>

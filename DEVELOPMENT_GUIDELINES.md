@@ -313,6 +313,57 @@ If manual commits are needed, follow the automated format above.
 
 ---
 
+## 🔍 STRUCTURED DATA & SCHEMA COMPLIANCE
+
+### **Critical Schema Guidelines (Lessons from Phase 1.7)**
+
+#### **Schema Type Selection**
+```javascript
+// ✅ CORRECT: For directory portals listing events
+{
+  "@type": "Event",
+  "name": "Summer Camp Name",
+  "startDate": "2026-06-15", 
+  "endDate": "2026-08-31",
+  "location": { /* Place schema */ },
+  "organizer": { /* Organization schema */ }
+}
+
+// ❌ INCORRECT: Product schema for non-e-commerce
+{
+  "@type": "Product",
+  "offers": { /* Merchant properties */ }
+}
+```
+
+#### **Business Model Alignment**
+- **Directory Portal**: Use Event, ListItem, Organization schemas
+- **E-commerce Site**: Use Product, Offer schemas
+- **Rule**: Schema must match actual business model and user actions
+
+#### **Google Policy Compliance**
+- **Product schema**: Only for sites where users can purchase directly
+- **Event schema**: For camps, conferences, activities with dates/locations
+- **Penalty Risk**: Misusing e-commerce schema on directory sites triggers manual penalties
+
+#### **Schema Implementation Checklist**
+```bash
+# Before deploying structured data changes:
+✅ Verify schema type matches business model
+✅ Test with Google Rich Results Test tool
+✅ Check Google Search Console for validation errors
+✅ Ensure no merchant properties on non-e-commerce sites
+✅ Validate all required schema properties present
+```
+
+### **Schema Maintenance Protocol**
+1. **Regular Audits**: Monthly schema validation checks
+2. **Policy Updates**: Monitor Google schema guideline changes
+3. **Error Monitoring**: Track Search Console structured data errors
+4. **Business Alignment**: Ensure schema reflects actual site functionality
+
+---
+
 ## 🎯 NEXT STEPS & PRIORITIES
 
 ### **Immediate Phase 2 Preparation Tasks**

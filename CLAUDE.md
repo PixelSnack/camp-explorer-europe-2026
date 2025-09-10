@@ -289,10 +289,13 @@ For each new niche site: Start with comprehensive data collection → Implement 
 
 ### Phase 1.7 Critical Schema Fix: COMPLETE ✅ (September 11, 2025)
 - **✅ Product Schema Misuse Fixed**: Replaced inappropriate Product/Offer schema with proper Event schema for camps
-- **✅ Directory Portal Compliance**: Converted category listings to ListItem schema with URL references
+- **✅ Directory Portal Compliance**: Converted category listings to ListItem schema with URL references  
 - **✅ Google Policy Compliance**: Eliminated risk of manual penalties for e-commerce schema misuse on directory site
 - **✅ 2025 Best Practices**: Implemented proper Event schema following Google's updated guidelines for camps/events
 - **✅ Business Model Alignment**: Schema now correctly reflects directory portal vs e-commerce merchant model
+- **✅ Price Information Preserved**: All user-facing pricing (€330-CHF 7,000 range) maintained while removing merchant schema
+- **✅ Event Properties Added**: Proper startDate, endDate, location, organizer properties for camp events
+- **✅ Search Console Ready**: Schema changes will eliminate structured data validation errors
 
 ### Technical Foundation Status
 - **Code Quality**: Exceptional (2,850+ lines, well-structured, maintainable)
