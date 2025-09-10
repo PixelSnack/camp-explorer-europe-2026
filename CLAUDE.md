@@ -34,6 +34,16 @@ npm run lint         # Run ESLint (important - always run before commits)
 - 8 camp categories: premium, academic, language, sports, family, budget, unique
 - Price ranges from €330 to CHF 6,980
 
+### Camp Categories (Optimized for User Expectations)
+- **Premium Alpine (2)** - Swiss luxury mountain experiences
+- **Academic & STEM (6)** - University prep, intensive learning programs  
+- **Language Immersion (2)** - Spanish/French intensive programs
+- **Sports Specialty (3)** - Football academies, Olympic training, adventure sports
+- **Family Programs (3)** - Multi-age welcome, family-friendly activities
+- **Budget Excellence (2)** - Quality programs under €2,000
+- **Outdoor Adventures (4)** - Nature-based, unique outdoor experiences
+- **Category Logic**: Single categories only (no multi-tagging) for optimal UX and SEO positioning
+
 ### IMPORTANT: Camp Count Distinction (For SEO)
 - **22 Organizations**: Camp organizations/sites in our database 
 - **100+ Camps**: Total individual camp programs offered by all organizations
@@ -264,11 +274,18 @@ For each new niche site: Start with comprehensive data collection → Implement 
 
 ### Phase 1.5 Content Expansion: COMPLETE ✅ (September 10, 2025)
 - **✅ Scandinavian Excellence**: 6 premium Nordic camps added across Denmark, Sweden, Norway, Finland, Iceland
-- **✅ Geographic Coverage**: Now covers 12 European countries with comprehensive Nordic representation
-- **✅ Camp Database**: Expanded from 100+ to 106 verified programs
+- **✅ Geographic Coverage**: Now covers 13 European countries with comprehensive Nordic representation
+- **✅ Camp Database**: Expanded to 22 verified organizations offering 100+ programs
 - **✅ Footer Navigation**: Enhanced with Nordic country filtering buttons
 - **✅ SEO Optimization**: Sitemap updated with Scandinavian excellence messaging
 - **✅ Content Quality**: All new camps follow strict verification and data structure standards
+
+### Phase 1.6 UX Optimization: COMPLETE ✅ (September 10, 2025)
+- **✅ Data Integrity Fixes**: Resolved 2 critical camp data issues (broken redirects, location mismatches)
+- **✅ Category Optimization**: Rebalanced categories for better user expectations and search behavior
+- **✅ Label Improvements**: "Academic Excellence" → "Academic & STEM", "Unique Adventures" → "Outdoor Adventures"
+- **✅ Family Programs Enhanced**: Tripled representation (1→3 camps) for better family-friendly discovery
+- **✅ Automated Documentation**: Enhanced CLAUDE.md with category breakdown and SEO distinctions
 
 ### Technical Foundation Status
 - **Code Quality**: Exceptional (2,850+ lines, well-structured, maintainable)
@@ -299,10 +316,11 @@ For each new niche site: Start with comprehensive data collection → Implement 
 - **Code quality** - Already excellent, needs architectural SEO enhancement only
 
 ### Business Context Reminder
-- **18 camp organizations** representing 106 individual programs across 12 European countries
+- **22 camp organizations** representing 100+ individual programs across 13 European countries
 - **Nordic Expansion**: Premium Scandinavian camps now included (Denmark, Sweden, Norway, Finland, Iceland)
+- **Category Optimization**: UX-optimized categories matching parent search behavior and expectations
 - **Target**: Become #1 for "European summer camps" and "Nordic summer camps" on Google  
-- **Current traffic**: Growing baseline with enhanced geographic coverage
+- **Current traffic**: Growing baseline with enhanced geographic coverage and improved UX
 - **Monetization**: Eventually through data sales, site sales, or premium listings with expanded market reach
 
 ---
@@ -492,4 +510,4 @@ git commit -m "comprehensive summary"  # Create detailed commit with business im
 
 **📌 REMEMBER**: This project is a sophisticated, well-architected foundation ready for scale. Every decision should consider: SEO impact, performance implications, business value, and technical debt. Follow DEVELOPMENT_GUIDELINES.md religiously.**
 
-*Last Updated: September 10, 2025 - Phase 1.5 Scandinavian Expansion Complete*
+*Last Updated: September 10, 2025 - Phase 1.6 UX Optimization & Category Rebalancing Complete*
