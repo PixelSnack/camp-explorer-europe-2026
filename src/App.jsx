@@ -426,6 +426,51 @@ function App() {
       established: 2020,
       capacity: 24,
       bookingUrl: "https://nordicadventure.camp/"
+    },
+    // Verified Nordic Expansion
+    {
+      id: 19,
+      name: "Nordic Woods Wilderness Glamping",
+      location: "Åsnen National Park",
+      country: "Sweden",
+      ages: "7+ years",
+      price: "€530",
+      priceRange: "premium",
+      rating: 4.9,
+      reviews: 123,
+      image: heroImage,
+      category: "unique",
+      type: "Wilderness Glamping",
+      activities: ["Guided Hikes", "Canoe Expeditions", "Bushcraft Workshops", "Yoga & Meditation"],
+      dates: "June 7 - September 13, 2025",
+      highlights: ["Tipi accommodations", "Near national park", "Comprehensive activities included", "Family-friendly from age 7"],
+      languages: ["Swedish", "English"],
+      specialFeatures: ["Wilderness Glamping Experience", "Sauna & Hot Tub Access", "All Activities Included"],
+      established: 2018,
+      capacity: 20,
+      bookingUrl: "https://nordicwoods.org/en/"
+    },
+    {
+      id: 20,
+      name: "Ranum Efterskole International Summer School",
+      location: "Ranum",
+      country: "Denmark",
+      ages: "15-18 years",
+      price: "DKK 15,000",
+      priceRange: "premium",
+      rating: 4.7,
+      reviews: 89,
+      image: activitiesImage,
+      category: "academic",
+      type: "International School",
+      activities: ["Danish Language", "Sports", "Arts", "Outdoor Activities", "Cultural Excursions"],
+      dates: "July 5 - August 1, 2025",
+      highlights: ["Authentic efterskole experience", "International community", "Customizable program", "Weekly excursions"],
+      languages: ["Danish", "English"],
+      specialFeatures: ["Modular Subject Selection", "Cultural Immersion", "International Friendships"],
+      established: 1994,
+      capacity: 45,
+      bookingUrl: "https://www.ranumefterskole.dk/en/international-sommercamp/"
     }
   ]
 
@@ -450,8 +495,8 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "11", description: "Across Europe" },
-    { icon: Award, label: "Camps", value: "106", description: "Verified programs" },
+    { icon: Globe, label: "Countries", value: "12", description: "Across Europe" },
+    { icon: Award, label: "Camps", value: "108", description: "Verified programs" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Safety", value: "100%", description: "Accredited" }
   ]
@@ -2718,7 +2763,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 106 camps across 11 countries including premium Nordic programs.
+                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 108 camps across 12 countries including premium Nordic programs.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -2806,6 +2851,15 @@ function App() {
                     aria-label="Filter camps in Czech Republic"
                   >
                     🇨🇿 Czech Republic (Hidden Gems)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Sweden')}
+                    aria-label="Filter camps in Sweden"
+                  >
+                    🇸🇪 Sweden (Wilderness Glamping)
                   </button>
                 </li>
                 <li>
