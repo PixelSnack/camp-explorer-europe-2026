@@ -600,6 +600,14 @@ function App() {
         setActiveSection('plan')
         window.location.hash = 'plan'
         break
+      case 'impressum':
+        setActiveSection('impressum')
+        window.location.hash = 'impressum'
+        break
+      case 'terms':
+        setActiveSection('terms')
+        window.location.hash = 'terms'
+        break
       default:
         setResourceSection(resource)
         setActiveSection('resources')
@@ -2869,7 +2877,7 @@ function App() {
                   <li>Change your cookie preferences at any time</li>
                   <li>Browse our site with essential cookies only</li>
                 </ul>
-                <p>For questions about privacy, contact us at sorenthoning@gmail.com</p>
+                <p>For questions about privacy, contact us at legal@europeansummercamps.com</p>
               </Card>
             </div>
             
@@ -3180,6 +3188,24 @@ function App() {
                     Budget Planning Calculator
                   </button>
                 </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('impressum')}
+                    aria-label="View legal notice and contact information"
+                  >
+                    Legal Notice (Impressum)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleResourceLink('terms')}
+                    aria-label="View terms and conditions"
+                  >
+                    Terms & Conditions
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
@@ -3218,6 +3244,31 @@ function App() {
           <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
             <p>&copy; 2025 Camp Explorer Europe. Research-driven recommendations for European summer camps. All pricing verified as of August 2025.</p>
             <p className="mt-2 text-sm">Built with comprehensive research across 100+ camps • Verified pricing • Authentic parent reviews</p>
+            <div className="mt-3 space-x-3 text-xs text-gray-500">
+              <button 
+                onClick={() => handleResourceLink('impressum')} 
+                className="hover:text-gray-300 underline transition-colors"
+                aria-label="View legal notice"
+              >
+                Legal Notice
+              </button>
+              <span>•</span>
+              <button 
+                onClick={() => handleResourceLink('terms')} 
+                className="hover:text-gray-300 underline transition-colors"
+                aria-label="View terms and conditions"
+              >
+                Terms
+              </button>
+              <span>•</span>
+              <button 
+                onClick={() => setActiveSection('privacy')} 
+                className="hover:text-gray-300 underline transition-colors"
+                aria-label="View privacy policy"
+              >
+                Privacy
+              </button>
+            </div>
           </div>
         </div>
       </footer>
@@ -3263,6 +3314,145 @@ function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Impressum (Legal Notice) Section - EU Legal Requirement */}
+      {activeSection === 'impressum' && (
+        <section className="py-12 bg-white min-h-screen">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">Legal Notice (Impressum)</h1>
+              <p className="text-xl text-gray-600">Legal information and contact details as required by EU law</p>
+            </div>
+            
+            <div className="prose prose-lg max-w-none">
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">Website Owner & Responsible Party</h2>
+                <div className="mb-4">
+                  <p><strong>Business:</strong> PixelSnack (Independent Web Publishing)</p>
+                  <p><strong>Contact:</strong> legal@europeansummercamps.com</p>
+                  <p><strong>Website:</strong> www.europeansummercamps.com</p>
+                  <p><strong>Jurisdiction:</strong> European Union</p>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Responsible for Content</h3>
+                <p>PixelSnack<br/>Contact: legal@europeansummercamps.com</p>
+              </Card>
+              
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">Nature of Business</h2>
+                <p className="mb-4">Camp Explorer Europe is an informational directory portal providing:</p>
+                <ul className="mb-4">
+                  <li>Comprehensive information about European summer camps</li>
+                  <li>Independent research and camp comparisons</li>
+                  <li>Links to official camp websites for direct booking</li>
+                  <li>Educational content about summer camp selection</li>
+                </ul>
+                <p><strong>Important:</strong> We are not a booking agent or travel agency. All bookings are made directly with individual camp providers through their official websites.</p>
+              </Card>
+              
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">Liability for Content</h2>
+                <p className="mb-4">The content of our pages has been created with the utmost care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. Camp information, pricing, and availability are subject to change by individual camp providers.</p>
+                <p className="mb-4">As a service provider, we are liable for our own content on these pages according to general laws. However, we are not under obligation to monitor transmitted or stored third-party information or to investigate circumstances indicating illegal activity.</p>
+              </Card>
+              
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">Liability for Links</h2>
+                <p className="mb-4">Our offer contains links to external third-party websites. We have no influence on the content of these websites, therefore we cannot assume liability for this external content. The respective provider or operator of the linked pages is always responsible for the content of the linked pages.</p>
+                <p>The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete evidence of a violation of law.</p>
+              </Card>
+              
+              <Card className="p-8">
+                <h2 className="text-2xl font-bold mb-4">Copyright</h2>
+                <p className="mb-4">The content and works on these pages created by the site operators are subject to copyright law. Duplication, processing, distribution, and any form of commercialization of such material beyond the scope of copyright law requires written consent from the author or creator.</p>
+                <p>Insofar as the content on this site was not created by the operator, third-party copyrights are respected. In particular, third-party content is identified as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. Upon notification of violations, we will remove such content immediately.</p>
+              </Card>
+            </div>
+            
+            <div className="text-center mt-12">
+              <Button onClick={() => handleNavigation('home')} className="bg-blue-600 hover:bg-blue-700">
+                Back to Home
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Terms & Conditions Section - EU Electronic Commerce Requirement */}
+      {activeSection === 'terms' && (
+        <section className="py-12 bg-white min-h-screen">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">Terms & Conditions</h1>
+              <p className="text-xl text-gray-600">Terms of use for Camp Explorer Europe website</p>
+            </div>
+            
+            <div className="prose prose-lg max-w-none">
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">1. Nature of Service</h2>
+                <p className="mb-4">Camp Explorer Europe is an informational directory portal. We provide:</p>
+                <ul className="mb-4">
+                  <li>Independent research and information about European summer camps</li>
+                  <li>Comparative data to help families make informed decisions</li>
+                  <li>Links to official camp websites for direct contact and booking</li>
+                </ul>
+                <p><strong>We are NOT:</strong> A booking agent, travel agency, or camp operator. We do not handle bookings, payments, or camp operations.</p>
+              </Card>
+              
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">2. Information Accuracy</h2>
+                <p className="mb-4">While we strive to provide accurate and up-to-date information:</p>
+                <ul className="mb-4">
+                  <li>Camp details, pricing, and availability may change without notice</li>
+                  <li>Information is compiled from publicly available sources and camp websites</li>
+                  <li>We recommend verifying all details directly with camp providers</li>
+                  <li>We are not responsible for inaccuracies in third-party information</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">3. User Responsibilities</h2>
+                <p className="mb-4">By using this website, you agree to:</p>
+                <ul className="mb-4">
+                  <li>Use the website for legitimate camp research purposes only</li>
+                  <li>Not attempt to scrape, copy, or republish our content without permission</li>
+                  <li>Respect intellectual property rights of camp providers and website content</li>
+                  <li>Verify all information independently before making booking decisions</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">4. Limitation of Liability</h2>
+                <p className="mb-4">Camp Explorer Europe shall not be liable for:</p>
+                <ul className="mb-4">
+                  <li>Any direct or indirect damages arising from use of this website</li>
+                  <li>Problems with camp bookings, services, or experiences</li>
+                  <li>Inaccurate information provided by third-party camp operators</li>
+                  <li>Technical issues, website downtime, or data loss</li>
+                </ul>
+                <p>All camp bookings and experiences are subject to the terms and conditions of individual camp providers.</p>
+              </Card>
+              
+              <Card className="p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">5. Privacy & Cookies</h2>
+                <p className="mb-4">Our privacy practices are detailed in our Privacy Policy. By using this website, you consent to our cookie policy as described in the privacy section.</p>
+              </Card>
+              
+              <Card className="p-8">
+                <h2 className="text-2xl font-bold mb-4">6. Changes to Terms</h2>
+                <p className="mb-4">We reserve the right to modify these terms at any time. Changes will be posted on this page. Continued use of the website constitutes acceptance of updated terms.</p>
+                <p><strong>Last Updated:</strong> September 11, 2025</p>
+                <p><strong>Contact:</strong> legal@europeansummercamps.com</p>
+              </Card>
+            </div>
+            
+            <div className="text-center mt-12">
+              <Button onClick={() => handleNavigation('home')} className="bg-blue-600 hover:bg-blue-700">
+                Back to Home
+              </Button>
+            </div>
+          </div>
+        </section>
       )}
 
       {/* Conditional Analytics - Only load if consent given */}
