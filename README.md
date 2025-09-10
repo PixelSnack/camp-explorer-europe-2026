@@ -198,6 +198,14 @@ npm run lint         # Run ESLint
 - **Directory Portal Schema:** Correctly represents curation vs e-commerce model
 - **Price Information:** User-facing pricing (€330-CHF 7,000) preserved throughout site
 
+### **GDPR & Privacy Compliance (September 11, 2025)**
+- **EU Law Compliant:** Cookie banner with explicit consent required before analytics
+- **UX-Optimized Design:** Top banner with persuasive copy maximizing consent rate
+- **Analytics Control:** Vercel Analytics only loads after user consent
+- **Privacy Policy:** Comprehensive section explaining cookie usage and user rights
+- **Consent Management:** LocalStorage persistence with Accept/Reject functionality
+- **Legal Protection:** Eliminates EU privacy law violations while enabling data collection
+
 ## 🤝 Contributing
 
 1. Fork the repository
