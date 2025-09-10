@@ -34,6 +34,13 @@ npm run lint         # Run ESLint (important - always run before commits)
 - 8 camp categories: premium, academic, language, sports, family, budget, unique
 - Price ranges from €330 to CHF 6,980
 
+### IMPORTANT: Camp Count Distinction (For SEO)
+- **22 Organizations**: Camp organizations/sites in our database 
+- **100+ Camps**: Total individual camp programs offered by all organizations
+- **SEO Requirement**: Always use "100+ camps" in marketing copy, not "22"
+- **Rationale**: Organizations like Piispala offer "300+ camps annually", Metsäkartano "100+ groups annually"
+- **Rule**: Only reference "22" when specifically talking about organizations, never for SEO copy
+
 ### Search & Filtering System
 - Real-time search across camp names, locations, countries (searchTerm state)
 - Category filtering with dynamic result counts (selectedFilter state)  
