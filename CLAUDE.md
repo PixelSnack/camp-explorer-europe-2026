@@ -105,11 +105,12 @@ This site is part of **ResourceHub** - an umbrella project for building authorit
 - **Traffic Goal**: Become #1 Google result for European summer camp searches
 
 ### Technical Deployment Workflow
-- **Primary Workflow**: GitHub Desktop → Vercel (NO command-line git push)
-- **Development Process**: Local changes → GitHub Desktop commit → GitHub Desktop push → Automatic Vercel deployment
+- **Primary Workflow**: Claude Code automated commits → User push to origin → Vercel deployment
+- **Development Process**: Local changes → Claude Code commits with comprehensive summaries → User push in GitHub Desktop → Automatic Vercel deployment  
 - **Infrastructure**: GitHub (PixelSnack), Vercel deployment, CloudFlare domains
-- **Important**: Always use GitHub Desktop for commits and pushes, not command-line git push
-- **Tools Available**: GitHub CLI and Vercel CLI configured in Claude Code environment (for reference only)
+- **Important**: Claude Code handles full commit process including staging, commit messages, and comprehensive summaries
+- **User Role**: Only needs to "Push to origin" in GitHub Desktop after Claude Code completes commits
+- **Tools Available**: GitHub CLI and Vercel CLI configured in Claude Code environment
 
 ### Recent Technical Updates (September 8, 2025)
 
@@ -436,13 +437,14 @@ npm run dev      # Should start on http://localhost:5173
 - **Phase 2 Readiness**: Waiting for 1,000+ monthly sessions
 - **Current Focus**: Content expansion, SEO optimization, business growth
 - **Technical Debt**: Minimal - excellent code quality maintained
-- **⚠️ DEPLOYMENT WORKFLOW**: Always use GitHub Desktop for commits/pushes, NOT command-line git push
+- **⚠️ DEPLOYMENT WORKFLOW**: Claude Code automates commits with comprehensive summaries - user only pushes to origin
 
 ### **Step 5: Follow Development Guidelines**
 - **Zero-Breakage Principle**: Never break existing functionality
 - **SEO-First Mindset**: Every change should support #1 Google ranking goal  
 - **Enterprise Quality**: Maintain performance, accessibility, security standards
-- **Testing Protocol**: Build + Lint + Manual + Deploy verification required
+- **Testing Protocol**: Build + Lint + Manual verification required
+- **Automated Commit Process**: Claude Code handles full git workflow - user only pushes to origin
 
 ---
 
@@ -454,8 +456,14 @@ npm run dev      # Should start on http://localhost:5173
 git status                    # Check for uncommitted changes
 npm run build && npm run dev  # Test build and dev server
 git log --oneline -5          # See recent commits
+```
 
-# ⚠️ IMPORTANT: For commits/pushes, use GitHub Desktop, NOT command-line git push
+## **Automated Commit Process**
+```bash
+# Claude Code automatically handles:
+git add <files>               # Stage all relevant changes
+git commit -m "comprehensive summary"  # Create detailed commit with business impact
+# User only needs to: Push to origin in GitHub Desktop
 ```
 
 ## **Document Updates Needed?**
