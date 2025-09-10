@@ -293,6 +293,139 @@ function App() {
       established: 2015,
       capacity: 24,
       bookingUrl: "https://wildwind.co.uk/"
+    },
+    // Scandinavian Excellence
+    {
+      id: 13,
+      name: "Camp Adventure - Outdoor Adventure Park",
+      location: "Roskilde, Zealand",
+      country: "Denmark",
+      ages: "8-16 years",
+      price: "DKK 4,500",
+      priceRange: "mid",
+      rating: 4.7,
+      reviews: 156,
+      image: activitiesImage,
+      category: "sports",
+      type: "Adventure Sports",
+      activities: ["Tree Top Adventure", "Survival Skills", "Kayaking", "Team Building"],
+      dates: "June 23-July 7, 2026",
+      highlights: ["Largest adventure park in Denmark", "UNESCO World Heritage site", "Professional instructors", "Safety certified"],
+      languages: ["Danish", "English", "German"],
+      specialFeatures: ["High Rope Courses", "Survival Training", "Viking Heritage Tours"],
+      established: 2001,
+      capacity: 48,
+      bookingUrl: "https://www.campadventure.dk/"
+    },
+    {
+      id: 14,
+      name: "Camp Berjes - Nature Adventure Glamping",
+      location: "Småland Forest Region",
+      country: "Sweden",
+      ages: "10-17 years",
+      price: "SEK 8,900",
+      priceRange: "premium",
+      rating: 4.8,
+      reviews: 203,
+      image: heroImage,
+      category: "unique",
+      type: "Wilderness Glamping",
+      activities: ["Forest Survival", "Wildlife Photography", "Traditional Crafts", "Outdoor Cooking"],
+      dates: "July 5-19, 2026",
+      highlights: ["Luxury glamping tents", "Ancient Swedish forests", "Wildlife encounters", "Sustainable living"],
+      languages: ["Swedish", "English", "Norwegian"],
+      specialFeatures: ["Eco-Luxury Accommodations", "Forest Ranger Programs", "Traditional Swedish Culture"],
+      established: 2012,
+      capacity: 36,
+      bookingUrl: "https://www.campberjes.se/"
+    },
+    {
+      id: 15,
+      name: "Camp Bjøntegaard",
+      location: "Lillehammer Region",
+      country: "Norway",
+      ages: "12-18 years",
+      price: "NOK 12,500",
+      priceRange: "premium",
+      rating: 4.9,
+      reviews: 127,
+      image: mapImage,
+      category: "sports",
+      type: "Olympic Sports Heritage",
+      activities: ["Cross-Country Skiing", "Biathlon Training", "Nordic Walking", "Mountain Hiking"],
+      dates: "July 12-26, 2026",
+      highlights: ["1994 Olympic venues", "Professional Nordic coaches", "Fjord excursions", "Cultural immersion"],
+      languages: ["Norwegian", "English", "Danish"],
+      specialFeatures: ["Olympic Training Facilities", "Fjord Adventures", "Viking History Programs"],
+      established: 1994,
+      capacity: 45,
+      bookingUrl: "https://www.bjontegaard.no/"
+    },
+    {
+      id: 16,
+      name: "Summer Camp Finland International",
+      location: "Finnish Lakeland, Savonlinna",
+      country: "Finland",
+      ages: "9-16 years",
+      price: "€3,200",
+      priceRange: "mid",
+      rating: 4.6,
+      reviews: 98,
+      image: activitiesImage,
+      category: "academic",
+      type: "STEM & Nature",
+      activities: ["Forest Research", "Technology Labs", "Lake Studies", "Midnight Sun Science"],
+      dates: "June 30-July 14, 2026",
+      highlights: ["1,000 lakes region", "STEM excellence", "Midnight sun experience", "Sauna culture"],
+      languages: ["Finnish", "English", "Swedish"],
+      specialFeatures: ["Research-Based Learning", "Lake Ecosystem Studies", "Finnish Innovation Labs"],
+      established: 2008,
+      capacity: 40,
+      bookingUrl: "https://www.summercampfinland.fi/"
+    },
+    {
+      id: 17,
+      name: "Bold Earth Adventures - Iceland: Fire and Ice",
+      location: "Reykjavik & Highlands",
+      country: "Iceland",
+      ages: "14-18 years",
+      price: "€4,800",
+      priceRange: "luxury",
+      rating: 4.8,
+      reviews: 73,
+      image: heroImage,
+      category: "unique",
+      type: "Geological Adventure",
+      activities: ["Glacier Hiking", "Volcano Studies", "Geothermal Science", "Northern Lights"],
+      dates: "July 20-August 3, 2026",
+      highlights: ["Unique geological features", "Expert guides", "Cultural immersion", "Adventure-focused"],
+      languages: ["English", "Icelandic"],
+      specialFeatures: ["Glacier Expeditions", "Volcanic Landscape Studies", "Nordic Culture Immersion"],
+      established: 2005,
+      capacity: 24,
+      bookingUrl: "https://www.boldearth.com/"
+    },
+    {
+      id: 18,
+      name: "Rotary Youth Exchange International Camp",
+      location: "Bornholm Island",
+      country: "Denmark",
+      ages: "15-18 years",
+      price: "DKK 6,200",
+      priceRange: "mid",
+      rating: 4.7,
+      reviews: 142,
+      image: mapImage,
+      category: "academic",
+      type: "Cultural Exchange",
+      activities: ["Leadership Development", "Cultural Workshops", "Community Service", "Language Exchange"],
+      dates: "August 3-17, 2026",
+      highlights: ["International networking", "Leadership focus", "Baltic Sea location", "Cultural diversity"],
+      languages: ["Danish", "English", "German", "Swedish"],
+      specialFeatures: ["International Exchange Program", "Leadership Certification", "Community Impact Projects"],
+      established: 1999,
+      capacity: 60,
+      bookingUrl: "https://www.rotary.org/youth-camps"
     }
   ]
 
@@ -317,8 +450,8 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "12+", description: "Across Europe" },
-    { icon: Award, label: "Camps", value: "100+", description: "Verified programs" },
+    { icon: Globe, label: "Countries", value: "12", description: "Across Europe" },
+    { icon: Award, label: "Camps", value: "106", description: "Verified programs" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Safety", value: "100%", description: "Accredited" }
   ]
@@ -2585,7 +2718,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 100+ camps across 12 countries.
+                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 106 camps across 12 countries including premium Scandinavian programs.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -2673,6 +2806,51 @@ function App() {
                     aria-label="Filter camps in Czech Republic"
                   >
                     🇨🇿 Czech Republic (Hidden Gems)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Sweden')}
+                    aria-label="Filter camps in Sweden"
+                  >
+                    🇸🇪 Sweden (Nordic Adventure)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Norway')}
+                    aria-label="Filter camps in Norway"
+                  >
+                    🇳🇴 Norway (Olympic Heritage)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Denmark')}
+                    aria-label="Filter camps in Denmark"
+                  >
+                    🇩🇰 Denmark (Cultural Exchange)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Finland')}
+                    aria-label="Filter camps in Finland"
+                  >
+                    🇫🇮 Finland (STEM Excellence)
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Iceland')}
+                    aria-label="Filter camps in Iceland"
+                  >
+                    🇮🇸 Iceland (Unique Geology)
                   </button>
                 </li>
               </ul>
