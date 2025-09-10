@@ -319,25 +319,25 @@ function App() {
     },
     {
       id: 14,
-      name: "Scandinavian Nature Adventure Camp",
-      location: "Småland Region",
-      country: "Sweden",
-      ages: "10-17 years",
-      price: "SEK 8,900",
-      priceRange: "premium",
-      rating: 4.8,
-      reviews: 203,
+      name: "Adventure Treks Norway Expedition",
+      location: "Nordfjord & Jotunheimen",
+      country: "Norway",
+      ages: "16-18 years",
+      price: "$7,295",
+      priceRange: "luxury",
+      rating: 4.9,
+      reviews: 134,
       image: heroImage,
       category: "unique",
-      type: "Wilderness Glamping",
-      activities: ["Forest Survival", "Wildlife Photography", "Traditional Crafts", "Outdoor Cooking"],
-      dates: "July 5-19, 2026",
-      highlights: ["Luxury glamping tents", "Ancient Swedish forests", "Wildlife encounters", "Sustainable living"],
-      languages: ["Swedish", "English", "Norwegian"],
-      specialFeatures: ["Eco-Luxury Accommodations", "Forest Ranger Programs", "Traditional Swedish Culture"],
-      established: 2012,
-      capacity: 36,
-      bookingUrl: "https://www.naturkartan.se/"
+      type: "Adventure Expedition",
+      activities: ["Sea Kayaking", "Summit Hiking", "Via Ferrata", "Cultural Immersion"],
+      dates: "June 29-July 14 & July 18-August 2, 2026",
+      highlights: ["Galdhøpiggen summit", "16-day expedition", "High fitness required", "Viking history"],
+      languages: ["English", "Norwegian"],
+      specialFeatures: ["Norway's Highest Peak", "Advanced Outdoor Skills", "Cultural Experiences"],
+      established: 2008,
+      capacity: 16,
+      bookingUrl: "https://www.adventuretreks.com/trip/norway/"
     },
     {
       id: 15,
@@ -407,25 +407,25 @@ function App() {
     },
     {
       id: 18,
-      name: "Rotary Youth Exchange International Camp",
-      location: "Bornholm Island",
-      country: "Denmark",
-      ages: "15-18 years",
-      price: "DKK 6,200",
+      name: "Nordic Terrain Academy - Adventure Camps",
+      location: "Stavanger",
+      country: "Norway",
+      ages: "6-12 years",
+      price: "NOK 3,500",
       priceRange: "mid",
-      rating: 4.7,
-      reviews: 142,
-      image: mapImage,
+      rating: 4.6,
+      reviews: 87,
+      image: activitiesImage,
       category: "academic",
-      type: "Cultural Exchange",
-      activities: ["Leadership Development", "Cultural Workshops", "Community Service", "Language Exchange"],
-      dates: "August 3-17, 2026",
-      highlights: ["International networking", "Leadership focus", "Baltic Sea location", "Cultural diversity"],
-      languages: ["Danish", "English", "German", "Swedish"],
-      specialFeatures: ["International Exchange Program", "Leadership Certification", "Community Impact Projects"],
-      established: 1999,
-      capacity: 60,
-      bookingUrl: "https://www.rotary.org/en/our-programs/youth-programs"
+      type: "Adventure Academics",
+      activities: ["Kayaking", "Rock Climbing", "Hiking", "Surfing", "STEM Learning"],
+      dates: "July 7-11 & July 14-18, 2026",
+      highlights: ["Academics meets adventure", "University readiness focus", "International environment", "Leadership development"],
+      languages: ["Norwegian", "English"],
+      specialFeatures: ["Academic & Adventure Balance", "Critical Thinking Skills", "International Students"],
+      established: 2020,
+      capacity: 24,
+      bookingUrl: "https://nordicadventure.camp/"
     }
   ]
 
@@ -450,7 +450,7 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "12", description: "Across Europe" },
+    { icon: Globe, label: "Countries", value: "11", description: "Across Europe" },
     { icon: Award, label: "Camps", value: "106", description: "Verified programs" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Safety", value: "100%", description: "Accredited" }
@@ -2718,7 +2718,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 106 camps across 12 countries including premium Scandinavian programs.
+                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 106 camps across 11 countries including premium Nordic programs.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -2811,19 +2811,10 @@ function App() {
                 <li>
                   <button 
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
-                    onClick={() => handleCountryFilter('Sweden')}
-                    aria-label="Filter camps in Sweden"
-                  >
-                    🇸🇪 Sweden (Nordic Adventure)
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
                     onClick={() => handleCountryFilter('Norway')}
                     aria-label="Filter camps in Norway"
                   >
-                    🇳🇴 Norway (Olympic Heritage)
+                    🇳🇴 Norway (Adventure Capital)
                   </button>
                 </li>
                 <li>
@@ -2832,7 +2823,7 @@ function App() {
                     onClick={() => handleCountryFilter('Denmark')}
                     aria-label="Filter camps in Denmark"
                   >
-                    🇩🇰 Denmark (Cultural Exchange)
+                    🇩🇰 Denmark (Adventure Sports)
                   </button>
                 </li>
                 <li>
