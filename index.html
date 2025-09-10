@@ -118,28 +118,32 @@
             "numberOfItems": "100+",
             "itemListElement": [
               {
-                "@type": "Product",
+                "@type": "ListItem",
+                "position": 1,
                 "name": "Premium Alpine Summer Camps",
                 "description": "High-end Swiss and Austrian Alpine adventure camps",
-                "category": "Premium Summer Camps"
+                "url": "https://www.europeansummercamps.com/#discover?category=premium"
               },
               {
-                "@type": "Product", 
-                "name": "Academic Excellence Programs",
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Academic & STEM Programs",
                 "description": "University preparation and academic enrichment camps",
-                "category": "Academic Summer Camps"
+                "url": "https://www.europeansummercamps.com/#discover?category=academic"
               },
               {
-                "@type": "Product",
+                "@type": "ListItem",
+                "position": 3,
                 "name": "Language Immersion Camps",
                 "description": "Natural language learning in European settings",
-                "category": "Language Summer Camps"
+                "url": "https://www.europeansummercamps.com/#discover?category=language"
               },
               {
-                "@type": "Product",
+                "@type": "ListItem",
+                "position": 4,
                 "name": "Sports Specialty Camps",
                 "description": "Professional sports training and academies",
-                "category": "Sports Summer Camps"
+                "url": "https://www.europeansummercamps.com/#discover?category=sports"
               }
             ]
           }
@@ -148,7 +152,7 @@
     }
     </script>
     
-    <!-- Additional Structured Data for Featured Camps -->
+    <!-- Featured Summer Camp Events -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -157,160 +161,100 @@
       "description": "Top-rated summer camps across Europe for children and teenagers",
       "itemListElement": [
         {
-          "@type": "Product",
-          "position": 1,
-          "name": "Les Elfes International",
+          "@type": "Event",
+          "name": "Les Elfes International Summer Camp 2026",
           "description": "Premium Alpine adventure summer camp in Verbier, Switzerland for ages 6-17 years",
           "image": "https://www.europeansummercamps.com/les-elfes-camp.jpg",
-          "brand": {
-            "@type": "Brand",
-            "name": "Les Elfes International"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "4990",
-            "priceCurrency": "CHF",
-            "availability": "https://schema.org/InStock",
-            "validFrom": "2025-09-01",
-            "validThrough": "2026-06-07",
-            "priceValidUntil": "2026-06-07",
-            "hasMerchantReturnPolicy": {
-              "@type": "MerchantReturnPolicy",
-              "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
-            },
-            "shippingDetails": {
-              "@type": "OfferShippingDetails",
-              "shippingRate": {
-                "@type": "MonetaryAmount",
-                "value": "0",
-                "currency": "CHF"
-              },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": {
-                  "@type": "QuantitativeValue",
-                  "minValue": 0,
-                  "maxValue": 1,
-                  "unitCode": "DAY"
-                }
-              }
+          "startDate": "2026-06-15",
+          "endDate": "2026-08-31",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "Verbier, Switzerland",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Verbier",
+              "addressCountry": "Switzerland"
             }
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "847"
+          "organizer": {
+            "@type": "Organization",
+            "name": "Les Elfes International",
+            "url": "https://www.leselfes.com"
           },
-          "category": "Summer Camp",
           "audience": {
             "@type": "PeopleAudience",
             "suggestedMinAge": 6,
             "suggestedMaxAge": 17
-          }
+          },
+          "typicalAgeRange": "6-17",
+          "inLanguage": "en",
+          "url": "https://www.leselfes.com"
         },
         {
-          "@type": "Product", 
-          "position": 2,
-          "name": "Oxford Summer Courses",
+          "@type": "Event",
+          "name": "Oxford Summer Courses 2026",
           "description": "Academic excellence program for university preparation in Oxford, UK for ages 13-18",
           "image": "https://www.europeansummercamps.com/oxford-summer-courses.jpg",
-          "brand": {
-            "@type": "Brand",
-            "name": "Oxford Summer Courses"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "6220",
-            "priceCurrency": "GBP",
-            "availability": "https://schema.org/InStock",
-            "validFrom": "2025-09-01",
-            "validThrough": "2026-08-31",
-            "priceValidUntil": "2026-08-31",
-            "hasMerchantReturnPolicy": {
-              "@type": "MerchantReturnPolicy",
-              "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
-            },
-            "shippingDetails": {
-              "@type": "OfferShippingDetails",
-              "shippingRate": {
-                "@type": "MonetaryAmount",
-                "value": "0",
-                "currency": "GBP"
-              },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": {
-                  "@type": "QuantitativeValue",
-                  "minValue": 0,
-                  "maxValue": 1,
-                  "unitCode": "DAY"
-                }
-              }
+          "startDate": "2026-07-01",
+          "endDate": "2026-08-15",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "Oxford, United Kingdom",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Oxford",
+              "addressCountry": "United Kingdom"
             }
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8", 
-            "reviewCount": "432"
+          "organizer": {
+            "@type": "Organization",
+            "name": "Oxford Summer Courses",
+            "url": "https://www.oxfordsummercourses.com"
           },
-          "category": "Academic Summer Program",
           "audience": {
             "@type": "PeopleAudience",
             "suggestedMinAge": 13,
             "suggestedMaxAge": 18
-          }
+          },
+          "typicalAgeRange": "13-18",
+          "inLanguage": "en",
+          "url": "https://www.oxfordsummercourses.com"
         },
         {
-          "@type": "Product",
-          "position": 3, 
-          "name": "EUROCAM Bohemia",
+          "@type": "Event",
+          "name": "EUROCAM Bohemia Summer Camp 2026",
           "description": "Budget-friendly English immersion camp in South Bohemia, Czech Republic for ages 7-17",
           "image": "https://www.europeansummercamps.com/eurocam-bohemia.jpg",
-          "brand": {
-            "@type": "Brand",
-            "name": "EUROCAM"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "330",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock",
-            "validFrom": "2025-09-01",
-            "validThrough": "2026-07-31",
-            "priceValidUntil": "2026-07-31",
-            "hasMerchantReturnPolicy": {
-              "@type": "MerchantReturnPolicy",
-              "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
-            },
-            "shippingDetails": {
-              "@type": "OfferShippingDetails",
-              "shippingRate": {
-                "@type": "MonetaryAmount",
-                "value": "0",
-                "currency": "EUR"
-              },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": {
-                  "@type": "QuantitativeValue",
-                  "minValue": 0,
-                  "maxValue": 1,
-                  "unitCode": "DAY"
-                }
-              }
+          "startDate": "2026-07-01",
+          "endDate": "2026-08-31",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "South Bohemia, Czech Republic",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "South Bohemia",
+              "addressCountry": "Czech Republic"
             }
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "267"
+          "organizer": {
+            "@type": "Organization",
+            "name": "EUROCAM",
+            "url": "https://www.eurocam.cz"
           },
-          "category": "Language Immersion Camp",
           "audience": {
             "@type": "PeopleAudience",
             "suggestedMinAge": 7,
             "suggestedMaxAge": 17
-          }
+          },
+          "typicalAgeRange": "7-17",
+          "inLanguage": ["en", "cs"],
+          "url": "https://www.eurocam.cz"
         }
       ]
     }

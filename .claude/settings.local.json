@@ -125,7 +125,8 @@
       "WebFetch(domain:www.metsakartano.com)",
       "WebFetch(domain:summercamp.fi)",
       "WebFetch(domain:piispala.fi)",
-      "Bash(sort:*)"
+      "Bash(sort:*)",
+      "WebFetch(domain:search.google.com)"
     ],
     "deny": [],
     "ask": [],
