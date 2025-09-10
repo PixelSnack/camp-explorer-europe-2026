@@ -122,7 +122,10 @@
       "Bash(paste:*)",
       "WebFetch(domain:riihonmajatalo.fi)",
       "WebFetch(domain:wildwind.co.uk)",
-      "WebFetch(domain:www.metsakartano.com)"
+      "WebFetch(domain:www.metsakartano.com)",
+      "WebFetch(domain:summercamp.fi)",
+      "WebFetch(domain:piispala.fi)",
+      "Bash(sort:*)"
     ],
     "deny": [],
     "ask": [],
