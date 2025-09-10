@@ -118,7 +118,11 @@
       "WebFetch(domain:www.adventuretreks.com)",
       "WebFetch(domain:nordicwoods.org)",
       "WebFetch(domain:www.ranumefterskole.dk)",
-      "WebFetch(domain:barnenso.se)"
+      "WebFetch(domain:barnenso.se)",
+      "Bash(paste:*)",
+      "WebFetch(domain:riihonmajatalo.fi)",
+      "WebFetch(domain:wildwind.co.uk)",
+      "WebFetch(domain:www.metsakartano.com)"
     ],
     "deny": [],
     "ask": [],
