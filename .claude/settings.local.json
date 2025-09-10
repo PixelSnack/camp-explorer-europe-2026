@@ -115,7 +115,10 @@
       "WebFetch(domain:www.leirikoulu.fi)",
       "WebFetch(domain:nordicadventure.camp)",
       "WebFetch(domain:www.naturkartan.se)",
-      "WebFetch(domain:www.adventuretreks.com)"
+      "WebFetch(domain:www.adventuretreks.com)",
+      "WebFetch(domain:nordicwoods.org)",
+      "WebFetch(domain:www.ranumefterskole.dk)",
+      "WebFetch(domain:barnenso.se)"
     ],
     "deny": [],
     "ask": [],
