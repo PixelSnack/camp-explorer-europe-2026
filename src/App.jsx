@@ -719,7 +719,7 @@ function App() {
       </a>
       
       {/* Navigation */}
-      <header className="sticky top-0 z-50 bg-white shadow-sm border-b">
+      <header className="sticky-header">
         <nav className="relative" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
