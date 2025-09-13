@@ -722,10 +722,10 @@ function App() {
       <header className="sticky-header">
         <nav className="relative" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="text-2xl font-bold text-blue-600">Camp Explorer Europe</div>
-              <span className="ml-2 text-sm text-orange-500 font-semibold">2026</span>
+          <div className="flex justify-between items-center h-14 sm:h-16">
+            <div className="flex items-center min-w-0 flex-1 pr-4">
+              <div className="text-xl sm:text-2xl font-bold text-blue-600 truncate">Camp Explorer Europe</div>
+              <span className="ml-1 sm:ml-2 text-xs sm:text-sm text-orange-500 font-semibold whitespace-nowrap">2026</span>
             </div>
             
             {/* Desktop Navigation */}
@@ -780,8 +780,8 @@ function App() {
       {/* Conditional Section Rendering */}
       {activeSection === 'home' && (
         <>
-        {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Hero Section - Mobile Optimized with CLS Prevention */}
+      <section id="home" className="relative flex items-center justify-center overflow-hidden hero-section">
         <picture className="absolute inset-0 w-full h-full">
           <source srcSet={heroLakesideAvif} type="image/avif" />
           <source srcSet={heroLakesideWebp} type="image/webp" />
@@ -791,8 +791,8 @@ function App() {
             className="w-full h-full object-cover"
             width="1680" 
             height="720"
-            fetchPriority="high"
             loading="eager"
+            fetchpriority="high"
             style={{aspectRatio: '16/9'}}
           />
         </picture>

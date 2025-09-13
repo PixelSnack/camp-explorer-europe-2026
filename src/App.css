@@ -53,11 +53,48 @@
   .sticky-header {
     position: sticky;
     top: 0;
-    height: 64px; /* Explicit height as recommended */
+    height: 56px; /* Mobile-first height */
     z-index: 1000;
     background-color: white;
     border-bottom: 1px solid #e5e7eb;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     width: 100%;
+  }
+  
+  /* Desktop header height */
+  @media (min-width: 640px) {
+    .sticky-header {
+      height: 64px;
+    }
+  }
+  
+  /* Mobile-optimized hero section - prevents CLS and viewport issues */
+  .hero-section {
+    /* Mobile-first: 70vh for proper mobile viewing */
+    min-height: 70vh;
+    height: 70vh;
+    aspect-ratio: 16/9;
+  }
+  
+  /* Tablet and desktop optimization */
+  @media (min-width: 768px) {
+    .hero-section {
+      min-height: 80vh;
+      height: 80vh;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-section {
+      min-height: 90vh;
+      height: 90vh;
+    }
+  }
+  
+  /* Prevent layout shift on mobile devices */
+  @media (max-width: 767px) {
+    .hero-section {
+      max-height: 100vh; /* Prevent overflow on small screens */
+    }
   }
 }
