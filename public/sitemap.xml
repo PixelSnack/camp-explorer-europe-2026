@@ -3,37 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.europeansummercamps.com/</loc>
-    <lastmod>2025-09-11</lastmod>
+    <lastmod>2025-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.europeansummercamps.com/european-summer-camps-lakeside-hero.webp</image:loc>
-      <image:title>European Summer Camps 2026 - EU Legal Compliant Directory with Nordic Excellence</image:title>
-      <image:caption>Discover 106 verified European summer camps with complete EU legal framework across 13 countries including premium Nordic programs</image:caption>
+      <image:title>European Summer Camps 2026 - Ultimate Performance Optimized Guide</image:title>
+      <image:caption>Discover 100+ verified European summer camps with 96% optimized images and enterprise performance across 13 countries</image:caption>
     </image:image>
-  </url>
-  <url>
-    <loc>https://www.europeansummercamps.com/#impressum</loc>
-    <lastmod>2025-09-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.europeansummercamps.com/#terms</loc>
-    <lastmod>2025-09-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.europeansummercamps.com/#privacy</loc>
-    <lastmod>2025-09-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.europeansummercamps.com/#guide</loc>
-    <lastmod>2025-09-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>
