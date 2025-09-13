@@ -487,11 +487,20 @@ npm run dev      # Should start on http://localhost:5173
 - **⚠️ DEPLOYMENT WORKFLOW**: Claude Code automates commits with comprehensive summaries - user only pushes to origin
 
 ### **Step 5: Follow Development Guidelines**
+- **🚨 MANDATORY HOLISTIC REVIEW**: EVERY change must pass 7-dimension check (see DEVELOPMENT_GUIDELINES.md Rule #0)
 - **Zero-Breakage Principle**: Never break existing functionality
 - **SEO-First Mindset**: Every change should support #1 Google ranking goal  
 - **Enterprise Quality**: Maintain performance, accessibility, security standards
 - **Testing Protocol**: Build + Lint + Manual verification required
 - **Automated Commit Process**: Claude Code handles full git workflow - user only pushes to origin
+
+### **⚠️ CRITICAL REMINDER: NO TUNNEL VISION**
+**Before ANY code change, ask yourself:**
+1. Performance impact? 2. SEO compliance? 3. Business alignment? 
+4. Accessibility maintained? 5. Security preserved? 6. Mobile UX?
+7. Documentation accuracy?
+
+**If you can't answer ALL 7: STOP and reassess holistically.**
 
 ---
 

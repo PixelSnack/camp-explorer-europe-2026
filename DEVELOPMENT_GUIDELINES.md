@@ -8,6 +8,20 @@
 
 ## 🚨 CARDINAL RULES - NEVER BREAK THESE
 
+### **0. MANDATORY HOLISTIC REVIEW - BEFORE ANY CODE CHANGE**
+**🔥 CRITICAL: This prevents tunnel vision that can miss SEO/business impact**
+
+**EVERY code change must consider ALL dimensions:**
+- ✅ **Performance Impact**: Will this improve or degrade Core Web Vitals?
+- ✅ **SEO Compliance**: Does this maintain semantic HTML, H1 structure, meta tags?
+- ✅ **Business Alignment**: Does this support #1 Google ranking goal?
+- ✅ **Accessibility**: Does this maintain WCAG 2.1 AA compliance?
+- ✅ **Security**: Does this maintain enterprise-grade headers and practices?
+- ✅ **Mobile UX**: Does this work properly on mobile devices?
+- ✅ **Documentation Accuracy**: Do .md files reflect actual vs claimed status?
+
+**NO EXCEPTIONS**: If you cannot answer "YES" to all 7 questions, STOP and reassess.
+
 ### **1. ZERO-BREAKAGE PRINCIPLE**
 - **NEVER** deploy changes that break existing functionality
 - **ALWAYS** test core user flows before committing:

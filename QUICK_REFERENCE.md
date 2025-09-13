@@ -43,6 +43,18 @@
 - Lighthouse: Performance 90+, Accessibility 100
 - Traffic: 20→500 monthly sessions
 
+## 🚨 MANDATORY PRE-COMMIT CHECKLIST
+**EVERY code change must pass ALL 7 dimensions:**
+```bash
+✅ Performance: Does this help Core Web Vitals?
+✅ SEO: H1 structure, meta tags, semantic HTML maintained?
+✅ Business: Supports #1 Google ranking goal?
+✅ Accessibility: WCAG 2.1 AA compliance preserved?
+✅ Security: Enterprise headers maintained?
+✅ Mobile: Works properly on mobile devices?
+✅ Documentation: .md files reflect reality?
+```
+
 ## ⚡ EMERGENCY COMMANDS
 ```bash
 npm run build    # Must pass before deploy
