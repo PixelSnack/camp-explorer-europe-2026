@@ -3,7 +3,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
-import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart } from 'lucide-react'
+import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart, ArrowUp } from 'lucide-react'
 import heroLakesideAvif from './assets/hero-lakeside.avif'
 import heroLakesideWebp from './assets/hero-lakeside.webp'
 import heroLakesideCompressed from './assets/hero-lakeside-compressed.png'
@@ -3491,9 +3491,7 @@ function App() {
           className="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 mobile-button touch-target"
           aria-label="Back to top"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-          </svg>
+          <ArrowUp className="w-6 h-6" />
         </button>
       )}
 

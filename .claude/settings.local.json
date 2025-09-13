@@ -127,7 +127,8 @@
       "WebFetch(domain:piispala.fi)",
       "Bash(sort:*)",
       "WebFetch(domain:search.google.com)",
-      "Read(//c/Users/Soda/Downloads/Console issues/**)"
+      "Read(//c/Users/Soda/Downloads/Console issues/**)",
+      "Bash(npx eslint:*)"
     ],
     "deny": [],
     "ask": [],
