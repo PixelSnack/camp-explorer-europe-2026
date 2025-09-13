@@ -719,8 +719,8 @@ function App() {
       </a>
       
       {/* Navigation */}
-      <header>
-        <nav className="bg-white shadow-sm border-b sticky top-0 z-50" role="navigation" aria-label="Main navigation">
+      <header className="sticky top-0 z-50 bg-white shadow-sm border-b">
+        <nav className="relative" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -761,8 +761,8 @@ function App() {
 
         {/* Mobile Navigation - Enhanced for iPhone 15 */}
         {isMenuOpen && (
-          <div className="md:hidden mobile-nav-container">
-            <div className="px-4 pt-4 pb-6 space-y-2 bg-white border-t shadow-lg mobile-nav-enhanced">
+          <div className="md:hidden mobile-nav-container absolute top-full left-0 right-0 bg-white border-t shadow-lg">
+            <div className="px-4 pt-4 pb-6 space-y-2 mobile-nav-enhanced">
               <button onClick={() => { handleNavigation('home'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'home' ? 'text-blue-600 bg-blue-50' : 'text-gray-900 hover:bg-gray-50'}`}>Home</button>
               <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'discover' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Discover Camps</button>
               <button onClick={() => { handleNavigation('compare'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'compare' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Compare</button>
