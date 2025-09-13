@@ -11,8 +11,6 @@ import heroLakesideCompressed from './assets/hero-lakeside-compressed.png'
 import activitiesAvif from './assets/activities-collage.avif'
 import activitiesWebp from './assets/activities-collage.webp'
 import activitiesCompressed from './assets/activities-collage-compressed.png'
-import mapAvif from './assets/camps-map.avif'
-import mapWebp from './assets/camps-map.webp'
 import mapCompressed from './assets/camps-map-compressed.png'
 import './App.css'
 
@@ -660,6 +658,38 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Mobile menu auto-close on outside click - 2025 UX best practice
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.mobile-nav-container')) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside)
+      document.addEventListener('keydown', handleEscapeKey)
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+      document.removeEventListener('keydown', handleEscapeKey)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen])
+
   // Smooth scroll to top
   const scrollToTop = () => {
     window.scrollTo({
@@ -710,16 +740,20 @@ function App() {
               </div>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
+            {/* Mobile menu button - Enhanced 2025 iOS/Android best practices */}
+            <div className="md:hidden mobile-nav-container">
               <Button
                 variant="ghost"
                 size="lg"
-                className="touch-target mobile-button p-4 min-h-[48px] min-w-[48px]"
+                className="touch-target mobile-button p-3 min-h-[52px] min-w-[52px] bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation menu"
               >
-                {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+                {isMenuOpen ? (
+                  <X className="h-7 w-7 text-white drop-shadow-lg" strokeWidth={2.5} />
+                ) : (
+                  <Menu className="h-7 w-7 text-white drop-shadow-lg" strokeWidth={2.5} />
+                )}
               </Button>
             </div>
           </div>
@@ -727,7 +761,7 @@ function App() {
 
         {/* Mobile Navigation - Enhanced for iPhone 15 */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden mobile-nav-container">
             <div className="px-4 pt-4 pb-6 space-y-2 bg-white border-t shadow-lg mobile-nav-enhanced">
               <button onClick={() => { handleNavigation('home'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'home' ? 'text-blue-600 bg-blue-50' : 'text-gray-900 hover:bg-gray-50'}`}>Home</button>
               <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'discover' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Discover Camps</button>
