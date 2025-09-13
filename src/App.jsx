@@ -723,7 +723,7 @@ function App() {
         <nav className="relative" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+            <div className="flex items-center pr-4 md:pr-0">
               <div className="text-2xl font-bold text-blue-600">Camp Explorer Europe</div>
               <span className="ml-2 text-sm text-orange-500 font-semibold">2026</span>
             </div>
@@ -791,9 +791,8 @@ function App() {
             className="w-full h-full object-cover"
             width="1680" 
             height="720"
-            fetchPriority="high"
             loading="eager"
-            style={{aspectRatio: '16/9'}}
+            fetchpriority="high"
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
