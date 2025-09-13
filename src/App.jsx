@@ -791,7 +791,7 @@ function App() {
           <img 
             src={heroLakesideCompressed} 
             alt="Scenic lakeside European summer camp setting with mountains and clear water"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             width="1680" 
             height="720"
             loading="eager"
