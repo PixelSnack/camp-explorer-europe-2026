@@ -108,8 +108,9 @@
     padding-right: env(safe-area-inset-right);
   }
   
-  /* Hero section with proper height calculation accounting for sticky header */
+  /* Hero section with 2025 dynamic viewport height - solves mobile UI adaptation */
   .hero-full-height {
+    /* Fallback for older browsers */
     height: calc(100vh - 56px); /* Account for mobile header height */
     min-height: 600px; /* Ensure minimum height on very short screens */
   }
@@ -122,15 +123,32 @@
     }
   }
   
-  /* Handle mobile browsers with dynamic UI */
+  /* Modern mobile browsers: Dynamic Viewport Height (90.57% support 2025) */
   @supports (height: 100dvh) {
     .hero-full-height {
-      height: calc(100dvh - 56px); /* Use dynamic viewport height on supported browsers */
+      height: calc(100dvh - 56px); /* Dynamic height adapts to mobile browser UI state */
+      min-height: 600px;
     }
     
     @media (min-width: 640px) {
       .hero-full-height {
-        height: calc(100dvh - 64px);
+        height: calc(100dvh - 64px); /* Desktop with dynamic viewport */
+        min-height: 700px;
+      }
+    }
+  }
+  
+  /* Alternative fallback using CSS Small Viewport Height for maximum compatibility */
+  @supports (height: 100svh) and (not (height: 100dvh)) {
+    .hero-full-height {
+      height: calc(100svh - 56px); /* Small viewport - assumes toolbars always visible */
+      min-height: 600px;
+    }
+    
+    @media (min-width: 640px) {
+      .hero-full-height {
+        height: calc(100svh - 64px);
+        min-height: 700px;
       }
     }
   }
