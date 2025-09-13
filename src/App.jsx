@@ -791,7 +791,7 @@ function App() {
           <img 
             src={heroLakesideCompressed} 
             alt="Scenic lakeside European summer camp setting with mountains and clear water"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
             width="1680" 
             height="720"
             loading="eager"
@@ -800,7 +800,7 @@ function App() {
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
         
-        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4">
+        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 pt-20 sm:pt-16">
           <div className="mb-6">
             <Badge className="bg-orange-500/90 text-white px-4 py-2 text-sm font-semibold">
               100+ Verified Camps • 13 Countries • 2026 Bookings Open
@@ -836,7 +836,7 @@ function App() {
           </div>
           
           {/* Stats Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto px-4 pb-8">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon
               return (
