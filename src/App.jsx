@@ -800,7 +800,7 @@ function App() {
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
         
-        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 pt-20 sm:pt-16">
+        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 pt-32 sm:pt-24 pb-16 sm:pb-12">
           <div className="mb-6">
             <Badge className="bg-orange-500/90 text-white px-4 py-2 text-sm font-semibold">
               100+ Verified Camps • 13 Countries • 2026 Bookings Open
@@ -836,7 +836,7 @@ function App() {
           </div>
           
           {/* Stats Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto px-4 pb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto px-4">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon
               return (
