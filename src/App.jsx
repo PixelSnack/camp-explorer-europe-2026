@@ -744,14 +744,13 @@ function App() {
             </div>
 
             {/* Mobile menu button - Enhanced 2025 iOS/Android best practices */}
-            <div className="md:hidden mobile-nav-container flex items-center">
+            <div className="md:hidden flex items-center justify-center h-16">
               <Button
                 variant="ghost"
                 size="lg"
                 className="touch-target mobile-button p-3 min-h-[52px] min-w-[52px] bg-gray-900/80 hover:bg-gray-800/90 border border-gray-700/50 rounded-lg backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation menu"
-                style={{ marginTop: 'calc(-1 * env(safe-area-inset-top) / 2)' }}
               >
                 {isMenuOpen ? (
                   <X className="h-7 w-7 text-white" strokeWidth={2.5} />
