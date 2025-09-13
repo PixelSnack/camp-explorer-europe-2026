@@ -156,7 +156,7 @@
   /* Adaptive Hero Content Layout - Intelligent positioning instead of forced centering */
   .hero-adaptive-grid {
     display: grid;
-    grid-template-rows: minmax(2rem, 1fr) auto minmax(3rem, 0.8fr); /* Asymmetric spacing: top space, content, smaller bottom space */
+    grid-template-rows: minmax(2rem, 1fr) auto minmax(4rem, 1fr); /* Adequate bottom spacing to prevent section overlap */
     grid-template-columns: 1fr;
     align-items: start;
     justify-items: center;
@@ -191,20 +191,20 @@
   /* Responsive spacing adjustments for different screen heights */
   @media (max-height: 700px) {
     .hero-adaptive-grid {
-      grid-template-rows: minmax(1rem, 0.8fr) auto minmax(2rem, 0.6fr); /* Tighter spacing on short screens */
+      grid-template-rows: minmax(1rem, 0.8fr) auto minmax(3rem, 0.8fr); /* Maintain sufficient bottom space even on short screens */
     }
   }
   
   @media (min-height: 900px) {
     .hero-adaptive-grid {
-      grid-template-rows: minmax(3rem, 1.2fr) auto minmax(4rem, 1fr); /* More generous spacing on tall screens */
+      grid-template-rows: minmax(3rem, 1.2fr) auto minmax(5rem, 1.2fr); /* More generous spacing on tall screens */
     }
   }
   
   /* Ultra-wide screens: maintain proper proportions */
   @media (min-width: 1920px) and (min-height: 1200px) {
     .hero-adaptive-grid {
-      grid-template-rows: minmax(4rem, 1.5fr) auto minmax(5rem, 1.2fr);
+      grid-template-rows: minmax(4rem, 1.5fr) auto minmax(6rem, 1.4fr);
     }
     
     .hero-adaptive-content {
