@@ -4,12 +4,15 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart } from 'lucide-react'
-import heroImage from './assets/european-summer-camps-lakeside-hero.png'
 import heroLakesideAvif from './assets/hero-lakeside.avif'
 import heroLakesideWebp from './assets/hero-lakeside.webp'
 import heroLakesideCompressed from './assets/hero-lakeside-compressed.png'
-import activitiesImage from './assets/european-camp-activities-collage.png'
-import mapImage from './assets/european-summer-camps-map.png'
+import activitiesAvif from './assets/activities-collage.avif'
+import activitiesWebp from './assets/activities-collage.webp'
+import activitiesCompressed from './assets/activities-collage-compressed.png'
+import mapAvif from './assets/camps-map.avif'
+import mapWebp from './assets/camps-map.webp'
+import mapCompressed from './assets/camps-map-compressed.png'
 import './App.css'
 
 function App() {
@@ -61,7 +64,7 @@ function App() {
       priceRange: "luxury",
       rating: 4.9,
       reviews: 423,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "premium",
       type: "Luxury Boarding",
       activities: ["Academic Enrichment", "Professional Sports", "Cultural Immersion", "Leadership"],
@@ -83,7 +86,7 @@ function App() {
       priceRange: "premium",
       rating: 4.8,
       reviews: 356,
-      image: mapImage,
+      image: mapCompressed,
       category: "family",
       type: "Adventure Sports",
       activities: ["Multi-Sport", "Language Learning", "Leadership Training", "Environmental Ed"],
@@ -128,7 +131,7 @@ function App() {
       priceRange: "luxury",
       rating: 4.9,
       reviews: 567,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "academic",
       type: "University Prep",
       activities: ["Medicine", "Engineering", "Business", "Creative Arts"],
@@ -150,7 +153,7 @@ function App() {
       priceRange: "mid",
       rating: 4.8,
       reviews: 892,
-      image: mapImage,
+      image: mapCompressed,
       category: "family",
       type: "Comprehensive Education",
       activities: ["English Classes", "Sports Specialties", "Arts & Crafts", "Cultural Excursions"],
@@ -195,7 +198,7 @@ function App() {
       priceRange: "mid",
       rating: 4.6,
       reviews: 178,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "language",
       type: "French Immersion",
       activities: ["French Classes", "Alpine Hiking", "White Water Rafting", "Mountain Biking"],
@@ -218,7 +221,7 @@ function App() {
       priceRange: "budget",
       rating: 4.8,
       reviews: 267,
-      image: mapImage,
+      image: mapCompressed,
       category: "budget",
       type: "English Immersion",
       activities: ["English Classes", "River Activities", "Cave Exploration", "Cultural Games"],
@@ -263,7 +266,7 @@ function App() {
       priceRange: "mid",
       rating: 4.9,
       reviews: 312,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "sports",
       type: "Football Academy",
       activities: ["Professional Coaching", "Stadium Tours", "Technical Training", "Cultural Activities"],
@@ -286,7 +289,7 @@ function App() {
       priceRange: "luxury",
       rating: 4.8,
       reviews: 89,
-      image: mapImage,
+      image: mapCompressed,
       category: "unique",
       type: "Sailing Adventure",
       activities: ["Sailing", "Navigation", "Marine Biology", "Leadership"],
@@ -309,7 +312,7 @@ function App() {
       priceRange: "mid",
       rating: 4.7,
       reviews: 156,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "sports",
       type: "Adventure Sports",
       activities: ["Tree Top Adventure", "Survival Skills", "Kayaking", "Team Building"],
@@ -353,7 +356,7 @@ function App() {
       priceRange: "premium",
       rating: 4.9,
       reviews: 127,
-      image: mapImage,
+      image: mapCompressed,
       category: "sports",
       type: "Olympic Sports Heritage",
       activities: ["Cross-Country Skiing", "Biathlon Training", "Nordic Walking", "Mountain Hiking"],
@@ -375,7 +378,7 @@ function App() {
       priceRange: "mid",
       rating: 4.7,
       reviews: 156,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "academic",
       type: "Educational & Outdoor",
       activities: ["Progressive Education", "Nature Studies", "Finnish Culture", "Experiential Learning"],
@@ -419,7 +422,7 @@ function App() {
       priceRange: "mid",
       rating: 4.6,
       reviews: 87,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "academic",
       type: "Adventure Academics",
       activities: ["Kayaking", "Rock Climbing", "Hiking", "Surfing", "STEM Learning"],
@@ -464,7 +467,7 @@ function App() {
       priceRange: "premium",
       rating: 4.7,
       reviews: 89,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "academic",
       type: "International School",
       activities: ["Danish Language", "Sports", "Arts", "Outdoor Activities", "Cultural Excursions"],
@@ -486,7 +489,7 @@ function App() {
       priceRange: "mid",
       rating: 4.7,
       reviews: 142,
-      image: activitiesImage,
+      image: activitiesCompressed,
       category: "academic",
       type: "International Adventure",
       activities: ["English Learning", "Cultural Exchange", "Sports", "Hiking", "Arts & Crafts"],
@@ -508,7 +511,7 @@ function App() {
       priceRange: "budget",
       rating: 4.8,
       reviews: 267,
-      image: mapImage,
+      image: mapCompressed,
       category: "academic",
       type: "Traditional Camp School",
       activities: ["Sports Programs", "Handcrafts", "Nature Adventures", "Wellbeing Activities"],
@@ -1118,13 +1121,20 @@ function App() {
             </div>
             
             <div className="relative">
-              <img 
-                src={activitiesImage} 
-                alt="European summer camp activities collage showing children engaged in outdoor adventures, sports, arts and cultural activities across beautiful European locations" 
-                className="rounded-lg shadow-2xl"
-                title="European Summer Camp Activities - Adventure, Sports, Arts & Culture"
-                loading="lazy"
-              />
+              <picture>
+                <source srcSet={activitiesAvif} type="image/avif" />
+                <source srcSet={activitiesWebp} type="image/webp" />
+                <img 
+                  src={activitiesCompressed} 
+                  alt="European summer camp activities collage showing children engaged in outdoor adventures, sports, arts and cultural activities across beautiful European locations" 
+                  className="rounded-lg shadow-2xl"
+                  title="European Summer Camp Activities - Adventure, Sports, Arts & Culture"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                  style={{aspectRatio: '4/3'}}
+                />
+              </picture>
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-blue-600">50+</div>

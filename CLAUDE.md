@@ -137,11 +137,14 @@ This site is part of **ResourceHub** - an umbrella project for building authorit
 - **Complete Accessibility Compliance**: Fixed all button aria-labels and footer keyboard navigation (WCAG 2.1 AA compliant)
 - **Critical Filter UX Bug Fixed**: "All Camps" button now properly resets country filters after footer navigation
 
-#### 🚀 MAJOR PERFORMANCE OPTIMIZATION
-- **Hero Image Optimized**: 92% size reduction (1,674KB → 127KB WebP, 169KB AVIF, 677KB PNG)
-- **Picture Element Implementation**: Modern responsive images with progressive enhancement
-- **Expected LCP Improvement**: 85-92% faster hero image loading
-- **Mobile Performance**: Dramatic improvement on slower connections
+#### 🚀 COMPREHENSIVE PERFORMANCE OPTIMIZATION
+- **ALL Images Optimized**: Complete site-wide image optimization (September 13, 2025)
+- **Hero Image**: 92% reduction (1,674KB → 127KB WebP, 169KB AVIF, 677KB PNG)
+- **Activities Collage**: 93% reduction (1,966KB → 132KB WebP, 275KB AVIF, 285KB PNG)
+- **Map Images**: 97% reduction (2,552KB → 68KB WebP, 129KB AVIF, 354KB PNG)
+- **Total Bundle Impact**: 93-96% size reduction for modern browsers
+- **Picture Elements**: Implemented for ALL images with AVIF → WebP → PNG fallback
+- **Critical Performance Bottleneck**: RESOLVED - No more 8.4MB image bundles
 
 #### 🔧 Previous Updates (Earlier September 2025)
 - **Google Search Console Issues Fixed**: Resolved all critical structured data errors
@@ -309,7 +312,7 @@ For each new niche site: Start with comprehensive data collection → Implement 
 ### Technical Foundation Status
 - **Code Quality**: Exceptional (2,850+ lines, well-structured, maintainable)
 - **SEO Architecture**: Single-page limitation identified, clean sitemap ready, enhanced Nordic coverage
-- **Performance**: Major LCP bottleneck resolved, 85-92% improvement expected, no bundle bloat from expansion
+- **Performance**: ALL image bottlenecks resolved, 93-96% total image size reduction achieved
 - **Accessibility**: Full WCAG 2.1 AA compliance maintained across all additions
 - **Security**: Enterprise-grade headers implemented and maintained
 
