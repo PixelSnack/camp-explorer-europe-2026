@@ -776,7 +776,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main id="main-content" role="main">
+      <main id="main-content" role="main" className="pt-16">
       {/* Conditional Section Rendering */}
       {activeSection === 'home' && (
         <>

@@ -48,11 +48,13 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
   
-  /* Ensure sticky header works correctly */
+  /* Fixed header that always stays at top */
   .sticky-header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 50;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     background-color: white;
     border-bottom: 1px solid #e5e7eb;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
