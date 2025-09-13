@@ -108,6 +108,33 @@
     padding-right: env(safe-area-inset-right);
   }
   
+  /* Hero section with proper height calculation accounting for sticky header */
+  .hero-full-height {
+    height: calc(100vh - 56px); /* Account for mobile header height */
+    min-height: 600px; /* Ensure minimum height on very short screens */
+  }
+  
+  /* Desktop hero height accounting for larger header */
+  @media (min-width: 640px) {
+    .hero-full-height {
+      height: calc(100vh - 64px); /* Account for desktop header height */
+      min-height: 700px;
+    }
+  }
+  
+  /* Handle mobile browsers with dynamic UI */
+  @supports (height: 100dvh) {
+    .hero-full-height {
+      height: calc(100dvh - 56px); /* Use dynamic viewport height on supported browsers */
+    }
+    
+    @media (min-width: 640px) {
+      .hero-full-height {
+        height: calc(100dvh - 64px);
+      }
+    }
+  }
+  
   /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
     *,

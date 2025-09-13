@@ -723,8 +723,11 @@ function App() {
         <nav className="relative" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center pr-4 md:pr-0">
-              <div className="text-2xl font-bold text-blue-600">Camp Explorer Europe</div>
+            <div className="flex items-center">
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
+                <span className="block sm:inline">Camp Explorer</span>
+                <span className="block sm:inline sm:ml-1">Europe</span>
+              </div>
               <span className="ml-2 text-sm text-orange-500 font-semibold">2026</span>
             </div>
             
@@ -781,7 +784,7 @@ function App() {
       {activeSection === 'home' && (
         <>
         {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section id="home" className="relative hero-full-height flex items-center justify-center overflow-hidden">
         <picture className="absolute inset-0 w-full h-full">
           <source srcSet={heroLakesideAvif} type="image/avif" />
           <source srcSet={heroLakesideWebp} type="image/webp" />
