@@ -8,10 +8,10 @@
 
 /* Mobile-first optimizations */
 @layer utilities {
-  /* Ensure minimum touch target sizes for mobile accessibility */
+  /* Ensure minimum touch target sizes for mobile accessibility (48px for iPhone 15) */
   .touch-target {
-    min-height: 44px;
-    min-width: 44px;
+    min-height: 48px;
+    min-width: 48px;
   }
   
   /* Prevent zoom on input focus for iOS */
@@ -33,5 +33,19 @@
   .mobile-button {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
     touch-action: manipulation;
+  }
+  
+  /* Prevent horizontal scroll and viewport instability */
+  .mobile-stable {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Enhanced mobile navigation */
+  .mobile-nav-enhanced {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
 }

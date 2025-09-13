@@ -28,6 +28,7 @@ function App() {
   // GDPR Cookie Consent Management
   const [cookieConsent, setCookieConsent] = useState(null) // null = not decided, true = accepted, false = rejected
   const [showCookieBanner, setShowCookieBanner] = useState(false)
+  const [showBackToTop, setShowBackToTop] = useState(false)
 
   // Comprehensive camp data based on our ultimate research
   const allCamps = [
@@ -648,6 +649,24 @@ function App() {
     }
   }, [])
 
+  // Back-to-top scroll listener
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.pageYOffset > 300)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Smooth scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   // Cookie Consent Handlers
   const handleCookieAccept = () => {
     setCookieConsent(true)
@@ -662,7 +681,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white mobile-stable">
       {/* Skip to main content for accessibility */}
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">
         Skip to main content
@@ -694,27 +713,27 @@ function App() {
             <div className="md:hidden">
               <Button
                 variant="ghost"
-                size="sm"
-                className="touch-target mobile-button p-3"
+                size="lg"
+                className="touch-target mobile-button p-4 min-h-[48px] min-w-[48px]"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation menu"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Enhanced for iPhone 15 */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              <button onClick={() => { handleNavigation('home'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'home' ? 'text-blue-600' : 'text-gray-900'}`}>Home</button>
-              <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'discover' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Discover Camps</button>
-              <button onClick={() => { handleNavigation('compare'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'compare' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Compare</button>
-              <button onClick={() => { handleNavigation('plan'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'plan' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Plan Your Summer</button>
-              <button onClick={() => { handleNavigation('guide'); setIsMenuOpen(false); }} className={`block px-4 py-4 rounded-md text-base font-medium w-full text-left ${activeSection === 'guide' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Guide</button>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full mt-2" onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }}>Get Started</Button>
+            <div className="px-4 pt-4 pb-6 space-y-2 bg-white border-t shadow-lg mobile-nav-enhanced">
+              <button onClick={() => { handleNavigation('home'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'home' ? 'text-blue-600 bg-blue-50' : 'text-gray-900 hover:bg-gray-50'}`}>Home</button>
+              <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'discover' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Discover Camps</button>
+              <button onClick={() => { handleNavigation('compare'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'compare' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Compare</button>
+              <button onClick={() => { handleNavigation('plan'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'plan' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Plan Your Summer</button>
+              <button onClick={() => { handleNavigation('guide'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'guide' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Guide</button>
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full mt-4 py-4 text-lg font-semibold touch-target" onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }}>Get Started</Button>
             </div>
           </div>
         )}
@@ -3463,6 +3482,19 @@ function App() {
             </div>
           </div>
         </section>
+      )}
+
+      {/* Back to Top Button - Mobile Optimized */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 mobile-button touch-target"
+          aria-label="Back to top"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
       )}
 
       {/* Conditional Analytics - Only load if consent given */}
