@@ -68,35 +68,6 @@
     }
   }
   
-  /* Mobile-optimized hero section - prevents CLS and viewport issues */
-  .hero-section {
-    /* Mobile-first: 70vh for proper mobile viewing */
-    min-height: 70vh;
-    height: 70vh;
-    aspect-ratio: 16/9;
-  }
-  
-  /* Tablet and desktop optimization */
-  @media (min-width: 768px) {
-    .hero-section {
-      min-height: 80vh;
-      height: 80vh;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .hero-section {
-      min-height: 90vh;
-      height: 90vh;
-    }
-  }
-  
-  /* Prevent layout shift on mobile devices */
-  @media (max-width: 767px) {
-    .hero-section {
-      max-height: 100vh; /* Prevent overflow on small screens */
-    }
-  }
   
   /* Advanced Mobile Adaptations for iOS/Android 2025 */
   .sticky-header {

@@ -780,8 +780,8 @@ function App() {
       {/* Conditional Section Rendering */}
       {activeSection === 'home' && (
         <>
-        {/* Hero Section - Mobile Optimized with CLS Prevention */}
-      <section id="home" className="relative flex items-center justify-center overflow-hidden hero-section">
+        {/* Hero Section */}
+      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         <picture className="absolute inset-0 w-full h-full">
           <source srcSet={heroLakesideAvif} type="image/avif" />
           <source srcSet={heroLakesideWebp} type="image/webp" />
