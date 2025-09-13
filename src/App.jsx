@@ -784,7 +784,7 @@ function App() {
       {activeSection === 'home' && (
         <>
         {/* Hero Section */}
-      <section id="home" className="relative hero-full-height flex items-center justify-center overflow-hidden">
+      <section id="home" className="relative hero-full-height overflow-hidden">
         <picture className="absolute inset-0 w-full h-full">
           <source srcSet={heroLakesideAvif} type="image/avif" />
           <source srcSet={heroLakesideWebp} type="image/webp" />
@@ -800,7 +800,8 @@ function App() {
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
         
-        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 pt-32 sm:pt-24 pb-16 sm:pb-12">
+        <div className="hero-adaptive-grid relative z-10">
+          <div className="hero-adaptive-content text-center text-white">
           <div className="mb-6">
             <Badge className="bg-orange-500/90 text-white px-4 py-2 text-sm font-semibold">
               100+ Verified Camps • 13 Countries • 2026 Bookings Open
@@ -850,6 +851,7 @@ function App() {
                 </div>
               )
             })}
+          </div>
           </div>
         </div>
       </section>
