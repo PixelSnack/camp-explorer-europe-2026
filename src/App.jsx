@@ -745,14 +745,14 @@ function App() {
               <Button
                 variant="ghost"
                 size="lg"
-                className="touch-target mobile-button p-3 min-h-[52px] min-w-[52px] bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95"
+                className="touch-target mobile-button p-3 min-h-[52px] min-w-[52px] bg-gray-900/80 hover:bg-gray-800/90 border border-gray-700/50 rounded-lg backdrop-blur-sm transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation menu"
               >
                 {isMenuOpen ? (
-                  <X className="h-7 w-7 text-white drop-shadow-lg" strokeWidth={2.5} />
+                  <X className="h-7 w-7 text-white" strokeWidth={2.5} />
                 ) : (
-                  <Menu className="h-7 w-7 text-white drop-shadow-lg" strokeWidth={2.5} />
+                  <Menu className="h-7 w-7 text-white" strokeWidth={2.5} />
                 )}
               </Button>
             </div>
