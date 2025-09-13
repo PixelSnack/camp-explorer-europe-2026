@@ -171,9 +171,9 @@
   .hero-adaptive-content {
     grid-row: 2;
     width: 100%;
-    max-width: min(1152px, 100vw - 2rem); /* Responsive max-width to prevent horizontal overflow */
+    max-width: 1152px; /* max-w-6xl equivalent */
     margin: 0 auto;
-    padding: 0 clamp(1rem, 4vw, 2rem); /* Horizontal padding only to prevent right-side cutoff */
+    padding: 0 1rem; /* Simple, consistent horizontal padding */
     
     /* Ensure content never overflows available space */
     display: flex;
@@ -182,10 +182,24 @@
     align-items: center;
     text-align: center;
     
-    /* Prevent horizontal overflow */
+    /* Prevent horizontal overflow with better approach */
     box-sizing: border-box;
     overflow-wrap: break-word;
     word-wrap: break-word;
+    min-width: 0; /* Ensure flexbox child can shrink */
+  }
+  
+  /* Responsive horizontal padding */
+  @media (min-width: 640px) {
+    .hero-adaptive-content {
+      padding: 0 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-adaptive-content {
+      padding: 0 4rem;
+    }
   }
   
   /* Responsive spacing adjustments for different screen heights */
@@ -208,7 +222,8 @@
     }
     
     .hero-adaptive-content {
-      max-width: min(1400px, 100vw - 4rem); /* Larger max-width for ultra-wide screens */
+      max-width: 1400px; /* Larger max-width for ultra-wide screens */
+      padding: 0 6rem;
     }
   }
   

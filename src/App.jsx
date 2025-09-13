@@ -722,13 +722,13 @@ function App() {
       <header className="sticky-header">
         <nav className="relative" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+          <div className="flex justify-between items-center h-14 sm:h-16">
+            <div className="flex items-baseline">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
                 <span className="block sm:inline">Camp Explorer</span>
                 <span className="block sm:inline sm:ml-1">Europe</span>
               </div>
-              <span className="ml-2 text-sm text-orange-500 font-semibold">2026</span>
+              <span className="ml-2 text-base sm:text-lg md:text-xl text-orange-500 font-semibold">2026</span>
             </div>
             
             {/* Desktop Navigation */}
@@ -744,7 +744,7 @@ function App() {
             </div>
 
             {/* Mobile menu button - Enhanced 2025 iOS/Android best practices */}
-            <div className="md:hidden flex items-center justify-center h-16">
+            <div className="md:hidden flex items-center justify-center h-14">
               <Button
                 variant="ghost"
                 size="lg"
