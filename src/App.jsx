@@ -802,23 +802,23 @@ function App() {
         
         <div className="hero-adaptive-grid relative z-10">
           <div className="hero-adaptive-content text-center text-white">
-          <div className="mb-6">
-            <Badge className="bg-orange-500/90 text-white px-3 py-2 text-sm font-semibold max-w-[90%] mx-auto">
+          <div>
+            <Badge className="hero-fluid-badge bg-orange-500/90 text-white font-semibold">
               100+ Verified Camps • 13 Countries • 2026 Bookings Open
             </Badge>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="hero-fluid-title font-bold">
             Europe's Most
             <span className="block text-orange-400">Comprehensive</span>
-            <span className="block text-3xl sm:text-4xl md:text-5xl">Summer Camp Guide</span>
+            <span className="block hero-fluid-subtitle">Summer Camp Guide</span>
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="hero-fluid-text text-gray-200 max-w-3xl mx-auto px-4">
             From Swiss Alpine adventures to Spanish beach immersion, discover the perfect summer experience for your child. Research-driven recommendations, verified pricing, and authentic parent reviews.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center hero-fluid-spacing">
             <Button 
               size="lg" 
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
@@ -857,7 +857,7 @@ function App() {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="pt-20 pb-16 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
