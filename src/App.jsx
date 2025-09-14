@@ -547,9 +547,9 @@ function App() {
 
   const stats = [
     { icon: Globe, label: "Countries", value: "13", description: "Across Europe" },
-    { icon: Award, label: "Camps", value: "100+", description: "Verified programs" },
+    { icon: Award, label: "Programs", value: "100+", description: "Verified options" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
-    { icon: Shield, label: "Safety", value: "100%", description: "Accredited" }
+    { icon: Shield, label: "Quality", value: "100%", description: "Verified" }
   ]
 
   // Navigation handlers
@@ -805,7 +805,7 @@ function App() {
           <div className="hero-adaptive-content text-center text-white">
           <div>
             <Badge className="hero-fluid-badge bg-orange-500/90 text-white font-semibold">
-              100+ Verified Camps • 13 Countries • 2026 Bookings Open
+              100+ Verified Programs • 13 Countries • 2026 Bookings Open
             </Badge>
           </div>
           
@@ -1815,7 +1815,7 @@ function App() {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">100+ Verified Camps</Badge>
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">100+ Verified Programs</Badge>
                 <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">13 Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
                 <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
