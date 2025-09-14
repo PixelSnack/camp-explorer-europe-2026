@@ -668,7 +668,6 @@ function App() {
       // Ensure DOM is fully ready
       const initWithDelay = () => {
         if (!heroBadgeRef.current) {
-          console.log('Badge ref not ready')
           return
         }
 
@@ -676,11 +675,9 @@ function App() {
         const content = badge.querySelector('.marquee-content')
 
         if (!content) {
-          console.log('Marquee content not found')
           return
         }
 
-        console.log('Marquee system initializing...')
 
         // INTELLIGENT OVERFLOW DETECTION
         const checkOverflow = () => {
@@ -700,12 +697,10 @@ function App() {
             const contentWidth = content.scrollWidth
             const isOverflowing = contentWidth > badgeWidth - 40 // 40px buffer for padding/comfort
 
-            console.log('Overflow check:', { badgeWidth, contentWidth, isOverflowing })
 
             if (isOverflowing) {
               // ACTIVATE MARQUEE - MOBILE ONLY
               badge.classList.add('marquee-enabled')
-              console.log('Marquee enabled!')
 
               // PLATFORM-NATIVE MOTION DETECTION
               const isAndroid = /Android/i.test(navigator.userAgent)
