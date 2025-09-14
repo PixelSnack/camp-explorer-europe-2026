@@ -110,61 +110,56 @@
   
   /* Hero section with 2025 dynamic viewport height - solves mobile UI adaptation */
   .hero-full-height {
-    /* Fallback for older browsers */
-    height: calc(100vh - 56px); /* Account for mobile header height */
-    min-height: 600px; /* Ensure minimum height on very short screens */
+    /* Dynamic height approach - let container grow to accommodate content */
+    min-height: calc(100vh - 56px); /* Minimum viewport height, but can grow */
+    /* Remove fixed height constraint to prevent content overflow */
   }
   
   /* Desktop hero height accounting for larger header */
   @media (min-width: 640px) {
     .hero-full-height {
-      height: calc(100vh - 64px); /* Account for desktop header height */
-      min-height: 700px;
+      min-height: calc(100vh - 64px); /* Minimum viewport height, can grow for content */
     }
   }
   
   /* Modern mobile browsers: Dynamic Viewport Height (90.57% support 2025) */
   @supports (height: 100dvh) {
     .hero-full-height {
-      height: calc(100dvh - 56px - env(safe-area-inset-top)); /* Account for iOS safe area insets */
-      min-height: 600px;
+      min-height: calc(100dvh - 56px - env(safe-area-inset-top)); /* Minimum with safe area, can grow */
     }
-    
+
     @media (min-width: 640px) {
       .hero-full-height {
-        height: calc(100dvh - 64px - env(safe-area-inset-top)); /* Desktop with dynamic viewport (safe-area = 0) */
-        min-height: 700px;
-      }
-    }
-  }
-  
-  /* Alternative fallback using CSS Small Viewport Height for maximum compatibility */
-  @supports (height: 100svh) and (not (height: 100dvh)) {
-    .hero-full-height {
-      height: calc(100svh - 56px - env(safe-area-inset-top)); /* Small viewport with safe area awareness */
-      min-height: 600px;
-    }
-    
-    @media (min-width: 640px) {
-      .hero-full-height {
-        height: calc(100svh - 64px - env(safe-area-inset-top));
-        min-height: 700px;
+        min-height: calc(100dvh - 64px - env(safe-area-inset-top)); /* Desktop minimum, can grow */
       }
     }
   }
 
-  /* Adaptive Hero Content Layout - Intelligent positioning instead of forced centering */
+  /* Alternative fallback using CSS Small Viewport Height for maximum compatibility */
+  @supports (height: 100svh) and (not (height: 100dvh)) {
+    .hero-full-height {
+      min-height: calc(100svh - 56px - env(safe-area-inset-top)); /* Minimum small viewport, can grow */
+    }
+
+    @media (min-width: 640px) {
+      .hero-full-height {
+        min-height: calc(100svh - 64px - env(safe-area-inset-top)); /* Desktop minimum, can grow */
+      }
+    }
+  }
+
+  /* Adaptive Hero Content Layout - Dynamic height approach */
   .hero-adaptive-grid {
     display: grid;
-    grid-template-rows: minmax(2rem, 1fr) fit-content(100%) minmax(4rem, 1fr); /* Constrained middle area prevents overflow */
+    grid-template-rows: minmax(2rem, 1fr) auto minmax(4rem, 1fr); /* Flexible spacing, container grows */
     grid-template-columns: 1fr;
     align-items: start;
     justify-items: center;
-    height: 100%;
+    min-height: 100%; /* Minimum container height, can grow */
     width: 100%;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden; /* Prevent content from extending outside container */
+    /* Remove overflow hidden - container now grows to accommodate content */
   }
   
   /* Content positioning in the center grid area with smart spacing */
@@ -188,9 +183,7 @@
     word-wrap: break-word;
     min-width: 0; /* Ensure flexbox child can shrink */
 
-    /* Defensive constraints to prevent overflow beyond hero boundaries */
-    max-height: 100%;
-    overflow: hidden;
+    /* Dynamic height - content can grow, container accommodates */
   }
   
   /* Responsive horizontal padding */
