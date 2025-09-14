@@ -681,17 +681,31 @@ function App() {
       case 'impressum':
         setActiveSection('impressum')
         window.location.hash = 'impressum'
-        break
+        // Scroll to impressum content after section loads
+        setTimeout(() => {
+          const element = document.getElementById('impressum-content')
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }, 100)
+        return // Don't execute the general scroll below
       case 'terms':
         setActiveSection('terms')
         window.location.hash = 'terms'
-        break
+        // Scroll to terms content after section loads
+        setTimeout(() => {
+          const element = document.getElementById('terms-content')
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }, 100)
+        return // Don't execute the general scroll below
       default:
         setResourceSection(resource)
         setActiveSection('resources')
         window.location.hash = 'resources'
     }
-    // Scroll to top for better UX
+    // Scroll to top for better UX (for all other links)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -3593,7 +3607,7 @@ function App() {
 
       {/* Impressum (Legal Notice) Section - EU Legal Requirement */}
       {activeSection === 'impressum' && (
-        <section className="py-12 bg-white min-h-screen">
+        <section id="impressum-content" className="py-12 bg-white min-h-screen">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">Legal Notice (Impressum)</h1>
@@ -3655,7 +3669,7 @@ function App() {
 
       {/* Terms & Conditions Section - EU Electronic Commerce Requirement */}
       {activeSection === 'terms' && (
-        <section className="py-12 bg-white min-h-screen">
+        <section id="terms-content" className="py-12 bg-white min-h-screen">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">Terms & Conditions</h1>
