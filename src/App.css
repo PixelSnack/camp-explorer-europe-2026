@@ -156,7 +156,7 @@
   /* Adaptive Hero Content Layout - Intelligent positioning instead of forced centering */
   .hero-adaptive-grid {
     display: grid;
-    grid-template-rows: minmax(2rem, 1fr) auto minmax(4rem, 1fr); /* Adequate bottom spacing to prevent section overlap */
+    grid-template-rows: minmax(2rem, 1fr) fit-content(100%) minmax(4rem, 1fr); /* Constrained middle area prevents overflow */
     grid-template-columns: 1fr;
     align-items: start;
     justify-items: center;
@@ -174,19 +174,23 @@
     max-width: 1152px; /* max-w-6xl equivalent */
     margin: 0 auto;
     padding: 0 1rem; /* Simple, consistent horizontal padding */
-    
+
     /* Ensure content never overflows available space */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
     /* Prevent horizontal overflow with better approach */
     box-sizing: border-box;
     overflow-wrap: break-word;
     word-wrap: break-word;
     min-width: 0; /* Ensure flexbox child can shrink */
+
+    /* Defensive constraints to prevent overflow beyond hero boundaries */
+    max-height: 100%;
+    overflow: hidden;
   }
   
   /* Responsive horizontal padding */
