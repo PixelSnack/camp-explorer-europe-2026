@@ -348,6 +348,53 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* PHASE B ENHANCEMENTS - CAMP CARD OPTIMIZATION */
+
+/* Enhanced Card Interactions - Premium Feel */
+.camp-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.camp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Price Emphasis - Parent's #1 Decision Factor */
+.camp-price {
+  font-weight: 700;
+  font-size: clamp(1.25rem, 3vw, 1.5rem); /* 20-24px responsive */
+  line-height: 1.2;
+  color: theme('colors.blue.600');
+}
+
+.camp-price-label {
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem); /* 12-14px responsive */
+  font-weight: 500;
+  color: theme('colors.gray.500');
+}
+
+/* Enhanced Information Hierarchy */
+.camp-info-section {
+  border-top: 1px solid theme('colors.gray.100');
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+/* Trust Signal Enhancement */
+.trust-indicator {
+  font-weight: 500;
+  color: theme('colors.gray.600');
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.trust-indicator:hover {
+  color: theme('colors.gray.800');
+}
+
 /* HERO TITLE - Special treatment for hero section */
 .hero-fluid-title {
   font-size: clamp(1.5rem, 6vw, 3.5rem); /* Scales from 24px to 56px based on viewport width */

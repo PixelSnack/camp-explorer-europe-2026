@@ -1055,7 +1055,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {filteredCamps.map((camp) => (
-              <Card key={camp.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group border-0 shadow-lg">
+              <Card key={camp.id} className="camp-card overflow-hidden border-0 shadow-lg group">
                 <div className="relative h-56 overflow-hidden">
                   <img 
                     src={camp.image} 
@@ -1107,8 +1107,8 @@ function App() {
                       </CardDescription>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-blue-600">{camp.price}</div>
-                      <div className="text-xs text-gray-500">per 2 weeks</div>
+                      <div className="camp-price">{camp.price}</div>
+                      <div className="camp-price-label">per 2 weeks</div>
                     </div>
                   </div>
                 </CardHeader>
@@ -1162,14 +1162,16 @@ function App() {
                       </ul>
                     </div>
                     
-                    <div className="flex items-center justify-between pt-4 border-t">
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Award className="w-4 h-4 mr-1" />
-                        Est. {camp.established}
-                      </div>
-                      <div className="flex items-center text-sm text-gray-500">
-                        <Heart className="w-4 h-4 mr-1" />
-                        {camp.reviews} reviews
+                    <div className="camp-info-section">
+                      <div className="flex items-center justify-between">
+                        <div className="trust-indicator">
+                          <Award className="w-4 h-4" />
+                          <span>Est. {camp.established}</span>
+                        </div>
+                        <div className="trust-indicator">
+                          <Heart className="w-4 h-4" />
+                          <span>{camp.reviews} reviews</span>
+                        </div>
                       </div>
                     </div>
                     
@@ -1448,7 +1450,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredCamps.map((camp) => (
-                <Card key={camp.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group border-0 shadow-lg">
+                <Card key={camp.id} className="camp-card overflow-hidden border-0 shadow-lg group">
                   <div className="relative h-56 overflow-hidden">
                     <img 
                       src={camp.image} 
@@ -2028,8 +2030,8 @@ function App() {
 
             {/* Age Groups Overview */}
             <Card className="p-8 mb-16 border-0 shadow-lg bg-gradient-to-br from-blue-50 to-orange-50">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Camps by Age Group</h2>
-              <p className="text-center text-lg text-gray-600 mb-8">Each age group has different needs and readiness levels for camp experiences</p>
+              <h2 className="section-title text-gray-900 text-center">Camps by Age Group</h2>
+              <p className="section-subtitle text-center text-gray-600">Each age group has different needs and readiness levels for camp experiences</p>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white p-6 rounded-lg border border-blue-100">
