@@ -3345,7 +3345,7 @@ function App() {
       
       {/* GDPR-Compliant Cookie Banner - UX Optimized */}
       {showCookieBanner && (
-        <div className="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg z-50 border-b-2 border-blue-600" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+        <div className="fixed top-14 sm:top-16 left-0 right-0 bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 shadow-lg z-50 border-b-2 border-blue-600" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex-1">
               <h3 id="cookie-title" className="font-semibold text-lg mb-2 flex items-center">
