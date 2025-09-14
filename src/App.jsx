@@ -825,7 +825,7 @@ function App() {
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
               onClick={() => handleNavigation('discover')}
             >
-              Explore 100+ Camps
+              Explore Camps
             </Button>
             <Button 
               size="lg" 
