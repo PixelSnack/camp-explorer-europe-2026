@@ -505,8 +505,8 @@
 /* BATTERY OPTIMIZATION - MOBILE PERFORMANCE */
 @media (max-width: 768px) {
   .hero-fluid-badge.marquee-enabled .marquee-content {
-    /* Slower on mobile to preserve battery */
-    animation-duration: 22s;
+    /* Optimized speed for mobile - faster on iOS, maintained on Android */
+    animation-duration: 18s;
   }
 }
 

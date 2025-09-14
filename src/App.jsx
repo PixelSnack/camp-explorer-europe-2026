@@ -308,7 +308,7 @@ function App() {
     {
       id: 13,
       name: "Camp Adventure - Outdoor Adventure Park",
-      location: "Rønnede, Zealand",
+      location: "Rønnede, Denmark",
       country: "Denmark",
       ages: "8-16 years",
       price: "DKK 4,500",
@@ -330,7 +330,7 @@ function App() {
     {
       id: 14,
       name: "Adventure Treks Norway Expedition",
-      location: "Nordfjord & Jotunheimen",
+      location: "Nordfjord & Jotunheimen, Norway",
       country: "Norway",
       ages: "16-18 years",
       price: "$7,295",
@@ -352,7 +352,7 @@ function App() {
     {
       id: 15,
       name: "Camp Bjøntegaard",
-      location: "Rendalen Municipality",
+      location: "Rendalen, Norway",
       country: "Norway",
       ages: "12-18 years",
       price: "NOK 12,500",
@@ -418,7 +418,7 @@ function App() {
     {
       id: 18,
       name: "Nordic Terrain Academy - Adventure Camps",
-      location: "Stavanger",
+      location: "Stavanger, Norway",
       country: "Norway",
       ages: "6-12 years",
       price: "NOK 3,500",
@@ -441,7 +441,7 @@ function App() {
     {
       id: 19,
       name: "Nordic Woods Wilderness Glamping",
-      location: "Åsnen National Park",
+      location: "Åsnen National Park, Sweden",
       country: "Sweden",
       ages: "7+ years",
       price: "€530",
@@ -463,7 +463,7 @@ function App() {
     {
       id: 20,
       name: "Ranum Efterskole International Summer School",
-      location: "Ranum",
+      location: "Ranum, Denmark",
       country: "Denmark",
       ages: "15-18 years",
       price: "DKK 15,000",
@@ -528,12 +528,83 @@ function App() {
     }
   ]
 
+  // Multilingual search support for major European languages
+  const getMultilingualSearchTerms = (term) => {
+    const lowerTerm = term.toLowerCase()
+    const translations = {
+      // Country names in local languages
+      'danmark': 'denmark',
+      'norge': 'norway',
+      'noreg': 'norway',
+      'schweiz': 'switzerland',
+      'suisse': 'switzerland',
+      'svizzera': 'switzerland',
+      'österreich': 'austria',
+      'autriche': 'austria',
+      'deutschland': 'germany',
+      'allemagne': 'germany',
+      'germania': 'germany',
+      'frankreich': 'france',
+      'francia': 'france',
+      'spanien': 'spain',
+      'espagne': 'spain',
+      'spagna': 'spain',
+      'italien': 'italy',
+      'italie': 'italy',
+      'niederlande': 'netherlands',
+      'pays-bas': 'netherlands',
+      'paesi bassi': 'netherlands',
+      'schweden': 'sweden',
+      'suède': 'sweden',
+      'svezia': 'sweden',
+      'finnland': 'finland',
+      'finlande': 'finland',
+      'finlandia': 'finland',
+      'island': 'iceland',
+      'islande': 'iceland',
+      'islanda': 'iceland',
+      // Common search terms
+      'sommer': 'summer',
+      'été': 'summer',
+      'verano': 'summer',
+      'estate': 'summer',
+      'lager': 'camp',
+      'camp': 'camp',
+      'campo': 'camp'
+    }
+
+    // Return both original term and translated terms
+    const searchTerms = [lowerTerm]
+    if (translations[lowerTerm]) {
+      searchTerms.push(translations[lowerTerm])
+    }
+
+    // Also check if any translation maps TO the current term
+    Object.entries(translations).forEach(([foreign, english]) => {
+      if (english === lowerTerm) {
+        searchTerms.push(foreign)
+      }
+    })
+
+    return searchTerms
+  }
+
   const filteredCamps = allCamps.filter(camp => {
     const matchesFilter = selectedFilter === 'all' || camp.category === selectedFilter
     const matchesCountry = selectedCountry === 'all' || camp.country === selectedCountry
-    const matchesSearch = camp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         camp.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         camp.country.toLowerCase().includes(searchTerm.toLowerCase())
+
+    // Enhanced multilingual search
+    if (!searchTerm) {
+      return matchesFilter && matchesCountry
+    }
+
+    const searchTerms = getMultilingualSearchTerms(searchTerm)
+    const matchesSearch = searchTerms.some(term =>
+      camp.name.toLowerCase().includes(term) ||
+      camp.location.toLowerCase().includes(term) ||
+      camp.country.toLowerCase().includes(term)
+    )
+
     return matchesFilter && matchesCountry && matchesSearch
   })
 
@@ -966,7 +1037,7 @@ function App() {
               className="btn-hero-secondary text-lg"
               onClick={() => handleNavigation('guide')}
             >
-              Download Guide
+              Camp Guide
             </Button>
           </div>
           
@@ -1364,7 +1435,7 @@ function App() {
               className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg"
               onClick={() => handleNavigation('guide')}
             >
-              Download Complete Guide
+              Complete Guide
             </Button>
           </div>
         </div>
