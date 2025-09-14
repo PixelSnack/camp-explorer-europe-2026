@@ -963,7 +963,7 @@ function App() {
               Explore Camps
             </Button>
             <Button
-              className="btn-tertiary border-white text-white hover:bg-white hover:text-gray-900 text-lg"
+              className="btn-hero-secondary text-lg"
               onClick={() => handleNavigation('guide')}
             >
               Download Guide
