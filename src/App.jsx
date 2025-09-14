@@ -851,8 +851,23 @@ function App() {
         }
       }
 
-      // Call the initialization function with a small delay
-      setTimeout(initWithDelay, 100)
+      // Call the initialization function with retry logic for section changes
+      const tryInitialize = (attempts = 0) => {
+        if (attempts < 5) {
+          const badge = heroBadgeRef.current
+          const content = badge?.querySelector('.marquee-content')
+
+          if (badge && content && content.textContent.trim()) {
+            initWithDelay()
+          } else {
+            // Retry with exponential backoff
+            setTimeout(() => tryInitialize(attempts + 1), 100 + (attempts * 50))
+          }
+        }
+      }
+
+      // Start with immediate attempt, then retry if needed
+      setTimeout(() => tryInitialize(), 50)
     }
 
     // DEBOUNCE UTILITY FOR PERFORMANCE
@@ -940,12 +955,12 @@ function App() {
         <nav className="relative" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
-            <div className="flex items-baseline">
+            <div className="flex items-baseline flex-wrap">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
-                <span className="block sm:inline">Camp Explorer</span>
-                <span className="block sm:inline sm:ml-1">Europe</span>
-                <span className="ml-2 text-base sm:text-lg md:text-xl text-orange-500 font-semibold">2026</span>
+                <span className="inline">Camp Explorer</span>
+                <span className="inline ml-1">Europe</span>
               </div>
+              <span className="ml-2 text-base sm:text-lg md:text-xl text-orange-500 font-semibold">2026</span>
             </div>
             
             {/* Desktop Navigation */}
