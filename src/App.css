@@ -502,11 +502,16 @@
   animation-play-state: paused;
 }
 
-/* BATTERY OPTIMIZATION - MOBILE PERFORMANCE */
+/* CROSS-PLATFORM MARQUEE OPTIMIZATION */
 @media (max-width: 768px) {
-  .hero-fluid-badge.marquee-enabled .marquee-content {
-    /* Optimized speed for mobile - faster on iOS, maintained on Android */
-    animation-duration: 18s;
+  /* iOS-specific faster timing */
+  .hero-fluid-badge.marquee-enabled:not(.material-motion) .marquee-content {
+    animation-duration: 15s; /* iOS optimized speed */
+  }
+
+  /* Android maintains material motion timing */
+  .hero-fluid-badge.marquee-enabled.material-motion .marquee-content {
+    animation-duration: 16s; /* Android Material 3 speed */
   }
 }
 
@@ -519,10 +524,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ANDROID MATERIAL 3 EXPRESSIVE VARIANT (OPTIONAL) */
+/* ANDROID MATERIAL 3 EXPRESSIVE VARIANT */
 .hero-fluid-badge.marquee-enabled.material-motion .marquee-content {
   animation-timing-function: var(--android-timing);
-  animation-duration: 16s; /* Slightly faster for springy feel */
+  /* Duration controlled by mobile media query above */
 }
 
 /* RESPONSIVE BREAKPOINT BEHAVIOR */

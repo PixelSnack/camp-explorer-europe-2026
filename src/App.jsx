@@ -868,9 +868,12 @@ function App() {
       }
     }
 
-    const cleanup = initializeMarqueeSystem()
-    return cleanup
-  }, []) // Empty dependency - initialize once
+    // Only initialize marquee when on home section
+    if (activeSection === 'home') {
+      const cleanup = initializeMarqueeSystem()
+      return cleanup
+    }
+  }, [activeSection]) // Re-run when section changes
 
   // Mobile menu auto-close on outside click - 2025 UX best practice
   useEffect(() => {
@@ -941,8 +944,8 @@ function App() {
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
                 <span className="block sm:inline">Camp Explorer</span>
                 <span className="block sm:inline sm:ml-1">Europe</span>
+                <span className="ml-2 text-base sm:text-lg md:text-xl text-orange-500 font-semibold">2026</span>
               </div>
-              <span className="ml-2 text-base sm:text-lg md:text-xl text-orange-500 font-semibold">2026</span>
             </div>
             
             {/* Desktop Navigation */}
