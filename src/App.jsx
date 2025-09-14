@@ -82,7 +82,7 @@ function App() {
     {
       id: 3,
       name: "Camp Suisse",
-      location: "Torgon, Swiss Alps",
+      location: "Torgon, Swiss Alps, Switzerland",
       country: "Switzerland", 
       ages: "7-17 years",
       price: "CHF 4,000",
@@ -194,7 +194,7 @@ function App() {
     {
       id: 8,
       name: "Alpine French School",
-      location: "Morzine, French Alps",
+      location: "Morzine, French Alps, France",
       country: "France",
       ages: "12-17 years",
       price: "€1,845",
@@ -374,7 +374,7 @@ function App() {
     {
       id: 16,
       name: "Metsäkartano Educational Adventures",
-      location: "Rautavaara, Finnish Lakeland",
+      location: "Rautavaara, Finnish Lakeland, Finland",
       country: "Finland",
       ages: "8-16 years",
       price: "€2,800",
@@ -396,7 +396,7 @@ function App() {
     {
       id: 17,
       name: "Bold Earth Adventures - Iceland: Fire and Ice",
-      location: "Reykjavik & Highlands",
+      location: "Reykjavik & Highlands, Iceland",
       country: "Iceland",
       ages: "14-18 years",
       price: "€4,800",
@@ -507,7 +507,7 @@ function App() {
     {
       id: 22,
       name: "Piispala Authentic Finnish Camp School",
-      location: "Kannonkoski, Finnish Lakeland",
+      location: "Kannonkoski, Finnish Lakeland, Finland",
       country: "Finland",
       ages: "4-16 years", 
       price: "€546",
