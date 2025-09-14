@@ -556,6 +556,7 @@ function App() {
   const handleNavigation = (section) => {
     setActiveSection(section)
     window.location.hash = section
+    window.scrollTo(0, 0) // Always scroll to top on navigation
   }
 
   const handleCampSelection = (camp) => {
