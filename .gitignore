@@ -117,3 +117,6 @@ $RECYCLE.BIN/
 
 # Claude Code settings
 .claude/
+
+# Backup files
+*.backup
