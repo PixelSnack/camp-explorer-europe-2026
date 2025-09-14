@@ -661,7 +661,7 @@ function App() {
   // Mobile menu auto-close on outside click - 2025 UX best practice
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMenuOpen && !event.target.closest('.mobile-nav-container')) {
+      if (isMenuOpen && !event.target.closest('.mobile-nav-container') && !event.target.closest('.mobile-button')) {
         setIsMenuOpen(false)
       }
     }
@@ -803,7 +803,7 @@ function App() {
         <div className="hero-adaptive-grid relative z-10">
           <div className="hero-adaptive-content text-center text-white">
           <div className="mb-6">
-            <Badge className="bg-orange-500/90 text-white px-4 py-2 text-sm font-semibold">
+            <Badge className="bg-orange-500/90 text-white px-3 py-2 text-sm font-semibold max-w-[90%] mx-auto">
               100+ Verified Camps • 13 Countries • 2026 Bookings Open
             </Badge>
           </div>
@@ -857,7 +857,7 @@ function App() {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="pt-20 pb-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

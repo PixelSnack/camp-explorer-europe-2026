@@ -156,7 +156,7 @@
   /* Adaptive Hero Content Layout - Intelligent positioning instead of forced centering */
   .hero-adaptive-grid {
     display: grid;
-    grid-template-rows: minmax(2rem, 1fr) auto minmax(4rem, 1fr); /* Adequate bottom spacing to prevent section overlap */
+    grid-template-rows: minmax(2rem, 1fr) auto minmax(6rem, 1fr); /* Enhanced bottom spacing to prevent section overlap */
     grid-template-columns: 1fr;
     align-items: start;
     justify-items: center;
