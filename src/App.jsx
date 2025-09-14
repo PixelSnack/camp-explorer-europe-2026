@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
@@ -28,6 +28,9 @@ function App() {
   const [cookieConsent, setCookieConsent] = useState(null) // null = not decided, true = accepted, false = rejected
   const [showCookieBanner, setShowCookieBanner] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
+
+  // Enterprise Marquee System - State of the Art
+  const heroBadgeRef = useRef(null)
 
   // Comprehensive camp data based on our ultimate research
   const allCamps = [
@@ -659,6 +662,119 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // 🚀 ENTERPRISE MARQUEE INTELLIGENCE SYSTEM - STATE OF THE ART
+  useEffect(() => {
+    const initializeMarqueeSystem = () => {
+      if (!heroBadgeRef.current) return
+
+      const badge = heroBadgeRef.current
+      const content = badge.querySelector('.marquee-content')
+
+      if (!content) return
+
+      // INTELLIGENT OVERFLOW DETECTION
+      const checkOverflow = () => {
+        // Only check on mobile/tablet viewports
+        if (window.innerWidth >= 769) {
+          // Desktop: Force disable and clean up
+          badge.classList.remove('marquee-enabled', 'material-motion')
+          return
+        }
+
+        // Temporarily disable marquee for measurement
+        badge.classList.remove('marquee-enabled')
+
+        // Wait for next frame to ensure layout is updated
+        requestAnimationFrame(() => {
+          const badgeWidth = badge.offsetWidth
+          const contentWidth = content.scrollWidth
+          const isOverflowing = contentWidth > badgeWidth - 40 // 40px buffer for padding/comfort
+
+          if (isOverflowing) {
+            // ACTIVATE MARQUEE - MOBILE ONLY
+            badge.classList.add('marquee-enabled')
+
+            // PLATFORM-NATIVE MOTION DETECTION
+            const isAndroid = /Android/i.test(navigator.userAgent)
+            if (isAndroid) {
+              badge.classList.add('material-motion') // Material 3 Expressive spring physics
+            }
+
+            // ACCESSIBILITY & PERFORMANCE OPTIMIZATION
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            if (prefersReducedMotion) {
+              badge.setAttribute('aria-label', 'Information banner - animation disabled for accessibility')
+            }
+          } else {
+            badge.classList.remove('marquee-enabled', 'material-motion')
+          }
+        })
+      }
+
+      // BATTERY OPTIMIZATION - PAGE VISIBILITY API
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          // Pause animation when tab not visible
+          badge.style.setProperty('animation-play-state', 'paused')
+        } else {
+          badge.style.removeProperty('animation-play-state')
+        }
+      }
+
+      // RESPONSIVE INTELLIGENCE - RESIZE DETECTION
+      const handleResize = debounce(checkOverflow, 150)
+
+      // INTERSECTION OBSERVER - PERFORMANCE OPTIMIZATION
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            badge.style.removeProperty('animation-play-state')
+          } else {
+            badge.style.setProperty('animation-play-state', 'paused')
+          }
+        },
+        { threshold: 0.1 }
+      )
+
+      // ACCESSIBILITY - MOTION PREFERENCE MONITORING
+      const motionMediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+      const handleMotionChange = () => checkOverflow()
+
+      // INITIALIZE SYSTEM
+      checkOverflow()
+
+      // ATTACH ENTERPRISE EVENT LISTENERS
+      window.addEventListener('resize', handleResize)
+      document.addEventListener('visibilitychange', handleVisibilityChange)
+      motionMediaQuery.addEventListener('change', handleMotionChange)
+      observer.observe(badge)
+
+      // CLEANUP FUNCTION - ENTERPRISE MEMORY MANAGEMENT
+      return () => {
+        window.removeEventListener('resize', handleResize)
+        document.removeEventListener('visibilitychange', handleVisibilityChange)
+        motionMediaQuery.removeEventListener('change', handleMotionChange)
+        observer.disconnect()
+      }
+    }
+
+    // DEBOUNCE UTILITY FOR PERFORMANCE
+    function debounce(func, wait) {
+      let timeout
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout)
+          func(...args)
+        }
+        clearTimeout(timeout)
+        timeout = setTimeout(later, wait)
+      }
+    }
+
+    const cleanup = initializeMarqueeSystem()
+    return cleanup
+  }, []) // Empty dependency - initialize once
+
   // Mobile menu auto-close on outside click - 2025 UX best practice
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -804,8 +920,16 @@ function App() {
         <div className="hero-adaptive-grid relative z-10">
           <div className="hero-adaptive-content text-center text-white">
           <div>
-            <Badge className="hero-fluid-badge bg-orange-500/90 text-white font-semibold">
-              100+ Verified Programs • 13 Countries • 2026 Bookings Open
+            <Badge
+              className="hero-fluid-badge bg-orange-500/90 text-white font-semibold"
+              ref={heroBadgeRef}
+              role="marquee"
+              aria-live="polite"
+              aria-label="Camp information banner"
+            >
+              <span className="marquee-content">
+                100+ Verified Programs • 13 Countries • 2026 Bookings Open
+              </span>
             </Badge>
           </div>
           

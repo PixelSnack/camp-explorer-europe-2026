@@ -263,5 +263,106 @@
   font-size: clamp(0.875rem, 2vw, 1rem); /* Badge text scales appropriately */
   padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
   margin-bottom: clamp(1.5rem, 4vh, 2rem); /* Maintains minimum badge spacing */
-  /* Allow natural width for desktop, responsive padding handles mobile overflow */
+
+  /* Enterprise Marquee System - State of the Art Mobile UX */
+  position: relative;
+  overflow: hidden;
+
+  /* Desktop: Natural width (preserve perfect experience) */
+  width: auto;
+  max-width: none;
+}
+
+/* ENTERPRISE MARQUEE - CONDITIONAL MOBILE ACTIVATION */
+.hero-fluid-badge.marquee-enabled {
+  /* Mobile: Container constraints for marquee */
+  max-width: calc(100vw - 2rem); /* Account for hero padding */
+  width: 100%;
+}
+
+.hero-fluid-badge .marquee-content {
+  /* Default: Static positioning */
+  display: inline-block;
+  white-space: nowrap;
+
+  /* Performance optimization foundation */
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* MOBILE MARQUEE ANIMATION - iOS/ANDROID COMPLIANT */
+.hero-fluid-badge.marquee-enabled .marquee-content {
+  /* Enterprise animation parameters */
+  animation: enterpriseMarquee 18s linear infinite;
+  animation-play-state: running;
+
+  /* iOS-style smooth motion with Android spring option */
+  --ios-timing: linear;
+  --android-timing: cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation-timing-function: var(--ios-timing);
+}
+
+@keyframes enterpriseMarquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* ACCESSIBILITY FIRST - PLATFORM STANDARD */
+@media (prefers-reduced-motion: reduce) {
+  .hero-fluid-badge.marquee-enabled .marquee-content {
+    animation: none !important;
+    transform: translateX(0) !important;
+
+    /* Graceful fallback: Fade text edges for overflow indication */
+    mask-image: linear-gradient(90deg, transparent, black 20px, black calc(100% - 20px), transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 20px, black calc(100% - 20px), transparent);
+  }
+}
+
+/* USER CONTROL - ENTERPRISE UX STANDARD */
+.hero-fluid-badge.marquee-enabled:hover .marquee-content,
+.hero-fluid-badge.marquee-enabled:focus-within .marquee-content {
+  animation-play-state: paused;
+}
+
+/* BATTERY OPTIMIZATION - MOBILE PERFORMANCE */
+@media (max-width: 768px) {
+  .hero-fluid-badge.marquee-enabled .marquee-content {
+    /* Slower on mobile to preserve battery */
+    animation-duration: 22s;
+  }
+}
+
+/* ULTRA-SMOOTH RENDERING - 60FPS GUARANTEE */
+.hero-fluid-badge.marquee-enabled {
+  /* Hardware acceleration triggers */
+  transform: translateZ(0);
+  /* Prevent subpixel rendering issues */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ANDROID MATERIAL 3 EXPRESSIVE VARIANT (OPTIONAL) */
+.hero-fluid-badge.marquee-enabled.material-motion .marquee-content {
+  animation-timing-function: var(--android-timing);
+  animation-duration: 16s; /* Slightly faster for springy feel */
+}
+
+/* RESPONSIVE BREAKPOINT BEHAVIOR */
+@media (min-width: 769px) {
+  /* Desktop: Force disable marquee regardless of JavaScript */
+  .hero-fluid-badge.marquee-enabled {
+    max-width: none;
+    width: auto;
+  }
+
+  .hero-fluid-badge.marquee-enabled .marquee-content {
+    animation: none !important;
+    transform: translateX(0) !important;
+  }
 }
