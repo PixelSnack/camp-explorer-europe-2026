@@ -956,17 +956,14 @@ function App() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center hero-fluid-spacing">
-            <Button 
-              size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
+            <Button
+              className="btn-primary text-lg"
               onClick={() => handleNavigation('discover')}
             >
               Explore Camps
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg"
+            <Button
+              className="btn-tertiary border-white text-white hover:bg-white hover:text-gray-900 text-lg"
               onClick={() => handleNavigation('guide')}
             >
               Download Guide
@@ -997,10 +994,10 @@ function App() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="section-title text-gray-900">
               Find Your Perfect Camp
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="section-subtitle text-gray-600 max-w-2xl mx-auto">
               Filter by type, budget, age, or location to discover camps that match your family's needs
             </p>
           </div>
@@ -1101,10 +1098,10 @@ function App() {
                 <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">
+                      <CardTitle className="card-title text-gray-900 group-hover:text-blue-600 transition-colors">
                         {camp.name}
                       </CardTitle>
-                      <CardDescription className="flex items-center text-gray-600 mt-1">
+                      <CardDescription className="body-text flex items-center text-gray-600 mt-1">
                         <MapPin className="w-4 h-4 mr-1" />
                         {camp.location}
                       </CardDescription>
@@ -1131,12 +1128,12 @@ function App() {
                     
                     <div className="flex flex-wrap gap-1">
                       {camp.activities.slice(0, 3).map((activity, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
+                        <Badge key={index} variant="secondary" className="badge-responsive">
                           {activity}
                         </Badge>
                       ))}
                       {camp.activities.length > 3 && (
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="badge-responsive">
                           +{camp.activities.length - 3} more
                         </Badge>
                       )}
@@ -1146,7 +1143,7 @@ function App() {
                       <div className="text-sm font-medium text-gray-900">Languages:</div>
                       <div className="flex flex-wrap gap-1">
                         {camp.languages.map((lang, index) => (
-                          <Badge key={index} variant="outline" className="text-xs">
+                          <Badge key={index} variant="outline" className="badge-responsive">
                             {lang}
                           </Badge>
                         ))}
@@ -1176,8 +1173,8 @@ function App() {
                       </div>
                     </div>
                     
-                    <Button 
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                    <Button
+                      className="w-full btn-secondary"
                       onClick={() => window.open(camp.bookingUrl, '_blank')}
                       aria-label={`View details and book ${camp.name}`}
                     >
