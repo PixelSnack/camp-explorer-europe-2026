@@ -523,7 +523,10 @@ npm run dev      # Should start on http://localhost:5173
 - **SEO-First Mindset**: Every change should support #1 Google ranking goal  
 - **Enterprise Quality**: Maintain performance, accessibility, security standards
 - **Testing Protocol**: Build + Lint + Manual verification required
-- **Automated Commit Process**: Claude Code handles full git workflow - user only pushes to origin
+- **🚨 MANDATORY COMMIT PROCESS**: After ANY code changes, immediately run `git add` + `git commit` with comprehensive message - user only pushes to origin
+
+### **⚠️ CRITICAL REMINDER: ALWAYS COMMIT CHANGES**
+**🔥 NEVER FORGET: After making code changes and testing, you MUST commit immediately before announcing completion**
 
 ### **⚠️ CRITICAL REMINDER: NO TUNNEL VISION**
 **Before ANY code change, ask yourself:**

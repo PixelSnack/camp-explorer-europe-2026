@@ -6,6 +6,22 @@
 
 ---
 
+## 🚨 CRITICAL WORKFLOW REMINDER - ALWAYS COMMIT CHANGES
+
+### **⚠️ MANDATORY: COMMIT AFTER EVERY CODE CHANGE**
+**🔥 NEVER FORGET: After making ANY code changes, you MUST commit to main immediately**
+
+**Required Workflow:**
+1. ✅ Make code changes
+2. ✅ Test thoroughly (`npm run build && npm run lint`)
+3. 🚨 **COMMIT IMMEDIATELY** (`git add` + `git commit` with comprehensive message)
+4. ✅ Inform user to push to origin
+
+**Common Mistake:** Getting excited about solving problems and forgetting to commit
+**Solution:** Make committing part of the problem-solving process, not an afterthought
+
+---
+
 ## 🚨 CARDINAL RULES - NEVER BREAK THESE
 
 ### **0. MANDATORY HOLISTIC REVIEW - BEFORE ANY CODE CHANGE**
