@@ -525,6 +525,28 @@ function App() {
       established: 1963,
       capacity: 50,
       bookingUrl: "https://piispala.fi/en/authentic-finnish-camp-school/"
+    },
+    {
+      id: 23,
+      name: "Myhre Gård Riding Camp",
+      location: "Beitostølen, Norway",
+      country: "Norway",
+      ages: "7-18 years",
+      price: "NOK 6,950",
+      priceRange: "premium",
+      rating: 4.8,
+      reviews: 89,
+      image: activitiesCompressed,
+      category: "sports",
+      type: "Equestrian Sports",
+      activities: ["Horse Riding", "Trail Rides", "Jumping", "Stable Care", "Mountain Hiking"],
+      dates: "June 21-26 & June 28-July 3, 2026",
+      highlights: ["17+ years experience", "Professional riding instruction", "Mountain location", "Field trips included"],
+      languages: ["Norwegian", "English"],
+      specialFeatures: ["9 Riding Sessions", "Competition Training", "Theory Lessons", "Mountain Trail Access"],
+      established: 2007,
+      capacity: 24,
+      bookingUrl: "https://www.myhregard.com/riding-camp-norway/"
     }
   ]
 
