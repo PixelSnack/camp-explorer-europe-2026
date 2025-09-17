@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -3796,7 +3797,12 @@ function App() {
       )}
 
       {/* Conditional Analytics - Only load if consent given */}
-      {cookieConsent === true && <Analytics />}
+      {cookieConsent === true && (
+        <>
+          <Analytics />
+          <SpeedInsights />
+        </>
+      )}
     </div>
   )
 }
