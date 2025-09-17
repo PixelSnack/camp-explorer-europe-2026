@@ -84,14 +84,14 @@ function App() {
       id: 3,
       name: "Camp Suisse",
       location: "Torgon, Swiss Alps, Switzerland",
-      country: "Switzerland", 
+      country: "Switzerland",
       ages: "7-17 years",
       price: "CHF 4,000",
       priceRange: "premium",
       rating: 4.8,
       reviews: 356,
       image: mapCompressed,
-      category: "family",
+      category: "premium",
       type: "Adventure Sports",
       activities: ["Multi-Sport", "Language Learning", "Leadership Training", "Environmental Ed"],
       dates: "June 21-July 5, 2026",
@@ -266,7 +266,7 @@ function App() {
       location: "Milan, Italy",
       country: "Italy",
       ages: "8-16 years",
-      price: "€1,950",
+      price: "€1,440",
       priceRange: "mid",
       rating: 4.9,
       reviews: 312,
@@ -453,7 +453,7 @@ function App() {
       category: "unique",
       type: "Wilderness Glamping",
       activities: ["Guided Hikes", "Canoe Expeditions", "Bushcraft Workshops", "Yoga & Meditation"],
-      dates: "June 7 - September 13, 2025",
+      dates: "June 7 - September 13, 2026",
       highlights: ["Tipi accommodations", "Near national park", "Comprehensive activities included", "Family-friendly from age 7"],
       languages: ["Swedish", "English"],
       specialFeatures: ["Wilderness Glamping Experience", "Sauna & Hot Tub Access", "All Activities Included"],
@@ -475,7 +475,7 @@ function App() {
       category: "academic",
       type: "International School",
       activities: ["Danish Language", "Sports", "Arts", "Outdoor Activities", "Cultural Excursions"],
-      dates: "July 5 - August 1, 2025",
+      dates: "July 5 - August 1, 2026",
       highlights: ["Authentic efterskole experience", "International community", "Customizable program", "Weekly excursions"],
       languages: ["Danish", "English"],
       specialFeatures: ["Modular Subject Selection", "Cultural Immersion", "International Friendships"],
@@ -548,6 +548,28 @@ function App() {
       established: 2007,
       capacity: 24,
       bookingUrl: "https://www.myhregard.com/riding-camp-norway/"
+    },
+    {
+      id: 24,
+      name: "Families Worldwide Prague & Tatras Adventure",
+      location: "Prague, Czech Republic → Slovakia → Poland",
+      country: "Czech Republic",
+      ages: "6+ years with parents",
+      price: "€1,725",
+      priceRange: "premium",
+      rating: 4.7,
+      reviews: 127,
+      image: activitiesCompressed,
+      category: "family",
+      type: "Multi-Country Family Adventure",
+      activities: ["Cultural Tours", "Hiking", "Local Experiences", "Historic Sites"],
+      dates: "July 12-25, 2026",
+      highlights: ["Multi-country experience", "ABTOT/ATOL protected", "Parent-child bonding", "Professional guides"],
+      languages: ["English", "Czech", "Slovak"],
+      specialFeatures: ["3-Country Adventure", "Family Accommodation", "Cultural Immersion", "Professional Tour Management"],
+      established: 2008,
+      capacity: 40,
+      bookingUrl: "https://www.familiesworldwide.co.uk/czech-republic-slovakia-poland-family-adventure/"
     }
   ]
 
@@ -2530,7 +2552,7 @@ function App() {
                   <p className="text-sm text-gray-600 mb-3">Train with official AC Milan coaches at professional facilities. San Siro stadium tours included.</p>
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div><strong>Ages:</strong> 8-16</div>
-                    <div><strong>Price:</strong> €1,950</div>
+                    <div><strong>Price:</strong> €1,440</div>
                     <div><strong>Languages:</strong> English/Italian</div>
                     <div><strong>Special:</strong> Pro coaching, stadium access</div>
                   </div>
