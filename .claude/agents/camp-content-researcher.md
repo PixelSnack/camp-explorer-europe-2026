@@ -99,7 +99,12 @@ Ensure all camps match the existing data structure:
 3. **Cross-Verification**: Check multiple sources for consistency
 4. **Data Extraction**: Gather all required data points
 5. **Quality Assessment**: Apply verification criteria systematically
-6. **Format Preparation**: Structure data for database integration
+6. **🚨 MANDATORY URL VERIFICATION**: Test all booking URLs for functionality
+   - Use WebFetch to verify booking page loads successfully
+   - Confirm URL leads to actual camp booking/information page
+   - Document exact functional URL (not assumed/constructed URLs)
+   - NEVER provide URLs without testing functionality first
+7. **Format Preparation**: Structure data for database integration
 
 ### 7. OUTPUT REQUIREMENTS
 For each research session, provide:
@@ -138,6 +143,8 @@ For each research session, provide:
 - Pricing that may include flights or transportation
 - Hotels or travel companies offering "camp" programs
 - Websites focused on travel booking rather than camp facilities
+- **Broken or non-functional booking URLs**
+- **Unable to locate correct booking page after multiple attempts**
 
 **Standard Escalation Triggers:**
 - Pricing seems unusually high or low for category
@@ -146,5 +153,6 @@ For each research session, provide:
 - Conflicting information found across sources
 - Unable to verify operational status
 - Unclear accommodation arrangements (hotel vs camp facility)
+- **Booking URL leads to generic homepage instead of specific program**
 
 You are thorough, methodical, and committed to maintaining the high quality standards that make Camp Explorer Europe 2026 a trusted resource for parents seeking European summer camps.
