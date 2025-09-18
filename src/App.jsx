@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react'
 // import { useVirtualizer } from '@tanstack/react-virtual' // Prepared for virtual scrolling implementation
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import emailjs from '@emailjs/browser'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -26,6 +27,70 @@ function App() {
   const [selectedCountry, setSelectedCountry] = useState('all')
   const [resourceSection, setResourceSection] = useState(null)
   const [showContactForm, setShowContactForm] = useState(false)
+
+  // Contact Form State Management
+  const [isSubmittingForm, setIsSubmittingForm] = useState(false)
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
+  // Smart Email Routing Based on Inquiry Type
+  const getEmailRouting = (inquiryType) => {
+    const routingMap = {
+      'partnership': 'partnerships@europeansummercamps.com',
+      'media-inquiry': 'media@europeansummercamps.com',
+      'website-issue': 'info@europeansummercamps.com',
+      'general-portal': 'info@europeansummercamps.com',
+      'missing-camp': 'contact@europeansummercamps.com',
+      'data-correction': 'contact@europeansummercamps.com',
+      'other': 'hello@europeansummercamps.com'
+    }
+    return routingMap[inquiryType] || 'hello@europeansummercamps.com'
+  }
+
+  // Handle Contact Form Submission
+  const handleContactFormSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmittingForm(true)
+
+    const formData = new FormData(e.target)
+    const inquiryType = formData.get('subject')
+    const recipientEmail = getEmailRouting(inquiryType)
+
+    const templateParams = {
+      to_name: 'Camp Explorer Europe Team',
+      to_email: recipientEmail,
+      from_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+      from_email: formData.get('email'),
+      reply_to: formData.get('email'),
+      subject: `Contact Form: ${inquiryType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}`,
+      child_age: formData.get('childAge') || 'Not specified',
+      preferred_countries: formData.get('preferredCountries') || 'Not specified',
+      message: formData.get('message'),
+      inquiry_type: inquiryType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())
+    }
+
+    try {
+      // EmailJS sends directly to Cloudflare addresses - no Gmail SMTP needed
+      const result = await emailjs.send(
+        'YOUR_SERVICE_ID', // EmailJS service ID from dashboard
+        'YOUR_TEMPLATE_ID', // EmailJS template ID
+        templateParams,
+        'YOUR_PUBLIC_KEY' // EmailJS public key
+      )
+
+      console.log('Email sent successfully:', result.text)
+      setFormSubmitted(true)
+      setTimeout(() => {
+        setShowContactForm(false)
+        setFormSubmitted(false)
+      }, 3000)
+
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      alert('Sorry, there was an error sending your message. Please try again or contact us directly.')
+    } finally {
+      setIsSubmittingForm(false)
+    }
+  }
 
   // GDPR Cookie Consent Management
   const [cookieConsent, setCookieConsent] = useState(null) // null = not decided, true = accepted, false = rejected
@@ -3838,7 +3903,7 @@ function App() {
             </div>
 
             <div className="p-6 contact-modal-container">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleContactFormSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
@@ -3847,6 +3912,7 @@ function App() {
                     <input
                       type="text"
                       id="firstName"
+                      name="firstName"
                       autoComplete="given-name"
                       autoFocus
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-base"
@@ -3861,6 +3927,7 @@ function App() {
                     <input
                       type="text"
                       id="lastName"
+                      name="lastName"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                       placeholder="Your last name"
                       required
@@ -3875,6 +3942,7 @@ function App() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     inputMode="email"
                     autoComplete="email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-base"
@@ -3889,6 +3957,7 @@ function App() {
                   </label>
                   <select
                     id="subject"
+                    name="subject"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     required
                   >
@@ -3910,6 +3979,7 @@ function App() {
                   <input
                     type="number"
                     id="childAge"
+                    name="childAge"
                     min="3"
                     max="18"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
@@ -3924,6 +3994,7 @@ function App() {
                   <input
                     type="text"
                     id="preferredCountries"
+                    name="preferredCountries"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     placeholder="e.g., Switzerland, Nordic countries, anywhere in Europe"
                   />
@@ -3935,6 +4006,7 @@ function App() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows="4"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical"
                     placeholder="Please describe your specific needs, interests, or questions. The more details you provide, the better we can help you find the perfect camp match!"
@@ -3960,9 +4032,21 @@ function App() {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Button
                     type="submit"
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
+                    disabled={isSubmittingForm}
+                    className={`flex-1 font-semibold py-3 px-6 rounded-lg transition-all duration-200 ${
+                      formSubmitted
+                        ? 'bg-green-600 hover:bg-green-600 text-white'
+                        : isSubmittingForm
+                        ? 'bg-gray-400 hover:bg-gray-400 text-white cursor-not-allowed'
+                        : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transform hover:scale-105'
+                    }`}
                   >
-                    Send Message
+                    {formSubmitted
+                      ? '✓ Message Sent!'
+                      : isSubmittingForm
+                      ? 'Sending...'
+                      : 'Send Message'
+                    }
                   </Button>
                   <Button
                     type="button"
