@@ -45,11 +45,11 @@ npm run lint         # Run ESLint (important - always run before commits)
 - **Category Logic**: Single categories only (no multi-tagging) for optimal UX and SEO positioning
 
 ### IMPORTANT: Camp Count Distinction (For SEO)
-- **24 Organizations**: Camp organizations/sites in our database 
+- **23 Organizations**: Camp organizations/sites in our database 
 - **100+ Camps**: Total individual camp programs offered by all organizations
-- **SEO Requirement**: Always use "100+ camps" in marketing copy, not "24"
+- **SEO Requirement**: Always use "100+ camps" in marketing copy, not "23"
 - **Rationale**: Organizations like Piispala offer "300+ camps annually", Metsäkartano "100+ groups annually"
-- **Rule**: Only reference "24" when specifically talking about organizations, never for SEO copy
+- **Rule**: Only reference "23" when specifically talking about organizations, never for SEO copy
 
 ### Search & Filtering System
 - Real-time search across camp names, locations, countries (searchTerm state)
@@ -453,7 +453,7 @@ For each new niche site: Start with comprehensive data collection → Implement 
 - **Code quality** - Already excellent, needs architectural SEO enhancement only
 
 ### Business Context & Infrastructure
-- **24 camp organizations** representing 100+ individual programs across 13 European countries (September 2025: Added Myhre Gård Riding Camp, Norway + Families Worldwide Prague & Tatras Adventure, Czech Republic)
+- **23 camp organizations** representing 100+ individual programs across 12 European countries (September 2025: Added Myhre Gård Riding Camp, Norway | Removed tour operator misclassified as camp)
 - **Nordic Expansion**: Premium Scandinavian camps now included (Denmark, Sweden, Norway, Finland, Iceland)
 - **Category Optimization**: UX-optimized categories matching parent search behavior and expectations
 - **Professional Email Infrastructure**: Cloudflare Email Routing with branded addresses:
