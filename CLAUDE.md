@@ -456,10 +456,9 @@ For each new niche site: Start with comprehensive data collection → Implement 
 - **23 camp organizations** representing 100+ individual programs across 12 European countries (September 2025: Added Myhre Gård Riding Camp, Norway | Removed tour operator misclassified as camp)
 - **Nordic Expansion**: Premium Scandinavian camps now included (Denmark, Sweden, Norway, Finland, Iceland)
 - **Category Optimization**: UX-optimized categories matching parent search behavior and expectations
-- **Professional Email Infrastructure**: Cloudflare Email Routing with branded addresses:
+- **Professional Email Infrastructure**: Cloudflare Email Routing automatically forwards all 5 branded addresses to sorenthoning@gmail.com:
   - contact@europeansummercamps.com (primary business contact)
   - info@europeansummercamps.com (general inquiries)
-  - support@europeansummercamps.com (user support)
   - hello@europeansummercamps.com (friendly contact option)
   - partnerships@europeansummercamps.com (camp partnership inquiries)
   - media@europeansummercamps.com (press and media relations)
