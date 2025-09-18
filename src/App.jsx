@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
+import { useVirtualizer } from '@tanstack/react-virtual'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Button } from '@/components/ui/button.jsx'
@@ -634,24 +635,27 @@ function App() {
     return searchTerms
   }
 
-  const filteredCamps = allCamps.filter(camp => {
-    const matchesFilter = selectedFilter === 'all' || camp.category === selectedFilter
-    const matchesCountry = selectedCountry === 'all' || camp.country === selectedCountry
+  // Bleeding-edge performance optimization with useMemo
+  const filteredCamps = useMemo(() => {
+    return allCamps.filter(camp => {
+      const matchesFilter = selectedFilter === 'all' || camp.category === selectedFilter
+      const matchesCountry = selectedCountry === 'all' || camp.country === selectedCountry
 
-    // Enhanced multilingual search
-    if (!searchTerm) {
-      return matchesFilter && matchesCountry
-    }
+      // Enhanced multilingual search
+      if (!searchTerm) {
+        return matchesFilter && matchesCountry
+      }
 
-    const searchTerms = getMultilingualSearchTerms(searchTerm)
-    const matchesSearch = searchTerms.some(term =>
-      camp.name.toLowerCase().includes(term) ||
-      camp.location.toLowerCase().includes(term) ||
-      camp.country.toLowerCase().includes(term)
-    )
+      const searchTerms = getMultilingualSearchTerms(searchTerm)
+      const matchesSearch = searchTerms.some(term =>
+        camp.name.toLowerCase().includes(term) ||
+        camp.location.toLowerCase().includes(term) ||
+        camp.country.toLowerCase().includes(term)
+      )
 
-    return matchesFilter && matchesCountry && matchesSearch
-  })
+      return matchesFilter && matchesCountry && matchesSearch
+    })
+  }, [allCamps, selectedFilter, selectedCountry, searchTerm])
 
   const filterOptions = [
     { value: 'all', label: 'All Camps', count: allCamps.length },
