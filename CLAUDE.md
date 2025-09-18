@@ -509,12 +509,21 @@ For each new niche site: Start with comprehensive data collection → Implement 
 
 **CRITICAL**: When starting a new Claude Code session, ALWAYS read these documents in order:
 
+## 🚨 **SEPTEMBER 2025 INCIDENT AWARENESS**
+**MANDATORY CONTEXT**: Before any camp-related work, understand the critical incident:
+- **What Happened**: Tour operator "Families Worldwide Prague & Tatras Adventure" was misclassified as summer camp
+- **Agent Failure**: Both camp-content-researcher and camp-data-verifier failed to identify tour vs camp distinction
+- **Broken URL**: Agent provided non-functional booking URL without testing
+- **Resolution**: Enhanced agent instructions, mandatory human verification, bulletproof safeguards implemented
+- **Prevention**: All future camp work requires CAMP_VERIFICATION_CRITERIA.md compliance and manual validation
+
 ### **1. IMMEDIATE READING (Essential Context)**
 ```bash
 # Read these FIRST in every session:
 Read CLAUDE.md                    # This file - comprehensive overview
 Read DEVELOPMENT_GUIDELINES.md    # MANDATORY development standards
 Read QUICK_REFERENCE.md          # Current status and quick facts
+Read CAMP_VERIFICATION_CRITERIA.md # CRITICAL: Camp vs tour operator standards (September 2025 incident prevention)
 ```
 
 ### **2. CURRENT STATUS FILES (As Needed)**
@@ -529,6 +538,7 @@ Read IMAGE_OPTIMIZATION_TODO.md   # Performance optimization status
 # Read when making strategic decisions:
 Read MONETIZATION_STRATEGY.md     # Revenue planning and timeline
 Read README.md                    # Public-facing project overview
+Read SPECIALIZED_AGENTS_ROADMAP.md # Agent coordination strategy and instructions
 ```
 
 ### **4. HISTORICAL REFERENCE (Background Only)**
@@ -621,12 +631,15 @@ Read QUICK-START.md               # Rapid deployment guide ✅ CURRENT (Updated 
 ```
 
 ### **Step 2: Current Status Assessment**
+- **Database**: 23 verified camp organizations representing 100+ programs across 12 European countries
+- **Recent Correction**: Removed 1 tour operator misclassified as camp (September 2025 incident)
 - **Phase 1 Status**: ✅ COMPLETE (all optimizations deployed)
-- **Code Quality**: ✅ EXCELLENT (enterprise-level, 2,675 lines App.jsx)
-- **Performance**: ✅ OPTIMIZED (92% image reduction, modern delivery)
+- **Code Quality**: ✅ EXCELLENT (enterprise-level, 2,850+ lines App.jsx with useMemo optimization)
+- **Performance**: ✅ OPTIMIZED (93-96% image reduction, bleeding-edge filtering optimization)
 - **Security**: ✅ ENTERPRISE (HSTS + CSP headers)
 - **Accessibility**: ✅ WCAG 2.1 AA COMPLIANT
 - **SEO**: ✅ FOUNDATION READY (clean sitemap, structured data)
+- **Agent Framework**: ✅ OPERATIONAL (4 specialized agents with enhanced verification protocols)
 
 ### **Step 3: Verify Current Build Status**
 ```bash
