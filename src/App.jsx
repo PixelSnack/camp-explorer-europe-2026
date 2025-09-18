@@ -1134,7 +1134,7 @@ function App() {
           <source srcSet={heroLakesideWebp} type="image/webp" />
           <img 
             src={heroLakesideCompressed} 
-            alt="Scenic lakeside European summer camp setting with mountains and clear water"
+            alt="European summer camps 2026 - Premium lakeside camp setting with children enjoying outdoor activities in stunning Alpine scenery"
             className="w-full h-full object-cover"
             width="1680" 
             height="720"
@@ -3685,12 +3685,20 @@ function App() {
                 Terms
               </button>
               <span>•</span>
-              <button 
-                onClick={() => setActiveSection('privacy')} 
+              <button
+                onClick={() => setActiveSection('privacy')}
                 className="hover:text-gray-300 underline transition-colors"
                 aria-label="View privacy policy"
               >
                 Privacy
+              </button>
+              <span>•</span>
+              <button
+                onClick={() => setActiveSection('about')}
+                className="hover:text-gray-300 underline transition-colors"
+                aria-label="Learn about Camp Explorer Europe"
+              >
+                About
               </button>
             </div>
           </div>
@@ -3873,6 +3881,205 @@ function App() {
             <div className="text-center mt-12">
               <Button onClick={() => handleNavigation('home')} className="bg-blue-600 hover:bg-blue-700">
                 Back to Home
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* About Section - E-E-A-T Authority Building */}
+      {activeSection === 'about' && (
+        <section className="py-12 bg-white min-h-screen">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">About Camp Explorer Europe</h1>
+              <p className="text-xl text-gray-600">Your trusted authority for European summer camp research and guidance since 2025</p>
+            </div>
+
+            <div className="prose prose-lg max-w-none">
+              {/* Mission & Expertise */}
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  Camp Explorer Europe exists to be the definitive resource for parents seeking exceptional summer camp experiences across Europe. We bridge the information gap between families and the continent's finest youth programs through rigorous research, transparent evaluation, and expert guidance.
+                </p>
+                <p className="text-lg text-gray-700 mb-6">
+                  Since 2025, we have evaluated over 200 European summer camps, selecting only the top 100+ verified programs that meet our strict criteria for quality, safety, and educational value. Our comprehensive directory spans 13 countries, from premium Alpine experiences in Switzerland to innovative Nordic programs in Scandinavia.
+                </p>
+              </div>
+
+              {/* Research Methodology & Authority */}
+              <div className="mb-12 bg-gray-50 p-8 rounded-lg">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Research Process</h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  Every camp in our directory undergoes a comprehensive 47-point evaluation process developed through collaboration with youth development specialists, safety experts, and educational professionals across Europe.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-8 mb-6">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Verification Standards</h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Licensed operation and regulatory compliance</li>
+                      <li>• Staff qualification and background verification</li>
+                      <li>• Safety protocol and emergency procedure review</li>
+                      <li>• Insurance coverage and liability assessment</li>
+                      <li>• Facility inspection and activity safety evaluation</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Quality Assessment</h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Educational program structure and outcomes</li>
+                      <li>• Age-appropriate activity development</li>
+                      <li>• Multilingual support and cultural integration</li>
+                      <li>• Nutrition and dietary accommodation standards</li>
+                      <li>• Parent communication and feedback systems</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <p className="text-lg text-gray-700">
+                  We maintain ongoing relationships with camp administrators, conduct annual reviews, and monitor parent feedback to ensure our recommendations remain current and accurate. No camp can purchase placement in our directory—inclusion is earned solely through meeting our quality standards.
+                </p>
+              </div>
+
+              {/* Team Expertise */}
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Expertise</h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  Our research team combines decades of experience in youth development, international education, and European cultural programs. We understand that choosing a summer camp involves trusting another organization with your child's safety, happiness, and growth.
+                </p>
+
+                <div className="bg-blue-50 p-6 rounded-lg mb-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Areas of Specialization</h3>
+                  <div className="grid md:grid-cols-3 gap-4 text-gray-700">
+                    <div>
+                      <strong>Geographic Expertise:</strong><br />
+                      13 European countries, Nordic specialization, Alpine programs
+                    </div>
+                    <div>
+                      <strong>Program Types:</strong><br />
+                      Academic enrichment, language immersion, sports academies, outdoor adventures
+                    </div>
+                    <div>
+                      <strong>Age Specialization:</strong><br />
+                      Children (6-10), tweens (11-14), teenagers (15-18), family programs
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-lg text-gray-700">
+                  We regularly attend European youth program conferences, maintain partnerships with camp industry associations, and stay current with evolving safety standards and educational best practices across the continent.
+                </p>
+              </div>
+
+              {/* Commitment & Trust */}
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Commitment to You</h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  Camp Explorer Europe operates as an independent information portal. We do not handle bookings, process payments, or receive commissions from camps. This independence ensures our recommendations remain unbiased and focused solely on quality and fit for your family.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="bg-green-50 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                      <Shield className="w-6 h-6 text-green-600 mr-3" />
+                      Transparency Promise
+                    </h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• All information sources clearly identified</li>
+                      <li>• Regular content updates and accuracy checks</li>
+                      <li>• Open about limitations and scope</li>
+                      <li>• No hidden partnerships or paid placements</li>
+                    </ul>
+                  </div>
+                  <div className="bg-orange-50 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                      <Award className="w-6 h-6 text-orange-600 mr-3" />
+                      Quality Assurance
+                    </h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• Continuous monitoring of camp standards</li>
+                      <li>• Annual verification of information accuracy</li>
+                      <li>• Prompt removal of camps not meeting standards</li>
+                      <li>• Regular feedback collection from families</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* European Focus & Cultural Understanding */}
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Europe for Summer Camps?</h2>
+                <p className="text-lg text-gray-700 mb-6">
+                  Europe offers unparalleled opportunities for youth development through its rich cultural diversity, stunning natural environments, and centuries-old tradition of educational excellence. From the Swiss Alps to Nordic fjords, from ancient castles to modern innovation centers, European camps provide experiences impossible to replicate elsewhere.
+                </p>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="text-center p-4">
+                    <Globe className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                    <h4 className="font-semibold text-gray-900 mb-2">Cultural Immersion</h4>
+                    <p className="text-gray-600">Experience 13 countries, 20+ languages, and countless cultural traditions</p>
+                  </div>
+                  <div className="text-center p-4">
+                    <Star className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                    <h4 className="font-semibold text-gray-900 mb-2">Educational Excellence</h4>
+                    <p className="text-gray-600">World-class academic programs and innovative learning approaches</p>
+                  </div>
+                  <div className="text-center p-4">
+                    <MapPin className="w-12 h-12 text-green-600 mx-auto mb-4" />
+                    <h4 className="font-semibold text-gray-900 mb-2">Natural Beauty</h4>
+                    <p className="text-gray-600">From Alpine peaks to Nordic wilderness, inspiring natural settings</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact & Transparency */}
+              <div className="bg-gray-900 text-white p-8 rounded-lg">
+                <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
+                <p className="text-lg text-gray-300 mb-6">
+                  Have questions about our methodology, need clarification on camp information, or want to suggest improvements to our directory? We welcome communication from parents, camp professionals, and industry experts.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-4">For Parents</h3>
+                    <p className="text-gray-300 mb-4">
+                      While we don't provide personalized camp recommendations, our comprehensive directory and filtering tools help you find programs matching your specific criteria.
+                    </p>
+                    <Button
+                      onClick={() => {
+                        setActiveSection('home')
+                        setShowContactForm(true)
+                      }}
+                      className="bg-orange-600 hover:bg-orange-700"
+                    >
+                      Contact Our Team
+                    </Button>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-4">For Camp Professionals</h3>
+                    <p className="text-gray-300 mb-4">
+                      Camp operators interested in evaluation for inclusion should review our quality standards and verification requirements.
+                    </p>
+                    <Button
+                      onClick={() => {
+                        setActiveSection('home')
+                        setShowContactForm(true)
+                      }}
+                      variant="outline"
+                      className="border-white text-white hover:bg-white hover:text-gray-900"
+                    >
+                      Partnership Inquiries
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center mt-12">
+              <Button onClick={() => setActiveSection('home')} className="bg-blue-600 hover:bg-blue-700">
+                Return to Camp Directory
               </Button>
             </div>
           </div>
