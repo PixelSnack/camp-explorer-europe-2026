@@ -32,12 +32,21 @@ function App() {
   const [showCookieBanner, setShowCookieBanner] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
 
-  // Mobile-optimized contact form: Prevent body scroll when modal is open
+  // Mobile-optimized contact form: Proper scroll lock that prevents drift
   useEffect(() => {
     if (showContactForm) {
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
       document.body.style.overflow = 'hidden'
+
       return () => {
-        document.body.style.overflow = 'auto'
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.width = ''
+        document.body.style.overflow = ''
+        window.scrollTo(0, scrollY)
       }
     }
   }, [showContactForm])
@@ -3808,10 +3817,10 @@ function App() {
       {/* Contact Form Modal */}
       {showContactForm && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center p-4 z-50 pt-20"
           onClick={(e) => e.target === e.currentTarget && setShowContactForm(false)}
         >
-          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[calc(100vh-5rem)] overflow-y-auto">
             <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-t-xl">
               <div className="flex justify-between items-center">
                 <div>
@@ -3886,12 +3895,10 @@ function App() {
                     <option value="">Choose a topic...</option>
                     <option value="camp-recommendation">I need help finding the right camp</option>
                     <option value="camp-comparison">I want to compare specific camps</option>
-                    <option value="booking-guidance">I need booking guidance</option>
-                    <option value="age-appropriate">Help with age-appropriate programs</option>
-                    <option value="special-needs">Special needs accommodation</option>
-                    <option value="budget-options">Budget-friendly recommendations</option>
+                    <option value="camp-information">I have questions about a specific camp</option>
                     <option value="website-issue">Website technical issue</option>
                     <option value="partnership">Camp partnership inquiry</option>
+                    <option value="media-inquiry">Media or press inquiry</option>
                     <option value="other">Other question</option>
                   </select>
                 </div>
@@ -3969,11 +3976,11 @@ function App() {
 
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Other Ways to Reach Us</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">We're Here to Help</h3>
                   <div className="space-y-2 text-sm text-gray-600">
-                    <p><strong>General inquiries:</strong> info@europeansummercamps.com</p>
-                    <p><strong>Partnership opportunities:</strong> partnerships@europeansummercamps.com</p>
-                    <p><strong>Media & press:</strong> media@europeansummercamps.com</p>
+                    <p><strong>General Questions:</strong> Use this form for camp recommendations and general inquiries</p>
+                    <p><strong>Partnership Opportunities:</strong> Select "Camp partnership inquiry" above</p>
+                    <p><strong>Media & Press:</strong> Select "Media or press inquiry" above</p>
                   </div>
                   <p className="text-xs text-gray-500 mt-4">
                     We typically respond within 24 hours during business days
