@@ -549,28 +549,6 @@ function App() {
       established: 2007,
       capacity: 24,
       bookingUrl: "https://www.myhregard.com/riding-camp-norway/"
-    },
-    {
-      id: 24,
-      name: "Families Worldwide Prague & Tatras Adventure",
-      location: "Prague, Czech Republic → Slovakia → Poland",
-      country: "Czech Republic",
-      ages: "6+ years with parents",
-      price: "€1,725",
-      priceRange: "premium",
-      rating: 4.7,
-      reviews: 127,
-      image: activitiesCompressed,
-      category: "family",
-      type: "Multi-Country Family Adventure",
-      activities: ["Cultural Tours", "Hiking", "Local Experiences", "Historic Sites"],
-      dates: "July 12-25, 2026",
-      highlights: ["Multi-country experience", "ABTOT/ATOL protected", "Parent-child bonding", "Professional guides"],
-      languages: ["English", "Czech", "Slovak"],
-      specialFeatures: ["3-Country Adventure", "Family Accommodation", "Cultural Immersion", "Professional Tour Management"],
-      established: 2008,
-      capacity: 40,
-      bookingUrl: "https://www.familiesworldwide.co.uk/holidays/prague-tatras-adventure"
     }
   ]
 
