@@ -97,6 +97,11 @@ function App() {
   const [showCookieBanner, setShowCookieBanner] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
 
+  // Legal Disclaimer Management
+  const [disclaimerAcknowledged, setDisclaimerAcknowledged] = useState(
+    localStorage.getItem('disclaimerAcknowledged') === 'true'
+  )
+
   // Mobile-optimized contact form: Proper scroll lock that prevents drift
   useEffect(() => {
     if (showContactForm) {
@@ -119,7 +124,7 @@ function App() {
   // Enterprise Marquee System - State of the Art
   const heroBadgeRef = useRef(null)
 
-  // Comprehensive camp data based on our ultimate research
+  // Camp directory data compiled from public sources
   const allCamps = [
     // Premium Alpine Experiences
     {
@@ -733,9 +738,9 @@ function App() {
 
   const stats = [
     { icon: Globe, label: "Countries", value: "13", description: "Across Europe" },
-    { icon: Award, label: "Programs", value: "100+", description: "Verified options" },
+    { icon: Award, label: "Programs", value: "100+", description: "Listed camps" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
-    { icon: Shield, label: "Quality", value: "100%", description: "Verified" }
+    { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]
 
   // Navigation handlers
@@ -1061,7 +1066,34 @@ function App() {
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">
         Skip to main content
       </a>
-      
+
+      {/* Legal Disclaimer Banner */}
+      {!disclaimerAcknowledged && (
+        <div className="bg-yellow-50 border-b-2 border-yellow-200 px-4 py-3">
+          <div className="max-w-7xl mx-auto flex items-start justify-between">
+            <div className="flex items-start">
+              <Shield className="h-5 w-5 text-yellow-600 mt-0.5 mr-3 flex-shrink-0" />
+              <div className="text-sm text-gray-700">
+                <strong className="font-semibold">Important Notice:</strong> This is an informational directory only.
+                We do not verify, endorse, or guarantee any camps listed. All information is compiled from public sources.
+                Parents must independently research and verify all camp details including safety, accreditation, and suitability.
+                We are not responsible for camp operations or services.
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                setDisclaimerAcknowledged(true)
+                localStorage.setItem('disclaimerAcknowledged', 'true')
+              }}
+              className="ml-4 text-yellow-600 hover:text-yellow-800 font-semibold text-sm whitespace-nowrap"
+              aria-label="Acknowledge disclaimer"
+            >
+              I Understand
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <header className="sticky-header">
         <nav className="relative" role="navigation" aria-label="Main navigation">
@@ -1155,7 +1187,7 @@ function App() {
               aria-label="Camp information banner"
             >
               <span className="marquee-content">
-                100+ Verified Programs • 13 Countries • 2026 Bookings Open
+                100+ Camp Programs • 13 Countries • 2026 Season
               </span>
             </div>
           </div>
@@ -1167,7 +1199,7 @@ function App() {
           </h1>
           
           <p className="hero-fluid-text text-gray-200 max-w-3xl mx-auto px-4">
-            From Swiss Alpine adventures to Spanish beach immersion, discover the perfect summer experience for your child. Research-driven recommendations, verified pricing, and authentic parent reviews.
+            From Swiss Alpine adventures to Spanish beach immersion, explore summer camp options for your child. Directory of camps with information compiled from official sources and public data.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center hero-fluid-spacing">
@@ -1562,8 +1594,8 @@ function App() {
             Ready to Plan the Perfect Summer 2026?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Join thousands of families who trust us to find the perfect camp experience. 
-            Early bird discounts available until October 2025!
+            Browse our directory to research camp options for your family.
+            Many camps offer their own booking incentives - check directly with camps.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -1983,7 +2015,7 @@ function App() {
                 Plan Your Perfect Summer 2026
               </h2>
               <p className="text-xl text-gray-600">
-                Follow our expert timeline to secure the best camps and get early bird discounts
+                General booking timeline information based on typical camp patterns
               </p>
             </div>
 
@@ -1999,7 +2031,7 @@ function App() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg text-gray-900">September - October 2025</h4>
-                      <p className="text-gray-600">Research and shortlist camps. Early bird discounts available!</p>
+                      <p className="text-gray-600">Research and shortlist camps. Some camps may offer early booking incentives.</p>
                       <ul className="mt-2 text-sm text-gray-500">
                         <li>• Browse camp options</li>
                         <li>• Compare programs and prices</li>
@@ -2018,7 +2050,7 @@ function App() {
                       <ul className="mt-2 text-sm text-gray-500">
                         <li>• Submit applications</li>
                         <li>• Pay deposits to secure spots</li>
-                        <li>• Take advantage of early bird pricing</li>
+                        <li>• Check individual camps for booking incentives</li>
                       </ul>
                     </div>
                   </div>
@@ -2165,7 +2197,7 @@ function App() {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">100+ Verified Programs</Badge>
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">100+ Camp Programs</Badge>
                 <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">13 Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
                 <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
@@ -2476,7 +2508,7 @@ function App() {
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center">
                         <div className="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
-                        <span><strong>Sept-Oct 2025:</strong> Research & early bird discounts</span>
+                        <span><strong>Sept-Oct 2025:</strong> Research camps & check for offers</span>
                       </div>
                       <div className="flex items-center">
                         <div className="w-4 h-4 bg-blue-500 rounded-full mr-3"></div>
@@ -2494,7 +2526,7 @@ function App() {
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-3">Early Bird Benefits</h4>
+                    <h4 className="font-semibold text-gray-800 mb-3">Typical Booking Patterns</h4>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Save 10-20% on camp fees</li>
                       <li>• First choice of dates & activities</li>
@@ -2510,7 +2542,7 @@ function App() {
             <Card className="p-8 mb-16 border-0 shadow-lg bg-gradient-to-br from-gray-50 to-white">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Safety & Standards</h3>
-                <p className="text-lg text-gray-600">European camps maintain world-class safety protocols and staff training</p>
+                <p className="text-lg text-gray-600">Information about camp safety practices compiled from public sources</p>
               </div>
               
               <div className="grid lg:grid-cols-3 gap-8">
@@ -2631,7 +2663,7 @@ function App() {
             <Card className="p-8 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-center">
               <h3 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Camp?</h3>
               <p className="text-blue-100 mb-8 text-lg">
-                Use our interactive tools to explore 100+ verified camps, compare options, and start planning your child's unforgettable European summer adventure for 2026.
+                Use our directory to explore 100+ summer camps, compare options, and research your child's potential European summer adventure for 2026.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -2667,7 +2699,7 @@ function App() {
             {/* Final Message */}
             <div className="mt-16 text-center">
               <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-                This comprehensive guide is based on extensive research from official camp websites, industry reports, and cross-verification of multiple sources. All information is current as of August 2025. 
+                This directory compiles information from public sources including camp websites and publicly available data. Information accuracy depends on source reliability and may change. Please verify details directly with camps. 
                 <strong className="text-gray-800"> Start early, plan ahead, and give your child the gift of an unforgettable European summer adventure!</strong>
               </p>
             </div>
@@ -2693,21 +2725,21 @@ function App() {
                       <div className="w-4 h-4 bg-green-500 rounded-full mt-2"></div>
                       <div>
                         <h3 className="font-bold text-green-800">September - October 2025</h3>
-                        <p className="text-gray-600">Research camps and take advantage of early bird discounts (save 10-20%). Many camps release 2026 brochures.</p>
+                        <p className="text-gray-600">Research camps and check their websites for any booking offers. Many camps release new brochures in fall.</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
                       <div className="w-4 h-4 bg-blue-500 rounded-full mt-2"></div>
                       <div>
                         <h3 className="font-bold text-blue-800">November 2025 - January 2026</h3>
-                        <p className="text-gray-600">Prime booking period. 50%+ of premium camps fill during this time. Secure preferred dates and activities.</p>
+                        <p className="text-gray-600">Common booking period. Popular camps may fill during this time. Contact camps directly about availability.</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
                       <div className="w-4 h-4 bg-orange-500 rounded-full mt-2"></div>
                       <div>
                         <h3 className="font-bold text-orange-800">February 2026</h3>
-                        <p className="text-gray-600">Final call for most international camps. Early bird discounts typically expire by Feb 28.</p>
+                        <p className="text-gray-600">Many international camps approach capacity. Check with individual camps for current availability.</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
@@ -3015,96 +3047,87 @@ function App() {
             {resourceSection === 'early-bird' && (
               <div>
                 <div className="text-center mb-12">
-                  <h1 className="text-4xl font-bold text-gray-900 mb-4">Early Bird Discounts</h1>
-                  <p className="text-xl text-gray-600">Save significantly by booking early for 2026 camps</p>
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">Booking Information</h1>
+                  <p className="text-xl text-gray-600">General information about camp booking</p>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12">
                   <Card className="p-8">
-                    <h2 className="text-2xl font-bold mb-6">Current Early Bird Offers</h2>
+                    <h2 className="text-2xl font-bold mb-6">How to Book Camps</h2>
                     <div className="space-y-6">
                       <div className="border-l-4 border-blue-500 pl-4">
-                        <h3 className="font-bold text-blue-800">Switzerland Premium Camps</h3>
-                        <p className="text-gray-600">Save 15-20% • Book by October 31, 2025</p>
-                        <p className="text-sm text-gray-500">Les Elfes, Camp Suisse, La Garenne</p>
+                        <h3 className="font-bold text-blue-800">Contact Camps Directly</h3>
+                        <p className="text-gray-600">Visit camp websites for current information</p>
+                        <p className="text-sm text-gray-500">Each camp has its own booking process</p>
                       </div>
                       <div className="border-l-4 border-green-500 pl-4">
-                        <h3 className="font-bold text-green-800">UK Academic & Family Programs</h3>
-                        <p className="text-gray-600">Save 10-15% • Book by December 15, 2025</p>
-                        <p className="text-sm text-gray-500">Oxford Summer Courses, Bede's Summer School</p>
+                        <h3 className="font-bold text-green-800">Verify All Details</h3>
+                        <p className="text-gray-600">Confirm dates, prices, and availability</p>
+                        <p className="text-sm text-gray-500">Information may change - always verify</p>
                       </div>
                       <div className="border-l-4 border-orange-500 pl-4">
-                        <h3 className="font-bold text-orange-800">Language Immersion Camps</h3>
-                        <p className="text-gray-600">Save 12-18% • Book by November 30, 2025</p>
-                        <p className="text-sm text-gray-500">Enforex Spain, Alpine French School</p>
+                        <h3 className="font-bold text-orange-800">Ask About Offers</h3>
+                        <p className="text-gray-600">Some camps may have booking incentives</p>
+                        <p className="text-sm text-gray-500">Policies vary by individual camp</p>
                       </div>
                       <div className="border-l-4 border-purple-500 pl-4">
-                        <h3 className="font-bold text-purple-800">Sports Academies</h3>
-                        <p className="text-gray-600">Save 8-12% • Book by January 15, 2026</p>
-                        <p className="text-sm text-gray-500">AC Milan, Barcelona FC, Tennis Academies</p>
+                        <h3 className="font-bold text-purple-800">Understand Terms</h3>
+                        <p className="text-gray-600">Review cancellation and refund policies</p>
+                        <p className="text-sm text-gray-500">Each camp has different conditions</p>
                       </div>
                     </div>
                   </Card>
 
                   <Card className="p-8">
-                    <h2 className="text-2xl font-bold mb-6">Booking Benefits</h2>
+                    <h2 className="text-2xl font-bold mb-6">Important Considerations</h2>
                     <div className="space-y-4">
                       <div className="flex items-start space-x-3">
                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mt-1">
                           <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-gray-800">Guaranteed Spot</h5>
-                          <p className="text-sm text-gray-600">Secure your preferred dates and activities</p>
+                          <h5 className="font-semibold text-gray-800">Research Thoroughly</h5>
+                          <p className="text-sm text-gray-600">Compare multiple camps before deciding</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start space-x-3">
                         <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
                           <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-gray-800">Payment Plans</h5>
-                          <p className="text-sm text-gray-600">Spread costs over multiple payments</p>
+                          <h5 className="font-semibold text-gray-800">Check References</h5>
+                          <p className="text-sm text-gray-600">Look for reviews from multiple sources</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start space-x-3">
                         <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mt-1">
                           <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-gray-800">Best Accommodation</h5>
-                          <p className="text-sm text-gray-600">First choice of rooms and roommates</p>
+                          <h5 className="font-semibold text-gray-800">Understand Policies</h5>
+                          <p className="text-sm text-gray-600">Know cancellation and refund terms</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start space-x-3">
                         <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mt-1">
                           <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-gray-800">Flexible Changes</h5>
-                          <p className="text-sm text-gray-600">Most camps allow date/program changes</p>
+                          <h5 className="font-semibold text-gray-800">Verify Information</h5>
+                          <p className="text-sm text-gray-600">Confirm all details directly with camps</p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-8 p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-lg">
-                      <h3 className="font-bold text-green-800 mb-3">💰 Savings Calculator</h3>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                          <span>Premium Camp (CHF 5,000)</span>
-                          <span className="font-bold text-green-700">Save CHF 750-1,000</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Mid-Range Camp (€2,500)</span>
-                          <span className="font-bold text-green-700">Save €250-400</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Language Camp (€1,800)</span>
-                          <span className="font-bold text-green-700">Save €180-300</span>
-                        </div>
+                    <div className="mt-8 p-6 bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg">
+                      <h3 className="font-bold text-gray-800 mb-3">📋 Important Notice</h3>
+                      <div className="space-y-2 text-sm text-gray-600">
+                        <p>All pricing, dates, and availability shown in our directory are subject to change.</p>
+                        <p>We compile information from public sources but cannot guarantee accuracy.</p>
+                        <p className="font-semibold">Always verify current information directly with camps before booking.</p>
                       </div>
                     </div>
                   </Card>
@@ -3316,7 +3339,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                Europe's most comprehensive summer camp guide. Research-driven recommendations, verified pricing, and authentic reviews for 100+ camps across 13 countries including premium Nordic programs.
+                European summer camp directory featuring 100+ camps across 13 countries. Information compiled from public sources to help parents research camp options.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -3577,7 +3600,7 @@ function App() {
                     onClick={() => handleResourceLink('early-bird')}
                     aria-label="View early bird discounts"
                   >
-                    Early Bird Discounts
+                    Booking Information
                   </button>
                 </li>
                 <li>
@@ -3632,15 +3655,15 @@ function App() {
           <div className="border-t border-gray-800 pt-8">
             <div className="grid md:grid-cols-3 gap-8 items-center">
               <div>
-                <h5 className="font-semibold mb-2">2026 Booking Status</h5>
-                <p className="text-sm text-gray-400">Early bird discounts available until October 2025. Premium camps filling fast!</p>
+                <h5 className="font-semibold mb-2">2026 Camp Season</h5>
+                <p className="text-sm text-gray-400">Browse camps and contact them directly for current availability and offers.</p>
               </div>
               
               <div className="text-center">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
                     <div className="text-2xl font-bold text-white">100+</div>
-                    <div>Verified Camps</div>
+                    <div>Listed Camps</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-white">13</div>
@@ -3666,8 +3689,8 @@ function App() {
           </div>
           
           <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
-            <p>&copy; 2025 Camp Explorer Europe. Research-driven recommendations for European summer camps. All pricing verified as of August 2025.</p>
-            <p className="mt-2 text-sm">Built with comprehensive research across 100+ camps • Verified pricing • Authentic parent reviews</p>
+            <p>&copy; 2025 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
+            <p className="mt-2 text-sm">Directory featuring 100+ camps • Information from camp websites • Independent resource portal</p>
             <div className="mt-3 space-x-3 text-xs text-gray-500">
               <button 
                 onClick={() => handleResourceLink('impressum')} 
@@ -3904,7 +3927,7 @@ function App() {
                   Camp Explorer Europe exists to be the definitive resource for parents seeking exceptional summer camp experiences across Europe. We bridge the information gap between families and the continent's finest youth programs through rigorous research, transparent evaluation, and expert guidance.
                 </p>
                 <p className="text-lg text-gray-700 mb-6">
-                  Since 2025, we have evaluated over 200 European summer camps, selecting only the top 100+ verified programs that meet our strict criteria for quality, safety, and educational value. Our comprehensive directory spans 13 countries, from premium Alpine experiences in Switzerland to innovative Nordic programs in Scandinavia.
+                  Our directory includes 100+ European summer camps across 13 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
                 </p>
               </div>
 
@@ -3912,7 +3935,7 @@ function App() {
               <div className="mb-12 bg-gray-50 p-8 rounded-lg">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Research Process</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Every camp in our directory undergoes a comprehensive 47-point evaluation process developed through collaboration with youth development specialists, safety experts, and educational professionals across Europe.
+                  We gather information about camps from their official websites, public reviews, and available documentation. This information is presented for research purposes - parents should verify all details directly with camps.
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8 mb-6">
@@ -3921,9 +3944,9 @@ function App() {
                     <ul className="space-y-2 text-gray-700">
                       <li>• Licensed operation and regulatory compliance</li>
                       <li>• Staff qualification and background verification</li>
-                      <li>• Safety protocol and emergency procedure review</li>
+                      <li>• Safety information as published by camps</li>
                       <li>• Insurance coverage and liability assessment</li>
-                      <li>• Facility inspection and activity safety evaluation</li>
+                      <li>• Information about facilities and activities from camp materials</li>
                     </ul>
                   </div>
                   <div>
@@ -3947,7 +3970,7 @@ function App() {
               <div className="mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Expertise</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Our research team combines decades of experience in youth development, international education, and European cultural programs. We understand that choosing a summer camp involves trusting another organization with your child's safety, happiness, and growth.
+                  We compile camp information to help parents research options. Choosing a summer camp is an important decision - we encourage thorough research and direct communication with camps about their specific programs, safety measures, and suitability for your child.
                 </p>
 
                 <div className="bg-blue-50 p-6 rounded-lg mb-6">
@@ -3969,7 +3992,7 @@ function App() {
                 </div>
 
                 <p className="text-lg text-gray-700">
-                  We regularly attend European youth program conferences, maintain partnerships with camp industry associations, and stay current with evolving safety standards and educational best practices across the continent.
+                  We research publicly available information about European camps and youth programs to keep our directory current. All safety standards and certifications mentioned are as reported by the camps themselves.
                 </p>
               </div>
 
@@ -3995,14 +4018,14 @@ function App() {
                   </div>
                   <div className="bg-orange-50 p-6 rounded-lg">
                     <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                      <Award className="w-6 h-6 text-orange-600 mr-3" />
-                      Quality Assurance
+                      <Shield className="w-6 h-6 text-orange-600 mr-3" />
+                      Important Disclaimer
                     </h3>
                     <ul className="space-y-2 text-gray-700">
-                      <li>• Continuous monitoring of camp standards</li>
-                      <li>• Annual verification of information accuracy</li>
-                      <li>• Prompt removal of camps not meeting standards</li>
-                      <li>• Regular feedback collection from families</li>
+                      <li>• Information compiled from public sources</li>
+                      <li>• We do not verify or guarantee camp safety</li>
+                      <li>• Parents must research camps independently</li>
+                      <li>• No endorsement of any camp implied</li>
                     </ul>
                   </div>
                 </div>
@@ -4270,7 +4293,7 @@ function App() {
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">About Our Portal</h3>
                   <div className="space-y-2 text-sm text-gray-600">
-                    <p className="font-medium">We are an information directory that connects you with verified European summer camps.</p>
+                    <p className="font-medium">We are an information directory listing European summer camps based on publicly available information.</p>
                     <p><strong>What we provide:</strong> Camp information, website links, and category organization</p>
                     <p><strong>What we don't handle:</strong> Bookings, personalized recommendations, or camp consultations</p>
                     <p className="italic">For specific camp inquiries, please visit the camp's official website directly.</p>
