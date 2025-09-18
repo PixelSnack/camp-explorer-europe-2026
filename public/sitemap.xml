@@ -3,13 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.europeansummercamps.com/</loc>
-    <lastmod>2025-09-14</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-09-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.europeansummercamps.com/european-summer-camps-lakeside-hero.webp</image:loc>
-      <image:title>European Summer Camps 2026 - Expert Mobile UX & Platform-Compliant Design</image:title>
-      <image:caption>Discover 100+ verified European summer camps with enterprise-grade mobile experience following iOS/Android guidelines across 13 countries</image:caption>
+      <image:title>European Summer Camps 2026 - Complete Directory Portal with Professional Contact</image:title>
+      <image:caption>Discover 100+ verified European summer camps across 12 countries. Professional contact form for partnerships, media inquiries, and portal support.</image:caption>
     </image:image>
   </url>
 </urlset>
