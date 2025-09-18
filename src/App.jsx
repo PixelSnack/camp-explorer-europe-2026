@@ -3894,7 +3894,7 @@ function App() {
                   >
                     <option value="">Choose a topic...</option>
                     <option value="website-issue">Report a website issue or broken link</option>
-                    <option value="partnership">Camp listing inquiry (for camp operators)</option>
+                    <option value="partnership">Partnership Inquiries</option>
                     <option value="media-inquiry">Media or press inquiry</option>
                     <option value="general-portal">General portal feedback</option>
                     <option value="missing-camp">Suggest a camp to add</option>
