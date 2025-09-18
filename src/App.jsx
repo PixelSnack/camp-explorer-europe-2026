@@ -6,6 +6,14 @@ import emailjs from '@emailjs/browser'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from '@/components/ui/breadcrumb.jsx'
 import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart, ArrowUp } from 'lucide-react'
 import heroImage from './assets/european-summer-camps-lakeside-hero.png'
 import heroLakesideAvif from './assets/hero-lakeside.avif'
@@ -743,6 +751,39 @@ function App() {
     { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]
 
+  // Breadcrumb generation function
+  const generateBreadcrumbs = () => {
+    const breadcrumbs = [{ name: 'Home', href: '#home', current: false }]
+
+    switch (activeSection) {
+      case 'home':
+        breadcrumbs[0].current = true
+        break
+      case 'discover':
+        breadcrumbs.push({ name: 'Discover Camps', href: '#discover', current: true })
+        break
+      case 'compare':
+        breadcrumbs.push({ name: 'Compare', href: '#compare', current: true })
+        break
+      case 'plan':
+        breadcrumbs.push({ name: 'Plan Your Summer', href: '#plan', current: true })
+        break
+      case 'guide':
+        breadcrumbs.push({ name: 'Guide', href: '#guide', current: true })
+        break
+      case 'about':
+        breadcrumbs.push({ name: 'About', href: '#about', current: true })
+        break
+      case 'privacy':
+        breadcrumbs.push({ name: 'Privacy', href: '#privacy', current: true })
+        break
+      default:
+        breadcrumbs[0].current = true
+    }
+
+    return breadcrumbs
+  }
+
   // Navigation handlers
   const handleNavigation = (section) => {
     setActiveSection(section)
@@ -1154,6 +1195,38 @@ function App() {
       </nav>
       </header>
 
+      {/* Breadcrumb Navigation */}
+      {activeSection !== 'home' && (
+        <div className="bg-gray-50 border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <Breadcrumb>
+              <BreadcrumbList>
+                {generateBreadcrumbs().map((breadcrumb, index) => (
+                  <React.Fragment key={breadcrumb.name}>
+                    <BreadcrumbItem>
+                      {breadcrumb.current ? (
+                        <BreadcrumbPage>{breadcrumb.name}</BreadcrumbPage>
+                      ) : (
+                        <BreadcrumbLink
+                          href={breadcrumb.href}
+                          onClick={(e) => {
+                            e.preventDefault()
+                            handleNavigation(breadcrumb.href.replace('#', ''))
+                          }}
+                        >
+                          {breadcrumb.name}
+                        </BreadcrumbLink>
+                      )}
+                    </BreadcrumbItem>
+                    {index < generateBreadcrumbs().length - 1 && <BreadcrumbSeparator />}
+                  </React.Fragment>
+                ))}
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        </div>
+      )}
+
       {/* Main Content */}
       <main id="main-content" role="main">
       {/* Conditional Section Rendering */}
@@ -1166,7 +1239,7 @@ function App() {
           <source srcSet={heroLakesideWebp} type="image/webp" />
           <img 
             src={heroLakesideCompressed} 
-            alt="European summer camps 2026 - Premium lakeside camp setting with children enjoying outdoor activities in stunning Alpine scenery"
+            alt="Children enjoying lakeside activities at European summer camp with Alpine mountain views"
             className="w-full h-full object-cover"
             width="1680" 
             height="720"
@@ -3916,7 +3989,7 @@ function App() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">About Camp Explorer Europe</h1>
-              <p className="text-xl text-gray-600">Your trusted authority for European summer camp research and guidance since 2025</p>
+              <p className="text-xl text-gray-600">A comprehensive information directory for European summer camp research since 2025</p>
             </div>
 
             <div className="prose prose-lg max-w-none">
@@ -3924,7 +3997,7 @@ function App() {
               <div className="mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Camp Explorer Europe exists to be the definitive resource for parents seeking exceptional summer camp experiences across Europe. We bridge the information gap between families and the continent's finest youth programs through rigorous research, transparent evaluation, and expert guidance.
+                  Camp Explorer Europe is an information directory that compiles publicly available data about European summer camps. We organize camp information from websites and public sources to help parents research summer camp options across Europe.
                 </p>
                 <p className="text-lg text-gray-700 mb-6">
                   Our directory includes 100+ European summer camps across 13 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
@@ -3962,7 +4035,7 @@ function App() {
                 </div>
 
                 <p className="text-lg text-gray-700">
-                  We maintain ongoing relationships with camp administrators, conduct annual reviews, and monitor parent feedback to ensure our recommendations remain current and accurate. No camp can purchase placement in our directory—inclusion is earned solely through meeting our quality standards.
+                  We compile information from publicly available sources including camp websites, promotional materials, and published reviews. No camp can purchase placement in our directory—inclusion is based on meeting our basic inclusion criteria for legitimate youth programs.
                 </p>
               </div>
 
@@ -4083,7 +4156,7 @@ function App() {
                   <div>
                     <h3 className="text-xl font-semibold mb-4">For Camp Professionals</h3>
                     <p className="text-gray-300 mb-4">
-                      Camp operators interested in evaluation for inclusion should review our quality standards and verification requirements.
+                      Camp operators interested in consideration for inclusion should review our basic inclusion criteria for legitimate European youth programs.
                     </p>
                     <Button
                       onClick={() => {
