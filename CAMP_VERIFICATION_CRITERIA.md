@@ -8,6 +8,21 @@
 
 ## 🔍 MANDATORY VERIFICATION REQUIREMENTS
 
+### **0. CRITICAL: CAMP vs TOUR OPERATOR DISTINCTION** 🚨
+**MANDATORY PRE-SCREENING (Added September 2025 after incident):**
+- **✅ RESIDENTIAL CAMP FACILITY**: Must have dedicated camp accommodation (cabins, dormitories, camp buildings) - NOT hotels or tour lodging
+- **✅ CAMP OPERATOR STATUS**: Must be camp organization - NOT travel agency, tour operator, or hospitality company
+- **✅ CAMP-ONLY PRICING**: Pricing must exclude flights, transportation, and travel packages
+- **✅ ON-SITE CAMP PROGRAMS**: Multi-day residential programs with camp supervision - NOT guided tours or travel itineraries
+- **✅ CAMP FACILITY OWNERSHIP**: Camp must own/operate the facility - NOT booking accommodations for clients
+
+**AUTOMATIC DISQUALIFIERS:**
+- ❌ Tour operators offering travel packages
+- ❌ Hotels with activity programs
+- ❌ Travel agencies with family tours
+- ❌ Pricing that includes flights/transportation
+- ❌ Multi-country travel itineraries
+
 ### **1. Legal & Operational Verification**
 - **✅ Active Website**: Camp must have functioning, professional website
 - **✅ Business Registration**: Verifiable business entity (company registration, permits)
@@ -72,6 +87,61 @@
 - Always use: "According to our research", "Based on available information"
 - Include disclaimers: "Prices and programs subject to change"
 - Encourage: "Contact camps directly for current information and booking"
+
+---
+
+## 🛡️ HUMAN VERIFICATION PROTOCOL (Added September 2025)
+
+### **MANDATORY HUMAN VALIDATION CHECKLIST**
+**Before ANY camp addition to database, the following MUST be manually verified:**
+
+#### **Step 1: Website Analysis**
+```
+□ Navigate to camp website manually
+□ Confirm camp facility photos (not hotel/resort images)
+□ Verify residential accommodation described
+□ Check camp-operated programs (not tour packages)
+□ Document facility type and ownership
+```
+
+#### **Step 2: Program Classification**
+```
+□ Residential camp programs confirmed
+□ Age-appropriate supervision mentioned
+□ Multi-day/week duration verified
+□ Camp activities (not tour itineraries)
+□ On-site dining and accommodation confirmed
+```
+
+#### **Step 3: Pricing Validation**
+```
+□ Test booking URL functionality
+□ Verify pricing excludes flights/travel
+□ Confirm camp-only costs listed
+□ Check for hidden travel components
+□ Document what's included/excluded
+```
+
+#### **Step 4: Documentation**
+```
+□ Screenshot key website sections
+□ Record verification date and findings
+□ Note any concerns or clarifications needed
+□ Confirm all criteria met before addition
+```
+
+### **VERIFICATION EVIDENCE REQUIRED**
+Every camp addition must include:
+- **Facility Evidence**: Photos of camp buildings/dormitories
+- **Program Evidence**: Detailed activity schedules and supervision
+- **Pricing Evidence**: Clear breakdown of included services
+- **URL Testing**: Functional booking link confirmation
+
+### **ESCALATION PROTOCOL**
+- **Unclear Classification**: Escalate to user for decision
+- **Borderline Cases**: Provide detailed analysis with recommendation
+- **URL Issues**: Re-verify multiple times before proceeding
+- **Pricing Concerns**: Clarify inclusions/exclusions explicitly
 
 ---
 
