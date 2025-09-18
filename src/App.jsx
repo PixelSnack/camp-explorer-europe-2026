@@ -32,6 +32,16 @@ function App() {
   const [showCookieBanner, setShowCookieBanner] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
 
+  // Mobile-optimized contact form: Prevent body scroll when modal is open
+  useEffect(() => {
+    if (showContactForm) {
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = 'auto'
+      }
+    }
+  }, [showContactForm])
+
   // Enterprise Marquee System - State of the Art
   const heroBadgeRef = useRef(null)
 
@@ -3797,7 +3807,10 @@ function App() {
 
       {/* Contact Form Modal */}
       {showContactForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+          onClick={(e) => e.target === e.currentTarget && setShowContactForm(false)}
+        >
           <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-t-xl">
               <div className="flex justify-between items-center">
@@ -3825,7 +3838,9 @@ function App() {
                     <input
                       type="text"
                       id="firstName"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      autoComplete="given-name"
+                      autoFocus
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-base"
                       placeholder="Your first name"
                       required
                     />
@@ -3851,7 +3866,9 @@ function App() {
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    inputMode="email"
+                    autoComplete="email"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-base"
                     placeholder="your.email@example.com"
                     required
                   />
@@ -3922,7 +3939,7 @@ function App() {
                   <input
                     type="checkbox"
                     id="privacy-agreement"
-                    className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    className="mt-1 w-6 h-6 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                     required
                   />
                   <label htmlFor="privacy-agreement" className="text-sm text-gray-600">
