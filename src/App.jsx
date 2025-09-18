@@ -785,8 +785,10 @@ function App() {
   const handleNavigation = (section) => {
     setActiveSection(section)
     window.location.hash = section
-    // Smooth scroll to top for better UX
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Delay scroll to allow React to render the new section content first
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 50)
   }
 
   const handleCampSelection = (camp) => {
