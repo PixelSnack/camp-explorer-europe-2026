@@ -1443,7 +1443,7 @@ function App() {
                 <Globe className="w-10 h-10 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Cultural Diversity</h3>
-              <p className="text-gray-600">Experience 12+ countries and meet children from 75+ nationalities</p>
+              <p className="text-gray-600">Experience 13 countries and meet children from 75+ nationalities</p>
             </div>
             
             <div className="text-center">
@@ -3643,7 +3643,7 @@ function App() {
                     <div>Verified Camps</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">12</div>
+                    <div className="text-2xl font-bold text-white">13</div>
                     <div>Countries</div>
                   </div>
                   <div>
