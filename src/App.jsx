@@ -71,10 +71,10 @@ function App() {
     try {
       // EmailJS sends directly to Cloudflare addresses - no Gmail SMTP needed
       const result = await emailjs.send(
-        'YOUR_SERVICE_ID', // EmailJS service ID from dashboard
-        'YOUR_TEMPLATE_ID', // EmailJS template ID
+        'service_vnise8u', // EmailJS service ID from dashboard
+        'template_lm9wnse', // EmailJS template ID
         templateParams,
-        'YOUR_PUBLIC_KEY' // EmailJS public key
+        'RLTeapLFs4m6Y18HQ' // EmailJS public key
       )
 
       console.log('Email sent successfully:', result.text)
