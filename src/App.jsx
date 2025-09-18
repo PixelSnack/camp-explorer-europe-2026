@@ -105,10 +105,7 @@ function App() {
   const [showCookieBanner, setShowCookieBanner] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
 
-  // Legal Disclaimer Management
-  const [disclaimerAcknowledged, setDisclaimerAcknowledged] = useState(
-    localStorage.getItem('disclaimerAcknowledged') === 'true'
-  )
+  // Removed excessive legal disclaimer banner that was scaring users away
 
   // Mobile-optimized contact form: Proper scroll lock that prevents drift
   useEffect(() => {
@@ -788,7 +785,8 @@ function App() {
   const handleNavigation = (section) => {
     setActiveSection(section)
     window.location.hash = section
-    window.scrollTo(0, 0) // Always scroll to top on navigation
+    // Smooth scroll to top for better UX
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleCampSelection = (camp) => {
@@ -1108,32 +1106,7 @@ function App() {
         Skip to main content
       </a>
 
-      {/* Legal Disclaimer Banner */}
-      {!disclaimerAcknowledged && (
-        <div className="bg-yellow-50 border-b-2 border-yellow-200 px-4 py-3">
-          <div className="max-w-7xl mx-auto flex items-start justify-between">
-            <div className="flex items-start">
-              <Shield className="h-5 w-5 text-yellow-600 mt-0.5 mr-3 flex-shrink-0" />
-              <div className="text-sm text-gray-700">
-                <strong className="font-semibold">Important Notice:</strong> This is an informational directory only.
-                We do not verify, endorse, or guarantee any camps listed. All information is compiled from public sources.
-                Parents must independently research and verify all camp details including safety, accreditation, and suitability.
-                We are not responsible for camp operations or services.
-              </div>
-            </div>
-            <button
-              onClick={() => {
-                setDisclaimerAcknowledged(true)
-                localStorage.setItem('disclaimerAcknowledged', 'true')
-              }}
-              className="ml-4 text-yellow-600 hover:text-yellow-800 font-semibold text-sm whitespace-nowrap"
-              aria-label="Acknowledge disclaimer"
-            >
-              I Understand
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Removed scary legal disclaimer banner that was deterring users */}
 
       {/* Navigation */}
       <header className="sticky-header">
@@ -3392,7 +3365,7 @@ function App() {
                   <li>Change your cookie preferences at any time</li>
                   <li>Browse our site with essential cookies only</li>
                 </ul>
-                <p>For questions about privacy, contact us at legal@europeansummercamps.com</p>
+                <p>For questions about privacy, contact us at contact@europeansummercamps.com</p>
               </Card>
             </div>
             
@@ -3858,12 +3831,12 @@ function App() {
                 <h2 className="text-2xl font-bold mb-4">Website Owner & Responsible Party</h2>
                 <div className="mb-4">
                   <p><strong>Business:</strong> PixelSnack (Independent Web Publishing)</p>
-                  <p><strong>Contact:</strong> legal@europeansummercamps.com</p>
+                  <p><strong>Contact:</strong> contact@europeansummercamps.com</p>
                   <p><strong>Website:</strong> www.europeansummercamps.com</p>
                   <p><strong>Jurisdiction:</strong> European Union</p>
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Responsible for Content</h3>
-                <p>PixelSnack<br/>Contact: legal@europeansummercamps.com</p>
+                <p>PixelSnack<br/>Contact: contact@europeansummercamps.com</p>
               </Card>
               
               <Card className="p-8 mb-8">
@@ -3970,7 +3943,7 @@ function App() {
                 <h2 className="text-2xl font-bold mb-4">6. Changes to Terms</h2>
                 <p className="mb-4">We reserve the right to modify these terms at any time. Changes will be posted on this page. Continued use of the website constitutes acceptance of updated terms.</p>
                 <p><strong>Last Updated:</strong> September 11, 2025</p>
-                <p><strong>Contact:</strong> legal@europeansummercamps.com</p>
+                <p><strong>Contact:</strong> contact@europeansummercamps.com</p>
               </Card>
             </div>
             
@@ -4035,7 +4008,7 @@ function App() {
                 </div>
 
                 <p className="text-lg text-gray-700">
-                  We compile information from publicly available sources including camp websites, promotional materials, and published reviews. No camp can purchase placement in our directory—inclusion is based on meeting our basic inclusion criteria for legitimate youth programs.
+                  We compile comprehensive information from camp websites, promotional materials, and published reviews to help parents make informed decisions about European summer camp options.
                 </p>
               </div>
 
@@ -4095,10 +4068,9 @@ function App() {
                       Important Disclaimer
                     </h3>
                     <ul className="space-y-2 text-gray-700">
-                      <li>• Information compiled from public sources</li>
-                      <li>• We do not verify or guarantee camp safety</li>
-                      <li>• Parents must research camps independently</li>
-                      <li>• No endorsement of any camp implied</li>
+                      <li>• Information compiled from camp websites and public sources</li>
+                      <li>• Please research individual camps to ensure they meet your family's needs</li>
+                      <li>• We help parents discover options and provide helpful guidance</li>
                     </ul>
                   </div>
                 </div>
