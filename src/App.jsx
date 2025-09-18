@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react'
-import { useVirtualizer } from '@tanstack/react-virtual'
+// import { useVirtualizer } from '@tanstack/react-virtual' // Prepared for virtual scrolling implementation
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Button } from '@/components/ui/button.jsx'
@@ -25,7 +25,8 @@ function App() {
   const [selectedCamps, setSelectedCamps] = useState([])
   const [selectedCountry, setSelectedCountry] = useState('all')
   const [resourceSection, setResourceSection] = useState(null)
-  
+  const [showContactForm, setShowContactForm] = useState(false)
+
   // GDPR Cookie Consent Management
   const [cookieConsent, setCookieConsent] = useState(null) // null = not decided, true = accepted, false = rejected
   const [showCookieBanner, setShowCookieBanner] = useState(false)
@@ -3569,7 +3570,12 @@ function App() {
               </div>
               
               <div className="text-right">
-                <h5 className="font-semibold mb-2">Contact & Support</h5>
+                <h5
+                  className="font-semibold mb-2 cursor-pointer hover:text-blue-400 transition-colors"
+                  onClick={() => setShowContactForm(true)}
+                >
+                  Contact & Support
+                </h5>
                 <p className="text-sm text-gray-400">Expert guidance for finding your perfect camp match</p>
               </div>
             </div>
@@ -3787,6 +3793,179 @@ function App() {
             </div>
           </div>
         </section>
+      )}
+
+      {/* Contact Form Modal */}
+      {showContactForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-t-xl">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h2 className="text-2xl font-bold mb-2">Contact & Support</h2>
+                  <p className="text-blue-100">Get expert guidance for finding your perfect camp match</p>
+                </div>
+                <button
+                  onClick={() => setShowContactForm(false)}
+                  className="text-white hover:text-blue-200 transition-colors p-2"
+                  aria-label="Close contact form"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+
+            <div className="p-6">
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      placeholder="Your first name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      placeholder="Your last name"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                    How can we help you? *
+                  </label>
+                  <select
+                    id="subject"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    required
+                  >
+                    <option value="">Choose a topic...</option>
+                    <option value="camp-recommendation">I need help finding the right camp</option>
+                    <option value="camp-comparison">I want to compare specific camps</option>
+                    <option value="booking-guidance">I need booking guidance</option>
+                    <option value="age-appropriate">Help with age-appropriate programs</option>
+                    <option value="special-needs">Special needs accommodation</option>
+                    <option value="budget-options">Budget-friendly recommendations</option>
+                    <option value="website-issue">Website technical issue</option>
+                    <option value="partnership">Camp partnership inquiry</option>
+                    <option value="other">Other question</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="childAge" className="block text-sm font-medium text-gray-700 mb-2">
+                    Child's Age (if applicable)
+                  </label>
+                  <input
+                    type="number"
+                    id="childAge"
+                    min="3"
+                    max="18"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="Age of child attending camp"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="preferredCountries" className="block text-sm font-medium text-gray-700 mb-2">
+                    Preferred Countries/Regions
+                  </label>
+                  <input
+                    type="text"
+                    id="preferredCountries"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="e.g., Switzerland, Nordic countries, anywhere in Europe"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Tell us more about what you're looking for *
+                  </label>
+                  <textarea
+                    id="message"
+                    rows="4"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical"
+                    placeholder="Please describe your specific needs, interests, or questions. The more details you provide, the better we can help you find the perfect camp match!"
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <input
+                    type="checkbox"
+                    id="privacy-agreement"
+                    className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    required
+                  />
+                  <label htmlFor="privacy-agreement" className="text-sm text-gray-600">
+                    I agree that my information may be used to provide personalized camp recommendations and support.
+                    We respect your privacy and will never share your data with third parties.
+                    See our <button type="button" className="text-blue-600 hover:text-blue-800 underline" onClick={() => {setShowContactForm(false); setActiveSection('privacy')}}>Privacy Policy</button> for details.
+                  </label>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Button
+                    type="submit"
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
+                  >
+                    Send Message
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setShowContactForm(false)}
+                    className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold py-3 px-6 rounded-lg transition-colors"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Other Ways to Reach Us</h3>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <p><strong>General inquiries:</strong> info@europeansummercamps.com</p>
+                    <p><strong>Partnership opportunities:</strong> partnerships@europeansummercamps.com</p>
+                    <p><strong>Media & press:</strong> media@europeansummercamps.com</p>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-4">
+                    We typically respond within 24 hours during business days
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Back to Top Button - Mobile Optimized */}
