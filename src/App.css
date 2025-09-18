@@ -543,3 +543,19 @@
     transform: translateX(0) !important;
   }
 }
+
+/* CONTACT FORM SAFE AREA HANDLING - iOS/Android Navigation Bars */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Contact form modal specific safe area handling */
+.contact-modal-container {
+  /* Ensure form is never hidden by mobile navigation */
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0));
+
+  /* Proper iOS Safari handling */
+  @supports (padding: max(0px)) {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0));
+  }
+}

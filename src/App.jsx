@@ -3817,15 +3817,15 @@ function App() {
       {/* Contact Form Modal */}
       {showContactForm && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center p-4 z-50 pt-20"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 overflow-y-auto"
           onClick={(e) => e.target === e.currentTarget && setShowContactForm(false)}
         >
-          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[calc(100vh-5rem)] overflow-y-auto">
+          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full my-8 mx-4 sm:mx-auto sm:my-12 pb-safe">
             <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-t-xl">
               <div className="flex justify-between items-center">
                 <div>
-                  <h2 className="text-2xl font-bold mb-2">Contact & Support</h2>
-                  <p className="text-blue-100">Get expert guidance for finding your perfect camp match</p>
+                  <h2 className="text-2xl font-bold mb-2">Contact Portal Support</h2>
+                  <p className="text-blue-100">Report issues, suggest camps, or provide feedback</p>
                 </div>
                 <button
                   onClick={() => setShowContactForm(false)}
@@ -3837,7 +3837,7 @@ function App() {
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-6 contact-modal-container">
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -3893,13 +3893,13 @@ function App() {
                     required
                   >
                     <option value="">Choose a topic...</option>
-                    <option value="camp-recommendation">I need help finding the right camp</option>
-                    <option value="camp-comparison">I want to compare specific camps</option>
-                    <option value="camp-information">I have questions about a specific camp</option>
-                    <option value="website-issue">Website technical issue</option>
-                    <option value="partnership">Camp partnership inquiry</option>
+                    <option value="website-issue">Report a website issue or broken link</option>
+                    <option value="partnership">Camp listing inquiry (for camp operators)</option>
                     <option value="media-inquiry">Media or press inquiry</option>
-                    <option value="other">Other question</option>
+                    <option value="general-portal">General portal feedback</option>
+                    <option value="missing-camp">Suggest a camp to add</option>
+                    <option value="data-correction">Report incorrect camp information</option>
+                    <option value="other">Other inquiry</option>
                   </select>
                 </div>
 
@@ -3950,8 +3950,9 @@ function App() {
                     required
                   />
                   <label htmlFor="privacy-agreement" className="text-sm text-gray-600">
-                    I agree that my information may be used to provide personalized camp recommendations and support.
-                    We respect your privacy and will never share your data with third parties.
+                    I understand this is an information portal that provides links to camp websites.
+                    I agree that my inquiry will be processed according to our Privacy Policy.
+                    We do not handle bookings or provide personalized recommendations.
                     See our <button type="button" className="text-blue-600 hover:text-blue-800 underline" onClick={() => {setShowContactForm(false); setActiveSection('privacy')}}>Privacy Policy</button> for details.
                   </label>
                 </div>
@@ -3976,14 +3977,15 @@ function App() {
 
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">We're Here to Help</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">About Our Portal</h3>
                   <div className="space-y-2 text-sm text-gray-600">
-                    <p><strong>General Questions:</strong> Use this form for camp recommendations and general inquiries</p>
-                    <p><strong>Partnership Opportunities:</strong> Select "Camp partnership inquiry" above</p>
-                    <p><strong>Media & Press:</strong> Select "Media or press inquiry" above</p>
+                    <p className="font-medium">We are an information directory that connects you with verified European summer camps.</p>
+                    <p><strong>What we provide:</strong> Camp information, website links, and category organization</p>
+                    <p><strong>What we don't handle:</strong> Bookings, personalized recommendations, or camp consultations</p>
+                    <p className="italic">For specific camp inquiries, please visit the camp's official website directly.</p>
                   </div>
                   <p className="text-xs text-gray-500 mt-4">
-                    We typically respond within 24 hours during business days
+                    Portal maintenance inquiries are reviewed regularly
                   </p>
                 </div>
               </div>
