@@ -570,7 +570,7 @@ function App() {
       specialFeatures: ["3-Country Adventure", "Family Accommodation", "Cultural Immersion", "Professional Tour Management"],
       established: 2008,
       capacity: 40,
-      bookingUrl: "https://www.familiesworldwide.co.uk/czech-republic-slovakia-poland-family-adventure/"
+      bookingUrl: "https://www.familiesworldwide.co.uk/holidays/prague-tatras-adventure"
     }
   ]
 
