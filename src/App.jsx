@@ -3710,8 +3710,8 @@ function App() {
               <div className="text-center">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
-                    <div className="text-2xl font-bold text-white">100+</div>
-                    <div>Listed Camps</div>
+                    <div className="text-2xl font-bold text-white">23+</div>
+                    <div>Organizations</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-white">13</div>
