@@ -489,6 +489,102 @@ useEffect(() => {
 
 ---
 
+## 🔍 **ACCURACY-FIRST VERIFICATION PROTOCOLS** (Added September 21, 2025)
+
+### **⚠️ CRITICAL: NO "GOOD ENOUGH" DATA - VERIFICATION REQUIRED**
+
+**Following incidents of generic/assumed data being used instead of verified facts, these protocols are now MANDATORY for all data-related changes.**
+
+### **🛡️ RULE #8: ACCURACY-FIRST IMPLEMENTATION**
+
+#### **Pre-Implementation Verification Checklist**
+**MANDATORY: Before ANY data changes involving factual claims:**
+
+```markdown
+## Address/Location Data:
+- [ ] Researched actual facility location (not booking office)
+- [ ] Verified postal code matches actual location
+- [ ] Confirmed street address represents real facility
+- [ ] Distinguished between operational location vs administrative office
+
+## Contact Information:
+- [ ] Tested URLs are functional and current
+- [ ] Verified contact methods work
+- [ ] Confirmed information is for actual camp (not agency)
+
+## Factual Claims:
+- [ ] Verified pricing from official sources
+- [ ] Confirmed age ranges from camp websites
+- [ ] Checked program dates/availability
+- [ ] Validated activity lists and offerings
+
+## User Impact Test:
+- [ ] Would a parent trust this to make booking decisions?
+- [ ] Does this help vs mislead camp discovery?
+- [ ] Is this accurate enough for children's safety planning?
+```
+
+#### **Research-First Workflow**
+```
+❌ OLD WORKFLOW: Problem → Quick Fix → Test → Deploy
+✅ NEW WORKFLOW: Problem → Research Reality → Verify Facts → Implement → Test → Deploy
+```
+
+#### **Automatic Verification Triggers**
+When encountering ANY of these, MUST research before implementing:
+- ✅ **Addresses** (always verify real locations vs booking offices)
+- ✅ **Contact Information** (verify current/working)
+- ✅ **Pricing** (check actual camp websites)
+- ✅ **Program Details** (verify ages, dates, activities)
+- ✅ **Business Claims** (verify any "facts" about camps)
+
+#### **Quality Gate Questions**
+Before ANY commit involving data, ask:
+1. **"Is this data actually verified or am I assuming?"**
+2. **"Would a parent trust this information to make decisions?"**
+3. **"Does this represent reality or just fix the technical problem?"**
+4. **"Have I researched this or used generic approximations?"**
+
+#### **Documentation Requirements**
+For any verified data changes, commit messages MUST include:
+```markdown
+🔍 Verification Process:
+- Source: [where information was confirmed]
+- Method: [how verification was performed]
+- Accuracy: [what makes this reliable]
+```
+
+#### **Schema/Structured Data Standards**
+- **Real Addresses**: Always represent actual camp facilities, NOT booking offices
+- **Verified Contact Info**: Test all URLs and contact methods before inclusion
+- **Accurate Geographic Data**: Use precise postal codes for actual locations
+- **Business Model Alignment**: Schema must match what we actually do (directory portal vs event organizer)
+
+#### **Failure Prevention**
+**Common "Lazy Errors" to Avoid:**
+- ❌ Using booking office addresses for camp locations
+- ❌ Generic "reasonable sounding" data vs researched facts
+- ❌ Assuming postal codes without verification
+- ❌ Copy-pasting without validating accuracy
+- ❌ Technical fixes that ignore real-world correctness
+
+#### **Enterprise Quality Standards**
+**Remember**: We're building Europe's #1 camp discovery platform. Every piece of data must meet the standard of:
+- **Parent Decision-Making**: Accurate enough for real booking decisions
+- **Child Safety**: Precise enough for safety planning and location verification
+- **Professional Credibility**: Trustworthy enough to build platform authority
+- **Legal Compliance**: Factual enough to avoid misrepresentation issues
+
+### **Success Metrics for Verification Protocol**
+- Zero "lazy errors" caught by quality review
+- All addresses represent actual operational facilities
+- 100% verified data sources documented
+- User trust improvements through accuracy
+
+---
+
 **REMEMBER: Every line of code we write should serve the ultimate goal of becoming Europe's #1 summer camp discovery platform while maintaining enterprise-level quality and preparing for profitable exit opportunities.**
+
+**NEW STANDARD: "Good enough" data undermines platform credibility. Excellence in accuracy builds user trust and SEO authority.**
 
 *This document is living and should be updated as we learn and grow.*
