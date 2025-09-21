@@ -2,6 +2,30 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 🚨 **CRITICAL CONTEXT: LIVE PRODUCTION WEBSITE**
+
+**⚠️ THIS IS A LIVE PRODUCTION WEBSITE ⚠️**
+
+**www.europeansummercamps.com** is **ACTIVELY SERVING REAL FAMILIES** with daily visitors researching summer camps for their children.
+
+### **🎯 PRODUCTION-FIRST MINDSET REQUIRED:**
+- **EVERY CHANGE AFFECTS REAL USERS**: Parents are using this site to make actual decisions about their children's summer experiences
+- **ACCURACY IS CRITICAL**: Real families depend on our camp information for safety planning and booking decisions
+- **RELIABILITY MATTERS**: Site downtime or errors impact real users discovering camps for their children
+- **SEO CHANGES ARE IMMEDIATE**: Google Console fixes affect real search visibility for actual families
+- **PERFORMANCE IMPACTS REAL USERS**: Mobile optimizations affect real parents browsing on phones
+
+### **🛡️ PRODUCTION SAFETY PROTOCOLS:**
+- **Test All Changes**: Every modification must be tested before deployment
+- **Verify Data Accuracy**: Address/contact/pricing information must be verified (real parents rely on this)
+- **Consider User Impact**: Would this change help or confuse a parent researching camps?
+- **Monitor After Deployment**: Changes affect real traffic immediately
+- **Emergency Mindset**: Broken functionality impacts real family planning
+
+**REMEMBER**: This is not a development project - it's a live business serving real families making important decisions about their children's summer experiences.
+
+---
+
 ## Project Overview
 
 Camp Explorer Europe 2026 is a sophisticated React-based web application showcasing 106 verified European summer camps across 12 countries including premium Scandinavian programs. It features advanced search/filtering, comprehensive camp data, and modern responsive design optimized for camp discovery and selection.
