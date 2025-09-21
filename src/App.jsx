@@ -3,6 +3,47 @@ import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import emailjs from '@emailjs/browser'
+
+// Google Analytics 4 Configuration - Enterprise Implementation
+const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX' // Replace with actual GA4 Measurement ID
+
+// Initialize Google Analytics 4
+const initializeGA4 = () => {
+  // Load Google Analytics gtag script
+  const script1 = document.createElement('script')
+  script1.async = true
+  script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`
+  document.head.appendChild(script1)
+
+  // Initialize gtag function and configure GA4
+  window.dataLayer = window.dataLayer || []
+  function gtag() {
+    window.dataLayer.push(arguments)
+  }
+  window.gtag = gtag
+
+  gtag('js', new Date())
+  gtag('config', GA_MEASUREMENT_ID, {
+    // Enterprise configuration for summer camp discovery platform
+    page_title: 'Camp Explorer Europe 2026',
+    custom_map: {
+      custom_parameter_1: 'camp_category',
+      custom_parameter_2: 'country_filter'
+    },
+    // Enhanced e-commerce preparation for future monetization
+    send_page_view: true,
+    // Privacy-compliant configuration
+    anonymize_ip: true,
+    respect_dnt: true
+  })
+
+  // Track initial page view
+  gtag('event', 'page_view', {
+    page_title: 'Camp Explorer Europe 2026 - European Summer Camps Discovery',
+    page_location: window.location.href,
+    custom_parameter_1: 'homepage'
+  })
+}
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -894,6 +935,23 @@ function App() {
       setTimeout(() => setShowCookieBanner(true), 5000)
     }
   }, [])
+
+  // Google Analytics 4 Initialization - Enterprise Privacy Compliance
+  useEffect(() => {
+    if (cookieConsent === true && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX') {
+      // Initialize GA4 only after explicit user consent and with valid tracking ID
+      initializeGA4()
+
+      // Track analytics acceptance event for business intelligence
+      if (window.gtag) {
+        window.gtag('event', 'analytics_consent_granted', {
+          event_category: 'privacy',
+          event_label: 'gdpr_compliance',
+          custom_parameter_1: 'enterprise_analytics'
+        })
+      }
+    }
+  }, [cookieConsent])
 
   // Back-to-top scroll listener
   useEffect(() => {
@@ -3343,7 +3401,7 @@ function App() {
                 <p className="mb-4">We use two types of cookies:</p>
                 <ul className="mb-4">
                   <li><strong>Essential Cookies:</strong> Required for the website to function properly (search, navigation, filters)</li>
-                  <li><strong>Analytics Cookies:</strong> Help us understand which camps are most popular to improve your experience</li>
+                  <li><strong>Analytics Cookies:</strong> Help us understand which camps are most popular to improve your experience (Google Analytics & Vercel Analytics)</li>
                 </ul>
                 <p>You can choose to accept or decline analytics cookies at any time.</p>
               </Card>
@@ -3787,7 +3845,7 @@ function App() {
                 Help Us Improve Your Camp Discovery Experience
               </h3>
               <p id="cookie-description" className="text-blue-100 text-sm leading-relaxed">
-                We use essential cookies to make our site work perfectly, plus analytics to understand which camps families love most. 
+                We use essential cookies to make our site work perfectly, plus analytics (Google Analytics & Vercel Analytics) to understand which camps families love most. 
                 This helps us show you the most relevant options first! 
                 <button 
                   onClick={() => setActiveSection('privacy')} 
