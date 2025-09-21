@@ -366,6 +366,88 @@ You are a specialized business intelligence and analytics agent for Camp Explore
 
 ---
 
+## 🎯 **PRIORITY 5: SECURITY AUDIT SPECIALIST AGENT**
+
+### **Agent Specification**
+- **Name:** `security-audit-specialist`
+- **Purpose:** Comprehensive security assessment and vulnerability analysis for live production website
+- **Business Value:** Enterprise-level security, risk mitigation, compliance assurance, professional credibility
+
+### **Required Tools**
+```json
+{
+  "tools": [
+    "Read",
+    "Grep",
+    "Glob",
+    "Bash",
+    "WebFetch",
+    "Edit",
+    "MultiEdit"
+  ]
+}
+```
+
+### **Detailed Instructions**
+```markdown
+You are a specialized security audit agent for Camp Explorer Europe 2026. Your role is to conduct comprehensive security assessments appropriate for a live production website serving real families daily.
+
+## CORE RESPONSIBILITIES:
+
+### 1. FRONTEND SECURITY AUDIT
+- XSS prevention analysis across all user inputs
+- Content Security Policy effectiveness assessment
+- Client-side data exposure evaluation
+- React component security pattern review
+- Third-party dependency vulnerability scanning
+
+### 2. INFRASTRUCTURE SECURITY
+- Vercel deployment security configuration review
+- GitHub repository and workflow security assessment
+- Cloudflare DNS and email routing security evaluation
+- Domain security and certificate management analysis
+
+### 3. COMMUNICATION SECURITY
+- EmailJS integration security assessment
+- Contact form security and validation review
+- Email routing security (Cloudflare → Gmail)
+- API key exposure and management evaluation
+
+### 4. PRIVACY & COMPLIANCE
+- GDPR compliance verification and documentation
+- Cookie consent implementation assessment
+- Analytics privacy and user tracking evaluation
+- Data processing and retention policy review
+
+### 5. BUSINESS LOGIC SECURITY
+- Camp data integrity and tampering prevention
+- Search/filter parameter security validation
+- URL manipulation and routing security
+- Client-side business logic protection
+
+## AUDIT METHODOLOGY:
+1. **Automated Scanning**: npm audit, dependency vulnerabilities
+2. **Manual Code Review**: Security patterns, input validation, output encoding
+3. **Configuration Assessment**: Headers, CSP, security policies
+4. **Infrastructure Review**: Deployment pipeline, domain security
+5. **Compliance Verification**: GDPR, privacy regulations
+
+## REPORTING REQUIREMENTS:
+- Executive summary with overall security posture
+- Critical/High/Medium/Low priority findings
+- Specific remediation guidance with code examples
+- Compliance status assessment
+- Implementation timeline recommendations
+
+## SUCCESS METRICS:
+- Zero critical vulnerabilities identified
+- Professional security standards compliance
+- Enhanced user trust and business credibility
+- Future-proof security foundation for scaling
+```
+
+---
+
 ## 🚀 **AGENT CREATION TIMELINE**
 
 ### **Phase 1: Foundation (Month 1)**
@@ -391,6 +473,13 @@ You are a specialized business intelligence and analytics agent for Camp Explore
    - Traffic and conversion analysis
    - Monetization opportunity identification
    - Competitive intelligence gathering
+
+### **Phase 5: Security (Month 5)**
+5. **Security Audit Specialist Agent** - Enterprise security assurance
+   - Comprehensive vulnerability assessment
+   - GDPR compliance verification
+   - Infrastructure security review
+   - Live production security monitoring
 
 ---
 
@@ -508,10 +597,45 @@ You are a specialized business intelligence and analytics agent for Camp Explore
 3. **Seasonal Updates**: Spring 2026 research when Nordic camps publish full programs
 4. **Quality Maintenance**: Quarterly verification of existing camps
 
+### **Priority 5: Security Audit Specialist Agent - COMPLETED** ✅
+**Date Completed:** September 21, 2025
+
+**Creation Results:**
+- ✅ **Agent Specification Created**: Complete SECURITY_AGENT_INSTRUCTIONS.md with enterprise security standards
+- ✅ **Security Focus Defined**: Live production website security assessment for family-serving platform
+- ✅ **Comprehensive Scope**: Frontend, infrastructure, communication, privacy, and business logic security
+- ✅ **Business Alignment**: Enterprise-level security appropriate for authority website positioning
+- ✅ **Integration Ready**: Coordinates with existing agent framework for holistic security enhancement
+
+**Agent Capabilities:**
+- **Frontend Security**: XSS prevention, CSP assessment, React component security patterns
+- **Infrastructure Security**: Vercel/GitHub/Cloudflare configuration review
+- **Communication Security**: EmailJS integration and contact form security assessment
+- **Privacy Compliance**: GDPR verification and analytics privacy evaluation
+- **Business Logic Security**: Camp data integrity and search/filter security validation
+
+**Business Impact:**
+- **Risk Mitigation**: Professional security posture protects business reputation and user trust
+- **Compliance Assurance**: GDPR and privacy law compliance verification
+- **Authority Enhancement**: Enterprise security standards support #1 resource positioning
+- **Future-Proofing**: Security foundation enables secure scaling and monetization
+
+**Security Standards Applied:**
+- **OWASP Top 10 2021**: Web application security risks assessment
+- **NIST Cybersecurity Framework**: Comprehensive security methodology
+- **React Security Best Practices**: Frontend-specific security patterns
+- **EU Privacy Regulations**: GDPR and family data protection focus
+
+**Next Steps for Agent Usage:**
+1. **Quarterly Security Audits**: Comprehensive security assessments before major releases
+2. **Pre-Deployment Reviews**: Security validation for all significant changes
+3. **Compliance Monitoring**: Ongoing GDPR and privacy regulation adherence
+4. **Incident Response**: Security assessment after any suspicious activity
+
 ---
 
 **This roadmap provides a comprehensive plan for creating specialized agents that will significantly enhance the Camp Explorer Europe 2026 development capabilities while supporting the strategic goal of becoming Europe's #1 summer camp discovery platform.**
 
 *Document Created: January 2025*
-*Updated: September 17, 2025 - Priority 1 Agent Successfully Deployed*
-*Next Review: After second agent creation or quarterly agent performance assessment*
+*Updated: September 21, 2025 - Priority 5 Security Audit Specialist Agent Added*
+*Next Review: After additional agent creation or quarterly agent performance assessment*
