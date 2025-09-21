@@ -3367,7 +3367,7 @@ function App() {
                   <li>Change your cookie preferences at any time</li>
                   <li>Browse our site with essential cookies only</li>
                 </ul>
-                <p>For questions about privacy, contact us at <span className="break-all">contact@europeansummercamps.com</span></p>
+                <p><strong>For questions about privacy, contact us at:</strong><br/>contact@europeansummercamps.com</p>
               </Card>
             </div>
             
@@ -3832,13 +3832,14 @@ function App() {
               <Card className="p-8 mb-8">
                 <h2 className="text-2xl font-bold mb-4">Website Owner & Responsible Party</h2>
                 <div className="mb-4">
-                  <p><strong>Business:</strong> PixelSnack (Independent Web Publishing)</p>
-                  <p><strong>Contact:</strong> <span className="break-all">contact@europeansummercamps.com</span></p>
-                  <p><strong>Website:</strong> <span className="break-all">www.europeansummercamps.com</span></p>
-                  <p><strong>Jurisdiction:</strong> European Union</p>
+                  <p><strong>Business:</strong><br/>PixelSnack (Independent Web Publishing)</p>
+                  <p><strong>Contact:</strong><br/>contact@europeansummercamps.com</p>
+                  <p><strong>Website:</strong><br/>www.europeansummercamps.com</p>
+                  <p><strong>Jurisdiction:</strong><br/>European Union</p>
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Responsible for Content</h3>
-                <p>PixelSnack<br/>Contact: <span className="break-all">contact@europeansummercamps.com</span></p>
+                <p>PixelSnack</p>
+                <p><strong>Contact:</strong><br/>contact@europeansummercamps.com</p>
               </Card>
               
               <Card className="p-8 mb-8">
@@ -3945,7 +3946,7 @@ function App() {
                 <h2 className="text-2xl font-bold mb-4">6. Changes to Terms</h2>
                 <p className="mb-4">We reserve the right to modify these terms at any time. Changes will be posted on this page. Continued use of the website constitutes acceptance of updated terms.</p>
                 <p><strong>Last Updated:</strong> September 11, 2025</p>
-                <p><strong>Contact:</strong> <span className="break-all">contact@europeansummercamps.com</span></p>
+                <p><strong>Contact:</strong><br/>contact@europeansummercamps.com</p>
               </Card>
             </div>
             
