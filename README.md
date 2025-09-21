@@ -198,7 +198,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Project Maintainer:** PixelSnack
 - **GitHub:** [@PixelSnack](https://github.com/PixelSnack)
-- **Email:** sorenthoning@gmail.com
+- **Email:** contact@europeansummercamps.com
 
 For questions about specific camps, please contact the camps directly through their official websites.
 
