@@ -121,3 +121,4 @@ $RECYCLE.BIN/
 # Backup files
 *.backup
 *.phase-b-backup
+~.md
