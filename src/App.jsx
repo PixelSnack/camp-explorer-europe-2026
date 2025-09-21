@@ -3838,8 +3838,10 @@ function App() {
                   <p><strong>Jurisdiction:</strong><br/>European Union</p>
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Responsible for Content</h3>
-                <p>PixelSnack</p>
-                <p><strong>Contact:</strong><br/>contact@europeansummercamps.com</p>
+                <div className="mb-4">
+                  <p><strong>Organization:</strong><br/>PixelSnack</p>
+                  <p><strong>Contact:</strong><br/>contact@europeansummercamps.com</p>
+                </div>
               </Card>
               
               <Card className="p-8 mb-8">
