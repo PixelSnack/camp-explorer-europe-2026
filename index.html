@@ -159,109 +159,89 @@
     }
     </script>
     
-    <!-- Featured Summer Camp Events -->
+    <!-- Featured Summer Camp Directory -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": "Featured European Summer Camps 2026",
-      "description": "Top-rated summer camps across Europe for children and teenagers",
+      "name": "Featured European Summer Camps Directory 2026",
+      "description": "Top-rated educational organizations offering summer camps across Europe for children and teenagers",
+      "numberOfItems": 3,
       "itemListElement": [
         {
-          "@type": "Event",
-          "name": "Les Elfes International Summer Camp 2026",
-          "description": "Premium Alpine adventure summer camp in Verbier, Switzerland for ages 6-17 years",
-          "image": "https://www.europeansummercamps.com/les-elfes-camp.jpg",
-          "startDate": "2026-06-15",
-          "endDate": "2026-08-31",
-          "eventStatus": "https://schema.org/EventScheduled",
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-          "location": {
-            "@type": "Place",
-            "name": "Verbier, Switzerland",
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "EducationalOrganization",
+            "name": "Les Elfes International Summer Camp",
+            "description": "Premium Alpine adventure summer camp in Verbier, Switzerland for ages 6-17 years",
+            "url": "https://www.leselfes.com",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Verbier",
               "addressCountry": "Switzerland"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "International"
+            },
+            "serviceType": "Summer Camp",
+            "audience": {
+              "@type": "PeopleAudience",
+              "suggestedMinAge": 6,
+              "suggestedMaxAge": 17
             }
-          },
-          "organizer": {
-            "@type": "Organization",
-            "name": "Les Elfes International",
-            "url": "https://www.leselfes.com"
-          },
-          "audience": {
-            "@type": "PeopleAudience",
-            "suggestedMinAge": 6,
-            "suggestedMaxAge": 17
-          },
-          "typicalAgeRange": "6-17",
-          "inLanguage": "en",
-          "url": "https://www.leselfes.com"
+          }
         },
         {
-          "@type": "Event",
-          "name": "Oxford Summer Courses 2026",
-          "description": "Academic excellence program for university preparation in Oxford, UK for ages 13-18",
-          "image": "https://www.europeansummercamps.com/oxford-summer-courses.jpg",
-          "startDate": "2026-07-01",
-          "endDate": "2026-08-15",
-          "eventStatus": "https://schema.org/EventScheduled",
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-          "location": {
-            "@type": "Place",
-            "name": "Oxford, United Kingdom",
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "EducationalOrganization",
+            "name": "Oxford Summer Courses",
+            "description": "Academic excellence program for university preparation in Oxford, UK for ages 13-18",
+            "url": "https://www.oxfordsummercourses.com",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Oxford",
               "addressCountry": "United Kingdom"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "International"
+            },
+            "serviceType": "Academic Summer Program",
+            "audience": {
+              "@type": "PeopleAudience",
+              "suggestedMinAge": 13,
+              "suggestedMaxAge": 18
             }
-          },
-          "organizer": {
-            "@type": "Organization",
-            "name": "Oxford Summer Courses",
-            "url": "https://www.oxfordsummercourses.com"
-          },
-          "audience": {
-            "@type": "PeopleAudience",
-            "suggestedMinAge": 13,
-            "suggestedMaxAge": 18
-          },
-          "typicalAgeRange": "13-18",
-          "inLanguage": "en",
-          "url": "https://www.oxfordsummercourses.com"
+          }
         },
         {
-          "@type": "Event",
-          "name": "EUROCAM Bohemia Summer Camp 2026",
-          "description": "Budget-friendly English immersion camp in South Bohemia, Czech Republic for ages 7-17",
-          "image": "https://www.europeansummercamps.com/eurocam-bohemia.jpg",
-          "startDate": "2026-07-01",
-          "endDate": "2026-08-31",
-          "eventStatus": "https://schema.org/EventScheduled",
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-          "location": {
-            "@type": "Place",
-            "name": "South Bohemia, Czech Republic",
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "EducationalOrganization",
+            "name": "EUROCAM Bohemia Summer Camp",
+            "description": "Budget-friendly English immersion camp in South Bohemia, Czech Republic for ages 7-17",
+            "url": "https://www.eurocam.cz",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "South Bohemia",
               "addressCountry": "Czech Republic"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "International"
+            },
+            "serviceType": "Language Immersion Summer Camp",
+            "audience": {
+              "@type": "PeopleAudience",
+              "suggestedMinAge": 7,
+              "suggestedMaxAge": 17
             }
-          },
-          "organizer": {
-            "@type": "Organization",
-            "name": "EUROCAM",
-            "url": "https://www.eurocam.cz"
-          },
-          "audience": {
-            "@type": "PeopleAudience",
-            "suggestedMinAge": 7,
-            "suggestedMaxAge": 17
-          },
-          "typicalAgeRange": "7-17",
-          "inLanguage": ["en", "cs"],
-          "url": "https://www.eurocam.cz"
+          }
         }
       ]
     }
