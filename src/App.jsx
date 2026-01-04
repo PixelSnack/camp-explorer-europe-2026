@@ -215,7 +215,7 @@ function App() {
       specialFeatures: ["On-site Health Center", "Age-grouped Programs", "Academic Focus"],
       established: 1947,
       capacity: 80,
-      bookingUrl: "https://summer.la-garenne.ch/"
+      bookingUrl: "https://www.la-garenne.ch/summer-camps"
     },
     {
       id: 3,
@@ -358,7 +358,7 @@ function App() {
       location: "South Bohemia, Czech Republic",
       country: "Czech Republic",
       ages: "7-17 years",
-      price: "€330",
+      price: "€335",
       priceRange: "budget",
       rating: 4.8,
       reviews: 267,
@@ -582,7 +582,7 @@ function App() {
       location: "Åsnen National Park, Sweden",
       country: "Sweden",
       ages: "7+ years",
-      price: "€530",
+      price: "€570",
       priceRange: "premium",
       rating: 4.9,
       reviews: 123,
