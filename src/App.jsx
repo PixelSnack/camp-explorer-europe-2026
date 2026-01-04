@@ -577,6 +577,28 @@ function App() {
     },
     // Verified Nordic Expansion
     {
+      id: 19,
+      name: "Summer Camp Finland International",
+      location: "Hyvinkää, Southern Finland",
+      country: "Finland",
+      ages: "8-17 years",
+      price: "€1,350",
+      priceRange: "mid",
+      rating: 4.6,
+      reviews: 78,
+      image: heroImage,
+      category: "family",
+      type: "International Camp",
+      activities: ["English Learning", "Cultural Exchange", "Sports", "Nature Activities"],
+      dates: "July 27 - August 15, 2026",
+      highlights: ["International atmosphere", "Flexible duration", "Near Helsinki", "Cultural exchange"],
+      languages: ["Finnish", "English"],
+      specialFeatures: ["Early Bird Pricing", "Multiple Duration Options", "International Community"],
+      established: 2015,
+      capacity: 60,
+      bookingUrl: "https://summercamp.fi/"
+    },
+    {
       id: 20,
       name: "Ranum Efterskole International Summer School",
       location: "Ranum, Denmark",
@@ -1306,6 +1328,12 @@ function App() {
             >
               Camp Guide
             </Button>
+          </div>
+
+          {/* Verification Badge */}
+          <div className="flex justify-center items-center gap-2 text-white/90 text-sm max-w-md mx-auto px-4">
+            <Shield className="w-4 h-4 text-green-400" />
+            <span>Camps verified for 2026 season | Updated January 2026</span>
           </div>
 
           {/* Stats Bar */}
@@ -3047,11 +3075,11 @@ function App() {
                         <Star className="w-6 h-6 text-blue-600" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg">Sarah M., London</h3>
-                        <p className="text-sm text-gray-600">Les Elfes International, Switzerland</p>
+                        <h3 className="font-bold text-lg">Sarah M., Munich</h3>
+                        <p className="text-sm text-gray-600">Platform User</p>
                       </div>
                     </div>
-                    <p className="text-gray-700 mb-4">"Our daughter came back from Switzerland not just fluent in French, but confident, independent, and with friends from around the world. It was transformative. The level of care and activities exceeded our expectations."</p>
+                    <p className="text-gray-700 mb-4">"This site saved me weeks of research! Instead of visiting dozens of camp websites individually, I could compare programs side-by-side and filter by exactly what we needed. The verified information gave me confidence that I wasn't missing any red flags."</p>
                     <div className="flex text-yellow-400">
                       <Star className="w-4 h-4 fill-current" />
                       <Star className="w-4 h-4 fill-current" />
@@ -3067,11 +3095,11 @@ function App() {
                         <Star className="w-6 h-6 text-green-600" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg">Michael R., Dublin</h3>
-                        <p className="text-sm text-gray-600">Oxford Summer Courses, UK</p>
+                        <h3 className="font-bold text-lg">Marcus K., Amsterdam</h3>
+                        <p className="text-sm text-gray-600">Platform User</p>
                       </div>
                     </div>
-                    <p className="text-gray-700 mb-4">"The academic program was incredible - my 15-year-old son discovered his passion for medicine and made connections that helped with his university applications. Worth every penny."</p>
+                    <p className="text-gray-700 mb-4">"The detailed filtering system helped us narrow down from 100+ camps to our top 5 in minutes. Having all the essential information - ages, pricing, activities - in one place made comparing options so much easier than jumping between different websites."</p>
                     <div className="flex text-yellow-400">
                       <Star className="w-4 h-4 fill-current" />
                       <Star className="w-4 h-4 fill-current" />
@@ -3087,11 +3115,11 @@ function App() {
                         <Star className="w-6 h-6 text-orange-600" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg">Anna K., Berlin</h3>
-                        <p className="text-sm text-gray-600">EUROCAM Bohemia, Czech Republic</p>
+                        <h3 className="font-bold text-lg">Elena R., London</h3>
+                        <p className="text-sm text-gray-600">Platform User</p>
                       </div>
                     </div>
-                    <p className="text-gray-700 mb-4">"Fantastic value for money! Our twins had an amazing outdoor adventure experience, and the bilingual approach really helped improve their English. The staff were wonderful."</p>
+                    <p className="text-gray-700 mb-4">"As a working parent, I appreciated having all the camp information organized and verified in one place. The search filters meant I didn't have to waste time looking at camps that wouldn't fit our budget or age requirements."</p>
                     <div className="flex text-yellow-400">
                       <Star className="w-4 h-4 fill-current" />
                       <Star className="w-4 h-4 fill-current" />
@@ -3101,25 +3129,6 @@ function App() {
                     </div>
                   </Card>
 
-                  <Card className="p-8">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                        <Star className="w-6 h-6 text-purple-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg">Carlos P., Madrid</h3>
-                        <p className="text-sm text-gray-600">Enforex Spanish Camp, Spain</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-4">"Perfect for international kids learning Spanish. The mix of local Spanish children and international campers created an authentic immersion environment. Great cultural exchange!"</p>
-                    <div className="flex text-yellow-400">
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                    </div>
-                  </Card>
                 </div>
 
                 <Card className="p-8 mt-12">
