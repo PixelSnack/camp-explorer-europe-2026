@@ -6,7 +6,7 @@
 
 ### 📊 **Comprehensive Camp Database**
 - **100+ verified camps** across 12 European countries
-- **Real 2026 pricing** from €330 (EUROCAM Bohemia) to CHF 6,980 (La Garenne)
+- **Real 2026 pricing** from €335 (EUROCAM Bohemia) to CHF 6,980 (La Garenne)
 - **Detailed profiles** for each camp including:
   - Activities and specializations
   - Languages offered
@@ -113,12 +113,12 @@
   - Day camp options, English focus
 
 ### 💰 **Budget Excellence (2 camps)**
-- **EUROCAM Bohemia** - €330 (South Bohemia, Czech Republic)
+- **EUROCAM Bohemia** - €335 (South Bohemia, Czech Republic)
   - 10-day program, exceptional value
   - 30+ years experience, bilingual leaders
   - River setting, cultural immersion
   
-- **Adventure Camp Bavaria** - €395 (Bayerischer Wald, Germany)
+- **Adventure Camp Bavaria** - €445 (Bayerischer Wald, Germany)
   - Bavarian Forest, mountain lake setting
   - Traditional crafts, castle visits
   - German culture with survival skills

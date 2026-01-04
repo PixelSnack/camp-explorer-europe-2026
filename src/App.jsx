@@ -577,28 +577,6 @@ function App() {
     },
     // Verified Nordic Expansion
     {
-      id: 19,
-      name: "Nordic Woods Wilderness Glamping",
-      location: "Åsnen National Park, Sweden",
-      country: "Sweden",
-      ages: "7+ years",
-      price: "€570",
-      priceRange: "premium",
-      rating: 4.9,
-      reviews: 123,
-      image: heroImage,
-      category: "unique",
-      type: "Wilderness Glamping",
-      activities: ["Guided Hikes", "Canoe Expeditions", "Bushcraft Workshops", "Yoga & Meditation"],
-      dates: "June 7 - September 13, 2026",
-      highlights: ["Tipi accommodations", "Near national park", "Comprehensive activities included", "Family-friendly from age 7"],
-      languages: ["Swedish", "English"],
-      specialFeatures: ["Wilderness Glamping Experience", "Sauna & Hot Tub Access", "All Activities Included"],
-      established: 2018,
-      capacity: 20,
-      bookingUrl: "https://nordicwoods.org/en/"
-    },
-    {
       id: 20,
       name: "Ranum Efterskole International Summer School",
       location: "Ranum, Denmark",
@@ -2539,7 +2517,7 @@ function App() {
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Exceptional value programs. EUROCAM Bohemia offers 10-day adventures for incredible prices.</p>
                   <div className="text-xs text-gray-500">
-                    <div>• €330 (10 days!)</div>
+                    <div>• €335 (10 days!)</div>
                     <div>• Ages 7-17</div>
                     <div>• Bilingual environment</div>
                   </div>
@@ -2752,7 +2730,7 @@ function App() {
                   <p className="text-sm text-gray-600 mb-3">Czech Republic's hidden gem offering incredible value. 30+ years experience with bilingual programming.</p>
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div><strong>Ages:</strong> 7-17</div>
-                    <div><strong>Price:</strong> €330 (10 days!)</div>
+                    <div><strong>Price:</strong> €335 (10 days!)</div>
                     <div><strong>Languages:</strong> English/Czech</div>
                     <div><strong>Special:</strong> River activities, caves</div>
                   </div>
