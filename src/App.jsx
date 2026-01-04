@@ -380,7 +380,7 @@ function App() {
       location: "Bayerischer Wald, Germany",
       country: "Germany",
       ages: "9-16 years",
-      price: "€395",
+      price: "€445",
       priceRange: "budget",
       rating: 4.6,
       reviews: 189,
