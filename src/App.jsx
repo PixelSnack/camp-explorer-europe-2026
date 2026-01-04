@@ -1329,7 +1329,7 @@ function App() {
               Camp Guide
             </Button>
           </div>
-          
+
           {/* Stats Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto px-4">
             {stats.map((stat, index) => {
