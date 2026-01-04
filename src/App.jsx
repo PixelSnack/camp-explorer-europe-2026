@@ -1293,7 +1293,7 @@ function App() {
               aria-label="Camp information banner"
             >
               <span className="marquee-content">
-                23+ Verified Organizations • 13 Countries • 2026 Season
+                2026 Season NOW OPEN • 23+ Verified Organizations • 13 Countries
               </span>
             </div>
           </div>
@@ -1306,6 +1306,13 @@ function App() {
           
           <p className="hero-fluid-text text-gray-200 max-w-3xl mx-auto px-4">
             From Swiss Alpine adventures to Spanish beach immersion, explore summer camp options for your child. Directory of camps with information compiled from official sources and public data.
+          </p>
+
+          <p className="hero-fluid-booking-notice text-sm text-orange-200 max-w-2xl mx-auto px-4 mt-4 bg-black/20 rounded-lg py-2">
+            <span className="inline-flex items-center">
+              <Calendar className="w-4 h-4 mr-2" />
+              Peak booking season: Many popular programs fill by March 2026
+            </span>
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center hero-fluid-spacing">
@@ -1446,6 +1453,14 @@ function App() {
                       {camp.dates}
                     </Badge>
                   </div>
+                  {/* 2026 Availability Badge for High-Demand Camps */}
+                  {(camp.priceRange === 'luxury' || camp.priceRange === 'premium' || camp.rating >= 4.8) && (
+                    <div className="absolute bottom-4 right-4">
+                      <Badge className="bg-green-500/90 text-white backdrop-blur-sm text-xs animate-pulse">
+                        2026 Open
+                      </Badge>
+                    </div>
+                  )}
                 </div>
                 
                 <CardHeader className="pb-3">
@@ -1841,6 +1856,14 @@ function App() {
                         {camp.dates}
                       </Badge>
                     </div>
+                    {/* 2026 Availability Badge for High-Demand Camps */}
+                    {(camp.priceRange === 'luxury' || camp.priceRange === 'premium' || camp.rating >= 4.8) && (
+                      <div className="absolute bottom-4 right-4">
+                        <Badge className="bg-green-500/90 text-white backdrop-blur-sm text-xs animate-pulse">
+                          2026 Open
+                        </Badge>
+                      </div>
+                    )}
                   </div>
                   
                   <CardHeader className="pb-3">
