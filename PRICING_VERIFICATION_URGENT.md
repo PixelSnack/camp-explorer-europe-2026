@@ -22,7 +22,7 @@ This indicates we may have **systematic pricing errors** throughout the database
 
 **Business Impact**: Showing wrong prices misleads real families making booking decisions and damages our credibility as a trusted resource.
 
-## 📋 **VERIFICATION STATUS** (11 of 28 completed - 39%)
+## 📋 **VERIFICATION STATUS** (11 of 27 completed - 41%)
 
 ### ✅ **VERIFIED CAMPS**
 1. **Camp Bjøntegaard (Norway)**: NOK 5,890 ✅ CORRECTED
@@ -37,7 +37,7 @@ This indicates we may have **systematic pricing errors** throughout the database
 10. **Oxford Summer Courses (ID 5)**: From £6,995 ✅ CORRECTED (was £6,220, +£775, tiered pricing)
 11. **Bede's Summer School (ID 6)**: From £3,190 ✅ CORRECTED (was £1,575 weekly rate, 2-week total)
 
-### 🔍 **NEEDS VERIFICATION** (19 remaining)
+### 🔍 **NEEDS VERIFICATION** (16 remaining)
 
 #### **HIGH PRIORITY - Norwegian Camps**: ✅ COMPLETED
 - ~~**Adventure Treks Norway**: $7,295~~ → **$7,095** ✅ Verified Jan 12, 2026

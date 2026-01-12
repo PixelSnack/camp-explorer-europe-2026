@@ -34,17 +34,18 @@
 ## 📋 **CURRENT PRIORITY TASKS** (January 2026)
 
 ### 🚨 **URGENT: Pricing Verification Crisis**
-- **Status**: 4 of 23 camps verified (18% complete)
+- **Status**: 11 of 27 camps verified (41% complete)
 - **Issue**: Camp Bjøntegaard showed 112% overcharge (facility rate vs per-child price)
 - **Impact**: Real families making booking decisions with potentially wrong prices
 - **See**: PRICING_VERIFICATION_URGENT.md for complete methodology
 
 **Next Priority Camps**:
-- [ ] **Adventure Treks Norway** ($7,295 - website not accessible)
-- [ ] **Nordic Terrain Academy** (NOK 3,500 - website not accessible)
-- [ ] **Swiss Premium Camps**: Les Elfes, Camp Suisse, La Garenne
-- [ ] **UK Camps**: 3 camps need verification
-- [ ] **Remaining**: 14 additional camps across Europe
+- [x] ~~**Adventure Treks Norway**~~ ✅ VERIFIED ($7,095)
+- [x] ~~**Nordic Terrain Academy**~~ ✅ VERIFIED (NOK 5,700, DAY CAMP)
+- [x] ~~**Swiss Premium Camps**~~ ✅ VERIFIED (Les Elfes, Camp Suisse, La Garenne)
+- [x] ~~**UK Camps**~~ ✅ VERIFIED (Oxford, Bede's)
+- [ ] **New Camps** (IDs 24-29): 6 camps need verification
+- [ ] **Remaining**: 10 additional unverified camps across Europe
 
 ### 🔍 **Ongoing Priorities**:
 - [ ] Verify all camps are real camps (not tour operators)
@@ -92,9 +93,10 @@ When starting a new Claude Code session, follow this protocol to restore context
 ### **Step 2: Current Status Assessment**
 
 **Database Status:**
-- **25 verified camp organizations** representing 100+ programs across 15 countries
-- **Pricing Crisis**: Only 7/25 camps verified for accurate per-child pricing (28% complete)
+- **27 verified camp organizations** representing 100+ programs across 15 countries
+- **Pricing Crisis**: 11/27 camps verified for accurate per-child pricing (41% complete)
 - **Recent Additions**: Poland, Portugal, Austria camps added (January 2026)
+- **Recent Removals**: ID 13 (Camp Adventure Denmark - not a camp), ID 19 (duplicate)
 
 **Technical Status:**
 - ✅ **Phase 1 COMPLETE**: All optimizations deployed
@@ -161,10 +163,10 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 25 verified camps, 100+ programs, 15 countries
-- **Camp Data Location**: `src/App.jsx` lines 174-689 (`const allCamps = [...]`)
+- **Database**: 27 verified camps, 100+ programs, 15 countries
+- **Camp Data Location**: `src/App.jsx` lines 174-803 (`const allCamps = [...]`)
 - **App.jsx Total Lines**: ~4,450 lines (well-structured monolithic component)
-- **Critical Issue**: Pricing verification crisis (18/25 camps unverified)
+- **Critical Issue**: Pricing verification crisis (16/27 camps unverified, 41% complete)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
 - **Performance**: 93-96% image optimization, Lighthouse 90+ scores
 
@@ -200,8 +202,8 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 **Crisis Context**: Found Camp Bjøntegaard showing facility rental rate (NOK 12,500) instead of per-child price (NOK 5,890) - 112% overcharge affecting real families.
 
 **Progress Tracking**: See PRICING_VERIFICATION_URGENT.md
-- ✅ **Verified (7/25)**: Camp Bjøntegaard, Myhre Gård, EUROCAM, Adventure Camp Bavaria, Les Elfes, La Garenne, Camp Suisse
-- ⚠️ **Next Priority (18/25)**: Norwegian camps with website issues, UK camps, Spanish/Finnish camps, others
+- ✅ **Verified (11/27)**: Camp Bjøntegaard, Myhre Gård, EUROCAM, Adventure Camp Bavaria, Les Elfes, La Garenne, Camp Suisse, Adventure Treks Norway, Nordic Terrain Academy, Oxford Summer Courses, Bede's Summer School
+- ⚠️ **Next Priority (16/27)**: New camps (IDs 24-29), Spanish/Finnish/Danish camps, remaining unverified camps
 
 **Process:**
 1. **Check Progress**: Read PRICING_VERIFICATION_URGENT.md for next unverified camps
@@ -842,12 +844,12 @@ europeansummercamps/
 - **Current**: France (2), Italy (2), Poland (1), Portugal (1), Austria (1), Czech Republic (1), Finland (1), Denmark (1), Iceland (1), Greece (1)
 - **Need More**: Romania (0), Hungary (0), Belgium (0), Netherlands (0)
 
-**Category Distribution (25 Camps):**
+**Category Distribution (27 Camps):**
 - Premium Alpine: 3 camps
 - Academic & STEM: 4 camps
 - Language Immersion: 4 camps
 - Sports Specialty: 5 camps
-- **Family Programs: 4 camps** (improved)
+- **Family Programs: 6 camps** (improved)
 - **Budget Excellence: 4 camps** (improved)
 - Outdoor Adventures: 1 camp
 
@@ -1165,12 +1167,12 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total camps**: 25 organizations
+- **Total camps**: 27 organizations
 - **Total programs**: 100+ individual camps
 - **Countries**: 15 European countries
 - **Categories**: 7 distinct categories
-- **Verified pricing**: 7/25 (28% complete) ⚠️ URGENT
-- **App.jsx camp data**: Lines 174-689
+- **Verified pricing**: 11/27 (41% complete) ⚠️ URGENT
+- **App.jsx camp data**: Lines 174-803
 - **Total App.jsx lines**: ~4,450 lines
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories
