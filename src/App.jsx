@@ -442,29 +442,7 @@ function App() {
       capacity: 24,
       bookingUrl: "https://wildwind.co.uk/"
     },
-    // Scandinavian Excellence
-    {
-      id: 13,
-      name: "Camp Adventure - Outdoor Adventure Park",
-      location: "Rønnede, Denmark",
-      country: "Denmark",
-      ages: "8-16 years",
-      price: "DKK 4,500",
-      priceRange: "mid",
-      rating: 4.7,
-      reviews: 156,
-      image: activitiesCompressed,
-      category: "sports",
-      type: "Adventure Sports",
-      activities: ["Tree Top Adventure", "Survival Skills", "Kayaking", "Team Building"],
-      dates: "June 23-July 7, 2026",
-      highlights: ["Largest adventure park in Denmark", "UNESCO World Heritage site", "Professional instructors", "Safety certified"],
-      languages: ["Danish", "English", "German"],
-      specialFeatures: ["High Rope Courses", "Survival Training", "Viking Heritage Tours"],
-      established: 2001,
-      capacity: 48,
-      bookingUrl: "https://www.campadventure.dk/"
-    },
+    // Scandinavian Excellence - Camp ID 13 REMOVED (not a residential camp - day activity park)
     {
       id: 14,
       name: "Adventure Treks Norway Expedition",
@@ -531,28 +509,7 @@ function App() {
       capacity: 60,
       bookingUrl: "https://www.metsakartano.com/en/educational-camps"
     },
-    {
-      id: 17,
-      name: "Bold Earth Adventures - Iceland: Fire and Ice",
-      location: "Reykjavik & Highlands, Iceland",
-      country: "Iceland",
-      ages: "14-18 years",
-      price: "€4,800",
-      priceRange: "luxury",
-      rating: 4.8,
-      reviews: 73,
-      image: heroImage,
-      category: "unique",
-      type: "Geological Adventure",
-      activities: ["Glacier Hiking", "Volcano Studies", "Geothermal Science", "Northern Lights"],
-      dates: "July 20-August 3, 2026",
-      highlights: ["Unique geological features", "Expert guides", "Cultural immersion", "Adventure-focused"],
-      languages: ["English", "Icelandic"],
-      specialFeatures: ["Glacier Expeditions", "Volcanic Landscape Studies", "Nordic Culture Immersion"],
-      established: 2005,
-      capacity: 24,
-      bookingUrl: "https://www.boldearth.com/"
-    },
+    // Camp ID 17 REMOVED (Bold Earth Iceland - tour operator, not residential camp)
     {
       id: 18,
       name: "Nordic Terrain Academy - Adventure Camps",
