@@ -22,22 +22,24 @@ This indicates we may have **systematic pricing errors** throughout the database
 
 **Business Impact**: Showing wrong prices misleads real families making booking decisions and damages our credibility as a trusted resource.
 
-## 📋 **VERIFICATION STATUS** (4 of 23 completed)
+## 📋 **VERIFICATION STATUS** (7 of 25 completed - 28%)
 
 ### ✅ **VERIFIED CAMPS**
 1. **Camp Bjøntegaard (Norway)**: NOK 5,890 ✅ CORRECTED
 2. **Myhre Gård Riding Camp (Norway)**: NOK 6,950 ✅ VERIFIED ACCURATE
 3. **EUROCAM (Czech Republic)**: €335 ✅ VERIFIED ACCURATE
 4. **Adventure Camp Bavaria (Germany)**: €445 ✅ VERIFIED ACCURATE
+5. **Les Elfes International (Switzerland)**: From CHF 4,550 ✅ UPDATED (was CHF 4,990)
+6. **La Garenne International (Switzerland)**: CHF 6,980 ✅ VERIFIED ACCURATE
+7. **Camp Suisse (Switzerland)**: CHF 4,400 ✅ CORRECTED (was CHF 4,000)
 
-### 🔍 **NEEDS VERIFICATION** (19 remaining)
+### 🔍 **NEEDS VERIFICATION** (18 remaining)
 
 #### **HIGH PRIORITY - Norwegian Camps**:
 - **Adventure Treks Norway**: $7,295 (website pricing not accessible - needs investigation)
 - **Nordic Terrain Academy**: NOK 3,500 (website not accessible - needs investigation)
 
 #### **SYSTEMATIC CHECK NEEDED**:
-- **Swiss Camps** (3 camps): Price ranges CHF 1,800 - CHF 6,980
 - **Spanish Camps** (2 camps): €1,890 - €2,995
 - **UK Camps** (3 camps): £2,450 - £4,295
 - **Finnish Camps** (2 camps): €1,350 - €2,850

@@ -179,7 +179,7 @@ function App() {
       location: "Verbier, Switzerland",
       country: "Switzerland",
       ages: "6-17 years",
-      price: "CHF 4,990",
+      price: "From CHF 4,550", // Verified Jan 2026: was CHF 4,990
       priceRange: "premium",
       rating: 4.9,
       reviews: 847,
@@ -223,7 +223,7 @@ function App() {
       location: "Torgon, Swiss Alps, Switzerland",
       country: "Switzerland",
       ages: "7-17 years",
-      price: "CHF 4,000",
+      price: "CHF 4,400", // Verified Jan 2026: was CHF 4,000
       priceRange: "premium",
       rating: 4.8,
       reviews: 356,
