@@ -22,7 +22,7 @@ This indicates we may have **systematic pricing errors** throughout the database
 
 **Business Impact**: Showing wrong prices misleads real families making booking decisions and damages our credibility as a trusted resource.
 
-## 📋 **VERIFICATION STATUS** (7 of 25 completed - 28%)
+## 📋 **VERIFICATION STATUS** (9 of 28 completed - 32%)
 
 ### ✅ **VERIFIED CAMPS**
 1. **Camp Bjøntegaard (Norway)**: NOK 5,890 ✅ CORRECTED
@@ -32,12 +32,14 @@ This indicates we may have **systematic pricing errors** throughout the database
 5. **Les Elfes International (Switzerland)**: From CHF 4,550 ✅ UPDATED (was CHF 4,990)
 6. **La Garenne International (Switzerland)**: CHF 6,980 ✅ VERIFIED ACCURATE
 7. **Camp Suisse (Switzerland)**: CHF 4,400 ✅ CORRECTED (was CHF 4,000)
+8. **Adventure Treks Norway (ID 14)**: $7,095 ✅ CORRECTED (was $7,295, -$200)
+9. **Nordic Terrain Academy (ID 18)**: NOK 5,700 ✅ CORRECTED (was NOK 3,500, +63%, DAY CAMP clarified)
 
-### 🔍 **NEEDS VERIFICATION** (18 remaining)
+### 🔍 **NEEDS VERIFICATION** (19 remaining)
 
-#### **HIGH PRIORITY - Norwegian Camps**:
-- **Adventure Treks Norway**: $7,295 (website pricing not accessible - needs investigation)
-- **Nordic Terrain Academy**: NOK 3,500 (website not accessible - needs investigation)
+#### **HIGH PRIORITY - Norwegian Camps**: ✅ COMPLETED
+- ~~**Adventure Treks Norway**: $7,295~~ → **$7,095** ✅ Verified Jan 12, 2026
+- ~~**Nordic Terrain Academy**: NOK 3,500~~ → **NOK 5,700** ✅ Verified Jan 12, 2026 (DAY CAMP classification added)
 
 #### **SYSTEMATIC CHECK NEEDED**:
 - **Spanish Camps** (2 camps): €1,890 - €2,995

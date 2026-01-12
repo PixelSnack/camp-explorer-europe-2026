@@ -9,12 +9,21 @@
 ## 🔍 MANDATORY VERIFICATION REQUIREMENTS
 
 ### **0. CRITICAL: CAMP vs TOUR OPERATOR DISTINCTION** 🚨
-**MANDATORY PRE-SCREENING (Added September 2025 after incident):**
-- **✅ RESIDENTIAL CAMP FACILITY**: Must have dedicated camp accommodation (cabins, dormitories, camp buildings) - NOT hotels or tour lodging
-- **✅ CAMP OPERATOR STATUS**: Must be camp organization - NOT travel agency, tour operator, or hospitality company
-- **✅ CAMP-ONLY PRICING**: Pricing must exclude flights, transportation, and travel packages
+**MANDATORY PRE-SCREENING (Updated January 2026):**
+
+**RESIDENTIAL CAMPS (Primary Focus):**
+- **✅ RESIDENTIAL CAMP FACILITY**: Dedicated camp accommodation (cabins, dormitories, camp buildings) - NOT hotels or tour lodging
+- **✅ CAMP OPERATOR STATUS**: Camp organization - NOT travel agency, tour operator, or hospitality company
+- **✅ CAMP-ONLY PRICING**: Pricing excludes flights, transportation, and travel packages
 - **✅ ON-SITE CAMP PROGRAMS**: Multi-day residential programs with camp supervision - NOT guided tours or travel itineraries
-- **✅ CAMP FACILITY OWNERSHIP**: Camp must own/operate the facility - NOT booking accommodations for clients
+- **✅ CAMP FACILITY OWNERSHIP**: Camp owns/operates the facility - NOT booking accommodations for clients
+
+**DAY CAMPS (Accepted with Clear Disclosure - Added January 2026):**
+- **✅ STRUCTURED DAY PROGRAMS**: Multi-day programs with daily start/end times (e.g., 8:30-15:30)
+- **✅ CAMP OPERATOR STATUS**: Legitimate camp organization providing supervised programs
+- **✅ CAMP-ONLY PRICING**: Per-week or per-session pricing for camp activities
+- **✅ CLEAR LABELING**: Must be explicitly labeled as "Day Camp" in name, type, and highlights
+- **✅ NO MISLEADING INFO**: Clearly state "No overnight accommodation" in highlights
 
 **AUTOMATIC DISQUALIFIERS:**
 - ❌ Tour operators offering travel packages
@@ -22,6 +31,7 @@
 - ❌ Travel agencies with family tours
 - ❌ Pricing that includes flights/transportation
 - ❌ Multi-country travel itineraries
+- ❌ Day camps not clearly labeled as such
 
 ### **1. Legal & Operational Verification**
 - **✅ Active Website**: Camp must have functioning, professional website

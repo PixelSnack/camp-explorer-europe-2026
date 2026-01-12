@@ -471,7 +471,7 @@ function App() {
       location: "Nordfjord & Jotunheimen, Norway",
       country: "Norway",
       ages: "16-18 years",
-      price: "$7,295",
+      price: "$7,095", // Verified Jan 2026: was $7,295
       priceRange: "luxury",
       rating: 4.9,
       reviews: 134,
@@ -555,25 +555,25 @@ function App() {
     },
     {
       id: 18,
-      name: "Nordic Terrain Academy - Adventure Camps",
+      name: "Nordic Terrain Academy Day Camp",
       location: "Stavanger, Norway",
       country: "Norway",
       ages: "6-12 years",
-      price: "NOK 3,500",
+      price: "NOK 5,700", // Verified Jan 2026: was NOK 3,500, DAY CAMP (8:30-15:30)
       priceRange: "mid",
       rating: 4.6,
       reviews: 87,
       image: activitiesCompressed,
       category: "academic",
-      type: "Adventure Academics",
+      type: "Day Camp - Adventure Academics",
       activities: ["Kayaking", "Rock Climbing", "Hiking", "Surfing", "STEM Learning"],
-      dates: "July 7-11 & July 14-18, 2026",
-      highlights: ["Academics meets adventure", "University readiness focus", "International environment", "Leadership development"],
+      dates: "July 7-11 & July 14-18, 2026 (8:30-15:30 daily)",
+      highlights: ["DAY CAMP - No overnight stay", "Academics meets adventure", "Lunch included", "International environment"],
       languages: ["Norwegian", "English"],
-      specialFeatures: ["Academic & Adventure Balance", "Critical Thinking Skills", "International Students"],
+      specialFeatures: ["Day Program Only", "Daily Lunch Included", "Academic & Adventure Balance"],
       established: 2020,
-      capacity: 24,
-      bookingUrl: "https://nordicadventure.camp/"
+      capacity: 15,
+      bookingUrl: "https://nordicadventure.camp/stavanger/"
     },
     {
       id: 20,
