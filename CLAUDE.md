@@ -108,7 +108,9 @@ When starting a new Claude Code session, follow this protocol to restore context
 **Agent Status:**
 - ✅ **camp-data-verifier**: READ-ONLY (research only)
 - ✅ **camp-content-researcher**: READ-ONLY (research only)
-- ⚠️ **Other agents**: Still need read-only updates
+- ✅ **enterprise-code-reviewer**: READ-ONLY (analysis only)
+- ⚠️ **seo-performance-optimizer**: Still needs read-only update
+- ⚠️ **security-audit-specialist**: Still needs read-only update
 
 ### **Step 3: Verify Build Status**
 
@@ -338,11 +340,11 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 - **Cannot**: Change security settings
 - **Status**: ⚠️ Still needs read-only update
 
-#### enterprise-code-reviewer (Pink) - Analysis Only
-- **Purpose**: Code quality review
-- **Returns**: Review report with suggestions
+#### enterprise-code-reviewer (Pink) - READ-ONLY
+- **Purpose**: Code quality review and analysis
+- **Returns**: Review report with suggestions and recommendations
 - **Cannot**: Refactor or modify code
-- **Status**: ⚠️ Still needs read-only update
+- **Status**: ✅ Updated to read-only (January 2026)
 
 ### 4.2 Agent Delegation Protocol (MANDATORY)
 
