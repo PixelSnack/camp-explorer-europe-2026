@@ -575,29 +575,6 @@ function App() {
       capacity: 24,
       bookingUrl: "https://nordicadventure.camp/"
     },
-    // Verified Nordic Expansion
-    {
-      id: 19,
-      name: "Summer Camp Finland International",
-      location: "Hyvinkää, Southern Finland",
-      country: "Finland",
-      ages: "8-17 years",
-      price: "€1,350",
-      priceRange: "mid",
-      rating: 4.6,
-      reviews: 78,
-      image: heroImage,
-      category: "family",
-      type: "International Camp",
-      activities: ["English Learning", "Cultural Exchange", "Sports", "Nature Activities"],
-      dates: "July 27 - August 15, 2026",
-      highlights: ["International atmosphere", "Flexible duration", "Near Helsinki", "Cultural exchange"],
-      languages: ["Finnish", "English"],
-      specialFeatures: ["Early Bird Pricing", "Multiple Duration Options", "International Community"],
-      established: 2015,
-      capacity: 60,
-      bookingUrl: "https://summercamp.fi/"
-    },
     {
       id: 20,
       name: "Ranum Efterskole International Summer School",

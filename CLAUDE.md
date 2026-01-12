@@ -161,10 +161,10 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 23 verified camps, 100+ programs, 12 countries
+- **Database**: 22 verified camps, 100+ programs, 12 countries
 - **Camp Data Location**: `src/App.jsx` lines 174-689 (`const allCamps = [...]`)
 - **App.jsx Total Lines**: ~4,450 lines (well-structured monolithic component)
-- **Critical Issue**: Pricing verification crisis (19/23 camps unverified)
+- **Critical Issue**: Pricing verification crisis (18/22 camps unverified)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
 - **Performance**: 93-96% image optimization, Lighthouse 90+ scores
 
@@ -1165,7 +1165,7 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total camps**: 23 organizations
+- **Total camps**: 22 organizations
 - **Total programs**: 100+ individual camps
 - **Countries**: 12 European countries
 - **Categories**: 7 distinct categories

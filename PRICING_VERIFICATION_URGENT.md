@@ -94,7 +94,7 @@ IMPACT: Ensures accurate pricing for real family booking decisions
 
 ## 🎯 **SUCCESS CRITERIA**
 
-- [ ] All 23 camps have verified 2025/2026 consumer pricing
+- [ ] All 22 camps have verified 2025/2026 consumer pricing
 - [ ] All pricing sources documented
 - [ ] Price ranges updated in all marketing copy if needed
 - [ ] Zero facility rental or group booking rates shown as consumer pricing
