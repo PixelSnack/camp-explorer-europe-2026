@@ -22,7 +22,7 @@ This indicates we may have **systematic pricing errors** throughout the database
 
 **Business Impact**: Showing wrong prices misleads real families making booking decisions and damages our credibility as a trusted resource.
 
-## 📋 **VERIFICATION STATUS** (9 of 28 completed - 32%)
+## 📋 **VERIFICATION STATUS** (11 of 28 completed - 39%)
 
 ### ✅ **VERIFIED CAMPS**
 1. **Camp Bjøntegaard (Norway)**: NOK 5,890 ✅ CORRECTED
@@ -34,6 +34,8 @@ This indicates we may have **systematic pricing errors** throughout the database
 7. **Camp Suisse (Switzerland)**: CHF 4,400 ✅ CORRECTED (was CHF 4,000)
 8. **Adventure Treks Norway (ID 14)**: $7,095 ✅ CORRECTED (was $7,295, -$200)
 9. **Nordic Terrain Academy (ID 18)**: NOK 5,700 ✅ CORRECTED (was NOK 3,500, +63%, DAY CAMP clarified)
+10. **Oxford Summer Courses (ID 5)**: From £6,995 ✅ CORRECTED (was £6,220, +£775, tiered pricing)
+11. **Bede's Summer School (ID 6)**: From £3,190 ✅ CORRECTED (was £1,575 weekly rate, 2-week total)
 
 ### 🔍 **NEEDS VERIFICATION** (19 remaining)
 
@@ -42,10 +44,10 @@ This indicates we may have **systematic pricing errors** throughout the database
 - ~~**Nordic Terrain Academy**: NOK 3,500~~ → **NOK 5,700** ✅ Verified Jan 12, 2026 (DAY CAMP classification added)
 
 #### **SYSTEMATIC CHECK NEEDED**:
-- **Spanish Camps** (2 camps): €1,890 - €2,995
-- **UK Camps** (3 camps): £2,450 - £4,295
-- **Finnish Camps** (2 camps): €1,350 - €2,850
-- **All Other Countries** (11 remaining camps)
+- **Spanish Camps** (1 camp): €3,200
+- **UK Camps**: ✅ COMPLETED
+- **Finnish Camps** (3 camps): €546 - €2,800
+- **All Other Countries** (13 remaining camps including new additions)
 
 ## 🎯 **VERIFICATION METHODOLOGY**
 
