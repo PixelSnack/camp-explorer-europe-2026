@@ -911,3 +911,98 @@ If an agent:
 - Tries to edit files directly → Stop them immediately
 - Suggests major refactoring → Decline and ask for analysis only
 - Can't complete research → Document limitation and handle manually
+
+---
+
+# AGENT WORKFLOW - READ-ONLY RESEARCH MODEL (Updated January 2026)
+
+## CRITICAL CHANGE: Agents Are Now Read-Only Researchers
+
+All agents have been updated to be read-only research specialists. They can no longer edit code directly. This change was made after incidents where agents made incorrect modifications that required extensive corrections.
+
+## YOUR ROLE AS CLAUDE CODE
+
+You are the implementation coordinator. You:
+1. Delegate research tasks to agents
+2. Receive their detailed reports
+3. Review their findings for accuracy
+4. Implement approved changes yourself
+5. Maintain full control over all code modifications
+
+## HOW TO WORK WITH READ-ONLY AGENTS
+
+### Step 1: Prepare Specific Requests
+Before calling an agent, prepare:
+- Exact task scope (e.g., "verify pricing for camps 1-3")
+- Specific data needed (e.g., "find current 2026 prices")
+- Clear limits (e.g., "maximum 3 camps")
+
+### Step 2: Call Agent with Clear Instructions
+Example:
+```
+"Use camp-data-verifier to verify these specific camps:
+- Camp Les Elfes (current price: CHF 4,950)
+- Camp Suisse (current price: CHF 4,200)
+Stop after these 2 camps. Report findings only."
+```
+
+### Step 3: Review Agent Report
+Agents will return structured reports with:
+- Findings (what they discovered)
+- Evidence (quotes from sources)
+- Recommendations (suggested actions)
+- Confidence levels (certain/uncertain)
+
+### Step 4: Implement Changes Yourself
+Based on agent reports, YOU:
+- Open the relevant files (App.jsx, etc.)
+- Make the specific changes needed
+- Test that changes work
+- Commit with clear documentation
+
+### Step 5: Track What Was Done
+In commit messages, clarify:
+```
+Research: camp-data-verifier checked pricing for 3 Swiss camps
+Implementation: Updated 2 prices based on verification
+Result: Swiss camps now show accurate 2026 pricing
+```
+
+## AGENT CAPABILITIES SUMMARY
+
+### camp-data-verifier (Purple)
+- **CAN**: Research pricing, verify URLs, check if camps still operating
+- **CANNOT**: Edit App.jsx or any files
+- **RETURNS**: Verification report with findings and recommendations
+
+### camp-content-researcher (Yellow)
+- **CAN**: Find new camps, verify they're real camps (not tour operators)
+- **CANNOT**: Add camps to code, assign IDs
+- **RETURNS**: Research report with camp details ready for implementation
+
+### Other Agents
+[Continue pattern for other agents as needed]
+
+## COMMON WORKFLOWS
+
+### Pricing Verification Workflow
+1. YOU identify camps needing verification from PRICING_VERIFICATION_URGENT.md
+2. YOU call camp-data-verifier with specific camps
+3. Agent researches and reports findings
+4. YOU update App.jsx with correct prices
+5. YOU update PRICING_VERIFICATION_URGENT.md with progress
+
+### New Camp Addition Workflow
+1. YOU identify geographic/category gaps
+2. YOU call camp-content-researcher with requirements
+3. Agent researches and reports potential camps
+4. YOU review recommendations
+5. YOU add approved camps to App.jsx with next ID numbers
+
+## IMPORTANT REMINDERS
+
+- **Agents CANNOT edit code** - They only research and report
+- **You implement all changes** - Based on agent reports after your review
+- **⚠️ TRANSITION STATUS**: Only camp-content-researcher and camp-data-verifier are currently read-only. Other agents still need updated instructions (work in progress)
+- **Test everything** - Agent research may contain errors that need validation
+- **Document clearly** - Always track what agent researched vs what you implemented
