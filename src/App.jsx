@@ -648,8 +648,8 @@ function App() {
       location: "Bialka, Lublin Voivodeship",
       country: "Poland",
       ages: "6-16 years",
-      price: "€1,260",
-      priceRange: "mid",
+      price: "€640/week", // Verified Jan 2026: was €1,260 (2-week total), actual PLN 2,700/week
+      priceRange: "budget",
       rating: 4.7,
       reviews: 85,
       image: mapCompressed,
@@ -670,8 +670,8 @@ function App() {
       location: "Cartaxo, Ribatejo",
       country: "Portugal",
       ages: "6-17 years",
-      price: "€1,140",
-      priceRange: "mid",
+      price: "€570/week", // Verified Jan 2026: was €1,140 (2-week total), actual €570/week
+      priceRange: "budget",
       rating: 4.7,
       reviews: 95,
       image: heroImage,
@@ -693,8 +693,8 @@ function App() {
       location: "Rossleithen, Upper Austria",
       country: "Austria",
       ages: "6+ years (families)",
-      price: "From €145",
-      priceRange: "mid",
+      price: "From €145", // Verified Jan 2026: €145 child/€369 adult, 3-day program
+      priceRange: "budget",
       rating: 4.6,
       reviews: 72,
       image: activitiesCompressed,
