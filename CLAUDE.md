@@ -92,9 +92,9 @@ When starting a new Claude Code session, follow this protocol to restore context
 ### **Step 2: Current Status Assessment**
 
 **Database Status:**
-- **23 verified camp organizations** representing 100+ programs across 12 countries
-- **Pricing Crisis**: Only 4/23 camps verified for accurate per-child pricing
-- **Recent Correction**: Removed 1 tour operator misclassified as camp (September 2025)
+- **25 verified camp organizations** representing 100+ programs across 15 countries
+- **Pricing Crisis**: Only 7/25 camps verified for accurate per-child pricing (28% complete)
+- **Recent Additions**: Poland, Portugal, Austria camps added (January 2026)
 
 **Technical Status:**
 - ✅ **Phase 1 COMPLETE**: All optimizations deployed
@@ -161,10 +161,10 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 22 verified camps, 100+ programs, 12 countries
+- **Database**: 25 verified camps, 100+ programs, 15 countries
 - **Camp Data Location**: `src/App.jsx` lines 174-689 (`const allCamps = [...]`)
 - **App.jsx Total Lines**: ~4,450 lines (well-structured monolithic component)
-- **Critical Issue**: Pricing verification crisis (18/22 camps unverified)
+- **Critical Issue**: Pricing verification crisis (18/25 camps unverified)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
 - **Performance**: 93-96% image optimization, Lighthouse 90+ scores
 
@@ -200,8 +200,8 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 **Crisis Context**: Found Camp Bjøntegaard showing facility rental rate (NOK 12,500) instead of per-child price (NOK 5,890) - 112% overcharge affecting real families.
 
 **Progress Tracking**: See PRICING_VERIFICATION_URGENT.md
-- ✅ **Verified (4/23)**: Camp Bjøntegaard (Norway), Myhre Gård (Norway), EUROCAM (Czech Republic), Adventure Camp Bavaria (Germany)
-- ⚠️ **Next Priority (19/23)**: Swiss camps, Norwegian camps with website issues, UK camps, others
+- ✅ **Verified (7/25)**: Camp Bjøntegaard, Myhre Gård, EUROCAM, Adventure Camp Bavaria, Les Elfes, La Garenne, Camp Suisse
+- ⚠️ **Next Priority (18/25)**: Norwegian camps with website issues, UK camps, Spanish/Finnish camps, others
 
 **Process:**
 1. **Check Progress**: Read PRICING_VERIFICATION_URGENT.md for next unverified camps
@@ -837,22 +837,22 @@ europeansummercamps/
 
 ### 8.1 Database Status (January 2026)
 
-**Geographic Coverage (12 Countries):**
+**Geographic Coverage (15 Countries):**
 - **Well Covered**: Switzerland (3), United Kingdom (3), Spain (2), Norway (2), Germany (2)
-- **Current**: France (2), Italy (2), Czech Republic (1), Finland (1), Denmark (1), Iceland (1), Greece (1)
-- **Need More**: Poland (0), Romania (0), Portugal (0), Austria (0)
+- **Current**: France (2), Italy (2), Poland (1), Portugal (1), Austria (1), Czech Republic (1), Finland (1), Denmark (1), Iceland (1), Greece (1)
+- **Need More**: Romania (0), Hungary (0), Belgium (0), Netherlands (0)
 
-**Category Distribution (23 Camps):**
+**Category Distribution (25 Camps):**
 - Premium Alpine: 3 camps
 - Academic & STEM: 4 camps
 - Language Immersion: 4 camps
 - Sports Specialty: 5 camps
-- **Family Programs: 3 camps** ⚠️ needs more
-- **Budget Excellence: 2 camps** ⚠️ underrepresented
-- Outdoor Adventures: 2 camps
+- **Family Programs: 4 camps** (improved)
+- **Budget Excellence: 4 camps** (improved)
+- Outdoor Adventures: 1 camp
 
 **Price Ranges:**
-- Budget: €335 - €1,999 (2 camps)
+- Budget: €335 - €1,999 (4 camps)
 - Mid-range: €2,000 - €3,999 (majority)
 - Premium: €4,000 - €6,980 (3 camps)
 
@@ -1165,11 +1165,11 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total camps**: 22 organizations
+- **Total camps**: 25 organizations
 - **Total programs**: 100+ individual camps
-- **Countries**: 12 European countries
+- **Countries**: 15 European countries
 - **Categories**: 7 distinct categories
-- **Verified pricing**: 4/23 (18% complete) ⚠️ URGENT
+- **Verified pricing**: 7/25 (28% complete) ⚠️ URGENT
 - **App.jsx camp data**: Lines 174-689
 - **Total App.jsx lines**: ~4,450 lines
 - **Image optimization**: 93-96% size reduction
