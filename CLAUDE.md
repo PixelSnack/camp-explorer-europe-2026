@@ -804,3 +804,110 @@ git commit -m "comprehensive summary"  # Create detailed commit with business im
 - **Scale Prepared:** Enterprise-grade foundation ready for Phase 2 multi-route architecture
 
 **The site now delivers exceptional user experience while maintaining all existing functionality and performance excellence.**
+
+---
+
+# PRICING VERIFICATION WORKFLOW (CRITICAL - URGENT)
+
+## Current Crisis Status
+- Discovered 112% pricing error (Camp Bjøntegaard showing facility rate not per-child rate)
+- 19 of 23 camps still need verification
+- Real families are making booking decisions with potentially wrong prices
+
+## YOUR Role (Claude Code) in Verification
+
+### Step 1: Check Progress
+1. Read PRICING_VERIFICATION_URGENT.md for current status
+2. Open App.jsx and locate next unverified camps
+3. Extract for each camp: name, current price, URL, line number
+
+### Step 2: Delegate Research ONLY
+Tell camp-data-verifier agent:
+"Verify pricing for:
+- Camp: [exact name]
+- Currently listed: [price]
+- Website: [URL]
+Find the actual per-child price for 2025/2026. Report findings only, do not edit files."
+
+### Step 3: Process Agent Report
+When agent returns verification:
+- If price correct: Document as verified
+- If price wrong: YOU update App.jsx with correct price
+- If cannot verify: Flag for manual review
+
+### Step 4: Track Progress
+Update PRICING_VERIFICATION_URGENT.md with completed verifications
+
+## CRITICAL: You make ALL code changes, agents ONLY research
+
+---
+
+# AGENT DELEGATION PROTOCOL (MANDATORY)
+
+## Core Principle: Agents Research, You Implement
+
+### NEVER delegate to agents:
+- Direct file editing
+- Code modifications
+- Architectural decisions
+- Multi-file changes
+- Anything touching App.jsx directly
+
+### ALWAYS delegate to agents:
+- Research tasks (find information)
+- Verification tasks (check accuracy)
+- Analysis tasks (review and report)
+- Content creation (write text)
+
+## Correct Agent Delegation Format
+
+### ❌ WRONG:
+"Update the camp prices in App.jsx"
+"Fix the broken links"
+"Improve the SEO"
+
+### ✅ RIGHT:
+"Research the actual price for Camp Les Elfes on their website"
+"Check if these 3 URLs still work and report back"
+"Analyze our meta descriptions and suggest improvements"
+
+## Agent Task Templates
+
+### For camp-data-verifier:
+"Verify this specific information:
+- Camp: [name]
+- Current data: [what we have]
+- Task: Find actual [price/dates/ages]
+- Source: [website URL]
+Report findings only, do not edit code."
+
+### For camp-content-researcher:
+"Research camps in [country/category]:
+- Find 3 camps maximum
+- Must be residential camps (not tour operators)
+- Provide: name, location, price, activities, URL
+- Test all URLs before reporting
+Report findings only, do not create code."
+
+### For seo-performance-optimizer:
+"Analyze [specific aspect]:
+- Current implementation: [describe]
+- Focus area: [meta tags/performance/structure]
+- Provide recommendations with expected impact
+Report analysis only, do not modify code."
+
+## After Agent Returns
+
+1. Review agent report for completeness
+2. Validate recommendations make sense
+3. YOU implement changes in code
+4. Test changes work correctly
+5. Commit with clear message
+6. Document what agent researched vs what you implemented
+
+## Emergency Protocol
+
+If an agent:
+- Tries to edit files directly → Stop them immediately
+- Suggests major refactoring → Decline and ask for analysis only
+- Can't complete research → Document limitation and handle manually
