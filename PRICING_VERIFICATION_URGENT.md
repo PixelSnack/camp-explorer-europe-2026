@@ -129,6 +129,6 @@ For each camp:
 - ✅ Day camps clearly labeled
 - ✅ Family resorts clearly labeled
 - ✅ Geographic expansion (5 new countries)
-- ✅ Category rebalancing (Outdoor Adventures 1→5 camps)
+- ✅ Category rebalancing (Unique Experiences 1→6 camps)
 
 **REMEMBER**: Real families depend on our pricing accuracy for actual booking decisions. Data integrity is critical for our credibility and user trust.

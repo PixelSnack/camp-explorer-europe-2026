@@ -41,7 +41,7 @@ Each camp listing includes:
 - **Sports Specialty** - Professional sports training and academies
 - **Family Programs** - Multi-age programs welcoming families
 - **Budget Excellence** - Quality programs under €2,000
-- **Outdoor Adventures** - Nature-based and unique outdoor experiences
+- **Unique Experiences** - Nature-based and unique outdoor experiences
 
 ## 🛠️ Technology Stack
 

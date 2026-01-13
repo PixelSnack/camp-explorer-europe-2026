@@ -802,7 +802,7 @@ europeansummercamps/
 - **Sports Specialty**: Dedicated sports training (football, tennis, sailing, etc.)
 - **Family Programs**: Parents can attend, multi-age welcome
 - **Budget Excellence**: Quality programs under €2,000
-- **Outdoor Adventures**: Nature-based, wilderness, unique outdoor focus
+- **Unique Experiences**: Nature-based, wilderness, unique outdoor focus
 
 **Category Logic**: Single categories only (no multi-tagging) for optimal UX and SEO positioning.
 
@@ -851,7 +851,7 @@ europeansummercamps/
 - Sports Specialty: 5 camps
 - **Family Programs: 6 camps** (improved)
 - **Budget Excellence: 4 camps** (improved)
-- Outdoor Adventures: 1 camp
+- Unique Experiences: 6 camps
 
 **Price Ranges:**
 - Budget: €335 - €1,999 (4 camps)

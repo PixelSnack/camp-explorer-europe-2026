@@ -133,7 +133,7 @@ Extract and format the following mandatory data points:
 - **Sports Specialty**: Dedicated sports training (football, tennis, sailing, etc.)
 - **Family Programs**: Multi-age programs welcoming families/parents
 - **Budget Excellence**: Quality programs under €2,000
-- **Outdoor Adventures**: Nature-based, unique outdoor experiences
+- **Unique Experiences**: Nature-based, unique outdoor experiences
 
 ### 5. LEGAL COMPLIANCE
 **Safe Content Claims:**

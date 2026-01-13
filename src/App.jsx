@@ -991,7 +991,7 @@ function App() {
     { value: 'sports', label: 'Sports Specialty', count: allCamps.filter(c => c.category === 'sports').length },
     { value: 'family', label: 'Family Programs', count: allCamps.filter(c => c.category === 'family').length },
     { value: 'budget', label: 'Budget Excellence', count: allCamps.filter(c => c.category === 'budget').length },
-    { value: 'unique', label: 'Outdoor Adventures', count: allCamps.filter(c => c.category === 'unique').length }
+    { value: 'unique', label: 'Unique Experiences', count: allCamps.filter(c => c.category === 'unique').length }
   ]
 
   const stats = [
@@ -3911,9 +3911,9 @@ function App() {
                   <button 
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
                     onClick={() => handleCategoryFilter('unique')}
-                    aria-label="Filter unique category camps"
+                    aria-label="Filter unique experience camps"
                   >
-                    Outdoor Adventures
+                    Unique Experiences
                   </button>
                 </li>
                 <li>

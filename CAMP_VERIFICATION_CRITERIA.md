@@ -75,7 +75,7 @@
 - **Sports Specialty**: Dedicated sports training (football, tennis, etc.)
 - **Family Programs**: Multi-age programs welcoming families
 - **Budget Excellence**: Quality programs under €2,000
-- **Outdoor Adventures**: Nature-based, unique outdoor experiences
+- **Unique Experiences**: Nature-based, unique outdoor experiences
 
 ---
 
