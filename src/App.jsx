@@ -995,8 +995,8 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "13", description: "Across Europe" },
-    { icon: Award, label: "Programs", value: "23+", description: "Verified organizations" },
+    { icon: Globe, label: "Countries", value: "20", description: "Across Europe" },
+    { icon: Award, label: "Programs", value: "32", description: "Verified camps" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]
@@ -3758,12 +3758,12 @@ function App() {
                   </button>
                 </li>
                 <li>
-                  <button 
+                  <button
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
-                    onClick={() => handleCountryFilter('Sweden')}
-                    aria-label="Filter camps in Sweden"
+                    onClick={() => handleCountryFilter('Croatia')}
+                    aria-label="Filter camps in Croatia"
                   >
-                    🇸🇪 Sweden (Wilderness Glamping)
+                    🇭🇷 Croatia (Mediterranean Adventure)
                   </button>
                 </li>
                 <li>
@@ -3794,7 +3794,7 @@ function App() {
                   </button>
                 </li>
                 <li>
-                  <button 
+                  <button
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
                     onClick={() => handleCountryFilter('Iceland')}
                     aria-label="Filter camps in Iceland"
@@ -3802,9 +3802,54 @@ function App() {
                     🇮🇸 Iceland (Unique Geology)
                   </button>
                 </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Greece')}
+                    aria-label="Filter camps in Greece"
+                  >
+                    🇬🇷 Greece (Sailing & Water Sports)
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Poland')}
+                    aria-label="Filter camps in Poland"
+                  >
+                    🇵🇱 Poland (Academic Excellence)
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Portugal')}
+                    aria-label="Filter camps in Portugal"
+                  >
+                    🇵🇹 Portugal (Beach & Adventure)
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Ireland')}
+                    aria-label="Filter camps in Ireland"
+                  >
+                    🇮🇪 Ireland (Adventure Activities)
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Hungary')}
+                    aria-label="Filter camps in Hungary"
+                  >
+                    🇭🇺 Hungary (Lake Balaton)
+                  </button>
+                </li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4 text-lg">Camp Categories</h4>
               <ul className="space-y-2 text-gray-400">
