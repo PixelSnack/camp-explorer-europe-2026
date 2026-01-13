@@ -611,7 +611,7 @@ function App() {
       rating: 4.7,
       reviews: 85,
       image: mapCompressed,
-      category: "budget_excellence",
+      category: "budget",
       type: "Educational Farm Camp",
       activities: ["Farm Work", "Kayaking", "Swimming", "Survival Skills", "Arts & Crafts", "Cooking"],
       dates: "June 28 - August 8, 2026",
@@ -633,7 +633,7 @@ function App() {
       rating: 4.7,
       reviews: 95,
       image: heroImage,
-      category: "budget_excellence",
+      category: "budget",
       type: "Adventure Camp",
       activities: ["Swimming", "High Ropes", "Climbing", "Horse Riding", "Kayaking", "Water Sports"],
       dates: "June 23 - September 7, 2026",
@@ -725,7 +725,7 @@ function App() {
       rating: 4.8,
       reviews: 412,
       image: mapCompressed,
-      category: "outdoor",
+      category: "unique",
       type: "Adventure & Surf Camp",
       activities: ["Expert Surf Instruction", "Mountain Biking", "Coastal Hiking", "Beach Olympics", "Dolphin Watching", "Cultural Excursions"],
       dates: "July 5-18, July 19-Aug 1, Aug 2-15, 2026",
@@ -1543,7 +1543,7 @@ function App() {
           </div>
 
           {/* Verification Badge */}
-          <div className="flex justify-center items-center gap-2 text-white/90 text-sm max-w-md mx-auto px-4">
+          <div className="flex justify-center items-center gap-2 text-white/90 text-sm max-w-md mx-auto px-4 mb-4">
             <Shield className="w-4 h-4 text-green-400" />
             <span>Camps verified for 2026 season | Updated January 2026</span>
           </div>
@@ -2540,7 +2540,7 @@ function App() {
               </h1>
               
               <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-                European summer camps in 2026 offer children unparalleled opportunities to learn, play, and grow in some of the world's most stunning locations. From Alpine adventure bases to Mediterranean beach retreats, there are options tailored to every age (3–16) and interest.
+                European summer camps in 2026 offer children unparalleled opportunities to learn, play, and grow in some of the world's most stunning locations. From Alpine adventure bases to Mediterranean beach retreats, there are options tailored to every age (3-24) and interest.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -4035,11 +4035,11 @@ function App() {
               <div className="text-center">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
-                    <div className="text-2xl font-bold text-white">23+</div>
+                    <div className="text-2xl font-bold text-white">32</div>
                     <div>Organizations</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">13</div>
+                    <div className="text-2xl font-bold text-white">20</div>
                     <div>Countries</div>
                   </div>
                   <div>
@@ -4062,8 +4062,8 @@ function App() {
           </div>
           
           <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
-            <p>&copy; 2025 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
-            <p className="mt-2 text-sm">Directory featuring 23+ verified organizations • Information from camp websites • Independent resource portal</p>
+            <p>&copy; 2026 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
+            <p className="mt-2 text-sm">Directory featuring 32 verified organizations • Information from camp websites • Independent resource portal</p>
             <div className="mt-3 space-x-3 text-xs text-gray-500">
               <button 
                 onClick={() => handleResourceLink('impressum')} 
