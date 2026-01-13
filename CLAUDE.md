@@ -33,25 +33,26 @@
 
 ## 📋 **CURRENT PRIORITY TASKS** (January 2026)
 
-### 🚨 **URGENT: Pricing Verification Crisis**
-- **Status**: 11 of 27 camps verified (41% complete)
-- **Issue**: Camp Bjøntegaard showed 112% overcharge (facility rate vs per-child price)
-- **Impact**: Real families making booking decisions with potentially wrong prices
-- **See**: PRICING_VERIFICATION_URGENT.md for complete methodology
+### ✅ **COMPLETED: Pricing Verification & Database Expansion**
+- **Status**: ✅ 32/32 organizations verified (100% complete)
+- **Geographic Expansion**: 15 → 20 countries (Hungary, Romania, Slovenia, Croatia, Ireland added)
+- **New Camps Added**: 7 camps (IDs 30-36)
+- **Camps Removed**: 3 (ID 13 not a camp, IDs 16 & 22 group-only)
+- **Category Renamed**: "Outdoor Adventures" → "Unique Experiences"
+- **Documentation**: All .md files updated January 13, 2026
 
-**Next Priority Camps**:
-- [x] ~~**Adventure Treks Norway**~~ ✅ VERIFIED ($7,095)
-- [x] ~~**Nordic Terrain Academy**~~ ✅ VERIFIED (NOK 5,700, DAY CAMP)
-- [x] ~~**Swiss Premium Camps**~~ ✅ VERIFIED (Les Elfes, Camp Suisse, La Garenne)
-- [x] ~~**UK Camps**~~ ✅ VERIFIED (Oxford, Bede's)
-- [ ] **New Camps** (IDs 24-29): 6 camps need verification
-- [ ] **Remaining**: 10 additional unverified camps across Europe
+### 🎯 **Next Priorities**:
+- [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
+- [ ] **Virtual Scrolling**: Implement TanStack React Virtual (already installed)
+- [ ] **Phase 2 Planning**: React Router + SSG when traffic justifies (1K+ sessions/month)
+- [ ] **Content Expansion**: Consider adding camps in Belgium, Netherlands, Sweden
+- [ ] **SEO Monitoring**: Track Google Search Console for indexing progress
 
-### 🔍 **Ongoing Priorities**:
-- [ ] Verify all camps are real camps (not tour operators)
-- [ ] Fix broken booking URLs identified during verification
-- [ ] Continue geographic expansion (Eastern Europe, Nordics)
-- [ ] Category balancing (Family Programs: need more, Budget Excellence: underrepresented)
+### 🔍 **Ongoing Maintenance**:
+- [ ] Monitor camp websites for price changes (quarterly review)
+- [ ] Test booking URLs periodically
+- [ ] Respond to user feedback via contact form
+- [ ] Update camp information as seasons change
 
 ---
 
@@ -86,7 +87,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 ✅ CLAUDE.md (this file - comprehensive overview)
 ✅ DEVELOPMENT_GUIDELINES.md (MANDATORY - Rule #0 and standards)
 ✅ QUICK_REFERENCE.md (current status and quick facts)
-✅ PRICING_VERIFICATION_URGENT.md (CRITICAL - active crisis)
+✅ NEXT_STEPS.md (immediate priorities and next actions)
 ✅ CAMP_VERIFICATION_CRITERIA.md (camp vs tour operator standards)
 ```
 
