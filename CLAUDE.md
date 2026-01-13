@@ -93,10 +93,10 @@ When starting a new Claude Code session, follow this protocol to restore context
 ### **Step 2: Current Status Assessment**
 
 **Database Status:**
-- **27 verified camp organizations** representing 100+ programs across 15 countries
-- **Pricing Crisis**: 11/27 camps verified for accurate per-child pricing (41% complete)
-- **Recent Additions**: Poland, Portugal, Austria camps added (January 2026)
-- **Recent Removals**: ID 13 (Camp Adventure Denmark - not a camp), ID 19 (duplicate)
+- **32 verified organizations** representing 100+ programs across 20 countries
+- **Pricing Verification**: ✅ COMPLETE (100% - all camps verified January 2026)
+- **Recent Additions**: Hungary, Romania, Slovenia, Croatia, Ireland (5 new countries)
+- **Recent Removals**: ID 13 (not a camp), ID 16 (group-only), ID 22 (group-only)
 
 **Technical Status:**
 - ✅ **Phase 1 COMPLETE**: All optimizations deployed
@@ -163,10 +163,10 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 27 verified camps, 100+ programs, 15 countries
-- **Camp Data Location**: `src/App.jsx` lines 174-803 (`const allCamps = [...]`)
-- **App.jsx Total Lines**: ~4,450 lines (well-structured monolithic component)
-- **Critical Issue**: Pricing verification crisis (16/27 camps unverified, 41% complete)
+- **Database**: 32 verified organizations, 100+ programs, 20 countries
+- **Camp Data Location**: `src/App.jsx` lines 174-901 (`const allCamps = [...]`)
+- **App.jsx Total Lines**: ~4,500 lines (well-structured monolithic component)
+- **Pricing Verification**: ✅ COMPLETE (100% verified January 2026)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
 - **Performance**: 93-96% image optimization, Lighthouse 90+ scores
 
@@ -839,19 +839,19 @@ europeansummercamps/
 
 ### 8.1 Database Status (January 2026)
 
-**Geographic Coverage (15 Countries):**
-- **Well Covered**: Switzerland (3), United Kingdom (3), Spain (2), Norway (2), Germany (2)
-- **Current**: France (2), Italy (2), Poland (1), Portugal (1), Austria (1), Czech Republic (1), Finland (1), Denmark (1), Iceland (1), Greece (1)
-- **Need More**: Romania (0), Hungary (0), Belgium (0), Netherlands (0)
+**Geographic Coverage (20 Countries):**
+- **Well Covered**: Switzerland (4), United Kingdom (4), Norway (4), Poland (2), Portugal (2), Austria (2)
+- **Current**: Spain (1), France (1), Germany (1), Italy (1), Czech Republic (1), Finland (1), Denmark (1), Iceland (1), Greece (1), Hungary (1), Romania (1), Slovenia (1), Croatia (1), Ireland (1)
+- **Need More**: Belgium (0), Netherlands (0), Sweden (0)
 
-**Category Distribution (27 Camps):**
-- Premium Alpine: 3 camps
-- Academic & STEM: 4 camps
-- Language Immersion: 4 camps
-- Sports Specialty: 5 camps
-- **Family Programs: 6 camps** (improved)
-- **Budget Excellence: 4 camps** (improved)
-- Unique Experiences: 6 camps
+**Category Distribution (32 Organizations):**
+- Premium Alpine: 4 organizations
+- Academic & STEM: 4 organizations
+- Language Immersion: 5 organizations
+- Sports Specialty: 5 organizations
+- Family Programs: 4 organizations
+- Budget Excellence: 4 organizations
+- Unique Experiences: 6 organizations
 
 **Price Ranges:**
 - Budget: €335 - €1,999 (4 camps)
@@ -1167,13 +1167,13 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total camps**: 27 organizations
+- **Total organizations**: 32 verified
 - **Total programs**: 100+ individual camps
-- **Countries**: 15 European countries
+- **Countries**: 20 European countries
 - **Categories**: 7 distinct categories
-- **Verified pricing**: 11/27 (41% complete) ⚠️ URGENT
-- **App.jsx camp data**: Lines 174-803
-- **Total App.jsx lines**: ~4,450 lines
+- **Verified pricing**: ✅ 32/32 (100% complete)
+- **App.jsx camp data**: Lines 174-901
+- **Total App.jsx lines**: ~4,500 lines
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories
 - **Build time**: ~7-9 seconds
