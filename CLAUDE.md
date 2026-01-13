@@ -550,6 +550,16 @@ Every code change must be evaluated holistically against these criteria:
 
 **Why This Matters**: Prevents tunnel vision that causes the exact errors we've been fixing (pricing crisis, agent failures, broken functionality).
 
+### 5.1.1 THE TWO PRIMARY LENSES: Mobile-First & SEO-First
+
+**📱 MOBILE-FIRST (80% of traffic)**: Every change must look good on phones. Test on iOS/Android.
+**🔍 SEO-FIRST**: Every change must support our #1 Google ranking goal.
+
+**See DEVELOPMENT_GUIDELINES.md "Mobile-First & SEO-First: The Two Lenses" section for:**
+- Common mobile mistakes to avoid (`items-center` with wrapping text, etc.)
+- Mobile-first fix patterns with code examples
+- Quick mental checklist for every change
+
 ### 5.2 Zero-Breakage Principle
 
 **NEVER deploy changes that break existing functionality.**

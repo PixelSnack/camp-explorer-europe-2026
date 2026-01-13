@@ -57,6 +57,66 @@
 
 ---
 
+## 📱 MOBILE-FIRST & SEO-FIRST: THE TWO LENSES
+
+### **🚨 CRITICAL: Every Change Must Pass Through BOTH Lenses**
+
+**80% of our traffic is mobile. SEO is how we get discovered. These are non-negotiable.**
+
+#### **📱 MOBILE-FIRST LENS (Primary)**
+Before ANY code change, ask:
+1. **"How does this look on a phone?"** - Test on iOS Safari and Android Chrome
+2. **"Does text wrap properly?"** - Icons must align with first line, not float
+3. **"Are touch targets 48px+?"** - Fingers are bigger than mouse pointers
+4. **"Does this work on slow connections?"** - Many mobile users have limited bandwidth
+5. **"Is this thumb-friendly?"** - Key actions should be reachable with one hand
+
+**Common Mobile Mistakes to Avoid:**
+- ❌ `items-center` on flex containers with wrapping text (icons float)
+- ❌ `justify-between` on narrow screens (causes misalignment)
+- ❌ Small touch targets (<48px)
+- ❌ Horizontal scrolling
+- ❌ Testing only on desktop
+
+**Mobile-First Fix Patterns:**
+```javascript
+// ✅ CORRECT: Icon alignment that works when text wraps
+<div className="flex items-start">  {/* NOT items-center */}
+  <Icon className="flex-shrink-0 mt-0.5" />  {/* Prevent shrink, align to text */}
+  <span>Long text that might wrap on mobile</span>
+</div>
+
+// ✅ CORRECT: Responsive layout that stacks on mobile
+<div className="flex flex-col sm:flex-row sm:justify-between">
+  <span>Label</span>
+  <span>Value</span>
+</div>
+```
+
+#### **🔍 SEO-FIRST LENS (Equal Priority)**
+Before ANY code change, ask:
+1. **"Does this help or hurt Google rankings?"**
+2. **"Is semantic HTML preserved?"** - h1, h2, h3 hierarchy matters
+3. **"Will this impact Core Web Vitals?"** - LCP, CLS, INP
+4. **"Are meta tags and schema intact?"**
+5. **"Does this support our #1 Google ranking goal?"**
+
+### **⚡ QUICK MENTAL CHECK (Do This Every Time)**
+```
+Before implementing ANY change:
+┌─────────────────────────────────────────┐
+│  📱 MOBILE: Will this look good on      │
+│     a phone? Test it!                   │
+│                                         │
+│  🔍 SEO: Will this help us rank         │
+│     higher on Google?                   │
+│                                         │
+│  If NO to either → STOP and rethink     │
+└─────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 SEO-FIRST DEVELOPMENT MINDSET
 
 ### **Every Code Change Must Consider:**
