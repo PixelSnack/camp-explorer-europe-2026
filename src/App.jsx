@@ -996,7 +996,7 @@ function App() {
 
   const stats = [
     { icon: Globe, label: "Countries", value: "20", description: "Across Europe" },
-    { icon: Award, label: "Programs", value: "32", description: "Verified camps" },
+    { icon: Award, label: "Programs", value: "32", description: "Verified organizations" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]
@@ -1505,7 +1505,7 @@ function App() {
               aria-label="Camp information banner"
             >
               <span className="marquee-content">
-                2026 Season NOW OPEN • 32 Verified Camps • 20 Countries
+                2026 Season NOW OPEN • 32 Verified Organizations • 20 Countries
               </span>
             </div>
           </div>
@@ -2544,7 +2544,7 @@ function App() {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">32 Verified Camps</Badge>
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">32 Verified Organizations</Badge>
                 <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">20 Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
                 <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
@@ -3667,7 +3667,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                European summer camp directory featuring 32 verified camps offering 100+ programs across 20 countries. Information compiled from public sources to help parents research camp options.
+                European summer camp directory featuring 32 verified organizations offering 100+ programs across 20 countries. Information compiled from public sources to help parents research camp options.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -4303,7 +4303,7 @@ function App() {
                   Camp Explorer Europe is an information directory that compiles publicly available data about European summer camps. We organize camp information from websites and public sources to help parents research summer camp options across Europe.
                 </p>
                 <p className="text-lg text-gray-700 mb-6">
-                  Our directory includes 32 verified camps offering 100+ programs across 20 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
+                  Our directory includes 32 verified organizations offering 100+ programs across 20 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
                 </p>
               </div>
 
