@@ -363,7 +363,7 @@ function App() {
       rating: 4.8,
       reviews: 267,
       image: mapCompressed,
-      category: "budget",
+      category: "budget_excellence",
       type: "English Immersion",
       activities: ["English Classes", "River Activities", "Cave Exploration", "Cultural Games"],
       dates: "July 15-25, 2026",
@@ -385,7 +385,7 @@ function App() {
       rating: 4.6,
       reviews: 189,
       image: heroImage,
-      category: "budget",
+      category: "budget_excellence",
       type: "Outdoor Adventure",
       activities: ["Canoeing", "Rock Climbing", "German Culture", "Survival Skills"],
       dates: "July 22-29, 2026",
@@ -611,7 +611,7 @@ function App() {
       rating: 4.7,
       reviews: 85,
       image: mapCompressed,
-      category: "budget",
+      category: "budget_excellence",
       type: "Educational Farm Camp",
       activities: ["Farm Work", "Kayaking", "Swimming", "Survival Skills", "Arts & Crafts", "Cooking"],
       dates: "June 28 - August 8, 2026",
@@ -633,7 +633,7 @@ function App() {
       rating: 4.7,
       reviews: 95,
       image: heroImage,
-      category: "budget",
+      category: "budget_excellence",
       type: "Adventure Camp",
       activities: ["Swimming", "High Ropes", "Climbing", "Horse Riding", "Kayaking", "Water Sports"],
       dates: "June 23 - September 7, 2026",
@@ -679,7 +679,7 @@ function App() {
       rating: 4.7,
       reviews: 156,
       image: heroImage,
-      category: "budget",
+      category: "budget_excellence",
       type: "Alpine Language Camp",
       activities: ["Hiking", "German Language", "English Language", "Nature Exploration", "Alpine Adventures", "Cultural Activities"],
       dates: "June 29 - July 11, 2026 (1 or 2 week options)",
@@ -725,7 +725,7 @@ function App() {
       rating: 4.8,
       reviews: 412,
       image: mapCompressed,
-      category: "unique",
+      category: "sports",
       type: "Adventure & Surf Camp",
       activities: ["Expert Surf Instruction", "Mountain Biking", "Coastal Hiking", "Beach Olympics", "Dolphin Watching", "Cultural Excursions"],
       dates: "July 5-18, July 19-Aug 1, Aug 2-15, 2026",
@@ -990,7 +990,7 @@ function App() {
     { value: 'language', label: 'Language Immersion', count: allCamps.filter(c => c.category === 'language').length },
     { value: 'sports', label: 'Sports Specialty', count: allCamps.filter(c => c.category === 'sports').length },
     { value: 'family', label: 'Family Programs', count: allCamps.filter(c => c.category === 'family').length },
-    { value: 'budget', label: 'Budget Excellence', count: allCamps.filter(c => c.category === 'budget').length },
+    { value: 'budget_excellence', label: 'Budget Excellence', count: allCamps.filter(c => c.category === 'budget_excellence').length },
     { value: 'unique', label: 'Unique Experiences', count: allCamps.filter(c => c.category === 'unique').length }
   ]
 
@@ -3901,10 +3901,10 @@ function App() {
                 <li>
                   <button 
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
-                    onClick={() => handleCategoryFilter('budget')}
-                    aria-label="Filter budget category camps"
+                    onClick={() => handleCategoryFilter('budget_excellence')}
+                    aria-label="Filter budget excellence category camps"
                   >
-                    Budget-Conscious Options
+                    Budget Excellence
                   </button>
                 </li>
                 <li>
