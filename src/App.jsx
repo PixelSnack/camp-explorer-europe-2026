@@ -1543,8 +1543,8 @@ function App() {
           </div>
 
           {/* Verification Badge */}
-          <div className="flex justify-center items-center gap-2 text-white/90 text-sm max-w-md mx-auto px-4 mb-4">
-            <Shield className="w-4 h-4 text-green-400" />
+          <div className="flex justify-center items-start gap-2 text-white/90 text-sm max-w-md mx-auto px-4 mb-4">
+            <Shield className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
             <span>Camps verified for 2026 season | Updated January 2026</span>
           </div>
 
@@ -2590,21 +2590,21 @@ function App() {
                   <div className="bg-green-50 p-4 rounded-lg">
                     <h4 className="font-semibold text-green-900 mb-3">Budget Categories</h4>
                     <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
+                      <div className="flex flex-col sm:flex-row sm:justify-between">
                         <span>🏆 Luxury (CHF 6,000+)</span>
-                        <span className="font-semibold">Premium facilities</span>
+                        <span className="font-semibold text-green-800">Premium facilities</span>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex flex-col sm:flex-row sm:justify-between">
                         <span>💎 Premium (€3,000-6,000)</span>
-                        <span className="font-semibold">High-end programs</span>
+                        <span className="font-semibold text-green-800">High-end programs</span>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex flex-col sm:flex-row sm:justify-between">
                         <span>🎯 Mid-Range (€1,500-3,500)</span>
-                        <span className="font-semibold">Excellent value</span>
+                        <span className="font-semibold text-green-800">Excellent value</span>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex flex-col sm:flex-row sm:justify-between">
                         <span>💰 Budget (€330-800)</span>
-                        <span className="font-semibold">Outstanding bargains</span>
+                        <span className="font-semibold text-green-800">Outstanding bargains</span>
                       </div>
                     </div>
                   </div>

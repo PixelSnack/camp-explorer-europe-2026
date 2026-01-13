@@ -159,7 +159,7 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 2. **Accurate Pricing**: Per-child rates for camp programs only (not facility rentals or group bookings)
 3. **Direct Booking**: Parents can register directly with the camp
 4. **Quality Standards**: Every camp verified against strict 5-point criteria
-5. **Mobile First**: 70% of traffic is mobile - optimize accordingly
+5. **Mobile First**: 80% of traffic is mobile - optimize accordingly
 6. **"Go the Extra Mile"**: Be thorough, meticulous, complete - avoid sloppy work
 
 ### Current Status (January 2026)
@@ -543,7 +543,7 @@ Every code change must be evaluated holistically against these criteria:
 3. ✅ **Business Alignment**: Does this support #1 Google ranking goal and monetization strategy?
 4. ✅ **Accessibility**: Does this maintain WCAG 2.1 AA compliance (keyboard nav, screen readers)?
 5. ✅ **Security**: Does this maintain enterprise-grade headers (HSTS, CSP) and practices?
-6. ✅ **Mobile UX**: Does this work properly on mobile devices (70% of our traffic)?
+6. ✅ **Mobile UX**: Does this work properly on mobile devices (80% of our traffic)?
 7. ✅ **Documentation Accuracy**: Do .md files reflect actual vs claimed status?
 
 **If you cannot answer YES to ALL 7 questions: STOP and reassess holistically.**
@@ -612,7 +612,7 @@ Every code change must be evaluated holistically against these criteria:
 - [ ] `npm run build` succeeds
 - [ ] `npm run dev` shows changes correctly
 - [ ] No console errors in browser
-- [ ] Mobile responsive verified (70% of traffic)
+- [ ] Mobile responsive verified (80% of traffic)
 - [ ] No broken functionality
 - [ ] Pricing is per-child (not facility/group rate)
 - [ ] URLs tested and working
@@ -689,7 +689,7 @@ europeansummercamps/
 
 **Accessibility:**
 - WCAG 2.1 AA compliant throughout
-- 48px touch targets for mobile (70% traffic)
+- 48px touch targets for mobile (80% traffic)
 - Keyboard navigation support
 - Screen reader compatible with aria-labels
 - prefers-reduced-motion support
@@ -1119,7 +1119,7 @@ Based on Camp Explorer Europe 2026 development, here are 10 universal principles
 
 **User Experience:**
 7. **Advanced Search/Filter Systems**: Real-time search with category filtering and dynamic result counts
-8. **Mobile-First Performance**: 70% of niche resource discovery happens on mobile
+8. **Mobile-First Performance**: 80% of niche resource discovery happens on mobile
 
 **Business Intelligence:**
 9. **Search Console Monitoring**: Fix structured data errors immediately - they compound over time
@@ -1178,7 +1178,7 @@ npm run build && npm run dev
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories
 - **Build time**: ~7-9 seconds
-- **Mobile traffic**: 70% of total traffic
+- **Mobile traffic**: 80% of total traffic
 
 ### Quick Testing
 ```bash
