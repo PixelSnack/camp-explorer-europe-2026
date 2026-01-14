@@ -117,6 +117,43 @@ Before implementing ANY change:
 
 ---
 
+## 📊 STATS UPDATE CHECKLIST (When Adding/Removing Camps)
+
+### **🚨 CRITICAL: Stats appear in MULTIPLE locations - update ALL of them!**
+
+When the number of camps, organizations, or countries changes, you MUST update ALL these locations:
+
+```bash
+# Search for current values before updating:
+grep -n "32\|36" src/App.jsx  # Find organization count
+grep -n "20\|21" src/App.jsx  # Find country count
+```
+
+**Locations to update (use grep to find line numbers):**
+
+| Location | What to Update | Example Search |
+|----------|----------------|----------------|
+| **Hero stats array** | `value: "X"` for Countries and Programs | `const stats = [` |
+| **Footer stats** | `text-2xl font-bold` numbers | `Organizations</div>` |
+| **Footer description** | "X verified organizations" | `Directory featuring` |
+| **About section** | "X countries" text | `across X countries` |
+| **Cultural diversity** | "Experience X countries" | `Experience.*countries` |
+| **Footer country links** | Add new country button if new country | `handleCountryFilter` |
+
+**When adding a NEW COUNTRY:**
+1. Add country to footer quick links (with flag emoji)
+2. Update ALL country counts (currently 6+ locations)
+3. Add country's search terms to multilingual support
+
+**Verification command after updates:**
+```bash
+# Ensure consistency - all counts should match:
+grep -c "36" src/App.jsx  # Should find multiple matches for org count
+grep -c "21" src/App.jsx  # Should find multiple matches for country count
+```
+
+---
+
 ## 🎯 SEO-FIRST DEVELOPMENT MINDSET
 
 ### **Every Code Change Must Consider:**

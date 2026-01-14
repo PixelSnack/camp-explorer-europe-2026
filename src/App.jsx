@@ -4140,11 +4140,11 @@ function App() {
               <div className="text-center">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
-                    <div className="text-2xl font-bold text-white">32</div>
+                    <div className="text-2xl font-bold text-white">36</div>
                     <div>Organizations</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">20</div>
+                    <div className="text-2xl font-bold text-white">21</div>
                     <div>Countries</div>
                   </div>
                   <div>
