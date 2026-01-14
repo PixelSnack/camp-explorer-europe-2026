@@ -27,7 +27,7 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 | Security audit + npm vulnerability fixes | ✅ Complete |
 | Create SECURITY_STATUS.md tracking document | ✅ Complete |
 | EmailJS domain restriction | ✅ Complete |
-| Deploy all changes | ⏳ Ready to push |
+| Deploy all changes | ✅ Complete |
 | Request Google re-indexing for favicon | ⏳ Pending |
 
 ---
@@ -66,24 +66,156 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 
 ---
 
-## Priority 4: Content Expansion
+## Priority 4: Content Expansion Strategy
 
 **Status:** Ongoing
+**Goal:** Grow from 36 → 55 organizations over 6 months
+**New Countries Target:** 21 → 25 countries
 
-### Geographic Gaps to Fill:
-| Country | Current | Target | Priority |
-|---------|---------|--------|----------|
-| Belgium | 0 | 2-3 | High |
-| Netherlands | 0 | 2-3 | High |
-| Spain | 1 | 3-4 | Medium |
-| France | 1 | 3-4 | Medium |
-| Germany | 1 | 3-4 | Medium |
+---
 
-### Process:
-1. Use `camp-content-researcher` agent to find camps
-2. Verify against 5-point criteria (CAMP_VERIFICATION_CRITERIA.md)
-3. Add to `src/App.jsx` allCamps array
-4. Update footer country links
+### Current Coverage Analysis (January 2026)
+
+**Well Covered (3+ camps):**
+| Country | Count | Notes |
+|---------|-------|-------|
+| Switzerland | 4 | Premium Alpine stronghold |
+| United Kingdom | 4 | Academic & language focus |
+| Norway | 4 | Adventure & outdoor specialty |
+| Denmark | 3 | Nordic family options |
+
+**Moderate Coverage (2 camps):**
+| Country | Count | Notes |
+|---------|-------|-------|
+| Poland | 2 | Budget excellence |
+| Portugal | 2 | Surf & adventure |
+| Austria | 2 | Alpine options |
+| Sweden | 2 | Nordic expansion |
+
+**Under-Represented (1 camp):**
+Spain, France, Germany, Italy, Czech Republic, Finland, Iceland, Greece, Hungary, Romania, Slovenia, Croatia, Ireland
+
+**Critical Gaps (0 camps):**
+Belgium, Netherlands, Luxembourg
+
+---
+
+### Expansion Phase A: Fill Critical Gaps
+**Timeline:** January - February 2026
+**Target:** +6 organizations
+
+| Country | Add | Target Types | Rationale |
+|---------|-----|--------------|-----------|
+| **Belgium** | +2 | Outdoor/adventure (Ardennes), Language immersion | Zero coverage, central location, high English proficiency |
+| **Netherlands** | +2 | Sailing/water sports, International camps | Zero coverage, strong camp culture, family destination |
+| **France** | +2 | Alps adventure, Provence/Brittany options | Massive market with only 1 camp, top family destination |
+
+**Research Focus:**
+- Belgium: Look in Ardennes region (outdoor), Brussels area (language)
+- Netherlands: Friesland lakes (sailing), coastal areas
+- France: French Alps (adventure), Atlantic coast (surf/sailing)
+
+---
+
+### Expansion Phase B: Strengthen Major Markets
+**Timeline:** February - April 2026
+**Target:** +6 organizations
+
+| Country | Current | Add | Target | Types to Seek |
+|---------|---------|-----|--------|---------------|
+| **Spain** | 1 | +2 | 3 | Barcelona sports academies, Andalusia adventure |
+| **Germany** | 1 | +2 | 3 | Bavaria outdoor, Black Forest adventure |
+| **Italy** | 1 | +2 | 3 | Dolomites adventure, Lake region sailing |
+
+**Research Focus:**
+- Spain: Football academies, tennis camps, Costa Brava water sports
+- Germany: Bavarian Alps, adventure camps, language immersion
+- Italy: Alto Adige/South Tyrol, Lake Garda sailing, Tuscany arts
+
+---
+
+### Expansion Phase C: Deepen Specialty Coverage
+**Timeline:** April - June 2026
+**Target:** +7 organizations
+
+| Focus | Add | Types to Seek |
+|-------|-----|---------------|
+| **Greece** | +2 | Sailing academies, island adventure camps |
+| **Sweden** | +1 | Strengthen Nordic presence |
+| **Czech Republic** | +1 | Adventure/outdoor (Bohemian region) |
+| **Family Programs** | +2 | Multi-age welcome, parent participation (any country) |
+| **Budget Excellence** | +1 | Quality under €1,500 (Eastern Europe focus) |
+
+**Category Gap Analysis:**
+- Family Programs: Currently 4 → Target 6
+- Budget Excellence: Currently 4 → Target 5
+- Premium Alpine: Currently 4 → Maintain (saturated)
+
+---
+
+### Expansion Execution Process
+
+**For Each New Camp:**
+
+1. **Research Phase** (use `camp-content-researcher` agent)
+   ```
+   "Find 2-3 quality summer camps in [COUNTRY]:
+   - Focus: [specific region or type]
+   - Must be: Residential camps (not tour operators)
+   - Verify: Direct booking available for families
+   - Price range: [budget/mid/premium]
+   Report findings only, do not edit files."
+   ```
+
+2. **Verification Phase** (5-point criteria check)
+   - [ ] Residential camp facility (not hotels)
+   - [ ] Camp operator (not travel agency)
+   - [ ] Camp-only pricing (no flights included)
+   - [ ] On-site programs (not tours)
+   - [ ] Owns/operates facility
+
+3. **Implementation Phase** (YOU implement)
+   - Add to `src/App.jsx` allCamps array (next sequential ID)
+   - Update footer country links if new country
+   - Update all stat counts (see DEVELOPMENT_GUIDELINES.md Stats Checklist)
+   - Test search, filtering, display
+
+4. **Documentation Phase**
+   - Update QUICK_REFERENCE.md counts
+   - Update CLAUDE.md current status
+   - Commit with verification source noted
+
+---
+
+### Country Research Priority Queue
+
+**Immediate (Next Session):**
+1. Belgium - 2 camps
+2. Netherlands - 2 camps
+
+**Short-term (February):**
+3. France - 2 more camps
+4. Spain - 2 more camps
+
+**Medium-term (March-April):**
+5. Germany - 2 more camps
+6. Italy - 2 more camps
+7. Greece - 2 camps
+
+**Ongoing (As Opportunities Arise):**
+8. Family Programs in any well-covered country
+9. Budget options in Eastern Europe
+10. Unique Experiences anywhere
+
+---
+
+### Quality Over Quantity Principles
+
+- **Never rush**: Better to add 2 verified camps than 5 questionable ones
+- **Verify everything**: Per-child pricing, working URLs, real facilities
+- **Category balance**: Don't over-concentrate in one category
+- **Price diversity**: Maintain options across budget/mid/premium
+- **Geographic spread**: Prioritize uncovered regions over clustering
 
 ---
 
@@ -161,5 +293,5 @@ Adding keywords without content may hurt rankings due to user bounce behavior.
 
 ---
 
-*Last Updated: January 14, 2026*
+*Last Updated: January 15, 2026*
 *Next Review: January 21, 2026*
