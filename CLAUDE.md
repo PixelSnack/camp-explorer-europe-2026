@@ -90,6 +90,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 ✅ QUICK_REFERENCE.md (current status and quick facts)
 ✅ NEXT_STEPS.md (immediate priorities and next actions)
 ✅ CAMP_VERIFICATION_CRITERIA.md (camp vs tour operator standards)
+✅ STRATEGIC_ROADMAP.md (path from foundation to monetization)
 ```
 
 ### **Step 2: Current Status Assessment**
@@ -1016,11 +1017,11 @@ europeansummercamps/
 - Emergency commands
 - Quick facts
 
-**PRICING_VERIFICATION_URGENT.md** ⚠️ ACTIVE CRISIS
+**PRICING_VERIFICATION_URGENT.md** ✅ COMPLETE
 - Pricing verification tracker
 - Crisis status and methodology
-- Progress tracking (4/23 complete)
-- Next priority camps
+- Progress tracking (36/36 complete - January 2026)
+- Historical reference
 
 **CAMP_VERIFICATION_CRITERIA.md**
 - 5-point camp vs tour operator test
@@ -1040,6 +1041,12 @@ europeansummercamps/
 
 ### Business Documents
 
+**STRATEGIC_ROADMAP.md** ⭐ KEY DOCUMENT
+- Path from foundation to monetization
+- 7 prioritized phases
+- Success metrics and targets
+- Review schedule
+
 **MONETIZATION_STRATEGY.md**
 - Revenue roadmap
 - Traffic thresholds (1K+ sessions)
@@ -1051,6 +1058,12 @@ europeansummercamps/
 - Coordination strategy
 - Creation status
 - Deployment schedule
+
+**SECURITY_STATUS.md**
+- Ongoing security tracking
+- Audit history and findings
+- Fixed vs deferred issues
+- Review schedule (monthly)
 
 **README.md**
 - Public-facing documentation

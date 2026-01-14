@@ -16,7 +16,8 @@
 2. DEVELOPMENT_GUIDELINES.md     # Enterprise development standards
 3. QUICK_REFERENCE.md           # Current status and quick facts
 4. NEXT_STEPS.md               # This file - immediate priorities
-5. SPECIALIZED_AGENTS_ROADMAP.md # Agent capabilities
+5. STRATEGIC_ROADMAP.md         # Path from foundation to monetization
+6. SPECIALIZED_AGENTS_ROADMAP.md # Agent capabilities
 ```
 
 ### **Current Project Context (January 14, 2026):**
