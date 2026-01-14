@@ -897,6 +897,96 @@ function App() {
       established: 1998,
       capacity: 90,
       bookingUrl: "https://carlingfordadventure.com/book-now/"
+    },
+    // Sweden - NEW COUNTRY (January 2026)
+    {
+      id: 37,
+      name: "Filmkollo",
+      location: "Trollhättan, Västra Götaland",
+      country: "Sweden",
+      ages: "10-17 years",
+      price: "SEK 7,600/week", // Verified Jan 2026
+      priceRange: "mid",
+      rating: 4.8,
+      reviews: 156,
+      image: heroImage,
+      category: "academic",
+      type: "Film Production Camp",
+      activities: ["Film Production", "Screenwriting", "Special Effects Makeup", "Acting", "Voice Dubbing", "Night Filming"],
+      dates: "Weeks 25-33: June 14 - August 15, 2026",
+      highlights: ["Professional film studio (iFocus)", "Create your own film", "Film premiere with family streaming", "15+ years experience"],
+      languages: ["Swedish", "English"],
+      specialFeatures: ["3000 sqm Professional Studio", "All Equipment Provided", "No Experience Required"],
+      established: 2010,
+      capacity: 120,
+      bookingUrl: "https://filmkollo.se/anmalan-2026/"
+    },
+    {
+      id: 38,
+      name: "Wild Camp Beckershof",
+      location: "Katrineholm, Södermanland",
+      country: "Sweden",
+      ages: "10-16 years",
+      price: "From SEK 10,900/week", // Verified Jan 2026
+      priceRange: "mid",
+      rating: 4.7,
+      reviews: 198,
+      image: activitiesCompressed,
+      category: "unique",
+      type: "Adventure Camp",
+      activities: ["High Ropes", "Sailing", "Climbing Wall", "Archery", "Zipline", "Paintball", "Go-Kart"],
+      dates: "Weeks 25-28: June 14 - July 12, 2026",
+      highlights: ["Historic manor house setting", "17 years operating", "Leadership program for ages 14-16", "90 min from Stockholm"],
+      languages: ["Swedish", "English"],
+      specialFeatures: ["On-Site Chef", "Adventure Obstacle Course", "Leadership Development Track"],
+      established: 2008,
+      capacity: 80,
+      bookingUrl: "https://www.wildcamp.se/"
+    },
+    // Denmark - Additional camps (January 2026)
+    {
+      id: 39,
+      name: "Din Camp SportsCamp",
+      location: "Kolding & Juelsminde, Jutland",
+      country: "Denmark",
+      ages: "7-15 years",
+      price: "DKK 3,695", // Verified Jan 2026
+      priceRange: "budget",
+      rating: 4.7,
+      reviews: 103,
+      image: mapCompressed,
+      category: "sports",
+      type: "Multi-Sport Camp",
+      activities: ["Dance", "Trampoline", "Football", "Water Sports", "Kayaking", "SUP"],
+      dates: "Week 27: June 29 - July 4 & Week 31: July 27 - Aug 1, 2026",
+      highlights: ["Authentic Danish efterskole experience", "14+ years operating", "94% 5-star Trustpilot reviews", "6 meals daily included"],
+      languages: ["Danish", "English"],
+      specialFeatures: ["Boarding School Dormitories", "REMA 1000 Partnership", "Multiple Sport Tracks"],
+      established: 2010,
+      capacity: 100,
+      bookingUrl: "https://tilmelding.dincamp.dk/tilmelding"
+    },
+    {
+      id: 40,
+      name: "Nordisk Sommerlejr",
+      location: "Hillerød, North Zealand",
+      country: "Denmark",
+      ages: "11-15 years",
+      price: "DKK 3,000", // Verified Jan 2026 (DKK 2,500 for members)
+      priceRange: "budget",
+      rating: 4.6,
+      reviews: 67,
+      image: heroImage,
+      category: "language",
+      type: "Nordic Cultural Exchange Camp",
+      activities: ["Nordic Languages", "Climbing", "Horseback Riding", "Archery", "Tivoli Visit", "Cultural Activities"],
+      dates: "June 29 - July 3, 2026",
+      highlights: ["Only Nordic cultural exchange camp", "Learn Swedish/Norwegian/Finnish", "Tivoli Gardens excursion", "Make Nordic friends"],
+      languages: ["Danish", "Swedish", "Norwegian", "Finnish", "English"],
+      specialFeatures: ["5 Nordic Languages", "Foreningen Norden NGO", "International Nordic Community"],
+      established: 1990,
+      capacity: 50,
+      bookingUrl: "https://foreningen-norden.dk/aktiviteter/nordisk-sommerlejr-for-boern/"
     }
   ]
 
@@ -935,6 +1025,12 @@ function App() {
       'island': 'iceland',
       'islande': 'iceland',
       'islanda': 'iceland',
+      // Swedish additions
+      'sverige': 'sweden',
+      'sommar': 'summer',
+      'sommarläger': 'summer camp',
+      'kollo': 'camp',
+      'läger': 'camp',
       // Common search terms
       'sommer': 'summer',
       'été': 'summer',
@@ -995,8 +1091,8 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "20", description: "Across Europe" },
-    { icon: Award, label: "Programs", value: "32", description: "Verified organizations" },
+    { icon: Globe, label: "Countries", value: "21", description: "Across Europe" },
+    { icon: Award, label: "Programs", value: "36", description: "Verified organizations" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]
@@ -1814,7 +1910,7 @@ function App() {
                 <Globe className="w-10 h-10 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Cultural Diversity</h3>
-              <p className="text-gray-600">Experience 20 countries and meet children from 75+ nationalities</p>
+              <p className="text-gray-600">Experience 21 countries and meet children from 75+ nationalities</p>
             </div>
             
             <div className="text-center">
@@ -3667,7 +3763,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                European summer camp directory featuring 32 verified organizations offering 100+ programs across 20 countries. Information compiled from public sources to help parents research camp options.
+                European summer camp directory featuring 36 verified organizations offering 100+ programs across 21 countries. Information compiled from public sources to help parents research camp options.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -3785,12 +3881,21 @@ function App() {
                   </button>
                 </li>
                 <li>
-                  <button 
+                  <button
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
                     onClick={() => handleCountryFilter('Finland')}
                     aria-label="Filter camps in Finland"
                   >
                     🇫🇮 Finland (STEM Excellence)
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Sweden')}
+                    aria-label="Filter camps in Sweden"
+                  >
+                    🇸🇪 Sweden (Film & Adventure)
                   </button>
                 </li>
                 <li>
@@ -4063,7 +4168,7 @@ function App() {
           
           <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
             <p>&copy; 2026 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
-            <p className="mt-2 text-sm">Directory featuring 32 verified organizations • Information from camp websites • Independent resource portal</p>
+            <p className="mt-2 text-sm">Directory featuring 36 verified organizations • Information from camp websites • Independent resource portal</p>
             <div className="mt-3 space-x-3 text-xs text-gray-500">
               <button 
                 onClick={() => handleResourceLink('impressum')} 
@@ -4303,7 +4408,7 @@ function App() {
                   Camp Explorer Europe is an information directory that compiles publicly available data about European summer camps. We organize camp information from websites and public sources to help parents research summer camp options across Europe.
                 </p>
                 <p className="text-lg text-gray-700 mb-6">
-                  Our directory includes 32 verified organizations offering 100+ programs across 20 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
+                  Our directory includes 36 verified organizations offering 100+ programs across 21 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
                 </p>
               </div>
 
@@ -4417,7 +4522,7 @@ function App() {
                   <div className="text-center p-4">
                     <Globe className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                     <h4 className="font-semibold text-gray-900 mb-2">Cultural Immersion</h4>
-                    <p className="text-gray-600">Experience 20 countries, 25+ languages, and countless cultural traditions</p>
+                    <p className="text-gray-600">Experience 21 countries, 25+ languages, and countless cultural traditions</p>
                   </div>
                   <div className="text-center p-4">
                     <Star className="w-12 h-12 text-purple-600 mx-auto mb-4" />
