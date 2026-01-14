@@ -1,17 +1,17 @@
 # PRICING VERIFICATION - COMPLETED
 
-**Date**: January 13, 2026
-**Status**: VERIFICATION COMPLETE + MAJOR DATABASE UPDATE
+**Date**: January 14, 2026
+**Status**: VERIFICATION COMPLETE + NORDIC EXPANSION
 **Priority**: Ongoing maintenance mode
 
 ## SUMMARY OF JANUARY 2026 UPDATE
 
 ### Database Changes
-- **Camps Verified**: All 32 active camps now have verified 2025/2026 pricing
+- **Camps Verified**: All 36 active camps now have verified 2025/2026 pricing
 - **Camps Removed**: 3 (Metsäkartano, Piispala - group-only; ID 13 - not a camp)
-- **Camps Added**: 7 new camps (5 new countries)
+- **Camps Added**: 11 new camps (6 new countries)
 - **Camps Reclassified**: 2 (Alpine French School → day camp, Wildwind → family resort)
-- **Total Active Camps**: 32 organizations
+- **Total Active Camps**: 36 organizations
 
 ### New Countries Added
 - Hungary (Funside Balaton)
@@ -19,10 +19,11 @@
 - Slovenia (Explorer Camps)
 - Croatia (Camp California)
 - Ireland (Carlingford Adventure)
+- Sweden (Filmkollo, Wild Camp Beckershof) - NEW January 14, 2026
 
 ---
 
-## VERIFICATION STATUS (32/32 Complete - 100%)
+## VERIFICATION STATUS (36/36 Complete - 100%)
 
 ### ✅ VERIFIED CAMPS
 
@@ -60,6 +61,10 @@
 | 34 | Camp California Croatia | €1,095/week | ✅ | NEW - Croatia |
 | 35 | PGL Barton Hall | From £139/person | ✅ | NEW - UK Family |
 | 36 | Carlingford Adventure | From €240/person | ✅ | NEW - Ireland |
+| 37 | Filmkollo | SEK 7,600/week | ✅ | NEW - Sweden (Film/STEM) |
+| 38 | Wild Camp Beckershof | From SEK 10,900/week | ✅ | NEW - Sweden (Adventure) |
+| 39 | Din Camp SportsCamp | DKK 3,695 | ✅ | NEW - Denmark (Sports) |
+| 40 | Nordisk Sommerlejr | DKK 3,000 | ✅ | NEW - Denmark (Cultural) |
 
 ### ❌ REMOVED CAMPS
 
@@ -124,11 +129,12 @@ For each camp:
 
 ## SUCCESS METRICS ACHIEVED
 
-- ✅ 100% pricing verification complete
+- ✅ 100% pricing verification complete (36/36 camps)
 - ✅ All facility/group rate errors corrected
 - ✅ Day camps clearly labeled
 - ✅ Family resorts clearly labeled
-- ✅ Geographic expansion (5 new countries)
+- ✅ Geographic expansion (6 new countries including Sweden)
+- ✅ Nordic expansion (Sweden 2 camps, Denmark 3 camps)
 - ✅ Category rebalancing (Unique Experiences 1→6 camps)
 
 **REMEMBER**: Real families depend on our pricing accuracy for actual booking decisions. Data integrity is critical for our credibility and user trust.

@@ -1601,7 +1601,7 @@ function App() {
               aria-label="Camp information banner"
             >
               <span className="marquee-content">
-                2026 Season NOW OPEN • 32 Verified Organizations • 20 Countries
+                2026 Season NOW OPEN • 36 Verified Organizations • 21 Countries
               </span>
             </div>
           </div>
@@ -2640,8 +2640,8 @@ function App() {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">32 Verified Organizations</Badge>
-                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">20 Countries</Badge>
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">36 Verified Organizations</Badge>
+                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">21 Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
                 <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
               </div>
@@ -2790,7 +2790,7 @@ function App() {
             <Card className="p-8 mb-16 border-0 shadow-lg">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Featured Countries & Camp Types</h3>
-                <p className="text-lg text-gray-600">Explore camps across 20 European countries, each offering unique experiences</p>
+                <p className="text-lg text-gray-600">Explore camps across 21 European countries, each offering unique experiences</p>
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -4459,7 +4459,7 @@ function App() {
                   <div className="grid md:grid-cols-3 gap-4 text-gray-700">
                     <div>
                       <strong>Geographic Expertise:</strong><br />
-                      20 European countries, Nordic specialization, Alpine programs
+                      21 European countries, Nordic specialization, Alpine programs
                     </div>
                     <div>
                       <strong>Program Types:</strong><br />

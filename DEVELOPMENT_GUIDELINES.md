@@ -129,27 +129,37 @@ grep -n "32\|36" src/App.jsx  # Find organization count
 grep -n "20\|21" src/App.jsx  # Find country count
 ```
 
-**Locations to update (use grep to find line numbers):**
+**ALL LOCATIONS IN App.jsx to update (as of January 2026):**
 
-| Location | What to Update | Example Search |
-|----------|----------------|----------------|
-| **Hero stats array** | `value: "X"` for Countries and Programs | `const stats = [` |
-| **Footer stats** | `text-2xl font-bold` numbers | `Organizations</div>` |
-| **Footer description** | "X verified organizations" | `Directory featuring` |
-| **About section** | "X countries" text | `across X countries` |
-| **Cultural diversity** | "Experience X countries" | `Experience.*countries` |
-| **Footer country links** | Add new country button if new country | `handleCountryFilter` |
+| Line ~# | Location | What to Update |
+|---------|----------|----------------|
+| ~1604 | **Orange marquee banner** | "X Verified Organizations • Y Countries" |
+| ~1667 | **Hero stats array** | `value: "Y"` for Countries |
+| ~1671 | **Hero stats array** | `value: "X"` for Organizations |
+| ~2643 | **Blue badge** | "X Verified Organizations" |
+| ~2644 | **Green badge** | "Y Countries" |
+| ~2793 | **Featured Countries heading** | "Explore camps across Y European countries" |
+| ~4068 | **Footer stats** | "X" Organizations bold number |
+| ~4072 | **Footer stats** | "Y" Countries bold number |
+| ~4462 | **About - Geographic Expertise** | "Y European countries, Nordic specialization" |
+
+**Search commands to find ALL instances:**
+```bash
+grep -n "Verified Organizations" src/App.jsx
+grep -n "Countries" src/App.jsx | grep -v "handleCountryFilter\|country\|Country:"
+grep -n "European countries" src/App.jsx
+```
 
 **When adding a NEW COUNTRY:**
-1. Add country to footer quick links (with flag emoji)
-2. Update ALL country counts (currently 6+ locations)
-3. Add country's search terms to multilingual support
+1. Add country to footer quick links (with flag emoji) - search `handleCountryFilter`
+2. Update ALL country counts (currently 9+ locations)
+3. Add country's search terms to multilingual support - search `searchTerms`
 
 **Verification command after updates:**
 ```bash
-# Ensure consistency - all counts should match:
-grep -c "36" src/App.jsx  # Should find multiple matches for org count
-grep -c "21" src/App.jsx  # Should find multiple matches for country count
+# Ensure NO old values remain:
+grep -n "OLD_ORG_COUNT Verified\|OLD_COUNTRY_COUNT Countries\|OLD_COUNTRY_COUNT European" src/App.jsx
+# Should return NO matches
 ```
 
 ---

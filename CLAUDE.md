@@ -34,18 +34,19 @@
 ## 📋 **CURRENT PRIORITY TASKS** (January 2026)
 
 ### ✅ **COMPLETED: Pricing Verification & Database Expansion**
-- **Status**: ✅ 32/32 organizations verified (100% complete)
-- **Geographic Expansion**: 15 → 20 countries (Hungary, Romania, Slovenia, Croatia, Ireland added)
-- **New Camps Added**: 7 camps (IDs 30-36)
+- **Status**: ✅ 36/36 organizations verified (100% complete)
+- **Geographic Expansion**: 15 → 21 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden added)
+- **New Camps Added**: 11 camps (IDs 30-40)
 - **Camps Removed**: 3 (ID 13 not a camp, IDs 16 & 22 group-only)
 - **Category Renamed**: "Outdoor Adventures" → "Unique Experiences"
-- **Documentation**: All .md files updated January 13, 2026
+- **Nordic Expansion**: Sweden added (2 camps), Denmark expanded (3 total)
+- **Documentation**: All .md files updated January 14, 2026
 
 ### 🎯 **Next Priorities**:
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
 - [ ] **Virtual Scrolling**: Implement TanStack React Virtual (already installed)
 - [ ] **Phase 2 Planning**: React Router + SSG when traffic justifies (1K+ sessions/month)
-- [ ] **Content Expansion**: Consider adding camps in Belgium, Netherlands, Sweden
+- [ ] **Content Expansion**: Consider adding camps in Belgium, Netherlands
 - [ ] **SEO Monitoring**: Track Google Search Console for indexing progress
 
 ### 🔍 **Ongoing Maintenance**:
@@ -94,9 +95,9 @@ When starting a new Claude Code session, follow this protocol to restore context
 ### **Step 2: Current Status Assessment**
 
 **Database Status:**
-- **32 verified organizations** representing 100+ programs across 20 countries
+- **36 verified organizations** representing 100+ programs across 21 countries
 - **Pricing Verification**: ✅ COMPLETE (100% - all camps verified January 2026)
-- **Recent Additions**: Hungary, Romania, Slovenia, Croatia, Ireland (5 new countries)
+- **Recent Additions**: Sweden (2 camps), Denmark (+2 camps), Hungary, Romania, Slovenia, Croatia, Ireland
 - **Recent Removals**: ID 13 (not a camp), ID 16 (group-only), ID 22 (group-only)
 
 **Technical Status:**
@@ -164,8 +165,8 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 32 verified organizations, 100+ programs, 20 countries
-- **Camp Data Location**: `src/App.jsx` lines 174-901 (`const allCamps = [...]`)
+- **Database**: 36 verified organizations, 100+ programs, 21 countries
+- **Camp Data Location**: `src/App.jsx` lines 174-990 (`const allCamps = [...]`)
 - **App.jsx Total Lines**: ~4,500 lines (well-structured monolithic component)
 - **Pricing Verification**: ✅ COMPLETE (100% verified January 2026)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
@@ -850,19 +851,19 @@ europeansummercamps/
 
 ### 8.1 Database Status (January 2026)
 
-**Geographic Coverage (20 Countries):**
-- **Well Covered**: Switzerland (4), United Kingdom (4), Norway (4), Poland (2), Portugal (2), Austria (2)
-- **Current**: Spain (1), France (1), Germany (1), Italy (1), Czech Republic (1), Finland (1), Denmark (1), Iceland (1), Greece (1), Hungary (1), Romania (1), Slovenia (1), Croatia (1), Ireland (1)
-- **Need More**: Belgium (0), Netherlands (0), Sweden (0)
+**Geographic Coverage (21 Countries):**
+- **Well Covered**: Switzerland (4), United Kingdom (4), Norway (4), Denmark (3), Poland (2), Portugal (2), Austria (2), Sweden (2)
+- **Current**: Spain (1), France (1), Germany (1), Italy (1), Czech Republic (1), Finland (1), Iceland (1), Greece (1), Hungary (1), Romania (1), Slovenia (1), Croatia (1), Ireland (1)
+- **Need More**: Belgium (0), Netherlands (0)
 
-**Category Distribution (32 Organizations):**
+**Category Distribution (36 Organizations):**
 - Premium Alpine: 4 organizations
-- Academic & STEM: 4 organizations
-- Language Immersion: 5 organizations
-- Sports Specialty: 5 organizations
+- Academic & STEM: 5 organizations (+1 Filmkollo)
+- Language Immersion: 6 organizations (+1 Nordisk Sommerlejr)
+- Sports Specialty: 6 organizations (+1 Din Camp SportsCamp)
 - Family Programs: 4 organizations
 - Budget Excellence: 4 organizations
-- Unique Experiences: 6 organizations
+- Unique Experiences: 7 organizations (+1 Wild Camp)
 
 **Price Ranges:**
 - Budget: €335 - €1,999 (4 camps)
@@ -1178,13 +1179,13 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total organizations**: 32 verified
+- **Total organizations**: 36 verified
 - **Total programs**: 100+ individual camps
-- **Countries**: 20 European countries
+- **Countries**: 21 European countries
 - **Categories**: 7 distinct categories
-- **Verified pricing**: ✅ 32/32 (100% complete)
-- **App.jsx camp data**: Lines 174-901
-- **Total App.jsx lines**: ~4,500 lines
+- **Verified pricing**: ✅ 36/36 (100% complete)
+- **App.jsx camp data**: Lines 174-990
+- **Total App.jsx lines**: ~4,600 lines
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories
 - **Build time**: ~7-9 seconds
