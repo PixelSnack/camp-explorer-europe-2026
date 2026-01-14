@@ -68,8 +68,9 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 
 ## Priority 4: Content Expansion Strategy
 
-**Status:** Ongoing
-**Goal:** Grow from 36 → 56 organizations over 6 months (+20)
+**Status:** URGENT - Booking season is NOW
+**Goal:** Grow from 36 → 56 organizations by end of March (+20)
+**Timeline:** 8 weeks (not 6 months) - must complete before summer
 **New Countries Target:** 21 → 25 countries
 **Scandinavian Priority:** Maintain 30%+ Nordic representation
 
@@ -102,7 +103,7 @@ Belgium, Netherlands, Luxembourg
 ---
 
 ### Expansion Phase A: Fill Critical Gaps
-**Timeline:** January - February 2026
+**Timeline:** January 2026 (IMMEDIATE - peak booking season)
 **Target:** +6 organizations
 
 | Country | Add | Target Types | Rationale |
@@ -119,7 +120,7 @@ Belgium, Netherlands, Luxembourg
 ---
 
 ### Expansion Phase B: Strengthen Major Markets
-**Timeline:** February - April 2026
+**Timeline:** February 2026 (booking season continues)
 **Target:** +6 organizations
 
 | Country | Current | Add | Target | Types to Seek |
@@ -136,7 +137,7 @@ Belgium, Netherlands, Luxembourg
 ---
 
 ### Expansion Phase C: Scandinavian & Specialty Focus
-**Timeline:** April - June 2026
+**Timeline:** March 2026 (final push before summer)
 **Target:** +8 organizations
 
 | Focus | Add | Types to Seek |
@@ -202,26 +203,28 @@ Current Nordic coverage: 11 camps (30% of database)
 
 ### Country Research Priority Queue
 
-**Immediate (Next Session):**
+**🚨 BOOKING SEASON IS NOW - Accelerated Timeline**
+
+**Week 1-2 (Late January):**
 1. Belgium - 2 camps (fill critical gap)
 2. Netherlands - 2 camps (fill critical gap)
-
-**Short-term (February):**
 3. France - 2 more camps
-4. Spain - 2 more camps
 
-**Medium-term (March-April):**
+**Week 3-4 (Early February):**
+4. Spain - 2 more camps
 5. Germany - 2 more camps
 6. Italy - 2 more camps
-7. Finland - 2 camps (Scandinavian priority)
 
-**Scandinavian Focus (April-June):**
+**Week 5-6 (Late February):**
+7. Finland - 2 camps (Scandinavian priority)
 8. Sweden - 2 more camps (forest/nature focus)
+
+**Week 7-8 (March):**
 9. Norway - 1 more camp (fjord adventures)
 10. Greece - 2 camps (sailing/islands)
+11. Premium Alpine - 1 option
 
 **Ongoing (As Opportunities Arise):**
-11. Premium Alpine options (only 3 currently)
 12. Iceland - unique experiences
 13. Denmark - family programs
 
@@ -290,14 +293,22 @@ Adding keywords without content may hurt rankings due to user bounce behavior.
 
 ## Success Metrics
 
-| Metric | Current | 3-Month Target | 6-Month Target |
-|--------|---------|----------------|----------------|
-| Monthly Sessions | Growing | 500+ | 1,000+ |
-| Countries Covered | 21 | 23 | 25 |
+**🚨 Accelerated for 2026 Booking Season**
+
+| Metric | Current | End of Feb | End of March |
+|--------|---------|------------|--------------|
+| Monthly Sessions | Growing | 500+ | 750+ |
+| Countries Covered | 21 | 24 | 25 |
 | Camp Organizations | 36 | 48 | 56 |
 | Scandinavian Camps | 11 (30%) | 13 | 16+ |
-| Google Ranking | Page 1 | Top 3 | #1 |
-| Revenue | €0 | Setup ready | First revenue |
+| Google Ranking | Page 1 | Top 5 | Top 3 |
+
+**Post-Summer (September+):**
+| Metric | Target |
+|--------|--------|
+| Monthly Sessions | 1,000+ |
+| Google Ranking | #1 |
+| Revenue | First revenue |
 
 ---
 
