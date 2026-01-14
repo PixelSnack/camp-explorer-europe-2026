@@ -69,8 +69,9 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 ## Priority 4: Content Expansion Strategy
 
 **Status:** Ongoing
-**Goal:** Grow from 36 → 55 organizations over 6 months
+**Goal:** Grow from 36 → 56 organizations over 6 months (+20)
 **New Countries Target:** 21 → 25 countries
+**Scandinavian Priority:** Maintain 30%+ Nordic representation
 
 ---
 
@@ -134,22 +135,34 @@ Belgium, Netherlands, Luxembourg
 
 ---
 
-### Expansion Phase C: Deepen Specialty Coverage
+### Expansion Phase C: Scandinavian & Specialty Focus
 **Timeline:** April - June 2026
-**Target:** +7 organizations
+**Target:** +8 organizations
 
 | Focus | Add | Types to Seek |
 |-------|-----|---------------|
+| **Finland** | +2 | Lakeland adventures, midnight sun camps |
+| **Sweden** | +2 | Forest/nature camps, STEM programs |
+| **Norway** | +1 | Fjord adventures, water sports |
 | **Greece** | +2 | Sailing academies, island adventure camps |
-| **Sweden** | +1 | Strengthen Nordic presence |
-| **Czech Republic** | +1 | Adventure/outdoor (Bohemian region) |
-| **Family Programs** | +2 | Multi-age welcome, parent participation (any country) |
-| **Budget Excellence** | +1 | Quality under €1,500 (Eastern Europe focus) |
+| **Premium Alpine** | +1 | Swiss/Austrian premium option (currently only 3) |
 
-**Category Gap Analysis:**
-- Family Programs: Currently 4 → Target 6
-- Budget Excellence: Currently 4 → Target 5
-- Premium Alpine: Currently 4 → Maintain (saturated)
+**Current Category Distribution (Verified January 2026):**
+| Category | Count | Notes |
+|----------|-------|-------|
+| Unique Experiences | 7 | Well covered |
+| Family Programs | 6 | Well covered |
+| Sports Specialty | 5 | Balanced |
+| Language Immersion | 5 | Balanced |
+| Budget Excellence | 5 | Balanced |
+| Academic & STEM | 5 | Balanced |
+| Premium Alpine | 3 | **Gap - add 1-2** |
+
+**Scandinavian Priority (User Request):**
+Current Nordic coverage: 11 camps (30% of database)
+- Norway: 4, Denmark: 3, Sweden: 2, Finland: 1, Iceland: 1
+- Target: 16+ camps (maintain ~30% as database grows)
+- Focus: Finland lakes, Swedish forests, Norwegian fjords
 
 ---
 
@@ -190,8 +203,8 @@ Belgium, Netherlands, Luxembourg
 ### Country Research Priority Queue
 
 **Immediate (Next Session):**
-1. Belgium - 2 camps
-2. Netherlands - 2 camps
+1. Belgium - 2 camps (fill critical gap)
+2. Netherlands - 2 camps (fill critical gap)
 
 **Short-term (February):**
 3. France - 2 more camps
@@ -200,12 +213,17 @@ Belgium, Netherlands, Luxembourg
 **Medium-term (March-April):**
 5. Germany - 2 more camps
 6. Italy - 2 more camps
-7. Greece - 2 camps
+7. Finland - 2 camps (Scandinavian priority)
+
+**Scandinavian Focus (April-June):**
+8. Sweden - 2 more camps (forest/nature focus)
+9. Norway - 1 more camp (fjord adventures)
+10. Greece - 2 camps (sailing/islands)
 
 **Ongoing (As Opportunities Arise):**
-8. Family Programs in any well-covered country
-9. Budget options in Eastern Europe
-10. Unique Experiences anywhere
+11. Premium Alpine options (only 3 currently)
+12. Iceland - unique experiences
+13. Denmark - family programs
 
 ---
 
@@ -276,7 +294,8 @@ Adding keywords without content may hurt rankings due to user bounce behavior.
 |--------|---------|----------------|----------------|
 | Monthly Sessions | Growing | 500+ | 1,000+ |
 | Countries Covered | 21 | 23 | 25 |
-| Camp Organizations | 36 | 45 | 55 |
+| Camp Organizations | 36 | 48 | 56 |
+| Scandinavian Camps | 11 (30%) | 13 | 16+ |
 | Google Ranking | Page 1 | Top 3 | #1 |
 | Revenue | €0 | Setup ready | First revenue |
 
