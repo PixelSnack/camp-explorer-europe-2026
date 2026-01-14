@@ -1,23 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="tentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2563eb"/>
-      <stop offset="100%" style="stop-color:#ea580c"/>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
     </linearGradient>
   </defs>
-  
-  <!-- Background circle -->
-  <circle cx="16" cy="16" r="15" fill="url(#tentGradient)" stroke="#ffffff" stroke-width="1"/>
-  
-  <!-- Tent -->
-  <path d="M16 8 L24 22 L8 22 Z" fill="#ffffff" opacity="0.9"/>
-  <path d="M16 8 L16 22" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
-  <path d="M20 22 L20 18" stroke="#ffffff" stroke-width="1" opacity="0.7"/>
-  
-  <!-- Ground line -->
-  <line x1="7" y1="22" x2="25" y2="22" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
-  
-  <!-- Small details -->
-  <circle cx="12" cy="20" r="0.5" fill="#ffffff" opacity="0.6"/>
-  <circle cx="20" cy="20" r="0.5" fill="#ffffff" opacity="0.6"/>
+  <!-- Circular background -->
+  <circle cx="256" cy="256" r="256" fill="url(#bgGradient)"/>
+  <!-- Tent shape -->
+  <path d="M256 80 L400 400 L112 400 Z" fill="white"/>
+  <!-- Tent opening -->
+  <path d="M256 280 L300 400 L212 400 Z" fill="url(#bgGradient)"/>
+  <!-- Tent pole line -->
+  <line x1="256" y1="80" x2="256" y2="400" stroke="white" stroke-width="8" opacity="0.3"/>
 </svg>
