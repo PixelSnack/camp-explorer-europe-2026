@@ -58,7 +58,7 @@
 - **Data Size** - 23+ camp organizations, manageable but virtual scrolling still beneficial
 
 ### **Current Performance Baseline**
-- **Mobile Traffic** - 80% of users (critical optimization target)
+- **Mobile Traffic** - 70% of users (critical optimization target)
 - **Filter Performance** - Good with existing `useMemo` implementation
 - **Scroll Performance** - Adequate but could benefit from virtualization
 - **Memory Usage** - Currently stable with existing data size
@@ -374,7 +374,7 @@ const measureMemoryUsage = () => {
 
 #### **2. Mobile Layout Destruction**
 **Risk**: CSS Grid responsive breakpoints conflict with virtualization
-**Impact**: HIGH - Mobile UX destroyed (80% of traffic)
+**Impact**: HIGH - Mobile UX destroyed (70% of traffic)
 **Mitigation**:
 - Use container queries instead of viewport-based media queries
 - Test extensively on real mobile devices

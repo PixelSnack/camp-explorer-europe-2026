@@ -61,7 +61,7 @@
 
 ### **🚨 CRITICAL: Every Change Must Pass Through BOTH Lenses**
 
-**80% of our traffic is mobile. SEO is how we get discovered. These are non-negotiable.**
+**70% of our traffic is mobile (iOS 50%, Android 18%). SEO is how we get discovered. These are non-negotiable.**
 
 #### **📱 MOBILE-FIRST LENS (Primary)**
 Before ANY code change, ask:

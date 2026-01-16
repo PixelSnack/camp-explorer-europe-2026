@@ -61,7 +61,7 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 ### Virtual Scrolling Implementation:
 - Package ready: `@tanstack/react-virtual` (already installed)
 - Target: Camp listing grid in Discover section
-- Expected benefit: Improved mobile performance (80% of traffic)
+- Expected benefit: Improved mobile performance (70% of traffic)
 - Documentation: `VIRTUAL_SCROLLING_IMPLEMENTATION_PLAN.md`
 
 ---
