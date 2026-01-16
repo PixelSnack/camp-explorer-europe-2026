@@ -33,6 +33,23 @@
 - ❌ Multi-country travel itineraries
 - ❌ Day camps not clearly labeled as such
 
+**FAMILY PROGRAMS ELASTICITY (Added January 2026):**
+
+Our criteria should have elasticity for programs that fit the spirit of summer camps while serving families:
+
+- **✅ Family co-living programs** with structured children's education are acceptable in "Family Programs" category
+- **✅ Camps where parents CAN join** (not just children-only camps) add value for our visitors
+- **✅ Furnished homes/villas** acceptable for family programs (not just traditional dormitories)
+- **✅ Programs where families travel together** acceptable if there's structured children's programming
+
+**Key principle:** Don't narrow scope too strictly. If a program fits the spirit of helping families find quality summer experiences for their children, consider inclusion with appropriate categorization and clear disclosure.
+
+**Examples of acceptable Family Programs:**
+- Boundless Life (family co-living with education)
+- PGL Family Adventures (parents and children together)
+- Altitude Camps (family accommodation options)
+- Wildwind (marked clearly as sailing-focused with family options)
+
 ### **1. Legal & Operational Verification**
 - **✅ Active Website**: Camp must have functioning, professional website
 - **✅ Business Registration**: Verifiable business entity (company registration, permits)
