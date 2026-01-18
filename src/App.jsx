@@ -175,6 +175,7 @@ function App() {
     // Premium Alpine Experiences
     {
       id: 1,
+      featured: true, // Demo featured listing - January 2026
       name: "Les Elfes International",
       location: "Verbier, Switzerland",
       country: "Switzerland",
@@ -187,12 +188,12 @@ function App() {
       category: "premium",
       type: "Alpine Adventure",
       activities: ["Rock Climbing", "5 Languages", "Glacier Expeditions", "Cultural Tours"],
-      dates: "June 7-20, 2026",
-      highlights: ["37+ years experience", "25,000+ alumni", "75+ countries", "Swiss Alps at 1,500m"],
+      dates: "June - August 2026", // 6 x 2-week sessions available
+      highlights: ["38+ years experience", "10,000+ campers annually", "45+ activities offered", "Swiss Alps at 1,500m"],
       languages: ["English", "French", "German", "Spanish", "Mandarin"],
-      specialFeatures: ["24/7 Medical Center", "Traditional Swiss Chalets", "Montreux Jazz Festival"],
+      specialFeatures: ["On-site Nurse & 24/7 Care", "Traditional Swiss Chalets", "European Travel Awards 2024"],
       established: 1987,
-      capacity: 120,
+      capacity: 180, // Verbier campus capacity
       bookingUrl: "https://www.leselfes.com/summer-camps/"
     },
     {
@@ -1728,17 +1729,33 @@ function App() {
       <section id="discover" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {filteredCamps.map((camp) => (
-              <Card key={camp.id} className="camp-card overflow-hidden border-0 shadow-lg group">
+            {/* Sort featured camps first, then by ID */}
+            {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
+              <Card key={camp.id} className={`camp-card overflow-hidden group ${
+                camp.featured
+                  ? 'border-[3px] border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] ring-4 ring-amber-100'
+                  : 'border-0 shadow-lg'
+              }`}>
                 <div className="relative h-56 overflow-hidden">
-                  <img 
-                    src={camp.image} 
+                  <img
+                    src={camp.image}
                     alt={`${camp.name} - ${camp.type} summer camp in ${camp.location} for ages ${camp.ages}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className={`w-full h-full group-hover:scale-105 transition-transform duration-500 ${
+                      camp.image === mapCompressed ? 'object-contain bg-sky-50' : 'object-cover'
+                    }`}
                     title={`${camp.name} - European Summer Camp ${camp.ages}`}
                     loading="lazy"
                   />
-                  <div className="absolute top-4 left-4">
+                  {/* Featured Camp Badge - Prominent gold ribbon */}
+                  {camp.featured && (
+                    <div className="absolute top-0 left-0 z-10">
+                      <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-white text-sm font-bold px-4 py-2 shadow-lg flex items-center gap-1.5 rounded-br-lg">
+                        <Star className="w-4 h-4 fill-white" />
+                        <span>FEATURED</span>
+                      </div>
+                    </div>
+                  )}
+                  <div className={`absolute ${camp.featured ? 'top-10' : 'top-4'} left-4`}>
                     <Badge className={`${
                       camp.priceRange === 'luxury' ? 'bg-purple-500' :
                       camp.priceRange === 'premium' ? 'bg-blue-500' :
@@ -1835,7 +1852,7 @@ function App() {
                     <div className="space-y-2">
                       <div className="text-sm font-medium text-gray-900">Highlights:</div>
                       <ul className="text-sm text-gray-600 space-y-1">
-                        {camp.highlights.slice(0, 2).map((highlight, index) => (
+                        {camp.highlights.slice(0, camp.featured ? 3 : 2).map((highlight, index) => (
                           <li key={index} className="flex items-center">
                             <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2"></div>
                             {highlight}
@@ -2131,17 +2148,33 @@ function App() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredCamps.map((camp) => (
-                <Card key={camp.id} className="camp-card overflow-hidden border-0 shadow-lg group">
+              {/* Sort featured camps first */}
+              {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
+                <Card key={camp.id} className={`camp-card overflow-hidden group ${
+                  camp.featured
+                    ? 'border-[3px] border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] ring-4 ring-amber-100'
+                    : 'border-0 shadow-lg'
+                }`}>
                   <div className="relative h-56 overflow-hidden">
-                    <img 
-                      src={camp.image} 
+                    <img
+                      src={camp.image}
                       alt={`${camp.name} - ${camp.type} summer camp in ${camp.location} for ages ${camp.ages}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className={`w-full h-full group-hover:scale-105 transition-transform duration-500 ${
+                        camp.image === mapCompressed ? 'object-contain bg-sky-50' : 'object-cover'
+                      }`}
                       title={`${camp.name} - European Summer Camp ${camp.ages}`}
                       loading="lazy"
                     />
-                    <div className="absolute top-4 left-4">
+                    {/* Featured Camp Badge */}
+                    {camp.featured && (
+                      <div className="absolute top-0 left-0 z-10">
+                        <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-white text-sm font-bold px-4 py-2 shadow-lg flex items-center gap-1.5 rounded-br-lg">
+                          <Star className="w-4 h-4 fill-white" />
+                          <span>FEATURED</span>
+                        </div>
+                      </div>
+                    )}
+                    <div className={`absolute ${camp.featured ? 'top-10' : 'top-4'} left-4`}>
                       <Badge className={`${
                         camp.priceRange === 'luxury' ? 'bg-purple-500' :
                         camp.priceRange === 'premium' ? 'bg-blue-500' :
@@ -2238,7 +2271,7 @@ function App() {
                       <div className="space-y-2">
                         <div className="text-sm font-medium text-gray-900">Highlights:</div>
                         <ul className="text-sm text-gray-600 space-y-1">
-                          {camp.highlights.slice(0, 2).map((highlight, index) => (
+                          {camp.highlights.slice(0, camp.featured ? 3 : 2).map((highlight, index) => (
                             <li key={index} className="flex items-center">
                               <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2"></div>
                               {highlight}
