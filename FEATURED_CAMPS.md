@@ -3,7 +3,7 @@
 *Tracking document for Featured listings (€99/year tier)*
 
 **Created:** January 18, 2026
-**Last Updated:** January 18, 2026
+**Last Updated:** January 22, 2026
 **Status:** Demo/Test Phase
 
 ---
@@ -48,6 +48,7 @@ This document tracks all Featured camp listings, including verification status, 
 | Languages | 5 listed | 5 confirmed | ✅ Accurate |
 | Dates | June - August 2026 | June-August 2026 | ✅ Updated |
 | Booking URL | /summer-camps/ | /summer-camps/ | ✅ Verified working |
+| Video URL | YouTube promo | https://www.youtube.com/watch?v=Z9--hHAq40g | ✅ Added Jan 22 |
 | Highlights | 3 shown | 38+ yrs, 10K campers, 45+ activities | ✅ Updated |
 
 #### Key Highlights (Verified)

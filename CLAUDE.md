@@ -45,12 +45,24 @@
 - **See**: MONETIZATION_STRATEGY.md for competitive research and pricing rationale
 - **See**: NEXT_STEPS.md for detailed action items and next steps
 
+### ✅ **COMPLETED: Analytics & Video Implementation (January 22, 2026)**
+- **Status**: ✅ COMPLETE - Full analytics tracking live on production
+- **GA4 Activated**: Real Measurement ID (G-3FMMGNJRLE) now tracking
+- **UTM Parameters**: All outbound booking links now include UTM tracking
+  - `utm_source=europeansummercamps`, `utm_medium=directory`
+  - `utm_campaign=featured` or `standard`, `utm_content=camp-name`
+- **Click Tracking**: GA4 `camp_booking_click` event tracks all camps with `is_featured` flag
+- **Video Feature**: Les Elfes has "Watch Camp Video" red button (YouTube link)
+- **Card Layout Fix**: Flexbox alignment ensures all buttons align at card bottom
+- **Purpose**: Support LINEŠA traffic reporting, Les Elfes trial conversion
+
 ### ✅ **COMPLETED: Featured Listing Demo (Les Elfes)**
 - **Status**: ✅ COMPLETE - Demo featured listing live on production
 - **Camp**: Les Elfes International (ID: 1) - Premium Alpine category
 - **Verification**: Deep verification via camp-data-verifier + camp-content-researcher agents
 - **Data Updates**: Capacity (120→180), dates, highlights, specialFeatures verified from official sources
 - **Styling**: Premium golden border, glow effect, FEATURED badge with star icon
+- **Video Button**: Red "Watch Camp Video" button linking to YouTube promotional video
 - **Tracking**: FEATURED_CAMPS.md created for current and future featured listings
 - **Purpose**: Show potential camp operators (like Boundless Life) how Featured tier looks
 - **Tested**: iOS and PC - confirmed looks great
@@ -705,7 +717,9 @@ europeansummercamps/
 - **State Management**: React hooks (useState, useEffect, useMemo)
 - **Deployment**: Vercel (auto-deploy from GitHub main)
 - **Domain**: Cloudflare DNS
-- **Analytics**: Google Analytics 4 + Vercel Analytics (GDPR compliant)
+- **Analytics**: Google Analytics 4 (G-3FMMGNJRLE) + Vercel Analytics (GDPR compliant)
+  - Custom events: `camp_booking_click`, `video_click`
+  - UTM parameters on all outbound links for partner tracking
 - **Contact Forms**: EmailJS → 5 Cloudflare addresses → Gmail
 - **Security**: HSTS + CSP headers, enterprise-grade
 - **Virtual Scrolling**: TanStack React Virtual (ready, not yet implemented)
