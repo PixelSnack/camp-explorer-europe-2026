@@ -5,7 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import emailjs from '@emailjs/browser'
 
 // Google Analytics 4 Configuration - Enterprise Implementation
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX' // Replace with actual GA4 Measurement ID
+const GA_MEASUREMENT_ID = 'G-3FMMGNJRLE'
 
 // Initialize Google Analytics 4
 const initializeGA4 = () => {
@@ -65,6 +65,42 @@ import activitiesWebp from './assets/activities-collage.webp'
 import activitiesCompressed from './assets/activities-collage-compressed.png'
 import mapCompressed from './assets/camps-map-compressed.png'
 import './App.css'
+
+// UTM Parameter Helper for Partner Analytics
+const buildOutboundUrl = (baseUrl, camp) => {
+  try {
+    const url = new URL(baseUrl)
+    url.searchParams.set('utm_source', 'europeansummercamps')
+    url.searchParams.set('utm_medium', 'directory')
+    url.searchParams.set('utm_campaign', camp.featured ? 'featured' : 'standard')
+    url.searchParams.set('utm_content', camp.name.toLowerCase().replace(/\s+/g, '-'))
+    return url.toString()
+  } catch {
+    // If URL parsing fails, return original
+    return baseUrl
+  }
+}
+
+// GA4 Outbound Click Tracking - All camps for business intelligence
+const trackOutboundClick = (camp) => {
+  if (window.gtag) {
+    window.gtag('event', 'camp_booking_click', {
+      camp_name: camp.name,
+      camp_id: camp.id,
+      camp_category: camp.category,
+      camp_country: camp.country,
+      is_featured: camp.featured || false,
+      destination_url: camp.bookingUrl
+    })
+  }
+}
+
+// Handle outbound booking clicks with tracking
+const handleBookingClick = (camp) => {
+  trackOutboundClick(camp)
+  const trackedUrl = buildOutboundUrl(camp.bookingUrl, camp)
+  window.open(trackedUrl, '_blank')
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -194,7 +230,8 @@ function App() {
       specialFeatures: ["On-site Nurse & 24/7 Care", "Traditional Swiss Chalets", "European Travel Awards 2024"],
       established: 1987,
       capacity: 180, // Verbier campus capacity
-      bookingUrl: "https://www.leselfes.com/summer-camps/"
+      bookingUrl: "https://www.leselfes.com/summer-camps/",
+      videoUrl: "https://www.youtube.com/watch?v=Z9--hHAq40g"
     },
     {
       id: 2,
@@ -1731,7 +1768,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Sort featured camps first, then by ID */}
             {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
-              <Card key={camp.id} className={`camp-card overflow-hidden group ${
+              <Card key={camp.id} className={`camp-card overflow-hidden group flex flex-col ${
                 camp.featured
                   ? 'border-[3px] border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] ring-4 ring-amber-100'
                   : 'border-0 shadow-lg'
@@ -1812,8 +1849,8 @@ function App() {
                   </div>
                 </CardHeader>
                 
-                <CardContent className="pt-0">
-                  <div className="space-y-4">
+                <CardContent className="pt-0 flex-1 flex flex-col">
+                  <div className="space-y-4 flex-grow">
                     <div className="flex justify-between items-center text-sm">
                       <span className="text-gray-600 flex items-center">
                         <Users className="w-4 h-4 mr-1" />
@@ -1873,20 +1910,43 @@ function App() {
                         </div>
                       </div>
                     </div>
-                    
+                  </div>
+
+                  <div className="mt-4 space-y-2">
                     <Button
                       className="w-full btn-secondary"
-                      onClick={() => window.open(camp.bookingUrl, '_blank')}
+                      onClick={() => handleBookingClick(camp)}
                       aria-label={`View details and book ${camp.name}`}
                     >
                       View Details & Book
                     </Button>
+                    {camp.videoUrl && (
+                      <Button
+                        className="w-full bg-red-600 hover:bg-red-700 text-white text-sm h-9"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          if (window.gtag) {
+                            window.gtag('event', 'video_click', {
+                              camp_name: camp.name,
+                              camp_id: camp.id
+                            })
+                          }
+                          window.open(camp.videoUrl, '_blank')
+                        }}
+                        aria-label={`Watch ${camp.name} video`}
+                      >
+                        <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        Watch Camp Video
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-          
+
           {filteredCamps.length === 0 && (
             <div className="text-center py-16">
               <div className="text-gray-400 mb-4">
@@ -2150,7 +2210,7 @@ function App() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Sort featured camps first */}
               {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
-                <Card key={camp.id} className={`camp-card overflow-hidden group ${
+                <Card key={camp.id} className={`camp-card overflow-hidden group flex flex-col ${
                   camp.featured
                     ? 'border-[3px] border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] ring-4 ring-amber-100'
                     : 'border-0 shadow-lg'
@@ -2231,8 +2291,8 @@ function App() {
                     </div>
                   </CardHeader>
                   
-                  <CardContent className="pt-0">
-                    <div className="space-y-4">
+                  <CardContent className="pt-0 flex-1 flex flex-col">
+                    <div className="space-y-4 flex-grow">
                       <div className="flex justify-between items-center text-sm">
                         <span className="text-gray-600 flex items-center">
                           <Users className="w-4 h-4 mr-1" />
@@ -2243,7 +2303,7 @@ function App() {
                           {camp.capacity} max
                         </span>
                       </div>
-                      
+
                       <div className="flex flex-wrap gap-1">
                         {camp.activities.slice(0, 3).map((activity, index) => (
                           <Badge key={index} variant="secondary" className="text-xs">
@@ -2256,7 +2316,7 @@ function App() {
                           </Badge>
                         )}
                       </div>
-                      
+
                       <div className="space-y-2">
                         <div className="text-sm font-medium text-gray-900">Languages:</div>
                         <div className="flex flex-wrap gap-1">
@@ -2267,7 +2327,7 @@ function App() {
                           ))}
                         </div>
                       </div>
-                      
+
                       <div className="space-y-2">
                         <div className="text-sm font-medium text-gray-900">Highlights:</div>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -2279,7 +2339,7 @@ function App() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div className="flex items-center justify-between pt-4 border-t">
                         <div className="flex items-center text-sm text-gray-500">
                           <Award className="w-4 h-4 mr-1" />
@@ -2290,20 +2350,43 @@ function App() {
                           {camp.reviews} reviews
                         </div>
                       </div>
-                      
-                      <Button 
+                    </div>
+
+                    <div className="mt-4 space-y-2">
+                      <Button
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                        onClick={() => window.open(camp.bookingUrl, '_blank')}
+                        onClick={() => handleBookingClick(camp)}
                         aria-label={`View details and book ${camp.name}`}
                       >
                         View Details & Book
                       </Button>
+                      {camp.videoUrl && (
+                        <Button
+                          className="w-full bg-red-600 hover:bg-red-700 text-white text-sm h-9"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            if (window.gtag) {
+                              window.gtag('event', 'video_click', {
+                                camp_name: camp.name,
+                                camp_id: camp.id
+                              })
+                            }
+                            window.open(camp.videoUrl, '_blank')
+                          }}
+                          aria-label={`Watch ${camp.name} video`}
+                        >
+                          <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                          Watch Camp Video
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
               ))}
             </div>
-            
+
             {filteredCamps.length === 0 && (
               <div className="text-center py-16">
                 <div className="text-gray-400 mb-4">
@@ -2449,12 +2532,33 @@ function App() {
                             </div>
                           </div>
 
-                          <Button 
+                          <Button
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-4"
-                            onClick={() => window.open(camp.bookingUrl, '_blank')}
+                            onClick={() => handleBookingClick(camp)}
                           >
                             Book Now
                           </Button>
+                          {camp.videoUrl && (
+                            <Button
+                              className="w-full bg-red-600 hover:bg-red-700 text-white text-sm h-9 mt-2"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                if (window.gtag) {
+                                  window.gtag('event', 'video_click', {
+                                    camp_name: camp.name,
+                                    camp_id: camp.id
+                                  })
+                                }
+                                window.open(camp.videoUrl, '_blank')
+                              }}
+                              aria-label={`Watch ${camp.name} video`}
+                            >
+                              <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                              </svg>
+                              Watch Camp Video
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </Card>
