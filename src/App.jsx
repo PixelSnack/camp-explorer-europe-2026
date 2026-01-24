@@ -1130,7 +1130,7 @@ function App() {
 
   const stats = [
     { icon: Globe, label: "Countries", value: "21", description: "Across Europe" },
-    { icon: Award, label: "Programs", value: "36", description: "Verified organizations" },
+    { icon: Award, label: "Organizations", value: "36", description: "100+ verified camps" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]

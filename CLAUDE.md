@@ -900,14 +900,35 @@ europeansummercamps/
 
 **Critical Lesson**: Always verify price is per-child consumer pricing, not facility rental or group rates. This is the #1 data accuracy issue affecting real families.
 
-### 7.5 Camp Count Distinction (For SEO)
+### 7.5 Terminology Rule: Camp Numbers (MANDATORY)
 
-**CRITICAL SEO Understanding:**
-- **23 Organizations**: Camp organizations/sites in our database
-- **100+ Camps**: Total individual camp programs offered by all organizations
-- **SEO Requirement**: Always use "100+ camps" in marketing copy, not "23"
-- **Rationale**: Organizations like Piispala offer "300+ camps annually"
-- **Rule**: Only reference "23" when specifically talking about organizations
+**🚨 CRITICAL: Consistency Required for SEO Protection**
+
+Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags without careful consideration.
+
+| Number | Always Refers To | Example Usage |
+|--------|------------------|---------------|
+| **36** | Organizations/Operators | "36 verified organizations", "36 camp operators" |
+| **100+** | Camps/Programs | "100+ camps", "100+ verified camps", "100+ camp programs" |
+
+**Both numbers are TRUE:**
+- We list **36 camp organizations** (the companies/operators)
+- These organizations collectively offer **100+ individual camp programs**
+
+**Analogy:** Like a university with 10 colleges offering 500+ degree programs.
+
+**Where Each Number Appears:**
+- **Search Snippet (meta):** "100+ Camp Programs" - DO NOT CHANGE (SEO working)
+- **Hero Stats:** "36 Organizations" with "100+ verified camps" subtitle
+- **Footer Stats:** "36 Organizations"
+- **Footer Text:** "36 verified organizations"
+
+**NEVER:**
+- ❌ Say "36 camps" (incorrect - we have 100+ camps)
+- ❌ Say "100+ organizations" (incorrect - we have 36 organizations)
+- ❌ Change search snippet numbers without SEO impact assessment
+
+**Rationale:** Organizations like Piispala offer "300+ camps annually" - each org runs multiple programs.
 
 ---
 
