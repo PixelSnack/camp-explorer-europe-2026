@@ -152,6 +152,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 ✅ STRATEGIC_ROADMAP.md (path from foundation to monetization)
 ✅ FEATURED_CAMPS.md (current Featured listings and verification status)
 ✅ FEATURED_LISTINGS_POLICY.md (monetization operations and camp operator communications)
+✅ CODE_STRUCTURE.md (App.jsx architecture and code locations)
 ```
 
 ### **Step 2: Current Status Assessment**
@@ -1072,6 +1073,7 @@ europeansummercamps/
 | **STRATEGIC_ROADMAP.md** ⭐ | Path to monetization |
 | **FEATURED_CAMPS.md** ⭐ | Featured listings tracker |
 | **FEATURED_LISTINGS_POLICY.md** ⭐ | Monetization operations guide |
+| **CODE_STRUCTURE.md** ⭐ | App.jsx architecture and code locations |
 
 ### Other Root Level Documents
 
