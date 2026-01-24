@@ -192,12 +192,66 @@
 - [x] Update accurate button terminology ("Download Guide" → "Camp Guide") (COMPLETED ✅)
 
 ## 📁 KEY FILES & LOCATIONS
-- **Main Component**: `src/App.jsx` (~4,500 lines, well-structured)
-- **Camp Data**: `src/App.jsx` lines 174-901 (allCamps array)
+- **Main Component**: `src/App.jsx` (~4,950 lines, well-structured)
+- **Camp Data**: `src/App.jsx` lines 210-1029 (allCamps array)
 - **Sitemap**: `public/sitemap.xml` (single clean URL)
 - **Security**: `public/_headers` (HSTS, CSP enforced)
 - **Schema**: `index.html` (Event schema, FAQPage, BreadcrumbList)
 - **Hero Image**: `public/european-summer-camps-hero.png` (optimized)
+
+## 📚 DOCUMENTATION STRUCTURE
+
+```
+/                                    # ROOT - Mandatory Reading (9 files)
+├── CLAUDE.md                        ⭐ Master control document
+├── CODE_STRUCTURE.md                ⭐ App.jsx architecture & code locations
+├── DEVELOPMENT_GUIDELINES.md        ⭐ Rule #0, standards
+├── QUICK_REFERENCE.md               ⭐ Quick facts, commands (this file)
+├── NEXT_STEPS.md                    ⭐ Current priorities
+├── CAMP_VERIFICATION_CRITERIA.md    ⭐ 5-point camp verification test
+├── STRATEGIC_ROADMAP.md             ⭐ Path to monetization
+├── FEATURED_CAMPS.md                ⭐ Featured listings tracker
+└── FEATURED_LISTINGS_POLICY.md      ⭐ Monetization operations
+
+/docs/reference/                     # Reference docs (9 files)
+├── README.md                        Public-facing documentation
+├── QUICK-START.md                   5-minute deployment guide
+├── MONETIZATION_STRATEGY.md         Revenue roadmap & pricing
+├── SECURITY_STATUS.md               Security tracking
+├── FEATURES.md                      Feature breakdown
+├── DEPLOYMENT-GUIDE.md              Deployment workflow
+├── PACKAGE-CONTENTS.md              Package overview
+└── ENTERPRISE_MARQUEE_SOLUTION.md   Mobile hero technical reference
+
+/.claude/agents/                     # Agent instructions (5 files, READ-ONLY)
+├── camp-content-researcher.md
+├── camp-data-verifier.md
+├── enterprise-code-reviewer.md
+├── security-audit-specialist.md
+└── seo-performance-optimizer.md
+
+/docs/archive/                       # Historical documents (9 files)
+├── CLAUDE-BACKUP-*.md               Control document backups
+├── IMAGE_OPTIMIZATION_COMPLETE.md
+├── IMPLEMENTATION_CHECKLIST.md
+├── MOBILE_HERO_OVERFLOW_ANALYSIS.md
+├── MOBILE_UX_OPTIMIZATION_COMPLETE.md
+├── PRICING_VERIFICATION_URGENT.md
+├── SECURITY_AUDIT_REPORT.md
+└── site-analysis-report.md
+
+/docs/strategy/                      # Future planning (3 files)
+├── PHASE_2_IMPLEMENTATION_PLAN.md
+├── SPECIALIZED_AGENTS_ROADMAP.md
+└── VIRTUAL_SCROLLING_IMPLEMENTATION_PLAN.md
+```
+
+**Quick lookup:**
+- ⭐ **Mandatory reading** = Root level (read on session start)
+- **Reference docs** = `docs/reference/` (read as needed)
+- **Agent instructions** = `.claude/agents/` (agent-specific)
+- **Historical** = `docs/archive/` (completed work)
+- **Planning** = `docs/strategy/` (future roadmap)
 
 ## 🎯 SUCCESS METRICS
 - Google Search Console: 1→10+ indexed pages

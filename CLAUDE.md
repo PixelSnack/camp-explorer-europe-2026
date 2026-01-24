@@ -1075,7 +1075,7 @@ europeansummercamps/
 | **FEATURED_LISTINGS_POLICY.md** ⭐ | Monetization operations guide |
 | **CODE_STRUCTURE.md** ⭐ | App.jsx architecture and code locations |
 
-### Other Root Level Documents
+### Reference Documents (`docs/reference/`)
 
 | Document | Purpose |
 |----------|---------|
