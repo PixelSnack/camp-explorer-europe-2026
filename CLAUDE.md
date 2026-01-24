@@ -911,6 +911,8 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 | **36** | Organizations/Operators | "36 verified organizations", "36 camp operators" |
 | **100+** | Camps/Programs | "100+ camps", "100+ verified camps", "100+ camp programs" |
 
+*Note: 36 is the current count (January 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
+
 **Both numbers are TRUE:**
 - We list **36 camp organizations** (the companies/operators)
 - These organizations collectively offer **100+ individual camp programs**
