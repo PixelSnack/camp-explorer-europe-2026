@@ -3,8 +3,8 @@
 *Tracking document for Featured listings (€99/year tier)*
 
 **Created:** January 18, 2026
-**Last Updated:** January 22, 2026
-**Status:** Demo/Test Phase
+**Last Updated:** January 24, 2026
+**Status:** Demo/Test Phase + Active Partner Inquiries
 
 ---
 
@@ -76,6 +76,125 @@ This document tracks all Featured camp listings, including verification status, 
 | Camp | Contact | Inquiry Date | Status | Notes |
 |------|---------|--------------|--------|-------|
 | Boundless Life | Megan Miller | Jan 16, 2026 | Awaiting response | Offered €99/year Featured tier |
+| LINEŠA | Jolita Bečienė | Jan 2026 | In discussion | Lithuanian gov org, asked for stats |
+
+---
+
+## Partner Inquiries & Correspondence
+
+*Centralized tracking of all camp/organization inquiries and leads*
+
+### 1. Boundless Life
+
+| Field | Details |
+|-------|---------|
+| **Organization** | Boundless Life |
+| **Type** | Family co-living startup ($2M seed-funded) |
+| **Contact** | Megan Miller |
+| **Email** | megan.miller@boundless.life |
+| **Website** | boundless.life |
+| **Country** | Multiple: Portugal, Greece, Italy, Montenegro, Spain |
+| **Category Fit** | Family Programs |
+| **Inquiry Date** | January 16, 2026 |
+| **Our Response** | January 17, 2026 (00:28) |
+| **Status** | ⏳ Awaiting response |
+
+**Their Request:**
+- Asked to be added to our listing
+
+**Our Response:**
+- Offered Basic listing (Free) - standard directory entry
+- Offered Featured listing (€99/year) - badge, priority placement, highlighted card
+- Requested: Which European locations offer summer camps in 2026? Pricing? Age ranges? Booking URL?
+
+**Potential Value:**
+- 5 European locations = potential €349 bundle (30% discount)
+- Would expand our Family Programs category
+- Well-funded startup with professional operations
+
+**Next Action:**
+- Wait for response
+- If accepts Featured: Send PayPal invoice, activate within 3 business days
+- If declines Featured: Create basic listing, build relationship
+
+---
+
+### 2. LINEŠA (Lithuanian Non-Formal Education Agency)
+
+| Field | Details |
+|-------|---------|
+| **Organization** | LINEŠA - Lithuanian Non-Formal Education Agency |
+| **Type** | National public organization (government) |
+| **Contact** | Jolita Bečienė, Head of Department (Projects and Events) |
+| **Email** | jolita.beciene@linesa.lt |
+| **Phone** | +37066931138 |
+| **Address** | Žirmūnų str. 1B, Vilnius |
+| **Website** | www.linesa.lt |
+| **Country** | **Lithuania** (NEW - not in our current 21 countries) |
+| **Category Fit** | Academic & STEM / Unique Experiences |
+| **Inquiry Date** | January 2026 |
+| **Our Response** | January 2026 |
+| **Status** | 💬 In discussion |
+
+**Their Request:**
+- Exploring listing their camp on our platform
+- Asked for detailed traffic/performance data before proceeding:
+  - Average monthly/yearly website traffic
+  - Geographic distribution of visitors (especially Europe)
+  - Average profile views per listed camp
+  - Typical number of inquiries generated per camp
+  - Conversion benchmarks (inquiries to bookings)
+  - Annual pricing and available packages
+  - What's included in each package
+  - Whether partners receive performance statistics
+  - Our selection and quality criteria for camps
+
+**What They Offer:**
+- Educational summer camps focusing on:
+  - STEAM education
+  - Sustainability
+  - Creativity
+  - International learning experiences
+- Goal: Increase international participation and visibility
+
+**Our Response:**
+- Shared traffic indicators:
+  - 70%+ traffic is organic search (Google, Bing, etc.)
+  - Traffic grew 142% over past month
+  - 45%+ traffic from Europe (Germany, UK, Netherlands, Scandinavia, Baltics)
+  - ~10% traffic from US
+  - Growing AI referrals (ChatGPT)
+- Mentioned free standard and featured listing options
+- Asked clarifying questions:
+  - Which programs are you hoping to promote internationally?
+  - What age groups and nationalities do you typically serve?
+  - Are there specific countries you're trying to reach?
+- Offered to schedule a call (flexible with CET)
+
+**Strategic Value:**
+- 🌟 **Government organization** = high credibility
+- 🆕 **Lithuania = NEW COUNTRY** for our database (currently 21 countries)
+- 📧 **Inbound lead** = they reached out to us
+- 🎓 **STEAM focus** aligns with Academic & STEM category
+- 🌍 **International focus** aligns with our mission
+
+**Next Action:**
+- Await their response with program details
+- Research LINEŠA camps for verification
+- Consider adding Lithuania as 22nd country with their camp
+
+---
+
+### Inquiry Status Legend
+
+| Status | Meaning |
+|--------|---------|
+| 📥 New inquiry | Just received, not yet responded |
+| 💬 In discussion | Active conversation, awaiting info |
+| ⏳ Awaiting response | We responded, waiting for their reply |
+| ✅ Converted | Became a listing (Basic or Featured) |
+| ❌ Declined | They decided not to proceed |
+| 🔄 Follow-up needed | Stale conversation, need to re-engage |
 
 ---
 
@@ -138,7 +257,8 @@ See FEATURED_LISTINGS_POLICY.md for full pricing and operations details.
 | Date | Change | By |
 |------|--------|-----|
 | Jan 18, 2026 | Created document, added Les Elfes as demo listing | Claude Code |
+| Jan 24, 2026 | Added Partner Inquiries section with Boundless Life and LINEŠA correspondence | Claude Code |
 
 ---
 
-*This document is updated whenever Featured listings are added, modified, or renewed.*
+*This document is updated whenever Featured listings are added, modified, or renewed, or when significant partner inquiries are received.*
