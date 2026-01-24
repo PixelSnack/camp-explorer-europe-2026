@@ -1060,52 +1060,31 @@ europeansummercamps/
 <a name="documentation-map"></a>
 ## 9. 📁 **DOCUMENTATION MAP**
 
-### Root Level - Essential Documents
+### Mandatory Reading (⭐ = in startup reading list)
 
-**CLAUDE.md** (This File)
-- Master project documentation
-- Update after major changes
+| Document | Purpose |
+|----------|---------|
+| **CLAUDE.md** ⭐ | Master documentation (this file) |
+| **DEVELOPMENT_GUIDELINES.md** ⭐ | Rule #0, development standards |
+| **QUICK_REFERENCE.md** ⭐ | Current status, emergency commands |
+| **NEXT_STEPS.md** ⭐ | Immediate priorities and tasks |
+| **CAMP_VERIFICATION_CRITERIA.md** ⭐ | 5-point camp verification test |
+| **STRATEGIC_ROADMAP.md** ⭐ | Path to monetization |
+| **FEATURED_CAMPS.md** ⭐ | Featured listings tracker |
+| **FEATURED_LISTINGS_POLICY.md** ⭐ | Monetization operations guide |
 
-**DEVELOPMENT_GUIDELINES.md** ⭐ MANDATORY
-- Enterprise development standards
-- Rule #0 holistic review
+### Other Root Level Documents
 
-**QUICK_REFERENCE.md**
-- Current status snapshot
-- Emergency commands
-
-**CAMP_VERIFICATION_CRITERIA.md**
-- 5-point camp vs tour operator test
-- Quality standards enforcement
-
-**README.md** / **QUICK-START.md**
-- Public-facing documentation
-- Quick deployment guide
-
-### Root Level - Business & Operations
-
-**STRATEGIC_ROADMAP.md** ⭐ KEY DOCUMENT
-- Path from foundation to monetization
-
-**MONETIZATION_STRATEGY.md**
-- Revenue roadmap and pricing
-
-**FEATURED_LISTINGS_POLICY.md**
-- Featured listing operations (€99/year tier)
-
-**FEATURED_CAMPS.md**
-- Current Featured listings tracker
-
-**SECURITY_STATUS.md**
-- Ongoing security tracking
-
-### Root Level - Technical Reference
-
-**FEATURES.md** / **DEPLOYMENT-GUIDE.md** / **PACKAGE-CONTENTS.md**
-- Feature breakdown, deployment workflow, package overview
-
-**ENTERPRISE_MARQUEE_SOLUTION.md**
-- Mobile hero banner technical reference
+| Document | Purpose |
+|----------|---------|
+| **README.md** | Public-facing documentation |
+| **QUICK-START.md** | 5-minute deployment guide |
+| **MONETIZATION_STRATEGY.md** | Revenue roadmap and pricing |
+| **SECURITY_STATUS.md** | Ongoing security tracking |
+| **FEATURES.md** | Feature breakdown |
+| **DEPLOYMENT-GUIDE.md** | Deployment workflow |
+| **PACKAGE-CONTENTS.md** | Package overview |
+| **ENTERPRISE_MARQUEE_SOLUTION.md** | Mobile hero technical reference |
 
 ### Agent Instructions (`.claude/agents/`)
 
