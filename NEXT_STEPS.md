@@ -147,7 +147,7 @@
 - Zero downside: if they say no to paid, we list them free
 - They can afford €99 ($2M funded startup)
 - See FEATURED_LISTINGS_POLICY.md for full operations guide
-- See MONETIZATION_STRATEGY.md for competitive pricing research
+- See docs/reference/MONETIZATION_STRATEGY.md for competitive pricing research
 
 ---
 

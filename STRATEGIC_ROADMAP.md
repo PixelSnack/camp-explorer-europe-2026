@@ -25,7 +25,7 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 |--------|--------|
 | Fix corrupted favicon files | ✅ Complete |
 | Security audit + npm vulnerability fixes | ✅ Complete |
-| Create SECURITY_STATUS.md tracking document | ✅ Complete |
+| Create docs/reference/SECURITY_STATUS.md tracking document | ✅ Complete |
 | EmailJS domain restriction | ✅ Complete |
 | Deploy all changes | ✅ Complete |
 | Request Google re-indexing for favicon | ⏳ Pending |

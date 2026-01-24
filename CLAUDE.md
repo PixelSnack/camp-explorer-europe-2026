@@ -64,7 +64,7 @@
 - **Email Sent**: Offered Basic (Free) and Featured (€99/year) tier options
 - **PayPal Ready**: partnerships@europeansummercamps.com configured
 - **See**: FEATURED_LISTINGS_POLICY.md for full operations guide
-- **See**: MONETIZATION_STRATEGY.md for competitive research and pricing rationale
+- **See**: docs/reference/MONETIZATION_STRATEGY.md for competitive research and pricing rationale
 - **See**: NEXT_STEPS.md for detailed action items and next steps
 
 ### ✅ **COMPLETED: Analytics & Video Implementation (January 22, 2026)**
@@ -1074,12 +1074,12 @@ europeansummercamps/
 | **FEATURED_CAMPS.md** ⭐ | Featured listings tracker |
 | **FEATURED_LISTINGS_POLICY.md** ⭐ | Monetization operations guide |
 | **CODE_STRUCTURE.md** ⭐ | App.jsx architecture and code locations |
+| **README.md** | Public-facing documentation (GitHub convention - at root) |
 
 ### Reference Documents (`docs/reference/`)
 
 | Document | Purpose |
 |----------|---------|
-| **README.md** | Public-facing documentation |
 | **QUICK-START.md** | 5-minute deployment guide |
 | **MONETIZATION_STRATEGY.md** | Revenue roadmap and pricing |
 | **SECURITY_STATUS.md** | Ongoing security tracking |

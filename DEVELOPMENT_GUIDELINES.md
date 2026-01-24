@@ -590,7 +590,7 @@ useEffect(() => {
 
 ### **Long-term Strategic Goals**
 1. **Market Leadership**: Become #1 Google result for "European summer camps"
-2. **Revenue Generation**: Implement monetization strategies from MONETIZATION_STRATEGY.md
+2. **Revenue Generation**: Implement monetization strategies from docs/reference/MONETIZATION_STRATEGY.md
 3. **Scale Preparation**: Architecture ready for 100,000+ monthly visitors
 4. **Exit Readiness**: Technical foundation suitable for acquisition
 

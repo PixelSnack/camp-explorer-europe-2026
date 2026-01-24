@@ -211,10 +211,10 @@
 ├── CAMP_VERIFICATION_CRITERIA.md    ⭐ 5-point camp verification test
 ├── STRATEGIC_ROADMAP.md             ⭐ Path to monetization
 ├── FEATURED_CAMPS.md                ⭐ Featured listings tracker
-└── FEATURED_LISTINGS_POLICY.md      ⭐ Monetization operations
+├── FEATURED_LISTINGS_POLICY.md      ⭐ Monetization operations
+└── README.md                        Public-facing documentation (GitHub convention)
 
-/docs/reference/                     # Reference docs (9 files)
-├── README.md                        Public-facing documentation
+/docs/reference/                     # Reference docs (7 files)
 ├── QUICK-START.md                   5-minute deployment guide
 ├── MONETIZATION_STRATEGY.md         Revenue roadmap & pricing
 ├── SECURITY_STATUS.md               Security tracking
