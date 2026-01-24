@@ -4400,13 +4400,10 @@ function App() {
                 <h2 className="text-2xl font-bold mb-4">Website Owner & Responsible Party</h2>
                 <div className="mb-4">
                   <p><strong>Business Name:</strong><br/>ResourceHub</p>
-                  <p><strong>Business Type:</strong><br/>PMV (Personligt ejet mindre virksomhed)</p>
                   <p><strong>CVR Number:</strong><br/>46200462</p>
-                  <p><strong>Address:</strong><br/>Borgergade 142, 4. th<br/>1300 København K<br/>Denmark</p>
-                  <p><strong>Owner:</strong><br/>Søren Thoning</p>
+                  <p><strong>Country:</strong><br/>Denmark</p>
                   <p><strong>Email:</strong><br/>contact@europeansummercamps.com</p>
                   <p><strong>Website:</strong><br/>www.europeansummercamps.com</p>
-                  <p><strong>Jurisdiction:</strong><br/>Denmark, European Union</p>
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Responsible for Content</h3>
                 <div className="mb-4">
