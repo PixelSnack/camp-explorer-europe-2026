@@ -31,6 +31,28 @@
 
 ---
 
+## 🚫 **NEVER USE COMMAND LINE GIT** 🚫
+
+### **⚠️ ALWAYS USE GITHUB DESKTOP FOR ALL GIT OPERATIONS ⚠️**
+
+**This is a MANDATORY requirement. Do NOT use:**
+- ❌ `git push`
+- ❌ `git pull`
+- ❌ `git fetch`
+- ❌ Any remote git operations from command line
+
+**ONLY use command line git for:**
+- ✅ `git status` (checking status)
+- ✅ `git add` (staging files)
+- ✅ `git commit` (local commits)
+- ✅ `git log` (viewing history)
+- ✅ `git diff` (viewing changes)
+- ✅ `git revert` (local reverts)
+
+**For pushing/pulling: Tell the user to use GitHub Desktop.**
+
+---
+
 ## 📋 **CURRENT PRIORITY TASKS** (January 2026)
 
 ### 🎉 **AWAITING RESPONSE: First Monetization Test (Boundless Life)**
