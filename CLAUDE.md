@@ -1060,135 +1060,84 @@ europeansummercamps/
 <a name="documentation-map"></a>
 ## 9. 📁 **DOCUMENTATION MAP**
 
-### Critical Documents (Always Current)
+### Root Level - Essential Documents
 
 **CLAUDE.md** (This File)
 - Master project documentation
-- Comprehensive overview
 - Update after major changes
 
 **DEVELOPMENT_GUIDELINES.md** ⭐ MANDATORY
 - Enterprise development standards
 - Rule #0 holistic review
-- Zero-breakage principles
-- Accuracy-first verification
-- Commit standards
 
 **QUICK_REFERENCE.md**
 - Current status snapshot
-- Success metrics
 - Emergency commands
-- Quick facts
-
-**PRICING_VERIFICATION_URGENT.md** ✅ COMPLETE
-- Pricing verification tracker
-- Crisis status and methodology
-- Progress tracking (36/36 complete - January 2026)
-- Historical reference
 
 **CAMP_VERIFICATION_CRITERIA.md**
 - 5-point camp vs tour operator test
-- Legal compliance standards
 - Quality standards enforcement
-- Human verification protocol
 
-### Agent Instructions (All Read-Only)
+**README.md** / **QUICK-START.md**
+- Public-facing documentation
+- Quick deployment guide
 
-- **camp-data-verifier.md**: Pricing verification specialist
-- **camp-content-researcher.md**: New camp discovery specialist
-- **seo-performance-optimizer.md**: SEO analysis specialist
-- **security-audit-specialist.md**: Security auditor
-- **enterprise-code-reviewer.md**: Code reviewer
-
-**Status**: ✅ All 5 agents updated to read-only mode (100% complete - January 2026).
-
-### Business Documents
+### Root Level - Business & Operations
 
 **STRATEGIC_ROADMAP.md** ⭐ KEY DOCUMENT
 - Path from foundation to monetization
-- 7 prioritized phases
-- Success metrics and targets
-- Review schedule
 
 **MONETIZATION_STRATEGY.md**
-- Revenue roadmap
-- Traffic thresholds (1K+ sessions)
-- Revenue streams
-- Exit strategy (3-5x annual revenue)
+- Revenue roadmap and pricing
 
-**FEATURED_LISTINGS_POLICY.md** ⭐ NEW (January 2026)
-- Featured listing operations guide
-- Tier structure and pricing (Basic Free, Featured €99/year)
-- Communication templates for camp operators
-- Payment and refund policies
-- Onboarding checklist and record keeping
+**FEATURED_LISTINGS_POLICY.md**
+- Featured listing operations (€99/year tier)
 
-**FEATURED_CAMPS.md** ⭐ NEW (January 2026)
-- Tracking document for all Featured listings
-- Verification status and data accuracy records
-- Current: Les Elfes (demo), Boundless Life (pending)
-- Revenue tracking and renewal management
-- Activation checklist for new Featured listings
-
-**SPECIALIZED_AGENTS_ROADMAP.md**
-- Agent capabilities
-- Coordination strategy
-- Creation status
-- Deployment schedule
+**FEATURED_CAMPS.md**
+- Current Featured listings tracker
 
 **SECURITY_STATUS.md**
 - Ongoing security tracking
-- Audit history and findings
-- Fixed vs deferred issues
-- Review schedule (monthly)
 
-**README.md**
-- Public-facing documentation
-- Feature overview
-- Installation guide
-- Performance claims
+### Root Level - Technical Reference
 
-### Technical Reference
-
-**FEATURES.md** ✅ CURRENT (January 2026)
-- Complete feature breakdown
-- Technical specifications
-- Development capabilities
-
-**DEPLOYMENT-GUIDE.md** ✅ CURRENT
-- GitHub Desktop + Vercel workflow
-- Step-by-step deployment
-- Troubleshooting guide
-
-**QUICK-START.md** ✅ CURRENT (January 2026)
-- 5-minute deployment guide
-- Quick commands reference
+**FEATURES.md** / **DEPLOYMENT-GUIDE.md** / **PACKAGE-CONTENTS.md**
+- Feature breakdown, deployment workflow, package overview
 
 **ENTERPRISE_MARQUEE_SOLUTION.md**
-- Mobile hero banner implementation
-- CSS/React code reference
+- Mobile hero banner technical reference
 
-### Archive Documents (Completed Work - Historical Reference)
+### Agent Instructions (`.claude/agents/`)
 
-**IMPLEMENTATION_CHECKLIST.md** 📦 ARCHIVE
-- Phase 1 completion tracking (all complete Sept 2025)
-- Historical reference for completed milestones
+All 5 agents READ-ONLY mode:
+- `camp-data-verifier.md` - Pricing verification
+- `camp-content-researcher.md` - New camp discovery
+- `seo-performance-optimizer.md` - SEO analysis
+- `security-audit-specialist.md` - Security audits
+- `enterprise-code-reviewer.md` - Code review
 
-**IMAGE_OPTIMIZATION_COMPLETE.md** 📦 ARCHIVE
-- Optimization results (92-97% reduction achieved)
-- Performance impact documentation
+### Strategy Documents (`docs/strategy/`)
 
-**MOBILE_UX_OPTIMIZATION_COMPLETE.md** 📦 ARCHIVE
-- Mobile UX optimization work (completed Sept 2025)
-- Historical reference for resolved issues
+**PHASE_2_IMPLEMENTATION_PLAN.md**
+- React Router + SSG migration plan
 
-**MOBILE_HERO_OVERFLOW_ANALYSIS.md** 📦 ARCHIVE
-- Root cause analysis of CSS Grid overflow
-- Technical documentation of resolved issue
+**VIRTUAL_SCROLLING_IMPLEMENTATION_PLAN.md**
+- TanStack Virtual implementation plan
 
-**PRICING_VERIFICATION_URGENT.md** 📦 ARCHIVE
-- Pricing verification tracker (100% complete Jan 2026)
-- Historical reference for verification methodology
+**SPECIALIZED_AGENTS_ROADMAP.md**
+- Agent development status and guidelines
+
+### Archive Documents (`docs/archive/`)
+
+Historical documents from completed work:
+- `IMPLEMENTATION_CHECKLIST.md` - Phase 1 completion (Sept 2025)
+- `IMAGE_OPTIMIZATION_COMPLETE.md` - Image optimization results
+- `MOBILE_UX_OPTIMIZATION_COMPLETE.md` - Mobile UX fixes
+- `MOBILE_HERO_OVERFLOW_ANALYSIS.md` - CSS Grid analysis
+- `PRICING_VERIFICATION_URGENT.md` - Pricing verification (100% complete)
+- `SECURITY_AUDIT_REPORT.md` - Security audit Sept 2025
+- `site-analysis-report.md` - External audit Aug 2025
+- `CLAUDE-BACKUP-*.md` - Historical backups
 
 ---
 
