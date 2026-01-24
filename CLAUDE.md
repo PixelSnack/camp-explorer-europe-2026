@@ -128,6 +128,8 @@ When starting a new Claude Code session, follow this protocol to restore context
 ✅ NEXT_STEPS.md (immediate priorities and next actions)
 ✅ CAMP_VERIFICATION_CRITERIA.md (camp vs tour operator standards)
 ✅ STRATEGIC_ROADMAP.md (path from foundation to monetization)
+✅ FEATURED_CAMPS.md (current Featured listings and verification status)
+✅ FEATURED_LISTINGS_POLICY.md (monetization operations and camp operator communications)
 ```
 
 ### **Step 2: Current Status Assessment**
@@ -1124,9 +1126,9 @@ europeansummercamps/
 - Installation guide
 - Performance claims
 
-### Technical Documentation
+### Technical Reference
 
-**FEATURES.md** ✅ CURRENT
+**FEATURES.md** ✅ CURRENT (January 2026)
 - Complete feature breakdown
 - Technical specifications
 - Development capabilities
@@ -1136,15 +1138,35 @@ europeansummercamps/
 - Step-by-step deployment
 - Troubleshooting guide
 
-**IMPLEMENTATION_CHECKLIST.md**
-- Phase 1 completion tracking
-- Testing procedures
-- Rollback plans
+**QUICK-START.md** ✅ CURRENT (January 2026)
+- 5-minute deployment guide
+- Quick commands reference
 
-**IMAGE_OPTIMIZATION_TODO.md**
-- Optimization results
-- Performance impact
-- Technical details
+**ENTERPRISE_MARQUEE_SOLUTION.md**
+- Mobile hero banner implementation
+- CSS/React code reference
+
+### Archive Documents (Completed Work - Historical Reference)
+
+**IMPLEMENTATION_CHECKLIST.md** 📦 ARCHIVE
+- Phase 1 completion tracking (all complete Sept 2025)
+- Historical reference for completed milestones
+
+**IMAGE_OPTIMIZATION_COMPLETE.md** 📦 ARCHIVE
+- Optimization results (92-97% reduction achieved)
+- Performance impact documentation
+
+**MOBILE_UX_OPTIMIZATION_COMPLETE.md** 📦 ARCHIVE
+- Mobile UX optimization work (completed Sept 2025)
+- Historical reference for resolved issues
+
+**MOBILE_HERO_OVERFLOW_ANALYSIS.md** 📦 ARCHIVE
+- Root cause analysis of CSS Grid overflow
+- Technical documentation of resolved issue
+
+**PRICING_VERIFICATION_URGENT.md** 📦 ARCHIVE
+- Pricing verification tracker (100% complete Jan 2026)
+- Historical reference for verification methodology
 
 ---
 

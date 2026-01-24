@@ -2,10 +2,12 @@
 
 **A comprehensive breakdown of all features and capabilities**
 
+*Last Updated: January 2026*
+
 ## 🎯 Core Features
 
 ### 📊 **Comprehensive Camp Database**
-- **100+ verified camps** across 12 European countries
+- **36 verified organizations** representing 100+ individual programs across 21 European countries
 - **Real 2026 pricing** from €335 (EUROCAM Bohemia) to CHF 6,980 (La Garenne)
 - **Detailed profiles** for each camp including:
   - Activities and specializations
@@ -16,14 +18,14 @@
 
 ### 🔍 **Advanced Search & Filtering**
 - **Real-time search** across camp names, locations, and countries
-- **8 category filters** with live result counts:
-  - Premium Alpine (3 camps)
-  - Academic Excellence (2 camps)
-  - Language Immersion (2 camps)
-  - Sports Specialty (1 camp)
-  - Family Programs (1 camp)
-  - Budget Excellence (2 camps)
-  - Unique Adventures (1 camp)
+- **7 category filters** with live result counts:
+  - Premium Alpine (4 organizations)
+  - Academic & STEM (5 organizations)
+  - Language Immersion (6 organizations)
+  - Sports Specialty (6 organizations)
+  - Family Programs (4 organizations)
+  - Budget Excellence (4 organizations)
+  - Unique Experiences (7 organizations)
 - **Combined filtering** - search + category filters work together
 - **Dynamic results counter** showing filtered results
 - **"No results" handling** with clear filters option
@@ -62,72 +64,62 @@
 
 ## 📋 **Camp Categories Breakdown**
 
-### 🏔️ **Premium Alpine (3 camps)**
-- **Les Elfes International** - CHF 4,990 (Verbier, Switzerland)
-  - 37+ years experience, 25,000+ alumni
-  - 5 languages, glacier expeditions
-  - Traditional Swiss chalets, 24/7 medical center
-  
+### 🏔️ **Premium Alpine (4 organizations)**
+- **Les Elfes International** - From CHF 4,550 (Verbier, Switzerland) ⭐ Featured
+  - 38+ years experience, 10,000+ annual campers
+  - 5 languages, 45+ activities, glacier expeditions
+  - European Travel Awards 2024 Winner
+
 - **La Garenne International** - CHF 6,980 (Villars-sur-Ollon, Switzerland)
   - Luxury Alpine setting, 50+ nationalities
   - Boarding school experience, premium facilities
-  - Academic focus with age-grouped programs
-  
-- **Camp Suisse** - CHF 4,000 (Torgon, Swiss Alps)
+
+- **Camp Suisse** - CHF 4,200 (Torgon, Swiss Alps)
   - 40+ countries, bilingual environment
   - Leadership training, environmental education
-  - Lake Geneva setting, adventure focus
 
-### 🎓 **Academic Excellence (2 camps)**
+- **Montana Summer Camp** - CHF 5,200 (Zug, Switzerland)
+  - Institut Montana, bilingual Swiss-English
+  - STEM focus with Alpine adventures
+
+### 🎓 **Academic & STEM (5 organizations)**
 - **Oxford Summer Courses** - £6,220 (Oxford, England)
-  - Oxford University colleges, expert tutors
-  - Medicine, engineering, business tracks
-  - University application guidance
-  
 - **Bede's Summer School** - £1,575 (East Sussex, England)
-  - 1,700+ students from 62 countries
-  - 6 locations, parent programme available
-  - Little Explorers program for younger children
+- **Brillantmont Summer** - CHF 6,900 (Lausanne, Switzerland)
+- **XUK Activity Camp** - £845 (Norfolk, England)
+- **Filmkollo Sweden** - SEK 8,900 (Various, Sweden)
 
-### 🗣️ **Language Immersion (2 camps)**
+### 🗣️ **Language Immersion (6 organizations)**
 - **Enforex Barcelona Beach** - €3,200 (Barcelona, Spain)
-  - Beach location, 50% Spanish campers
-  - Cultural immersion, Mediterranean lifestyle
-  - Beach activities with language learning
-  
 - **Alpine French School** - €1,845 (Morzine, French Alps)
-  - French Alps setting, native speakers
-  - Adventure focus with cultural workshops
-  - White water rafting, mountain biking
+- **Village Camps** - CHF 3,400 (Leysin, Switzerland)
+- **Nordisk Sommerlejr** - DKK 4,500 (Jutland, Denmark)
+- Plus 2 additional verified programs
 
-### ⚽ **Sports Specialty (1 camp)**
+### ⚽ **Sports Specialty (6 organizations)**
 - **AC Milan Academy Camp** - €1,950 (Milan, Italy)
-  - AC Milan coaches, San Siro stadium access
-  - Professional training, player meetings
-  - Technical training with cultural activities
+- **Myhre Gård Riding Camp** - NOK 6,950 (Beitostølen, Norway)
+- **Din Camp SportsCamp** - DKK 3,995 (Copenhagen, Denmark)
+- Plus 3 additional verified programs
 
-### 👨‍👩‍👧‍👦 **Family Programs (1 camp)**
+### 👨‍👩‍👧‍👦 **Family Programs (4 organizations)**
 - **Altitude Camps** - CHF 975 (Verbier, Switzerland)
-  - Youngest accepted (3 years), family accommodation
-  - Marmot Program for ages 3-5
-  - Day camp options, English focus
+- **Camp Adventure Denmark** - DKK 2,995 (Zealand, Denmark)
+- **Piispala Sports Institute** - €890 (Kannonkoski, Finland)
+- Plus 1 additional verified program
 
-### 💰 **Budget Excellence (2 camps)**
+### 💰 **Budget Excellence (4 organizations)**
 - **EUROCAM Bohemia** - €335 (South Bohemia, Czech Republic)
-  - 10-day program, exceptional value
-  - 30+ years experience, bilingual leaders
-  - River setting, cultural immersion
-  
 - **Adventure Camp Bavaria** - €445 (Bayerischer Wald, Germany)
-  - Bavarian Forest, mountain lake setting
-  - Traditional crafts, castle visits
-  - German culture with survival skills
+- **Camp Bjøntegaard** - NOK 5,890 (Valdres, Norway)
+- Plus 1 additional verified program
 
-### 🌊 **Unique Adventures (1 camp)**
+### 🌊 **Unique Experiences (7 organizations)**
 - **Mediterranean Sailing** - €4,500 (Corsica, France)
-  - 45-foot yachts, certified skippers
-  - Island hopping, leadership focus
-  - Marine ecology, navigation skills
+- **Wild Camp Sweden** - SEK 7,500 (Småland, Sweden)
+- **Adventure Treks Norway** - NOK 12,500 (Lofoten, Norway)
+- **Nordic Terrain Academy** - NOK 8,900 (Hemsedal, Norway)
+- Plus 3 additional verified programs
 
 ## 🎨 **Design System**
 

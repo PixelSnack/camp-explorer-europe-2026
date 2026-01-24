@@ -51,9 +51,10 @@ npm run lint         # Check code quality
 
 ## 📊 Current Production Example
 - **Live Site**: https://www.europeansummercamps.com/
-- **Performance**: Optimized with 92% image compression
-- **Features**: 12 camp organizations, advanced search/filtering
+- **Performance**: Optimized with 93-96% image compression
+- **Features**: 36 verified organizations (100+ programs), 21 countries, advanced search/filtering
 - **Tech Stack**: React 18 + Vite + Tailwind CSS + shadcn/ui
+- **Last Updated**: January 2026
 
 ## 📞 Need Help?
 - Read the full `DEPLOYMENT-GUIDE.md` for comprehensive instructions  
