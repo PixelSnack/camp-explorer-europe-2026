@@ -125,7 +125,6 @@ When starting a new Claude Code session, follow this protocol to restore context
 ✅ CLAUDE.md (this file - comprehensive overview)
 ✅ DEVELOPMENT_GUIDELINES.md (MANDATORY - Rule #0 and standards)
 ✅ QUICK_REFERENCE.md (current status and quick facts)
-✅ QUICK-START.md (deployment workflow and commands)
 ✅ NEXT_STEPS.md (immediate priorities and next actions)
 ✅ CAMP_VERIFICATION_CRITERIA.md (camp vs tour operator standards)
 ✅ STRATEGIC_ROADMAP.md (path from foundation to monetization)
