@@ -1969,8 +1969,8 @@ function App() {
                 </div>
                 
                 <CardHeader className="pb-3">
-                  <div className="flex justify-between items-start">
-                    <div>
+                  <div className="flex justify-between items-start gap-3">
+                    <div className="min-w-0 flex-1">
                       <CardTitle className="card-title text-gray-900 group-hover:text-blue-600 transition-colors">
                         {camp.name}
                       </CardTitle>
@@ -2413,8 +2413,8 @@ function App() {
                   </div>
                   
                   <CardHeader className="pb-3">
-                    <div className="flex justify-between items-start">
-                      <div>
+                    <div className="flex justify-between items-start gap-3">
+                      <div className="min-w-0 flex-1">
                         <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">
                           {camp.name}
                         </CardTitle>
