@@ -1980,7 +1980,10 @@ function App() {
                       </CardDescription>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <div className="camp-price">{camp.price.split('/')[0]}</div>
+                      {camp.price.split('/')[0].startsWith('From ') && (
+                        <div className="camp-from-label">From</div>
+                      )}
+                      <div className="camp-price">{camp.price.split('/')[0].replace('From ', '')}</div>
                       {camp.price.includes('/') && (
                         <div className="camp-duration">{camp.price.split('/')[1]}</div>
                       )}
@@ -2424,14 +2427,17 @@ function App() {
                         </CardDescription>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <div className="camp-price">{camp.price.split('/')[0]}</div>
+                        {camp.price.split('/')[0].startsWith('From ') && (
+                          <div className="camp-from-label">From</div>
+                        )}
+                        <div className="camp-price">{camp.price.split('/')[0].replace('From ', '')}</div>
                         {camp.price.includes('/') && (
                           <div className="camp-duration">{camp.price.split('/')[1]}</div>
                         )}
                       </div>
                     </div>
                   </CardHeader>
-                  
+
                   <CardContent className="pt-0 flex-1 flex flex-col">
                     <div className="space-y-4 flex-grow">
                       <div className="flex justify-between items-center text-sm">
