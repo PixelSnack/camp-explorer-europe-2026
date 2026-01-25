@@ -988,7 +988,7 @@ function App() {
       location: "Kolding & Juelsminde, Jutland",
       country: "Denmark",
       ages: "7-15 years",
-      price: "DKK 3,695", // Verified Jan 2026
+      price: "DKK 3,695/6 days", // Verified Jan 2026 - 5 nights Mon-Sat
       priceRange: "budget",
       rating: 4.7,
       reviews: 103,
@@ -1010,7 +1010,7 @@ function App() {
       location: "Hillerød, North Zealand",
       country: "Denmark",
       ages: "11-15 years",
-      price: "DKK 3,000", // Verified Jan 2026 (DKK 2,500 for members)
+      price: "DKK 3,000/5 days", // Verified Jan 2026 (DKK 2,500 for members)
       priceRange: "budget",
       rating: 4.6,
       reviews: 67,
@@ -1034,7 +1034,7 @@ function App() {
       location: "Idskenhuizen, Friesland",
       country: "Netherlands",
       ages: "7-17 years",
-      price: "€730",
+      price: "€730/week",
       priceRange: "mid",
       rating: 4.4,
       reviews: 612,
@@ -1056,7 +1056,7 @@ function App() {
       location: "Lemmer, Friesland",
       country: "Netherlands",
       ages: "6-18 years",
-      price: "From €715",
+      price: "From €715/week",
       priceRange: "mid",
       rating: 4.6,
       reviews: 95,
@@ -1079,7 +1079,7 @@ function App() {
       location: "Kukuliškiai, Klaipėda District",
       country: "Lithuania",
       ages: "8-18 years",
-      price: "€410-440",
+      price: "€410-440/week",
       priceRange: "budget",
       rating: 4.5,
       reviews: 0,
@@ -1102,7 +1102,7 @@ function App() {
       location: "Horten, Vestfold",
       country: "Norway",
       ages: "9-15 years",
-      price: "NOK 7,900",
+      price: "NOK 7,900/week",
       priceRange: "mid",
       rating: 4.7,
       reviews: 0,
@@ -1124,7 +1124,7 @@ function App() {
       location: "Tonstad, Sirdal",
       country: "Norway",
       ages: "10-14 years",
-      price: "NOK 4,260",
+      price: "NOK 4,260/4 days",
       priceRange: "budget",
       rating: 5.0,
       reviews: 150,
@@ -1147,7 +1147,7 @@ function App() {
       location: "Ganløse & Holte, Zealand",
       country: "Denmark",
       ages: "8-18 years",
-      price: "DKK 3,995",
+      price: "DKK 3,995/week",
       priceRange: "mid",
       rating: 4.5,
       reviews: 0,
@@ -1981,7 +1981,6 @@ function App() {
                     </div>
                     <div className="text-right">
                       <div className="camp-price">{camp.price}</div>
-                      <div className="camp-price-label">per session</div>
                     </div>
                   </div>
                 </CardHeader>
@@ -2423,7 +2422,6 @@ function App() {
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold text-blue-600">{camp.price}</div>
-                        <div className="text-xs text-gray-500">per session</div>
                       </div>
                     </div>
                   </CardHeader>
@@ -4432,11 +4430,11 @@ function App() {
               <div className="text-center">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
-                    <div className="text-2xl font-bold text-white">36</div>
+                    <div className="text-2xl font-bold text-white">42</div>
                     <div>Organizations</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">21</div>
+                    <div className="text-2xl font-bold text-white">23</div>
                     <div>Countries</div>
                   </div>
                   <div>
@@ -4815,7 +4813,7 @@ function App() {
                   <div className="text-center p-4">
                     <Globe className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                     <h4 className="font-semibold text-gray-900 mb-2">Cultural Immersion</h4>
-                    <p className="text-gray-600">Experience 21 countries, 25+ languages, and countless cultural traditions</p>
+                    <p className="text-gray-600">Experience 23 countries, 25+ languages, and countless cultural traditions</p>
                   </div>
                   <div className="text-center p-4">
                     <Star className="w-12 h-12 text-purple-600 mx-auto mb-4" />
