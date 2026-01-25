@@ -1088,7 +1088,7 @@ function App() {
       type: "Government Seaside Camp",
       activities: ["Baltic Sea Swimming", "Sports", "Film Creation", "STEAM Workshops", "Creative Arts"],
       dates: "June 28-July 4, Aug 9-15, Aug 17-23, 2026",
-      highlights: ["500m from Baltic Sea", "Government-operated facility", "Swimming pool"],
+      highlights: ["500m from Baltic Sea", "Government-operated facility", "Lithuanian language only"],
       languages: ["Lithuanian"],
       specialFeatures: ["Ministry of Education backed", "Renovated 2023", "5 program tracks (AI/STEAM, Movement, Creativity, Events, Leadership)", "Phone-free environment", "8 cabins in pine forest", "Lithuanian language only"],
       established: 2015,
@@ -1981,7 +1981,7 @@ function App() {
                     </div>
                     <div className="text-right">
                       <div className="camp-price">{camp.price}</div>
-                      <div className="camp-price-label">per 2 weeks</div>
+                      <div className="camp-price-label">per session</div>
                     </div>
                   </div>
                 </CardHeader>
@@ -2423,7 +2423,7 @@ function App() {
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold text-blue-600">{camp.price}</div>
-                        <div className="text-xs text-gray-500">per 2 weeks</div>
+                        <div className="text-xs text-gray-500">per session</div>
                       </div>
                     </div>
                   </CardHeader>
