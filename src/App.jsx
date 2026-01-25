@@ -4438,13 +4438,13 @@ function App() {
           </div>
           
           <div className="border-t border-gray-800 pt-8">
-            <div className="grid md:grid-cols-3 gap-8 items-center">
-              <div>
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8 items-center">
+              <div className="text-center md:text-left">
                 <h5 className="font-semibold mb-2">2026 Camp Season</h5>
                 <p className="text-sm text-gray-400">Browse camps and contact them directly for current availability and offers.</p>
               </div>
-              
-              <div className="text-center">
+
+              <div className="text-center py-2 md:py-0">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
                     <div className="text-2xl font-bold text-white">42</div>
@@ -4460,8 +4460,8 @@ function App() {
                   </div>
                 </div>
               </div>
-              
-              <div className="text-right">
+
+              <div className="text-center md:text-right pt-2 md:pt-0 border-t border-gray-800 md:border-0">
                 <h5
                   className="font-semibold mb-2 cursor-pointer hover:text-blue-400 transition-colors"
                   onClick={() => setShowContactForm(true)}
@@ -4473,9 +4473,9 @@ function App() {
             </div>
           </div>
           
-          <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
-            <p>&copy; 2026 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
-            <p className="mt-2 text-sm">Directory featuring 42 verified organizations • Information from camp websites • Independent resource portal</p>
+          <div className="border-t border-gray-800 pt-6 md:pt-8 mt-6 md:mt-8 text-center text-gray-400">
+            <p className="text-sm md:text-base">&copy; 2026 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
+            <p className="mt-2 text-xs md:text-sm">Directory featuring 42 verified organizations • Information from camp websites • Independent resource portal</p>
             <div className="mt-3 space-x-3 text-xs text-gray-500">
               <button 
                 onClick={() => handleResourceLink('impressum')} 
