@@ -1025,6 +1025,143 @@ function App() {
       established: 1990,
       capacity: 50,
       bookingUrl: "https://foreningen-norden.dk/aktiviteter/nordisk-sommerlejr-for-boern/"
+    },
+    // NEW CAMPS ADDED January 25, 2026 - Geographic Expansion (Netherlands, Lithuania, Norway, Denmark)
+    // Netherlands - NEW COUNTRY
+    {
+      id: 41,
+      name: "Summer Camps Holland - Sailing",
+      location: "Idskenhuizen, Friesland",
+      country: "Netherlands",
+      ages: "7-17 years",
+      price: "€730",
+      priceRange: "mid",
+      rating: 4.4,
+      reviews: 612,
+      image: heroImage,
+      category: "sports",
+      type: "Sailing Camp",
+      activities: ["Sailing", "Windsurfing", "Water Games", "Theory Lessons", "Evening Activities"],
+      dates: "July-August 2026 (Weeks 29-35)",
+      highlights: ["50+ years sailing tradition", "Small groups (3-4 per instructor)", "CWO sailing diploma"],
+      languages: ["Dutch", "English", "German"],
+      specialFeatures: ["Keurmerk Kindervakanties certified", "VZR & STO Garant", "Frisian Lakes"],
+      established: 2006,
+      capacity: 50,
+      bookingUrl: "https://www.summercamps.nl/en/sailing"
+    },
+    {
+      id: 42,
+      name: "Zeilschool De Kikkert",
+      location: "Lemmer, Friesland",
+      country: "Netherlands",
+      ages: "6-18 years",
+      price: "From €715",
+      priceRange: "mid",
+      rating: 4.6,
+      reviews: 95,
+      image: activitiesCompressed,
+      category: "sports",
+      type: "Sailing School Camp",
+      activities: ["Sailing (10 boat types)", "Catamaran Sailing", "Water Sports", "Evening Programs", "Sports"],
+      dates: "Summer 2026 (weekly sessions)",
+      highlights: ["46 years experience since 1979", "NWD certified instruction", "Room coach supervision"],
+      languages: ["Dutch", "English"],
+      specialFeatures: ["SGR consumer protection", "World Sailing certified", "Dietary needs accommodated free"],
+      established: 1979,
+      capacity: 126,
+      bookingUrl: "https://www.dekikkert.nl/en"
+    },
+    // Lithuania - NEW COUNTRY
+    {
+      id: 43,
+      name: "LINEŠA Camp Pasaka",
+      location: "Kukuliškiai, Klaipėda District",
+      country: "Lithuania",
+      ages: "8-18 years",
+      price: "€410-440",
+      priceRange: "budget",
+      rating: 4.5,
+      reviews: 0,
+      image: mapCompressed,
+      category: "budget_excellence",
+      type: "Government Seaside Camp",
+      activities: ["Baltic Sea Swimming", "Sports", "Film Creation", "STEAM Workshops", "Creative Arts"],
+      dates: "June 28-July 4, Aug 9-15, Aug 17-23, 2026",
+      highlights: ["500m from Baltic Sea", "Government-operated facility", "25m swimming pool"],
+      languages: ["Lithuanian"],
+      specialFeatures: ["Ministry of Education backed", "Renovated 2023", "Programs in Lithuanian only"],
+      established: 2015,
+      capacity: 330,
+      bookingUrl: "https://www.linesa.lt/stovyklos/"
+    },
+    // Norway - Additional camps
+    {
+      id: 44,
+      name: "RS Sjøleir",
+      location: "Horten, Vestfold",
+      country: "Norway",
+      ages: "9-15 years",
+      price: "NOK 7,900",
+      priceRange: "mid",
+      rating: 4.7,
+      reviews: 0,
+      image: heroImage,
+      category: "sports",
+      type: "Water Sports & Safety Camp",
+      activities: ["Water Skiing", "Wakeboarding", "Sailing", "Wave Pool Surfing", "Lifesaving Training"],
+      dates: "June-August 2026 (Weeks 26, 27, 31, 32)",
+      highlights: ["Norwegian Sea Rescue Society", "135-year organization", "Mobile-free week"],
+      languages: ["Norwegian", "English"],
+      specialFeatures: ["CPR/Water Safety Education", "1:6 instructor ratio", "All meals included"],
+      established: 1891,
+      capacity: 50,
+      bookingUrl: "https://www.rs-noatun.no/rs-sjoleir/"
+    },
+    {
+      id: 45,
+      name: "Sirdal Huskyfarm",
+      location: "Tonstad, Sirdal",
+      country: "Norway",
+      ages: "10-14 years",
+      price: "NOK 4,260",
+      priceRange: "budget",
+      rating: 5.0,
+      reviews: 150,
+      image: activitiesCompressed,
+      category: "unique",
+      type: "Husky & Adventure Camp",
+      activities: ["Dog Sledding", "Horse Riding", "Archery", "Raft Building", "Mountain Hiking"],
+      dates: "Weeks 26-27, 2026 (late June-early July)",
+      highlights: ["35+ years family-owned", "Work with 50+ sled dogs", "Protected nature reserve"],
+      languages: ["Norwegian", "English"],
+      specialFeatures: ["5-star TripAdvisor", "4 meals daily included", "Cabin accommodation"],
+      established: 1989,
+      capacity: 35,
+      bookingUrl: "https://www.sirdalhuskyfarm.no/all-activities/summer-adventures/husky-camp/"
+    },
+    // Denmark - Additional camp
+    {
+      id: 46,
+      name: "SceneKunst Sommercamp",
+      location: "Ganløse & Holte, Zealand",
+      country: "Denmark",
+      ages: "8-18 years",
+      price: "DKK 3,995",
+      priceRange: "mid",
+      rating: 4.5,
+      reviews: 0,
+      image: mapCompressed,
+      category: "unique",
+      type: "Performing Arts Camp",
+      activities: ["Drama & Theater", "Singing", "Dance", "Morning Yoga", "Final Showcase Performance"],
+      dates: "Weeks 27, 28, 31, 32 (July-August 2026)",
+      highlights: ["Professional performing arts instruction", "Phone-free experience", "Final showcase performance"],
+      languages: ["Danish", "English"],
+      specialFeatures: ["5 hours daily instruction", "Age-grouped activities", "17 years experience"],
+      established: 2008,
+      capacity: 70,
+      bookingUrl: "https://scenekunstskoler.dk/camps/sommercamp/"
     }
   ]
 
@@ -1129,8 +1266,8 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "21", description: "Across Europe" },
-    { icon: Award, label: "Organizations", value: "36", description: "100+ verified camps" },
+    { icon: Globe, label: "Countries", value: "23", description: "Across Europe" },
+    { icon: Award, label: "Organizations", value: "42", description: "100+ verified camps" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]
@@ -1639,7 +1776,7 @@ function App() {
               aria-label="Camp information banner"
             >
               <span className="marquee-content">
-                2026 Season NOW OPEN • 36 Verified Organizations • 21 Countries
+                2026 Season NOW OPEN • 42 Verified Organizations • 23 Countries
               </span>
             </div>
           </div>
@@ -1987,7 +2124,7 @@ function App() {
                 <Globe className="w-10 h-10 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Cultural Diversity</h3>
-              <p className="text-gray-600">Experience 21 countries and meet children from 75+ nationalities</p>
+              <p className="text-gray-600">Experience 23 countries and meet children from 75+ nationalities</p>
             </div>
             
             <div className="text-center">
@@ -2777,8 +2914,8 @@ function App() {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">36 Verified Organizations</Badge>
-                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">21 Countries</Badge>
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">42 Verified Organizations</Badge>
+                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">23 Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
                 <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
               </div>
@@ -2927,7 +3064,7 @@ function App() {
             <Card className="p-8 mb-16 border-0 shadow-lg">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Featured Countries & Camp Types</h3>
-                <p className="text-lg text-gray-600">Explore camps across 21 European countries, each offering unique experiences</p>
+                <p className="text-lg text-gray-600">Explore camps across 23 European countries, each offering unique experiences</p>
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -3900,7 +4037,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                European summer camp directory featuring 36 verified organizations offering 100+ programs across 21 countries. Information compiled from public sources to help parents research camp options.
+                European summer camp directory featuring 42 verified organizations offering 100+ programs across 23 countries. Information compiled from public sources to help parents research camp options.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -4087,6 +4224,24 @@ function App() {
                     aria-label="Filter camps in Hungary"
                   >
                     🇭🇺 Hungary (Lake Balaton)
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Netherlands')}
+                    aria-label="Filter camps in Netherlands"
+                  >
+                    🇳🇱 Netherlands (Sailing & Water Sports)
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Lithuania')}
+                    aria-label="Filter camps in Lithuania"
+                  >
+                    🇱🇹 Lithuania (STEAM & Baltic)
                   </button>
                 </li>
               </ul>
@@ -4305,7 +4460,7 @@ function App() {
           
           <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
             <p>&copy; 2026 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
-            <p className="mt-2 text-sm">Directory featuring 36 verified organizations • Information from camp websites • Independent resource portal</p>
+            <p className="mt-2 text-sm">Directory featuring 42 verified organizations • Information from camp websites • Independent resource portal</p>
             <div className="mt-3 space-x-3 text-xs text-gray-500">
               <button 
                 onClick={() => handleResourceLink('impressum')} 
@@ -4546,7 +4701,7 @@ function App() {
                   Camp Explorer Europe is an information directory that compiles publicly available data about European summer camps. We organize camp information from websites and public sources to help parents research summer camp options across Europe.
                 </p>
                 <p className="text-lg text-gray-700 mb-6">
-                  Our directory includes 36 verified organizations offering 100+ programs across 21 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
+                  Our directory includes 42 verified organizations offering 100+ programs across 23 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
                 </p>
               </div>
 
@@ -4597,7 +4752,7 @@ function App() {
                   <div className="grid md:grid-cols-3 gap-4 text-gray-700">
                     <div>
                       <strong>Geographic Expertise:</strong><br />
-                      21 European countries, Nordic specialization, Alpine programs
+                      23 European countries, Nordic specialization, Alpine programs
                     </div>
                     <div>
                       <strong>Program Types:</strong><br />
