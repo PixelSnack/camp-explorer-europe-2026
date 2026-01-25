@@ -897,7 +897,7 @@ function App() {
       location: "Torquay, Devon",
       country: "United Kingdom",
       ages: "5-18 years",
-      price: "From £139/person", // Verified Jan 2026: 2-4 night breaks
+      price: "From £139/2-4 nights", // Verified Jan 2026: 2-4 night breaks
       priceRange: "budget",
       rating: 4.7,
       reviews: 523,
@@ -920,7 +920,7 @@ function App() {
       location: "Carlingford, County Louth",
       country: "Ireland",
       ages: "6-17 years",
-      price: "From €240/person", // Verified Jan 2026: 3-5 day residential
+      price: "From €240/3 days", // Verified Jan 2026: 3-day residential (5-day €399)
       priceRange: "budget",
       rating: 4.8,
       reviews: 289,
@@ -1979,8 +1979,11 @@ function App() {
                         {camp.location}
                       </CardDescription>
                     </div>
-                    <div className="text-right">
-                      <div className="camp-price">{camp.price}</div>
+                    <div className="text-right flex-shrink-0">
+                      <div className="camp-price">{camp.price.split('/')[0]}</div>
+                      {camp.price.includes('/') && (
+                        <div className="camp-duration">{camp.price.split('/')[1]}</div>
+                      )}
                     </div>
                   </div>
                 </CardHeader>
@@ -2420,8 +2423,11 @@ function App() {
                           {camp.location}
                         </CardDescription>
                       </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-blue-600">{camp.price}</div>
+                      <div className="text-right flex-shrink-0">
+                        <div className="camp-price">{camp.price.split('/')[0]}</div>
+                        {camp.price.includes('/') && (
+                          <div className="camp-duration">{camp.price.split('/')[1]}</div>
+                        )}
                       </div>
                     </div>
                   </CardHeader>
@@ -2614,7 +2620,12 @@ function App() {
                         <div className="space-y-3 text-sm">
                           <div className="flex justify-between">
                             <span className="text-gray-600">Price:</span>
-                            <span className="font-semibold text-blue-600">{camp.price}</span>
+                            <span className="text-right">
+                              <span className="font-semibold text-blue-600">{camp.price.split('/')[0]}</span>
+                              {camp.price.includes('/') && (
+                                <span className="text-gray-500 text-xs ml-1">/{camp.price.split('/')[1]}</span>
+                              )}
+                            </span>
                           </div>
                           
                           <div className="flex justify-between">

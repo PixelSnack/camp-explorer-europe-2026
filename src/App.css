@@ -367,12 +367,21 @@
   font-size: clamp(1.25rem, 3vw, 1.5rem); /* 20-24px responsive */
   line-height: 1.2;
   color: theme('colors.blue.600');
+  white-space: nowrap;
 }
 
 .camp-price-label {
   font-size: clamp(0.75rem, 1.5vw, 0.875rem); /* 12-14px responsive */
   font-weight: 500;
   color: theme('colors.gray.500');
+}
+
+/* Duration display - secondary to price */
+.camp-duration {
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem); /* 12-14px responsive */
+  font-weight: 500;
+  color: theme('colors.gray.500');
+  white-space: nowrap;
 }
 
 /* Enhanced Information Hierarchy */
