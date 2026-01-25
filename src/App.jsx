@@ -1788,7 +1788,7 @@ function App() {
           </h1>
           
           <p className="hero-fluid-text text-gray-200 max-w-3xl mx-auto px-4">
-            From Swiss Alpine adventures to Spanish beach immersion, explore summer camp options for your child. Directory of camps with information compiled from official sources and public data.
+            From Swiss Alpine adventures to Spanish beach immersion, explore Europe's finest summer camps for your child. Curated directory featuring verified camps selected for quality, safety, and authentic experiences.
           </p>
 
           <p className="hero-fluid-booking-notice text-sm text-orange-200 max-w-2xl mx-auto px-4 mt-4 bg-black/20 rounded-lg py-2">
