@@ -283,7 +283,7 @@ function App() {
       location: "Verbier, Switzerland",
       country: "Switzerland",
       ages: "3-14 years", // Marmots 3-5 (day only), Day camps 6-14, Residential 7-14
-      price: "CHF 975/week", // Day camp price; Residential CHF 2,950+/week
+      price: "From CHF 975/week", // Day camp price; Residential CHF 2,950+/week
       priceRange: "mid",
       rating: 4.8, // Verified Jan 2026 - highly rated Swiss camp
       reviews: 234,
