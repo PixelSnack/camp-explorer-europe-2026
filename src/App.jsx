@@ -1090,7 +1090,7 @@ function App() {
       dates: "June 28-July 4, Aug 9-15, Aug 17-23, 2026",
       highlights: ["500m from Baltic Sea", "Government-operated facility", "Swimming pool"],
       languages: ["Lithuanian"],
-      specialFeatures: ["Ministry of Education backed", "Renovated 2023", "5 program tracks (AI/STEAM, Movement, Creativity, Events, Leadership)", "Phone-free environment", "8 cabins in pine forest"],
+      specialFeatures: ["Ministry of Education backed", "Renovated 2023", "5 program tracks (AI/STEAM, Movement, Creativity, Events, Leadership)", "Phone-free environment", "8 cabins in pine forest", "Lithuanian language only"],
       established: 2015,
       capacity: 350,
       bookingUrl: "https://www.linesa.lt/stovyklos/"
