@@ -1,9 +1,9 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** January 22, 2026
-**Current Status:** Analytics & video tracking live, awaiting Boundless Life response
-**Ready for:** Monitor GA4 data, respond to partner inquiries
+**Last Updated:** January 25, 2026
+**Current Status:** Price display fix deployed, awaiting Boundless Life response
+**Ready for:** Duration consistency verification, GA4 monitoring
 
 ---
 
@@ -33,6 +33,18 @@
 ---
 
 ## ✅ **RECENTLY COMPLETED (January 2026)**
+
+### **Price Display Fix - Two-Line Layout (January 25, 2026)**
+- [x] Fixed price line breaks on mobile (e.g., "NOK 4,260/4 days" orphaning "days")
+- [x] Implemented two-line display: price on line 1 (bold, blue), duration on line 2 (smaller, gray)
+- [x] Fixed "/person" camps to use duration instead:
+  - PGL Family Adventures: £139/person → £139/2-4 nights
+  - Carlingford Adventure: €240/person → €240/3 days (verified 5-day is €399)
+- [x] Added gap-3 spacing between camp names and prices (fixes collision on long names)
+- [x] Added min-w-0 flex-1 to name container (prevents overflow)
+- [x] Added CSS: white-space: nowrap on .camp-price, new .camp-duration class
+- [x] Verified via camp-data-verifier agent (PGL and Carlingford pricing confirmed)
+- **Note:** ~18 camps still missing duration info - see Duration Consistency task below
 
 ### **Analytics & Video Implementation (January 22, 2026)**
 - [x] Activated GA4 with real Measurement ID (G-3FMMGNJRLE)
@@ -151,7 +163,36 @@
 
 ---
 
-### **2. TRAFFIC GROWTH MONITORING** 📊
+### **2. DURATION CONSISTENCY - Add to All Camps** ⏱️
+**Status:** PENDING - Ready for next session
+**Business Impact:** Professional appearance, consistent user experience
+
+#### **Context:**
+- Price display now shows duration below price (e.g., "€640" + "week")
+- ~24 camps have duration in price string (e.g., "€640/week")
+- ~18 camps have just price (e.g., "NOK 5,700") - looks inconsistent
+
+#### **Task:**
+- [ ] Run camp-data-verifier on all camps without duration
+- [ ] Research standard program length for each camp
+- [ ] Add duration to price strings (e.g., "NOK 5,700" → "NOK 5,700/week")
+- [ ] Verify accuracy before updating
+
+#### **Camps Needing Duration (18 total):**
+Check all camps in App.jsx where price does NOT contain "/":
+- Norwegian camps (NOK prices)
+- Polish camps (PLN prices)
+- Some Euro-priced camps
+- Any others without "/week", "/day", "/X days" format
+
+#### **Notes:**
+- Use camp-data-verifier agent (READ-ONLY) to research
+- YOU implement all changes to App.jsx
+- Standard durations: /week, /day, /X days, /X nights
+
+---
+
+### **3. TRAFFIC GROWTH MONITORING** 📊
 **Status:** ONGOING
 **Business Impact:** Track ROI of database expansion
 
@@ -167,7 +208,7 @@
 - Compare traffic before/after database expansion
 - Identify top-performing countries and categories
 
-### **2. VIRTUAL SCROLLING IMPLEMENTATION** 🚀
+### **4. VIRTUAL SCROLLING IMPLEMENTATION** 🚀
 **Status:** READY TO IMPLEMENT (when needed)
 **Business Impact:** Mobile performance optimization for 70% of traffic
 
@@ -179,7 +220,7 @@
 - Implement when performance metrics show need
 - Or when camp count exceeds 50 organizations
 
-### **3. PHASE 2 PLANNING** 🏗️
+### **5. PHASE 2 PLANNING** 🏗️
 **Status:** PLANNING (when traffic justifies - 1K+ sessions/month)
 **Business Impact:** SEO improvement through dedicated pages
 
@@ -290,6 +331,6 @@
 
 ---
 
-**Last Session:** January 18, 2026 - Featured Listing Demo (Les Elfes), FEATURED_CAMPS.md created, premium card styling implemented
-**Previous Session:** January 17, 2026 - Boundless Life email sent (00:28), PayPal Business configured, FEATURED_LISTINGS_POLICY.md created
-**Next Review:** After Boundless Life response, then March 2026 (pre-booking season pricing check)
+**Last Session:** January 25, 2026 - Price display fix (two-line layout), spacing fix, duration consistency task added
+**Previous Session:** January 22, 2026 - Analytics & video tracking implementation
+**Next Review:** Duration consistency verification (next session), then March 2026 (pre-booking season pricing check)
