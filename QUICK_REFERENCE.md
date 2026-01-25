@@ -284,8 +284,8 @@ git reset --hard HEAD~1  # Rollback if broken
 3. Test live site: https://www.europeansummercamps.com/
 4. Monitor Vercel dashboard
 
-## 🎉 CURRENT STATUS (January 16, 2026)
-- ✅ Database: 36 verified organizations across 21 European countries
+## 🎉 CURRENT STATUS (January 25, 2026)
+- ✅ Database: 42 verified organizations across 23 European countries
 - ✅ Pricing: 100% verified (all camps have accurate per-child pricing)
 - ✅ Code quality: EXCELLENT (enterprise-level, well-structured, ~4,600 lines)
 - ✅ Build/lint: WORKING (~7s build, clean lint with safe warnings)
@@ -372,3 +372,13 @@ git reset --hard HEAD~1  # Rollback if broken
 - [x] Footer country links expanded (18 destinations) (COMPLETED ✅)
 - [x] Terminology corrected: "Organizations" vs "Camps" (COMPLETED ✅)
 - [x] All documentation updated (COMPLETED ✅)
+
+## ✅ PHASE 2.6: GEOGRAPHIC EXPANSION (January 25, 2026)
+- [x] Added 6 new camps (IDs 41-46) (COMPLETED ✅)
+- [x] NEW COUNTRY: Netherlands (2 camps - sailing focus) (COMPLETED ✅)
+- [x] NEW COUNTRY: Lithuania (1 camp - LINEŠA Camp Pasaka, government-backed) (COMPLETED ✅)
+- [x] Norway expanded: 4 → 6 camps (RS Sjøleir, Sirdal Huskyfarm) (COMPLETED ✅)
+- [x] Denmark expanded: 3 → 4 camps (SceneKunst Sommercamp) (COMPLETED ✅)
+- [x] Footer country links added for Netherlands & Lithuania (COMPLETED ✅)
+- [x] All stats updated: 42 organizations across 23 countries (COMPLETED ✅)
+- [x] Research documented in docs/archive/CAMP_RESEARCH_JAN25_2026.md (COMPLETED ✅)

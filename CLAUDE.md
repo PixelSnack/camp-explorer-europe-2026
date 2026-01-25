@@ -89,8 +89,19 @@
 - **Purpose**: Show potential camp operators (like Boundless Life) how Featured tier looks
 - **Tested**: iOS and PC - confirmed looks great
 
-### ✅ **COMPLETED: Pricing Verification & Database Expansion**
-- **Status**: ✅ 36/36 organizations verified (100% complete)
+### ✅ **COMPLETED: Geographic Expansion (January 25, 2026)**
+- **Status**: ✅ 42 organizations verified across 23 countries
+- **New Countries Added**: Netherlands (2 camps), Lithuania (1 camp)
+- **New Camps Added**: 6 camps (IDs 41-46)
+  - Netherlands: Summer Camps Holland - Sailing, Zeilschool De Kikkert
+  - Lithuania: LINEŠA Camp Pasaka (government-backed)
+  - Norway: RS Sjøleir, Sirdal Huskyfarm
+  - Denmark: SceneKunst Sommercamp
+- **Country Totals**: Norway 4→6, Denmark 3→4
+- **Documentation**: Research preserved in docs/archive/CAMP_RESEARCH_JAN25_2026.md
+
+### ✅ **COMPLETED: Pricing Verification & Database Expansion (January 13-18, 2026)**
+- **Status**: ✅ Base 36 organizations verified (100% complete)
 - **Geographic Expansion**: 15 → 21 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden added)
 - **New Camps Added**: 11 camps (IDs 30-40)
 - **Camps Removed**: 3 (ID 13 not a camp, IDs 16 & 22 group-only)
@@ -106,7 +117,7 @@
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
 - [ ] **Virtual Scrolling**: Implement TanStack React Virtual (already installed)
 - [ ] **Phase 2 Planning**: React Router + SSG when traffic justifies (1K+ sessions/month)
-- [ ] **Content Expansion**: Consider adding camps in Belgium, Netherlands (4% traffic, 0 camps)
+- [x] **Content Expansion**: ✅ Netherlands added (2 camps), Lithuania added (1 camp) - Belgium still gap
 
 ### 🔍 **Ongoing Maintenance**:
 - [ ] Monitor camp websites for price changes (quarterly review)
