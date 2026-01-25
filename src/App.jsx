@@ -282,21 +282,21 @@ function App() {
       name: "Altitude Camps",
       location: "Verbier, Switzerland",
       country: "Switzerland",
-      ages: "3-14 years",
-      price: "CHF 975",
+      ages: "3-14 years", // Marmots 3-5 (day only), Day camps 6-14, Residential 7-14
+      price: "CHF 975/week", // Day camp price; Residential CHF 2,950+/week
       priceRange: "mid",
-      rating: 4.7,
+      rating: 4.8, // Verified Jan 2026 - highly rated Swiss camp
       reviews: 234,
       image: heroImage,
-      category: "family",
-      type: "Family Programs",
-      activities: ["English Immersion", "Mountain Adventure", "Family Programs", "Marmot Club"],
-      dates: "June 30-July 14, 2026",
-      highlights: ["Youngest accepted (3 years)", "Family accommodation", "English focus", "Day camps available"],
+      category: "budget", // Budget Excellence for day camps
+      type: "Day & Residential Camps",
+      activities: ["English Immersion", "Mountain Adventure", "Outdoor Skills", "Marmots Program"],
+      dates: "June 30 - August 15, 2026",
+      highlights: ["Youngest accepted (3 years)", "Day & residential options", "English focus", "Swiss Alps setting"],
       languages: ["English", "French"],
-      specialFeatures: ["Marmot Program (3-5 years)", "Family Cabins", "Day Camp Options"],
+      specialFeatures: ["Marmots Program (3-5 years)", "Day Camp Options", "Residential Camps (7-14)"],
       established: 2008,
-      capacity: 60,
+      capacity: 50,
       bookingUrl: "https://www.altitude-camps.com/"
     },
     // Academic & STEM Programs
