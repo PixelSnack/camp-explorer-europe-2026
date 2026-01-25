@@ -337,19 +337,25 @@ Run enterprise-code-reviewer agent over entire codebase (in sections due to size
 - Users must manually scroll to reach footer/bottom - tedious on mobile
 - Long page with 42 camps means significant finger scrolling
 
+#### **Current Implementation (for reference):**
+- **Location:** `src/App.jsx` lines 5099-5108
+- **Style:** `fixed bottom-6 right-6` - floats with user as they scroll
+- **Trigger:** Shows when `pageYOffset > 300` (line 1442)
+- **Button:** Circular blue, ArrowUp icon, z-50
+
 #### **Constraint:**
-- ⚠️ Current button already overlaps content (Highlights section)
-- Adding second button would double the footprint and block more text
-- Must NOT steal more screen real estate
+- ⚠️ Button floats over content (doesn't permanently block, but still present)
+- Adding second button would double floating elements on screen
+- Be careful not to clutter mobile viewport
 
 #### **Possible Solutions (Space-Conscious):**
-1. **Toggle Button** - Single button: shows ↓ at top of page, ↑ at bottom (auto-switches)
+1. **Toggle Button** - Single button: shows ↓ at top of page, ↑ at bottom (auto-switches based on scroll position)
 2. **Long-Press Menu** - Hold existing button to reveal both options
 3. **Compact Dual Arrows** - Two smaller arrows stacked in same footprint (↑↓)
 4. **Swipe Gesture** - Swipe up/down on button for respective direction
 
 #### **Recommendation:**
-Option 1 (Toggle) is cleanest - same space, context-aware behavior.
+Option 1 (Toggle) is cleanest - same space, context-aware behavior. Button already tracks scroll position, just need to add logic to switch icon/function based on whether user is near top or bottom.
 
 #### **Not Related To:**
 - Virtual Scrolling (that's performance optimization, not navigation UX)
