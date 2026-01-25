@@ -289,6 +289,40 @@ Check all camps in App.jsx where price does NOT contain "/":
 
 **Decision:** Focus on English-speaking international market for now. Revisit when traffic justifies investment.
 
+### **Comprehensive Code Review & Documentation** (Future Priority)
+**Status:** DEFERRED - Add to schedule when time permits
+**Business Impact:** Sale-readiness, maintainability, professional credibility
+
+#### **Objective:**
+Run enterprise-code-reviewer agent over entire codebase (in sections due to size) to ensure:
+- Code follows best practices throughout
+- Enterprise-level quality and structure
+- Clear enough for a professional programmer to quickly understand
+- Sale-ready documentation if site is sold
+
+#### **Scope:**
+- **App.jsx** (~4,500 lines) - review in sections:
+  - Lines 1-200: Imports, constants, camp data structure
+  - Lines 200-1000: Camp data array (allCamps)
+  - Lines 1000-2000: State management, filtering logic, UI components
+  - Lines 2000-3000: Home section, cards, rendering
+  - Lines 3000-4500: Discover section, contact form, footer
+- **App.css** - styling review
+- **Component files** (src/components/ui/) - shadcn/ui usage review
+- **Configuration files** (vite.config.js, tailwind.config.js)
+
+#### **Deliverables:**
+- [ ] Code quality report per section
+- [ ] List of any issues or improvements needed
+- [ ] Updated CODE_STRUCTURE.md with current architecture
+- [ ] Confidence rating for sale-readiness
+- [ ] Document findings in new CODE_REVIEW_REPORT.md
+
+#### **Notes:**
+- Use enterprise-code-reviewer agent (READ-ONLY)
+- Agent analyzes and reports, YOU implement any changes
+- Focus on: naming conventions, component structure, performance patterns, accessibility, security
+
 ---
 
 ## 🎪 **GEOGRAPHIC EXPANSION OPPORTUNITIES**
