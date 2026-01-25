@@ -328,6 +328,32 @@ Run enterprise-code-reviewer agent over entire codebase (in sections due to size
 - Agent analyzes and reports, YOU implement any changes
 - Focus on: naming conventions, component structure, performance patterns, accessibility, security
 
+### **Mobile Scroll Navigation - Quick Jump to Bottom** (UX Enhancement)
+**Status:** DEFERRED - Future mobile UX improvement
+**Business Impact:** Better mobile experience (70% of traffic is mobile)
+
+#### **Problem:**
+- Currently only "scroll to top" button exists (bottom-right corner)
+- Users must manually scroll to reach footer/bottom - tedious on mobile
+- Long page with 42 camps means significant finger scrolling
+
+#### **Constraint:**
+- ⚠️ Current button already overlaps content (Highlights section)
+- Adding second button would double the footprint and block more text
+- Must NOT steal more screen real estate
+
+#### **Possible Solutions (Space-Conscious):**
+1. **Toggle Button** - Single button: shows ↓ at top of page, ↑ at bottom (auto-switches)
+2. **Long-Press Menu** - Hold existing button to reveal both options
+3. **Compact Dual Arrows** - Two smaller arrows stacked in same footprint (↑↓)
+4. **Swipe Gesture** - Swipe up/down on button for respective direction
+
+#### **Recommendation:**
+Option 1 (Toggle) is cleanest - same space, context-aware behavior.
+
+#### **Not Related To:**
+- Virtual Scrolling (that's performance optimization, not navigation UX)
+
 ---
 
 ## 🎪 **GEOGRAPHIC EXPANSION OPPORTUNITIES**
