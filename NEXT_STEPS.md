@@ -20,30 +20,35 @@
 6. SPECIALIZED_AGENTS_ROADMAP.md # Agent capabilities
 ```
 
-### **Current Project Context (January 14, 2026):**
+### **Current Project Context (January 25, 2026):**
 - ✅ **Live Production Website**: www.europeansummercamps.com serving real families daily
-- ✅ **Database Complete**: 36 verified organizations across 21 European countries
+- ✅ **Database**: 42 verified organizations across 23 European countries
 - ✅ **Pricing Verified**: 100% of camps have accurate per-child pricing
+- ✅ **Price Display**: Two-line layout (price + duration) with "From" label above
+- ✅ **Mobile UX**: Footer spacing optimized for iOS
 - ✅ **Security**: Enterprise-grade CSP enforced, no critical vulnerabilities
 - ✅ **Dual Analytics**: Google Analytics 4 + Vercel Analytics implemented
-- ✅ **Categories**: 7 categories including renamed "Unique Experiences"
-- ✅ **Nordic Expansion**: Sweden added (2 camps), Denmark expanded (3 camps total)
-- 🔄 **Phase 1 Complete**: Ready for traffic growth and Phase 2 planning
+- 🔄 **Next Priority**: Add duration to ~18 camps missing it (consistency fix)
 
 ---
 
 ## ✅ **RECENTLY COMPLETED (January 2026)**
 
-### **Price Display Fix - Two-Line Layout (January 25, 2026)**
+### **Price Display & Mobile UX Fixes (January 25, 2026)**
 - [x] Fixed price line breaks on mobile (e.g., "NOK 4,260/4 days" orphaning "days")
 - [x] Implemented two-line display: price on line 1 (bold, blue), duration on line 2 (smaller, gray)
 - [x] Fixed "/person" camps to use duration instead:
   - PGL Family Adventures: £139/person → £139/2-4 nights
   - Carlingford Adventure: €240/person → €240/3 days (verified 5-day is €399)
 - [x] Added gap-3 spacing between camp names and prices (fixes collision on long names)
-- [x] Added min-w-0 flex-1 to name container (prevents overflow)
-- [x] Added CSS: white-space: nowrap on .camp-price, new .camp-duration class
+- [x] Moved "From" label above price (separate line) - gives camp names more horizontal space
+- [x] Added CSS: .camp-price (nowrap), .camp-duration, .camp-from-label classes
 - [x] Verified via camp-data-verifier agent (PGL and Carlingford pricing confirmed)
+- [x] **Footer mobile fix (iOS):**
+  - Centered "2026 Camp Season" and "Contact & Support" on mobile
+  - Added vertical padding and border separator between sections
+  - Slightly smaller copyright text on mobile
+  - Desktop layout unchanged (uses md: breakpoints)
 - **Note:** ~18 camps still missing duration info - see Duration Consistency task below
 
 ### **Analytics & Video Implementation (January 22, 2026)**
@@ -365,6 +370,25 @@ Run enterprise-code-reviewer agent over entire codebase (in sections due to size
 
 ---
 
-**Last Session:** January 25, 2026 - Price display fix (two-line layout), spacing fix, duration consistency task added
+**Last Session:** January 25, 2026 - Price display overhaul (two-line layout, "From" above price, spacing fixes), footer mobile UX, code review task added to backlog
 **Previous Session:** January 22, 2026 - Analytics & video tracking implementation
-**Next Review:** Duration consistency verification (next session), then March 2026 (pre-booking season pricing check)
+
+---
+
+## 🎯 **NEXT SESSION CHECKLIST**
+
+**Primary Task: Duration Consistency (Priority #2 above)**
+1. Run `camp-data-verifier` on all camps WITHOUT "/" in their price string
+2. Research standard program length for each camp
+3. Update price strings: e.g., "NOK 5,700" → "NOK 5,700/week"
+4. Goal: All 42 camps show consistent two-line price display
+
+**Camps to verify (~18 total):**
+- Search App.jsx for prices without "/"
+- Focus on: Norwegian (NOK), Polish (PLN), some Euro prices
+- Agent researches, YOU implement changes
+
+**Other items if time permits:**
+- Monitor Boundless Life response (monetization test)
+- Check GA4 for traffic patterns
+- Code review task (backlog - lower priority)
