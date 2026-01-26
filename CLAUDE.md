@@ -89,19 +89,18 @@
 - **Purpose**: Show potential camp operators (like Boundless Life) how Featured tier looks
 - **Tested**: iOS and PC - confirmed looks great
 
-### ✅ **COMPLETED: Geographic Expansion (January 25, 2026)**
-- **Status**: ✅ 42 organizations verified across 23 countries
-- **New Countries Added**: Netherlands (2 camps), Lithuania (1 camp)
-- **New Camps Added**: 6 camps (IDs 41-46)
-  - Netherlands: Summer Camps Holland - Sailing, Zeilschool De Kikkert
-  - Lithuania: LINEŠA Camp Pasaka (government-backed)
-  - Norway: RS Sjøleir, Sirdal Huskyfarm
-  - Denmark: SceneKunst Sommercamp
-- **Country Totals**: Norway 4→6, Denmark 3→4
-- **Documentation**: Research preserved in docs/archive/CAMP_RESEARCH_JAN25_2026.md
+### ✅ **COMPLETED: Geographic Expansion (January 26, 2026)**
+- **Status**: ✅ 45 organizations verified across 24 countries
+- **New Countries Added**: Belgium (1 camp - CERAN Academy)
+- **New Camps Added**: 3 camps (IDs 47-49)
+  - Belgium: CERAN Academy Juniors (Language Immersion)
+  - France: Evasoleil (Budget Excellence, Atlantic Coast)
+  - Germany: GLS Berlin Splash Water Sports (Sports Specialty)
+- **Country Totals**: France 1→2, Germany 1→2, Belgium 0→1 (NEW)
+- **Previous expansion (Jan 25)**: Netherlands (2), Lithuania (1), Norway (+2), Denmark (+1)
 
 ### ✅ **COMPLETED: Pricing Verification & Database Expansion (January 13-18, 2026)**
-- **Status**: ✅ All 42 organizations verified (100% complete)
+- **Status**: ✅ All 45 organizations verified (100% complete)
 - **Geographic Expansion**: 15 → 23 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden, Netherlands, Lithuania added)
 - **New Camps Added**: 11 camps (IDs 30-40)
 - **Camps Removed**: 3 (ID 13 not a camp, IDs 16 & 22 group-only)
@@ -169,9 +168,9 @@ When starting a new Claude Code session, follow this protocol to restore context
 ### **Step 2: Current Status Assessment**
 
 **Database Status:**
-- **42 verified organizations** representing 100+ programs across 23 countries
+- **45 verified organizations** representing 100+ programs across 24 countries
 - **Pricing Verification**: ✅ COMPLETE (100% - all camps verified January 2026)
-- **Recent Additions**: Netherlands (2 camps), Lithuania (1 camp), Norway (+2), Denmark (+1)
+- **Recent Additions**: Belgium (1 camp), France (+1), Germany (+1) - January 26, 2026
 - **Recent Removals**: ID 13 (not a camp), ID 16 (group-only), ID 22 (group-only)
 
 **Technical Status:**
@@ -239,8 +238,8 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 42 verified organizations, 100+ programs, 23 countries
-- **Camp Data Location**: `src/App.jsx` lines 210-1166 (`const allCamps = [...]`)
+- **Database**: 45 verified organizations, 100+ programs, 24 countries
+- **Camp Data Location**: `src/App.jsx` lines 210-1220 (`const allCamps = [...]`)
 - **App.jsx Total Lines**: ~4,500 lines (well-structured monolithic component)
 - **Pricing Verification**: ✅ COMPLETE (100% verified January 2026)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
@@ -919,26 +918,26 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 
 | Number | Always Refers To | Example Usage |
 |--------|------------------|---------------|
-| **42** | Organizations/Operators | "42 verified organizations", "42 camp operators" |
+| **45** | Organizations/Operators | "45 verified organizations", "45 camp operators" |
 | **100+** | Camps/Programs | "100+ camps", "100+ verified camps", "100+ camp programs" |
 
-*Note: 42 is the current count (January 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
+*Note: 45 is the current count (January 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
 
 **Both numbers are TRUE:**
-- We list **42 camp organizations** (the companies/operators)
+- We list **45 camp organizations** (the companies/operators)
 - These organizations collectively offer **100+ individual camp programs**
 
 **Analogy:** Like a university with 10 colleges offering 500+ degree programs.
 
 **Where Each Number Appears:**
 - **Search Snippet (meta):** "100+ Camp Programs" - DO NOT CHANGE (SEO working)
-- **Hero Stats:** "42 Organizations" with "100+ verified camps" subtitle
-- **Footer Stats:** "42 Organizations"
-- **Footer Text:** "42 verified organizations"
+- **Hero Stats:** "45 Organizations" with "100+ verified camps" subtitle
+- **Footer Stats:** "45 Organizations"
+- **Footer Text:** "45 verified organizations"
 
 **NEVER:**
-- ❌ Say "42 camps" (incorrect - we have 100+ camps)
-- ❌ Say "100+ organizations" (incorrect - we have 42 organizations)
+- ❌ Say "45 camps" (incorrect - we have 100+ camps)
+- ❌ Say "100+ organizations" (incorrect - we have 45 organizations)
 - ❌ Change search snippet numbers without SEO impact assessment
 
 **Rationale:** Organizations like Piispala offer "300+ camps annually" - each org runs multiple programs.
@@ -1253,13 +1252,13 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total organizations**: 42 verified
+- **Total organizations**: 45 verified
 - **Total programs**: 100+ individual camps
-- **Countries**: 23 European countries
+- **Countries**: 24 European countries
 - **Categories**: 7 distinct categories
-- **Verified pricing**: ✅ 42/42 (100% complete)
-- **App.jsx camp data**: Lines 210-1166
-- **Total App.jsx lines**: ~5,000 lines
+- **Verified pricing**: ✅ 45/45 (100% complete)
+- **App.jsx camp data**: Lines 210-1220
+- **Total App.jsx lines**: ~5,100 lines
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories
 - **Build time**: ~7-9 seconds

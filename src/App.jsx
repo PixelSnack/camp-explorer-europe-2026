@@ -1162,6 +1162,75 @@ function App() {
       established: 2008,
       capacity: 70,
       bookingUrl: "https://scenekunstskoler.dk/camps/sommercamp/"
+    },
+    // Belgium - First camp (NEW COUNTRY)
+    {
+      id: 47,
+      name: "CERAN Academy Juniors",
+      location: "Ferrières, Liège Province",
+      country: "Belgium",
+      ages: "9-17 years",
+      price: "€1,790/1 week", // Verified Jan 2026: per-child residential rate
+      priceRange: "mid",
+      rating: 4.7,
+      reviews: 0,
+      image: mapCompressed,
+      category: "language",
+      type: "Language Immersion Camp",
+      activities: ["French Lessons", "English Lessons", "German Lessons", "Dutch Lessons", "Swimming", "Tennis", "Football", "Cultural Excursions"],
+      dates: "June 30 - August 22, 2026",
+      highlights: ["Four languages offered", "Historic château campus", "1:3 staff ratio"],
+      languages: ["French", "English", "German", "Dutch"],
+      specialFeatures: ["28 lessons/week", "Indoor swimming pool", "Full-day excursions to Brussels & Bruges"],
+      established: 1990,
+      capacity: 179,
+      bookingUrl: "https://www.ceran.com/en/intensive-language-classes/language-school-for-children-ferrieres/"
+    },
+    // France - Second camp (Atlantic Coast residential)
+    {
+      id: 48,
+      name: "Evasoleil",
+      location: "Montalivet-les-Bains, Gironde",
+      country: "France",
+      ages: "6-17 years",
+      price: "€685/1 week", // Verified Jan 2026: per-child residential rate
+      priceRange: "budget",
+      rating: 4.6,
+      reviews: 0,
+      image: mapCompressed,
+      category: "budget_excellence",
+      type: "Atlantic Coast Adventure",
+      activities: ["Surfing", "Sailing", "Paddleboarding", "Horse Riding", "Arts & Crafts", "Beach Activities"],
+      dates: "July 5 - August 29, 2026",
+      highlights: ["Atlantic beachside location", "Child-led programming", "Government accredited since 2008"],
+      languages: ["French"],
+      specialFeatures: ["15 min from beach", "Surf lessons with MontaSurf School", "Non-profit association"],
+      established: 2008,
+      capacity: 80,
+      bookingUrl: "https://www.colonie-evasoleil.com/sejours/reserver-une-colonie/"
+    },
+    // Germany - Second camp (Water sports near Berlin)
+    {
+      id: 49,
+      name: "GLS Berlin Splash Water Sports Camp",
+      location: "Blossin, Brandenburg",
+      country: "Germany",
+      ages: "12-16 years",
+      price: "€1,290/1 week", // Verified Jan 2026: per-child residential rate
+      priceRange: "mid",
+      rating: 4.5,
+      reviews: 0,
+      image: mapCompressed,
+      category: "sports",
+      type: "Water Sports & Language Camp",
+      activities: ["German Lessons", "Sailing", "Windsurfing", "SUP", "Canoeing", "Swimming", "Berlin Excursions"],
+      dates: "June 28 - August 2, 2026",
+      highlights: ["Lakeside campus on Lake Wolzig", "20 German lessons/week", "Twice-weekly Berlin excursions"],
+      languages: ["German", "English"],
+      specialFeatures: ["5-time Star School Germany winner", "40km from Berlin", "1-4 week flexible duration"],
+      established: 1983,
+      capacity: 80,
+      bookingUrl: "https://www.gls-german-courses.de/summer-camp-berlin-water-sports.html"
     }
   ]
 
@@ -1776,7 +1845,7 @@ function App() {
               aria-label="Camp information banner"
             >
               <span className="marquee-content">
-                2026 Season NOW OPEN • 42 Verified Organizations • 23 Countries
+                2026 Season NOW OPEN • 45 Verified Organizations • 24 Countries
               </span>
             </div>
           </div>
@@ -2129,7 +2198,7 @@ function App() {
                 <Globe className="w-10 h-10 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Cultural Diversity</h3>
-              <p className="text-gray-600">Experience 23 countries and meet children from 75+ nationalities</p>
+              <p className="text-gray-600">Experience 24 countries and meet children from 75+ nationalities</p>
             </div>
             
             <div className="text-center">
@@ -2929,8 +2998,8 @@ function App() {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">42 Verified Organizations</Badge>
-                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">23 Countries</Badge>
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">45 Verified Organizations</Badge>
+                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">24 Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
                 <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
               </div>
@@ -4052,7 +4121,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                European summer camp directory featuring 42 verified organizations offering 100+ programs across 23 countries. Information compiled from public sources to help parents research camp options.
+                European summer camp directory featuring 45 verified organizations offering 100+ programs across 24 countries. Information compiled from public sources to help parents research camp options.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -4116,7 +4185,16 @@ function App() {
                   </button>
                 </li>
                 <li>
-                  <button 
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Belgium')}
+                    aria-label="Filter camps in Belgium"
+                  >
+                    🇧🇪 Belgium (Language Immersion)
+                  </button>
+                </li>
+                <li>
+                  <button
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
                     onClick={() => handleCountryFilter('Italy')}
                     aria-label="Filter camps in Italy"
@@ -4475,7 +4553,7 @@ function App() {
           
           <div className="border-t border-gray-800 pt-6 md:pt-8 mt-6 md:mt-8 text-center text-gray-400">
             <p className="text-sm md:text-base">&copy; 2026 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
-            <p className="mt-2 text-xs md:text-sm">Directory featuring 42 verified organizations • Information from camp websites • Independent resource portal</p>
+            <p className="mt-2 text-xs md:text-sm">Directory featuring 45 verified organizations • Information from camp websites • Independent resource portal</p>
             <div className="mt-3 space-x-3 text-xs text-gray-500">
               <button 
                 onClick={() => handleResourceLink('impressum')} 
@@ -4716,7 +4794,7 @@ function App() {
                   Camp Explorer Europe is an information directory that compiles publicly available data about European summer camps. We organize camp information from websites and public sources to help parents research summer camp options across Europe.
                 </p>
                 <p className="text-lg text-gray-700 mb-6">
-                  Our directory includes 42 verified organizations offering 100+ programs across 23 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
+                  Our directory includes 45 verified organizations offering 100+ programs across 24 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
                 </p>
               </div>
 
@@ -4830,7 +4908,7 @@ function App() {
                   <div className="text-center p-4">
                     <Globe className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                     <h4 className="font-semibold text-gray-900 mb-2">Cultural Immersion</h4>
-                    <p className="text-gray-600">Experience 23 countries, 25+ languages, and countless cultural traditions</p>
+                    <p className="text-gray-600">Experience 24 countries, 25+ languages, and countless cultural traditions</p>
                   </div>
                   <div className="text-center p-4">
                     <Star className="w-12 h-12 text-purple-600 mx-auto mb-4" />
