@@ -216,7 +216,7 @@ function App() {
       location: "Verbier, Switzerland",
       country: "Switzerland",
       ages: "6-17 years",
-      price: "From CHF 4,550/week", // Verified Jan 2026: per-week pricing
+      price: "From CHF 4,550/1 week", // Verified Jan 2026: per-week pricing
       priceRange: "premium",
       rating: 4.9,
       reviews: 847,
@@ -283,7 +283,7 @@ function App() {
       location: "Verbier, Switzerland",
       country: "Switzerland",
       ages: "3-14 years", // Marmots 3-5 (day only), Day camps 6-14, Residential 7-14
-      price: "From CHF 975/week", // Day camp price; Residential CHF 2,950+/week
+      price: "From CHF 975/1 week", // Day camp price; Residential CHF 2,950+/week
       priceRange: "mid",
       rating: 4.8, // Verified Jan 2026 - highly rated Swiss camp
       reviews: 234,
@@ -328,7 +328,7 @@ function App() {
       location: "East Sussex, England",
       country: "United Kingdom",
       ages: "6-20 years",
-      price: "From £1,595/week", // Verified Jan 2026: per-week residential rate
+      price: "From £1,595/1 week", // Verified Jan 2026: per-week residential rate
       priceRange: "mid",
       rating: 4.8,
       reviews: 892,
@@ -351,7 +351,7 @@ function App() {
       location: "Castelldefels, Barcelona, Spain",
       country: "Spain",
       ages: "5-14 years", // Verified Jan 2026: was 5-13
-      price: "€1,295/week", // Verified Jan 2026: was €3,200 (multi-week total)
+      price: "€1,295/1 week", // Verified Jan 2026: was €3,200 (multi-week total)
       priceRange: "mid",
       rating: 4.7,
       reviews: 445,
@@ -373,7 +373,7 @@ function App() {
       location: "Morzine, French Alps, France",
       country: "France",
       ages: "6-17 years",
-      price: "€810/week", // Verified Jan 2026: Day camp only, was €1,845
+      price: "€810/1 week", // Verified Jan 2026: Day camp only, was €1,845
       priceRange: "mid",
       rating: 4.6,
       reviews: 178,
@@ -418,7 +418,7 @@ function App() {
       location: "Bayerischer Wald, Germany",
       country: "Germany",
       ages: "9-16 years",
-      price: "€445/week",
+      price: "€445/1 week",
       priceRange: "budget",
       rating: 4.6,
       reviews: 189,
@@ -441,7 +441,7 @@ function App() {
       location: "Milan, Italy",
       country: "Italy",
       ages: "8-16 years",
-      price: "€1,440/week",
+      price: "€1,440/1 week",
       priceRange: "mid",
       rating: 4.9,
       reviews: 312,
@@ -464,7 +464,7 @@ function App() {
       location: "Vassiliki, Greece",
       country: "Greece",
       ages: "7-17 years",
-      price: "From £845/week", // Family package price - youth sailing included with parent holiday
+      price: "From £845/1 week", // Family package price - youth sailing included with parent holiday
       priceRange: "luxury",
       rating: 4.8,
       reviews: 89,
@@ -509,7 +509,7 @@ function App() {
       location: "Rendalen, Norway",
       country: "Norway",
       ages: "12-18 years",
-      price: "NOK 5,890/week",
+      price: "NOK 5,890/1 week",
       priceRange: "mid",
       rating: 4.9,
       reviews: 127,
@@ -554,7 +554,7 @@ function App() {
       location: "Stavanger, Norway",
       country: "Norway",
       ages: "6-12 years",
-      price: "NOK 5,700/week", // Verified Jan 2026: DAY CAMP (8:30-15:30), 5-day program
+      price: "NOK 5,700/1 week", // Verified Jan 2026: DAY CAMP (8:30-15:30), 5-day program
       priceRange: "mid",
       rating: 4.6,
       reviews: 87,
@@ -576,7 +576,7 @@ function App() {
       location: "Ranum, Denmark",
       country: "Denmark",
       ages: "14-17 years", // Verified Jan 2026: was 15-18
-      price: "From DKK 5,995/week", // Verified Jan 2026: 1-5 week options (DKK 5,995-23,760)
+      price: "From DKK 5,995/1 week", // Verified Jan 2026: 1-5 week options (DKK 5,995-23,760)
       priceRange: "mid",
       rating: 4.7,
       reviews: 89,
@@ -644,7 +644,7 @@ function App() {
       location: "Bialka, Lublin Voivodeship",
       country: "Poland",
       ages: "6-16 years",
-      price: "€640/week", // Verified Jan 2026: was €1,260 (2-week total), actual PLN 2,700/week
+      price: "€640/1 week", // Verified Jan 2026: was €1,260 (2-week total), actual PLN 2,700/week
       priceRange: "budget",
       rating: 4.7,
       reviews: 85,
@@ -666,7 +666,7 @@ function App() {
       location: "Cartaxo, Ribatejo",
       country: "Portugal",
       ages: "6-17 years",
-      price: "€570/week", // Verified Jan 2026: was €1,140 (2-week total), actual €570/week
+      price: "€570/1 week", // Verified Jan 2026: was €1,140 (2-week total), actual €570/week
       priceRange: "budget",
       rating: 4.7,
       reviews: 95,
@@ -712,7 +712,7 @@ function App() {
       location: "Wildschönau, Tyrol",
       country: "Austria",
       ages: "8-15 years",
-      price: "From €1,377/week", // Verified Jan 2026: 1-week €1,377, 2-week €2,940
+      price: "From €1,377/1 week", // Verified Jan 2026: 1-week €1,377, 2-week €2,940
       priceRange: "budget",
       rating: 4.7,
       reviews: 156,
@@ -758,7 +758,7 @@ function App() {
       location: "Santa Cruz, West Coast",
       country: "Portugal",
       ages: "10-17 years", // Verified Jan 2026: was 13-17
-      price: "€3,500/week", // Verified Jan 2026: was €2,700
+      price: "€3,500/1 week", // Verified Jan 2026: was €2,700
       priceRange: "mid",
       rating: 4.8,
       reviews: 412,
@@ -782,7 +782,7 @@ function App() {
       location: "Balatongyörök, Lake Balaton",
       country: "Hungary",
       ages: "8-17 years",
-      price: "€625/week", // Verified Jan 2026
+      price: "€625/1 week", // Verified Jan 2026
       priceRange: "budget",
       rating: 4.8,
       reviews: 234,
@@ -828,7 +828,7 @@ function App() {
       location: "Velenje, Slovenia",
       country: "Slovenia",
       ages: "6-17 years",
-      price: "€845/week", // Verified Jan 2026
+      price: "€845/1 week", // Verified Jan 2026
       priceRange: "mid",
       rating: 4.9,
       reviews: 312,
@@ -851,7 +851,7 @@ function App() {
       location: "Ardmore, Sutherland, Scottish Highlands",
       country: "United Kingdom",
       ages: "11-17 years",
-      price: "£950/week", // Verified Jan 2026
+      price: "£950/1 week", // Verified Jan 2026
       priceRange: "mid",
       rating: 4.9,
       reviews: 178,
@@ -874,7 +874,7 @@ function App() {
       location: "Pakostane, Dalmatia",
       country: "Croatia",
       ages: "7-16 years",
-      price: "€1,095/week", // Verified Jan 2026
+      price: "€1,095/1 week", // Verified Jan 2026
       priceRange: "mid",
       rating: 4.8,
       reviews: 456,
@@ -943,7 +943,7 @@ function App() {
       location: "Trollhättan, Västra Götaland",
       country: "Sweden",
       ages: "10-17 years",
-      price: "SEK 7,600/week", // Verified Jan 2026
+      price: "SEK 7,600/1 week", // Verified Jan 2026
       priceRange: "mid",
       rating: 4.8,
       reviews: 156,
@@ -965,7 +965,7 @@ function App() {
       location: "Katrineholm, Södermanland",
       country: "Sweden",
       ages: "10-16 years",
-      price: "From SEK 10,900/week", // Verified Jan 2026
+      price: "From SEK 10,900/1 week", // Verified Jan 2026
       priceRange: "mid",
       rating: 4.7,
       reviews: 198,
@@ -1034,7 +1034,7 @@ function App() {
       location: "Idskenhuizen, Friesland",
       country: "Netherlands",
       ages: "7-17 years",
-      price: "€730/week",
+      price: "€730/1 week",
       priceRange: "mid",
       rating: 4.4,
       reviews: 612,
@@ -1056,7 +1056,7 @@ function App() {
       location: "Lemmer, Friesland",
       country: "Netherlands",
       ages: "6-18 years",
-      price: "From €715/week",
+      price: "From €715/1 week",
       priceRange: "mid",
       rating: 4.6,
       reviews: 95,
@@ -1079,7 +1079,7 @@ function App() {
       location: "Kukuliškiai, Klaipėda District",
       country: "Lithuania",
       ages: "8-18 years",
-      price: "€410-440/week",
+      price: "€410-440/1 week",
       priceRange: "budget",
       rating: 4.5,
       reviews: 0,
@@ -1102,7 +1102,7 @@ function App() {
       location: "Horten, Vestfold",
       country: "Norway",
       ages: "9-15 years",
-      price: "NOK 7,900/week",
+      price: "NOK 7,900/1 week",
       priceRange: "mid",
       rating: 4.7,
       reviews: 0,
@@ -1147,7 +1147,7 @@ function App() {
       location: "Ganløse & Holte, Zealand",
       country: "Denmark",
       ages: "8-18 years",
-      price: "DKK 3,995/week",
+      price: "DKK 3,995/1 week",
       priceRange: "mid",
       rating: 4.5,
       reviews: 0,
