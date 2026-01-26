@@ -337,7 +337,7 @@ function App() {
       type: "Comprehensive Education",
       activities: ["English Classes", "Sports Specialties", "Arts & Crafts", "Cultural Excursions"],
       dates: "July 13-27, 2026 (2 weeks)",
-      highlights: ["1,700+ students annually", "62 countries", "6 campus locations", "Multiple program tracks"],
+      highlights: ["Day and residential options", "1,700+ students annually", "62 countries", "6 campus locations"],
       languages: ["English"],
       specialFeatures: ["Little Explorers (6-11)", "Specialist Tracks", "Airport Transfers Included"],
       established: 1993,
