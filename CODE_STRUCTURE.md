@@ -3,7 +3,7 @@
 *Technical reference for codebase architecture and App.jsx structure*
 
 **Created:** January 24, 2026
-**Last Updated:** January 24, 2026
+**Last Updated:** January 26, 2026
 **Purpose:** Quick reference for understanding code organization
 
 ---
@@ -13,7 +13,7 @@
 ```
 camp-explorer-europe-2026/
 ├── src/
-│   ├── App.jsx              # Main component (~4,950 lines)
+│   ├── App.jsx              # Main component (~5,000 lines)
 │   ├── App.css              # Custom global styles + marquee system
 │   ├── main.jsx             # React entry point
 │   ├── index.css            # Tailwind imports
@@ -64,7 +64,7 @@ camp-explorer-europe-2026/
 
 ---
 
-## App.jsx Structure (~4,950 lines)
+## App.jsx Structure (~5,000 lines)
 
 ### Section Map
 
@@ -73,11 +73,11 @@ camp-explorer-europe-2026/
 | 1-68 | **Imports** | React, Vercel Analytics, EmailJS, shadcn/ui, Lucide icons, images |
 | 69-104 | **GA4 & Tracking** | Analytics initialization, UTM builder, click tracking |
 | 105-209 | **Component State** | All useState hooks for app state |
-| 210-1029 | **Camp Data** | `allCamps` array (36 camps) |
-| 1031-1096 | **Multilingual Search** | European language translations |
-| 1098-1136 | **Filtering Logic** | useMemo filter, filterOptions, stats |
-| 1138-1269 | **Navigation Handlers** | All navigation and filter handlers |
-| 1270-1494 | **useEffects** | Side effects (routing, GDPR, marquee, etc.) |
+| 210-1166 | **Camp Data** | `allCamps` array (42 camps) |
+| 1168-1233 | **Multilingual Search** | European language translations |
+| 1235-1273 | **Filtering Logic** | useMemo filter, filterOptions, stats |
+| 1275-1406 | **Navigation Handlers** | All navigation and filter handlers |
+| 1407-1631 | **useEffects** | Side effects (routing, GDPR, marquee, etc.) |
 | 1495-1507 | **Cookie Handlers** | GDPR consent handlers |
 | 1508-2132 | **Home Section** | Hero, search, camp grid, CTA |
 | 2134-2413 | **Discover Section** | Standalone discover page |
@@ -96,7 +96,7 @@ camp-explorer-europe-2026/
 
 ## Key Code Locations
 
-### Camp Data (Lines 210-1029)
+### Camp Data (Lines 210-1166)
 
 ```javascript
 const allCamps = [
@@ -124,7 +124,7 @@ const allCamps = [
     bookingUrl: "https://...",
     videoUrl: "https://..."  // Optional
   },
-  // ... 35 more camps
+  // ... 41 more camps (42 total)
 ]
 ```
 

@@ -101,8 +101,8 @@
 - **Documentation**: Research preserved in docs/archive/CAMP_RESEARCH_JAN25_2026.md
 
 ### ✅ **COMPLETED: Pricing Verification & Database Expansion (January 13-18, 2026)**
-- **Status**: ✅ Base 36 organizations verified (100% complete)
-- **Geographic Expansion**: 15 → 21 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden added)
+- **Status**: ✅ All 42 organizations verified (100% complete)
+- **Geographic Expansion**: 15 → 23 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden, Netherlands, Lithuania added)
 - **New Camps Added**: 11 camps (IDs 30-40)
 - **Camps Removed**: 3 (ID 13 not a camp, IDs 16 & 22 group-only)
 - **Category Renamed**: "Outdoor Adventures" → "Unique Experiences"
@@ -169,9 +169,9 @@ When starting a new Claude Code session, follow this protocol to restore context
 ### **Step 2: Current Status Assessment**
 
 **Database Status:**
-- **36 verified organizations** representing 100+ programs across 21 countries
+- **42 verified organizations** representing 100+ programs across 23 countries
 - **Pricing Verification**: ✅ COMPLETE (100% - all camps verified January 2026)
-- **Recent Additions**: Sweden (2 camps), Denmark (+2 camps), Hungary, Romania, Slovenia, Croatia, Ireland
+- **Recent Additions**: Netherlands (2 camps), Lithuania (1 camp), Norway (+2), Denmark (+1)
 - **Recent Removals**: ID 13 (not a camp), ID 16 (group-only), ID 22 (group-only)
 
 **Technical Status:**
@@ -239,8 +239,8 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 36 verified organizations, 100+ programs, 21 countries
-- **Camp Data Location**: `src/App.jsx` lines 174-990 (`const allCamps = [...]`)
+- **Database**: 42 verified organizations, 100+ programs, 23 countries
+- **Camp Data Location**: `src/App.jsx` lines 210-1166 (`const allCamps = [...]`)
 - **App.jsx Total Lines**: ~4,500 lines (well-structured monolithic component)
 - **Pricing Verification**: ✅ COMPLETE (100% verified January 2026)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
@@ -919,26 +919,26 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 
 | Number | Always Refers To | Example Usage |
 |--------|------------------|---------------|
-| **36** | Organizations/Operators | "36 verified organizations", "36 camp operators" |
+| **42** | Organizations/Operators | "42 verified organizations", "42 camp operators" |
 | **100+** | Camps/Programs | "100+ camps", "100+ verified camps", "100+ camp programs" |
 
-*Note: 36 is the current count (January 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
+*Note: 42 is the current count (January 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
 
 **Both numbers are TRUE:**
-- We list **36 camp organizations** (the companies/operators)
+- We list **42 camp organizations** (the companies/operators)
 - These organizations collectively offer **100+ individual camp programs**
 
 **Analogy:** Like a university with 10 colleges offering 500+ degree programs.
 
 **Where Each Number Appears:**
 - **Search Snippet (meta):** "100+ Camp Programs" - DO NOT CHANGE (SEO working)
-- **Hero Stats:** "36 Organizations" with "100+ verified camps" subtitle
-- **Footer Stats:** "36 Organizations"
-- **Footer Text:** "36 verified organizations"
+- **Hero Stats:** "42 Organizations" with "100+ verified camps" subtitle
+- **Footer Stats:** "42 Organizations"
+- **Footer Text:** "42 verified organizations"
 
 **NEVER:**
-- ❌ Say "36 camps" (incorrect - we have 100+ camps)
-- ❌ Say "100+ organizations" (incorrect - we have 36 organizations)
+- ❌ Say "42 camps" (incorrect - we have 100+ camps)
+- ❌ Say "100+ organizations" (incorrect - we have 42 organizations)
 - ❌ Change search snippet numbers without SEO impact assessment
 
 **Rationale:** Organizations like Piispala offer "300+ camps annually" - each org runs multiple programs.
@@ -950,12 +950,12 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 
 ### 8.1 Database Status (January 2026)
 
-**Geographic Coverage (21 Countries):**
-- **Well Covered**: Switzerland (4), United Kingdom (4), Norway (4), Denmark (3), Poland (2), Portugal (2), Austria (2), Sweden (2)
-- **Current**: Spain (1), France (1), Germany (1), Italy (1), Czech Republic (1), Finland (1), Iceland (1), Greece (1), Hungary (1), Romania (1), Slovenia (1), Croatia (1), Ireland (1)
-- **Need More**: Belgium (0), Netherlands (0)
+**Geographic Coverage (23 Countries):**
+- **Well Covered**: Norway (6), Switzerland (4), United Kingdom (4), Denmark (4), Poland (2), Portugal (2), Austria (2), Sweden (2), Netherlands (2)
+- **Current**: Spain (1), France (1), Germany (1), Italy (1), Czech Republic (1), Finland (1), Iceland (1), Greece (1), Hungary (1), Romania (1), Slovenia (1), Croatia (1), Ireland (1), Lithuania (1)
+- **Need More**: Belgium (0)
 
-**Category Distribution (36 Organizations):**
+**Category Distribution (42 Organizations):**
 - Premium Alpine: 4 organizations
 - Academic & STEM: 5 organizations (+1 Filmkollo)
 - Language Immersion: 6 organizations (+1 Nordisk Sommerlejr)
@@ -1253,13 +1253,13 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total organizations**: 36 verified
+- **Total organizations**: 42 verified
 - **Total programs**: 100+ individual camps
-- **Countries**: 21 European countries
+- **Countries**: 23 European countries
 - **Categories**: 7 distinct categories
-- **Verified pricing**: ✅ 36/36 (100% complete)
-- **App.jsx camp data**: Lines 174-990
-- **Total App.jsx lines**: ~4,600 lines
+- **Verified pricing**: ✅ 42/42 (100% complete)
+- **App.jsx camp data**: Lines 210-1166
+- **Total App.jsx lines**: ~5,000 lines
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories
 - **Build time**: ~7-9 seconds
