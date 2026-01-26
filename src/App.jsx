@@ -1335,8 +1335,8 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "23", description: "Across Europe" },
-    { icon: Award, label: "Organizations", value: "42", description: "100+ verified camps" },
+    { icon: Globe, label: "Countries", value: "24", description: "Across Europe" },
+    { icon: Award, label: "Organizations", value: "45", description: "100+ verified camps" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]
@@ -3148,7 +3148,7 @@ function App() {
             <Card className="p-8 mb-16 border-0 shadow-lg">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Featured Countries & Camp Types</h3>
-                <p className="text-lg text-gray-600">Explore camps across 23 European countries, each offering unique experiences</p>
+                <p className="text-lg text-gray-600">Explore camps across 24 European countries, each offering unique experiences</p>
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -4525,11 +4525,11 @@ function App() {
               <div className="text-center py-2 md:py-0">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
-                    <div className="text-2xl font-bold text-white">42</div>
+                    <div className="text-2xl font-bold text-white">45</div>
                     <div>Organizations</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">23</div>
+                    <div className="text-2xl font-bold text-white">24</div>
                     <div>Countries</div>
                   </div>
                   <div>
@@ -4845,7 +4845,7 @@ function App() {
                   <div className="grid md:grid-cols-3 gap-4 text-gray-700">
                     <div>
                       <strong>Geographic Expertise:</strong><br />
-                      23 European countries, Nordic specialization, Alpine programs
+                      24 European countries, Nordic specialization, Alpine programs
                     </div>
                     <div>
                       <strong>Program Types:</strong><br />
