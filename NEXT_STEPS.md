@@ -131,8 +131,37 @@
 
 ## 🎯 **IMMEDIATE PRIORITIES (Next Session)**
 
-### **🎉 1. FIRST MONETIZATION TEST - BOUNDLESS LIFE** 💰
-**Status:** EMAIL SENT - AWAITING RESPONSE (January 16, 2026)
+### **📋 PRIORITY ORDER:**
+1. **Mobile Arrow Navigation** - Back-to-top button enhancement for phones
+2. **Boundless Life Response** - Awaiting reply, process when received
+3. **Content Expansion** - Continue adding camps (target: 50 organizations)
+
+---
+
+### **🔝 1. MOBILE ARROW NAVIGATION** 📱
+**Status:** READY TO IMPLEMENT
+**Business Impact:** Better mobile UX (70% of traffic is mobile)
+
+#### **The Problem:**
+- Back-to-top button works well
+- But mobile users also need easy way to scroll DOWN to see more camps
+- Currently no quick way to jump sections on long pages
+
+#### **Recommended Solution (Toggle Button):**
+- Same button space, context-aware behavior
+- Near top of page → shows DOWN arrow → scrolls to camp grid
+- Near bottom of page → shows UP arrow → scrolls to top
+- Button already tracks scroll position, just needs logic update
+
+#### **Implementation:**
+- Modify back-to-top button in App.jsx
+- Add scroll position detection for direction toggle
+- Change icon based on position (ChevronUp ↔ ChevronDown)
+
+---
+
+### **🎉 2. FIRST MONETIZATION TEST - BOUNDLESS LIFE** 💰
+**Status:** EMAIL SENT - AWAITING RESPONSE (January 17, 2026)
 **Business Impact:** First potential revenue, validates monetization model
 
 #### **Context:**
@@ -168,14 +197,14 @@
 
 ---
 
-### **2. DURATION CONSISTENCY - Add to All Camps** ⏱️
-**Status:** PENDING - Ready for next session
+### **✅ 3. DURATION CONSISTENCY - Add to All Camps** ⏱️
+**Status:** COMPLETED (January 26, 2026)
 **Business Impact:** Professional appearance, consistent user experience
 
-#### **Context:**
-- Price display now shows duration below price (e.g., "€640" + "week")
-- ~24 camps have duration in price string (e.g., "€640/week")
-- ~18 camps have just price (e.g., "NOK 5,700") - looks inconsistent
+#### **Completed:**
+- [x] All 45 camps now have duration in price format (e.g., "€685/1 week")
+- [x] Standardized format: "/1 week", "/2 weeks", "/X days"
+- [x] Bede's verified from 2026 PDF, added "Day and residential options" highlight
 
 #### **Task:**
 - [ ] Run camp-data-verifier on all camps without duration
@@ -360,20 +389,42 @@ Option 1 (Toggle) is cleanest - same space, context-aware behavior. Button alrea
 #### **Not Related To:**
 - Virtual Scrolling (that's performance optimization, not navigation UX)
 
+### **Strengthen Camp Reputation Verification** (Low Priority)
+**Status:** BACKLOG - Enhancement for quality assurance
+**Business Impact:** Trust, credibility, user safety
+
+#### **Current Coverage:**
+- ✅ Established track record (2+ years preferred)
+- ✅ Professional website presence
+- ✅ Reviews/testimonials mentioned
+- ✅ Accreditation/legitimacy checks
+- ✅ Photo/video evidence of real facilities
+
+#### **Potential Enhancements:**
+- [ ] Add explicit requirement to check third-party review scores (Google Reviews, Trustpilot)
+- [ ] Require searching for complaints or negative press before inclusion
+- [ ] Verify specific certifications (government youth camp licenses where applicable)
+- [ ] Document minimum acceptable review score threshold
+- [ ] Add reputation red flags checklist to agent instructions
+
+#### **Implementation:**
+Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data-verifier.md` with more explicit reputation verification criteria.
+
 ---
 
 ## 🎪 **GEOGRAPHIC EXPANSION OPPORTUNITIES**
 
 ### **Countries Not Yet Covered:**
-- Belgium (0 camps)
-- Netherlands (0 camps)
 - Luxembourg (0 camps)
 
 ### **Countries with Room for Growth:**
 - Spain (1 camp - could add more)
-- France (1 camp - could add more)
-- Germany (1 camp - could add more)
-- Sweden (2 camps - new country, room to grow)
+- Italy (1 camp - could add more)
+- Sweden (2 camps - room to grow)
+- Belgium (1 camp - newly added Jan 26)
+- France (2 camps - expanded Jan 26)
+- Germany (2 camps - expanded Jan 26)
+- Netherlands (2 camps - added Jan 25)
 
 ---
 
