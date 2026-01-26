@@ -173,7 +173,7 @@ This document tracks all Featured camp listings, including verification status, 
 
 **Strategic Value:**
 - 🌟 **Government organization** = high credibility
-- ✅ **Lithuania ADDED** to database January 25, 2026 (now 23 countries)
+- ✅ **Lithuania ADDED** to database January 25, 2026 (now 24 countries with Belgium added Jan 26)
 - 📧 **Inbound lead** = they reached out to us
 - 🎓 **STEAM focus** aligns with Academic & STEM category
 - 🌍 **International focus** aligns with our mission

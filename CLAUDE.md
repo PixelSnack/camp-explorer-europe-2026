@@ -101,7 +101,7 @@
 
 ### ✅ **COMPLETED: Pricing Verification & Database Expansion (January 13-18, 2026)**
 - **Status**: ✅ All 45 organizations verified (100% complete)
-- **Geographic Expansion**: 15 → 23 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden, Netherlands, Lithuania added)
+- **Geographic Expansion**: 15 → 24 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden, Netherlands, Lithuania, Belgium added)
 - **New Camps Added**: 11 camps (IDs 30-40)
 - **Camps Removed**: 3 (ID 13 not a camp, IDs 16 & 22 group-only)
 - **Category Renamed**: "Outdoor Adventures" → "Unique Experiences"
@@ -116,7 +116,7 @@
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
 - [ ] **Virtual Scrolling**: Implement TanStack React Virtual (already installed)
 - [ ] **Phase 2 Planning**: React Router + SSG when traffic justifies (1K+ sessions/month)
-- [x] **Content Expansion**: ✅ Netherlands added (2 camps), Lithuania added (1 camp) - Belgium still gap
+- [x] **Content Expansion**: ✅ Belgium, France, Germany added (Jan 26) - now 45 camps, 24 countries
 
 ### 🔍 **Ongoing Maintenance**:
 - [ ] Monitor camp websites for price changes (quarterly review)

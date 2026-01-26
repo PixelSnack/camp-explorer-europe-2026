@@ -73,7 +73,7 @@ camp-explorer-europe-2026/
 | 1-68 | **Imports** | React, Vercel Analytics, EmailJS, shadcn/ui, Lucide icons, images |
 | 69-104 | **GA4 & Tracking** | Analytics initialization, UTM builder, click tracking |
 | 105-209 | **Component State** | All useState hooks for app state |
-| 210-1166 | **Camp Data** | `allCamps` array (42 camps) |
+| 210-1166 | **Camp Data** | `allCamps` array (45 camps) |
 | 1168-1233 | **Multilingual Search** | European language translations |
 | 1235-1273 | **Filtering Logic** | useMemo filter, filterOptions, stats |
 | 1275-1406 | **Navigation Handlers** | All navigation and filter handlers |

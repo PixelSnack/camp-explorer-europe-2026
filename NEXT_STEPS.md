@@ -408,7 +408,7 @@ Run enterprise-code-reviewer agent over entire codebase (in sections due to size
 #### **Problem:**
 - Currently only "scroll to top" button exists (bottom-right corner)
 - Users must manually scroll to reach footer/bottom - tedious on mobile
-- Long page with 42 camps means significant finger scrolling
+- Long page with 45 camps means significant finger scrolling
 
 #### **Current Implementation (for reference):**
 - **Location:** `src/App.jsx` lines 5099-5108
