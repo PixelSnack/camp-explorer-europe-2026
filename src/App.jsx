@@ -216,7 +216,7 @@ function App() {
       location: "Verbier, Switzerland",
       country: "Switzerland",
       ages: "6-17 years",
-      price: "From CHF 4,550", // Verified Jan 2026: was CHF 4,990
+      price: "From CHF 4,550/week", // Verified Jan 2026: per-week pricing
       priceRange: "premium",
       rating: 4.9,
       reviews: 847,
@@ -239,7 +239,7 @@ function App() {
       location: "Villars-sur-Ollon, Switzerland",
       country: "Switzerland",
       ages: "6-17 years",
-      price: "CHF 6,980",
+      price: "CHF 6,980/2 weeks",
       priceRange: "luxury",
       rating: 4.9,
       reviews: 423,
@@ -261,7 +261,7 @@ function App() {
       location: "Torgon, Swiss Alps, Switzerland",
       country: "Switzerland",
       ages: "7-17 years",
-      price: "CHF 4,400", // Verified Jan 2026: was CHF 4,000
+      price: "CHF 4,400/2 weeks", // Verified Jan 2026
       priceRange: "premium",
       rating: 4.8,
       reviews: 356,
@@ -306,7 +306,7 @@ function App() {
       location: "Oxford, England",
       country: "United Kingdom",
       ages: "13-18 years",
-      price: "From £6,995", // Verified Jan 2026: was £6,220, tiered pricing Plus/Superior/Premier
+      price: "From £6,995/2 weeks", // Verified Jan 2026: Plus tier, 2-week program
       priceRange: "luxury",
       rating: 4.9,
       reviews: 567,
@@ -328,7 +328,7 @@ function App() {
       location: "East Sussex, England",
       country: "United Kingdom",
       ages: "6-20 years",
-      price: "From £3,190", // Verified Jan 2026: was £1,575 (weekly rate), 2-week program £3,190-£4,490
+      price: "From £1,595/week", // Verified Jan 2026: per-week residential rate
       priceRange: "mid",
       rating: 4.8,
       reviews: 892,
@@ -396,7 +396,7 @@ function App() {
       location: "South Bohemia, Czech Republic",
       country: "Czech Republic",
       ages: "7-17 years",
-      price: "€335",
+      price: "€335/10 days",
       priceRange: "budget",
       rating: 4.8,
       reviews: 267,
@@ -418,7 +418,7 @@ function App() {
       location: "Bayerischer Wald, Germany",
       country: "Germany",
       ages: "9-16 years",
-      price: "€445",
+      price: "€445/week",
       priceRange: "budget",
       rating: 4.6,
       reviews: 189,
@@ -441,7 +441,7 @@ function App() {
       location: "Milan, Italy",
       country: "Italy",
       ages: "8-16 years",
-      price: "€1,440",
+      price: "€1,440/week",
       priceRange: "mid",
       rating: 4.9,
       reviews: 312,
@@ -464,7 +464,7 @@ function App() {
       location: "Vassiliki, Greece",
       country: "Greece",
       ages: "7-17 years",
-      price: "From £845", // Family package price - youth sailing included with parent holiday
+      price: "From £845/week", // Family package price - youth sailing included with parent holiday
       priceRange: "luxury",
       rating: 4.8,
       reviews: 89,
@@ -487,7 +487,7 @@ function App() {
       location: "Nordfjord & Jotunheimen, Norway",
       country: "Norway",
       ages: "16-18 years",
-      price: "$7,095", // Verified Jan 2026: was $7,295
+      price: "$7,095/16 days", // Verified Jan 2026: expedition program
       priceRange: "luxury",
       rating: 4.9,
       reviews: 134,
@@ -509,7 +509,7 @@ function App() {
       location: "Rendalen, Norway",
       country: "Norway",
       ages: "12-18 years",
-      price: "NOK 5,890",
+      price: "NOK 5,890/week",
       priceRange: "mid",
       rating: 4.9,
       reviews: 127,
@@ -532,7 +532,7 @@ function App() {
       location: "Reykjavik & Highlands, Iceland",
       country: "Iceland",
       ages: "14-18 years",
-      price: "$5,988", // Verified Jan 2026: was €4,800, expedition camp (camping 11 nights + hostels 2 nights)
+      price: "$5,988/2 weeks", // Verified Jan 2026: 14-day expedition
       priceRange: "luxury",
       rating: 4.8,
       reviews: 73,
@@ -554,7 +554,7 @@ function App() {
       location: "Stavanger, Norway",
       country: "Norway",
       ages: "6-12 years",
-      price: "NOK 5,700", // Verified Jan 2026: was NOK 3,500, DAY CAMP (8:30-15:30)
+      price: "NOK 5,700/week", // Verified Jan 2026: DAY CAMP (8:30-15:30), 5-day program
       priceRange: "mid",
       rating: 4.6,
       reviews: 87,
@@ -621,7 +621,7 @@ function App() {
       location: "Beitostølen, Norway",
       country: "Norway",
       ages: "7-18 years",
-      price: "NOK 6,950",
+      price: "NOK 6,950/5 days",
       priceRange: "premium",
       rating: 4.8,
       reviews: 89,
@@ -689,7 +689,7 @@ function App() {
       location: "Rossleithen, Upper Austria",
       country: "Austria",
       ages: "6+ years (families)",
-      price: "From €145", // Verified Jan 2026: €145 child/€369 adult, 3-day program
+      price: "From €145/3 days", // Verified Jan 2026: €145 child/€369 adult
       priceRange: "budget",
       rating: 4.6,
       reviews: 72,
@@ -735,7 +735,7 @@ function App() {
       location: "Kraków, Lesser Poland",
       country: "Poland",
       ages: "12-16 years",
-      price: "PLN 7,730",
+      price: "PLN 7,730/2 weeks",
       priceRange: "budget",
       rating: 4.8,
       reviews: 203,
@@ -805,7 +805,7 @@ function App() {
       location: "Semenic-Caras Gorge National Park, Caras-Severin",
       country: "Romania",
       ages: "8-14 years",
-      price: "$650", // Verified Jan 2026: 6-day program
+      price: "$650/6 days", // Verified Jan 2026
       priceRange: "budget",
       rating: 4.7,
       reviews: 45,
