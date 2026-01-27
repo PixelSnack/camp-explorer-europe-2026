@@ -2007,13 +2007,43 @@ function App() {
             ))}
           </div>
           
+          {/* Active Filter Chips */}
+          {activeFilterCount > 0 && (
+            <div className="flex flex-wrap justify-center gap-2 mb-4" role="list" aria-label="Active filters">
+              {selectedFilter !== 'all' && (
+                <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                  {filterOptions.find(f => f.value === selectedFilter)?.label}
+                  <button onClick={() => setSelectedFilter('all')} className="ml-1 hover:text-blue-600" aria-label={`Remove ${filterOptions.find(f => f.value === selectedFilter)?.label} filter`}><X className="w-3.5 h-3.5" /></button>
+                </span>
+              )}
+              {selectedCountry !== 'all' && (
+                <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                  {selectedCountry}
+                  <button onClick={() => setSelectedCountry('all')} className="ml-1 hover:text-green-600" aria-label={`Remove ${selectedCountry} filter`}><X className="w-3.5 h-3.5" /></button>
+                </span>
+              )}
+              {selectedPriceTier !== 'all' && (
+                <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                  {priceTierOptions.find(p => p.value === selectedPriceTier)?.label}
+                  <button onClick={() => setSelectedPriceTier('all')} className="ml-1 hover:text-purple-600" aria-label="Remove price filter"><X className="w-3.5 h-3.5" /></button>
+                </span>
+              )}
+              {selectedAgeGroup !== 'all' && (
+                <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                  {selectedAgeGroup} years
+                  <button onClick={() => setSelectedAgeGroup('all')} className="ml-1 hover:text-orange-600" aria-label="Remove age filter"><X className="w-3.5 h-3.5" /></button>
+                </span>
+              )}
+              {activeFilterCount >= 2 && (
+                <button onClick={clearAllFilters} className="px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 underline">Clear all</button>
+              )}
+            </div>
+          )}
+
           {/* Results Count */}
           <div className="text-center mb-8">
-            <p className="text-gray-600">
+            <p className="text-gray-600" aria-live="polite">
               Showing <span className="font-semibold text-blue-600">{filteredCamps.length}</span> camps
-              {selectedFilter !== 'all' && (
-                <span> in <span className="font-semibold">{filterOptions.find(f => f.value === selectedFilter)?.label}</span></span>
-              )}
               {searchTerm && (
                 <span> matching "<span className="font-semibold">{searchTerm}</span>"</span>
               )}
@@ -2444,21 +2474,51 @@ function App() {
               ))}
             </div>
             
+            {/* Active Filter Chips */}
+            {activeFilterCount > 0 && (
+              <div className="flex flex-wrap justify-center gap-2 mb-4" role="list" aria-label="Active filters">
+                {selectedFilter !== 'all' && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                    {filterOptions.find(f => f.value === selectedFilter)?.label}
+                    <button onClick={() => setSelectedFilter('all')} className="ml-1 hover:text-blue-600" aria-label={`Remove ${filterOptions.find(f => f.value === selectedFilter)?.label} filter`}><X className="w-3.5 h-3.5" /></button>
+                  </span>
+                )}
+                {selectedCountry !== 'all' && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                    {selectedCountry}
+                    <button onClick={() => setSelectedCountry('all')} className="ml-1 hover:text-green-600" aria-label={`Remove ${selectedCountry} filter`}><X className="w-3.5 h-3.5" /></button>
+                  </span>
+                )}
+                {selectedPriceTier !== 'all' && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                    {priceTierOptions.find(p => p.value === selectedPriceTier)?.label}
+                    <button onClick={() => setSelectedPriceTier('all')} className="ml-1 hover:text-purple-600" aria-label="Remove price filter"><X className="w-3.5 h-3.5" /></button>
+                  </span>
+                )}
+                {selectedAgeGroup !== 'all' && (
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                    {selectedAgeGroup} years
+                    <button onClick={() => setSelectedAgeGroup('all')} className="ml-1 hover:text-orange-600" aria-label="Remove age filter"><X className="w-3.5 h-3.5" /></button>
+                  </span>
+                )}
+                {activeFilterCount >= 2 && (
+                  <button onClick={clearAllFilters} className="px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 underline">Clear all</button>
+                )}
+              </div>
+            )}
+
             {/* Results Count */}
             <div className="text-center mb-8">
-              <p className="text-gray-600">
+              <p className="text-gray-600" aria-live="polite">
                 Showing <span className="font-semibold text-blue-600">{filteredCamps.length}</span> camps
-                {selectedFilter !== 'all' && (
-                  <span> in <span className="font-semibold">{filterOptions.find(f => f.value === selectedFilter)?.label}</span></span>
-                )}
                 {searchTerm && (
                   <span> matching "<span className="font-semibold">{searchTerm}</span>"</span>
                 )}
               </p>
               {selectedCamps.length > 0 && (
                 <div className="mt-4">
-                  <Button 
-                    onClick={() => handleNavigation('compare')} 
+                  <Button
+                    onClick={() => handleNavigation('compare')}
                     className="bg-orange-500 hover:bg-orange-600 text-white"
                   >
                     Compare {selectedCamps.length} Camp{selectedCamps.length > 1 ? 's' : ''}
