@@ -110,6 +110,9 @@ function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [selectedCamps, setSelectedCamps] = useState([])
   const [selectedCountry, setSelectedCountry] = useState('all')
+  const [selectedPriceTier, setSelectedPriceTier] = useState('all')
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState('all')
+  const [filterSheetOpen, setFilterSheetOpen] = useState(false)
   const [resourceSection, setResourceSection] = useState(null)
   const [showContactForm, setShowContactForm] = useState(false)
 
@@ -1306,10 +1309,23 @@ function App() {
     return allCamps.filter(camp => {
       const matchesFilter = selectedFilter === 'all' || camp.category === selectedFilter
       const matchesCountry = selectedCountry === 'all' || camp.country === selectedCountry
+      const matchesPrice = selectedPriceTier === 'all' || camp.priceRange === selectedPriceTier
+      const matchesAge = (() => {
+        if (selectedAgeGroup === 'all') return true
+        const ageMatch = camp.ages.match(/(\d+)-(\d+)/)
+        if (!ageMatch) return true
+        const [, minStr, maxStr] = ageMatch
+        const [campMin, campMax] = [parseInt(minStr), parseInt(maxStr)]
+        const groupMap = { '3-6': [3,6], '7-10': [7,10], '11-14': [11,14], '15-17': [15,17], '18-24': [18,24] }
+        const [filterMin, filterMax] = groupMap[selectedAgeGroup]
+        return campMax >= filterMin && campMin <= filterMax
+      })()
+
+      const baseMatch = matchesFilter && matchesCountry && matchesPrice && matchesAge
 
       // Enhanced multilingual search
       if (!searchTerm) {
-        return matchesFilter && matchesCountry
+        return baseMatch
       }
 
       const searchTerms = getMultilingualSearchTerms(searchTerm)
@@ -1319,9 +1335,9 @@ function App() {
         camp.country.toLowerCase().includes(term)
       )
 
-      return matchesFilter && matchesCountry && matchesSearch
+      return baseMatch && matchesSearch
     })
-  }, [allCamps, selectedFilter, selectedCountry, searchTerm])
+  }, [allCamps, selectedFilter, selectedCountry, searchTerm, selectedPriceTier, selectedAgeGroup])
 
   const filterOptions = [
     { value: 'all', label: 'All Camps', count: allCamps.length },
@@ -1332,6 +1348,46 @@ function App() {
     { value: 'family', label: 'Family Programs', count: allCamps.filter(c => c.category === 'family').length },
     { value: 'budget_excellence', label: 'Budget Excellence', count: allCamps.filter(c => c.category === 'budget_excellence').length },
     { value: 'unique', label: 'Unique Experiences', count: allCamps.filter(c => c.category === 'unique').length }
+  ]
+
+  // Filter helper functions
+  const clearAllFilters = () => {
+    setSelectedFilter('all')
+    setSelectedCountry('all')
+    setSelectedPriceTier('all')
+    setSelectedAgeGroup('all')
+    setSearchTerm('')
+  }
+
+  const activeFilterCount = [
+    selectedFilter !== 'all',
+    selectedCountry !== 'all',
+    selectedPriceTier !== 'all',
+    selectedAgeGroup !== 'all',
+    searchTerm !== ''
+  ].filter(Boolean).length
+
+  const countryList = useMemo(() => {
+    const counts = {}
+    allCamps.forEach(camp => { counts[camp.country] = (counts[camp.country] || 0) + 1 })
+    return Object.entries(counts)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([name, count]) => ({ name, count }))
+  }, [allCamps])
+
+  const priceTierOptions = [
+    { value: 'budget', label: 'Budget', description: 'Under €2,000' },
+    { value: 'mid', label: 'Mid-Range', description: '€2,000-€4,000' },
+    { value: 'premium', label: 'Premium', description: '€4,000-€5,500' },
+    { value: 'luxury', label: 'Luxury', description: '€5,500+' }
+  ]
+
+  const ageGroupOptions = [
+    { value: '3-6', label: '3-6 years' },
+    { value: '7-10', label: '7-10 years' },
+    { value: '11-14', label: '11-14 years' },
+    { value: '15-17', label: '15-17 years' },
+    { value: '18-24', label: '18-24 years' }
   ]
 
   const stats = [
@@ -1396,7 +1452,6 @@ function App() {
   // Footer navigation handlers
   const handleCountryFilter = (country) => {
     setSelectedCountry(country)
-    setSelectedFilter('all') // Reset category filter when filtering by country
     setSearchTerm('') // Reset search
     setActiveSection('discover')
     window.location.hash = 'discover'
@@ -1406,8 +1461,6 @@ function App() {
 
   const handleCategoryFilter = (category) => {
     setSelectedFilter(category)
-    // Always reset country filter when filtering by category (including 'all')
-    setSelectedCountry('all') 
     setSearchTerm('') // Reset search
     setActiveSection('discover')
     window.location.hash = 'discover'
@@ -2612,12 +2665,9 @@ function App() {
                 <p className="text-gray-600 mb-4">
                   Try adjusting your search terms or filters to find more camps.
                 </p>
-                <Button 
-                  variant="outline" 
-                  onClick={() => {
-                    setSearchTerm('')
-                    setSelectedFilter('all')
-                  }}
+                <Button
+                  variant="outline"
+                  onClick={clearAllFilters}
                 >
                   Clear Filters
                 </Button>
