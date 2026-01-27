@@ -111,9 +111,9 @@ function App() {
   const [_showFilters, _setShowFilters] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [selectedCamps, setSelectedCamps] = useState([])
-  const [selectedCountry, setSelectedCountry] = useState('all')
+  const [selectedCountries, setSelectedCountries] = useState([])
   const [selectedPriceTier, setSelectedPriceTier] = useState('all')
-  const [selectedAgeGroup, setSelectedAgeGroup] = useState('all')
+  const [selectedAgeGroups, setSelectedAgeGroups] = useState([])
   const [filterSheetOpen, setFilterSheetOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState(null) // 'country' | 'price' | 'age' | null
   const dropdownRef = useRef(null)
@@ -1312,17 +1312,19 @@ function App() {
   const filteredCamps = useMemo(() => {
     return allCamps.filter(camp => {
       const matchesFilter = selectedFilter === 'all' || camp.category === selectedFilter
-      const matchesCountry = selectedCountry === 'all' || camp.country === selectedCountry
+      const matchesCountry = selectedCountries.length === 0 || selectedCountries.includes(camp.country)
       const matchesPrice = selectedPriceTier === 'all' || camp.priceRange === selectedPriceTier
       const matchesAge = (() => {
-        if (selectedAgeGroup === 'all') return true
+        if (selectedAgeGroups.length === 0) return true
         const ageMatch = camp.ages.match(/(\d+)-(\d+)/)
         if (!ageMatch) return true
         const [, minStr, maxStr] = ageMatch
         const [campMin, campMax] = [parseInt(minStr), parseInt(maxStr)]
         const groupMap = { '3-6': [3,6], '7-10': [7,10], '11-14': [11,14], '15-17': [15,17], '18-24': [18,24] }
-        const [filterMin, filterMax] = groupMap[selectedAgeGroup]
-        return campMax >= filterMin && campMin <= filterMax
+        return selectedAgeGroups.some(group => {
+          const [filterMin, filterMax] = groupMap[group]
+          return campMax >= filterMin && campMin <= filterMax
+        })
       })()
 
       const baseMatch = matchesFilter && matchesCountry && matchesPrice && matchesAge
@@ -1341,7 +1343,7 @@ function App() {
 
       return baseMatch && matchesSearch
     })
-  }, [allCamps, selectedFilter, selectedCountry, searchTerm, selectedPriceTier, selectedAgeGroup])
+  }, [allCamps, selectedFilter, selectedCountries, searchTerm, selectedPriceTier, selectedAgeGroups])
 
   const filterOptions = [
     { value: 'all', label: 'All Camps', count: allCamps.length },
@@ -1357,17 +1359,29 @@ function App() {
   // Filter helper functions
   const clearAllFilters = () => {
     setSelectedFilter('all')
-    setSelectedCountry('all')
+    setSelectedCountries([])
     setSelectedPriceTier('all')
-    setSelectedAgeGroup('all')
+    setSelectedAgeGroups([])
     setSearchTerm('')
+  }
+
+  const toggleCountry = (name) => {
+    setSelectedCountries(prev =>
+      prev.includes(name) ? prev.filter(c => c !== name) : [...prev, name]
+    )
+  }
+
+  const toggleAgeGroup = (value) => {
+    setSelectedAgeGroups(prev =>
+      prev.includes(value) ? prev.filter(a => a !== value) : [...prev, value]
+    )
   }
 
   const activeFilterCount = [
     selectedFilter !== 'all',
-    selectedCountry !== 'all',
+    selectedCountries.length > 0,
     selectedPriceTier !== 'all',
-    selectedAgeGroup !== 'all',
+    selectedAgeGroups.length > 0,
     searchTerm !== ''
   ].filter(Boolean).length
 
@@ -1455,7 +1469,7 @@ function App() {
 
   // Footer navigation handlers
   const handleCountryFilter = (country) => {
-    setSelectedCountry(country)
+    setSelectedCountries([country])
     setSearchTerm('') // Reset search
     setActiveSection('discover')
     window.location.hash = 'discover'
@@ -1517,7 +1531,7 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // Close dropdown on click outside
+  // Close dropdown on click outside or Escape key
   useEffect(() => {
     if (!openDropdown) return
     const handleClick = (e) => {
@@ -1525,8 +1539,15 @@ function App() {
         setOpenDropdown(null)
       }
     }
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setOpenDropdown(null)
+    }
     document.addEventListener('mousedown', handleClick)
-    return () => document.removeEventListener('mousedown', handleClick)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', handleClick)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
   }, [openDropdown])
 
   // Listen for hash changes
@@ -2025,19 +2046,19 @@ function App() {
 
           {/* Desktop Filter Dropdowns */}
           <div className="hidden lg:flex justify-center gap-3 mb-8" ref={dropdownRef}>
-            {/* Country Dropdown */}
+            {/* Country Dropdown (multi-select) */}
             <div className="relative">
-              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'country' ? null : 'country')} className={`gap-2 ${selectedCountry !== 'all' ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
+              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'country' ? null : 'country')} aria-expanded={openDropdown === 'country'} className={`gap-2 ${selectedCountries.length > 0 ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
                 <Globe className="w-4 h-4" />
-                {selectedCountry !== 'all' ? selectedCountry : 'Country'}
+                {selectedCountries.length === 0 ? 'Country' : selectedCountries.length === 1 ? selectedCountries[0] : `${selectedCountries.length} Countries`}
                 <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'country' ? 'rotate-180' : ''}`} />
               </Button>
               {openDropdown === 'country' && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50" role="listbox" aria-multiselectable="true" aria-label="Select countries">
                   <div className="grid grid-cols-2 gap-1.5 max-h-72 overflow-y-auto">
-                    <button onClick={() => { setSelectedCountry('all'); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === 'all' ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
+                    <button onClick={() => { setSelectedCountries([]); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountries.length === 0 ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
                     {countryList.map(({ name, count }) => (
-                      <button key={name} onClick={() => { setSelectedCountry(name); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === name ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                      <button key={name} onClick={() => toggleCountry(name)} role="option" aria-selected={selectedCountries.includes(name)} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountries.includes(name) ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
                         {name} ({count})
                       </button>
                     ))}
@@ -2048,7 +2069,7 @@ function App() {
 
             {/* Price Dropdown */}
             <div className="relative">
-              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'price' ? null : 'price')} className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
+              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'price' ? null : 'price')} aria-expanded={openDropdown === 'price'} className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
                 {selectedPriceTier !== 'all' ? priceTierOptions.find(p => p.value === selectedPriceTier)?.label : 'Price'}
                 <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
               </Button>
@@ -2066,19 +2087,19 @@ function App() {
               )}
             </div>
 
-            {/* Age Group Dropdown */}
+            {/* Age Group Dropdown (multi-select) */}
             <div className="relative">
-              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'age' ? null : 'age')} className={`gap-2 ${selectedAgeGroup !== 'all' ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
+              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'age' ? null : 'age')} aria-expanded={openDropdown === 'age'} className={`gap-2 ${selectedAgeGroups.length > 0 ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
                 <Users className="w-4 h-4" />
-                {selectedAgeGroup !== 'all' ? `${selectedAgeGroup} years` : 'Age Group'}
+                {selectedAgeGroups.length === 0 ? 'Age Group' : selectedAgeGroups.length === 1 ? `${selectedAgeGroups[0]} years` : `${selectedAgeGroups.length} Age Groups`}
                 <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'age' ? 'rotate-180' : ''}`} />
               </Button>
               {openDropdown === 'age' && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50" role="listbox" aria-multiselectable="true" aria-label="Select age groups">
                   <div className="space-y-1">
-                    <button onClick={() => { setSelectedAgeGroup('all'); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
+                    <button onClick={() => { setSelectedAgeGroups([]); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroups.length === 0 ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
                     {ageGroupOptions.map((age) => (
-                      <button key={age.value} onClick={() => { setSelectedAgeGroup(age.value); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                      <button key={age.value} onClick={() => toggleAgeGroup(age.value)} role="option" aria-selected={selectedAgeGroups.includes(age.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroups.includes(age.value) ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
                         {age.label}
                       </button>
                     ))}
@@ -2097,24 +2118,24 @@ function App() {
                   <button onClick={() => setSelectedFilter('all')} className="ml-1 p-1.5 -mr-1 hover:text-blue-600 hover:bg-blue-200 rounded-full transition-colors" aria-label={`Remove ${filterOptions.find(f => f.value === selectedFilter)?.label} filter`}><X className="w-4 h-4" /></button>
                 </span>
               )}
-              {selectedCountry !== 'all' && (
-                <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                  {selectedCountry}
-                  <button onClick={() => setSelectedCountry('all')} className="ml-1 p-1.5 -mr-1 hover:text-green-600 hover:bg-green-200 rounded-full transition-colors" aria-label={`Remove ${selectedCountry} filter`}><X className="w-4 h-4" /></button>
+              {selectedCountries.map(country => (
+                <span key={country} className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                  {country}
+                  <button onClick={() => toggleCountry(country)} className="ml-1 p-1.5 -mr-1 hover:text-green-600 hover:bg-green-200 rounded-full transition-colors" aria-label={`Remove ${country} filter`}><X className="w-4 h-4" /></button>
                 </span>
-              )}
+              ))}
               {selectedPriceTier !== 'all' && (
                 <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
                   {priceTierOptions.find(p => p.value === selectedPriceTier)?.label}
                   <button onClick={() => setSelectedPriceTier('all')} className="ml-1 p-1.5 -mr-1 hover:text-purple-600 hover:bg-purple-200 rounded-full transition-colors" aria-label="Remove price filter"><X className="w-4 h-4" /></button>
                 </span>
               )}
-              {selectedAgeGroup !== 'all' && (
-                <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
-                  {selectedAgeGroup} years
-                  <button onClick={() => setSelectedAgeGroup('all')} className="ml-1 p-1.5 -mr-1 hover:text-orange-600 hover:bg-orange-200 rounded-full transition-colors" aria-label="Remove age filter"><X className="w-4 h-4" /></button>
+              {selectedAgeGroups.map(age => (
+                <span key={age} className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                  {age} years
+                  <button onClick={() => toggleAgeGroup(age)} className="ml-1 p-1.5 -mr-1 hover:text-orange-600 hover:bg-orange-200 rounded-full transition-colors" aria-label={`Remove ${age} age filter`}><X className="w-4 h-4" /></button>
                 </span>
-              )}
+              ))}
               {activeFilterCount >= 1 && (
                 <button onClick={clearAllFilters} className="px-4 py-1.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 rounded-full transition-colors">Clear all ×</button>
               )}
@@ -2554,19 +2575,19 @@ function App() {
 
             {/* Desktop Filter Dropdowns */}
             <div className="hidden lg:flex justify-center gap-3 mb-8" ref={dropdownRef}>
-              {/* Country Dropdown */}
+              {/* Country Dropdown (multi-select) */}
               <div className="relative">
-                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'country' ? null : 'country')} className={`gap-2 ${selectedCountry !== 'all' ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
+                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'country' ? null : 'country')} aria-expanded={openDropdown === 'country'} className={`gap-2 ${selectedCountries.length > 0 ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
                   <Globe className="w-4 h-4" />
-                  {selectedCountry !== 'all' ? selectedCountry : 'Country'}
+                  {selectedCountries.length === 0 ? 'Country' : selectedCountries.length === 1 ? selectedCountries[0] : `${selectedCountries.length} Countries`}
                   <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'country' ? 'rotate-180' : ''}`} />
                 </Button>
                 {openDropdown === 'country' && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50" role="listbox" aria-multiselectable="true" aria-label="Select countries">
                     <div className="grid grid-cols-2 gap-1.5 max-h-72 overflow-y-auto">
-                      <button onClick={() => { setSelectedCountry('all'); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === 'all' ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
+                      <button onClick={() => { setSelectedCountries([]); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountries.length === 0 ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
                       {countryList.map(({ name, count }) => (
-                        <button key={name} onClick={() => { setSelectedCountry(name); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === name ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                        <button key={name} onClick={() => toggleCountry(name)} role="option" aria-selected={selectedCountries.includes(name)} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountries.includes(name) ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
                           {name} ({count})
                         </button>
                       ))}
@@ -2577,7 +2598,7 @@ function App() {
 
               {/* Price Dropdown */}
               <div className="relative">
-                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'price' ? null : 'price')} className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
+                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'price' ? null : 'price')} aria-expanded={openDropdown === 'price'} className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
                   {selectedPriceTier !== 'all' ? priceTierOptions.find(p => p.value === selectedPriceTier)?.label : 'Price'}
                   <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
                 </Button>
@@ -2595,19 +2616,19 @@ function App() {
                 )}
               </div>
 
-              {/* Age Group Dropdown */}
+              {/* Age Group Dropdown (multi-select) */}
               <div className="relative">
-                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'age' ? null : 'age')} className={`gap-2 ${selectedAgeGroup !== 'all' ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
+                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'age' ? null : 'age')} aria-expanded={openDropdown === 'age'} className={`gap-2 ${selectedAgeGroups.length > 0 ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
                   <Users className="w-4 h-4" />
-                  {selectedAgeGroup !== 'all' ? `${selectedAgeGroup} years` : 'Age Group'}
+                  {selectedAgeGroups.length === 0 ? 'Age Group' : selectedAgeGroups.length === 1 ? `${selectedAgeGroups[0]} years` : `${selectedAgeGroups.length} Age Groups`}
                   <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'age' ? 'rotate-180' : ''}`} />
                 </Button>
                 {openDropdown === 'age' && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50" role="listbox" aria-multiselectable="true" aria-label="Select age groups">
                     <div className="space-y-1">
-                      <button onClick={() => { setSelectedAgeGroup('all'); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
+                      <button onClick={() => { setSelectedAgeGroups([]); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroups.length === 0 ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
                       {ageGroupOptions.map((age) => (
-                        <button key={age.value} onClick={() => { setSelectedAgeGroup(age.value); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                        <button key={age.value} onClick={() => toggleAgeGroup(age.value)} role="option" aria-selected={selectedAgeGroups.includes(age.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroups.includes(age.value) ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
                           {age.label}
                         </button>
                       ))}
@@ -2626,24 +2647,24 @@ function App() {
                     <button onClick={() => setSelectedFilter('all')} className="ml-1 p-1.5 -mr-1 hover:text-blue-600 hover:bg-blue-200 rounded-full transition-colors" aria-label={`Remove ${filterOptions.find(f => f.value === selectedFilter)?.label} filter`}><X className="w-4 h-4" /></button>
                   </span>
                 )}
-                {selectedCountry !== 'all' && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                    {selectedCountry}
-                    <button onClick={() => setSelectedCountry('all')} className="ml-1 p-1.5 -mr-1 hover:text-green-600 hover:bg-green-200 rounded-full transition-colors" aria-label={`Remove ${selectedCountry} filter`}><X className="w-4 h-4" /></button>
+                {selectedCountries.map(country => (
+                  <span key={country} className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                    {country}
+                    <button onClick={() => toggleCountry(country)} className="ml-1 p-1.5 -mr-1 hover:text-green-600 hover:bg-green-200 rounded-full transition-colors" aria-label={`Remove ${country} filter`}><X className="w-4 h-4" /></button>
                   </span>
-                )}
+                ))}
                 {selectedPriceTier !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
                     {priceTierOptions.find(p => p.value === selectedPriceTier)?.label}
                     <button onClick={() => setSelectedPriceTier('all')} className="ml-1 p-1.5 -mr-1 hover:text-purple-600 hover:bg-purple-200 rounded-full transition-colors" aria-label="Remove price filter"><X className="w-4 h-4" /></button>
                   </span>
                 )}
-                {selectedAgeGroup !== 'all' && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
-                    {selectedAgeGroup} years
-                    <button onClick={() => setSelectedAgeGroup('all')} className="ml-1 p-1.5 -mr-1 hover:text-orange-600 hover:bg-orange-200 rounded-full transition-colors" aria-label="Remove age filter"><X className="w-4 h-4" /></button>
+                {selectedAgeGroups.map(age => (
+                  <span key={age} className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                    {age} years
+                    <button onClick={() => toggleAgeGroup(age)} className="ml-1 p-1.5 -mr-1 hover:text-orange-600 hover:bg-orange-200 rounded-full transition-colors" aria-label={`Remove ${age} age filter`}><X className="w-4 h-4" /></button>
                   </span>
-                )}
+                ))}
                 {activeFilterCount >= 1 && (
                   <button onClick={clearAllFilters} className="px-4 py-1.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 rounded-full transition-colors">Clear all ×</button>
                 )}
@@ -5480,14 +5501,14 @@ function App() {
               </div>
             </div>
 
-            {/* Country */}
+            {/* Country (multi-select) */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">Country</h3>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">Country {selectedCountries.length > 0 && <span className="text-green-600">({selectedCountries.length} selected)</span>}</h3>
               <div className="flex flex-wrap gap-2">
                 <button
-                  onClick={() => setSelectedCountry('all')}
+                  onClick={() => setSelectedCountries([])}
                   className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
-                    selectedCountry === 'all' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    selectedCountries.length === 0 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
                   All Countries
@@ -5495,9 +5516,9 @@ function App() {
                 {countryList.map(({ name, count }) => (
                   <button
                     key={name}
-                    onClick={() => setSelectedCountry(name)}
+                    onClick={() => toggleCountry(name)}
                     className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
-                      selectedCountry === name ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      selectedCountries.includes(name) ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     {name} ({count})
@@ -5532,14 +5553,14 @@ function App() {
               </div>
             </div>
 
-            {/* Age Group */}
+            {/* Age Group (multi-select) */}
             <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">Age Group</h3>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">Age Group {selectedAgeGroups.length > 0 && <span className="text-orange-600">({selectedAgeGroups.length} selected)</span>}</h3>
               <div className="flex flex-wrap gap-2">
                 <button
-                  onClick={() => setSelectedAgeGroup('all')}
+                  onClick={() => setSelectedAgeGroups([])}
                   className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
-                    selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    selectedAgeGroups.length === 0 ? 'bg-orange-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
                   All Ages
@@ -5547,9 +5568,9 @@ function App() {
                 {ageGroupOptions.map((age) => (
                   <button
                     key={age.value}
-                    onClick={() => setSelectedAgeGroup(age.value)}
+                    onClick={() => toggleAgeGroup(age.value)}
                     className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
-                      selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      selectedAgeGroups.includes(age.value) ? 'bg-orange-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     {age.label}
