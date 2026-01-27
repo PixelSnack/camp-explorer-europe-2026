@@ -3,7 +3,7 @@
 *Technical reference for codebase architecture and App.jsx structure*
 
 **Created:** January 24, 2026
-**Last Updated:** January 26, 2026
+**Last Updated:** January 28, 2026
 **Purpose:** Quick reference for understanding code organization
 
 ---
@@ -161,10 +161,15 @@ const [showContactForm, setShowContactForm] = useState(false)
 const [showBackToTop, setShowBackToTop] = useState(false)
 
 // Filtering State
-const [selectedFilter, setSelectedFilter] = useState('all')
+const [selectedFilter, setSelectedFilter] = useState('all')      // Category filter
 const [searchTerm, setSearchTerm] = useState('')
-const [selectedCountry, setSelectedCountry] = useState('all')
-const [selectedCamps, setSelectedCamps] = useState([])  // For comparison
+const [selectedCountries, setSelectedCountries] = useState([])   // Multi-select (empty = all)
+const [selectedPriceTier, setSelectedPriceTier] = useState('all') // Single-select
+const [selectedAgeGroups, setSelectedAgeGroups] = useState([])   // Multi-select (empty = all)
+const [filterSheetOpen, setFilterSheetOpen] = useState(false)    // Mobile drawer
+const [openDropdown, setOpenDropdown] = useState(null)           // Desktop dropdown state
+const dropdownRef = useRef(null)                                 // Click-outside detection
+const [selectedCamps, setSelectedCamps] = useState([])           // For comparison
 
 // Contact Form State
 const [isSubmittingForm, setIsSubmittingForm] = useState(false)
@@ -185,9 +190,26 @@ const [showCookieBanner, setShowCookieBanner] = useState(false)
 |----------|------|---------|
 | `handleNavigation(section)` | ~1172 | Navigate to section, update hash |
 | `handleCategoryFilter(category)` | ~1201 | Filter by category, reset others |
-| `handleCountryFilter(country)` | ~1191 | Filter by country, reset others |
+| `toggleCountry(name)` | — | Toggle country in multi-select array |
+| `toggleAgeGroup(value)` | — | Toggle age group in multi-select array |
+| `clearAllFilters()` | — | Reset all filters (countries, price, age, search, category) |
+| `activeFilterCount` | — | Count of active filter dimensions (derived) |
 | `handleCampSelection(camp)` | ~1181 | Add/remove from comparison (max 3) |
 | `handleResourceLink(resource)` | ~1212 | Navigate to resource sections |
+
+### Filter System Architecture
+
+**Multi-select** (Country, Age Group): State is an array. Empty = all. Toggle adds/removes items. OR logic within filter type, AND across filter types.
+
+**Single-select** (Price Tier): State is a string ('all' or tier name).
+
+**UI Components:**
+- **Desktop**: Custom dropdown menus with click-outside + Escape key dismissal
+- **Mobile**: FAB button → vaul Drawer bottom sheet
+- **Filter chips**: Rendered above camp grid with individual dismiss buttons
+- **Clear all**: Red pill button, visible when 1+ filters active
+
+**Known duplication**: Filter dropdowns + chips are duplicated in Home (~line 2048-2140) and Discover (~line 2577-2670) sections. TODO: Extract shared `<FilterBar />` component.
 
 ### Analytics & Tracking
 
