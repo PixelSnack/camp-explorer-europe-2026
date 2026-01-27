@@ -2314,12 +2314,9 @@ function App() {
               <p className="text-gray-600 mb-4">
                 Try adjusting your search terms or filters to find more camps.
               </p>
-              <Button 
-                variant="outline" 
-                onClick={() => {
-                  setSearchTerm('')
-                  setSelectedFilter('all')
-                }}
+              <Button
+                variant="outline"
+                onClick={clearAllFilters}
               >
                 Clear Filters
               </Button>
