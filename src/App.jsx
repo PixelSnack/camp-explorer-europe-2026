@@ -57,6 +57,7 @@ import {
 } from '@/components/ui/breadcrumb.jsx'
 import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart, ArrowUp, SlidersHorizontal } from 'lucide-react'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter } from '@/components/ui/drawer.jsx'
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover.jsx'
 import heroImage from './assets/european-summer-camps-lakeside-hero.png'
 import heroLakesideAvif from './assets/hero-lakeside.avif'
 import heroLakesideWebp from './assets/hero-lakeside.webp'
@@ -2007,7 +2008,69 @@ function App() {
               </Button>
             ))}
           </div>
-          
+
+          {/* Desktop Filter Dropdowns */}
+          <div className="hidden lg:flex justify-center gap-3 mb-8">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" className={`gap-2 ${selectedCountry !== 'all' ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
+                  <Globe className="w-4 h-4" />
+                  {selectedCountry !== 'all' ? selectedCountry : 'Country'}
+                  <ChevronDown className="w-4 h-4" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80">
+                <div className="grid grid-cols-2 gap-2">
+                  <button onClick={() => setSelectedCountry('all')} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === 'all' ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
+                  {countryList.map(({ name, count }) => (
+                    <button key={name} onClick={() => setSelectedCountry(name)} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === name ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                      {name} ({count})
+                    </button>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
+
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
+                  {selectedPriceTier !== 'all' ? priceTierOptions.find(p => p.value === selectedPriceTier)?.label : 'Price'}
+                  <ChevronDown className="w-4 h-4" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-56">
+                <div className="space-y-1">
+                  <button onClick={() => setSelectedPriceTier('all')} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === 'all' ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Prices</button>
+                  {priceTierOptions.map((tier) => (
+                    <button key={tier.value} onClick={() => setSelectedPriceTier(tier.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === tier.value ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                      {tier.label} <span className="text-xs opacity-70">({tier.description})</span>
+                    </button>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
+
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" className={`gap-2 ${selectedAgeGroup !== 'all' ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
+                  <Users className="w-4 h-4" />
+                  {selectedAgeGroup !== 'all' ? `${selectedAgeGroup} years` : 'Age Group'}
+                  <ChevronDown className="w-4 h-4" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-48">
+                <div className="space-y-1">
+                  <button onClick={() => setSelectedAgeGroup('all')} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
+                  {ageGroupOptions.map((age) => (
+                    <button key={age.value} onClick={() => setSelectedAgeGroup(age.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                      {age.label}
+                    </button>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+
           {/* Active Filter Chips */}
           {activeFilterCount > 0 && (
             <div className="flex flex-wrap justify-center gap-2 mb-4" role="list" aria-label="Active filters">
@@ -2474,7 +2537,69 @@ function App() {
                 </Button>
               ))}
             </div>
-            
+
+            {/* Desktop Filter Dropdowns */}
+            <div className="hidden lg:flex justify-center gap-3 mb-8">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className={`gap-2 ${selectedCountry !== 'all' ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
+                    <Globe className="w-4 h-4" />
+                    {selectedCountry !== 'all' ? selectedCountry : 'Country'}
+                    <ChevronDown className="w-4 h-4" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80">
+                  <div className="grid grid-cols-2 gap-2">
+                    <button onClick={() => setSelectedCountry('all')} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === 'all' ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
+                    {countryList.map(({ name, count }) => (
+                      <button key={name} onClick={() => setSelectedCountry(name)} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === name ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                        {name} ({count})
+                      </button>
+                    ))}
+                  </div>
+                </PopoverContent>
+              </Popover>
+
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
+                    {selectedPriceTier !== 'all' ? priceTierOptions.find(p => p.value === selectedPriceTier)?.label : 'Price'}
+                    <ChevronDown className="w-4 h-4" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-56">
+                  <div className="space-y-1">
+                    <button onClick={() => setSelectedPriceTier('all')} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === 'all' ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Prices</button>
+                    {priceTierOptions.map((tier) => (
+                      <button key={tier.value} onClick={() => setSelectedPriceTier(tier.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === tier.value ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                        {tier.label} <span className="text-xs opacity-70">({tier.description})</span>
+                      </button>
+                    ))}
+                  </div>
+                </PopoverContent>
+              </Popover>
+
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className={`gap-2 ${selectedAgeGroup !== 'all' ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
+                    <Users className="w-4 h-4" />
+                    {selectedAgeGroup !== 'all' ? `${selectedAgeGroup} years` : 'Age Group'}
+                    <ChevronDown className="w-4 h-4" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-48">
+                  <div className="space-y-1">
+                    <button onClick={() => setSelectedAgeGroup('all')} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
+                    {ageGroupOptions.map((age) => (
+                      <button key={age.value} onClick={() => setSelectedAgeGroup(age.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                        {age.label}
+                      </button>
+                    ))}
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </div>
+
             {/* Active Filter Chips */}
             {activeFilterCount > 0 && (
               <div className="flex flex-wrap justify-center gap-2 mb-4" role="list" aria-label="Active filters">
