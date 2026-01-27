@@ -57,7 +57,7 @@ import {
 } from '@/components/ui/breadcrumb.jsx'
 import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart, ArrowUp, SlidersHorizontal } from 'lucide-react'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter } from '@/components/ui/drawer.jsx'
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover.jsx'
+// Popover removed - Radix positioning broken with this project's setup. Using custom dropdowns instead.
 import heroImage from './assets/european-summer-camps-lakeside-hero.png'
 import heroLakesideAvif from './assets/hero-lakeside.avif'
 import heroLakesideWebp from './assets/hero-lakeside.webp'
@@ -115,6 +115,8 @@ function App() {
   const [selectedPriceTier, setSelectedPriceTier] = useState('all')
   const [selectedAgeGroup, setSelectedAgeGroup] = useState('all')
   const [filterSheetOpen, setFilterSheetOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState(null) // 'country' | 'price' | 'age' | null
+  const dropdownRef = useRef(null)
   const [resourceSection, setResourceSection] = useState(null)
   const [showContactForm, setShowContactForm] = useState(false)
 
@@ -1515,6 +1517,18 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  // Close dropdown on click outside
+  useEffect(() => {
+    if (!openDropdown) return
+    const handleClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpenDropdown(null)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [openDropdown])
+
   // Listen for hash changes
   useEffect(() => {
     const handleHashChange = () => {
@@ -2010,65 +2024,68 @@ function App() {
           </div>
 
           {/* Desktop Filter Dropdowns */}
-          <div className="hidden lg:flex justify-center gap-3 mb-8">
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button variant="outline" className={`gap-2 ${selectedCountry !== 'all' ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
-                  <Globe className="w-4 h-4" />
-                  {selectedCountry !== 'all' ? selectedCountry : 'Country'}
-                  <ChevronDown className="w-4 h-4" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-80">
-                <div className="grid grid-cols-2 gap-2">
-                  <button onClick={() => setSelectedCountry('all')} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === 'all' ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
-                  {countryList.map(({ name, count }) => (
-                    <button key={name} onClick={() => setSelectedCountry(name)} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === name ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
-                      {name} ({count})
-                    </button>
-                  ))}
+          <div className="hidden lg:flex justify-center gap-3 mb-8" ref={dropdownRef}>
+            {/* Country Dropdown */}
+            <div className="relative">
+              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'country' ? null : 'country')} className={`gap-2 ${selectedCountry !== 'all' ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
+                <Globe className="w-4 h-4" />
+                {selectedCountry !== 'all' ? selectedCountry : 'Country'}
+                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'country' ? 'rotate-180' : ''}`} />
+              </Button>
+              {openDropdown === 'country' && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                  <div className="grid grid-cols-2 gap-1.5 max-h-72 overflow-y-auto">
+                    <button onClick={() => { setSelectedCountry('all'); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === 'all' ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
+                    {countryList.map(({ name, count }) => (
+                      <button key={name} onClick={() => { setSelectedCountry(name); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === name ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                        {name} ({count})
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </PopoverContent>
-            </Popover>
+              )}
+            </div>
 
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button variant="outline" className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
-                  {selectedPriceTier !== 'all' ? priceTierOptions.find(p => p.value === selectedPriceTier)?.label : 'Price'}
-                  <ChevronDown className="w-4 h-4" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-56">
-                <div className="space-y-1">
-                  <button onClick={() => setSelectedPriceTier('all')} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === 'all' ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Prices</button>
-                  {priceTierOptions.map((tier) => (
-                    <button key={tier.value} onClick={() => setSelectedPriceTier(tier.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === tier.value ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
-                      {tier.label} <span className="text-xs opacity-70">({tier.description})</span>
-                    </button>
-                  ))}
+            {/* Price Dropdown */}
+            <div className="relative">
+              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'price' ? null : 'price')} className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
+                {selectedPriceTier !== 'all' ? priceTierOptions.find(p => p.value === selectedPriceTier)?.label : 'Price'}
+                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
+              </Button>
+              {openDropdown === 'price' && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                  <div className="space-y-1">
+                    <button onClick={() => { setSelectedPriceTier('all'); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === 'all' ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Prices</button>
+                    {priceTierOptions.map((tier) => (
+                      <button key={tier.value} onClick={() => { setSelectedPriceTier(tier.value); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === tier.value ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                        {tier.label} <span className="text-xs opacity-70">({tier.description})</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </PopoverContent>
-            </Popover>
+              )}
+            </div>
 
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button variant="outline" className={`gap-2 ${selectedAgeGroup !== 'all' ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
-                  <Users className="w-4 h-4" />
-                  {selectedAgeGroup !== 'all' ? `${selectedAgeGroup} years` : 'Age Group'}
-                  <ChevronDown className="w-4 h-4" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-48">
-                <div className="space-y-1">
-                  <button onClick={() => setSelectedAgeGroup('all')} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
-                  {ageGroupOptions.map((age) => (
-                    <button key={age.value} onClick={() => setSelectedAgeGroup(age.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
-                      {age.label}
-                    </button>
-                  ))}
+            {/* Age Group Dropdown */}
+            <div className="relative">
+              <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'age' ? null : 'age')} className={`gap-2 ${selectedAgeGroup !== 'all' ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
+                <Users className="w-4 h-4" />
+                {selectedAgeGroup !== 'all' ? `${selectedAgeGroup} years` : 'Age Group'}
+                <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'age' ? 'rotate-180' : ''}`} />
+              </Button>
+              {openDropdown === 'age' && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                  <div className="space-y-1">
+                    <button onClick={() => { setSelectedAgeGroup('all'); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
+                    {ageGroupOptions.map((age) => (
+                      <button key={age.value} onClick={() => { setSelectedAgeGroup(age.value); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                        {age.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </PopoverContent>
-            </Popover>
+              )}
+            </div>
           </div>
 
           {/* Active Filter Chips */}
@@ -2077,29 +2094,29 @@ function App() {
               {selectedFilter !== 'all' && (
                 <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
                   {filterOptions.find(f => f.value === selectedFilter)?.label}
-                  <button onClick={() => setSelectedFilter('all')} className="ml-1 hover:text-blue-600" aria-label={`Remove ${filterOptions.find(f => f.value === selectedFilter)?.label} filter`}><X className="w-3.5 h-3.5" /></button>
+                  <button onClick={() => setSelectedFilter('all')} className="ml-1 p-1.5 -mr-1 hover:text-blue-600 hover:bg-blue-200 rounded-full transition-colors" aria-label={`Remove ${filterOptions.find(f => f.value === selectedFilter)?.label} filter`}><X className="w-4 h-4" /></button>
                 </span>
               )}
               {selectedCountry !== 'all' && (
                 <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium">
                   {selectedCountry}
-                  <button onClick={() => setSelectedCountry('all')} className="ml-1 hover:text-green-600" aria-label={`Remove ${selectedCountry} filter`}><X className="w-3.5 h-3.5" /></button>
+                  <button onClick={() => setSelectedCountry('all')} className="ml-1 p-1.5 -mr-1 hover:text-green-600 hover:bg-green-200 rounded-full transition-colors" aria-label={`Remove ${selectedCountry} filter`}><X className="w-4 h-4" /></button>
                 </span>
               )}
               {selectedPriceTier !== 'all' && (
                 <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
                   {priceTierOptions.find(p => p.value === selectedPriceTier)?.label}
-                  <button onClick={() => setSelectedPriceTier('all')} className="ml-1 hover:text-purple-600" aria-label="Remove price filter"><X className="w-3.5 h-3.5" /></button>
+                  <button onClick={() => setSelectedPriceTier('all')} className="ml-1 p-1.5 -mr-1 hover:text-purple-600 hover:bg-purple-200 rounded-full transition-colors" aria-label="Remove price filter"><X className="w-4 h-4" /></button>
                 </span>
               )}
               {selectedAgeGroup !== 'all' && (
                 <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
                   {selectedAgeGroup} years
-                  <button onClick={() => setSelectedAgeGroup('all')} className="ml-1 hover:text-orange-600" aria-label="Remove age filter"><X className="w-3.5 h-3.5" /></button>
+                  <button onClick={() => setSelectedAgeGroup('all')} className="ml-1 p-1.5 -mr-1 hover:text-orange-600 hover:bg-orange-200 rounded-full transition-colors" aria-label="Remove age filter"><X className="w-4 h-4" /></button>
                 </span>
               )}
-              {activeFilterCount >= 2 && (
-                <button onClick={clearAllFilters} className="px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 underline">Clear all</button>
+              {activeFilterCount >= 1 && (
+                <button onClick={clearAllFilters} className="px-4 py-1.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 rounded-full transition-colors">Clear all ×</button>
               )}
             </div>
           )}
@@ -2536,65 +2553,68 @@ function App() {
             </div>
 
             {/* Desktop Filter Dropdowns */}
-            <div className="hidden lg:flex justify-center gap-3 mb-8">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className={`gap-2 ${selectedCountry !== 'all' ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
-                    <Globe className="w-4 h-4" />
-                    {selectedCountry !== 'all' ? selectedCountry : 'Country'}
-                    <ChevronDown className="w-4 h-4" />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-80">
-                  <div className="grid grid-cols-2 gap-2">
-                    <button onClick={() => setSelectedCountry('all')} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === 'all' ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
-                    {countryList.map(({ name, count }) => (
-                      <button key={name} onClick={() => setSelectedCountry(name)} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === name ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
-                        {name} ({count})
-                      </button>
-                    ))}
+            <div className="hidden lg:flex justify-center gap-3 mb-8" ref={dropdownRef}>
+              {/* Country Dropdown */}
+              <div className="relative">
+                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'country' ? null : 'country')} className={`gap-2 ${selectedCountry !== 'all' ? 'border-green-500 bg-green-50 text-green-800' : 'border-gray-300 text-gray-700'}`}>
+                  <Globe className="w-4 h-4" />
+                  {selectedCountry !== 'all' ? selectedCountry : 'Country'}
+                  <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'country' ? 'rotate-180' : ''}`} />
+                </Button>
+                {openDropdown === 'country' && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                    <div className="grid grid-cols-2 gap-1.5 max-h-72 overflow-y-auto">
+                      <button onClick={() => { setSelectedCountry('all'); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === 'all' ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Countries</button>
+                      {countryList.map(({ name, count }) => (
+                        <button key={name} onClick={() => { setSelectedCountry(name); setOpenDropdown(null) }} className={`px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedCountry === name ? 'bg-green-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                          {name} ({count})
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </PopoverContent>
-              </Popover>
+                )}
+              </div>
 
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
-                    {selectedPriceTier !== 'all' ? priceTierOptions.find(p => p.value === selectedPriceTier)?.label : 'Price'}
-                    <ChevronDown className="w-4 h-4" />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-56">
-                  <div className="space-y-1">
-                    <button onClick={() => setSelectedPriceTier('all')} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === 'all' ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Prices</button>
-                    {priceTierOptions.map((tier) => (
-                      <button key={tier.value} onClick={() => setSelectedPriceTier(tier.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === tier.value ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
-                        {tier.label} <span className="text-xs opacity-70">({tier.description})</span>
-                      </button>
-                    ))}
+              {/* Price Dropdown */}
+              <div className="relative">
+                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'price' ? null : 'price')} className={`gap-2 ${selectedPriceTier !== 'all' ? 'border-purple-500 bg-purple-50 text-purple-800' : 'border-gray-300 text-gray-700'}`}>
+                  {selectedPriceTier !== 'all' ? priceTierOptions.find(p => p.value === selectedPriceTier)?.label : 'Price'}
+                  <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
+                </Button>
+                {openDropdown === 'price' && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                    <div className="space-y-1">
+                      <button onClick={() => { setSelectedPriceTier('all'); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === 'all' ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Prices</button>
+                      {priceTierOptions.map((tier) => (
+                        <button key={tier.value} onClick={() => { setSelectedPriceTier(tier.value); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedPriceTier === tier.value ? 'bg-purple-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                          {tier.label} <span className="text-xs opacity-70">({tier.description})</span>
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </PopoverContent>
-              </Popover>
+                )}
+              </div>
 
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className={`gap-2 ${selectedAgeGroup !== 'all' ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
-                    <Users className="w-4 h-4" />
-                    {selectedAgeGroup !== 'all' ? `${selectedAgeGroup} years` : 'Age Group'}
-                    <ChevronDown className="w-4 h-4" />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-48">
-                  <div className="space-y-1">
-                    <button onClick={() => setSelectedAgeGroup('all')} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
-                    {ageGroupOptions.map((age) => (
-                      <button key={age.value} onClick={() => setSelectedAgeGroup(age.value)} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
-                        {age.label}
-                      </button>
-                    ))}
+              {/* Age Group Dropdown */}
+              <div className="relative">
+                <Button variant="outline" onClick={() => setOpenDropdown(openDropdown === 'age' ? null : 'age')} className={`gap-2 ${selectedAgeGroup !== 'all' ? 'border-orange-500 bg-orange-50 text-orange-800' : 'border-gray-300 text-gray-700'}`}>
+                  <Users className="w-4 h-4" />
+                  {selectedAgeGroup !== 'all' ? `${selectedAgeGroup} years` : 'Age Group'}
+                  <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'age' ? 'rotate-180' : ''}`} />
+                </Button>
+                {openDropdown === 'age' && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg border border-gray-200 shadow-lg p-3 z-50">
+                    <div className="space-y-1">
+                      <button onClick={() => { setSelectedAgeGroup('all'); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>All Ages</button>
+                      {ageGroupOptions.map((age) => (
+                        <button key={age.value} onClick={() => { setSelectedAgeGroup(age.value); setOpenDropdown(null) }} className={`w-full px-3 py-2 rounded text-sm font-medium text-left transition-colors ${selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'hover:bg-gray-100 text-gray-700'}`}>
+                          {age.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </PopoverContent>
-              </Popover>
+                )}
+              </div>
             </div>
 
             {/* Active Filter Chips */}
@@ -2603,29 +2623,29 @@ function App() {
                 {selectedFilter !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
                     {filterOptions.find(f => f.value === selectedFilter)?.label}
-                    <button onClick={() => setSelectedFilter('all')} className="ml-1 hover:text-blue-600" aria-label={`Remove ${filterOptions.find(f => f.value === selectedFilter)?.label} filter`}><X className="w-3.5 h-3.5" /></button>
+                    <button onClick={() => setSelectedFilter('all')} className="ml-1 p-1.5 -mr-1 hover:text-blue-600 hover:bg-blue-200 rounded-full transition-colors" aria-label={`Remove ${filterOptions.find(f => f.value === selectedFilter)?.label} filter`}><X className="w-4 h-4" /></button>
                   </span>
                 )}
                 {selectedCountry !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium">
                     {selectedCountry}
-                    <button onClick={() => setSelectedCountry('all')} className="ml-1 hover:text-green-600" aria-label={`Remove ${selectedCountry} filter`}><X className="w-3.5 h-3.5" /></button>
+                    <button onClick={() => setSelectedCountry('all')} className="ml-1 p-1.5 -mr-1 hover:text-green-600 hover:bg-green-200 rounded-full transition-colors" aria-label={`Remove ${selectedCountry} filter`}><X className="w-4 h-4" /></button>
                   </span>
                 )}
                 {selectedPriceTier !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
                     {priceTierOptions.find(p => p.value === selectedPriceTier)?.label}
-                    <button onClick={() => setSelectedPriceTier('all')} className="ml-1 hover:text-purple-600" aria-label="Remove price filter"><X className="w-3.5 h-3.5" /></button>
+                    <button onClick={() => setSelectedPriceTier('all')} className="ml-1 p-1.5 -mr-1 hover:text-purple-600 hover:bg-purple-200 rounded-full transition-colors" aria-label="Remove price filter"><X className="w-4 h-4" /></button>
                   </span>
                 )}
                 {selectedAgeGroup !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
                     {selectedAgeGroup} years
-                    <button onClick={() => setSelectedAgeGroup('all')} className="ml-1 hover:text-orange-600" aria-label="Remove age filter"><X className="w-3.5 h-3.5" /></button>
+                    <button onClick={() => setSelectedAgeGroup('all')} className="ml-1 p-1.5 -mr-1 hover:text-orange-600 hover:bg-orange-200 rounded-full transition-colors" aria-label="Remove age filter"><X className="w-4 h-4" /></button>
                   </span>
                 )}
-                {activeFilterCount >= 2 && (
-                  <button onClick={clearAllFilters} className="px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 underline">Clear all</button>
+                {activeFilterCount >= 1 && (
+                  <button onClick={clearAllFilters} className="px-4 py-1.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 rounded-full transition-colors">Clear all ×</button>
                 )}
               </div>
             )}
@@ -5407,11 +5427,11 @@ function App() {
         </div>
       )}
 
-      {/* Filter FAB - Mobile Only, Discover Section */}
-      {activeSection === 'discover' && (
+      {/* Filter FAB - Mobile Only, Home & Discover Sections */}
+      {(activeSection === 'home' || activeSection === 'discover') && (
         <button
           onClick={() => setFilterSheetOpen(true)}
-          className="fixed bottom-6 left-6 z-40 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform lg:hidden"
+          className="fixed bottom-8 left-6 z-40 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform lg:hidden"
           aria-label="Open filters"
           aria-expanded={filterSheetOpen}
         >
@@ -5427,17 +5447,19 @@ function App() {
       {/* Mobile Filter Drawer */}
       <Drawer open={filterSheetOpen} onOpenChange={setFilterSheetOpen}>
         <DrawerContent>
-          <DrawerHeader>
-            <div className="flex items-center justify-between">
-              <DrawerTitle>Filter Camps</DrawerTitle>
-              <button onClick={clearAllFilters} className="text-blue-600 text-sm font-medium">
-                Clear all
-              </button>
-            </div>
+          <DrawerHeader className="relative">
+            <button
+              onClick={() => setFilterSheetOpen(false)}
+              className="absolute top-3 right-3 w-12 h-12 flex items-center justify-center rounded-full bg-red-500 hover:bg-red-600 text-white transition-colors shadow-sm"
+              aria-label="Close filters"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <DrawerTitle className="text-lg">Filter Camps</DrawerTitle>
             <DrawerDescription>Showing {filteredCamps.length} of {allCamps.length} camps</DrawerDescription>
           </DrawerHeader>
 
-          <div className="overflow-y-auto px-4 pb-4 space-y-6">
+          <div className="overflow-y-auto px-4 pb-4 space-y-6 max-h-[60vh]">
             {/* Category */}
             <div>
               <h3 className="text-sm font-semibold text-gray-900 mb-3">Category</h3>
@@ -5537,10 +5559,22 @@ function App() {
             </div>
           </div>
 
-          <DrawerFooter>
-            <Button onClick={() => setFilterSheetOpen(false)} className="w-full bg-orange-500 hover:bg-orange-600 text-white text-lg py-3">
-              Show {filteredCamps.length} Camps
-            </Button>
+          <DrawerFooter className="border-t border-gray-200 pt-3" style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))' }}>
+            <div className="flex gap-3">
+              <Button
+                onClick={() => { clearAllFilters(); setFilterSheetOpen(false); }}
+                variant="outline"
+                className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-100 text-base py-3"
+              >
+                Reset All
+              </Button>
+              <Button
+                onClick={() => setFilterSheetOpen(false)}
+                className="flex-[2] bg-orange-500 hover:bg-orange-600 text-white text-base py-3"
+              >
+                Show {filteredCamps.length} Camps
+              </Button>
+            </div>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
