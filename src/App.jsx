@@ -55,7 +55,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb.jsx'
-import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart, ArrowUp } from 'lucide-react'
+import { MapPin, Calendar, Users, Star, Search, Menu, X, Filter, ChevronDown, Globe, Award, Shield, Heart, ArrowUp, SlidersHorizontal } from 'lucide-react'
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerFooter } from '@/components/ui/drawer.jsx'
 import heroImage from './assets/european-summer-camps-lakeside-hero.png'
 import heroLakesideAvif from './assets/hero-lakeside.avif'
 import heroLakesideWebp from './assets/hero-lakeside.webp'
@@ -5283,6 +5284,144 @@ function App() {
           </div>
         </div>
       )}
+
+      {/* Filter FAB - Mobile Only, Discover Section */}
+      {activeSection === 'discover' && (
+        <button
+          onClick={() => setFilterSheetOpen(true)}
+          className="fixed bottom-6 left-6 z-40 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform lg:hidden"
+          aria-label="Open filters"
+          aria-expanded={filterSheetOpen}
+        >
+          <SlidersHorizontal className="w-6 h-6 text-white" />
+          {activeFilterCount > 0 && (
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-blue-600 rounded-full text-white text-xs flex items-center justify-center font-medium">
+              {activeFilterCount}
+            </span>
+          )}
+        </button>
+      )}
+
+      {/* Mobile Filter Drawer */}
+      <Drawer open={filterSheetOpen} onOpenChange={setFilterSheetOpen}>
+        <DrawerContent>
+          <DrawerHeader>
+            <div className="flex items-center justify-between">
+              <DrawerTitle>Filter Camps</DrawerTitle>
+              <button onClick={clearAllFilters} className="text-blue-600 text-sm font-medium">
+                Clear all
+              </button>
+            </div>
+            <DrawerDescription>Showing {filteredCamps.length} of {allCamps.length} camps</DrawerDescription>
+          </DrawerHeader>
+
+          <div className="overflow-y-auto px-4 pb-4 space-y-6">
+            {/* Category */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">Category</h3>
+              <div className="flex flex-wrap gap-2">
+                {filterOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => setSelectedFilter(option.value)}
+                    className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
+                      selectedFilter === option.value
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {option.label} ({option.count})
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Country */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">Country</h3>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedCountry('all')}
+                  className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
+                    selectedCountry === 'all' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  All Countries
+                </button>
+                {countryList.map(({ name, count }) => (
+                  <button
+                    key={name}
+                    onClick={() => setSelectedCountry(name)}
+                    className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
+                      selectedCountry === name ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {name} ({count})
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Price Tier */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">Price Range</h3>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedPriceTier('all')}
+                  className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
+                    selectedPriceTier === 'all' ? 'bg-purple-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  All Prices
+                </button>
+                {priceTierOptions.map((tier) => (
+                  <button
+                    key={tier.value}
+                    onClick={() => setSelectedPriceTier(tier.value)}
+                    className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
+                      selectedPriceTier === tier.value ? 'bg-purple-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {tier.label} ({tier.description})
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Age Group */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">Age Group</h3>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedAgeGroup('all')}
+                  className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
+                    selectedAgeGroup === 'all' ? 'bg-orange-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  All Ages
+                </button>
+                {ageGroupOptions.map((age) => (
+                  <button
+                    key={age.value}
+                    onClick={() => setSelectedAgeGroup(age.value)}
+                    className={`px-3 py-2 rounded-full text-sm font-medium transition-colors touch-target ${
+                      selectedAgeGroup === age.value ? 'bg-orange-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {age.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <DrawerFooter>
+            <Button onClick={() => setFilterSheetOpen(false)} className="w-full bg-orange-500 hover:bg-orange-600 text-white text-lg py-3">
+              Show {filteredCamps.length} Camps
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
 
       {/* Back to Top Button - Mobile Optimized */}
       {showBackToTop && (
