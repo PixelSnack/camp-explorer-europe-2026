@@ -68,6 +68,11 @@ import activitiesCompressed from './assets/activities-collage-compressed.png'
 import mapCompressed from './assets/camps-map-compressed.png'
 import './App.css'
 
+// Scroll navigation constants
+const SCROLL_SHOW_THRESHOLD = 300
+const SCROLL_DEAD_ZONE_MOBILE = 50
+const SCROLL_DEAD_ZONE_DESKTOP = 10
+
 // UTM Parameter Helper for Partner Analytics
 const buildOutboundUrl = (baseUrl, camp) => {
   try {
@@ -188,6 +193,8 @@ function App() {
   const [cookieConsent, setCookieConsent] = useState(null) // null = not decided, true = accepted, false = rejected
   const [showCookieBanner, setShowCookieBanner] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [scrollDirection, setScrollDirection] = useState('up')
+  const lastScrollY = useRef(0)
 
   // Removed excessive legal disclaimer banner that was scaring users away
 
@@ -1595,15 +1602,30 @@ function App() {
     }
   }, [cookieConsent])
 
-  // Back-to-top scroll listener
+  // Scroll navigation listener - context-aware arrow direction
   useEffect(() => {
     const handleScroll = () => {
-      setShowBackToTop(window.pageYOffset > 300)
+      const currentY = Math.max(0, window.pageYOffset) // Clamp for iOS bounce
+      const shouldShow = currentY > SCROLL_SHOW_THRESHOLD
+
+      if (shouldShow !== showBackToTop) {
+        setShowBackToTop(shouldShow)
+      }
+
+      const deadZone = window.innerWidth < 768 ? SCROLL_DEAD_ZONE_MOBILE : SCROLL_DEAD_ZONE_DESKTOP
+      const delta = currentY - lastScrollY.current
+      if (Math.abs(delta) > deadZone) {
+        const newDirection = delta > 0 ? 'down' : 'up'
+        if (newDirection !== scrollDirection) {
+          setScrollDirection(newDirection)
+        }
+        lastScrollY.current = currentY
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [showBackToTop, scrollDirection])
 
   // 🚀 ENTERPRISE MARQUEE INTELLIGENCE SYSTEM - STATE OF THE ART
   useEffect(() => {
@@ -1782,10 +1804,23 @@ function App() {
 
   // Smooth scroll to top
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    if (window.gtag) {
+      window.gtag('event', 'scroll_navigation', { event_category: 'navigation', event_label: 'scroll_to_top' })
+    }
+  }
+
+  // Scroll to country resources section (or page bottom as fallback)
+  const scrollToResources = () => {
+    const target = document.getElementById('country-resources')
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
+    }
+    if (window.gtag) {
+      window.gtag('event', 'scroll_navigation', { event_category: 'navigation', event_label: 'scroll_to_resources' })
+    }
   }
 
   // Cookie Consent Handlers
@@ -3419,7 +3454,7 @@ function App() {
             </Card>
 
             {/* Country Breakdown */}
-            <Card className="p-8 mb-16 border-0 shadow-lg">
+            <Card id="country-resources" className="p-8 mb-16 border-0 shadow-lg">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Featured Countries & Camp Types</h3>
                 <p className="text-lg text-gray-600">Explore camps across 24 European countries, each offering unique experiences</p>
@@ -5600,14 +5635,15 @@ function App() {
         </DrawerContent>
       </Drawer>
 
-      {/* Back to Top Button - Mobile Optimized */}
+      {/* Context-Aware Scroll Navigation Button */}
       {showBackToTop && (
         <button
-          onClick={scrollToTop}
+          onClick={scrollDirection === 'down' ? scrollToResources : scrollToTop}
           className="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 mobile-button touch-target"
-          aria-label="Back to top"
+          aria-label={scrollDirection === 'down' ? 'Scroll to country resource guides' : 'Scroll back to top of page'}
+          aria-live="polite"
         >
-          <ArrowUp className="w-6 h-6" />
+          {scrollDirection === 'down' ? <ChevronDown className="w-6 h-6" /> : <ArrowUp className="w-6 h-6" />}
         </button>
       )}
 
