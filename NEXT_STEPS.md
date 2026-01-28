@@ -3,7 +3,7 @@
 
 **Last Updated:** January 28, 2026
 **Current Status:** 45 camps across 24 countries, filter system live
-**Ready for:** Documentation updates, filter UI refactor, content expansion
+**Ready for:** Content expansion, monetization, traffic growth
 
 ---
 
@@ -161,9 +161,9 @@
 ## 🎯 **IMMEDIATE PRIORITIES (Next Session)**
 
 ### **📋 PRIORITY ORDER:**
-1. **🔧 FILTER UI REFACTOR** - Extract shared FilterBar component (tech debt)
+1. **Content Expansion** - Grow toward 100+ organizations (next milestone: 50, then 60)
 2. **Boundless Life Response** - Awaiting reply, process when received
-3. **Content Expansion** - Continue adding camps (target: 50 organizations)
+3. **Traffic Growth** - Monitor analytics, optimize for search
 
 ---
 
@@ -188,18 +188,23 @@
 
 ---
 
-### **🔧 1. FILTER UI REFACTOR** (Tech Debt)
-**Status:** TODO - Extract shared component
-**Business Impact:** Maintainability, reduces bug surface area
+### **🌍 1. CONTENT EXPANSION** - Target: 100+ Organizations
+**Status:** IN PROGRESS - Currently 45, next milestone 50, then 60
+**Business Impact:** More camps = more search traffic = faster path to monetization
 
-#### **Problem:**
-The filter dropdown bar + filter chips are copy-pasted between the Home and Discover sections in App.jsx. Any filter change requires updating both places.
+#### **Milestones:**
+| Milestone | Target | Status |
+|-----------|--------|--------|
+| 50 organizations | +5 camps | Next |
+| 60 organizations | +15 camps | Following |
+| 75 organizations | +30 camps | Medium-term |
+| 100 organizations | +55 camps | Long-term goal |
 
-#### **Solution:**
-Extract a shared `<FilterBar />` inline component (or section) that both Home and Discover render. This component would receive the filter state and handlers as props.
-
-#### **Risk:**
-Medium - touching rendering logic across two major sections. Should be done as an isolated commit with thorough testing.
+#### **Expansion Focus:**
+- Fill underrepresented countries (Spain, Italy, Germany, France each have 1-2)
+- Add new countries (Luxembourg still at 0)
+- Strengthen Nordic coverage (maintain ~30%)
+- Balance category distribution (Premium Alpine only has 3)
 
 ---
 
@@ -405,6 +410,12 @@ Run enterprise-code-reviewer agent over entire codebase (in sections due to size
 **Business Impact:** Better mobile experience (70% of traffic is mobile)
 **Solution:** Context-aware toggle button — arrow direction follows scroll direction, down press jumps to last camp card, up press scrolls to top. Enterprise reviewed, tested iOS + PC.
 
+### **Filter UI Refactor** (Nice to Have)
+**Status:** DEFERRED - Low priority tech debt
+**Business Impact:** Low - only matters when changing filter UI, which is infrequent
+
+Filter dropdowns + chips are duplicated between Home (~line 2087) and Discover (~line 2616) sections. Both share the same state/logic — only the ~90 lines of JSX rendering are copy-pasted. Adding camps or changing filter logic does NOT require touching both places. Only a filter UI redesign would. Revisit if/when filter UI changes are needed.
+
 ### **Strengthen Camp Reputation Verification** (Low Priority)
 **Status:** BACKLOG - Enhancement for quality assurance
 **Business Impact:** Trust, credibility, user safety
@@ -476,13 +487,13 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 ## 🎯 **NEXT SESSION CHECKLIST**
 
-**Primary Task: Filter UI Refactor (Tech Debt)**
-1. Extract shared `<FilterBar />` from duplicated Home/Discover filter code
-2. Test both sections work identically after refactor
-3. Commit as isolated change
+**Primary Task: Content Expansion (toward 50 organizations)**
+1. Identify underrepresented countries/categories for new camps
+2. Use camp-content-researcher agent to find candidates
+3. Verify and add approved camps to App.jsx
+4. Update all stats and documentation
 
 **Other items:**
 - Monitor Boundless Life response (monetization test)
-- Mobile arrow navigation (UX enhancement)
 - Check GA4 for traffic patterns
-- Content expansion toward 50 organizations
+- Review Google Search Console for indexing progress
