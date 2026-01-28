@@ -1178,6 +1178,9 @@ All 5 agents READ-ONLY mode:
 **SPECIALIZED_AGENTS_ROADMAP.md**
 - Agent development status and guidelines
 
+**ANALYTICS_AND_STATS.md**
+- GA4 reports to check, pitch metrics, milestone tracking
+
 ### Archive Documents (`docs/archive/`)
 
 Historical documents from completed work:

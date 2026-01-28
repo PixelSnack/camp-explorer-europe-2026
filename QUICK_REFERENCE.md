@@ -240,7 +240,8 @@
 ├── SECURITY_AUDIT_REPORT.md
 └── site-analysis-report.md
 
-/docs/strategy/                      # Future planning (3 files)
+/docs/strategy/                      # Future planning (4 files)
+├── ANALYTICS_AND_STATS.md           GA4 reports, pitch metrics, milestones
 ├── PHASE_2_IMPLEMENTATION_PLAN.md
 ├── SPECIALIZED_AGENTS_ROADMAP.md
 └── VIRTUAL_SCROLLING_IMPLEMENTATION_PLAN.md
