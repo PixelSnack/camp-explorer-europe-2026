@@ -196,6 +196,8 @@ const [showCookieBanner, setShowCookieBanner] = useState(false)
 | `activeFilterCount` | — | Count of active filter dimensions (derived) |
 | `handleCampSelection(camp)` | ~1181 | Add/remove from comparison (max 3) |
 | `handleResourceLink(resource)` | ~1212 | Navigate to resource sections |
+| `scrollToTop()` | ~1805 | Smooth scroll to top + GA4 event |
+| `scrollToLastCamp()` | ~1813 | Scroll to last visible camp card + GA4 event |
 
 ### Filter System Architecture
 
@@ -239,7 +241,7 @@ const [showCookieBanner, setShowCookieBanner] = useState(false)
 | Hash change listener | `[]` | Sync activeSection with URL hash |
 | GDPR consent check | `[]` | Load saved consent from localStorage |
 | GA4 initialization | `[cookieConsent]` | Init GA4 only after consent |
-| Back-to-top visibility | `[]` | Show button after 300px scroll |
+| Scroll navigation | `[showBackToTop, scrollDirection]` | Show button after 300px, track scroll direction (50px mobile / 10px desktop dead zone) |
 | Marquee system | `[activeSection]` | Mobile overflow detection & animation |
 | Mobile menu close | `[isMenuOpen]` | Close on outside click/escape |
 

@@ -34,6 +34,20 @@
 
 ## ✅ **RECENTLY COMPLETED (January 2026)**
 
+### **Context-Aware Scroll Navigation (January 28, 2026)**
+- [x] Converted back-to-top button into direction-aware toggle
+- [x] Arrow follows user's scroll direction (down → ChevronDown, up → ArrowUp)
+- [x] Down press scrolls to last visible camp card (adapts to filters + new camps)
+- [x] Up press scrolls to top (existing behavior)
+- [x] Mobile: 50px dead zone prevents jitter during momentum/bounce scroll
+- [x] Desktop: 10px dead zone for precise input
+- [x] iOS bounce protection (clamped scroll values)
+- [x] GA4 `scroll_navigation` event tracking for both directions
+- [x] `aria-live="polite"` + descriptive dynamic labels
+- [x] Fallback: scrolls to page bottom if no camp cards found
+- [x] Enterprise code reviewed before implementation
+- [x] Tested on iOS + PC — confirmed working
+
 ### **Filter System Implementation (January 28, 2026)**
 - [x] Multi-select Country filter (array state, OR logic, toggle on/off)
 - [x] Multi-select Age Group filter (3-6, 7-10, 11-14, 15-17, 18-24 with overlap detection)
@@ -148,9 +162,8 @@
 
 ### **📋 PRIORITY ORDER:**
 1. **🔧 FILTER UI REFACTOR** - Extract shared FilterBar component (tech debt)
-2. **Mobile Arrow Navigation** - Back-to-top button enhancement for phones
-3. **Boundless Life Response** - Awaiting reply, process when received
-4. **Content Expansion** - Continue adding camps (target: 50 organizations)
+2. **Boundless Life Response** - Awaiting reply, process when received
+3. **Content Expansion** - Continue adding camps (target: 50 organizations)
 
 ---
 
@@ -190,29 +203,7 @@ Medium - touching rendering logic across two major sections. Should be done as a
 
 ---
 
-### **🔝 2. MOBILE ARROW NAVIGATION** 📱
-**Status:** READY TO IMPLEMENT
-**Business Impact:** Better mobile UX (70% of traffic is mobile)
-
-#### **The Problem:**
-- Back-to-top button works well
-- But mobile users also need easy way to scroll DOWN to see more camps
-- Currently no quick way to jump sections on long pages
-
-#### **Recommended Solution (Toggle Button):**
-- Same button space, context-aware behavior
-- Near top of page → shows DOWN arrow → scrolls to camp grid
-- Near bottom of page → shows UP arrow → scrolls to top
-- Button already tracks scroll position, just needs logic update
-
-#### **Implementation:**
-- Modify back-to-top button in App.jsx
-- Add scroll position detection for direction toggle
-- Change icon based on position (ChevronUp ↔ ChevronDown)
-
----
-
-### **🎉 3. FIRST MONETIZATION TEST - BOUNDLESS LIFE** 💰
+### **🎉 2. FIRST MONETIZATION TEST - BOUNDLESS LIFE** 💰
 **Status:** EMAIL SENT - AWAITING RESPONSE (January 17, 2026)
 **Business Impact:** First potential revenue, validates monetization model
 
@@ -409,37 +400,10 @@ Run enterprise-code-reviewer agent over entire codebase (in sections due to size
 - Agent analyzes and reports, YOU implement any changes
 - Focus on: naming conventions, component structure, performance patterns, accessibility, security
 
-### **Mobile Scroll Navigation - Quick Jump to Bottom** (UX Enhancement)
-**Status:** DEFERRED - Future mobile UX improvement
+### **Mobile Scroll Navigation** (UX Enhancement)
+**Status:** ✅ COMPLETED (January 28, 2026)
 **Business Impact:** Better mobile experience (70% of traffic is mobile)
-
-#### **Problem:**
-- Currently only "scroll to top" button exists (bottom-right corner)
-- Users must manually scroll to reach footer/bottom - tedious on mobile
-- Long page with 45 camps means significant finger scrolling
-
-#### **Current Implementation (for reference):**
-- **Location:** `src/App.jsx` lines 5099-5108
-- **Style:** `fixed bottom-6 right-6` - floats with user as they scroll
-- **Trigger:** Shows when `pageYOffset > 300` (line 1442)
-- **Button:** Circular blue, ArrowUp icon, z-50
-
-#### **Constraint:**
-- ⚠️ Button floats over content (doesn't permanently block, but still present)
-- Adding second button would double floating elements on screen
-- Be careful not to clutter mobile viewport
-
-#### **Possible Solutions (Space-Conscious):**
-1. **Toggle Button** - Single button: shows ↓ at top of page, ↑ at bottom (auto-switches based on scroll position)
-2. **Long-Press Menu** - Hold existing button to reveal both options
-3. **Compact Dual Arrows** - Two smaller arrows stacked in same footprint (↑↓)
-4. **Swipe Gesture** - Swipe up/down on button for respective direction
-
-#### **Recommendation:**
-Option 1 (Toggle) is cleanest - same space, context-aware behavior. Button already tracks scroll position, just need to add logic to switch icon/function based on whether user is near top or bottom.
-
-#### **Not Related To:**
-- Virtual Scrolling (that's performance optimization, not navigation UX)
+**Solution:** Context-aware toggle button — arrow direction follows scroll direction, down press jumps to last camp card, up press scrolls to top. Enterprise reviewed, tested iOS + PC.
 
 ### **Strengthen Camp Reputation Verification** (Low Priority)
 **Status:** BACKLOG - Enhancement for quality assurance
@@ -505,8 +469,8 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 ---
 
-**Last Session:** January 28, 2026 - Implemented complete filter system (multi-select Country + Age Group, single-select Price, mobile drawer, desktop dropdowns, ARIA accessibility, enterprise-reviewed)
-**Previous Session:** January 26, 2026 - Added 3 camps (Belgium, France, Germany → 45 total, 24 countries), created filter system plan
+**Last Session:** January 28, 2026 - Implemented context-aware scroll navigation (direction-aware toggle, jumps to last camp card, enterprise-reviewed, tested iOS + PC)
+**Previous Session:** January 28, 2026 - Implemented complete filter system (multi-select Country + Age Group, single-select Price, mobile drawer, desktop dropdowns, ARIA accessibility, enterprise-reviewed)
 
 ---
 

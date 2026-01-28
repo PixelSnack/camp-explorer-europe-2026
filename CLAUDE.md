@@ -67,6 +67,18 @@
 - **See**: docs/reference/MONETIZATION_STRATEGY.md for competitive research and pricing rationale
 - **See**: NEXT_STEPS.md for detailed action items and next steps
 
+### ✅ **COMPLETED: Context-Aware Scroll Navigation (January 28, 2026)**
+- **Status**: ✅ COMPLETE - Live on production, tested iOS + PC
+- **Behavior**: Single button toggles arrow direction based on user's scroll direction
+- **Down arrow**: Scrolls to last visible camp card (adapts to filters and new camps)
+- **Up arrow**: Scrolls to top (existing behavior)
+- **Mobile optimized**: 50px dead zone prevents jitter during momentum/bounce scrolling
+- **Desktop**: 10px dead zone for precise input
+- **iOS safe**: Clamped scroll values prevent bounce scroll issues
+- **Accessibility**: `aria-live="polite"`, descriptive dynamic labels
+- **Analytics**: GA4 `scroll_navigation` events for both directions
+- **Enterprise Reviewed**: Code reviewed before implementation
+
 ### ✅ **COMPLETED: Filter System (January 28, 2026)**
 - **Status**: ✅ COMPLETE - Full filter system live on production
 - **Multi-select**: Country and Age Group filters support multiple selections (OR logic)
@@ -130,6 +142,7 @@
 - [x] **Set up PayPal**: ✅ Business account configured (partnerships@europeansummercamps.com)
 - [x] **Featured Listing Demo**: ✅ Les Elfes demo live - shows operators what €99/year tier looks like
 - [x] **Filter System**: ✅ Multi-select filters deployed January 28, 2026
+- [x] **Mobile Arrow Navigation**: ✅ Context-aware scroll toggle deployed January 28, 2026
 - [ ] **Filter UI Refactor**: Extract shared `<FilterBar />` component (tech debt)
 - [ ] **Await Boundless Life Response**: Process Featured listing if accepted, create Basic if declined
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
