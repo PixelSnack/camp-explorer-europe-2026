@@ -1810,16 +1810,17 @@ function App() {
     }
   }
 
-  // Scroll to country resources section (or page bottom as fallback)
-  const scrollToResources = () => {
-    const target = document.getElementById('country-resources')
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' })
+  // Scroll to last visible camp card (or page bottom as fallback)
+  const scrollToLastCamp = () => {
+    const campCards = document.querySelectorAll('[data-camp-card]')
+    const lastCard = campCards.length > 0 ? campCards[campCards.length - 1] : null
+    if (lastCard) {
+      lastCard.scrollIntoView({ behavior: 'smooth', block: 'center' })
     } else {
       window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
     }
     if (window.gtag) {
-      window.gtag('event', 'scroll_navigation', { event_category: 'navigation', event_label: 'scroll_to_resources' })
+      window.gtag('event', 'scroll_navigation', { event_category: 'navigation', event_label: 'scroll_to_last_camp' })
     }
   }
 
@@ -2194,7 +2195,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Sort featured camps first, then by ID */}
             {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
-              <Card key={camp.id} className={`camp-card overflow-hidden group flex flex-col ${
+              <Card key={camp.id} data-camp-card={camp.id} className={`camp-card overflow-hidden group flex flex-col ${
                 camp.featured
                   ? 'border-[3px] border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] ring-4 ring-amber-100'
                   : 'border-0 shadow-lg'
@@ -2733,7 +2734,7 @@ function App() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Sort featured camps first */}
               {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
-                <Card key={camp.id} className={`camp-card overflow-hidden group flex flex-col ${
+                <Card key={camp.id} data-camp-card={camp.id} className={`camp-card overflow-hidden group flex flex-col ${
                   camp.featured
                     ? 'border-[3px] border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] ring-4 ring-amber-100'
                     : 'border-0 shadow-lg'
@@ -3454,7 +3455,7 @@ function App() {
             </Card>
 
             {/* Country Breakdown */}
-            <Card id="country-resources" className="p-8 mb-16 border-0 shadow-lg">
+            <Card className="p-8 mb-16 border-0 shadow-lg">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Featured Countries & Camp Types</h3>
                 <p className="text-lg text-gray-600">Explore camps across 24 European countries, each offering unique experiences</p>
@@ -5638,9 +5639,9 @@ function App() {
       {/* Context-Aware Scroll Navigation Button */}
       {showBackToTop && (
         <button
-          onClick={scrollDirection === 'down' ? scrollToResources : scrollToTop}
+          onClick={scrollDirection === 'down' ? scrollToLastCamp : scrollToTop}
           className="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-all duration-300 transform hover:scale-110 mobile-button touch-target"
-          aria-label={scrollDirection === 'down' ? 'Scroll to country resource guides' : 'Scroll back to top of page'}
+          aria-label={scrollDirection === 'down' ? 'Scroll to last camp listing' : 'Scroll back to top of page'}
           aria-live="polite"
         >
           {scrollDirection === 'down' ? <ChevronDown className="w-6 h-6" /> : <ArrowUp className="w-6 h-6" />}
