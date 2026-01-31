@@ -1245,6 +1245,98 @@ function App() {
       established: 1983,
       capacity: 80,
       bookingUrl: "https://www.gls-german-courses.de/summer-camp-berlin-water-sports.html"
+    },
+    // Spain - Second camp (Academic & STEM, Madrid)
+    {
+      id: 50,
+      name: "King's College Summer Camp Madrid",
+      location: "Soto de Viñuelas, Madrid",
+      country: "Spain",
+      ages: "6-17 years", // Verified Feb 2026: residential from age 8
+      price: "€2,675/2 weeks", // Verified Feb 2026: per-child Core+ residential rate
+      priceRange: "mid",
+      rating: 4.7,
+      reviews: 0,
+      image: heroImage,
+      category: "academic",
+      type: "British Academic & STEAM",
+      activities: ["STEAM & Robotics", "Multi-Sports", "Swimming", "Performing Arts", "English Lessons", "Excursions"],
+      dates: "Late June - Late July, 2026",
+      highlights: ["British school campus", "Tenbury House residence (renovated 2024)", "STEAM & robotics programs"],
+      languages: ["English", "Spanish"],
+      specialFeatures: ["King's College Schools group", "Purpose-built boarding house", "Optional football & performing arts tracks"],
+      established: 1969,
+      capacity: 150,
+      bookingUrl: "https://www.madrid-soto.kingscollegeschools.org/en/summer-camps"
+    },
+    // Spain - Third camp (Language Immersion, Salamanca)
+    {
+      id: 51,
+      name: "Enforex Summer Camp Salamanca",
+      location: "Salamanca",
+      country: "Spain",
+      ages: "5-18 years", // Verified Feb 2026
+      price: "€1,950/2 weeks", // Verified Feb 2026: per-child residential rate
+      priceRange: "mid",
+      rating: 4.7,
+      reviews: 0,
+      image: activitiesCompressed,
+      category: "language",
+      type: "Spanish Language Immersion",
+      activities: ["Spanish Classes", "Sports", "Cultural Workshops", "Excursions", "Swimming", "Arts & Crafts"],
+      dates: "June - August, 2026",
+      highlights: ["UNESCO World Heritage city", "20 classes/week", "60% Spanish students for authentic immersion"],
+      languages: ["Spanish", "English"],
+      specialFeatures: ["35+ year language camp operator", "University campus residence", "4 meals/day included"],
+      established: 1989,
+      capacity: 200,
+      bookingUrl: "https://www.enforex.com/summercamps/salamanca/"
+    },
+    // Italy - Second camp (Academic & STEM, Umbria)
+    {
+      id: 52,
+      name: "Alphabet International Camps",
+      location: "Castiglione del Lago, Umbria",
+      country: "Italy",
+      ages: "6-16 years", // Verified Feb 2026
+      price: "€1,390/1 week", // Verified Feb 2026: per-child residential rate
+      priceRange: "mid",
+      rating: 4.8,
+      reviews: 0,
+      image: mapCompressed,
+      category: "academic",
+      type: "Outdoor Exploration & Cultural",
+      activities: ["Archaeology", "Art History", "Outdoor Adventures", "Italian Culture", "Swimming", "Creative Arts"],
+      dates: "June - August, 2026",
+      highlights: ["ACA member camp", "Umbrian countryside setting", "Archaeology & art history programs"],
+      languages: ["English", "Italian"],
+      specialFeatures: ["Only ACA member camp in Italy", "Historic villa accommodation", "Small group sizes"],
+      established: 2006,
+      capacity: 60,
+      bookingUrl: "https://www.alphabetcamps.com"
+    },
+    // Italy - Third camp (Language Immersion, Trieste)
+    {
+      id: 53,
+      name: "Piccola Università Italiana Junior Camp",
+      location: "Trieste",
+      country: "Italy",
+      ages: "12-17 years", // Verified Feb 2026: was estimated 12-16
+      price: "€2,100/2 weeks", // Verified Feb 2026: per-child residential rate
+      priceRange: "mid",
+      rating: 4.6,
+      reviews: 0,
+      image: heroImage,
+      category: "language",
+      type: "Italian Language Immersion",
+      activities: ["Italian Lessons", "Cultural Excursions", "Sports", "Cooking Classes", "Art Workshops", "Beach Activities"],
+      dates: "July 12 - August 8, 2026",
+      highlights: ["20 Italian lessons/week", "Historic Trieste old town campus", "Mediterranean cultural immersion"],
+      languages: ["Italian", "English"],
+      specialFeatures: ["Dedicated campus with dormitories", "2-week session format", "Small class sizes"],
+      established: 1993,
+      capacity: 40,
+      bookingUrl: "https://piccolauniversitaitaliana.com/italian-language-courses/junior-summer-camp-in-italy/"
     }
   ]
 
@@ -1417,7 +1509,7 @@ function App() {
 
   const stats = [
     { icon: Globe, label: "Countries", value: "24", description: "Across Europe" },
-    { icon: Award, label: "Organizations", value: "45", description: "100+ verified camps" },
+    { icon: Award, label: "Organizations", value: "49", description: "100+ verified camps" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
     { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
   ]
@@ -1971,7 +2063,7 @@ function App() {
               aria-label="Camp information banner"
             >
               <span className="marquee-content">
-                2026 Season NOW OPEN • 45 Verified Organizations • 24 Countries
+                2026 Season NOW OPEN • 49 Verified Organizations • 24 Countries
               </span>
             </div>
           </div>
@@ -3308,7 +3400,7 @@ function App() {
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">45 Verified Organizations</Badge>
+                <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">49 Verified Organizations</Badge>
                 <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">24 Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
                 <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
@@ -4431,7 +4523,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                European summer camp directory featuring 45 verified organizations offering 100+ programs across 24 countries. Information compiled from public sources to help parents research camp options.
+                European summer camp directory featuring 49 verified organizations offering 100+ programs across 24 countries. Information compiled from public sources to help parents research camp options.
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -4835,7 +4927,7 @@ function App() {
               <div className="text-center py-2 md:py-0">
                 <div className="flex justify-center space-x-8 text-sm text-gray-400">
                   <div>
-                    <div className="text-2xl font-bold text-white">45</div>
+                    <div className="text-2xl font-bold text-white">49</div>
                     <div>Organizations</div>
                   </div>
                   <div>
@@ -4863,7 +4955,7 @@ function App() {
           
           <div className="border-t border-gray-800 pt-6 md:pt-8 mt-6 md:mt-8 text-center text-gray-400">
             <p className="text-sm md:text-base">&copy; 2026 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
-            <p className="mt-2 text-xs md:text-sm">Directory featuring 45 verified organizations • Information from camp websites • Independent resource portal</p>
+            <p className="mt-2 text-xs md:text-sm">Directory featuring 49 verified organizations • Information from camp websites • Independent resource portal</p>
             <div className="mt-3 space-x-3 text-xs text-gray-500">
               <button 
                 onClick={() => handleResourceLink('impressum')} 
@@ -5104,7 +5196,7 @@ function App() {
                   Camp Explorer Europe is an information directory that compiles publicly available data about European summer camps. We organize camp information from websites and public sources to help parents research summer camp options across Europe.
                 </p>
                 <p className="text-lg text-gray-700 mb-6">
-                  Our directory includes 45 verified organizations offering 100+ programs across 24 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
+                  Our directory includes 49 verified organizations offering 100+ programs across 24 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.
                 </p>
               </div>
 
