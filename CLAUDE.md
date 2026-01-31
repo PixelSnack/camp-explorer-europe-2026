@@ -114,7 +114,7 @@
 - **Tested**: iOS and PC - confirmed looks great
 
 ### ✅ **COMPLETED: Geographic Expansion (January 26, 2026)**
-- **Status**: ✅ 45 organizations verified across 24 countries
+- **Status**: ✅ 49 organizations verified across 24 countries
 - **New Countries Added**: Belgium (1 camp - CERAN Academy)
 - **New Camps Added**: 3 camps (IDs 47-49)
   - Belgium: CERAN Academy Juniors (Language Immersion)
@@ -124,7 +124,7 @@
 - **Previous expansion (Jan 25)**: Netherlands (2), Lithuania (1), Norway (+2), Denmark (+1)
 
 ### ✅ **COMPLETED: Pricing Verification & Database Expansion (January 13-18, 2026)**
-- **Status**: ✅ All 45 organizations verified (100% complete)
+- **Status**: ✅ All 49 organizations verified (100% complete)
 - **Geographic Expansion**: 15 → 24 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden, Netherlands, Lithuania, Belgium added)
 - **New Camps Added**: 11 camps (IDs 30-40)
 - **Camps Removed**: 3 (ID 13 not a camp, IDs 16 & 22 group-only)
@@ -148,7 +148,7 @@
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
 - [ ] **Virtual Scrolling**: Implement TanStack React Virtual (already installed)
 - [ ] **Phase 2 Planning**: React Router + SSG when traffic justifies (1K+ sessions/month)
-- [x] **Content Expansion**: ✅ Belgium, France, Germany added (Jan 26) - now 45 camps, 24 countries
+- [x] **Content Expansion**: ✅ Belgium, France, Germany added (Jan 26) - now 49 camps, 24 countries
 
 ### 🔍 **Ongoing Maintenance**:
 - [ ] Monitor camp websites for price changes (quarterly review)
@@ -200,7 +200,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 ### **Step 2: Current Status Assessment**
 
 **Database Status:**
-- **45 verified organizations** representing 100+ programs across 24 countries
+- **49 verified organizations** representing 100+ programs across 24 countries
 - **Pricing Verification**: ✅ COMPLETE (100% - all camps verified January 2026)
 - **Recent Additions**: Belgium (1 camp), France (+1), Germany (+1) - January 26, 2026
 - **Recent Removals**: ID 13 (not a camp), ID 16 (group-only), ID 22 (group-only)
@@ -270,7 +270,7 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 45 verified organizations, 100+ programs, 24 countries
+- **Database**: 49 verified organizations, 100+ programs, 24 countries
 - **Camp Data Location**: `src/App.jsx` lines 210-1220 (`const allCamps = [...]`)
 - **App.jsx Total Lines**: ~4,500 lines (well-structured monolithic component)
 - **Pricing Verification**: ✅ COMPLETE (100% verified January 2026)
@@ -955,26 +955,26 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 
 | Number | Always Refers To | Example Usage |
 |--------|------------------|---------------|
-| **45** | Organizations/Operators | "45 verified organizations", "45 camp operators" |
+| **49** | Organizations/Operators | "49 verified organizations", "49 camp operators" |
 | **100+** | Camps/Programs | "100+ camps", "100+ verified camps", "100+ camp programs" |
 
-*Note: 45 is the current count (January 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
+*Note: 49 is the current count (January 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
 
 **Both numbers are TRUE:**
-- We list **45 camp organizations** (the companies/operators)
+- We list **49 camp organizations** (the companies/operators)
 - These organizations collectively offer **100+ individual camp programs**
 
 **Analogy:** Like a university with 10 colleges offering 500+ degree programs.
 
 **Where Each Number Appears:**
 - **Search Snippet (meta):** "100+ Camp Programs" - DO NOT CHANGE (SEO working)
-- **Hero Stats:** "45 Organizations" with "100+ verified camps" subtitle
-- **Footer Stats:** "45 Organizations"
-- **Footer Text:** "45 verified organizations"
+- **Hero Stats:** "49 Organizations" with "100+ verified camps" subtitle
+- **Footer Stats:** "49 Organizations"
+- **Footer Text:** "49 verified organizations"
 
 **NEVER:**
-- ❌ Say "45 camps" (incorrect - we have 100+ camps)
-- ❌ Say "100+ organizations" (incorrect - we have 45 organizations)
+- ❌ Say "49 camps" (incorrect - we have 100+ camps)
+- ❌ Say "100+ organizations" (incorrect - we have 49 organizations)
 - ❌ Change search snippet numbers without SEO impact assessment
 
 **Rationale:** Organizations like Piispala offer "300+ camps annually" - each org runs multiple programs.
@@ -1292,11 +1292,11 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total organizations**: 45 verified
+- **Total organizations**: 49 verified
 - **Total programs**: 100+ individual camps
 - **Countries**: 24 European countries
 - **Categories**: 7 distinct categories
-- **Verified pricing**: ✅ 45/45 (100% complete)
+- **Verified pricing**: ✅ 49/49 (100% complete)
 - **App.jsx camp data**: Lines 210-1220
 - **Total App.jsx lines**: ~5,100 lines
 - **Image optimization**: 93-96% size reduction
