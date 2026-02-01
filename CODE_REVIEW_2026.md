@@ -36,12 +36,14 @@ This is a well-built, functional production website that is successfully serving
 
 | Dimension | Score | Notes |
 |-----------|-------|-------|
-| Code Quality | 6/10 | Functional but heavy duplication, dead code, monolithic |
-| SEO | 7/10 | Working well but structured data has errors |
+| Code Quality | 5/10 | God Component (5,825 lines), heavy duplication, dead code, no tests |
+| Architecture / Buyer-Readiness | 5/10 | Simple stack but zero separation of concerns; data embedded in UI |
+| SEO | 6.5/10 | Working well but structured data errors, SPA ceiling approaching |
 | Accessibility | 7/10 | WCAG 2.1 AA mostly met, some gaps in focus management |
-| Security | 7/10 | Enterprise headers good, CSP gap for GA4, EmailJS credentials exposed (expected for client-side) |
+| Security | 7/10 | Enterprise headers good, CSP gap for GA4, EmailJS credentials exposed (expected) |
 | Performance | 6/10 | Images optimized well, but allCamps inside component and unused deps hurt |
 | Mobile UX | 8/10 | Strong — touch targets, drawer, responsive all working |
+| Documentation | 6/10 | Comprehensive but CODE_STRUCTURE.md line numbers all stale |
 
 ---
 
@@ -713,13 +715,50 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: Validate sitemap XML
   - Commit: `SEO: Update sitemap lastmod to current date`
 
+- [ ] **26. Remove hyperbolic code comments** (T3-13)
+  - Risk: Tier 3
+  - File: src/App.jsx (lines ~1479, ~1791, and others)
+  - Replace: "ENTERPRISE MARQUEE INTELLIGENCE SYSTEM" → "Marquee overflow detection and animation"
+  - Replace: "Bleeding-edge performance optimization" → "Memoized filter computation"
+  - Test: `npm run build`
+  - Commit: `Cleanup: Replace hyperbolic comments with factual descriptions`
+
+- [ ] **27. Update CODE_STRUCTURE.md with accurate line numbers** (T3-14)
+  - Risk: Tier 3
+  - File: CODE_STRUCTURE.md
+  - All line number references are wrong by 100-400+ lines; camp counts stale
+  - Test: Spot-check 5 line references against actual App.jsx
+  - Commit: `Docs: Update CODE_STRUCTURE.md to match current codebase`
+
+- [ ] **28. Add numeric price field to camp data** (T3-15)
+  - Risk: Tier 3
+  - File: src/App.jsx (camp data) or src/data/camps.js (after extraction)
+  - Add: `priceNumericEUR: 4550` alongside display price string for each camp
+  - Enables: programmatic price sorting, range filtering, data export
+  - Test: `npm run build` + verify no display changes (field is data-only initially)
+  - Commit: `Data: Add machine-readable EUR price field to all camps`
+
+- [ ] **29. Extract marquee useEffect to custom hook** (T2-6)
+  - Risk: Tier 2
+  - Files: src/App.jsx (~lines 1792-1932) → new src/hooks/useMarqueeAnimation.js
+  - 140 lines with inline debounce, retry logic, IntersectionObserver
+  - Test: `npm run build` + verify marquee works on mobile and desktop
+  - Commit: `Refactor: Extract marquee animation to useMarqueeAnimation hook`
+
+- [ ] **30. Wrap filterOptions in useMemo** (T2-7)
+  - Risk: Tier 2
+  - File: src/App.jsx (~line 1516)
+  - Currently filters allCamps 7 times per render without memoization
+  - Test: `npm run build` + verify category counts display correctly
+  - Commit: `Perf: Memoize filterOptions category counts`
+
 ### Tier 4 — Phase 2 Only
 
-- [ ] **26. Extract shared FilterBar component** (T4-1) — Requires React Router
-- [ ] **27. Extract shared CampCard component** (T4-2) — Requires React Router
-- [ ] **28. Split sections into route components** (T4-3) — IS Phase 2
-- [ ] **29. Fix multiple H1 elements** (T4-4) — Natural with real routes
-- [ ] **30. Fix schema hash fragment URLs** (T4-5) — Requires real routes
+- [ ] **31. Extract shared FilterBar component** (T4-1) — Requires React Router
+- [ ] **32. Extract shared CampCard component** (T4-2) — Requires React Router
+- [ ] **33. Split sections into route components** (T4-3) — IS Phase 2
+- [ ] **34. Fix multiple H1 elements** (T4-4) — Natural with real routes
+- [ ] **35. Fix schema hash fragment URLs** (T4-5) — Requires real routes
 
 ---
 
@@ -787,6 +826,101 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 ---
 
+## Section 7: Architecture & Buyer-Readiness Assessment
+
+*Added from dedicated architecture review pass (February 1, 2026)*
+
+### Acquisition Readiness Score: 5/10
+
+A buyer who is comfortable with React could take this over, but they would immediately want to spend 1-2 days restructuring before doing anything else. The codebase is functional but not "hand off and walk away" ready. The extensive documentation partially compensates for architectural shortcomings, but stale line numbers erode that trust.
+
+### What a Buyer Sees in 30 Minutes
+
+**Positives:**
+- Simple, understandable stack (React + Vite + Tailwind) — no backend complexity
+- Good accessibility (WCAG 2.1 AA, ARIA throughout)
+- Good SEO foundation (structured data, meta tags, FAQ schema)
+- Clean deployment pipeline (Vercel auto-deploy from GitHub)
+- Comprehensive documentation (even if line numbers are stale)
+- Data verification comments show care for accuracy
+- Camp data is well-structured with consistent fields
+
+**Negatives:**
+- 5,825-line God Component — a buyer's first week is just understanding what goes where
+- Camp data embedded in UI code — adding a camp means editing the main application file
+- Zero tests of any kind — no safety net for changes
+- 38 unused UI components and ~10 unused npm packages signal "kitchen sink" installation
+- Filter UI duplication is documented tech debt never addressed
+- No routing library — the app conditionally shows/hides sections
+- Stale documentation line numbers undermine confidence
+
+### Code Organization Issues
+
+**Separation of concerns: Nonexistent.** Data, business logic, analytics, email config, GDPR handling, and all 10+ UI sections live in one function. Zero custom components besides App itself.
+
+**What took longest to find:** The filtering logic at line ~1480 — buried between 1,200 lines of camp data and 300 lines of navigation handlers.
+
+### Naming & Readability
+
+Naming is **generally good**: consistent camelCase, descriptive function names (`handleCategoryFilter`, `toggleCountry`, `clearAllFilters`). State variables clearly communicate purpose.
+
+**Issues:**
+- `resourceSection` state — set but purpose unclear in render code
+- **Hyperbolic code comments undermine credibility**: "ENTERPRISE MARQUEE INTELLIGENCE SYSTEM - STATE OF THE ART" and "Bleeding-edge performance optimization" for a marquee scroller and useMemo. A buyer reading these will question the developer's judgment.
+- Magic number: `badgeWidth - 40` (~line 1824) with vague inline comment. Should be a named constant.
+- Inconsistent boundary between module-scope and component-scope functions
+
+### Function Design Issues
+
+- **App() function**: 5,713 lines — the entire application is one function
+- **Marquee useEffect** (~lines 1792-1932): 140 lines with inline debounce utility, retry logic, IntersectionObserver, and platform detection. Should be a custom hook `useMarqueeAnimation`.
+- **`handleResourceLink`**: Switch with 7+ cases of duplicated scroll-to-element logic
+- **`generateBreadcrumbs`**: Verbose switch that could be a simple object lookup
+- **`filterOptions`**: Filters allCamps 7 times per render — should be in useMemo
+
+### Data Architecture Issues
+
+1. **No machine-readable price field**: Only human-readable strings ("From CHF 4,550/1 week", "EUR335/10 days"). Cannot programmatically sort by price. A `priceNumericEUR` field would unlock sorting, range filtering, and data export.
+2. **Mixed currency formats**: EUR, CHF, GBP, NOK, DKK, SEK, PLN, USD — `priceRange` normalizes this but raw prices are unparseable.
+3. **Same 4 images** reused across all 56 camps — image field is decorative, not informational.
+4. **ID gaps** (13, 16, 19, 22 removed) — comment explanations are good but a buyer wonders about data integrity.
+5. **`reviews: 0`** on 8 camps — ambiguous: "not collected" vs "zero reviews."
+6. **Hardcoded stats** ("52", "24", "100+") scattered across JSX — should be derived from data.
+
+### Documentation Accuracy (CODE_STRUCTURE.md)
+
+| What it says | Actual | Off by |
+|-------------|--------|--------|
+| ~5,000 lines | 5,825 lines | 16% |
+| Camp data lines 210-1166 | Lines 224-1410 | End line off by 244 |
+| 45/42 camps | 56 objects (52 active) | Significantly stale |
+| State lines 105-183 | Lines 112-198 | Off by ~15 lines |
+| useEffect lines 1270-1494 | Lines 1702-1964 | Off by ~430 lines |
+| Lists 10 UI components | 46 components exist (5 used) | 36 unlisted |
+
+**Verdict**: CODE_STRUCTURE.md was accurate when written but is now unreliable. Every line number reference is wrong by 100-400+ lines.
+
+### Top 10 Buyer-Readiness Improvements (from architecture review)
+
+| Priority | Improvement | Impact | Effort |
+|----------|------------|--------|--------|
+| 1 | Extract camp data to `src/data/camps.js` | Massive — reduces App.jsx by 1,200 lines | 15 min |
+| 2 | Extract CampCard component | High — eliminates duplication | 1 hour |
+| 3 | Extract FilterBar component | High — eliminates ~800 lines duplication | 2 hours |
+| 4 | Add numeric price field to data | High for any buyer enhancing the product | 2 hours |
+| 5 | Remove unused shadcn/ui components | Clean repo signal | 10 min |
+| 6 | Remove unused npm packages | Reduces confusion about actual stack | 30 min |
+| 7 | Delete dead state (`_showFilters`) | Code hygiene signal | 1 min |
+| 8 | Remove hyperbolic code comments | Credibility with buyers | 15 min |
+| 9 | Update CODE_STRUCTURE.md line numbers | Documentation trust | 30 min |
+| 10 | Extract marquee useEffect to custom hook | Reduces App.jsx complexity | 1 hour |
+
+### New Checklist Items from Architecture Review
+
+The following are added to the implementation checklist:
+
+---
+
 ## Appendix: Review Execution Log
 
 | Pass | Agent/Method | Duration | Status |
@@ -797,6 +931,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 | 3 | Direct Claude analysis | Completed | 8 audits performed |
 | 4 | enterprise-code-reviewer (validation run) | 2m42s | Confirmed findings + 3 new items |
 | 5 | seo-performance-optimizer (validation run) | Completed | Confirmed findings + 6 new items |
+| 6 | enterprise-code-reviewer (architecture pass) | Completed | Buyer-readiness assessment, code organization, naming review |
 
 ---
 
