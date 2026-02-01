@@ -54,24 +54,15 @@ Without this, the review agents will work with stale assumptions.
 
 ## Pre-Review Safety Steps (MANDATORY — user does these before starting)
 
-### Step 1: Remove Bash from Both Agent Config Files
+### Step 1: Verify Agent Permissions (Permanent — Already Done Feb 1, 2026)
 
-**File 1:** `.claude/agents/enterprise-code-reviewer.md` line 4
-**File 2:** `.claude/agents/seo-performance-optimizer.md` line 4
+Both review agents have been permanently restricted to read-only tools via `/agents` UI:
+- **enterprise-code-reviewer**: Glob, Grep, Read, WebFetch, WebSearch, Skill, TodoWrite
+- **seo-performance-optimizer**: Glob, Grep, Read, WebFetch, WebSearch, Skill, TodoWrite
 
-**Current (both files):**
-```
-tools: Bash, Glob, Grep, Read, WebFetch, TodoWrite, WebSearch, Skill, MCPSearch
-```
+**Bash, Edit, Write permanently removed** — these agents never need to modify files.
 
-**Change to (both files):**
-```
-tools: Glob, Grep, Read, WebFetch, TodoWrite, WebSearch, Skill, MCPSearch
-```
-
-**Why:** Bash can modify files. Removing it makes agents physically unable to change anything. This is essential given past incidents where agents made unauthorized modifications. Both agents had Bash — both need it removed.
-
-**Restore after review:** Add `Bash` back to both files after the review session is complete.
+Verify this is still the case before starting the review (run `/agents` to check).
 
 ### Step 2: Verify Clean State
 ```bash
@@ -422,8 +413,6 @@ Dedicated section from the SEO agent's deep analysis:
 ## Post-Review Cleanup
 
 After the review session is complete:
-- [ ] Restore `Bash` to `.claude/agents/enterprise-code-reviewer.md` tools line
-- [ ] Restore `Bash` to `.claude/agents/seo-performance-optimizer.md` tools line
 - [ ] Verify CODE_REVIEW_2026.md is committed
 - [ ] User pushes via GitHub Desktop
 - [ ] Verify live site still works at europeansummercamps.com

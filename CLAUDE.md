@@ -411,9 +411,11 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 <a name="agent-management"></a>
 ## 4. 🤖 **AGENT MANAGEMENT**
 
-### 🔴 **CRITICAL: All Agents Are Now Read-Only** (January 2026)
+### 🔴 **CRITICAL: All Agents Are Permanently Read-Only** (February 2026)
 
-**Change made January 2026**: Agents can only research and report. They cannot edit code. You implement all changes based on their reports.
+**Agents can only research and report.** They cannot edit code. You implement all changes based on their reports.
+
+**Enforced via `/agents` UI** (February 1, 2026): Bash, Edit, and Write tools permanently removed from all agents. Agents have only: Glob, Grep, Read, WebFetch, WebSearch, Skill, TodoWrite.
 
 **Why**: Incidents where agents made incorrect modifications (fake testimonials, facility vs consumer pricing errors, unauthorized changes) required extensive corrections.
 
