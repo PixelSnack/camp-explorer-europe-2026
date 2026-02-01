@@ -151,6 +151,26 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build`
 **Commit**: `Cleanup: Remove unused _showFilters state variable`
 
+#### T1-7: Remove duplicate preconnect/DNS-prefetch tags in index.html
+
+**Problem**: index.html has duplicate `preconnect` to `fonts.googleapis.com` (lines ~76 and ~414) and duplicate DNS-prefetch entries (lines ~79-81 and ~417-419). Browsers handle duplicates gracefully but it's unnecessary HTML bloat.
+
+**Fix**: Remove the second set of duplicates.
+
+**Files**: index.html
+**Test**: `npm run build` + verify page loads correctly
+**Commit**: `Cleanup: Remove duplicate preconnect/DNS-prefetch tags`
+
+#### T1-8: Remove unused/junk meta tags from index.html
+
+**Problem**: Lines ~56-73 and ~66-73 of index.html contain non-standard meta tags that no search engine uses: `content-type`, `target-audience`, `content-rating`, `content-category`, `rating`, `distribution`, `revisit-after`, `language`, `geo.region`, `geo.placename`, `target`, `audience`. These add ~500 bytes of HTML bloat and reveal keyword strategy to competitors (meta keywords tag).
+
+**Fix**: Remove all non-functional meta tags. Keep standard ones (viewport, description, robots, OG, Twitter).
+
+**Files**: index.html
+**Test**: `npm run build` + verify page renders correctly
+**Commit**: `Cleanup: Remove unused meta tags from index.html`
+
 ---
 
 ### Tier 2 — LOW RISK (isolated extractions, no logic changes)
@@ -197,6 +217,16 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Files**: src/App.jsx (4 locations)
 **Test**: `npm run build` + verify external links still open correctly
 **Commit**: `Security: Add noopener to all window.open calls`
+
+#### T2-5: Add LCP preload hint for hero image
+
+**Problem**: The hero image (Largest Contentful Paint element) is loaded via React's `<picture>` element which only exists after JavaScript executes. The browser cannot discover the LCP image until React renders, adding 200-500ms to LCP.
+
+**Fix**: Add `<link rel="preload" as="image" href="/path-to-hero.webp" type="image/webp">` in index.html `<head>` so the browser starts downloading immediately.
+
+**Files**: index.html
+**Test**: `npm run build` + Lighthouse LCP measurement before/after
+**Commit**: `Perf: Add preload hint for LCP hero image`
 
 ---
 
@@ -274,6 +304,57 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Files**: src/App.jsx (camp data + card rendering)
 **Test**: `npm run build` + verify affected camp cards
 **Commit**: `Fix: Handle null established year in camp cards`
+
+#### T3-8: Fix HTTP booking URL for Camp Bjontegaard
+
+**Problem**: Camp ID 15 (Camp Bjontegaard) has `bookingUrl: "http://sommerleir.no/"` — the only HTTP URL in the dataset. Users clicking through get an insecure connection.
+
+**Fix**: Change to `"https://sommerleir.no/"` (verify HTTPS works first).
+
+**Files**: src/App.jsx (~line 540)
+**Test**: `npm run build` + verify link opens with HTTPS
+**Commit**: `Fix: Change Camp Bjontegaard booking URL from HTTP to HTTPS`
+
+#### T3-9: Fix badge CSS inconsistency between Home and Discover sections
+
+**Problem**: Home section camp cards use `className="badge-responsive"` (~line 2460) for the "2026 Open" badge, while Discover section uses `className="text-xs"` (~line 2999). This means Discover section badges may be too small on mobile devices.
+
+**Fix**: Change Discover section to use `badge-responsive` to match Home section.
+
+**Files**: src/App.jsx (~line 2999)
+**Test**: `npm run build` + compare badge sizes on mobile between Home and Discover
+**Commit**: `Fix: Use consistent badge-responsive class in Discover section`
+
+#### T3-10: Remove `user-scalable=no` from viewport meta
+
+**Problem**: index.html viewport meta tag includes `user-scalable=no` which prevents pinch-to-zoom. Google Search Console may flag this under mobile usability. Also an accessibility concern for visually impaired users.
+
+**Fix**: Remove `user-scalable=no` from the viewport meta content attribute. Keep `viewport-fit=cover` for iOS safe areas.
+
+**Files**: index.html (line ~5)
+**Test**: `npm run build` + verify pinch-to-zoom works on mobile + no layout shifts
+**Caution**: Some mobile UX may have relied on this to prevent accidental zooming. Test thoroughly.
+**Commit**: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
+
+#### T3-11: Remove `Crawl-delay: 1` from robots.txt
+
+**Problem**: `Crawl-delay: 1` tells bots to wait 1 second between requests. Google ignores it, but Bing (9% of traffic) may honor it, throttling crawling unnecessarily for a tiny site.
+
+**Fix**: Remove the `Crawl-delay: 1` line from robots.txt.
+
+**Files**: public/robots.txt (~line 105)
+**Test**: Verify robots.txt is valid after change
+**Commit**: `SEO: Remove Crawl-delay from robots.txt (unnecessary for small site)`
+
+#### T3-12: Update sitemap lastmod date
+
+**Problem**: sitemap.xml `lastmod` is `2026-01-25` but camps were added January 26. Keeping lastmod current signals freshness.
+
+**Fix**: Update to current date whenever content changes.
+
+**Files**: public/sitemap.xml (~line 6)
+**Test**: Validate sitemap XML
+**Commit**: `SEO: Update sitemap lastmod to current date`
 
 ---
 
@@ -513,84 +594,132 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build`
   - Commit: `Cleanup: Remove unused _showFilters state variable`
 
+- [ ] **7. Remove duplicate preconnect/DNS-prefetch tags** (T1-7)
+  - Risk: Tier 1
+  - File: index.html
+  - Test: `npm run build` + page loads correctly
+  - Commit: `Cleanup: Remove duplicate preconnect/DNS-prefetch tags`
+
+- [ ] **8. Remove unused/junk meta tags** (T1-8)
+  - Risk: Tier 1
+  - File: index.html
+  - Test: `npm run build` + page renders correctly
+  - Commit: `Cleanup: Remove unused meta tags from index.html`
+
 ### Tier 2 — Low Risk Improvements
 
-- [ ] **7. Move allCamps outside component function** (T2-1)
+- [ ] **9. Move allCamps outside component function** (T2-1)
   - Risk: Tier 2
   - File: src/App.jsx
   - Test: `npm run build` + verify all camps display, search, filters
   - Commit: `Perf: Move allCamps outside component function`
 
-- [ ] **8. Extract allCamps to src/data/camps.js** (T2-2)
-  - Risk: Tier 2 (depends on #7)
+- [ ] **10. Extract allCamps to src/data/camps.js** (T2-2)
+  - Risk: Tier 2 (depends on #9)
   - Files: src/App.jsx, src/data/camps.js (new)
   - Test: `npm run build` + full functionality check
   - Commit: `Refactor: Extract camp data to src/data/camps.js`
 
-- [ ] **9. Add maxLength to search inputs** (T2-3)
+- [ ] **11. Add maxLength to search inputs** (T2-3)
   - Risk: Tier 2
   - File: src/App.jsx (2 locations)
   - Test: `npm run build` + verify search works
   - Commit: `Security: Add maxLength=200 to search inputs`
 
-- [ ] **10. Add noopener to window.open calls** (T2-4)
+- [ ] **12. Add noopener to window.open calls** (T2-4)
   - Risk: Tier 2
   - File: src/App.jsx (4 locations)
   - Test: `npm run build` + verify external links open
   - Commit: `Security: Add noopener to window.open calls`
 
+- [ ] **13. Add LCP preload hint for hero image** (T2-5)
+  - Risk: Tier 2
+  - File: index.html
+  - Test: `npm run build` + Lighthouse LCP measurement
+  - Commit: `Perf: Add preload hint for LCP hero image`
+
 ### Tier 3 — Medium Risk Fixes
 
-- [ ] **11. Fix CSP connect-src for GA4** (T3-1)
+- [ ] **14. Fix CSP connect-src for GA4** (T3-1)
   - Risk: Tier 3
   - File: public/_headers
   - Test: Deploy + check browser console for CSP errors + verify GA4 data
   - Commit: `Security: Add GA4 domains to CSP connect-src`
 
-- [ ] **12. Fix meta tag country counts** (T3-2)
+- [ ] **15. Fix meta tag country counts** (T3-2)
   - Risk: Tier 3 (SEO-sensitive)
   - File: index.html
   - Pre-check: Note current Google search snippet before changing
   - Test: `npm run build` + inspect meta tags
   - Commit: `SEO: Fix country count in meta tags (24 countries)`
 
-- [ ] **13. Fix ItemList numberOfItems to integer** (T3-3)
+- [ ] **16. Fix ItemList numberOfItems to integer** (T3-3)
   - Risk: Tier 3
   - File: index.html
   - Test: Google Rich Results Test
   - Commit: `SEO: Fix numberOfItems to integer value`
 
-- [ ] **14. Fix stale sitemap caption** (T3-4)
+- [ ] **17. Fix stale sitemap caption** (T3-4)
   - Risk: Tier 3
   - File: public/sitemap.xml
   - Test: Validate sitemap XML
   - Commit: `SEO: Update sitemap to 52 organizations, 24 countries`
 
-- [ ] **15. Fix broken "Local" category footer link** (T3-5)
+- [ ] **18. Fix broken "Local" category footer link** (T3-5)
   - Risk: Tier 3
   - File: src/App.jsx (~line 4883)
   - Test: `npm run build` + click footer link
   - Commit: `Fix: Remove broken "Local" category link from footer`
 
-- [ ] **16. Fix "Book Now" text in Compare section** (T3-6)
+- [ ] **19. Fix "Book Now" text in Compare section** (T3-6)
   - Risk: Tier 3
   - File: src/App.jsx (~line 3229)
   - Test: `npm run build` + check Compare button text
   - Commit: `Fix: Change Compare "Book Now" to "View Details & Book"`
 
-- [ ] **17. Fix null established year display** (T3-7)
+- [ ] **20. Fix null established year display** (T3-7)
   - Risk: Tier 3
   - File: src/App.jsx (camp data + card rendering)
   - Test: `npm run build` + verify camp cards for IDs 24, 26
   - Commit: `Fix: Handle null established year in camp cards`
 
+- [ ] **21. Fix HTTP booking URL for Camp Bjontegaard** (T3-8)
+  - Risk: Tier 3
+  - File: src/App.jsx (~line 540)
+  - Test: `npm run build` + verify HTTPS link works
+  - Commit: `Fix: Change Camp Bjontegaard URL from HTTP to HTTPS`
+
+- [ ] **22. Fix badge CSS inconsistency Home vs Discover** (T3-9)
+  - Risk: Tier 3
+  - File: src/App.jsx (~line 2999)
+  - Test: `npm run build` + compare badge sizes on mobile
+  - Commit: `Fix: Use consistent badge-responsive class in Discover`
+
+- [ ] **23. Remove user-scalable=no from viewport** (T3-10)
+  - Risk: Tier 3
+  - File: index.html (line ~5)
+  - Test: `npm run build` + verify pinch-to-zoom works, no layout shifts
+  - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
+
+- [ ] **24. Remove Crawl-delay from robots.txt** (T3-11)
+  - Risk: Tier 3
+  - File: public/robots.txt (~line 105)
+  - Test: Validate robots.txt
+  - Commit: `SEO: Remove Crawl-delay from robots.txt`
+
+- [ ] **25. Update sitemap lastmod date** (T3-12)
+  - Risk: Tier 3
+  - File: public/sitemap.xml (~line 6)
+  - Test: Validate sitemap XML
+  - Commit: `SEO: Update sitemap lastmod to current date`
+
 ### Tier 4 — Phase 2 Only
 
-- [ ] **18. Extract shared FilterBar component** (T4-1) — Requires React Router
-- [ ] **19. Extract shared CampCard component** (T4-2) — Requires React Router
-- [ ] **20. Split sections into route components** (T4-3) — IS Phase 2
-- [ ] **21. Fix multiple H1 elements** (T4-4) — Natural with real routes
-- [ ] **22. Fix schema hash fragment URLs** (T4-5) — Requires real routes
+- [ ] **26. Extract shared FilterBar component** (T4-1) — Requires React Router
+- [ ] **27. Extract shared CampCard component** (T4-2) — Requires React Router
+- [ ] **28. Split sections into route components** (T4-3) — IS Phase 2
+- [ ] **29. Fix multiple H1 elements** (T4-4) — Natural with real routes
+- [ ] **30. Fix schema hash fragment URLs** (T4-5) — Requires real routes
 
 ---
 
@@ -598,9 +727,10 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 ### Structured Data Issues
 1. **numberOfItems is string "100+"** — Must be integer for schema.org compliance
-2. **SearchAction uses hash fragment** — Google ignores `/#discover?search={search_term}`. Non-functional until Phase 2.
-3. **BreadcrumbList uses hash URLs** — Same issue, deferred to Phase 2.
-4. **Event schema is correct** — Proper use of Event (not Product) for camp listings.
+2. **SearchAction uses hash fragment** — Google ignores `/#discover?search={search_term}`. Non-functional until Phase 2. Consider removing entirely rather than keeping non-functional markup.
+3. **BreadcrumbList uses hash URLs** — Same issue. Consider removing until Phase 2 provides real URLs — non-functional schema could be flagged as misleading.
+4. **Event schema is NOT implemented** — CLAUDE.md claims Event schema for camps, but validation run found zero `application/ld+json` in App.jsx. Only 3 EducationalOrganization entries exist in index.html ItemList. Documentation should be corrected.
+5. **No individual camp structured data** — Camps have zero schema markup. AggregateRating schema would generate star ratings in SERPs (competitor world-camps.org does this). Requires Phase 2 individual camp pages.
 
 ### Meta Tag Issues
 1. **Country counts inconsistent** — Found references to 21, 13, and 13 countries across different meta tags. Actual: 24.
@@ -612,42 +742,48 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 ### Competitor Insights (from SEO agent)
 
-| Feature | Your Site | bestsummercourses.com | campeurope.net | world-camps.org |
-|---------|-----------|----------------------|----------------|-----------------|
-| Individual camp pages | No (SPA) | Yes | Yes | Yes |
-| Country-specific pages | No | Yes | No | Yes |
-| Category pages | No | Yes | No | No |
-| Blog content | No | Yes | No | No |
-| Indexable URLs | 1 | 50+ | ~10 | 20+ |
-| Structured data | Excellent | Unknown | Unknown | Unknown |
-| FAQ schema | Yes (10 Qs) | Unknown | Yes | No |
-| Number of camps | 52 orgs / 100+ | ~50+ | ~30 | ~100+ |
+| Feature | Your Site | bestsummercourses.com | campeurope.net | world-camps.org | bestparents.com | noreceptionclub.com |
+|---------|-----------|----------------------|----------------|-----------------|-----------------|---------------------|
+| Individual camp pages | No (SPA) | Yes | Yes (per program) | Yes (400+ pages) | Yes | Blog format |
+| Country-specific pages | No | Yes | No | Yes | Unknown | No |
+| Category pages | No | Yes | No | No | No | No |
+| Blog content | No | Yes (News & Advice) | No | No | Yes | Yes (primary strategy) |
+| Age-specific pages | No | Yes | No | No | No | No |
+| Indexable URLs | **1** | 50+ | ~10 | **400+** | 30+ | 10-15 |
+| Structured data | Excellent | Unknown | Basic | Product + AggregateRating | Unknown | Article schema |
+| FAQ schema | Yes (10 Qs) | Unknown | Yes | No | No | No |
+| Number of camps | 52 orgs / 100+ | ~50+ curated | ~50 | 400+ | 30+ | 10-15 curated |
 
-**Key gap**: Every competitor has multiple indexable URLs. SPA architecture = 1 indexable URL = hard ceiling on growth.
-**Your advantage**: Superior structured data, comprehensive FAQ schema, verified pricing, clean domain authority.
+**Key gap**: Every competitor has multiple indexable URLs. world-camps.org ranks for 400+ long-tail camp-name queries that we cannot compete for with a single URL. bestsummercourses.com captures age-specific queries with dedicated pages.
+**Your advantage**: Superior structured data, comprehensive FAQ schema, verified pricing, clean domain authority. Content quality per page is higher than most competitors. Already ranking #1 for primary directory query despite SPA limitation.
+**Critical insight**: The path from 168 to 1,000+ monthly sessions runs directly through Phase 2. Individual camp pages alone could 5-10x indexable page count.
 - Phase 2 (React Router + SSG) is essential for growth beyond ~300 monthly visitors
 - Current organic traffic (168/month) is approaching the SPA ceiling
 
 ### Phase 2 SEO Roadmap
-1. Real routes for each country (`/camps/switzerland`, `/camps/norway`)
-2. Real routes for each category (`/category/premium-alpine`)
-3. Individual camp pages for SEO long-tail
-4. Proper canonical tags per page
-5. Server-side rendering or static generation for crawler access
-6. One H1 per route, natural heading hierarchy
+1. **Individual camp pages** (`/camps/les-elfes-international/`) — unlocks 52+ new indexable pages and long-tail keyword potential
+2. **Country landing pages** (`/countries/switzerland/`) — target "[country] summer camps 2026" queries
+3. **Category landing pages** (`/categories/premium-alpine/`) — target category-specific searches
+4. **Age-group pages** (`/camps/teens/`, `/camps/kids-6-10/`) — target age-specific queries (bestsummercourses.com already wins these)
+5. **Blog/guide content** (`/guides/how-to-choose-european-summer-camp/`) — extract existing guide content from hash fragments into real crawlable pages
+6. **Server-side rendering or static site generation** — eliminate JavaScript rendering dependency entirely
+7. **Working SearchAction and BreadcrumbList** — with real URL paths, these schemas will produce rich results
+8. **AggregateRating schema per camp** — generates star ratings in SERPs (world-camps.org does this)
+9. Proper canonical tags per page, one H1 per route
 
-### Enhancement: Add LCP Preload Hint
+### Overall SEO Score: 6.5/10 (validated across 2 independent runs)
 
-The hero image is the Largest Contentful Paint element but is loaded via React's `<picture>` element (only exists after JS executes). Adding `<link rel="preload" as="image" href="/path-to-hero.webp" type="image/webp">` in index.html `<head>` would let the browser start downloading immediately, potentially improving LCP by 200-500ms. Low risk, Tier 2 change.
-
-### Overall SEO Score: 7/10
-- Schema implementation: 6/10 (correct approach, some data errors)
-- Meta tags: 5/10 (effective but stale counts across meta/OG/Twitter)
-- Technical SEO: 5/10 (SPA ceiling limits growth)
-- Content SEO: 8/10 (comprehensive, accurate, well-organized)
-- Image SEO: 8/10 (excellent dynamic alt text, AVIF/WebP delivery)
-- Caching & Headers: 9/10 (excellent cache headers, strong security)
-- Competitive position: 6/10 (ranking well but ceiling approaching)
+| Sub-dimension | Score | Notes |
+|---------------|-------|-------|
+| Meta Tags & Title | 7/10 | Good title/description, but inconsistent country numbers across OG/Twitter/meta |
+| Structured Data | 5/10 | FAQ and ItemList good; Event schema missing despite docs; BreadcrumbList/SearchAction non-functional |
+| Content SEO / Headings | 5/10 | 13 H1 tags on one page; rich content trapped in single URL |
+| Image SEO | 8/10 | AVIF/WebP delivery, descriptive dynamic alt text, image in sitemap |
+| Technical SEO | 6/10 | Clean canonical, proper robots; but SPA limits crawlability, JS rendering dependency |
+| Core Web Vitals | 7/10 | Good image optimization and caching; LCP improvable with preload hint |
+| Caching & Headers | 9/10 | Excellent immutable cache headers, strong security headers |
+| Schema Accuracy | 5/10 | Multiple data mismatches (country counts); non-functional SearchAction/BreadcrumbList |
+| Competitor Parity | 4/10 | Single biggest gap: 1 indexable URL vs competitors' 10-400+ |
 
 ---
 
@@ -656,9 +792,11 @@ The hero image is the Largest Contentful Paint element but is loaded via React's
 | Pass | Agent/Method | Duration | Status |
 |------|-------------|----------|--------|
 | 0 | 2x Explore agents (parallel) | Completed | All codebase data gathered |
-| 1 | enterprise-code-reviewer | Completed | Full report received |
-| 2 | seo-performance-optimizer | Completed | Full report received |
+| 1 | enterprise-code-reviewer (run 1) | Completed | Full report received |
+| 2 | seo-performance-optimizer (run 1) | Completed | Full report received |
 | 3 | Direct Claude analysis | Completed | 8 audits performed |
+| 4 | enterprise-code-reviewer (validation run) | 2m42s | Confirmed findings + 3 new items |
+| 5 | seo-performance-optimizer (validation run) | Completed | Confirmed findings + 6 new items |
 
 ---
 
