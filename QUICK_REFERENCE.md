@@ -202,7 +202,7 @@
 ## 📚 DOCUMENTATION STRUCTURE
 
 ```
-/                                    # ROOT - Mandatory Reading (9 files)
+/                                    # ROOT - Mandatory Reading (12 files)
 ├── CLAUDE.md                        ⭐ Master control document
 ├── CODE_STRUCTURE.md                ⭐ App.jsx architecture & code locations
 ├── DEVELOPMENT_GUIDELINES.md        ⭐ Rule #0, standards
@@ -213,6 +213,7 @@
 ├── FEATURED_CAMPS.md                ⭐ Featured listings tracker
 ├── FEATURED_LISTINGS_POLICY.md      ⭐ Monetization operations
 ├── CODE_REVIEW_PLAN.md              ⭐ 3-pass code review plan (ready to execute)
+├── CODE_REVIEW_2026.md              Code review findings & 35-item checklist
 └── README.md                        Public-facing documentation (GitHub convention)
 
 /docs/reference/                     # Reference docs (7 files)
@@ -231,7 +232,8 @@
 ├── security-audit-specialist.md
 └── seo-performance-optimizer.md
 
-/docs/archive/                       # Historical documents (9 files)
+/docs/archive/                       # Historical documents (10 files)
+├── CAMP_RESEARCH_JAN25_2026.md      Jan 25 camp research (NL, LT, NO, DK)
 ├── CLAUDE-BACKUP-*.md               Control document backups
 ├── IMAGE_OPTIMIZATION_COMPLETE.md
 ├── IMPLEMENTATION_CHECKLIST.md
@@ -241,8 +243,9 @@
 ├── SECURITY_AUDIT_REPORT.md
 └── site-analysis-report.md
 
-/docs/strategy/                      # Future planning (4 files)
+/docs/strategy/                      # Future planning (5 files)
 ├── ANALYTICS_AND_STATS.md           GA4 reports, pitch metrics, milestones
+├── FILTER_SYSTEM_IMPLEMENTATION_PLAN.md  Filter system design (completed Jan 2026)
 ├── PHASE_2_IMPLEMENTATION_PLAN.md
 ├── SPECIALIZED_AGENTS_ROADMAP.md
 └── VIRTUAL_SCROLLING_IMPLEMENTATION_PLAN.md

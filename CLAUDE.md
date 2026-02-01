@@ -1191,6 +1191,7 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 | **FEATURED_LISTINGS_POLICY.md** ⭐ | Monetization operations guide |
 | **CODE_STRUCTURE.md** ⭐ | App.jsx architecture and code locations |
 | **CODE_REVIEW_PLAN.md** ⭐ | 3-pass code review plan (run when user requests) |
+| **CODE_REVIEW_2026.md** | Code review findings & 35-item implementation checklist |
 | **README.md** | Public-facing documentation (GitHub convention - at root) |
 
 ### Reference Documents (`docs/reference/`)
@@ -1228,6 +1229,9 @@ All 5 agents READ-ONLY mode:
 **ANALYTICS_AND_STATS.md**
 - GA4 reports to check, pitch metrics, milestone tracking
 
+**FILTER_SYSTEM_IMPLEMENTATION_PLAN.md**
+- Filter system design and implementation (completed Jan 2026)
+
 ### Archive Documents (`docs/archive/`)
 
 Historical documents from completed work:
@@ -1238,6 +1242,7 @@ Historical documents from completed work:
 - `PRICING_VERIFICATION_URGENT.md` - Pricing verification (100% complete)
 - `SECURITY_AUDIT_REPORT.md` - Security audit Sept 2025
 - `site-analysis-report.md` - External audit Aug 2025
+- `CAMP_RESEARCH_JAN25_2026.md` - January 25 camp research (Netherlands, Lithuania, Norway, Denmark)
 - `CLAUDE-BACKUP-*.md` - Historical backups
 
 ---
