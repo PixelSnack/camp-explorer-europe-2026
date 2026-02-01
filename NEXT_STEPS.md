@@ -161,9 +161,10 @@
 ## 🎯 **IMMEDIATE PRIORITIES (Next Session)**
 
 ### **📋 PRIORITY ORDER:**
-1. **Content Expansion** - Grow toward 100+ organizations (next milestone: 50, then 60)
-2. **Boundless Life Response** - Awaiting reply, process when received
-3. **Traffic Growth** - Monitor analytics, optimize for search
+1. **Code Review** - Execute CODE_REVIEW_PLAN.md (3-pass review: enterprise + SEO + code health)
+2. **Content Expansion** - Grow toward 100+ organizations (next milestone: 60)
+3. **Boundless Life Response** - Awaiting reply, process when received
+4. **Traffic Growth** - Monitor analytics, optimize for search
 
 ---
 
@@ -371,39 +372,16 @@ Check all camps in App.jsx where price does NOT contain "/":
 
 **Decision:** Focus on English-speaking international market for now. Revisit when traffic justifies investment.
 
-### **Comprehensive Code Review & Documentation** (Future Priority)
-**Status:** DEFERRED - Add to schedule when time permits
+### **Comprehensive Code Review** (Ready to Execute)
+**Status:** PLAN COMPLETE — See `CODE_REVIEW_PLAN.md` for detailed execution plan
 **Business Impact:** Sale-readiness, maintainability, professional credibility
 
-#### **Objective:**
-Run enterprise-code-reviewer agent over entire codebase (in sections due to size) to ensure:
-- Code follows best practices throughout
-- Enterprise-level quality and structure
-- Clear enough for a professional programmer to quickly understand
-- Sale-ready documentation if site is sold
-
-#### **Scope:**
-- **App.jsx** (~4,500 lines) - review in sections:
-  - Lines 1-200: Imports, constants, camp data structure
-  - Lines 200-1000: Camp data array (allCamps)
-  - Lines 1000-2000: State management, filtering logic, UI components
-  - Lines 2000-3000: Home section, cards, rendering
-  - Lines 3000-4500: Discover section, contact form, footer
-- **App.css** - styling review
-- **Component files** (src/components/ui/) - shadcn/ui usage review
-- **Configuration files** (vite.config.js, tailwind.config.js)
-
-#### **Deliverables:**
-- [ ] Code quality report per section
-- [ ] List of any issues or improvements needed
-- [ ] Updated CODE_STRUCTURE.md with current architecture
-- [ ] Confidence rating for sale-readiness
-- [ ] Document findings in new CODE_REVIEW_REPORT.md
-
-#### **Notes:**
-- Use enterprise-code-reviewer agent (READ-ONLY)
-- Agent analyzes and reports, YOU implement any changes
-- Focus on: naming conventions, component structure, performance patterns, accessibility, security
+#### **Plan Summary (created February 1, 2026):**
+- **3-pass review**: enterprise-code-reviewer + seo-performance-optimizer + direct Claude analysis
+- **Safety**: Bash removed from both agents pre-review, all analysis read-only
+- **Output**: `CODE_REVIEW_2026.md` with findings in 4 risk tiers + DO NOT TOUCH list
+- **Explore agents run first** to re-learn codebase (new session has no memory)
+- **Full details**: `CODE_REVIEW_PLAN.md` (self-contained, copy-paste prompts included)
 
 ### **Mobile Scroll Navigation** (UX Enhancement)
 **Status:** ✅ COMPLETED (January 28, 2026)
@@ -480,14 +458,19 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 ---
 
-**Last Session:** January 28, 2026 - Implemented context-aware scroll navigation (direction-aware toggle, jumps to last camp card, enterprise-reviewed, tested iOS + PC)
-**Previous Session:** January 28, 2026 - Implemented complete filter system (multi-select Country + Age Group, single-select Price, mobile drawer, desktop dropdowns, ARIA accessibility, enterprise-reviewed)
+**Last Session:** February 1, 2026 - Documentation & tooling session: fixed GitHub MCP plugin (disabled, no Copilot), added parallel subagents + Chrome MCP usage guidelines to CLAUDE.md, fixed Windows bash nul file artifact, created comprehensive CODE_REVIEW_PLAN.md (3-pass review plan with exact prompts)
+**Previous Session:** January 28, 2026 - Implemented context-aware scroll navigation + complete filter system
 
 ---
 
 ## 🎯 **NEXT SESSION CHECKLIST**
 
-**Primary Task: Content Expansion (toward 50 organizations)**
+**Option A: Code Review Session**
+1. Complete pre-review safety steps in CODE_REVIEW_PLAN.md (remove Bash from agents)
+2. Tell Claude: "Read CODE_REVIEW_PLAN.md and follow it exactly"
+3. Review produces CODE_REVIEW_2026.md — no code changes
+
+**Option B: Content Expansion Session**
 1. Identify underrepresented countries/categories for new camps
 2. Use camp-content-researcher agent to find candidates
 3. Verify and add approved camps to App.jsx

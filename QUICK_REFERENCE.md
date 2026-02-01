@@ -212,6 +212,7 @@
 ├── STRATEGIC_ROADMAP.md             ⭐ Path to monetization
 ├── FEATURED_CAMPS.md                ⭐ Featured listings tracker
 ├── FEATURED_LISTINGS_POLICY.md      ⭐ Monetization operations
+├── CODE_REVIEW_PLAN.md              ⭐ 3-pass code review plan (ready to execute)
 └── README.md                        Public-facing documentation (GitHub convention)
 
 /docs/reference/                     # Reference docs (7 files)
