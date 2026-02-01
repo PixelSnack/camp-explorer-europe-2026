@@ -415,6 +415,26 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 
 **"Go the Extra Mile"**: Agents must be thorough, meticulous, and complete. Better to spend 5 minutes being certain than make errors requiring correction.
 
+### Parallel Subagents (Performance Tip)
+
+**Run independent agent tasks simultaneously, not sequentially.** When multiple research tasks have no dependencies on each other, launch them in parallel using multiple Task tool calls in a single message.
+
+**Example — User says**: "Verify Swiss camp pricing and find new camps in Poland"
+- ✅ **CORRECT**: Launch camp-data-verifier (Swiss pricing) AND camp-content-researcher (Poland) in parallel
+- ❌ **WRONG**: Wait for Swiss verification to finish, then start Poland research
+
+**When to parallelize:**
+- Pricing verification for camps in different countries
+- Researching new camps while verifying existing ones
+- Running SEO analysis while doing security audit
+- Any combination of independent agent tasks
+
+**When NOT to parallelize:**
+- One task depends on results of another (e.g., verify a camp, then update its data)
+- User specifically wants sequential review of results
+
+**User can request this by saying**: "use subagents" or "run in parallel" in their prompt.
+
 ### 4.1 Available Agents
 
 #### camp-data-verifier (Purple) - READ-ONLY
@@ -747,6 +767,23 @@ npm run lint         # Code quality (7 warnings OK - shadcn/ui)
 - **Build**: ~7-9 seconds, no errors
 - **Lint**: 7 warnings (all safe shadcn/ui component warnings)
 - **Dev Server**: Starts on http://localhost:5173
+
+### 5.7 Chrome MCP Usage Policy
+
+**Claude-in-Chrome MCP is connected but has specific usage guidelines.**
+
+**DO NOT use Chrome MCP for:**
+- ❌ Visual inspection of our own site (europeansummercamps.com) — the user is faster at manual visual checks
+- ❌ Post-deployment smoke testing — user can eyeball the site in seconds vs minutes of browser automation round-trips
+- ❌ Testing filters, search, or layout — manual testing is more efficient on this machine
+
+**DO use Chrome MCP for:**
+- ✅ Scraping data from external camp websites during verification (reading pricing pages, activity lists)
+- ✅ Filling out forms on external sites when needed
+- ✅ Taking screenshots of external sites for documentation or comparison
+- ✅ Any task where automation saves the user from repetitive manual data gathering
+
+**Why**: Browser automation via MCP adds significant latency per action. For visual QA of our own site, the user can spot issues instantly. The automation advantage only pays off for repetitive data extraction from external sources.
 
 ---
 
