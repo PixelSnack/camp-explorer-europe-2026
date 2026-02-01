@@ -245,6 +245,36 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: Validate sitemap at /sitemap.xml after deployment
 **Commit**: `SEO: Update sitemap caption to current counts (52 orgs, 24 countries)`
 
+#### T3-5: Fix footer "Local & Municipal Gems" linking to nonexistent category
+
+**Problem**: Footer link at ~line 4883 calls `handleCategoryFilter('local')`, but no camp has `category: 'local'` and it's not in `filterOptions`. Clicking shows 0 results with no explanation.
+
+**Fix**: Either remove the link, or change it to link to an existing category (e.g., 'budget' for Budget Excellence).
+
+**Files**: src/App.jsx (~line 4883)
+**Test**: `npm run build` + click the footer link, verify results appear
+**Commit**: `Fix: Remove broken "Local" category link from footer`
+
+#### T3-6: Fix "Book Now" text in Compare section
+
+**Problem**: Compare section button says "Book Now" (~line 3229) but the site is explicitly "NOT a booking agent" per Terms/Impressum. Home/Discover correctly say "View Details & Book".
+
+**Fix**: Change button text to "View Details & Book" to match other sections.
+
+**Files**: src/App.jsx (~line 3229)
+**Test**: `npm run build` + check Compare section button text
+**Commit**: `Fix: Change Compare "Book Now" to "View Details & Book" for consistency`
+
+#### T3-7: Fix two camps with null established year
+
+**Problem**: Camp IDs 24 and 26 have `established: null`, causing "Est. " with no year to display.
+
+**Fix**: Either research the correct established year, or add a conditional to hide the "Est." label when null.
+
+**Files**: src/App.jsx (camp data + card rendering)
+**Test**: `npm run build` + verify affected camp cards
+**Commit**: `Fix: Handle null established year in camp cards`
+
 ---
 
 ### Tier 4 — PHASE 2 ONLY (architectural, defer to React Router migration)
@@ -333,18 +363,24 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 
 | File | Location | Size | Imported In | Verdict |
 |------|----------|------|-------------|---------|
-| european-summer-camps-hero.webp | src/assets/ | ~127KB | App.jsx | USED |
-| european-summer-camps-hero.png | src/assets/ | ~3.0MB | Nowhere | ORPHANED |
-| european-summer-camps-map.webp | src/assets/ | ~68KB | App.jsx | USED |
-| european-summer-camps-map.png | src/assets/ | ~2.5MB | Nowhere | ORPHANED |
-| european-camp-activities-collage.webp | src/assets/ | ~132KB | App.jsx | USED |
-| european-camp-activities-collage.png | src/assets/ | ~1.9MB | Nowhere | ORPHANED |
-| camps-map.avif | src/assets/ | ~68KB | Nowhere | ORPHANED |
-| camps-map.webp | src/assets/ | ~68KB | Verify | CHECK |
-| react.svg | src/assets/ | ~4KB | Nowhere | ORPHANED (Vite default) |
-| european-summer-camps-hero.png | public/ | ~3.0MB | Verify og:image | CHECK |
+| european-summer-camps-lakeside-hero.png | src/assets/ | 1,635KB | App.jsx (heroImage) | USED |
+| hero-lakeside.avif | src/assets/ | 165KB | App.jsx | USED |
+| hero-lakeside.webp | src/assets/ | 124KB | App.jsx | USED |
+| hero-lakeside-compressed.png | src/assets/ | 661KB | App.jsx | USED |
+| activities-collage.avif | src/assets/ | 269KB | App.jsx | USED |
+| activities-collage.webp | src/assets/ | 129KB | App.jsx | USED |
+| activities-collage-compressed.png | src/assets/ | 279KB | App.jsx | USED |
+| camps-map-compressed.png | src/assets/ | 346KB | App.jsx | USED |
+| european-summer-camps-hero.png | src/assets/ | 3,033KB | Nowhere | ORPHANED |
+| european-summer-camps-map.png | src/assets/ | 2,492KB | Nowhere | ORPHANED |
+| european-camp-activities-collage.png | src/assets/ | 1,921KB | Nowhere | ORPHANED |
+| camps-map.avif | src/assets/ | 126KB | Nowhere | ORPHANED |
+| camps-map.webp | src/assets/ | 67KB | Nowhere | ORPHANED |
+| react.svg | src/assets/ | 4KB | Nowhere | ORPHANED (Vite default) |
+| european-summer-camps-hero.png | public/ | 3,033KB | Verify og:image | CHECK |
+| european-summer-camps-lakeside-hero.webp | public/ | 124KB | Verify og:image | CHECK |
 
-**Total orphaned (confirmed)**: ~7.4MB in src/assets/ + potentially ~3.0MB in public/
+**Total orphaned (confirmed)**: ~7.6MB in src/assets/ + potentially ~3.0MB in public/
 
 ### Table C: shadcn/ui Components
 
@@ -530,13 +566,31 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: Validate sitemap XML
   - Commit: `SEO: Update sitemap to 52 organizations, 24 countries`
 
+- [ ] **15. Fix broken "Local" category footer link** (T3-5)
+  - Risk: Tier 3
+  - File: src/App.jsx (~line 4883)
+  - Test: `npm run build` + click footer link
+  - Commit: `Fix: Remove broken "Local" category link from footer`
+
+- [ ] **16. Fix "Book Now" text in Compare section** (T3-6)
+  - Risk: Tier 3
+  - File: src/App.jsx (~line 3229)
+  - Test: `npm run build` + check Compare button text
+  - Commit: `Fix: Change Compare "Book Now" to "View Details & Book"`
+
+- [ ] **17. Fix null established year display** (T3-7)
+  - Risk: Tier 3
+  - File: src/App.jsx (camp data + card rendering)
+  - Test: `npm run build` + verify camp cards for IDs 24, 26
+  - Commit: `Fix: Handle null established year in camp cards`
+
 ### Tier 4 — Phase 2 Only
 
-- [ ] **15. Extract shared FilterBar component** (T4-1) — Requires React Router
-- [ ] **16. Extract shared CampCard component** (T4-2) — Requires React Router
-- [ ] **17. Split sections into route components** (T4-3) — IS Phase 2
-- [ ] **18. Fix multiple H1 elements** (T4-4) — Natural with real routes
-- [ ] **19. Fix schema hash fragment URLs** (T4-5) — Requires real routes
+- [ ] **18. Extract shared FilterBar component** (T4-1) — Requires React Router
+- [ ] **19. Extract shared CampCard component** (T4-2) — Requires React Router
+- [ ] **20. Split sections into route components** (T4-3) — IS Phase 2
+- [ ] **21. Fix multiple H1 elements** (T4-4) — Natural with real routes
+- [ ] **22. Fix schema hash fragment URLs** (T4-5) — Requires real routes
 
 ---
 
@@ -557,8 +611,20 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 2. **Heading hierarchy generally good** within each section.
 
 ### Competitor Insights (from SEO agent)
-- SPA architecture creates a hard ceiling — only 1 indexable URL
-- Competitors with multi-page sites have more entry points for long-tail keywords
+
+| Feature | Your Site | bestsummercourses.com | campeurope.net | world-camps.org |
+|---------|-----------|----------------------|----------------|-----------------|
+| Individual camp pages | No (SPA) | Yes | Yes | Yes |
+| Country-specific pages | No | Yes | No | Yes |
+| Category pages | No | Yes | No | No |
+| Blog content | No | Yes | No | No |
+| Indexable URLs | 1 | 50+ | ~10 | 20+ |
+| Structured data | Excellent | Unknown | Unknown | Unknown |
+| FAQ schema | Yes (10 Qs) | Unknown | Yes | No |
+| Number of camps | 52 orgs / 100+ | ~50+ | ~30 | ~100+ |
+
+**Key gap**: Every competitor has multiple indexable URLs. SPA architecture = 1 indexable URL = hard ceiling on growth.
+**Your advantage**: Superior structured data, comprehensive FAQ schema, verified pricing, clean domain authority.
 - Phase 2 (React Router + SSG) is essential for growth beyond ~300 monthly visitors
 - Current organic traffic (168/month) is approaching the SPA ceiling
 
@@ -570,12 +636,18 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 5. Server-side rendering or static generation for crawler access
 6. One H1 per route, natural heading hierarchy
 
+### Enhancement: Add LCP Preload Hint
+
+The hero image is the Largest Contentful Paint element but is loaded via React's `<picture>` element (only exists after JS executes). Adding `<link rel="preload" as="image" href="/path-to-hero.webp" type="image/webp">` in index.html `<head>` would let the browser start downloading immediately, potentially improving LCP by 200-500ms. Low risk, Tier 2 change.
+
 ### Overall SEO Score: 7/10
 - Schema implementation: 6/10 (correct approach, some data errors)
-- Meta tags: 7/10 (effective but stale counts)
+- Meta tags: 5/10 (effective but stale counts across meta/OG/Twitter)
 - Technical SEO: 5/10 (SPA ceiling limits growth)
 - Content SEO: 8/10 (comprehensive, accurate, well-organized)
-- Competitive position: 7/10 (ranking well but ceiling approaching)
+- Image SEO: 8/10 (excellent dynamic alt text, AVIF/WebP delivery)
+- Caching & Headers: 9/10 (excellent cache headers, strong security)
+- Competitive position: 6/10 (ranking well but ceiling approaching)
 
 ---
 
