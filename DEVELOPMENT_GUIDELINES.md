@@ -20,6 +20,16 @@
 **Common Mistake:** Getting excited about solving problems and forgetting to commit
 **Solution:** Make committing part of the problem-solving process, not an afterthought
 
+### **⚠️ NEVER USE `git commit --amend`**
+
+**Rule: Always create NEW commits. Never amend existing commits.**
+
+**Why:** This project uses GitHub Desktop for pushing. `git commit --amend` rewrites commit history, which causes the local and remote branches to diverge (`1↑ 1↓`). GitHub Desktop cannot resolve this without a force push, which is not available through the normal UI. This blocks the user from pushing entirely.
+
+**Incident (February 1, 2026):** CODE_REVIEW_2026.md was committed, then amended twice as review agents returned with additional findings. This rewrote the commit hash, causing GitHub Desktop to show diverged branches. Required `git reset --soft origin/main` and a fresh commit to fix.
+
+**Correct approach:** If you need to update a file you just committed, make the changes and create a new commit on top. Multiple small commits are always preferable to amending.
+
 ---
 
 ## 🚨 CARDINAL RULES - NEVER BREAK THESE

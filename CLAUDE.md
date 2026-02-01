@@ -749,6 +749,7 @@ Every code change must be evaluated holistically against these criteria:
 4. **Write comprehensive commit messages** (see Workflow section)
 5. **Push to main branch only** via GitHub Desktop
 6. **Vercel auto-deploys** in 30-60 seconds
+7. **NEVER use `git commit --amend`** — always create new commits (amending rewrites history and blocks GitHub Desktop from pushing)
 
 ### 5.5 Pre-Commit Checklist (MANDATORY)
 
