@@ -870,18 +870,30 @@ Naming is **generally good**: consistent camelCase, descriptive function names (
 - Magic number: `badgeWidth - 40` (~line 1824) with vague inline comment. Should be a named constant.
 - Inconsistent boundary between module-scope and component-scope functions
 
+### State Management Assessment
+
+19 useState hooks, logically groupable:
+- **Filter state (5)**: `selectedFilter`, `searchTerm`, `selectedCountries`, `selectedPriceTier`, `selectedAgeGroups` — candidates for `useReducer` or custom `useFilters` hook
+- **UI state (6)**: `isMenuOpen`, `activeSection`, `filterSheetOpen`, `openDropdown`, `showContactForm`, `showBackToTop`
+- **Form state (2)**: `isSubmittingForm`, `formSubmitted`
+- **GDPR state (2)**: `cookieConsent`, `showCookieBanner`
+- **Other (4)**: `selectedCamps`, `scrollDirection`, `resourceSection`, `_showFilters` (dead)
+
+No hidden state dependency issues found — useMemo dependency arrays are correct.
+
 ### Function Design Issues
 
 - **App() function**: 5,713 lines — the entire application is one function
 - **Marquee useEffect** (~lines 1792-1932): 140 lines with inline debounce utility, retry logic, IntersectionObserver, and platform detection. Should be a custom hook `useMarqueeAnimation`.
-- **`handleResourceLink`**: Switch with 7+ cases of duplicated scroll-to-element logic
-- **`generateBreadcrumbs`**: Verbose switch that could be a simple object lookup
-- **`filterOptions`**: Filters allCamps 7 times per render — should be in useMemo
+- **`handleResourceLink`**: Switch with 7+ cases of duplicated scroll-to-element logic. Each case does the same thing with minor variations.
+- **`generateBreadcrumbs`** (~lines 1587-1617): Verbose switch statement that could be replaced with a simple object lookup (map section name to breadcrumb config).
+- **`filterOptions`** (~line 1516): Filters allCamps 7 times per render without memoization — should be wrapped in useMemo.
+- **Age matching in `filteredCamps`** (~lines 1485-1496): Uses inline IIFE that reduces readability.
 
 ### Data Architecture Issues
 
-1. **No machine-readable price field**: Only human-readable strings ("From CHF 4,550/1 week", "EUR335/10 days"). Cannot programmatically sort by price. A `priceNumericEUR` field would unlock sorting, range filtering, and data export.
-2. **Mixed currency formats**: EUR, CHF, GBP, NOK, DKK, SEK, PLN, USD — `priceRange` normalizes this but raw prices are unparseable.
+1. **No machine-readable price field**: Only human-readable strings in inconsistent formats: `"From CHF 4,550/1 week"`, `"EUR335/10 days"`, `"$7,095/16 days"`, `"From EUR145/3 days"`, `"EUR410-440/1 week"`. Cannot programmatically sort by price. A `priceNumericEUR: 4550` field would unlock sorting, range filtering, and data export.
+2. **Mixed currency formats**: EUR, CHF, GBP, NOK, DKK, SEK, PLN, USD across 52 camps — `priceRange` field (budget/mid/premium/luxury) normalizes this for filtering but raw prices are unparseable by code.
 3. **Same 4 images** reused across all 56 camps — image field is decorative, not informational.
 4. **ID gaps** (13, 16, 19, 22 removed) — comment explanations are good but a buyer wonders about data integrity.
 5. **`reviews: 0`** on 8 camps — ambiguous: "not collected" vs "zero reviews."
@@ -917,7 +929,14 @@ Naming is **generally good**: consistent camelCase, descriptive function names (
 
 ### New Checklist Items from Architecture Review
 
-The following are added to the implementation checklist:
+Items added to Section 5 checklist from this pass:
+- T3-13 (#26): Remove hyperbolic code comments
+- T3-14 (#27): Update CODE_STRUCTURE.md with accurate line numbers
+- T3-15 (#28): Add numeric price field to camp data
+- T2-6 (#29): Extract marquee useEffect to custom hook
+- T2-7 (#30): Wrap filterOptions in useMemo
+
+Items #1-4 from the Top 10 table above (extract data, CampCard, FilterBar, and route splitting) are already captured as T2-2, T4-2, T4-1, and T4-3 respectively.
 
 ---
 
