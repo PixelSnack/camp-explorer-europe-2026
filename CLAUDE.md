@@ -51,6 +51,10 @@
 
 **For pushing/pulling: Tell the user to use GitHub Desktop.**
 
+### ⚠️ **WINDOWS BASH: Never Use `2>nul`**
+
+This project runs bash on Windows. Always use `2>/dev/null` (Unix-style), never `2>nul` (Windows-style). Using `2>nul` in bash creates a literal file called `nul` in the project directory.
+
 ---
 
 ## 📋 **CURRENT PRIORITY TASKS** (January 2026)
