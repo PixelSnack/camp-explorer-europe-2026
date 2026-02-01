@@ -147,6 +147,7 @@ This project runs bash on Windows. Always use `2>/dev/null` (Unix-style), never 
 - [x] **Featured Listing Demo**: ✅ Les Elfes demo live - shows operators what €99/year tier looks like
 - [x] **Filter System**: ✅ Multi-select filters deployed January 28, 2026
 - [x] **Mobile Arrow Navigation**: ✅ Context-aware scroll toggle deployed January 28, 2026
+- [ ] **Code Review**: Execute CODE_REVIEW_PLAN.md (comprehensive 3-pass review ready to run)
 - [ ] **Filter UI Refactor**: Extract shared `<FilterBar />` component (tech debt)
 - [ ] **Await Boundless Life Response**: Process Featured listing if accepted, create Basic if declined
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
@@ -199,6 +200,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 ✅ FEATURED_CAMPS.md (current Featured listings and verification status)
 ✅ FEATURED_LISTINGS_POLICY.md (monetization operations and camp operator communications)
 ✅ CODE_STRUCTURE.md (App.jsx architecture and code locations)
+✅ CODE_REVIEW_PLAN.md (comprehensive review plan — run when user requests code review)
 ```
 
 ### **Step 2: Current Status Assessment**
@@ -1185,6 +1187,7 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 | **FEATURED_CAMPS.md** ⭐ | Featured listings tracker |
 | **FEATURED_LISTINGS_POLICY.md** ⭐ | Monetization operations guide |
 | **CODE_STRUCTURE.md** ⭐ | App.jsx architecture and code locations |
+| **CODE_REVIEW_PLAN.md** ⭐ | 3-pass code review plan (run when user requests) |
 | **README.md** | Public-facing documentation (GitHub convention - at root) |
 
 ### Reference Documents (`docs/reference/`)
