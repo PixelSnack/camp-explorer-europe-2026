@@ -940,6 +940,166 @@ Items #1-4 from the Top 10 table above (extract data, CampCard, FilterBar, and r
 
 ---
 
+## Section 8: Tier 1 Implementation Plan (Verified February 2, 2026)
+
+*Pre-implementation verification performed by Claude Opus 4.5 using 3 parallel Explore agents to cross-check every claim in the original review against actual file contents.*
+
+### Critical Discovery: og:image is BROKEN on live site
+
+**Lines 42 & 53** of `index.html` reference:
+```
+https://www.europeansummercamps.com/european-summer-camps-lakeside-hero.png
+```
+
+But `public/` only contains:
+- `european-summer-camps-hero.png` (3.0MB) — the **OLD** hero image, NOT the lakeside one
+- `european-summer-camps-lakeside-hero.webp` (127KB) — correct image but **wrong format** (.webp not .png)
+
+**The `.png` file referenced by og:image does NOT exist in `public/`.** Social sharing previews (Facebook, LinkedIn, Twitter, Slack, iMessage link previews) are currently showing a broken/missing image. This must be fixed as part of Tier 1 work.
+
+### Verification Findings
+
+| Item | Review Claim | Verification Result |
+|------|-------------|-------------------|
+| T1-1 (orphaned src/assets/) | 5 orphaned files ~7.5MB | **Confirmed 6 files ~7.6MB** — also found `camps-map.avif` (126KB) orphaned |
+| T1-2 (orphaned public/ hero) | 1 file ~3MB, check og:image first | **og:image references non-existent `.png`** — must fix meta tags before deleting |
+| T1-3 (unused shadcn/ui) | 41 unused of 46 | **Confirmed 41 unused** — kept components do NOT import from deleted ones (safe) |
+| T1-4 (unused npm packages) | 29 packages | **Confirmed** — verified each @radix-ui package is only used by deleted components |
+| T1-5 (dead CSS) | 4 classes | **Confirmed** — no dynamic class construction references them either |
+| T1-6 (dead state) | `_showFilters` unused | **Confirmed** — line 116, underscore-prefixed, never referenced |
+| T1-7 (duplicate preconnect) | Simple duplicates | **CORRECTION**: Second block (lines 414-419) contains 3 unique domains — must consolidate, not just delete |
+| T1-8 (junk meta) | Non-standard meta tags | **Confirmed 13 junk tags** — lines 18-21 and 66-73 |
+
+### T1-7 Consolidation Detail
+
+The original review said "remove the second set of duplicates." Verification found the second block is NOT pure duplicates:
+
+**First block (lines 76-82):** `fonts.googleapis.com`, `googletagmanager.com`, `google-analytics.com`, `vercel.live`
+**Second block (lines 414-419):** `fonts.googleapis.com` (DUPLICATE), `fonts.gstatic.com` (UNIQUE — needed for Google Fonts), `vercel.app` (UNIQUE), `vercel.com` (UNIQUE)
+
+**Correct action:** Move the 3 unique entries into the first block, then delete the second block entirely.
+
+### Execution Order (8 commits, one per item)
+
+Each commit is independently revertible via `git revert <hash>`.
+
+#### Commit 1: T1-6 — Remove dead `_showFilters` state variable
+- **File**: `src/App.jsx` line 116
+- **Action**: Delete `const [_showFilters, _setShowFilters] = useState(false)`
+- **Test**: `npm run build`
+- **Commit msg**: `Cleanup: Remove unused _showFilters state variable`
+
+#### Commit 2: T1-5 — Remove 4 dead CSS classes
+- **File**: `src/App.css`
+- **Action**: Delete these class definitions:
+  - `.ios-scroll-fix` (line ~82)
+  - `.smooth-scroll` (line ~28)
+  - `.safe-area-content` (line ~105)
+  - `.camp-price-label` (line ~381)
+- **Test**: `npm run build` + `npm run dev` (visual spot-check hero, cards, footer)
+- **Commit msg**: `Cleanup: Remove 4 unused CSS classes from App.css`
+
+#### Commit 3: T1-8 — Remove 13 junk meta tags from index.html
+- **File**: `index.html`
+- **Action**: Remove lines 18-21 (`content-type`, `target-audience`, `content-rating`, `content-category`) and lines 66-73 (`rating`, `distribution`, `revisit-after`, `language`, `geo.region`, `geo.placename`, `target`, `audience`)
+- **Keep**: All standard tags (viewport, description, robots, og:*, twitter:*, PWA, favicon, theme-color)
+- **Test**: `npm run build` + page loads correctly
+- **Commit msg**: `Cleanup: Remove 13 non-standard meta tags from index.html`
+
+#### Commit 4: T1-7 — Consolidate duplicate preconnect/DNS-prefetch tags
+- **File**: `index.html`
+- **Action**:
+  1. Add to the first block (after line 82): `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />`, `<link rel="dns-prefetch" href="//vercel.app" />`, `<link rel="dns-prefetch" href="//vercel.com" />`
+  2. Delete the entire second block (lines 413-419 after junk meta removal shifts line numbers)
+- **Test**: `npm run build` + `npm run dev` + verify Google Fonts render correctly
+- **Commit msg**: `Cleanup: Consolidate preconnect/DNS-prefetch tags (remove duplicates, keep unique domains)`
+
+#### Commit 5: T1-2 — Fix broken og:image AND remove orphaned public/ hero PNG
+- **Files**: `index.html` lines 42 and 53, `public/european-summer-camps-hero.png`
+- **Action**:
+  1. Change og:image URL (line 42) from `european-summer-camps-lakeside-hero.png` to `european-summer-camps-lakeside-hero.webp`
+  2. Change twitter:image URL (line 53) from `european-summer-camps-lakeside-hero.png` to `european-summer-camps-lakeside-hero.webp`
+  3. Verify the .webp file dimensions are adequate for social sharing (Facebook minimum: 200x200, recommended: 1200x630)
+  4. Update `og:image:width` and `og:image:height` values if they don't match the .webp file
+  5. Delete `public/european-summer-camps-hero.png` (3.0MB — the OLD hero, not referenced anywhere)
+- **IMPORTANT**: This FIXES a currently broken feature on the live site (social sharing previews)
+- **Test**: `npm run build` + verify meta tags in built `dist/index.html`
+- **Commit msg**: `Fix: Repair broken og:image/twitter:image URLs + remove orphaned 3MB hero PNG from public/`
+
+#### Commit 6: T1-1 — Remove 6 orphaned images from src/assets/
+- **Directory**: `src/assets/`
+- **Delete these files** (all verified NOT imported in App.jsx lines 60-68):
+  - `european-summer-camps-hero.png` (3.0MB) — old hero, replaced by lakeside version
+  - `european-summer-camps-map.png` (2.5MB) — original unoptimized map
+  - `european-camp-activities-collage.png` (1.9MB) — original unoptimized collage
+  - `camps-map.avif` (126KB) — not imported (only `.png` compressed version is used)
+  - `camps-map.webp` (67KB) — not imported (only `.png` compressed version is used)
+  - `react.svg` (4KB) — Vite template default, never imported
+- **Total savings**: ~7.6MB
+- **Test**: `npm run build` — Vite fails on missing imports, so a passing build proves none were needed
+- **Commit msg**: `Cleanup: Remove 6 orphaned image assets (~7.6MB) from src/assets/`
+
+#### Commit 7: T1-3 — Remove 41 unused shadcn/ui component files
+- **Directory**: `src/components/ui/`
+- **Keep ONLY these 5 files**:
+  - `button.jsx` (imported in App.jsx line 47)
+  - `card.jsx` (imported in App.jsx line 48)
+  - `badge.jsx` (imported in App.jsx line 49)
+  - `breadcrumb.jsx` (imported in App.jsx line 57)
+  - `drawer.jsx` (imported in App.jsx line 59)
+- **Also keep**: `../lib/utils.js` (utility used by all kept components)
+- **Delete all 41 other `.jsx` files** in `src/components/ui/`: accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, tooltip
+- **Safe because**: Verified that the 5 kept components do NOT import from any of the 41 deleted components. All interdependencies are only among deleted components.
+- **Test**: `npm run build` — Vite will error on any missing import
+- **Commit msg**: `Cleanup: Remove 41 unused shadcn/ui components (keep 5 used: button, card, badge, breadcrumb, drawer)`
+
+#### Commit 8: T1-4 — Uninstall 29 unused npm packages
+- **Must run AFTER Commit 7** (component files that referenced these packages must be deleted first)
+- **Uninstall command**:
+  ```bash
+  npm uninstall recharts sonner date-fns react-day-picker cmdk @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-label @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-tooltip
+  ```
+- **KEEP these packages** (verified in use):
+  - `@radix-ui/react-slot` — used by button.jsx, badge.jsx, breadcrumb.jsx
+  - `vaul` — used by drawer.jsx
+  - `@tanstack/react-virtual` — intentionally kept for planned virtual scrolling feature
+  - `class-variance-authority` — used by button.jsx, badge.jsx
+  - `clsx` + `tailwind-merge` — used by lib/utils.js
+  - `lucide-react` — icon library used throughout App.jsx
+  - `@emailjs/browser` — contact form
+- **Test**: `npm run build` + `npm run lint`
+- **Note**: This modifies `package.json` and `package-lock.json` — large diff is expected
+- **Commit msg**: `Cleanup: Uninstall 29 unused npm packages (shadcn/ui deps + Radix)`
+
+### Post-Tier-1 Verification Checklist
+
+After all 8 commits, verify:
+```
+npm run build          # Must pass
+npm run lint           # Must pass (warnings will decrease — fewer shadcn files)
+npm run dev            # Manual checks:
+  [ ] Homepage loads, hero image displays in <picture> element
+  [ ] Search works (type "Switzerland", results filter)
+  [ ] Category filter buttons work (click "Premium Alpine")
+  [ ] Country filter works (footer country links)
+  [ ] "All Camps" reset works
+  [ ] Camp cards render with badges, buttons, ratings
+  [ ] Mobile filter drawer opens (uses vaul/Drawer component)
+  [ ] Breadcrumbs display correctly
+  [ ] Contact form opens (uses Button component)
+  [ ] Google Fonts load (verify preconnect consolidation didn't break)
+  [ ] og:image meta tag points to existing .webp file
+```
+
+### What Tier 1 Does NOT Touch
+
+- Zero changes to App.jsx logic, filtering, search, analytics, GDPR, camp data, or scroll navigation
+- Zero changes to security headers (`public/_headers`), robots.txt, or structured data schemas
+- Zero changes to any live user-facing functionality (except fixing broken og:image — net positive)
+- SEO meta description country counts (T3-2) are deferred to Tier 3
+
+---
+
 ## Appendix: Review Execution Log
 
 | Pass | Agent/Method | Duration | Status |
@@ -951,6 +1111,7 @@ Items #1-4 from the Top 10 table above (extract data, CampCard, FilterBar, and r
 | 4 | enterprise-code-reviewer (validation run) | 2m42s | Confirmed findings + 3 new items |
 | 5 | seo-performance-optimizer (validation run) | Completed | Confirmed findings + 6 new items |
 | 6 | enterprise-code-reviewer (architecture pass) | Completed | Buyer-readiness assessment, code organization, naming review |
+| 7 | 3x Explore agents (parallel verification, Feb 2) | Completed | Cross-checked all Tier 1 claims against actual files. Found og:image broken, T1-7 consolidation needed, confirmed all other claims. |
 
 ---
 
