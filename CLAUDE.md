@@ -217,7 +217,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 - ✅ **Performance**: OPTIMIZED (93-96% image reduction)
 - ✅ **Security**: ENTERPRISE-GRADE (HSTS + CSP headers)
 - ✅ **Accessibility**: WCAG 2.1 AA COMPLIANT
-- ✅ **SEO**: FOUNDATION READY (clean sitemap, Event schema)
+- ✅ **SEO**: FOUNDATION READY (clean sitemap, EducationalOrganization schema)
 - ✅ **Contact System**: COMPLETE (EmailJS + 5 Cloudflare addresses)
 
 **Agent Status (100% Complete):**
@@ -673,7 +673,7 @@ Decision: Accuracy and basic security without harming SEO
 Every code change must be evaluated holistically against these criteria:
 
 1. ✅ **Performance Impact**: Will this improve or degrade Core Web Vitals (LCP, CLS, INP)?
-2. ✅ **SEO Compliance**: Does this maintain semantic HTML, H1 structure, meta tags, Event schema?
+2. ✅ **SEO Compliance**: Does this maintain semantic HTML, H1 structure, meta tags, EducationalOrganization schema?
 3. ✅ **Business Alignment**: Does this support #1 Google ranking goal and monetization strategy?
 4. ✅ **Accessibility**: Does this maintain WCAG 2.1 AA compliance (keyboard nav, screen readers)?
 5. ✅ **Security**: Does this maintain enterprise-grade headers (HSTS, CSP) and practices?
@@ -864,7 +864,7 @@ europeansummercamps/
 - prefers-reduced-motion support
 
 **SEO & Schema:**
-- Event schema for camps (not Product schema)
+- EducationalOrganization schema for camps (not Product schema)
 - ListItem schema for categories
 - BreadcrumbList for navigation
 - FAQPage schema implemented
@@ -1074,7 +1074,7 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 - Label improvements
 
 #### Phase 1.7 Critical Schema Fix: COMPLETE ✅ (September 11, 2025)
-- Product schema → Event schema (proper compliance)
+- Product schema → EducationalOrganization schema (proper compliance for camp directory)
 - Directory portal compliance
 - Google policy compliance
 - Event properties added (startDate, endDate, location)
@@ -1150,7 +1150,7 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 - **Email Infrastructure**: ✅ PROFESSIONAL (Cloudflare + EmailJS)
 - **Performance**: ✅ OPTIMIZED (93-96% image reduction)
 - **Accessibility**: ✅ WCAG 2.1 AA COMPLIANT (full compliance)
-- **SEO Architecture**: ✅ FOUNDATION READY (Event schema, clean sitemap)
+- **SEO Architecture**: ✅ FOUNDATION READY (EducationalOrganization schema, clean sitemap)
 - **Security**: ✅ ENTERPRISE-GRADE (HSTS + CSP headers)
 - **User Experience**: ✅ STRATEGIC EXCELLENCE (enhanced scannability)
 

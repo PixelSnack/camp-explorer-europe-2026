@@ -227,65 +227,66 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + verify external links still open correctly
 **Commit**: `Security: Add noopener to all window.open calls`
 
-#### T2-5: Add LCP preload hint for hero image
+#### T2-5: Improve LCP for hero image
 
 **Problem**: The hero image (Largest Contentful Paint element) is loaded via React's `<picture>` element which only exists after JavaScript executes. The browser cannot discover the LCP image until React renders, adding 200-500ms to LCP.
 
-**Fix**: Add `<link rel="preload" as="image" href="/path-to-hero.webp" type="image/webp">` in index.html `<head>` so the browser starts downloading immediately.
+**Caveat**: A simple `<link rel="preload">` in index.html won't work because Vite hashes asset filenames at build time (e.g., `hero-lakeside-BxK3mN2.webp`). A static preload tag would not match the hashed output.
 
-**Files**: index.html
+**Fix (Option A — simple, recommended)**: Add `fetchpriority="high"` to the `<img>` inside the `<picture>` element in App.jsx. This tells the browser to prioritize the image once React renders. Partial improvement but zero-risk.
+
+**Fix (Option B — full solution)**: Use a Vite plugin (e.g., `vite-plugin-html`) to inject the preload tag at build time with the correct hashed filename. More complex but eliminates the JS-rendering delay entirely.
+
+**Files**: src/App.jsx (Option A) or vite.config.js + index.html (Option B)
 **Test**: `npm run build` + Lighthouse LCP measurement before/after
-**Commit**: `Perf: Add preload hint for LCP hero image`
+**Commit**: `Perf: Add fetchpriority=high to LCP hero image`
 
-#### T2-6: Replace hardcoded organization counts with dynamic `allCamps.length`
+#### T2-7: Replace hardcoded organization counts with dynamic `allCamps.length`
 
-**Problem**: The number "52" is hardcoded in 5 locations across App.jsx. Every time camps are added or removed, these must all be found and updated manually — and they've been missed repeatedly (e.g., "23+" survived from launch until February 2026).
+**Problem**: The number "52" is hardcoded in **7 locations** across App.jsx. Every time camps are added or removed, these must all be found and updated manually — and they've been missed repeatedly (e.g., "23+" survived from launch until February 2026).
 
 **Hardcoded locations (all in src/App.jsx):**
 1. **Line ~1580**: Hero stats `value: "52"` (Organizations badge)
-2. **Line ~3937**: Guide CTA `"52 verified camp organizations"` (was "23+" until Feb 2026)
-3. **Line ~4594**: Schema/SEO `"52 verified organizations"`
-4. **Line ~5026**: Footer `"52 verified organizations"`
-5. **Line ~5267**: FAQ answer `"52 verified organizations"`
+2. **Line ~2134**: Marquee text `"52 Verified Organizations"`
+3. **Line ~3471**: Badge text `"52 Verified Organizations"`
+4. **Line ~3937**: Guide CTA `"52 verified camp organizations"` (was "23+" until Feb 2026)
+5. **Line ~4594**: Schema/SEO `"52 verified organizations"`
+6. **Line ~5026**: Footer `"52 verified organizations"`
+7. **Line ~5267**: FAQ answer `"52 verified organizations"`
 
 **Also hardcoded outside App.jsx:**
-6. **public/sitemap.xml**: Image caption (currently says "42" — see T3-4)
+8. **public/sitemap.xml**: Image caption (currently says "42" — see T2-11)
 
-**Fix**: After T2-1 (move allCamps outside component), create `const CAMP_COUNT = allCamps.length` and use it in all 5 App.jsx locations via template literals or JSX expressions. Sitemap.xml must remain hardcoded (static file) but add a comment noting it needs manual update.
+**Fix**: After T2-1 (move allCamps outside component), create `const CAMP_COUNT = allCamps.length` and use it in all 7 App.jsx locations via template literals or JSX expressions. Sitemap.xml must remain hardcoded (static file) but add a comment noting it needs manual update.
 
 **Depends on**: T2-1 (allCamps must be module-level to reference `.length` at top level)
-**Files**: src/App.jsx (5 locations), public/sitemap.xml (add reminder comment)
-**Test**: `npm run build` + verify all 5 locations display correct count + add/remove a test camp to confirm count updates automatically
-**Commit**: `DX: Replace 5 hardcoded org counts with dynamic allCamps.length`
+**Files**: src/App.jsx (7 locations), public/sitemap.xml (add reminder comment)
+**Test**: `npm run build` + verify all 7 locations display correct count + add/remove a test camp to confirm count updates automatically
+**Commit**: `DX: Replace 7 hardcoded org counts with dynamic allCamps.length`
 
----
+#### T2-8: Extract marquee useEffect to custom hook
 
-### Tier 3 — MEDIUM RISK (logic-touching, careful testing required)
+**Problem**: Marquee animation useEffect (~lines 1792-1932) is 140 lines with inline debounce utility, retry logic, IntersectionObserver, and platform detection. This is the single largest useEffect in the component.
 
-#### T3-1: Fix CSP connect-src for Google Analytics
+**Fix**: Extract to `src/hooks/useMarqueeAnimation.js` custom hook.
 
-**Problem**: `public/_headers` Content-Security-Policy is missing `connect-src` directive for `google-analytics.com` and `googletagmanager.com`. Strict browsers may block GA4 data collection.
+**Files**: src/App.jsx (~lines 1792-1932) → new src/hooks/useMarqueeAnimation.js
+**Test**: `npm run build` + verify marquee works on mobile and desktop
+**Commit**: `Refactor: Extract marquee animation to useMarqueeAnimation hook`
 
-**Fix**: Add to CSP header: `connect-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com`
+#### T2-9: Wrap filterOptions in useMemo
 
-**Files**: public/_headers
-**Test**: Deploy, check browser console for CSP violations, verify GA4 receives events
-**Commit**: `Security: Add GA4 domains to CSP connect-src directive`
+**Problem**: `filterOptions` (~line 1516) filters allCamps 7 times per render without memoization.
 
-#### T3-2: Fix meta tag country counts in index.html
+**Fix**: Wrap in `useMemo` with `[allCamps]` dependency (or no deps if allCamps is module-level after T2-1).
 
-**Problem**: Multiple meta tags reference wrong country counts:
-- Some say "21 countries" or "13 countries" — actual count is 24
-- This affects search snippets shown to users
+**Files**: src/App.jsx (~line 1516)
+**Test**: `npm run build` + verify category counts display correctly
+**Commit**: `Perf: Memoize filterOptions category counts`
 
-**Fix**: Update all country count references in index.html to "24 countries"
+#### T2-10: Fix ItemList numberOfItems schema value
 
-**Files**: index.html
-**Test**: `npm run build` + inspect meta tags in built output
-**Caution**: These are SEO-sensitive — changing search snippets carries risk. Verify current Google snippet before changing.
-**Commit**: `SEO: Fix country count in meta tags (was 21/13, now 24)`
-
-#### T3-3: Fix ItemList numberOfItems schema value
+*Promoted from Tier 3 — changing a string to integer in JSON-LD is zero-risk.*
 
 **Problem**: In index.html structured data, `numberOfItems` is set to string `"100+"` — schema.org requires an integer.
 
@@ -295,7 +296,9 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: Google Rich Results Test after deployment
 **Commit**: `SEO: Fix ItemList numberOfItems to integer (was string "100+")`
 
-#### T3-4: Fix stale sitemap.xml caption
+#### T2-11: Fix stale sitemap.xml caption
+
+*Promoted from Tier 3 — updating text in static XML is zero-risk.*
 
 **Problem**: sitemap.xml image caption says "42 organizations, 23 countries" — should be "52 organizations, 24 countries"
 
@@ -305,17 +308,94 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: Validate sitemap at /sitemap.xml after deployment
 **Commit**: `SEO: Update sitemap caption to current counts (52 orgs, 24 countries)`
 
-#### T3-5: Fix footer "Local & Municipal Gems" linking to nonexistent category
+#### T2-12: Fix HTTP booking URL for Camp Bjontegaard
 
-**Problem**: Footer link at ~line 4883 calls `handleCategoryFilter('local')`, but no camp has `category: 'local'` and it's not in `filterOptions`. Clicking shows 0 results with no explanation.
+*Promoted from Tier 3 — one-character change in a data field.*
 
-**Fix**: Either remove the link, or change it to link to an existing category (e.g., 'budget' for Budget Excellence).
+**Problem**: Camp ID 15 (Camp Bjontegaard) has `bookingUrl: "http://sommerleir.no/"` — the only HTTP URL in the dataset.
 
-**Files**: src/App.jsx (~line 4883)
+**Fix**: Change to `"https://sommerleir.no/"` (verify HTTPS works first).
+
+**Files**: src/App.jsx (~line 539)
+**Test**: `npm run build` + verify HTTPS link works
+**Commit**: `Fix: Change Camp Bjontegaard URL from HTTP to HTTPS`
+
+#### T2-13: Remove `Crawl-delay: 1` from robots.txt
+
+*Promoted from Tier 3 — Google ignores it, Bing is throttled by it.*
+
+**Problem**: `Crawl-delay: 1` tells bots to wait 1 second between requests. For a 1-page site, this throttles Bing (9% of traffic) unnecessarily.
+
+**Fix**: Remove the `Crawl-delay: 1` line from robots.txt.
+
+**Files**: public/robots.txt (~line 105)
+**Test**: Verify robots.txt is valid after change
+**Commit**: `SEO: Remove Crawl-delay from robots.txt (unnecessary for small site)`
+
+#### T2-14: Update sitemap lastmod date
+
+*Promoted from Tier 3 — changing a date is zero-risk.*
+
+**Problem**: sitemap.xml `lastmod` is `2026-01-25` but content has changed multiple times since.
+
+**Fix**: Update to current date whenever content changes. Add to commit checklist as a reminder.
+
+**Files**: public/sitemap.xml (~line 6)
+**Test**: Validate sitemap XML
+**Commit**: `SEO: Update sitemap lastmod to current date`
+
+#### T2-15: Update CODE_STRUCTURE.md with accurate line numbers
+
+*Promoted from Tier 3 — documentation-only, zero code risk.*
+
+**Problem**: Every line number reference in CODE_STRUCTURE.md is wrong by 100-400+ lines. Camp counts stale.
+
+**Fix**: Update all references to match current App.jsx.
+
+**Files**: CODE_STRUCTURE.md
+**Test**: Spot-check 5 line references against actual App.jsx
+**Commit**: `Docs: Update CODE_STRUCTURE.md to match current codebase`
+
+---
+
+### Tier 3 — MEDIUM RISK (logic-touching, careful testing required)
+
+#### T3-1: Fix CSP connect-src for Google Analytics
+
+**Problem**: `public/_headers` Content-Security-Policy is missing `connect-src` directive for `google-analytics.com` and `googletagmanager.com`. Strict browsers may block GA4 data collection, causing incomplete analytics.
+
+**Fix**: Append to existing CSP `connect-src`: `https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com`
+
+**Files**: public/_headers (line ~57)
+**Test**: Deploy, check browser console for CSP violations, verify GA4 receives events
+**Commit**: `Security: Add GA4 domains to CSP connect-src directive`
+
+#### T3-2: Fix meta tag country counts in index.html
+
+**Problem**: 4 locations reference wrong country counts:
+- Line ~10: `<meta name="description">` says "21 countries"
+- Line ~34: `og:description` says "13 countries"
+- Line ~46: `twitter:description` says "13 countries"
+- Line ~253: Organization JSON-LD `description` says "21 countries"
+
+**Fix**: Update all 4 to "24 countries". Change the number only — do NOT reword the surrounding text (SEO-sensitive).
+
+**Files**: index.html (4 locations)
+**Test**: `npm run build` + inspect meta tags in built output
+**Caution**: The `<meta name="description">` directly generates Google search snippets. Change number only, preserve sentence structure.
+**Commit**: `SEO: Fix country count in meta tags (was 21/13, now 24)`
+
+#### T3-3: Fix footer "Local & Municipal Gems" linking to nonexistent category
+
+**Problem**: Footer link at ~line 4882 calls `handleCategoryFilter('local')`, but no camp has `category: 'local'`. Clicking shows 0 results.
+
+**Fix**: Either remove the link, or change it to link to an existing category (e.g., `'budget_excellence'`).
+
+**Files**: src/App.jsx (~line 4882)
 **Test**: `npm run build` + click the footer link, verify results appear
 **Commit**: `Fix: Remove broken "Local" category link from footer`
 
-#### T3-6: Fix "Book Now" text in Compare section
+#### T3-4: Fix "Book Now" text in Compare section
 
 **Problem**: Compare section button says "Book Now" (~line 3229) but the site is explicitly "NOT a booking agent" per Terms/Impressum. Home/Discover correctly say "View Details & Book".
 
@@ -325,29 +405,19 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + check Compare section button text
 **Commit**: `Fix: Change Compare "Book Now" to "View Details & Book" for consistency`
 
-#### T3-7: Fix two camps with null established year
+#### T3-5: Fix two camps with null established year
 
-**Problem**: Camp IDs 24 and 26 have `established: null`, causing "Est. " with no year to display.
+**Problem**: Camp IDs 24 (~line 672) and 26 (~line 717) have `established: null`, causing "Est. " with no year to render at lines ~2497 and ~3035.
 
-**Fix**: Either research the correct established year, or add a conditional to hide the "Est." label when null.
+**Fix**: Add conditional: `{camp.established && <span>Est. {camp.established}</span>}` in both card rendering locations.
 
-**Files**: src/App.jsx (camp data + card rendering)
-**Test**: `npm run build` + verify affected camp cards
+**Files**: src/App.jsx (camp data + 2 card rendering locations)
+**Test**: `npm run build` + verify camp cards for IDs 24, 26 no longer show "Est."
 **Commit**: `Fix: Handle null established year in camp cards`
 
-#### T3-8: Fix HTTP booking URL for Camp Bjontegaard
+#### T3-6: Fix badge CSS inconsistency between Home and Discover sections
 
-**Problem**: Camp ID 15 (Camp Bjontegaard) has `bookingUrl: "http://sommerleir.no/"` — the only HTTP URL in the dataset. Users clicking through get an insecure connection.
-
-**Fix**: Change to `"https://sommerleir.no/"` (verify HTTPS works first).
-
-**Files**: src/App.jsx (~line 540)
-**Test**: `npm run build` + verify link opens with HTTPS
-**Commit**: `Fix: Change Camp Bjontegaard booking URL from HTTP to HTTPS`
-
-#### T3-9: Fix badge CSS inconsistency between Home and Discover sections
-
-**Problem**: Home section camp cards use `className="badge-responsive"` (~line 2460) for the "2026 Open" badge, while Discover section uses `className="text-xs"` (~line 2999). This means Discover section badges may be too small on mobile devices.
+**Problem**: Home section uses `className="badge-responsive"` (~line 2460) for "2026 Open" badge, Discover uses `className="text-xs"` (~line 2999). Discover badges may be too small on mobile.
 
 **Fix**: Change Discover section to use `badge-responsive` to match Home section.
 
@@ -355,36 +425,85 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + compare badge sizes on mobile between Home and Discover
 **Commit**: `Fix: Use consistent badge-responsive class in Discover section`
 
-#### T3-10: Remove `user-scalable=no` from viewport meta
+#### T3-7: Remove `user-scalable=no` from viewport meta
 
-**Problem**: index.html viewport meta tag includes `user-scalable=no` which prevents pinch-to-zoom. Google Search Console may flag this under mobile usability. Also an accessibility concern for visually impaired users.
+**Problem**: index.html viewport meta tag includes `user-scalable=no` which prevents pinch-to-zoom. Accessibility concern (WCAG 1.4.4) and Lighthouse flags it.
 
 **Fix**: Remove `user-scalable=no` from the viewport meta content attribute. Keep `viewport-fit=cover` for iOS safe areas.
 
 **Files**: index.html (line ~5)
 **Test**: `npm run build` + verify pinch-to-zoom works on mobile + no layout shifts
-**Caution**: Some mobile UX may have relied on this to prevent accidental zooming. Test thoroughly.
+**Caution**: Test thoroughly on iOS and Android — some layouts may shift with zoom enabled.
 **Commit**: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
 
-#### T3-11: Remove `Crawl-delay: 1` from robots.txt
+#### T3-8: Remove hyperbolic code comments
 
-**Problem**: `Crawl-delay: 1` tells bots to wait 1 second between requests. Google ignores it, but Bing (9% of traffic) may honor it, throttling crawling unnecessarily for a tiny site.
+**Problem**: Comments like "ENTERPRISE MARQUEE INTELLIGENCE SYSTEM - STATE OF THE ART" and "Bleeding-edge performance optimization" undermine credibility with buyers/maintainers.
 
-**Fix**: Remove the `Crawl-delay: 1` line from robots.txt.
+**Fix**: Replace with factual descriptions:
+- "ENTERPRISE MARQUEE INTELLIGENCE SYSTEM" → "Marquee overflow detection and animation"
+- "Bleeding-edge performance optimization" → "Memoized filter computation"
 
-**Files**: public/robots.txt (~line 105)
-**Test**: Verify robots.txt is valid after change
-**Commit**: `SEO: Remove Crawl-delay from robots.txt (unnecessary for small site)`
+**Files**: src/App.jsx (lines ~1479, ~1791, and others)
+**Test**: `npm run build`
+**Commit**: `Cleanup: Replace hyperbolic comments with factual descriptions`
 
-#### T3-12: Update sitemap lastmod date
+#### T3-9: Add numeric price field to camp data
 
-**Problem**: sitemap.xml `lastmod` is `2026-01-25` but camps were added January 26. Keeping lastmod current signals freshness.
+**Problem**: Price strings are in inconsistent formats (`"From CHF 4,550/1 week"`, `"EUR335/10 days"`, etc.). Cannot sort by price or filter by range programmatically.
 
-**Fix**: Update to current date whenever content changes.
+**Fix**: Add `priceNumericEUR: 4550` alongside display price string for each camp. Requires currency conversion research for all 52 camps.
 
-**Files**: public/sitemap.xml (~line 6)
-**Test**: Validate sitemap XML
-**Commit**: `SEO: Update sitemap lastmod to current date`
+**Files**: src/App.jsx (camp data) or src/data/camps.js (after T2-2 extraction)
+**Test**: `npm run build` + verify no display changes (field is data-only initially)
+**Commit**: `Data: Add machine-readable EUR price field to all camps`
+
+#### T3-10: Remove `meta keywords` tag
+
+**Problem**: Google has ignored `<meta name="keywords">` since 2009. It only reveals keyword strategy to competitors.
+
+**Files**: index.html (line ~11)
+**Test**: `npm run build`
+**Commit**: `SEO: Remove meta keywords tag (ignored by Google, reveals strategy)`
+
+#### T3-11: Add `og:image:type` meta tag
+
+**Problem**: Missing `og:image:type` tag. Helps platforms process the og:image correctly.
+
+**Fix**: Add `<meta property="og:image:type" content="image/png" />` after existing og:image tags.
+
+**Files**: index.html
+**Test**: `npm run build`
+**Commit**: `SEO: Add og:image:type meta tag for social sharing`
+
+#### T3-12: Remove unnecessary hreflang tags
+
+**Problem**: Site has `hreflang="en"` and `x-default` both pointing to the same URL. For a monolingual English site with no alternate language versions, these add no value.
+
+**Files**: index.html (lines ~73-74)
+**Test**: `npm run build`
+**Commit**: `Cleanup: Remove unnecessary hreflang tags (monolingual site)`
+
+#### T3-13: Remove or fix non-functional BreadcrumbList/SearchAction schema
+
+**Problem**: BreadcrumbList and SearchAction schemas use hash fragment URLs (e.g., `/#discover?search={search_term}`). Google ignores hash fragments, making these non-functional. Non-functional schema could be flagged as misleading.
+
+**Fix**: Remove both schema blocks entirely until Phase 2 provides real routes. (Alternatively, keep SearchAction but acknowledge it won't generate rich results until Phase 2.)
+
+**Files**: index.html (JSON-LD blocks)
+**Test**: Google Rich Results Test after deployment
+**Caution**: Removing structured data is always lower risk than keeping incorrect data.
+**Commit**: `SEO: Remove non-functional BreadcrumbList/SearchAction schema (requires Phase 2 routes)`
+
+#### T3-14: Investigate `resourceSection` state variable
+
+**Problem**: `resourceSection` is set but its purpose in render code is unclear. May be dead state similar to `_showFilters`.
+
+**Fix**: Investigate usage. If unused in JSX/effects, remove it (becomes Tier 1 level). If used, document its purpose.
+
+**Files**: src/App.jsx
+**Test**: `npm run build` + verify affected sections still work
+**Commit**: TBD based on investigation
 
 ---
 
@@ -482,16 +601,17 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 | activities-collage.webp | src/assets/ | 129KB | App.jsx | USED |
 | activities-collage-compressed.png | src/assets/ | 279KB | App.jsx | USED |
 | camps-map-compressed.png | src/assets/ | 346KB | App.jsx | USED |
-| european-summer-camps-hero.png | src/assets/ | 3,033KB | Nowhere | ORPHANED |
-| european-summer-camps-map.png | src/assets/ | 2,492KB | Nowhere | ORPHANED |
-| european-camp-activities-collage.png | src/assets/ | 1,921KB | Nowhere | ORPHANED |
-| camps-map.avif | src/assets/ | 126KB | Nowhere | ORPHANED |
-| camps-map.webp | src/assets/ | 67KB | Nowhere | ORPHANED |
-| react.svg | src/assets/ | 4KB | Nowhere | ORPHANED (Vite default) |
-| european-summer-camps-hero.png | public/ | 3,033KB | Verify og:image | CHECK |
-| european-summer-camps-lakeside-hero.webp | public/ | 124KB | Verify og:image | CHECK |
+| ~~european-summer-camps-hero.png~~ | ~~src/assets/~~ | ~~3,033KB~~ | — | ✅ DELETED (Tier 1) |
+| ~~european-summer-camps-map.png~~ | ~~src/assets/~~ | ~~2,492KB~~ | — | ✅ DELETED (Tier 1) |
+| ~~european-camp-activities-collage.png~~ | ~~src/assets/~~ | ~~1,921KB~~ | — | ✅ DELETED (Tier 1) |
+| ~~camps-map.avif~~ | ~~src/assets/~~ | ~~126KB~~ | — | ✅ DELETED (Tier 1) |
+| ~~camps-map.webp~~ | ~~src/assets/~~ | ~~67KB~~ | — | ✅ DELETED (Tier 1) |
+| ~~react.svg~~ | ~~src/assets/~~ | ~~4KB~~ | — | ✅ DELETED (Tier 1) |
+| ~~european-summer-camps-hero.png~~ | ~~public/~~ | ~~3,033KB~~ | — | ✅ DELETED (Tier 1) |
+| european-summer-camps-lakeside-hero.png | public/ | 621KB | og:image | ✅ GENERATED (Tier 1) |
+| european-summer-camps-lakeside-hero.webp | public/ | 124KB | Source for PNG | USED |
 
-**Total orphaned (confirmed)**: ~7.6MB in src/assets/ + potentially ~3.0MB in public/
+**Tier 1 result**: ~10.6MB orphaned images removed. New 621KB PNG generated for og:image.
 
 ### Table C: shadcn/ui Components
 
@@ -546,14 +666,14 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 
 **Summary**: 5 USED / 41 UNUSED out of 46 total — **✅ 41 unused DELETED (Tier 1, Feb 2)**
 
-### Table D: Custom CSS Classes (Dead Code)
+### Table D: Custom CSS Classes (Dead Code) — ✅ ALL DELETED (Tier 1)
 
-| Class Name | Defined In App.css | Used In App.jsx | Verdict |
-|------------|-------------------|-----------------|---------|
-| `.ios-scroll-fix` | Yes | No | DEAD |
-| `.smooth-scroll` | Yes | No | DEAD |
-| `.safe-area-content` | Yes | No | DEAD |
-| `.camp-price-label` | Yes | No | DEAD |
+| Class Name | Verdict |
+|------------|---------|
+| ~~`.ios-scroll-fix`~~ | ✅ DELETED |
+| ~~`.smooth-scroll`~~ | ✅ DELETED |
+| ~~`.safe-area-content`~~ | ✅ DELETED |
+| ~~`.camp-price-label`~~ | ✅ DELETED |
 
 ### Table E: useState Hooks
 
@@ -577,7 +697,7 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 | showPriceDropdown | setShowPriceDropdown | false | ~111 | Home, Discover | Desktop dropdown |
 | isFilterDrawerOpen | setIsFilterDrawerOpen | false | ~112 | Home, Discover | Mobile drawer |
 | mobileFilterTab | setMobileFilterTab | "country" | ~113 | Home, Discover | Drawer tab state |
-| _showFilters | — | false | ~116 | NONE | DEAD — remove |
+| ~~_showFilters~~ | — | false | ~116 | NONE | ✅ DELETED (Tier 1) |
 
 ---
 
@@ -600,162 +720,172 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 **Impact summary**: ~10.6MB orphaned images removed, 41 unused components deleted (4,234 lines), 30 unused npm packages uninstalled (1,634 lines from lock), broken og:image fixed (social sharing now works), preconnect crossorigin corrected, lint warnings 7→4.
 
+*Note: App.jsx line numbers shifted by ~1 line after Tier 1 (only `_showFilters` removed). All Tier 2/3 line references below are current as of February 2, 2026.*
+
 ### Tier 2 — Low Risk Improvements
 
 - [ ] **9. Move allCamps outside component function** (T2-1)
-  - Risk: Tier 2
   - File: src/App.jsx
   - Test: `npm run build` + verify all camps display, search, filters
   - Commit: `Perf: Move allCamps outside component function`
 
 - [ ] **10. Extract allCamps to src/data/camps.js** (T2-2)
-  - Risk: Tier 2 (depends on #9)
+  - Depends on: #9
   - Files: src/App.jsx, src/data/camps.js (new)
   - Test: `npm run build` + full functionality check
   - Commit: `Refactor: Extract camp data to src/data/camps.js`
 
 - [ ] **11. Add maxLength to search inputs** (T2-3)
-  - Risk: Tier 2
-  - File: src/App.jsx (2 locations)
+  - File: src/App.jsx (2 search inputs at ~lines 2213, 2742; also 6 contact form inputs lack maxLength — lower priority)
   - Test: `npm run build` + verify search works
   - Commit: `Security: Add maxLength=200 to search inputs`
 
 - [ ] **12. Add noopener to window.open calls** (T2-4)
-  - Risk: Tier 2
-  - File: src/App.jsx (4 locations)
+  - File: src/App.jsx (4 locations: lines ~109, ~2526, ~3063, ~3243)
   - Test: `npm run build` + verify external links open
   - Commit: `Security: Add noopener to window.open calls`
 
-- [ ] **13. Add LCP preload hint for hero image** (T2-5)
-  - Risk: Tier 2
-  - File: index.html
+- [ ] **13. Improve LCP for hero image** (T2-5)
+  - Option A (recommended): Add `fetchpriority="high"` to `<img>` in `<picture>` element
+  - Option B: Vite plugin for preload with hashed filename (more complex)
+  - File: src/App.jsx (Option A) or vite.config.js (Option B)
   - Test: `npm run build` + Lighthouse LCP measurement
-  - Commit: `Perf: Add preload hint for LCP hero image`
-- [ ] **14. Replace hardcoded org counts with dynamic allCamps.length** (T2-6)
-  - Risk: Tier 2 (depends on T2-1)
-  - File: src/App.jsx (5 locations: lines ~1580, ~3937, ~4594, ~5026, ~5267)
-  - Test: `npm run build` + verify all 5 locations show correct count
-  - Commit: `DX: Replace 5 hardcoded org counts with dynamic allCamps.length`
+  - Commit: `Perf: Add fetchpriority=high to LCP hero image`
 
-### Tier 3 — Medium Risk Fixes
-
-- [ ] **14. Fix CSP connect-src for GA4** (T3-1)
-  - Risk: Tier 3
-  - File: public/_headers
-  - Test: Deploy + check browser console for CSP errors + verify GA4 data
-  - Commit: `Security: Add GA4 domains to CSP connect-src`
-
-- [ ] **15. Fix meta tag country counts** (T3-2)
-  - Risk: Tier 3 (SEO-sensitive)
-  - File: index.html
-  - Pre-check: Note current Google search snippet before changing
-  - Test: `npm run build` + inspect meta tags
-  - Commit: `SEO: Fix country count in meta tags (24 countries)`
-
-- [ ] **16. Fix ItemList numberOfItems to integer** (T3-3)
-  - Risk: Tier 3
-  - File: index.html
+- [ ] **14. Fix ItemList numberOfItems to integer** (T2-10)
+  - File: index.html (line ~114 in JSON-LD)
   - Test: Google Rich Results Test
   - Commit: `SEO: Fix numberOfItems to integer value`
 
-- [ ] **17. Fix stale sitemap caption** (T3-4)
-  - Risk: Tier 3
-  - File: public/sitemap.xml
+- [ ] **15. Fix stale sitemap caption** (T2-11)
+  - File: public/sitemap.xml (line ~12)
   - Test: Validate sitemap XML
   - Commit: `SEO: Update sitemap to 52 organizations, 24 countries`
 
-- [ ] **18. Fix broken "Local" category footer link** (T3-5)
-  - Risk: Tier 3
-  - File: src/App.jsx (~line 4883)
-  - Test: `npm run build` + click footer link
-  - Commit: `Fix: Remove broken "Local" category link from footer`
-
-- [ ] **19. Fix "Book Now" text in Compare section** (T3-6)
-  - Risk: Tier 3
-  - File: src/App.jsx (~line 3229)
-  - Test: `npm run build` + check Compare button text
-  - Commit: `Fix: Change Compare "Book Now" to "View Details & Book"`
-
-- [ ] **20. Fix null established year display** (T3-7)
-  - Risk: Tier 3
-  - File: src/App.jsx (camp data + card rendering)
-  - Test: `npm run build` + verify camp cards for IDs 24, 26
-  - Commit: `Fix: Handle null established year in camp cards`
-
-- [ ] **21. Fix HTTP booking URL for Camp Bjontegaard** (T3-8)
-  - Risk: Tier 3
-  - File: src/App.jsx (~line 540)
+- [ ] **16. Fix HTTP booking URL for Camp Bjontegaard** (T2-12)
+  - File: src/App.jsx (~line 539)
   - Test: `npm run build` + verify HTTPS link works
   - Commit: `Fix: Change Camp Bjontegaard URL from HTTP to HTTPS`
 
-- [ ] **22. Fix badge CSS inconsistency Home vs Discover** (T3-9)
-  - Risk: Tier 3
-  - File: src/App.jsx (~line 2999)
-  - Test: `npm run build` + compare badge sizes on mobile
-  - Commit: `Fix: Use consistent badge-responsive class in Discover`
-
-- [ ] **23. Remove user-scalable=no from viewport** (T3-10)
-  - Risk: Tier 3
-  - File: index.html (line ~5)
-  - Test: `npm run build` + verify pinch-to-zoom works, no layout shifts
-  - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
-
-- [ ] **24. Remove Crawl-delay from robots.txt** (T3-11)
-  - Risk: Tier 3
+- [ ] **17. Remove Crawl-delay from robots.txt** (T2-13)
   - File: public/robots.txt (~line 105)
   - Test: Validate robots.txt
   - Commit: `SEO: Remove Crawl-delay from robots.txt`
 
-- [ ] **25. Update sitemap lastmod date** (T3-12)
-  - Risk: Tier 3
+- [ ] **18. Update sitemap lastmod date** (T2-14)
   - File: public/sitemap.xml (~line 6)
+  - Note: Should be updated with every content change — add to commit checklist
   - Test: Validate sitemap XML
   - Commit: `SEO: Update sitemap lastmod to current date`
 
-- [ ] **26. Remove hyperbolic code comments** (T3-13)
-  - Risk: Tier 3
-  - File: src/App.jsx (lines ~1479, ~1791, and others)
-  - Replace: "ENTERPRISE MARQUEE INTELLIGENCE SYSTEM" → "Marquee overflow detection and animation"
-  - Replace: "Bleeding-edge performance optimization" → "Memoized filter computation"
-  - Test: `npm run build`
-  - Commit: `Cleanup: Replace hyperbolic comments with factual descriptions`
-
-- [ ] **27. Update CODE_STRUCTURE.md with accurate line numbers** (T3-14)
-  - Risk: Tier 3
+- [ ] **19. Update CODE_STRUCTURE.md with accurate line numbers** (T2-15)
   - File: CODE_STRUCTURE.md
-  - All line number references are wrong by 100-400+ lines; camp counts stale
+  - All line number references wrong by 100-400+ lines; camp counts stale
   - Test: Spot-check 5 line references against actual App.jsx
   - Commit: `Docs: Update CODE_STRUCTURE.md to match current codebase`
 
-- [ ] **28. Add numeric price field to camp data** (T3-15)
-  - Risk: Tier 3
-  - File: src/App.jsx (camp data) or src/data/camps.js (after extraction)
-  - Add: `priceNumericEUR: 4550` alongside display price string for each camp
-  - Enables: programmatic price sorting, range filtering, data export
-  - Test: `npm run build` + verify no display changes (field is data-only initially)
-  - Commit: `Data: Add machine-readable EUR price field to all camps`
+- [ ] **20. Replace hardcoded org counts with dynamic allCamps.length** (T2-7)
+  - Depends on: #9 (allCamps must be module-level)
+  - File: src/App.jsx (7 locations: lines ~1580, ~2134, ~3471, ~3937, ~4594, ~5026, ~5267)
+  - Test: `npm run build` + verify all 7 locations show correct count
+  - Commit: `DX: Replace 7 hardcoded org counts with dynamic allCamps.length`
 
-- [ ] **29. Extract marquee useEffect to custom hook** (T2-6)
-  - Risk: Tier 2
+- [ ] **21. Extract marquee useEffect to custom hook** (T2-8)
   - Files: src/App.jsx (~lines 1792-1932) → new src/hooks/useMarqueeAnimation.js
   - 140 lines with inline debounce, retry logic, IntersectionObserver
   - Test: `npm run build` + verify marquee works on mobile and desktop
   - Commit: `Refactor: Extract marquee animation to useMarqueeAnimation hook`
 
-- [ ] **30. Wrap filterOptions in useMemo** (T2-7)
-  - Risk: Tier 2
+- [ ] **22. Wrap filterOptions in useMemo** (T2-9)
   - File: src/App.jsx (~line 1516)
   - Currently filters allCamps 7 times per render without memoization
   - Test: `npm run build` + verify category counts display correctly
   - Commit: `Perf: Memoize filterOptions category counts`
 
+### Tier 3 — Medium Risk Fixes
+
+- [ ] **23. Fix CSP connect-src for GA4** (T3-1)
+  - File: public/_headers (line ~57, append to existing connect-src)
+  - Test: Deploy + check browser console for CSP errors + verify GA4 data
+  - Commit: `Security: Add GA4 domains to CSP connect-src`
+
+- [ ] **24. Fix meta tag country counts** (T3-2)
+  - File: index.html (4 locations: lines ~10, ~34, ~46, ~253)
+  - Pre-check: Note current Google search snippet before changing
+  - Caution: Change number only, do NOT reword sentence structure
+  - Test: `npm run build` + inspect meta tags
+  - Commit: `SEO: Fix country count in meta tags (24 countries)`
+
+- [ ] **25. Fix broken "Local" category footer link** (T3-3)
+  - File: src/App.jsx (~line 4882)
+  - Test: `npm run build` + click footer link
+  - Commit: `Fix: Remove broken "Local" category link from footer`
+
+- [ ] **26. Fix "Book Now" text in Compare section** (T3-4)
+  - File: src/App.jsx (~line 3229)
+  - Test: `npm run build` + check Compare button text
+  - Commit: `Fix: Change Compare "Book Now" to "View Details & Book"`
+
+- [ ] **27. Fix null established year display** (T3-5)
+  - File: src/App.jsx (data lines ~672, ~717 + rendering lines ~2497, ~3035)
+  - Test: `npm run build` + verify camp cards for IDs 24, 26
+  - Commit: `Fix: Handle null established year in camp cards`
+
+- [ ] **28. Fix badge CSS inconsistency Home vs Discover** (T3-6)
+  - File: src/App.jsx (~line 2999)
+  - Test: `npm run build` + compare badge sizes on mobile
+  - Commit: `Fix: Use consistent badge-responsive class in Discover`
+
+- [ ] **29. Remove user-scalable=no from viewport** (T3-7)
+  - File: index.html (line ~5)
+  - Test: `npm run build` + verify pinch-to-zoom works on mobile, no layout shifts
+  - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
+
+- [ ] **30. Remove hyperbolic code comments** (T3-8)
+  - File: src/App.jsx (lines ~1479, ~1791, and others)
+  - Test: `npm run build`
+  - Commit: `Cleanup: Replace hyperbolic comments with factual descriptions`
+
+- [ ] **31. Add numeric price field to camp data** (T3-9)
+  - File: src/App.jsx or src/data/camps.js (after T2-2)
+  - Note: Requires currency conversion research for 52 camps in 8+ currencies
+  - Test: `npm run build` + verify no display changes
+  - Commit: `Data: Add machine-readable EUR price field to all camps`
+
+- [ ] **32. Remove meta keywords tag** (T3-10)
+  - File: index.html (line ~11)
+  - Test: `npm run build`
+  - Commit: `SEO: Remove meta keywords tag (ignored by Google, reveals strategy)`
+
+- [ ] **33. Add og:image:type meta tag** (T3-11)
+  - File: index.html
+  - Test: `npm run build`
+  - Commit: `SEO: Add og:image:type meta tag for social sharing`
+
+- [ ] **34. Remove unnecessary hreflang tags** (T3-12)
+  - File: index.html (lines ~73-74)
+  - Test: `npm run build`
+  - Commit: `Cleanup: Remove unnecessary hreflang tags (monolingual site)`
+
+- [ ] **35. Remove non-functional BreadcrumbList/SearchAction schema** (T3-13)
+  - File: index.html (JSON-LD blocks)
+  - Caution: Removing is lower risk than keeping non-functional schema
+  - Test: Google Rich Results Test after deployment
+  - Commit: `SEO: Remove non-functional BreadcrumbList/SearchAction schema`
+
+- [ ] **36. Investigate resourceSection state variable** (T3-14)
+  - File: src/App.jsx
+  - May be dead state (like _showFilters) — investigate before removing
+  - Test: `npm run build` + verify affected sections
+  - Commit: TBD based on investigation
+
 ### Tier 4 — Phase 2 Only
 
-- [ ] **31. Extract shared FilterBar component** (T4-1) — Requires React Router
-- [ ] **32. Extract shared CampCard component** (T4-2) — Requires React Router
-- [ ] **33. Split sections into route components** (T4-3) — IS Phase 2
-- [ ] **34. Fix multiple H1 elements** (T4-4) — Natural with real routes
-- [ ] **35. Fix schema hash fragment URLs** (T4-5) — Requires real routes
+- [ ] **37. Extract shared FilterBar component** (T4-1) — Requires React Router
+- [ ] **38. Extract shared CampCard component** (T4-2) — Requires React Router
+- [ ] **39. Split sections into route components** (T4-3) — IS Phase 2
+- [ ] **40. Fix multiple H1 elements** (T4-4) — Natural with real routes
+- [ ] **41. Fix schema hash fragment URLs** (T4-5) — Requires real routes
 
 ---
 
@@ -765,7 +895,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 1. **numberOfItems is string "100+"** — Must be integer for schema.org compliance
 2. **SearchAction uses hash fragment** — Google ignores `/#discover?search={search_term}`. Non-functional until Phase 2. Consider removing entirely rather than keeping non-functional markup.
 3. **BreadcrumbList uses hash URLs** — Same issue. Consider removing until Phase 2 provides real URLs — non-functional schema could be flagged as misleading.
-4. **Event schema is NOT implemented** — CLAUDE.md claims Event schema for camps, but validation run found zero `application/ld+json` in App.jsx. Only 3 EducationalOrganization entries exist in index.html ItemList. Documentation should be corrected.
+4. **Event schema is NOT implemented** — CLAUDE.md incorrectly claims "Event schema for camps." Actual schema uses `EducationalOrganization` in an `ItemList` in index.html. This is a documentation error in CLAUDE.md (should say "EducationalOrganization schema"). Event schema is better suited for Phase 2 individual camp pages with specific dates/locations.
 5. **No individual camp structured data** — Camps have zero schema markup. AggregateRating schema would generate star ratings in SERPs (competitor world-camps.org does this). Requires Phase 2 individual camp pages.
 
 ### Meta Tag Issues
@@ -786,7 +916,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 | Blog content | No | Yes (News & Advice) | No | No | Yes | Yes (primary strategy) |
 | Age-specific pages | No | Yes | No | No | No | No |
 | Indexable URLs | **1** | 50+ | ~10 | **400+** | 30+ | 10-15 |
-| Structured data | Excellent | Unknown | Basic | Product + AggregateRating | Unknown | Article schema |
+| Structured data | Good foundation, gaps | Unknown | Basic | Product + AggregateRating | Unknown | Article schema |
 | FAQ schema | Yes (10 Qs) | Unknown | Yes | No | No | No |
 | Number of camps | 52 orgs / 100+ | ~50+ curated | ~50 | 400+ | 30+ | 10-15 curated |
 
@@ -846,7 +976,7 @@ A buyer who is comfortable with React could take this over, but they would immed
 - 5,825-line God Component — a buyer's first week is just understanding what goes where
 - Camp data embedded in UI code — adding a camp means editing the main application file
 - Zero tests of any kind — no safety net for changes
-- 38 unused UI components and ~10 unused npm packages signal "kitchen sink" installation
+- ~~38 unused UI components and ~10 unused npm packages signal "kitchen sink" installation~~ **✅ RESOLVED (Tier 1)** — 41 components + 30 packages removed
 - Filter UI duplication is documented tech debt never addressed
 - No routing library — the app conditionally shows/hides sections
 - Stale documentation line numbers undermine confidence
@@ -927,17 +1057,17 @@ No hidden state dependency issues found — useMemo dependency arrays are correc
 ### New Checklist Items from Architecture Review
 
 Items added to Section 5 checklist from this pass:
-- T3-13 (#26): Remove hyperbolic code comments
-- T3-14 (#27): Update CODE_STRUCTURE.md with accurate line numbers
-- T3-15 (#28): Add numeric price field to camp data
-- T2-6 (#29): Extract marquee useEffect to custom hook
-- T2-7 (#30): Wrap filterOptions in useMemo
+- T3-8 (#30): Remove hyperbolic code comments
+- T2-15 (#19): Update CODE_STRUCTURE.md with accurate line numbers *(promoted to Tier 2)*
+- T3-9 (#31): Add numeric price field to camp data
+- T2-8 (#21): Extract marquee useEffect to custom hook
+- T2-9 (#22): Wrap filterOptions in useMemo
 
 Items #1-4 from the Top 10 table above (extract data, CampCard, FilterBar, and route splitting) are already captured as T2-2, T4-2, T4-1, and T4-3 respectively.
 
 ---
 
-## Section 8: Tier 1 Implementation Plan (Verified February 2, 2026)
+## Section 8: Tier 1 Implementation Plan — ✅ EXECUTED (February 2, 2026)
 
 *Pre-implementation verification performed by Claude Opus 4.5 using 3 parallel Explore agents to cross-check every claim in the original review against actual file contents.*
 
