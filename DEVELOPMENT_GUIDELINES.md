@@ -301,6 +301,14 @@ npm run dev        # Manual testing required
 # ✅ Accessibility (Tab navigation)
 ```
 
+### **🚨 MANDATORY: User Visual Verification Before Push**
+**After committing but BEFORE the user pushes via GitHub Desktop:**
+- Start `npm run dev` and **ask the user to visually verify** the changes
+- Provide a specific checklist of what to check based on what was changed
+- **Do NOT tell the user to push until they confirm the site looks correct**
+- This is a LIVE PRODUCTION SITE — every push auto-deploys to real users within 60 seconds
+- Build/lint passing is necessary but NOT sufficient — visual verification catches layout breaks, missing content, and UX regressions that automated checks miss
+
 ### **Deployment Validation**
 ```bash
 # After push to main:

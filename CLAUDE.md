@@ -253,10 +253,12 @@ npm run dev      # Should start on http://localhost:5173
 **After ANY code changes:**
 1. ✅ Test thoroughly (build + lint + manual)
 2. ✅ **Commit immediately** (`git add` + `git commit` with comprehensive message)
-3. ✅ User pushes to origin in GitHub Desktop
-4. ✅ Vercel auto-deploys (30-60 seconds)
+3. 🚨 **Start dev server + ask user to visually verify** before pushing (MANDATORY)
+4. ✅ User pushes to origin in GitHub Desktop (only after visual verification)
+5. ✅ Vercel auto-deploys (30-60 seconds)
 
 **🔥 NEVER FORGET: Always commit before announcing completion!**
+**🔥 NEVER FORGET: Always ask user to verify on dev server BEFORE pushing to production!**
 
 ---
 
