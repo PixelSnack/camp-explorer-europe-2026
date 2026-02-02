@@ -478,6 +478,14 @@ function App() {
         setActiveSection('plan')
         window.location.hash = 'plan'
         break
+      case 'privacy':
+        setActiveSection('privacy')
+        window.location.hash = 'privacy'
+        break
+      case 'about':
+        setActiveSection('about')
+        window.location.hash = 'about'
+        break
       case 'impressum':
         setActiveSection('impressum')
         window.location.hash = 'impressum'
@@ -3859,7 +3867,7 @@ function App() {
               </button>
               <span>•</span>
               <button
-                onClick={() => setActiveSection('privacy')}
+                onClick={() => handleResourceLink('privacy')}
                 className="hover:text-gray-300 underline transition-colors"
                 aria-label="View privacy policy"
               >
@@ -3867,7 +3875,7 @@ function App() {
               </button>
               <span>•</span>
               <button
-                onClick={() => setActiveSection('about')}
+                onClick={() => handleResourceLink('about')}
                 className="hover:text-gray-300 underline transition-colors"
                 aria-label="Learn about Camp Explorer Europe"
               >
@@ -4050,7 +4058,7 @@ function App() {
               <Card className="p-8">
                 <h2 className="text-2xl font-bold mb-4">6. Changes to Terms</h2>
                 <p className="mb-4">We reserve the right to modify these terms at any time. Changes will be posted on this page. Continued use of the website constitutes acceptance of updated terms.</p>
-                <p><strong>Last Updated:</strong> September 11, 2025</p>
+                <p><strong>Last Updated:</strong> February 3, 2026</p>
                 <p><strong>Contact:</strong><br/>contact@europeansummercamps.com</p>
               </Card>
             </div>
@@ -4167,7 +4175,8 @@ function App() {
                       <li>• All information sources clearly identified</li>
                       <li>• Regular content updates and accuracy checks</li>
                       <li>• Open about limitations and scope</li>
-                      <li>• No hidden partnerships or paid placements</li>
+                      <li>• Every camp meets the same verification standards</li>
+                      <li>• Featured listings are always clearly marked</li>
                     </ul>
                   </div>
                   <div className="bg-orange-50 p-6 rounded-lg">
