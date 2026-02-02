@@ -386,5 +386,5 @@ git reset --hard HEAD~1  # Rollback if broken
 - [x] Norway expanded: 4 → 6 camps (RS Sjøleir, Sirdal Huskyfarm) (COMPLETED ✅)
 - [x] Denmark expanded: 3 → 4 camps (SceneKunst Sommercamp) (COMPLETED ✅)
 - [x] Footer country links added for Netherlands & Lithuania (COMPLETED ✅)
-- [x] All stats updated: 49 organizations across 24 countries (COMPLETED ✅)
+- [x] All stats updated: 52 organizations across 24 countries (COMPLETED ✅)
 - [x] Research documented in docs/archive/CAMP_RESEARCH_JAN25_2026.md (COMPLETED ✅)

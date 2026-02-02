@@ -478,7 +478,7 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 | File | Purpose | Lines |
 |------|---------|-------|
-| `src/App.jsx` | Main component + camp data | ~4,500 |
+| `src/App.jsx` | Main component + camp data | ~5,800 |
 | `src/App.jsx` lines 174-901 | allCamps array | 727 |
 | `public/_headers` | Security headers | ~20 |
 | `public/sitemap.xml` | SEO sitemap | ~30 |
