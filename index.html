@@ -57,14 +57,17 @@
     <meta name="apple-mobile-web-app-title" content="Camp Explorer Europe" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="msapplication-TileColor" content="#2563eb" />
-    <!-- Enhanced Performance Optimization -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <!-- Performance: Preconnect and DNS-prefetch for external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://vercel.live" />
+    <link rel="dns-prefetch" href="//vercel.app" />
+    <link rel="dns-prefetch" href="//vercel.com" />
     
     <!-- Enhanced Canonical and Alternate URLs -->
     <link rel="alternate" href="https://www.europeansummercamps.com/" hreflang="en" />
@@ -395,13 +398,6 @@
     }
     </script>
 
-    <!-- Preconnect to external domains for faster loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- DNS Prefetch for performance -->
-    <link rel="dns-prefetch" href="//vercel.app" />
-    <link rel="dns-prefetch" href="//vercel.com" />
   </head>
   <body>
     <div id="root"></div>
