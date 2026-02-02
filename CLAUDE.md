@@ -213,7 +213,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 
 **Technical Status:**
 - ✅ **Phase 1 COMPLETE**: All optimizations deployed
-- ✅ **Code Quality**: EXCELLENT (4,450+ lines App.jsx, well-structured)
+- ✅ **Code Quality**: EXCELLENT (5,800+ lines App.jsx, well-structured)
 - ✅ **Performance**: OPTIMIZED (93-96% image reduction)
 - ✅ **Security**: ENTERPRISE-GRADE (HSTS + CSP headers)
 - ✅ **Accessibility**: WCAG 2.1 AA COMPLIANT
@@ -231,7 +231,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 
 ```bash
 npm run build    # Should complete in ~7-9 seconds
-npm run lint     # Should pass (7 safe warnings OK - shadcn/ui components)
+npm run lint     # Should pass (4 warnings OK - shadcn/ui components)
 npm run dev      # Should start on http://localhost:5173
 ```
 
@@ -278,7 +278,7 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 - **Live Site**: https://www.europeansummercamps.com
 - **Database**: 52 verified organizations, 100+ programs, 24 countries
 - **Camp Data Location**: `src/App.jsx` lines 210-1220 (`const allCamps = [...]`)
-- **App.jsx Total Lines**: ~4,500 lines (well-structured monolithic component)
+- **App.jsx Total Lines**: ~5,800 lines (well-structured monolithic component)
 - **Pricing Verification**: ✅ COMPLETE (100% verified January 2026)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
 - **Performance**: 93-96% image optimization, Lighthouse 90+ scores
@@ -366,7 +366,7 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 3. **Make Specific Change**: Only change required field(s)
 4. **Test Locally**: `npm run dev` - verify change displays correctly
 5. **Build Test**: `npm run build` - ensure no errors
-6. **Lint Check**: `npm run lint` - 7 warnings OK (shadcn/ui)
+6. **Lint Check**: `npm run lint` - 4 warnings OK (shadcn/ui)
 7. **Commit**: Clear description of what changed and why
 
 ### 3.4 GitHub Desktop Deployment Workflow
@@ -706,7 +706,7 @@ Every code change must be evaluated holistically against these criteria:
 - ✅ "All Camps" reset works properly
 - ✅ Mobile responsiveness maintained
 - ✅ `npm run build` passes
-- ✅ `npm run lint` passes (7 warnings OK)
+- ✅ `npm run lint` passes (4 warnings OK)
 
 ### 5.3 Accuracy-First Verification (September 2025)
 
@@ -745,7 +745,7 @@ Every code change must be evaluated holistically against these criteria:
 3. **Test before committing**:
    - `npm run dev` (check functionality)
    - `npm run build` (ensure builds successfully)
-   - `npm run lint` (7 warnings OK - shadcn/ui)
+   - `npm run lint` (4 warnings OK - shadcn/ui)
 4. **Write comprehensive commit messages** (see Workflow section)
 5. **Push to main branch only** via GitHub Desktop
 6. **Vercel auto-deploys** in 30-60 seconds
@@ -769,12 +769,12 @@ Every code change must be evaluated holistically against these criteria:
 npm install          # Install dependencies
 npm run dev          # Local development (localhost:5173)
 npm run build        # Production build test (~7-9 seconds)
-npm run lint         # Code quality (7 warnings OK - shadcn/ui)
+npm run lint         # Code quality (4 warnings OK - shadcn/ui)
 ```
 
 **Expected Results:**
 - **Build**: ~7-9 seconds, no errors
-- **Lint**: 7 warnings (all safe shadcn/ui component warnings)
+- **Lint**: 4 warnings (safe shadcn/ui component warnings)
 - **Dev Server**: Starts on http://localhost:5173
 
 ### 5.7 Chrome MCP Usage Policy
@@ -804,12 +804,12 @@ npm run lint         # Code quality (7 warnings OK - shadcn/ui)
 ```
 europeansummercamps/
 ├── src/
-│   ├── App.jsx (main component - ~4,450 lines)
+│   ├── App.jsx (main component - ~5,800 lines)
 │   │   └── Lines 174-689: allCamps array with camp data
 │   ├── App.css (custom global styles)
 │   ├── main.jsx (React entry point)
 │   ├── assets/ (optimized images - 93-96% reduced)
-│   └── components/ui/ (shadcn/ui library)
+│   └── components/ui/ (5 shadcn/ui components: button, card, badge, breadcrumb, drawer)
 ├── public/
 │   ├── _headers (security: HSTS, CSP, etc.)
 │   ├── sitemap.xml (single URL, optimized)
@@ -903,7 +903,7 @@ europeansummercamps/
 **Build Performance:**
 - Build time: ~7-9 seconds (excellent)
 - Bundle size: Optimized with code splitting
-- Lint warnings: 7 safe warnings (shadcn/ui components)
+- Lint warnings: 4 safe warnings (shadcn/ui components)
 
 **Target Metrics:**
 - Lighthouse: 90+ all categories
@@ -1350,7 +1350,7 @@ npm run build && npm run dev
 - **Categories**: 7 distinct categories
 - **Verified pricing**: ✅ 52/52 (100% complete)
 - **App.jsx camp data**: Lines 210-1220
-- **Total App.jsx lines**: ~5,100 lines
+- **Total App.jsx lines**: ~5,800 lines
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories
 - **Build time**: ~7-9 seconds
@@ -1398,7 +1398,7 @@ npm run build && npm run dev
 npm install          # Install dependencies
 npm run dev          # Start dev server (localhost:5173)
 npm run build        # Production build (~7-9 sec)
-npm run lint         # Code quality (7 warnings OK)
+npm run lint         # Code quality (4 warnings OK)
 ```
 
 ---

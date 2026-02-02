@@ -26,8 +26,8 @@ This is a well-built, functional production website that is successfully serving
 5. **GDPR compliance is complete** — Cookie consent gates analytics properly
 
 ### Top 5 Concerns
-1. **~10.4MB of orphaned image assets** shipping or sitting in repo unnecessarily
-2. **41 unused shadcn/ui components + 24 unused Radix packages** bloating node_modules
+1. ~~**~10.4MB of orphaned image assets** shipping or sitting in repo unnecessarily~~ **✅ RESOLVED (Tier 1, Feb 2)**
+2. ~~**41 unused shadcn/ui components + 24 unused Radix packages** bloating node_modules~~ **✅ RESOLVED (Tier 1, Feb 2)**
 3. **Meta tag country counts are wrong** (say 21/13 countries, actual is 24) — affects search snippets
 4. **CSP missing connect-src for GA4** — analytics may be blocked by strict browsers
 5. **allCamps array inside component** defeats useMemo optimization (~1,200 lines re-created every render)
@@ -100,7 +100,7 @@ These can be done immediately with zero chance of breaking functionality.
 
 #### T1-3: Remove unused shadcn/ui component files
 
-43 of 48 shadcn/ui components are never imported. Only these 5 are used:
+41 of 46 shadcn/ui components were never imported. Only these 5 are used:
 - `button.jsx` (App.jsx)
 - `card.jsx` (App.jsx)
 - `badge.jsx` (App.jsx)
@@ -110,11 +110,12 @@ These can be done immediately with zero chance of breaking functionality.
 **Unused components to delete** (all in src/components/ui/):
 accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, toggle, toggle-group, tooltip
 
-**Updated Feb 2**: Original review found 41 unused of 46. Pre-execution verification found `toggle.jsx` and `toggle-group.jsx` also exist and are unused (48 total, 43 unused).
+**Updated Feb 2**: Original review said 41 unused of 46. The toggle files were already in the 46 count — the original list just didn't name them explicitly. Actual: 46 total, 41 unused, 5 kept.
 
 **Space recoverable**: Minimal disk space, but reduces cognitive overhead and file count
 **Test**: `npm run build` — must pass
-**Commit**: `Cleanup: Remove 43 unused shadcn/ui components (only 5 used)`
+**Commit**: `Cleanup: Remove 41 unused shadcn/ui components (only 5 used)`
+**Status**: ✅ DONE (Feb 2, 2026) — 42 files deleted (41 components + use-mobile.js hook), 4,234 lines removed
 
 #### T1-4: Uninstall unused npm packages
 
@@ -522,7 +523,7 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 | toaster.jsx | NO | REMOVE |
 | tooltip.jsx | NO | REMOVE |
 
-**Summary**: 5 USED / 41 UNUSED out of 46 total
+**Summary**: 5 USED / 41 UNUSED out of 46 total — **✅ 41 unused DELETED (Tier 1, Feb 2)**
 
 ### Table D: Custom CSS Classes (Dead Code)
 
@@ -563,56 +564,20 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 
 Ordered by risk tier (Tier 1 first). One item per commit.
 
-### Tier 1 — Zero Risk Cleanup
+### Tier 1 — Zero Risk Cleanup ✅ COMPLETE (February 2, 2026)
 
-- [ ] **1. Remove orphaned PNG images from src/assets/** (T1-1)
-  - Risk: Tier 1
-  - Files: src/assets/european-summer-camps-hero.png, european-summer-camps-map.png, european-camp-activities-collage.png, react.svg, camps-map.avif
-  - Test: `npm run build` passes
-  - Commit: `Cleanup: Remove 5 orphaned image assets (~7.5MB)`
+*All 8 items executed in 8 commits. Build passes (8.2s), lint 0 errors / 4 warnings.*
 
-- [ ] **2. Verify and remove orphaned hero PNG from public/** (T1-2)
-  - Risk: Tier 1
-  - Files: public/european-summer-camps-hero.png
-  - Pre-check: Verify og:image in index.html doesn't reference this exact path
-  - Test: `npm run build` + check og:image still works
-  - Commit: `Cleanup: Remove orphaned hero PNG from public/ (~3MB)`
+- [x] **1. Remove orphaned PNG images from src/assets/** (T1-1) — Commit `f6e0ce7`
+- [x] **2. Fix broken og:image + remove orphaned hero PNG from public/** (T1-2) — Commit `1cbbb53`
+- [x] **3. Remove 41 unused shadcn/ui component files + use-mobile hook** (T1-3) — Commit `c3afc26`
+- [x] **4. Uninstall 30 unused npm packages** (T1-4) — Commit `70c6f72`
+- [x] **5. Remove 4 dead CSS classes from App.css** (T1-5) — Commit `cd08678`
+- [x] **6. Remove dead _showFilters state** (T1-6) — Commit `5f034c7`
+- [x] **7. Consolidate preconnect/DNS-prefetch + fix crossorigin** (T1-7) — Commit `cc9ed6f`
+- [x] **8. Remove 12 junk meta tags from index.html** (T1-8) — Commit `d02a63c`
 
-- [ ] **3. Remove 43 unused shadcn/ui component files** (T1-3)
-  - Risk: Tier 1
-  - Files: 43 files in src/components/ui/ (see Table C + toggle.jsx, toggle-group.jsx)
-  - Test: `npm run build` passes
-  - Commit: `Cleanup: Remove 43 unused shadcn/ui components (keep 5 used)`
-
-- [ ] **4. Uninstall 30 unused npm packages** (T1-4)
-  - Risk: Tier 1
-  - Packages: See T1-4 for full list (updated: +gtag, +toggle, +toggle-group, -react-dialog)
-  - Test: `npm run build` passes
-  - Commit: `Cleanup: Uninstall 30 unused npm packages`
-
-- [ ] **5. Remove 4 dead CSS classes from App.css** (T1-5)
-  - Risk: Tier 1
-  - Classes: ios-scroll-fix, smooth-scroll, safe-area-content, camp-price-label
-  - Test: `npm run build` + visual check
-  - Commit: `Cleanup: Remove 4 unused CSS classes`
-
-- [ ] **6. Remove dead _showFilters state** (T1-6)
-  - Risk: Tier 1
-  - File: src/App.jsx line ~116
-  - Test: `npm run build`
-  - Commit: `Cleanup: Remove unused _showFilters state variable`
-
-- [ ] **7. Remove duplicate preconnect/DNS-prefetch tags** (T1-7)
-  - Risk: Tier 1
-  - File: index.html
-  - Test: `npm run build` + page loads correctly
-  - Commit: `Cleanup: Remove duplicate preconnect/DNS-prefetch tags`
-
-- [ ] **8. Remove unused/junk meta tags** (T1-8)
-  - Risk: Tier 1
-  - File: index.html
-  - Test: `npm run build` + page renders correctly
-  - Commit: `Cleanup: Remove unused meta tags from index.html`
+**Impact summary**: ~10.6MB orphaned images removed, 41 unused components deleted (4,234 lines), 30 unused npm packages uninstalled (1,634 lines from lock), broken og:image fixed (social sharing now works), preconnect crossorigin corrected, lint warnings 7→4.
 
 ### Tier 2 — Low Risk Improvements
 
@@ -1049,7 +1014,7 @@ Each commit is independently revertible via `git revert <hash>`.
 - **Test**: `npm run build` — Vite fails on missing imports, so a passing build proves none were needed
 - **Commit msg**: `Cleanup: Remove 6 orphaned image assets (~7.6MB) from src/assets/`
 
-#### Commit 7: T1-3 — Remove 43 unused shadcn/ui component files
+#### Commit 7: T1-3 — Remove 41 unused shadcn/ui component files
 - **Directory**: `src/components/ui/`
 - **Keep ONLY these 5 files**:
   - `button.jsx` (imported in App.jsx line 47)
@@ -1058,12 +1023,12 @@ Each commit is independently revertible via `git revert <hash>`.
   - `breadcrumb.jsx` (imported in App.jsx line 57)
   - `drawer.jsx` (imported in App.jsx line 59)
 - **Also keep**: `../lib/utils.js` (utility used by all kept components)
-- **Delete all 43 other `.jsx` files** in `src/components/ui/`: accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, toggle, toggle-group, tooltip
+- **Delete all 41 other `.jsx` files** in `src/components/ui/`: accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, toggle, toggle-group, tooltip
 - **Also delete**: `src/hooks/use-mobile.js` — only imported by `sidebar.jsx` (being deleted). Orphaned after this commit.
 - **Updated Feb 2**: Original review listed 41 files. Pre-execution verification found `toggle.jsx` and `toggle-group.jsx` also exist and are unused. Final verification found orphaned `src/hooks/use-mobile.js` (only used by sidebar.jsx).
-- **Safe because**: Verified that the 5 kept components do NOT import from any of the 43 deleted components. All interdependencies are only among deleted components.
+- **Safe because**: Verified that the 5 kept components do NOT import from any of the 41 deleted components. All interdependencies are only among deleted components.
 - **Test**: `npm run build` — Vite will error on any missing import
-- **Commit msg**: `Cleanup: Remove 43 unused shadcn/ui components + orphaned use-mobile hook`
+- **Commit msg**: `Cleanup: Remove 41 unused shadcn/ui components + orphaned use-mobile hook`
 
 #### Commit 8: T1-4 — Uninstall 30 unused npm packages
 - **Must run AFTER Commit 7** (component files that referenced these packages must be deleted first)
