@@ -1333,6 +1333,7 @@ Three rounds of verification performed before execution:
 | 9 | seo-performance-optimizer (Tier 2 plan review, Feb 2) | Completed | Assessed all SEO items. Found: T3-1 should promote to Tier 2 (analytics data loss), T3-2 should promote with caution (wrong search snippets), T3-13 should demote to Tier 4 (removing schema risky). |
 | 10 | enterprise-code-reviewer (Tier 2 code verification, Feb 2) | Completed | Verified all line numbers accurate. Confirmed allCamps at 222-1409, search inputs at 2213/2742, window.open at 4 locations, filterOptions at 1515. No hidden risks found. |
 | 11 | seo-performance-optimizer (Tier 2 file verification, Feb 2) | Completed | **KEY FINDING**: fetchpriority="high" ALREADY EXISTS at line 2118 — T2-5 is already done. Also found og:image:height wrong (1680 vs 720). Confirmed all other claims accurate. |
+| 12 | 2x Explore agents (fresh verification, Feb 2 session 2) | Completed | Confirmed clean revert of all T2-1 attempts. No artifacts. All T2 items still untouched. File is CRLF, 5,823 lines. Root cause: node split on `\n` not `\r\n`. |
 
 ---
 
@@ -1362,6 +1363,28 @@ Three rounds of verification performed before execution:
 | NOTE T2-2 complication | Enterprise plan reviewer | Image imports (heroImage etc.) must move with camp data to new file |
 | REORDER T2-14, T2-15 | Enterprise plan reviewer | Documentation should come LAST after all code changes |
 | NOTE T2-9 dependency | Enterprise plan reviewer | filterOptions useMemo depends on T2-1 (empty deps if allCamps module-level) |
+
+### T2-1 Implementation Note (CRLF Issue)
+
+**Previous session attempted T2-1 three times — all failed and were reverted.**
+
+**Root cause:** Node scripts split on `\n` but App.jsx uses CRLF (`\r\n`). Orphaned `\r` characters corrupted the file.
+
+**Working approach:** Use CRLF-aware node script:
+```javascript
+const lineEnding = content.includes('\r\n') ? '\r\n' : '\n';
+const lines = content.split(lineEnding);
+// ... move block ...
+fs.writeFileSync('src/App.jsx', newLines.join(lineEnding), 'utf8');
+```
+
+**Key details for the move:**
+- `const allCamps = [` at line 223 (0-indexed: 222)
+- Closing `]` at line 1409 (0-indexed: 1408)
+- Insert above `function App()` at line 112 (0-indexed: 111)
+- De-indent by 2 spaces (block was inside function)
+- Image imports (lines 61-68) are already at module level — no move needed
+- **Fallback:** PowerShell handles CRLF natively if node fails again
 
 ### Verification Results
 
