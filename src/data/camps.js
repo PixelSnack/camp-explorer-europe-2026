@@ -1192,4 +1192,5 @@ export const allCamps = [
   }
 ]
 
+export { activitiesCompressed, mapCompressed }
 export default allCamps

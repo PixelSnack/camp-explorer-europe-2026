@@ -64,7 +64,7 @@ import heroLakesideCompressed from './assets/hero-lakeside-compressed.png'
 import activitiesAvif from './assets/activities-collage.avif'
 import activitiesWebp from './assets/activities-collage.webp'
 import './App.css'
-import { allCamps } from './data/camps.js'
+import { allCamps, activitiesCompressed, mapCompressed } from './data/camps.js'
 
 // Scroll navigation constants
 const SCROLL_SHOW_THRESHOLD = 300
@@ -323,7 +323,7 @@ function App() {
     })
   }, [allCamps, selectedFilter, selectedCountries, searchTerm, selectedPriceTier, selectedAgeGroups])
 
-  const filterOptions = [
+  const filterOptions = useMemo(() => [
     { value: 'all', label: 'All Camps', count: allCamps.length },
     { value: 'premium', label: 'Premium Alpine', count: allCamps.filter(c => c.category === 'premium').length },
     { value: 'academic', label: 'Academic & STEM', count: allCamps.filter(c => c.category === 'academic').length },
@@ -332,7 +332,7 @@ function App() {
     { value: 'family', label: 'Family Programs', count: allCamps.filter(c => c.category === 'family').length },
     { value: 'budget_excellence', label: 'Budget Excellence', count: allCamps.filter(c => c.category === 'budget_excellence').length },
     { value: 'unique', label: 'Unique Experiences', count: allCamps.filter(c => c.category === 'unique').length }
-  ]
+  ], [])
 
   // Filter helper functions
   const clearAllFilters = () => {
