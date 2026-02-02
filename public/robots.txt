@@ -101,8 +101,5 @@ Allow: /favicon.svg
 Allow: /favicon.ico
 Allow: /favicon-32x32.png
 
-# Performance optimization
-Crawl-delay: 1
-
 # Last updated: 2025-08-29
 # Contact: Contact via website for crawling permissions
