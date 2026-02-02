@@ -724,99 +724,161 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 ### Tier 2 — Low Risk Improvements
 
+*Revised February 2, 2026 after 4-agent parallel review (2 on plan, 2 on code). See Section 9 for full verification log.*
+
+**Execution groups** (respect dependencies):
+- **Group A** (#9→#10→#11): Foundation — sequential, T2-2 depends on T2-1, T2-7 depends on both
+- **Group B** (#12-#16): Independent fixes — any order
+- **Group C** (#17-#19): SEO static files — any order
+- **Group D** (#20-#21): Promoted from Tier 3 — low-risk, high-impact
+- **Group E** (#22): Performance — after Group A
+- **Group F** (#23-#25): Documentation — LAST, after all code changes
+
+#### Group A: Foundation (sequential)
+
 - [ ] **9. Move allCamps outside component function** (T2-1)
-  - File: src/App.jsx
+  - File: src/App.jsx — move `const allCamps = [...]` (lines 222-1409) above `function App()` (line 112)
+  - De-indent by 2 spaces (removing component-level indentation)
+  - allCamps references module-level imports (heroImage etc.) — safe to move
   - Test: `npm run build` + verify all camps display, search, filters
   - Commit: `Perf: Move allCamps outside component function`
 
 - [ ] **10. Extract allCamps to src/data/camps.js** (T2-2)
   - Depends on: #9
   - Files: src/App.jsx, src/data/camps.js (new)
+  - **COMPLICATION**: Camp objects reference `heroImage` and other image imports from App.jsx (lines 61-68). These image imports MUST move to camps.js.
   - Test: `npm run build` + full functionality check
   - Commit: `Refactor: Extract camp data to src/data/camps.js`
 
-- [ ] **11. Add maxLength to search inputs** (T2-3)
-  - File: src/App.jsx (2 search inputs at ~lines 2213, 2742; also 6 contact form inputs lack maxLength — lower priority)
-  - Test: `npm run build` + verify search works
-  - Commit: `Security: Add maxLength=200 to search inputs`
-
-- [ ] **12. Add noopener to window.open calls** (T2-4)
-  - File: src/App.jsx (4 locations: lines ~109, ~2526, ~3063, ~3243)
-  - Test: `npm run build` + verify external links open
-  - Commit: `Security: Add noopener to window.open calls`
-
-- [ ] **13. Improve LCP for hero image** (T2-5)
-  - Option A (recommended): Add `fetchpriority="high"` to `<img>` in `<picture>` element
-  - Option B: Vite plugin for preload with hashed filename (more complex)
-  - File: src/App.jsx (Option A) or vite.config.js (Option B)
-  - Test: `npm run build` + Lighthouse LCP measurement
-  - Commit: `Perf: Add fetchpriority=high to LCP hero image`
-
-- [ ] **14. Fix ItemList numberOfItems to integer** (T2-10)
-  - File: index.html (line ~114 in JSON-LD)
-  - Test: Google Rich Results Test
-  - Commit: `SEO: Fix numberOfItems to integer value`
-
-- [ ] **15. Fix stale sitemap caption** (T2-11)
-  - File: public/sitemap.xml (line ~12)
-  - Test: Validate sitemap XML
-  - Commit: `SEO: Update sitemap to 52 organizations, 24 countries`
-
-- [ ] **16. Fix HTTP booking URL for Camp Bjontegaard** (T2-12)
-  - File: src/App.jsx (~line 539)
-  - Test: `npm run build` + verify HTTPS link works
-  - Commit: `Fix: Change Camp Bjontegaard URL from HTTP to HTTPS`
-
-- [ ] **17. Remove Crawl-delay from robots.txt** (T2-13)
-  - File: public/robots.txt (~line 105)
-  - Test: Validate robots.txt
-  - Commit: `SEO: Remove Crawl-delay from robots.txt`
-
-- [ ] **18. Update sitemap lastmod date** (T2-14)
-  - File: public/sitemap.xml (~line 6)
-  - Note: Should be updated with every content change — add to commit checklist
-  - Test: Validate sitemap XML
-  - Commit: `SEO: Update sitemap lastmod to current date`
-
-- [ ] **19. Update CODE_STRUCTURE.md with accurate line numbers** (T2-15)
-  - File: CODE_STRUCTURE.md
-  - All line number references wrong by 100-400+ lines; camp counts stale
-  - Test: Spot-check 5 line references against actual App.jsx
-  - Commit: `Docs: Update CODE_STRUCTURE.md to match current codebase`
-
-- [ ] **20. Replace hardcoded org counts with dynamic allCamps.length** (T2-7)
-  - Depends on: #9 (allCamps must be module-level)
+- [ ] **11. Replace hardcoded org counts with dynamic allCamps.length** (T2-7)
+  - Depends on: #9 and #10 (allCamps must be importable at module level)
   - File: src/App.jsx (7 locations: lines ~1580, ~2134, ~3471, ~3937, ~4594, ~5026, ~5267)
+  - Use `{allCamps.length}` in JSX, `allCamps.length.toString()` for string props like `value="52"`
+  - sitemap.xml stays hardcoded (static file) — add comment reminder
   - Test: `npm run build` + verify all 7 locations show correct count
   - Commit: `DX: Replace 7 hardcoded org counts with dynamic allCamps.length`
 
-- [ ] **21. Extract marquee useEffect to custom hook** (T2-8)
-  - Files: src/App.jsx (~lines 1792-1932) → new src/hooks/useMarqueeAnimation.js
-  - 140 lines with inline debounce, retry logic, IntersectionObserver
-  - Test: `npm run build` + verify marquee works on mobile and desktop
-  - Commit: `Refactor: Extract marquee animation to useMarqueeAnimation hook`
+#### Group B: Independent fixes (any order)
+
+- [ ] **12. Add maxLength to search inputs** (T2-3)
+  - File: src/App.jsx (2 search inputs at ~lines 2213, 2742)
+  - Add `maxLength={200}` to both search inputs
+  - Note: 6 contact form inputs also lack maxLength — lower priority, handle separately
+  - Test: `npm run build` + verify search works
+  - Commit: `Security: Add maxLength=200 to search inputs`
+
+- [ ] **13. Add noopener to window.open calls** (T2-4)
+  - File: src/App.jsx (4 locations: lines ~109, ~2526, ~3063, ~3243)
+  - Change `window.open(url, '_blank')` to `window.open(url, '_blank', 'noopener,noreferrer')`
+  - Test: `npm run build` + verify external links open
+  - Commit: `Security: Add noopener to window.open calls`
+
+- [ ] **14. Fix HTTP booking URL for Camp Bjontegaard** (T2-12)
+  - File: src/App.jsx (~line 539)
+  - **PRE-CHECK**: Verify https://sommerleir.no/ loads before changing
+  - Test: `npm run build` + verify HTTPS link works
+  - Commit: `Fix: Change Camp Bjontegaard URL from HTTP to HTTPS`
+
+- [ ] **15. Remove Crawl-delay from robots.txt** (T2-13)
+  - File: public/robots.txt (~line 105)
+  - Google ignores Crawl-delay; Bing (9% of traffic) is throttled unnecessarily
+  - Test: Validate robots.txt
+  - Commit: `SEO: Remove Crawl-delay from robots.txt`
+
+- [x] ~~**16. Improve LCP for hero image** (T2-5)~~ **ALREADY DONE — fetchpriority="high" exists at App.jsx line 2118**
+  - Discovered by SEO file reviewer (Feb 2, 2026): `<img ... fetchpriority="high">` already present
+  - No action needed
+
+#### Group C: SEO static file fixes (any order)
+
+- [ ] **17. Fix ItemList numberOfItems to integer** (T2-10)
+  - File: index.html (line ~114 in JSON-LD)
+  - Change `"numberOfItems": "100+"` to `"numberOfItems": 100`
+  - Test: Google Rich Results Test
+  - Commit: `SEO: Fix numberOfItems to integer value`
+
+- [ ] **18. Fix stale sitemap caption** (T2-11)
+  - File: public/sitemap.xml (line ~12)
+  - Change "42 organizations...23 countries" to "52 organizations...24 countries"
+  - Test: Validate sitemap XML
+  - Commit: `SEO: Update sitemap to 52 organizations, 24 countries`
+
+- [ ] **19. Fix og:image:height dimension error** (NEW — found by SEO file reviewer)
+  - File: index.html (line ~38)
+  - `og:image:height` says `1680` but actual image is 1680x720 — change to `720`
+  - Test: `npm run build` + verify meta tag
+  - Commit: `SEO: Fix og:image:height from 1680 to 720`
+
+#### Group D: Promoted from Tier 3 (low-risk, high-impact)
+
+- [ ] **20. Fix CSP connect-src for Google Analytics** (T3-1 → promoted to Tier 2)
+  - File: public/_headers (line ~57)
+  - Append to CSP connect-src: `https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com`
+  - **Why promoted**: Strict browsers may be blocking GA4 data collection RIGHT NOW — analytics data loss means blind SEO decisions
+  - Test: Deploy + check browser console for CSP violations + verify GA4 receives events
+  - Commit: `Security: Add GA4 domains to CSP connect-src`
+
+- [ ] **21. Fix meta tag country counts in index.html** (T3-2 → promoted to Tier 2)
+  - File: index.html (4 locations: lines ~10, ~34, ~46, ~253)
+  - Change numbers ONLY: "21 countries" and "13 countries" → "24 countries"
+  - **CAUTION**: Meta description generates Google search snippets. Do NOT reword sentences.
+  - **PRE-CHECK**: Screenshot current Google snippet before changing
+  - **POST-CHECK**: Monitor Search Console impressions/clicks for 7 days
+  - Test: `npm run build` + inspect meta tags in built output
+  - Commit: `SEO: Fix country count in meta tags (was 21/13, now 24)`
+
+#### Group E: Performance (after Group A)
 
 - [ ] **22. Wrap filterOptions in useMemo** (T2-9)
   - File: src/App.jsx (~line 1516)
+  - Depends on: #9 (if allCamps is module-level after T2-1, use empty dependency array `[]`)
   - Currently filters allCamps 7 times per render without memoization
   - Test: `npm run build` + verify category counts display correctly
   - Commit: `Perf: Memoize filterOptions category counts`
 
+#### Group F: Documentation (LAST — after all code changes)
+
+- [ ] **23. Update CODE_STRUCTURE.md with accurate line numbers** (T2-15)
+  - File: CODE_STRUCTURE.md
+  - Do AFTER all code changes (every change shifts line numbers)
+  - All line number references wrong by 100-400+ lines; camp counts stale
+  - Test: Spot-check 5 line references against actual App.jsx
+  - Commit: `Docs: Update CODE_STRUCTURE.md to match current codebase`
+
+- [ ] **24. Update sitemap lastmod date** (T2-14)
+  - File: public/sitemap.xml (~line 6)
+  - Do as FINAL commit — set to date of last content change
+  - Test: Validate sitemap XML
+  - Commit: `SEO: Update sitemap lastmod to current date`
+
+- [ ] **25. Update CODE_REVIEW_2026.md — mark Tier 2 complete**
+  - Mark all completed items, note deviations from plan
+  - Commit: `Docs: Mark Tier 2 complete in CODE_REVIEW_2026.md`
+
+#### Removed from Tier 2
+
+- [x] ~~**T2-5: Add fetchpriority="high" to hero image**~~ — ALREADY IMPLEMENTED (line 2118)
+- [x] ~~**T2-8: Extract marquee useEffect to custom hook**~~ — RECLASSIFIED TO TIER 3 (see Section 9)
+  - 140-line battle-tested useEffect on DO NOT TOUCH list (Section 2)
+  - Complex: inline debounce, retry logic, IntersectionObserver, iOS/Android platform detection
+  - Affects 70% of users (mobile). Risk too high for Tier 2.
+  - Defer to Phase 2 when component splits make extraction natural.
+
 ### Tier 3 — Medium Risk Fixes
 
-- [ ] **23. Fix CSP connect-src for GA4** (T3-1)
-  - File: public/_headers (line ~57, append to existing connect-src)
-  - Test: Deploy + check browser console for CSP errors + verify GA4 data
-  - Commit: `Security: Add GA4 domains to CSP connect-src`
+*Revised February 2, 2026: T3-1 and T3-2 promoted to Tier 2 (items #20-#21). T3-13 demoted to Tier 4. T2-8 added here.*
 
-- [ ] **24. Fix meta tag country counts** (T3-2)
-  - File: index.html (4 locations: lines ~10, ~34, ~46, ~253)
-  - Pre-check: Note current Google search snippet before changing
-  - Caution: Change number only, do NOT reword sentence structure
-  - Test: `npm run build` + inspect meta tags
-  - Commit: `SEO: Fix country count in meta tags (24 countries)`
+- [x] ~~**T3-1. Fix CSP connect-src for GA4**~~ — **PROMOTED TO TIER 2** (item #20)
+- [x] ~~**T3-2. Fix meta tag country counts**~~ — **PROMOTED TO TIER 2** (item #21)
 
-- [ ] **25. Fix broken "Local" category footer link** (T3-3)
+- [ ] **26. Extract marquee useEffect to custom hook** (T2-8 → reclassified to Tier 3)
+  - Files: src/App.jsx (~lines 1792-1932) → new src/hooks/useMarqueeAnimation.js
+  - 140 lines with inline debounce, retry logic, IntersectionObserver, platform detection
+  - On DO NOT TOUCH list — requires thorough mobile testing (iOS + Android)
+  - Test: `npm run build` + verify marquee on mobile AND desktop
+  - Commit: `Refactor: Extract marquee animation to useMarqueeAnimation hook`
+
+- [ ] **27. Fix broken "Local" category footer link** (T3-3)
   - File: src/App.jsx (~line 4882)
   - Test: `npm run build` + click footer link
   - Commit: `Fix: Remove broken "Local" category link from footer`
@@ -867,11 +929,8 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build`
   - Commit: `Cleanup: Remove unnecessary hreflang tags (monolingual site)`
 
-- [ ] **35. Remove non-functional BreadcrumbList/SearchAction schema** (T3-13)
-  - File: index.html (JSON-LD blocks)
-  - Caution: Removing is lower risk than keeping non-functional schema
-  - Test: Google Rich Results Test after deployment
-  - Commit: `SEO: Remove non-functional BreadcrumbList/SearchAction schema`
+- [x] ~~**35. Remove non-functional BreadcrumbList/SearchAction schema** (T3-13)~~ — **DEMOTED TO TIER 4**
+  - SEO reviewer (Feb 2, 2026): Removing structured data is riskier than keeping non-functional schema. Google may interpret removal negatively. Wait for Phase 2 real routes.
 
 - [ ] **36. Investigate resourceSection state variable** (T3-14)
   - File: src/App.jsx
@@ -886,6 +945,9 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 - [ ] **39. Split sections into route components** (T4-3) — IS Phase 2
 - [ ] **40. Fix multiple H1 elements** (T4-4) — Natural with real routes
 - [ ] **41. Fix schema hash fragment URLs** (T4-5) — Requires real routes
+- [ ] **42. Remove/replace non-functional BreadcrumbList/SearchAction schema** (T3-13 → demoted from Tier 3)
+  - Demoted Feb 2, 2026: SEO reviewer found removing schema is riskier than keeping non-functional schema
+  - When Phase 2 provides real routes, replace hash URLs with real paths instead of removing
 
 ---
 
@@ -1251,7 +1313,7 @@ Three rounds of verification performed before execution:
 - Zero changes to App.jsx logic, filtering, search, analytics, GDPR, camp data, or scroll navigation
 - Zero changes to security headers (`public/_headers`), robots.txt, or structured data schemas
 - Zero changes to any live user-facing functionality (except fixing broken og:image — net positive)
-- SEO meta description country counts (T3-2) are deferred to Tier 3
+- SEO meta description country counts (T3-2) were deferred to Tier 3, then **promoted to Tier 2** (item #21) after Feb 2 review found search snippets showing wrong numbers
 
 ---
 
@@ -1267,6 +1329,53 @@ Three rounds of verification performed before execution:
 | 5 | seo-performance-optimizer (validation run) | Completed | Confirmed findings + 6 new items |
 | 6 | enterprise-code-reviewer (architecture pass) | Completed | Buyer-readiness assessment, code organization, naming review |
 | 7 | 3x Explore agents (parallel verification, Feb 2) | Completed | Cross-checked all Tier 1 claims against actual files. Found og:image broken, T1-7 consolidation needed, confirmed all other claims. |
+| 8 | enterprise-code-reviewer (Tier 2 plan review, Feb 2) | Completed | Assessed all 14 items. Found: T2-7 missing from checklist, T2-8 should be Tier 3, T2-14/T2-15 should be reordered to last, T2-2 image import complication. |
+| 9 | seo-performance-optimizer (Tier 2 plan review, Feb 2) | Completed | Assessed all SEO items. Found: T3-1 should promote to Tier 2 (analytics data loss), T3-2 should promote with caution (wrong search snippets), T3-13 should demote to Tier 4 (removing schema risky). |
+| 10 | enterprise-code-reviewer (Tier 2 code verification, Feb 2) | Completed | Verified all line numbers accurate. Confirmed allCamps at 222-1409, search inputs at 2213/2742, window.open at 4 locations, filterOptions at 1515. No hidden risks found. |
+| 11 | seo-performance-optimizer (Tier 2 file verification, Feb 2) | Completed | **KEY FINDING**: fetchpriority="high" ALREADY EXISTS at line 2118 — T2-5 is already done. Also found og:image:height wrong (1680 vs 720). Confirmed all other claims accurate. |
+
+---
+
+## Section 9: Tier 2 Pre-Implementation Verification (February 2, 2026)
+
+*4 parallel agents reviewed the Tier 2 plan and affected code simultaneously.*
+
+### Methodology
+| Agent | Focus | Key Contribution |
+|-------|-------|-----------------|
+| enterprise-code-reviewer #1 | Review the PLAN itself | Found missing checklist item, reclassification needed, execution order issues |
+| seo-performance-optimizer #1 | Review the PLAN's SEO items | Identified promotions/demotions, risk assessment per item |
+| enterprise-code-reviewer #2 | Verify ACTUAL CODE matches plan claims | Confirmed all line numbers, found image import complication |
+| seo-performance-optimizer #2 | Verify ACTUAL FILES for SEO items | Found fetchpriority already exists, og:image:height error |
+
+### Changes Made to Tier 2 Plan
+
+| Change | Source Agent | Rationale |
+|--------|------------|-----------|
+| REMOVE T2-5 (fetchpriority) | SEO file reviewer | Already implemented at App.jsx line 2118 |
+| RECLASSIFY T2-8 to Tier 3 | Enterprise plan reviewer | 140-line battle-tested code on DO NOT TOUCH list; mobile-critical (70% traffic) |
+| ADD T2-7 to checklist | Enterprise plan reviewer | Was described in Section 3 but missing from Section 5 checklist |
+| PROMOTE T3-1 to Tier 2 | SEO plan reviewer | CSP may be blocking GA4 — analytics data loss is blind spot for SEO decisions |
+| PROMOTE T3-2 to Tier 2 | Both SEO reviewers | Search snippets showing "13 countries" and "21 countries" when actual is 24 |
+| ADD og:image:height fix | SEO file reviewer | Says 1680, actual image is 1680x720 — should be 720 |
+| DEMOTE T3-13 to Tier 4 | SEO plan reviewer | Removing structured data riskier than keeping non-functional schema |
+| NOTE T2-2 complication | Enterprise plan reviewer | Image imports (heroImage etc.) must move with camp data to new file |
+| REORDER T2-14, T2-15 | Enterprise plan reviewer | Documentation should come LAST after all code changes |
+| NOTE T2-9 dependency | Enterprise plan reviewer | filterOptions useMemo depends on T2-1 (empty deps if allCamps module-level) |
+
+### Verification Results
+
+All Tier 2 claims verified against actual code:
+- allCamps at lines 222-1409 inside function App() at line 112 ✅
+- Search inputs at lines ~2213 and ~2742 with no maxLength ✅
+- 4 window.open calls at lines ~109, ~2526, ~3063, ~3243 ✅
+- filterOptions at ~line 1515, not wrapped in useMemo ✅
+- numberOfItems is string "100+" in index.html ✅
+- Sitemap caption says "42 organizations...23 countries" ✅
+- Camp Bjontegaard has HTTP URL at line ~539 ✅
+- Crawl-delay: 1 at robots.txt line ~105 ✅
+- og:image:height claims 1680 (should be 720) ✅
+- fetchpriority="high" ALREADY EXISTS at line 2118 ✅
 
 ---
 
