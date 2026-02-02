@@ -301,7 +301,7 @@ function App() {
       rating: 4.8, // Verified Jan 2026 - highly rated Swiss camp
       reviews: 234,
       image: heroImage,
-      category: "budget", // Budget Excellence for day camps
+      category: "budget_excellence", // Budget Excellence for day camps
       type: "Day & Residential Camps",
       activities: ["English Immersion", "Mountain Adventure", "Outdoor Skills", "Marmots Program"],
       dates: "June 30 - August 15, 2026",
@@ -1579,7 +1579,7 @@ function App() {
     { icon: Globe, label: "Countries", value: "24", description: "Across Europe" },
     { icon: Award, label: "Organizations", value: "52", description: "100+ verified camps" },
     { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
-    { icon: Shield, label: "Directory", value: "100%", description: "Researched" }
+    { icon: Shield, label: "Researched", value: "100%", description: "Directory" }
   ]
 
   // Breadcrumb generation function
