@@ -100,7 +100,7 @@ These can be done immediately with zero chance of breaking functionality.
 
 #### T1-3: Remove unused shadcn/ui component files
 
-41 of 46 shadcn/ui components are never imported. Only these 5 are used:
+43 of 48 shadcn/ui components are never imported. Only these 5 are used:
 - `button.jsx` (App.jsx)
 - `card.jsx` (App.jsx)
 - `badge.jsx` (App.jsx)
@@ -108,11 +108,13 @@ These can be done immediately with zero chance of breaking functionality.
 - `drawer.jsx` (App.jsx)
 
 **Unused components to delete** (all in src/components/ui/):
-accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, tooltip
+accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, toggle, toggle-group, tooltip
+
+**Updated Feb 2**: Original review found 41 unused of 46. Pre-execution verification found `toggle.jsx` and `toggle-group.jsx` also exist and are unused (48 total, 43 unused).
 
 **Space recoverable**: Minimal disk space, but reduces cognitive overhead and file count
 **Test**: `npm run build` — must pass
-**Commit**: `Cleanup: Remove 41 unused shadcn/ui components (only 5 used)`
+**Commit**: `Cleanup: Remove 43 unused shadcn/ui components (only 5 used)`
 
 #### T1-4: Uninstall unused npm packages
 
@@ -123,14 +125,18 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 - `react-day-picker` (only in calendar.jsx — unused)
 - `cmdk` (only in command.jsx — unused)
 
-**Unused Radix packages** (24 packages — only `@radix-ui/react-slot` is needed by button.jsx, and `vaul` by drawer.jsx):
-`@radix-ui/react-accordion`, `@radix-ui/react-alert-dialog`, `@radix-ui/react-aspect-ratio`, `@radix-ui/react-avatar`, `@radix-ui/react-checkbox`, `@radix-ui/react-collapsible`, `@radix-ui/react-context-menu`, `@radix-ui/react-dialog`, `@radix-ui/react-dropdown-menu`, `@radix-ui/react-hover-card`, `@radix-ui/react-label`, `@radix-ui/react-menubar`, `@radix-ui/react-navigation-menu`, `@radix-ui/react-popover`, `@radix-ui/react-progress`, `@radix-ui/react-radio-group`, `@radix-ui/react-scroll-area`, `@radix-ui/react-select`, `@radix-ui/react-separator`, `@radix-ui/react-slider`, `@radix-ui/react-switch`, `@radix-ui/react-tabs`, `@radix-ui/react-toast`, `@radix-ui/react-tooltip`
+**Unused Radix packages** (24 packages — `@radix-ui/react-slot` needed by button.jsx, `vaul` by drawer.jsx, and `@radix-ui/react-dialog` needed internally by vaul):
+`@radix-ui/react-accordion`, `@radix-ui/react-alert-dialog`, `@radix-ui/react-aspect-ratio`, `@radix-ui/react-avatar`, `@radix-ui/react-checkbox`, `@radix-ui/react-collapsible`, `@radix-ui/react-context-menu`, `@radix-ui/react-dropdown-menu`, `@radix-ui/react-hover-card`, `@radix-ui/react-label`, `@radix-ui/react-menubar`, `@radix-ui/react-navigation-menu`, `@radix-ui/react-popover`, `@radix-ui/react-progress`, `@radix-ui/react-radio-group`, `@radix-ui/react-scroll-area`, `@radix-ui/react-select`, `@radix-ui/react-separator`, `@radix-ui/react-slider`, `@radix-ui/react-switch`, `@radix-ui/react-tabs`, `@radix-ui/react-toast`, `@radix-ui/react-toggle`, `@radix-ui/react-toggle-group`, `@radix-ui/react-tooltip`
 
-**Command**: `npm uninstall recharts sonner date-fns react-day-picker cmdk @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-label @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-tooltip`
+**Also unused**: `gtag` (GA4 is inline in App.jsx, npm package never imported)
 
-**Keep**: `@radix-ui/react-slot` (used by button.jsx), `vaul` (used by drawer.jsx)
+**Updated Feb 2**: `@radix-ui/react-dialog` REMOVED from uninstall list (vaul depends on it internally). Added `gtag`, `@radix-ui/react-toggle`, `@radix-ui/react-toggle-group`. Net: 30 packages.
+
+**Command**: `npm uninstall recharts sonner date-fns react-day-picker cmdk gtag @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-label @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-toggle @radix-ui/react-toggle-group @radix-ui/react-tooltip`
+
+**Keep**: `@radix-ui/react-slot` (used by button.jsx), `@radix-ui/react-dialog` (required by vaul), `vaul` (used by drawer.jsx)
 **Test**: `npm run build` — must pass
-**Commit**: `Cleanup: Uninstall 29 unused npm packages (shadcn/ui + Radix)`
+**Commit**: `Cleanup: Uninstall 30 unused npm packages (shadcn/ui deps + Radix + gtag)`
 
 #### T1-5: Remove dead CSS classes from App.css
 
@@ -572,17 +578,17 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + check og:image still works
   - Commit: `Cleanup: Remove orphaned hero PNG from public/ (~3MB)`
 
-- [ ] **3. Remove 41 unused shadcn/ui component files** (T1-3)
+- [ ] **3. Remove 43 unused shadcn/ui component files** (T1-3)
   - Risk: Tier 1
-  - Files: 41 files in src/components/ui/ (see Table C)
+  - Files: 43 files in src/components/ui/ (see Table C + toggle.jsx, toggle-group.jsx)
   - Test: `npm run build` passes
-  - Commit: `Cleanup: Remove 41 unused shadcn/ui components (keep 5 used)`
+  - Commit: `Cleanup: Remove 43 unused shadcn/ui components (keep 5 used)`
 
-- [ ] **4. Uninstall 29 unused npm packages** (T1-4)
+- [ ] **4. Uninstall 30 unused npm packages** (T1-4)
   - Risk: Tier 1
-  - Packages: See T1-4 for full list
+  - Packages: See T1-4 for full list (updated: +gtag, +toggle, +toggle-group, -react-dialog)
   - Test: `npm run build` passes
-  - Commit: `Cleanup: Uninstall 29 unused npm packages`
+  - Commit: `Cleanup: Uninstall 30 unused npm packages`
 
 - [ ] **5. Remove 4 dead CSS classes from App.css** (T1-5)
   - Risk: Tier 1
@@ -1039,7 +1045,7 @@ Each commit is independently revertible via `git revert <hash>`.
 - **Test**: `npm run build` — Vite fails on missing imports, so a passing build proves none were needed
 - **Commit msg**: `Cleanup: Remove 6 orphaned image assets (~7.6MB) from src/assets/`
 
-#### Commit 7: T1-3 — Remove 41 unused shadcn/ui component files
+#### Commit 7: T1-3 — Remove 43 unused shadcn/ui component files
 - **Directory**: `src/components/ui/`
 - **Keep ONLY these 5 files**:
   - `button.jsx` (imported in App.jsx line 47)
@@ -1048,19 +1054,25 @@ Each commit is independently revertible via `git revert <hash>`.
   - `breadcrumb.jsx` (imported in App.jsx line 57)
   - `drawer.jsx` (imported in App.jsx line 59)
 - **Also keep**: `../lib/utils.js` (utility used by all kept components)
-- **Delete all 41 other `.jsx` files** in `src/components/ui/`: accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, tooltip
-- **Safe because**: Verified that the 5 kept components do NOT import from any of the 41 deleted components. All interdependencies are only among deleted components.
+- **Delete all 43 other `.jsx` files** in `src/components/ui/`: accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, toggle, toggle-group, tooltip
+- **Updated Feb 2**: Original review listed 41 files. Pre-execution verification found `toggle.jsx` and `toggle-group.jsx` also exist and are unused (confirmed by enterprise-code-reviewer agent).
+- **Safe because**: Verified that the 5 kept components do NOT import from any of the 43 deleted components. All interdependencies are only among deleted components.
 - **Test**: `npm run build` — Vite will error on any missing import
-- **Commit msg**: `Cleanup: Remove 41 unused shadcn/ui components (keep 5 used: button, card, badge, breadcrumb, drawer)`
+- **Commit msg**: `Cleanup: Remove 43 unused shadcn/ui components (keep 5 used: button, card, badge, breadcrumb, drawer)`
 
-#### Commit 8: T1-4 — Uninstall 29 unused npm packages
+#### Commit 8: T1-4 — Uninstall 30 unused npm packages
 - **Must run AFTER Commit 7** (component files that referenced these packages must be deleted first)
 - **Uninstall command**:
   ```bash
-  npm uninstall recharts sonner date-fns react-day-picker cmdk @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-label @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-tooltip
+  npm uninstall recharts sonner date-fns react-day-picker cmdk gtag @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-label @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-toggle @radix-ui/react-toggle-group @radix-ui/react-tooltip
   ```
+- **Updated Feb 2**: Pre-execution verification changes vs original plan:
+  - **REMOVED from uninstall**: `@radix-ui/react-dialog` — vaul depends on it internally (confirmed in `node_modules/vaul/package.json`)
+  - **ADDED to uninstall**: `gtag` (GA4 is inline in App.jsx, npm package never imported), `@radix-ui/react-toggle`, `@radix-ui/react-toggle-group` (used only by now-deleted toggle components)
+  - Net change: 29 → 30 packages
 - **KEEP these packages** (verified in use):
   - `@radix-ui/react-slot` — used by button.jsx, badge.jsx, breadcrumb.jsx
+  - `@radix-ui/react-dialog` — required internally by vaul (drawer.jsx)
   - `vaul` — used by drawer.jsx
   - `@tanstack/react-virtual` — intentionally kept for planned virtual scrolling feature
   - `class-variance-authority` — used by button.jsx, badge.jsx
@@ -1069,7 +1081,7 @@ Each commit is independently revertible via `git revert <hash>`.
   - `@emailjs/browser` — contact form
 - **Test**: `npm run build` + `npm run lint`
 - **Note**: This modifies `package.json` and `package-lock.json` — large diff is expected
-- **Commit msg**: `Cleanup: Uninstall 29 unused npm packages (shadcn/ui deps + Radix)`
+- **Commit msg**: `Cleanup: Uninstall 30 unused npm packages (shadcn/ui deps + Radix + gtag)`
 
 ### Post-Tier-1 Verification Checklist
 
