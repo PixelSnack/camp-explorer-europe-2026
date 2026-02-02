@@ -286,7 +286,7 @@ function App() {
     return searchTerms
   }
 
-  // Bleeding-edge performance optimization with useMemo
+  // Memoized filter computation
   const filteredCamps = useMemo(() => {
     return allCamps.filter(camp => {
       const matchesFilter = selectedFilter === 'all' || camp.category === selectedFilter
@@ -598,7 +598,7 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [showBackToTop, scrollDirection])
 
-  // 🚀 ENTERPRISE MARQUEE INTELLIGENCE SYSTEM - STATE OF THE ART
+  // Marquee overflow detection and animation
   useEffect(() => {
     const initializeMarqueeSystem = () => {
       // Ensure DOM is fully ready
@@ -665,7 +665,7 @@ function App() {
           }
         }
 
-        // RESPONSIVE INTELLIGENCE - RESIZE DETECTION
+        // Resize detection
         const handleResize = debounce(checkOverflow, 150)
 
         // INTERSECTION OBSERVER - PERFORMANCE OPTIMIZATION
@@ -687,13 +687,13 @@ function App() {
         // INITIALIZE SYSTEM
         checkOverflow()
 
-        // ATTACH ENTERPRISE EVENT LISTENERS
+        // Attach event listeners
         window.addEventListener('resize', handleResize)
         document.addEventListener('visibilitychange', handleVisibilityChange)
         motionMediaQuery.addEventListener('change', handleMotionChange)
         observer.observe(badge)
 
-        // CLEANUP FUNCTION - ENTERPRISE MEMORY MANAGEMENT
+        // Cleanup function
         return () => {
           window.removeEventListener('resize', handleResize)
           document.removeEventListener('visibilitychange', handleVisibilityChange)
@@ -1304,10 +1304,12 @@ function App() {
                     
                     <div className="camp-info-section">
                       <div className="flex items-center justify-between">
+                        {camp.established && (
                         <div className="trust-indicator">
                           <Award className="w-4 h-4" />
                           <span>Est. {camp.established}</span>
                         </div>
+                        )}
                         <div className="trust-indicator">
                           <Heart className="w-4 h-4" />
                           <span>{camp.reviews} reviews</span>
@@ -1808,12 +1810,12 @@ function App() {
 
                       <div className="flex flex-wrap gap-1">
                         {camp.activities.slice(0, 3).map((activity, index) => (
-                          <Badge key={index} variant="secondary" className="text-xs">
+                          <Badge key={index} variant="secondary" className="badge-responsive">
                             {activity}
                           </Badge>
                         ))}
                         {camp.activities.length > 3 && (
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge variant="secondary" className="badge-responsive">
                             +{camp.activities.length - 3} more
                           </Badge>
                         )}
@@ -1823,7 +1825,7 @@ function App() {
                         <div className="text-sm font-medium text-gray-900">Languages:</div>
                         <div className="flex flex-wrap gap-1">
                           {camp.languages.map((lang, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
+                            <Badge key={index} variant="outline" className="badge-responsive">
                               {lang}
                             </Badge>
                           ))}
@@ -1843,10 +1845,12 @@ function App() {
                       </div>
 
                       <div className="flex items-center justify-between pt-4 border-t">
+                        {camp.established && (
                         <div className="flex items-center text-sm text-gray-500">
                           <Award className="w-4 h-4 mr-1" />
                           Est. {camp.established}
                         </div>
+                        )}
                         <div className="flex items-center text-sm text-gray-500">
                           <Heart className="w-4 h-4 mr-1" />
                           {camp.reviews} reviews
@@ -2040,7 +2044,7 @@ function App() {
                             className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-4"
                             onClick={() => handleBookingClick(camp)}
                           >
-                            Book Now
+                            View Details & Book
                           </Button>
                           {camp.videoUrl && (
                             <Button
@@ -3692,10 +3696,10 @@ function App() {
                 <li>
                   <button 
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
-                    onClick={() => handleCategoryFilter('local')}
-                    aria-label="Filter local category camps"
+                    onClick={() => handleCategoryFilter('budget_excellence')}
+                    aria-label="Filter budget excellence camps"
                   >
-                    Local & Municipal Gems
+                    Budget Excellence
                   </button>
                 </li>
               </ul>

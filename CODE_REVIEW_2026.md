@@ -826,9 +826,10 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Affects 70% of users (mobile). Risk too high for Tier 2.
   - Defer to Phase 2 when component splits make extraction natural.
 
-### Tier 3 — Medium Risk Fixes
+### Tier 3 — Medium Risk Fixes (8 of 11 complete as of February 3, 2026)
 
 *Revised February 2, 2026: T3-1 and T3-2 promoted to Tier 2 (items #20-#21). T3-13 demoted to Tier 4. T2-8 added here.*
+*February 3, 2026: 8 quick wins completed (items #27-30, #32, #34-37). 3 items remain (#26, #31, #33).*
 
 - [x] ~~**T3-1. Fix CSP connect-src for GA4**~~ — **PROMOTED TO TIER 2** (item #20)
 - [x] ~~**T3-2. Fix meta tag country counts**~~ — **PROMOTED TO TIER 2** (item #21)
@@ -840,24 +841,20 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + verify marquee on mobile AND desktop
   - Commit: `Refactor: Extract marquee animation to useMarqueeAnimation hook`
 
-- [ ] **27. Fix broken "Local" category footer link** (T3-3)
-  - File: src/App.jsx (~line 4882)
-  - Test: `npm run build` + click footer link
-  - Commit: `Fix: Remove broken "Local" category link from footer`
+- [x] **27. Fix broken "Local" category footer link** (T3-3) ✅ Feb 3
+  - Changed to `handleCategoryFilter('budget_excellence')` with label "Budget Excellence"
+  - Commit: `Fix: Change broken "Local" footer link to Budget Excellence`
 
-- [ ] **26. Fix "Book Now" text in Compare section** (T3-4)
-  - File: src/App.jsx (~line 3229)
-  - Test: `npm run build` + check Compare button text
+- [x] **28. Fix "Book Now" text in Compare section** (T3-4) ✅ Feb 3
+  - Changed to "View Details & Book" to match Home/Discover sections
   - Commit: `Fix: Change Compare "Book Now" to "View Details & Book"`
 
-- [ ] **27. Fix null established year display** (T3-5)
-  - File: src/App.jsx (data lines ~672, ~717 + rendering lines ~2497, ~3035)
-  - Test: `npm run build` + verify camp cards for IDs 24, 26
+- [x] **29. Fix null established year display** (T3-5) ✅ Feb 3
+  - Added conditional rendering in both Home and Discover card locations
   - Commit: `Fix: Handle null established year in camp cards`
 
-- [ ] **28. Fix badge CSS inconsistency Home vs Discover** (T3-6)
-  - File: src/App.jsx (~line 2999)
-  - Test: `npm run build` + compare badge sizes on mobile
+- [x] **30. Fix badge CSS inconsistency Home vs Discover** (T3-6) ✅ Feb 3
+  - Changed Discover section activity/language badges from `text-xs` to `badge-responsive`
   - Commit: `Fix: Use consistent badge-responsive class in Discover`
 
 - [ ] **29. Remove user-scalable=no from viewport** (T3-7)
@@ -865,9 +862,13 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + verify pinch-to-zoom works on mobile, no layout shifts
   - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
 
-- [ ] **30. Remove hyperbolic code comments** (T3-8)
-  - File: src/App.jsx (lines ~1479, ~1791, and others)
-  - Test: `npm run build`
+- [x] **32. Remove hyperbolic code comments** (T3-8) ✅ Feb 3
+  - Replaced 5 hyperbolic comments with factual descriptions
+  - "ENTERPRISE MARQUEE INTELLIGENCE SYSTEM" → "Marquee overflow detection and animation"
+  - "Bleeding-edge performance optimization" → "Memoized filter computation"
+  - "ATTACH ENTERPRISE EVENT LISTENERS" → "Attach event listeners"
+  - "CLEANUP FUNCTION - ENTERPRISE MEMORY MANAGEMENT" → "Cleanup function"
+  - "RESPONSIVE INTELLIGENCE - RESIZE DETECTION" → "Resize detection"
   - Commit: `Cleanup: Replace hyperbolic comments with factual descriptions`
 
 - [ ] **31. Add numeric price field to camp data** (T3-9)
@@ -876,29 +877,26 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + verify no display changes
   - Commit: `Data: Add machine-readable EUR price field to all camps`
 
-- [ ] **32. Remove meta keywords tag** (T3-10)
-  - File: index.html (line ~11)
-  - Test: `npm run build`
+- [x] **34. Remove meta keywords tag** (T3-10) ✅ Feb 3
+  - Removed entire meta keywords tag from index.html
   - Commit: `SEO: Remove meta keywords tag (ignored by Google, reveals strategy)`
 
-- [ ] **33. Add og:image:type meta tag** (T3-11)
-  - File: index.html
-  - Test: `npm run build`
+- [x] **35. Add og:image:type meta tag** (T3-11) ✅ Feb 3
+  - Added `<meta property="og:image:type" content="image/png" />` after og:image:height
   - Commit: `SEO: Add og:image:type meta tag for social sharing`
 
-- [ ] **34. Remove unnecessary hreflang tags** (T3-12)
-  - File: index.html (lines ~73-74)
-  - Test: `npm run build`
+- [x] **36. Remove unnecessary hreflang tags** (T3-12) ✅ Feb 3
+  - Removed hreflang="en" and x-default alternate links (monolingual site)
   - Commit: `Cleanup: Remove unnecessary hreflang tags (monolingual site)`
 
 - [x] ~~**35. Remove non-functional BreadcrumbList/SearchAction schema** (T3-13)~~ — **DEMOTED TO TIER 4**
   - SEO reviewer (Feb 2, 2026): Removing structured data is riskier than keeping non-functional schema. Google may interpret removal negatively. Wait for Phase 2 real routes.
 
-- [ ] **36. Investigate resourceSection state variable** (T3-14)
-  - File: src/App.jsx
-  - May be dead state (like _showFilters) — investigate before removing
-  - Test: `npm run build` + verify affected sections
-  - Commit: TBD based on investigation
+- [x] **37. Investigate resourceSection state variable** (T3-14) ✅ Feb 3 — NOT DEAD
+  - Investigated: `resourceSection` is actively used to control Plan section sub-pages
+  - Used at lines ~2798, 2865, 2935, 3013, 3112, 3230, 3329 (7 conditional renders)
+  - Controls which resource sub-section displays (booking-timeline, safety-standards, etc.)
+  - No action needed — this is live, functional state
 
 ### Tier 4 — Phase 2 Only
 

@@ -203,7 +203,8 @@
 ### **📋 PRIORITY ORDER:**
 1. ~~**Code Review Tier 1**~~ ✅ COMPLETE (Feb 2, 2026)
 2. ~~**Code Review Tier 2**~~ ✅ COMPLETE (Feb 2, 2026) — camp data extracted to camps.js, dynamic counts, maxLength, noopener, CSP fix, meta counts, sitemap, memoized filterOptions
-3. **Content Expansion** - Grow toward 100+ organizations (next milestone: 60)
+3. ~~**Code Review Tier 3 Quick Wins**~~ ✅ COMPLETE (Feb 3, 2026) — 8 of 11 items done (footer link, Book Now text, null year, badge consistency, hyperbolic comments, meta keywords, og:image:type, hreflang, resourceSection investigated). 3 remain: marquee hook extraction (#26), user-scalable (#31), numeric price field (#33)
+4. **Content Expansion** - Grow toward 100+ organizations (next milestone: 60)
 4. **Boundless Life Response** - Awaiting reply, process when received
 5. **Traffic Growth** - Monitor analytics, optimize for search
 
@@ -499,7 +500,8 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 ---
 
-**Last Session:** February 2, 2026 - Executed Code Review Tier 1 (8 commits) + Tier 2 (17 commits). Tier 1: ~10.6MB removed, 4,234 lines deleted, og:image fixed. Tier 2: camp data extracted to camps.js, dynamic org counts, maxLength on inputs, noopener on window.open, CSP GA4 fix, meta country counts, sitemap updates, filterOptions memoized.
+**Last Session:** February 3, 2026 - Executed Code Review Tier 3 quick wins (8 of 11 items). Fixed: broken "Local" footer link, "Book Now" text, null established year, badge CSS inconsistency, hyperbolic comments (5), meta keywords removal, og:image:type added, hreflang tags removed, resourceSection investigated (not dead). 3 Tier 3 items remain: marquee hook (#26), user-scalable (#31), numeric price field (#33).
+**Previous Session:** February 2, 2026 - Executed Code Review Tier 1 (8 commits) + Tier 2 (17 commits). Tier 1: ~10.6MB removed, 4,234 lines deleted, og:image fixed. Tier 2: camp data extracted to camps.js, dynamic org counts, maxLength on inputs, noopener on window.open, CSP GA4 fix, meta country counts, sitemap updates, filterOptions memoized.
 **Previous Session:** February 1, 2026 - Documentation & tooling session + comprehensive CODE_REVIEW_PLAN.md
 **Previous Session:** January 28, 2026 - Implemented context-aware scroll navigation + complete filter system
 
