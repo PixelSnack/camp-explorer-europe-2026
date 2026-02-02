@@ -237,6 +237,27 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + Lighthouse LCP measurement before/after
 **Commit**: `Perf: Add preload hint for LCP hero image`
 
+#### T2-6: Replace hardcoded organization counts with dynamic `allCamps.length`
+
+**Problem**: The number "52" is hardcoded in 5 locations across App.jsx. Every time camps are added or removed, these must all be found and updated manually — and they've been missed repeatedly (e.g., "23+" survived from launch until February 2026).
+
+**Hardcoded locations (all in src/App.jsx):**
+1. **Line ~1580**: Hero stats `value: "52"` (Organizations badge)
+2. **Line ~3937**: Guide CTA `"52 verified camp organizations"` (was "23+" until Feb 2026)
+3. **Line ~4594**: Schema/SEO `"52 verified organizations"`
+4. **Line ~5026**: Footer `"52 verified organizations"`
+5. **Line ~5267**: FAQ answer `"52 verified organizations"`
+
+**Also hardcoded outside App.jsx:**
+6. **public/sitemap.xml**: Image caption (currently says "42" — see T3-4)
+
+**Fix**: After T2-1 (move allCamps outside component), create `const CAMP_COUNT = allCamps.length` and use it in all 5 App.jsx locations via template literals or JSX expressions. Sitemap.xml must remain hardcoded (static file) but add a comment noting it needs manual update.
+
+**Depends on**: T2-1 (allCamps must be module-level to reference `.length` at top level)
+**Files**: src/App.jsx (5 locations), public/sitemap.xml (add reminder comment)
+**Test**: `npm run build` + verify all 5 locations display correct count + add/remove a test camp to confirm count updates automatically
+**Commit**: `DX: Replace 5 hardcoded org counts with dynamic allCamps.length`
+
 ---
 
 ### Tier 3 — MEDIUM RISK (logic-touching, careful testing required)
@@ -610,6 +631,11 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - File: index.html
   - Test: `npm run build` + Lighthouse LCP measurement
   - Commit: `Perf: Add preload hint for LCP hero image`
+- [ ] **14. Replace hardcoded org counts with dynamic allCamps.length** (T2-6)
+  - Risk: Tier 2 (depends on T2-1)
+  - File: src/App.jsx (5 locations: lines ~1580, ~3937, ~4594, ~5026, ~5267)
+  - Test: `npm run build` + verify all 5 locations show correct count
+  - Commit: `DX: Replace 5 hardcoded org counts with dynamic allCamps.length`
 
 ### Tier 3 — Medium Risk Fixes
 
