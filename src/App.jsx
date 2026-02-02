@@ -104,7 +104,7 @@ const trackOutboundClick = (camp) => {
 const handleBookingClick = (camp) => {
   trackOutboundClick(camp)
   const trackedUrl = buildOutboundUrl(camp.bookingUrl, camp)
-  window.open(trackedUrl, '_blank')
+  window.open(trackedUrl, '_blank', 'noopener,noreferrer')
 }
 
 function App() {
@@ -1026,6 +1026,7 @@ function App() {
                 placeholder="Search camps, locations, or countries..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                maxLength={200}
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg touch-target"
                 autoComplete="off"
                 autoCapitalize="none"
@@ -1334,7 +1335,7 @@ function App() {
                               camp_id: camp.id
                             })
                           }
-                          window.open(camp.videoUrl, '_blank')
+                          window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
                         }}
                         aria-label={`Watch ${camp.name} video`}
                       >
@@ -1555,6 +1556,7 @@ function App() {
                   placeholder="Search camps, locations, or countries..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  maxLength={200}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg touch-target"
                   autoComplete="off"
                   autoCapitalize="none"
@@ -1871,7 +1873,7 @@ function App() {
                                 camp_id: camp.id
                               })
                             }
-                            window.open(camp.videoUrl, '_blank')
+                            window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
                           }}
                           aria-label={`Watch ${camp.name} video`}
                         >
@@ -2051,7 +2053,7 @@ function App() {
                                     camp_id: camp.id
                                   })
                                 }
-                                window.open(camp.videoUrl, '_blank')
+                                window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
                               }}
                               aria-label={`Watch ${camp.name} video`}
                             >
