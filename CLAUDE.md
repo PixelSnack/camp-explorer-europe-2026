@@ -147,7 +147,7 @@ This project runs bash on Windows. Always use `2>/dev/null` (Unix-style), never 
 - [x] **Featured Listing Demo**: ✅ Les Elfes demo live - shows operators what €99/year tier looks like
 - [x] **Filter System**: ✅ Multi-select filters deployed January 28, 2026
 - [x] **Mobile Arrow Navigation**: ✅ Context-aware scroll toggle deployed January 28, 2026
-- [ ] **Code Review**: Execute CODE_REVIEW_PLAN.md (comprehensive 3-pass review ready to run)
+- [x] **Code Review**: ✅ Tier 1+2 complete (Feb 2) — camp data extracted, dynamic counts, security fixes, SEO fixes. Tier 3 pending.
 - [ ] **Filter UI Refactor**: Extract shared `<FilterBar />` component (tech debt)
 - [ ] **Await Boundless Life Response**: Process Featured listing if accepted, create Basic if declined
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
@@ -213,7 +213,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 
 **Technical Status:**
 - ✅ **Phase 1 COMPLETE**: All optimizations deployed
-- ✅ **Code Quality**: EXCELLENT (5,800+ lines App.jsx, well-structured)
+- ✅ **Code Quality**: EXCELLENT (App.jsx ~4,636 lines + camps.js ~1,196 lines)
 - ✅ **Performance**: OPTIMIZED (93-96% image reduction)
 - ✅ **Security**: ENTERPRISE-GRADE (HSTS + CSP headers)
 - ✅ **Accessibility**: WCAG 2.1 AA COMPLIANT
@@ -277,8 +277,8 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
 - **Database**: 52 verified organizations, 100+ programs, 24 countries
-- **Camp Data Location**: `src/App.jsx` lines 210-1220 (`const allCamps = [...]`)
-- **App.jsx Total Lines**: ~5,800 lines (well-structured monolithic component)
+- **Camp Data Location**: `src/data/camps.js` (`export const allCamps = [...]`)
+- **App.jsx Total Lines**: ~4,636 lines (camp data extracted to camps.js ~1,196 lines)
 - **Pricing Verification**: ✅ COMPLETE (100% verified January 2026)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
 - **Performance**: 93-96% image optimization, Lighthouse 90+ scores
@@ -294,8 +294,8 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 - **Framework**: React 18 + Vite (single-page application)
 - **Styling**: Tailwind CSS + shadcn/ui component library
 - **State**: React hooks (useState, useEffect, useMemo)
-- **Data**: All camp data embedded in `src/App.jsx` as `allCamps` array
-- **Components**: Monolithic App.jsx + shadcn/ui in `src/components/ui/`
+- **Data**: Camp data in `src/data/camps.js` as exported `allCamps` array
+- **Components**: App.jsx (~4,636 lines) + camps.js (~1,196 lines) + shadcn/ui in `src/components/ui/`
 
 ### Business Model & Goals
 - **Target Audience**: Parents seeking European summer camps for children/youth
@@ -804,8 +804,9 @@ npm run lint         # Code quality (4 warnings OK - shadcn/ui)
 ```
 europeansummercamps/
 ├── src/
-│   ├── App.jsx (main component - ~5,800 lines)
-│   │   └── Lines 174-689: allCamps array with camp data
+│   ├── App.jsx (main component - ~4,636 lines)
+│   ├── data/
+│   │   └── camps.js (camp data array - ~1,196 lines)
 │   ├── App.css (custom global styles)
 │   ├── main.jsx (React entry point)
 │   ├── assets/ (optimized images - 93-96% reduced)
@@ -918,7 +919,7 @@ europeansummercamps/
 
 ### 7.1 Camp Data Structure
 
-**Location in Code**: `src/App.jsx` lines 174-689 (`const allCamps = [...]`)
+**Location in Code**: `src/data/camps.js` (`export const allCamps = [...]`)
 
 ```javascript
 {
@@ -1143,7 +1144,7 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 
 ### 8.3 Technical Foundation Status (Current)
 
-- **Code Quality**: ✅ EXCEPTIONAL (~5,800 lines, well-structured, maintainable)
+- **Code Quality**: ✅ EXCEPTIONAL (App.jsx ~4,636 lines + camps.js ~1,196 lines, well-structured)
 - **Design System**: ✅ PROFESSIONAL EXCELLENCE (responsive typography, button hierarchy)
 - **Mobile UX**: ✅ CROSS-PLATFORM PERFECTION (iOS + Android optimized)
 - **International**: ✅ MULTILINGUAL (5 European languages)
@@ -1348,8 +1349,8 @@ npm run build && npm run dev
 - **Countries**: 24 European countries
 - **Categories**: 7 distinct categories
 - **Verified pricing**: ✅ 52/52 (100% complete)
-- **App.jsx camp data**: Lines 210-1220
-- **Total App.jsx lines**: ~5,800 lines
+- **Camp data**: src/data/camps.js (~1,196 lines)
+- **Total App.jsx lines**: ~4,636 lines
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories
 - **Build time**: ~7-9 seconds

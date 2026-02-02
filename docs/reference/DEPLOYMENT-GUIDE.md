@@ -30,7 +30,8 @@ Ensure your project folder contains:
 ```
 camp-explorer-europe-2026/
 ├── src/                    # React application code
-│   ├── App.jsx            # Main component (~5,800 lines)
+│   ├── App.jsx            # Main component (~4,636 lines)
+│   ├── data/camps.js      # Camp data array (~1,196 lines)
 │   ├── App.css            # Global styles
 │   ├── main.jsx           # Entry point
 │   ├── assets/            # Optimized images

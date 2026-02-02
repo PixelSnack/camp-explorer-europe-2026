@@ -192,8 +192,8 @@
 - [x] Update accurate button terminology ("Download Guide" → "Camp Guide") (COMPLETED ✅)
 
 ## 📁 KEY FILES & LOCATIONS
-- **Main Component**: `src/App.jsx` (~5,000 lines, well-structured)
-- **Camp Data**: `src/App.jsx` lines 210-1166 (allCamps array)
+- **Main Component**: `src/App.jsx` (~4,636 lines, well-structured)
+- **Camp Data**: `src/data/camps.js` (~1,196 lines, allCamps array)
 - **Sitemap**: `public/sitemap.xml` (single clean URL)
 - **Security**: `public/_headers` (HSTS, CSP enforced)
 - **Schema**: `index.html` (Event schema, FAQPage, BreadcrumbList)
