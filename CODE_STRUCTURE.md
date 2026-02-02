@@ -3,7 +3,7 @@
 *Technical reference for codebase architecture and App.jsx structure*
 
 **Created:** January 24, 2026
-**Last Updated:** January 28, 2026
+**Last Updated:** February 2, 2026
 **Purpose:** Quick reference for understanding code organization
 
 ---
@@ -13,7 +13,9 @@
 ```
 camp-explorer-europe-2026/
 ├── src/
-│   ├── App.jsx              # Main component (~5,000 lines)
+│   ├── App.jsx              # Main component (~4,636 lines)
+│   ├── data/
+│   │   └── camps.js         # Camp data array (52 orgs, ~1,196 lines)
 │   ├── App.css              # Custom global styles + marquee system
 │   ├── main.jsx             # React entry point
 │   ├── index.css            # Tailwind imports
@@ -64,42 +66,57 @@ camp-explorer-europe-2026/
 
 ---
 
-## App.jsx Structure (~5,000 lines)
+## App.jsx Structure (~4,636 lines)
+
+*Camp data extracted to `src/data/camps.js` (February 2, 2026)*
 
 ### Section Map
 
 | Lines | Section | Description |
 |-------|---------|-------------|
-| 1-68 | **Imports** | React, Vercel Analytics, EmailJS, shadcn/ui, Lucide icons, images |
-| 69-104 | **GA4 & Tracking** | Analytics initialization, UTM builder, click tracking |
-| 105-209 | **Component State** | All useState hooks for app state |
-| 210-1166 | **Camp Data** | `allCamps` array (45 camps) |
-| 1168-1233 | **Multilingual Search** | European language translations |
-| 1235-1273 | **Filtering Logic** | useMemo filter, filterOptions, stats |
-| 1275-1406 | **Navigation Handlers** | All navigation and filter handlers |
-| 1407-1631 | **useEffects** | Side effects (routing, GDPR, marquee, etc.) |
-| 1495-1507 | **Cookie Handlers** | GDPR consent handlers |
-| 1508-2132 | **Home Section** | Hero, search, camp grid, CTA |
-| 2134-2413 | **Discover Section** | Standalone discover page |
-| 2415-2630 | **Compare Section** | Side-by-side comparison |
-| 2632-3100 | **Plan Section** | Planning timeline |
-| 3102-3700 | **Guide Section** | Parent guide content |
-| 3700-3895 | **Privacy Section** | GDPR privacy policy |
-| 3895-4345 | **Footer** | Navigation links, stats |
-| 4347-4387 | **Cookie Banner** | GDPR consent modal |
-| 4389-4500 | **Impressum** | EU legal notice |
-| 4500-4727 | **About Section** | Research methodology |
-| 4729-4926 | **Contact Form** | EmailJS modal |
-| 4928-4950 | **Closing** | Back-to-top, Analytics, export |
+| 1-67 | **Imports** | React, Vercel, EmailJS, shadcn/ui, Lucide icons, images, camps.js |
+| 8-46 | **GA4 & Tracking** | Analytics initialization, GA4 config |
+| 70-108 | **Constants & Tracking** | Scroll thresholds, UTM builder, click tracking |
+| 110-197 | **Component State** | function App(), all useState hooks |
+| 199-222 | **Form Scroll Lock** | useEffect for contact form |
+| 223-289 | **Multilingual Search** | European language translations |
+| 290-335 | **Filtering Logic** | filteredCamps useMemo, filterOptions useMemo |
+| 337-512 | **Navigation Handlers** | Filter handlers, navigation, comparison |
+| 513-917 | **useEffects** | Routing, GDPR, marquee, scroll, mobile menu |
+| 918-1164 | **Home Section** | Hero, search, camp grid, CTA |
+| 1165-1920 | **Discover Section** | Standalone discover page |
+| 1921-2120 | **Compare Section** | Side-by-side comparison |
+| ~2120-2600 | **Plan Section** | Planning timeline |
+| ~2600-3200 | **Guide Section** | Parent guide content |
+| ~3200-3600 | **Privacy Section** | GDPR privacy policy |
+| ~3600-3880 | **Footer** | Navigation links, stats |
+| ~3880-3920 | **Cookie Banner** | GDPR consent modal |
+| ~3920-4100 | **Impressum & Terms** | EU legal notices |
+| ~4100-4400 | **About Section** | Research methodology |
+| ~4400-4620 | **Contact Form & Drawer** | EmailJS modal, filter drawer |
+| 4635 | **Closing** | Export default App |
+
+### camps.js Structure (~1,196 lines)
+
+| Lines | Content |
+|-------|---------|
+| 1-5 | Imports (heroImage, activitiesCompressed, mapCompressed) |
+| 7-1193 | `export const allCamps = [...]` (52 camp objects) |
+| 1195-1196 | Re-exports (activitiesCompressed, mapCompressed) + default export |
 
 ---
 
 ## Key Code Locations
 
-### Camp Data (Lines 210-1166)
+### Camp Data (src/data/camps.js)
 
 ```javascript
-const allCamps = [
+// In src/data/camps.js
+import heroImage from '../assets/european-summer-camps-lakeside-hero.png'
+import activitiesCompressed from '../assets/activities-collage-compressed.png'
+import mapCompressed from '../assets/camps-map-compressed.png'
+
+export const allCamps = [
   {
     id: 1,
     featured: true,  // Premium listing flag
@@ -124,8 +141,11 @@ const allCamps = [
     bookingUrl: "https://...",
     videoUrl: "https://..."  // Optional
   },
-  // ... 41 more camps (42 total)
+  // ... 51 more camps (52 total)
 ]
+
+// Re-exported for use in App.jsx JSX
+export { activitiesCompressed, mapCompressed }
 ```
 
 ### Categories
@@ -151,7 +171,7 @@ const allCamps = [
 
 ---
 
-## State Management (Lines 105-183)
+## State Management (Lines 110-197)
 
 ```javascript
 // Core UI State
@@ -211,16 +231,16 @@ const [showCookieBanner, setShowCookieBanner] = useState(false)
 - **Filter chips**: Rendered above camp grid with individual dismiss buttons
 - **Clear all**: Red pill button, visible when 1+ filters active
 
-**Known duplication**: Filter dropdowns + chips are duplicated in Home (~line 2048-2140) and Discover (~line 2577-2670) sections. TODO: Extract shared `<FilterBar />` component.
+**Known duplication**: Filter dropdowns + chips are duplicated in Home (~line 1039) and Discover (~line 1569) sections. TODO: Extract shared `<FilterBar />` component.
 
 ### Analytics & Tracking
 
 | Function | Line | Purpose |
 |----------|------|---------|
 | `initializeGA4()` | ~11 | Load and configure Google Analytics 4 |
-| `buildOutboundUrl(url, camp)` | ~70 | Add UTM parameters to booking links |
-| `trackOutboundClick(camp)` | ~85 | Fire GA4 camp_booking_click event |
-| `handleBookingClick(camp)` | ~99 | Track click and open booking URL |
+| `buildOutboundUrl(url, camp)` | ~75 | Add UTM parameters to booking links |
+| `trackOutboundClick(camp)` | ~90 | Fire GA4 camp_booking_click event |
+| `handleBookingClick(camp)` | ~104 | Track click and open booking URL |
 
 ### Contact & GDPR
 
@@ -233,7 +253,7 @@ const [showCookieBanner, setShowCookieBanner] = useState(false)
 
 ---
 
-## useEffect Hooks (Lines 1270-1494)
+## useEffect Hooks (Lines 513-917)
 
 | Purpose | Dependencies | Description |
 |---------|--------------|-------------|
@@ -280,7 +300,7 @@ camp.highlights.slice(0, camp.featured ? 3 : 2)
 
 ---
 
-## Multilingual Search (Lines 1031-1096)
+## Multilingual Search (Lines 223-289)
 
 Supports searching in 6 European languages:
 
@@ -308,7 +328,7 @@ const translations = {
 
 ---
 
-## Email Routing (Lines 121-132)
+## Email Routing (Lines ~133-145)
 
 Smart routing based on inquiry type:
 
@@ -358,10 +378,10 @@ All forward to sorenthoning@gmail.com via Cloudflare.
 
 ```bash
 # Find camp by ID
-grep -n "id: 15" src/App.jsx
+grep -n "id: 15" src/data/camps.js
 
 # Find all category assignments
-grep -n "category:" src/App.jsx
+grep -n "category:" src/data/camps.js
 
 # Find country filter handlers
 grep -n "handleCountryFilter" src/App.jsx
@@ -379,7 +399,7 @@ grep -c "id:" src/App.jsx | head -50
 
 ### Adding a New Camp
 
-1. Find end of `allCamps` array (~line 1029)
+1. Open `src/data/camps.js`, find end of allCamps array (~line 1193)
 2. Add camp object with next sequential ID
 3. Include ALL required fields (see structure above)
 4. Test: search, filtering, display
@@ -394,10 +414,10 @@ grep -c "id:" src/App.jsx | head -50
 
 ### Modifying Filtering Logic
 
-- Filter logic is in `filteredCamps` useMemo (~line 1099)
-- Filter options defined in `filterOptions` array (~line 1120)
-- Category handlers: `handleCategoryFilter` (~line 1201)
-- Country handlers: `handleCountryFilter` (~line 1191)
+- Filter logic is in `filteredCamps` useMemo (~line 290)
+- Filter options defined in `filterOptions` useMemo (~line 326)
+- Category handlers: `handleCategoryFilter` (~line 395)
+- Country toggle: `toggleCountry` (~line 346)
 
 ---
 
