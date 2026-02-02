@@ -320,7 +320,7 @@ export const allCamps = [
     specialFeatures: ["Olympic Training Facilities", "Fjord Adventures", "Viking History Programs"],
     established: 1994,
     capacity: 45,
-    bookingUrl: "http://sommerleir.no/"
+    bookingUrl: "https://sommerleir.no/"
   },
   // REMOVED Jan 2026: ID 16 Metsäkartano - Group/school bookings only, not individual family registration
   {
