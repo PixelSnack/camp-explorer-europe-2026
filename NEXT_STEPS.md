@@ -67,7 +67,7 @@
 - [x] 3-pass comprehensive code review executed per CODE_REVIEW_PLAN.md
 - [x] 35-item implementation checklist produced in CODE_REVIEW_2026.md
 - [x] Tier 1 (8 items): zero-risk cleanup — orphaned images, unused components/packages, dead code
-- [x] Tier 2 (7 items): low-risk improvements — extract data, security hardening, LCP preload
+- [x] Tier 2 (15 items): low-risk improvements — extract data to camps.js, dynamic counts, security hardening, SEO fixes ✅ COMPLETE Feb 2
 - [x] Tier 3 (15 items): medium-risk fixes — CSP, meta counts, schema, broken links, a11y
 - [x] Tier 4 (5 items): Phase 2 only — component extraction, routing, H1 fixes
 - [x] Documentation fixes: 3 missing files added to doc map, DEPLOYMENT-GUIDE.md updated
@@ -202,7 +202,7 @@
 
 ### **📋 PRIORITY ORDER:**
 1. ~~**Code Review Tier 1**~~ ✅ COMPLETE (Feb 2, 2026)
-2. **Code Review Tier 2** - Low-risk improvements (extract allCamps, maxLength, noopener, LCP preload)
+2. ~~**Code Review Tier 2**~~ ✅ COMPLETE (Feb 2, 2026) — camp data extracted to camps.js, dynamic counts, maxLength, noopener, CSP fix, meta counts, sitemap, memoized filterOptions
 3. **Content Expansion** - Grow toward 100+ organizations (next milestone: 60)
 4. **Boundless Life Response** - Awaiting reply, process when received
 5. **Traffic Growth** - Monitor analytics, optimize for search
@@ -499,7 +499,7 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 ---
 
-**Last Session:** February 2, 2026 - Executed Code Review Tier 1: 8 cleanup commits (dead state, dead CSS, junk meta tags, preconnect consolidation, og:image fix, orphaned images, unused components, unused packages). ~10.6MB removed, 4,234 lines deleted, og:image social sharing fixed.
+**Last Session:** February 2, 2026 - Executed Code Review Tier 1 (8 commits) + Tier 2 (17 commits). Tier 1: ~10.6MB removed, 4,234 lines deleted, og:image fixed. Tier 2: camp data extracted to camps.js, dynamic org counts, maxLength on inputs, noopener on window.open, CSP GA4 fix, meta country counts, sitemap updates, filterOptions memoized.
 **Previous Session:** February 1, 2026 - Documentation & tooling session + comprehensive CODE_REVIEW_PLAN.md
 **Previous Session:** January 28, 2026 - Implemented context-aware scroll navigation + complete filter system
 
