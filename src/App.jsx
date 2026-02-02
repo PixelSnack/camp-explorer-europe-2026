@@ -3934,7 +3934,7 @@ function App() {
             <Card className="p-8 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-center">
               <h3 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Camp?</h3>
               <p className="text-blue-100 mb-8 text-lg">
-                Use our directory to explore 23+ verified camp organizations offering 100+ programs, compare options, and research your child's potential European summer adventure for 2026.
+                Use our directory to explore 52 verified camp organizations offering 100+ programs, compare options, and research your child's potential European summer adventure for 2026.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
