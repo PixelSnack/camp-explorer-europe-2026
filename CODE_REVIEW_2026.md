@@ -1015,22 +1015,26 @@ Each commit is independently revertible via `git revert <hash>`.
 #### Commit 4: T1-7 — Consolidate duplicate preconnect/DNS-prefetch tags
 - **File**: `index.html`
 - **Action**:
-  1. Add to the first block (after line 82): `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />`, `<link rel="dns-prefetch" href="//vercel.app" />`, `<link rel="dns-prefetch" href="//vercel.com" />`
-  2. Delete the entire second block (lines 413-419 after junk meta removal shifts line numbers)
+  1. Fix Block 1: Remove `crossorigin` from `fonts.googleapis.com` preconnect (serves CSS, not CORS)
+  2. Add to Block 1 (after line 82): `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />`, `<link rel="dns-prefetch" href="//vercel.app" />`, `<link rel="dns-prefetch" href="//vercel.com" />`
+  3. Delete the entire second block (lines shift after junk meta removal in Commit 3)
+- **Updated Feb 2**: Final verification found `crossorigin` was incorrectly applied to `fonts.googleapis.com` in Block 1. Google Fonts requires: `fonts.googleapis.com` WITHOUT crossorigin (CSS), `fonts.gstatic.com` WITH crossorigin (font files).
 - **Test**: `npm run build` + `npm run dev` + verify Google Fonts render correctly
-- **Commit msg**: `Cleanup: Consolidate preconnect/DNS-prefetch tags (remove duplicates, keep unique domains)`
+- **Commit msg**: `Cleanup: Consolidate preconnect/DNS-prefetch tags (remove duplicates, fix crossorigin, keep unique domains)`
 
 #### Commit 5: T1-2 — Fix broken og:image AND remove orphaned public/ hero PNG
-- **Files**: `index.html` lines 42 and 53, `public/european-summer-camps-hero.png`
+- **Files**: `index.html` lines 42 and 53, `public/european-summer-camps-hero.png`, `public/european-summer-camps-lakeside-hero.png` (NEW)
 - **Action**:
-  1. Change og:image URL (line 42) from `european-summer-camps-lakeside-hero.png` to `european-summer-camps-lakeside-hero.webp`
-  2. Change twitter:image URL (line 53) from `european-summer-camps-lakeside-hero.png` to `european-summer-camps-lakeside-hero.webp`
-  3. Verify the .webp file dimensions are adequate for social sharing (Facebook minimum: 200x200, recommended: 1200x630)
-  4. Update `og:image:width` and `og:image:height` values if they don't match the .webp file
+  1. Generate `european-summer-camps-lakeside-hero.png` from the `.webp` source using sharp (1680x720, optimized PNG)
+  2. Place generated PNG in `public/` — this makes the og:image URL valid AND satisfies robots.txt line 99
+  3. Keep og:image and twitter:image URLs as-is (they already reference the correct `.png` filename)
+  4. Update `og:image:width` to `1680` and `og:image:height` to `720` if not already correct
   5. Delete `public/european-summer-camps-hero.png` (3.0MB — the OLD hero, not referenced anywhere)
+- **Updated Feb 2**: Original plan was to switch og:image to `.webp`. Final verification found LinkedIn and some platforms don't reliably support `.webp` for social previews. Generating a proper `.png` from the `.webp` source is safer — all platforms support PNG, and it also satisfies `robots.txt` line 99 which allows crawlers to access this exact filename.
 - **IMPORTANT**: This FIXES a currently broken feature on the live site (social sharing previews)
-- **Test**: `npm run build` + verify meta tags in built `dist/index.html`
-- **Commit msg**: `Fix: Repair broken og:image/twitter:image URLs + remove orphaned 3MB hero PNG from public/`
+- **Net disk change**: Remove 3.0MB old hero, add ~500-800KB optimized lakeside PNG = net savings ~2.2-2.5MB
+- **Test**: `npm run build` + verify meta tags in built `dist/index.html` + verify PNG file exists in `dist/`
+- **Commit msg**: `Fix: Generate og:image PNG for social sharing + remove orphaned 3MB old hero from public/`
 
 #### Commit 6: T1-1 — Remove 6 orphaned images from src/assets/
 - **Directory**: `src/assets/`
@@ -1055,10 +1059,11 @@ Each commit is independently revertible via `git revert <hash>`.
   - `drawer.jsx` (imported in App.jsx line 59)
 - **Also keep**: `../lib/utils.js` (utility used by all kept components)
 - **Delete all 43 other `.jsx` files** in `src/components/ui/`: accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart, checkbox, collapsible, command, context-menu, dialog, dropdown-menu, form, hover-card, input, input-otp, label, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, switch, table, tabs, textarea, toast, toaster, toggle, toggle-group, tooltip
-- **Updated Feb 2**: Original review listed 41 files. Pre-execution verification found `toggle.jsx` and `toggle-group.jsx` also exist and are unused (confirmed by enterprise-code-reviewer agent).
+- **Also delete**: `src/hooks/use-mobile.js` — only imported by `sidebar.jsx` (being deleted). Orphaned after this commit.
+- **Updated Feb 2**: Original review listed 41 files. Pre-execution verification found `toggle.jsx` and `toggle-group.jsx` also exist and are unused. Final verification found orphaned `src/hooks/use-mobile.js` (only used by sidebar.jsx).
 - **Safe because**: Verified that the 5 kept components do NOT import from any of the 43 deleted components. All interdependencies are only among deleted components.
 - **Test**: `npm run build` — Vite will error on any missing import
-- **Commit msg**: `Cleanup: Remove 43 unused shadcn/ui components (keep 5 used: button, card, badge, breadcrumb, drawer)`
+- **Commit msg**: `Cleanup: Remove 43 unused shadcn/ui components + orphaned use-mobile hook`
 
 #### Commit 8: T1-4 — Uninstall 30 unused npm packages
 - **Must run AFTER Commit 7** (component files that referenced these packages must be deleted first)
@@ -1100,8 +1105,25 @@ npm run dev            # Manual checks:
   [ ] Breadcrumbs display correctly
   [ ] Contact form opens (uses Button component)
   [ ] Google Fonts load (verify preconnect consolidation didn't break)
-  [ ] og:image meta tag points to existing .webp file
+  [ ] og:image meta tag points to existing .png file (generated from .webp)
+  [ ] Generated PNG exists in dist/ after build
 ```
+
+### Pre-Execution Verification Log (February 2, 2026)
+
+Three rounds of verification performed before execution:
+
+| Round | Agent/Method | Key Findings |
+|-------|-------------|-------------|
+| 1 | Explore agent (fresh codebase scan) | Confirmed all original Tier 1 claims. Line numbers, file counts, orphaned status all match. |
+| 2 | enterprise-code-reviewer (targeted) | Found: `toggle.jsx`/`toggle-group.jsx` missed (43 not 41), `gtag` package unused, `@radix-ui/react-dialog` must be KEPT (vaul dependency) |
+| 3 | enterprise-code-reviewer (broad final) | Found: `fonts.gstatic.com` crossorigin fix needed in preconnect consolidation, og:image must be PNG not WebP (LinkedIn compatibility), `src/hooks/use-mobile.js` orphaned, `robots.txt` line 99 references the og:image filename (will be satisfied by generated PNG) |
+
+**Changes from original plan:**
+- Commit 4: Added `crossorigin` fix for `fonts.googleapis.com` → `fonts.gstatic.com`
+- Commit 5: Generate PNG from WebP instead of switching meta to WebP (platform compatibility)
+- Commit 7: 41 → 43 files + orphaned `use-mobile.js` hook
+- Commit 8: 29 → 30 packages (−react-dialog, +gtag, +toggle, +toggle-group)
 
 ### What Tier 1 Does NOT Touch
 
