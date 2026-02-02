@@ -722,9 +722,9 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 *Note: App.jsx line numbers shifted by ~1 line after Tier 1 (only `_showFilters` removed). All Tier 2/3 line references below are current as of February 2, 2026.*
 
-### Tier 2 — Low Risk Improvements
+### Tier 2 — Low Risk Improvements ✅ COMPLETE (February 2, 2026)
 
-*Revised February 2, 2026 after 4-agent parallel review (2 on plan, 2 on code). See Section 9 for full verification log.*
+*Revised February 2, 2026 after 4-agent parallel review. Executed February 2, 2026. 14 items completed, 1 already done, 1 not needed. See Section 9 for verification log.*
 
 **Execution groups** (respect dependencies):
 - **Group A** (#9→#10→#11): Foundation — sequential, T2-2 depends on T2-1, T2-7 depends on both
@@ -736,53 +736,35 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 #### Group A: Foundation (sequential)
 
-- [ ] **9. Move allCamps outside component function** (T2-1)
-  - File: src/App.jsx — move `const allCamps = [...]` (lines 222-1409) above `function App()` (line 112)
-  - De-indent by 2 spaces (removing component-level indentation)
-  - allCamps references module-level imports (heroImage etc.) — safe to move
-  - Test: `npm run build` + verify all camps display, search, filters
+- [x] **9. Move allCamps outside component function** (T2-1) ✅ Feb 2
+  - Moved to module level (line 112). CRLF-aware node script used after 3 failed attempts.
   - Commit: `Perf: Move allCamps outside component function`
 
-- [ ] **10. Extract allCamps to src/data/camps.js** (T2-2)
-  - Depends on: #9
-  - Files: src/App.jsx, src/data/camps.js (new)
-  - **COMPLICATION**: Camp objects reference `heroImage` and other image imports from App.jsx (lines 61-68). These image imports MUST move to camps.js.
-  - Test: `npm run build` + full functionality check
+- [x] **10. Extract allCamps to src/data/camps.js** (T2-2) ✅ Feb 2
+  - Created src/data/camps.js with 3 image imports + allCamps. App.jsx 5,825→4,636 lines.
+  - Fix: Re-exported activitiesCompressed, mapCompressed (used in JSX outside allCamps).
   - Commit: `Refactor: Extract camp data to src/data/camps.js`
 
-- [ ] **11. Replace hardcoded org counts with dynamic allCamps.length** (T2-7)
-  - Depends on: #9 and #10 (allCamps must be importable at module level)
-  - File: src/App.jsx (7 locations: lines ~1580, ~2134, ~3471, ~3937, ~4594, ~5026, ~5267)
-  - Use `{allCamps.length}` in JSX, `allCamps.length.toString()` for string props like `value="52"`
-  - sitemap.xml stays hardcoded (static file) — add comment reminder
-  - Test: `npm run build` + verify all 7 locations show correct count
-  - Commit: `DX: Replace 7 hardcoded org counts with dynamic allCamps.length`
+- [x] **11. Replace hardcoded org counts with dynamic allCamps.length** (T2-7) ✅ Feb 2
+  - Found 8 locations (not 7). All "52" replaced with allCamps.length or template literals.
+  - Commit: `DX: Replace 8 hardcoded org counts with dynamic allCamps.length`
 
 #### Group B: Independent fixes (any order)
 
-- [ ] **12. Add maxLength to search inputs** (T2-3)
-  - File: src/App.jsx (2 search inputs at ~lines 2213, 2742)
-  - Add `maxLength={200}` to both search inputs
-  - Note: 6 contact form inputs also lack maxLength — lower priority, handle separately
-  - Test: `npm run build` + verify search works
+- [x] **12. Add maxLength to search inputs** (T2-3) ✅ Feb 2
+  - Both search inputs now have `maxLength={200}`. Enterprise-reviewed.
   - Commit: `Security: Add maxLength=200 to search inputs`
 
-- [ ] **13. Add noopener to window.open calls** (T2-4)
-  - File: src/App.jsx (4 locations: lines ~109, ~2526, ~3063, ~3243)
-  - Change `window.open(url, '_blank')` to `window.open(url, '_blank', 'noopener,noreferrer')`
-  - Test: `npm run build` + verify external links open
+- [x] **13. Add noopener to window.open calls** (T2-4) ✅ Feb 2
+  - All 4 window.open calls now include `'noopener,noreferrer'`. Enterprise-reviewed.
   - Commit: `Security: Add noopener to window.open calls`
 
-- [ ] **14. Fix HTTP booking URL for Camp Bjontegaard** (T2-12)
-  - File: src/App.jsx (~line 539)
-  - **PRE-CHECK**: Verify https://sommerleir.no/ loads before changing
-  - Test: `npm run build` + verify HTTPS link works
+- [x] **14. Fix HTTP booking URL for Camp Bjontegaard** (T2-12) ✅ Feb 2
+  - Changed to https://sommerleir.no/ in src/data/camps.js.
   - Commit: `Fix: Change Camp Bjontegaard URL from HTTP to HTTPS`
 
-- [ ] **15. Remove Crawl-delay from robots.txt** (T2-13)
-  - File: public/robots.txt (~line 105)
-  - Google ignores Crawl-delay; Bing (9% of traffic) is throttled unnecessarily
-  - Test: Validate robots.txt
+- [x] **15. Remove Crawl-delay from robots.txt** (T2-13) ✅ Feb 2
+  - Removed Crawl-delay: 1 and associated comment.
   - Commit: `SEO: Remove Crawl-delay from robots.txt`
 
 - [x] ~~**16. Improve LCP for hero image** (T2-5)~~ **ALREADY DONE — fetchpriority="high" exists at App.jsx line 2118**
@@ -791,68 +773,48 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 #### Group C: SEO static file fixes (any order)
 
-- [ ] **17. Fix ItemList numberOfItems to integer** (T2-10)
-  - File: index.html (line ~114 in JSON-LD)
-  - Change `"numberOfItems": "100+"` to `"numberOfItems": 100`
-  - Test: Google Rich Results Test
+- [x] **17. Fix ItemList numberOfItems to integer** (T2-10) ✅ Feb 2
+  - Changed `"100+"` (string) to `100` (integer).
   - Commit: `SEO: Fix numberOfItems to integer value`
 
-- [ ] **18. Fix stale sitemap caption** (T2-11)
-  - File: public/sitemap.xml (line ~12)
-  - Change "42 organizations...23 countries" to "52 organizations...24 countries"
-  - Test: Validate sitemap XML
+- [x] **18. Fix stale sitemap caption** (T2-11) ✅ Feb 2
+  - Updated to 52 organizations, 24 countries.
   - Commit: `SEO: Update sitemap to 52 organizations, 24 countries`
 
-- [ ] **19. Fix og:image:height dimension error** (NEW — found by SEO file reviewer)
-  - File: index.html (line ~38)
-  - `og:image:height` says `1680` but actual image is 1680x720 — change to `720`
-  - Test: `npm run build` + verify meta tag
-  - Commit: `SEO: Fix og:image:height from 1680 to 720`
+- [x] ~~**19. Fix og:image:height dimension error**~~ **ALREADY CORRECT** ✅ No action needed
+  - Verified: og:image:height is already `720` (not 1680 as SEO agent claimed)
+  - og:image:width is `1680` — the 1680x720 dimensions are correct as-is
 
 #### Group D: Promoted from Tier 3 (low-risk, high-impact)
 
-- [ ] **20. Fix CSP connect-src for Google Analytics** (T3-1 → promoted to Tier 2)
-  - File: public/_headers (line ~57)
-  - Append to CSP connect-src: `https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com`
-  - **Why promoted**: Strict browsers may be blocking GA4 data collection RIGHT NOW — analytics data loss means blind SEO decisions
-  - Test: Deploy + check browser console for CSP violations + verify GA4 receives events
+- [x] **20. Fix CSP connect-src for Google Analytics** (T3-1 → promoted to Tier 2) ✅ Feb 2
+  - Added google-analytics.com, analytics.google.com, googletagmanager.com to connect-src.
   - Commit: `Security: Add GA4 domains to CSP connect-src`
 
-- [ ] **21. Fix meta tag country counts in index.html** (T3-2 → promoted to Tier 2)
-  - File: index.html (4 locations: lines ~10, ~34, ~46, ~253)
-  - Change numbers ONLY: "21 countries" and "13 countries" → "24 countries"
-  - **CAUTION**: Meta description generates Google search snippets. Do NOT reword sentences.
-  - **PRE-CHECK**: Screenshot current Google snippet before changing
-  - **POST-CHECK**: Monitor Search Console impressions/clicks for 7 days
-  - Test: `npm run build` + inspect meta tags in built output
+- [x] **21. Fix meta tag country counts in index.html** (T3-2 → promoted to Tier 2) ✅ Feb 2
+  - Updated 4 locations: meta description (21→24), og:description (13→24), twitter (13→24), schema (21→24).
+  - Numbers only changed, sentence wording preserved.
+  - **POST-CHECK**: Monitor Search Console for 7 days.
   - Commit: `SEO: Fix country count in meta tags (was 21/13, now 24)`
 
 #### Group E: Performance (after Group A)
 
-- [ ] **22. Wrap filterOptions in useMemo** (T2-9)
-  - File: src/App.jsx (~line 1516)
-  - Depends on: #9 (if allCamps is module-level after T2-1, use empty dependency array `[]`)
-  - Currently filters allCamps 7 times per render without memoization
-  - Test: `npm run build` + verify category counts display correctly
+- [x] **22. Wrap filterOptions in useMemo** (T2-9) ✅ Feb 2
+  - Wrapped with empty deps `[]` since allCamps is module-level.
   - Commit: `Perf: Memoize filterOptions category counts`
 
 #### Group F: Documentation (LAST — after all code changes)
 
-- [ ] **23. Update CODE_STRUCTURE.md with accurate line numbers** (T2-15)
-  - File: CODE_STRUCTURE.md
-  - Do AFTER all code changes (every change shifts line numbers)
-  - All line number references wrong by 100-400+ lines; camp counts stale
-  - Test: Spot-check 5 line references against actual App.jsx
+- [x] **23. Update CODE_STRUCTURE.md with accurate line numbers** (T2-15) ✅ Feb 2
+  - Major update: added camps.js, updated all section line numbers, file structure.
   - Commit: `Docs: Update CODE_STRUCTURE.md to match current codebase`
 
-- [ ] **24. Update sitemap lastmod date** (T2-14)
-  - File: public/sitemap.xml (~line 6)
-  - Do as FINAL commit — set to date of last content change
-  - Test: Validate sitemap XML
-  - Commit: `SEO: Update sitemap lastmod to current date`
+- [x] **24. Update sitemap lastmod date** (T2-14) ✅ Feb 2
+  - Set to 2026-02-02.
+  - Commit: `SEO: Update sitemap lastmod to 2026-02-02`
 
-- [ ] **25. Update CODE_REVIEW_2026.md — mark Tier 2 complete**
-  - Mark all completed items, note deviations from plan
+- [x] **25. Update CODE_REVIEW_2026.md — mark Tier 2 complete** ✅ Feb 2
+  - All items marked, deviations noted.
   - Commit: `Docs: Mark Tier 2 complete in CODE_REVIEW_2026.md`
 
 #### Removed from Tier 2
