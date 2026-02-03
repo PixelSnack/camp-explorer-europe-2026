@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import emailjs from '@emailjs/browser'
+import ErrorBoundary from './components/ErrorBoundary'
 
 // Google Analytics 4 Configuration - Enterprise Implementation
 const GA_MEASUREMENT_ID = 'G-3FMMGNJRLE'
@@ -836,6 +837,7 @@ function App() {
   }
 
   return (
+    <ErrorBoundary>
     <div className="min-h-screen bg-white mobile-stable">
       {/* Skip to main content for accessibility */}
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded">
@@ -4668,6 +4670,7 @@ function App() {
         </>
       )}
     </div>
+    </ErrorBoundary>
   )
 }
 
