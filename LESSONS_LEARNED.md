@@ -1,6 +1,6 @@
 # Lessons Learned & Rules
 
-*Last Updated: February 3, 2026 (Session 2)*
+*Last Updated: February 3, 2026 (Session 3)*
 *Purpose: Centralized reference for errors encountered and rules derived from them*
 
 ---
@@ -10,6 +10,16 @@
 **When you encounter an error**: Add a new lesson following the format below.
 **When starting a session**: Skim recent lessons to avoid repeating mistakes.
 **Format**: Problem → Root Cause → Solution → Rule
+
+### Meta-Lesson: Why This Document Exists
+
+**This document is how we learn through trial and error.**
+
+Claude Code doesn't retain memory between sessions. Without explicit documentation, the same mistakes get repeated. This document serves as persistent memory — capturing errors as they happen and deriving concrete rules to prevent recurrence.
+
+**The key insight**: Every lesson must end with a **Rule** — a clear, actionable directive that future sessions can follow. Rules are not suggestions; they are requirements derived from real failures.
+
+When you discover a problem, don't just fix it. Ask: "What rule would have prevented this?" Then add it here.
 
 ---
 
@@ -72,6 +82,20 @@
 **Solution**: All agents converted to READ-ONLY research specialists. Removed Bash, Edit, Write tools from all agents via `/agents` UI.
 
 **Rule**: Agents can ONLY research and report. Claude Code implements ALL code changes based on agent reports. Never delegate file editing to agents.
+
+---
+
+### Lesson: Background Agents Return Empty Output (February 2026)
+
+**Problem**: When agents run in the background (`run_in_background: true`), their output file appears empty when read later, requiring the agent to be run again.
+
+**Root Cause**: Unknown glitch in the background task output retrieval mechanism. The agent completes work but the findings aren't accessible when reading the output file.
+
+**Impact**: Wasted time re-running agents. Defeats the purpose of parallelization when findings need to be "off-loaded" back to Claude Code for implementation.
+
+**Solution**: Don't run read-only research agents in the background when their findings need to be processed immediately.
+
+**Rule**: Never use `run_in_background: true` for READ-ONLY agents whose output you need to act on. Run them in the foreground so findings are returned directly. Background mode is only appropriate for fire-and-forget tasks where you don't need the output.
 
 ---
 
