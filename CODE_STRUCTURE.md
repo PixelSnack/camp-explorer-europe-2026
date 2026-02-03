@@ -28,17 +28,12 @@ camp-explorer-europe-2026/
 │   │   ├── activities-collage-compressed.png
 │   │   ├── camps-map-compressed.png
 │   │   └── european-summer-camps-lakeside-hero.png
-│   └── components/ui/       # shadcn/ui component library
+│   └── components/ui/       # shadcn/ui component library (5 files)
 │       ├── badge.jsx
 │       ├── breadcrumb.jsx
 │       ├── button.jsx
 │       ├── card.jsx
-│       ├── form.jsx
-│       ├── input.jsx
-│       ├── label.jsx
-│       ├── navigation-menu.jsx
-│       ├── sidebar.jsx
-│       └── toggle.jsx
+│       └── drawer.jsx
 ├── public/
 │   ├── _headers             # Security headers (HSTS, CSP)
 │   ├── sitemap.xml          # SEO sitemap
