@@ -528,16 +528,18 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + disable JS in browser to verify fallback shows
 **Commit**: `SEO: Add noscript fallback content for JS rendering failures`
 
-#### T2-24: Fix privacy policy inconsistency (NEW — 5-agent Feb 3 audit) 🚨 LEGAL
+#### T2-24: Fix privacy policy inconsistency ✅ COMPLETE (Feb 3, 2026)
 
-**Problem**: App.jsx line 3400 says "We never collect: Personal information, email addresses" but the contact form (line 4346) collects first name, last name, and email address. This is a legal compliance inconsistency.
+**Problem**: App.jsx line 3400 said "We never collect: Personal information, email addresses" but contact form collects name and email.
 
-**Fix**: Update privacy policy text to accurately reflect data collection. Contact form collects name and email — state this.
-**Files**: src/App.jsx (line ~3400)
-**Test**: `npm run build` + verify privacy policy text is accurate
-**Commit**: `Legal: Fix privacy policy to reflect actual data collection`
-**PRIORITY**: HIGH — legal compliance issue
-**🚨 TOP PRIORITY**: Per Feb 3 second audit, this is the #1 most critical item in the entire checklist. Legal/GDPR compliance on a live production site serving real families.
+**Fix applied**: Restructured "Data We Collect" section with clear categories:
+- Automatic Data (analytics, technical info, cookie prefs)
+- Information You Provide (contact form details)
+- Closing: "We do not sell your personal information"
+
+Removed unnecessary "What We Don't Collect" section (mentioning passwords/payments was fear-triggering for concepts users weren't thinking about).
+
+**Commits**: `532f01d` + `0e8140a`
 
 #### T2-25: Guard GA4 initialization against multiple fires (NEW — 5-agent Feb 3 audit)
 
@@ -1249,11 +1251,10 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 #### Group H: New items from 5-agent Feb 3 comprehensive audit (pending)
 
-- [ ] **T2-24**: Fix privacy policy inconsistency 🚨 LEGAL — TOP PRIORITY
-  - Privacy policy claims "never collect email" but contact form collects name+email.
-  - File: src/App.jsx (line ~3400)
-  - Test: `npm run build` + verify policy text is accurate
-  - Commit: `Legal: Fix privacy policy to reflect actual data collection`
+- [x] **T2-24**: Fix privacy policy inconsistency ✅ Feb 3
+  - Restructured "Data We Collect" with clear categories (Automatic Data, Info You Provide)
+  - Removed fear-triggering "What We Don't Collect" section
+  - Commits: `532f01d` + `0e8140a`
 
 - [ ] **T2-25**: Guard GA4 initialization
   - Add `if (window.gtag) return;` before initializeGA4() to prevent duplicates.
@@ -2082,7 +2083,7 @@ All Tier 2 claims verified against actual code:
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
 
-*Total checklist items: ~72 (Tier 1: 8 done + 7 pending = 15, Tier 2: 15 done + 16 pending = 31, Tier 3: 8 done + 10 pending = 18 (after consolidations/moves), Tier 4: 8)*
+*Total checklist items: ~72 (Tier 1: 8 done + 7 pending = 15, Tier 2: 16 done + 15 pending = 31, Tier 3: 8 done + 10 pending = 18 (after consolidations/moves), Tier 4: 8)*
 
 *February 3, 2026 second audit: Added 9 new items (T1-17, T1-18, T2-29, T2-30, T3-27, T3-28, T3-29 and updates). Consolidated 2 duplicates (T2-22 → T1-16, T3-24 → T2-29). Promoted T1-11 → T2-31, T3-25 → T2-32.*
 
