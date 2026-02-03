@@ -1014,6 +1014,8 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 
 Ordered by risk tier (Tier 1 first). One item per commit.
 
+> **Numbering Note (Feb 3, 2026):** Due to document evolution, sequential numbers (#26-38 in Tier 2, #27-50 in Tier 3) overlap between tiers. **Always use the T-prefix (T1-XX, T2-XX, T3-XX, T4-XX) as the authoritative identifier** — these are unique across the document. The sequential numbers are for checklist tracking within each tier only.
+
 ### Tier 1 — Zero Risk Cleanup ✅ COMPLETE (February 2, 2026)
 
 *All 8 items executed in 8 commits. Build passes (8.2s), lint 0 errors / 4 warnings.*
