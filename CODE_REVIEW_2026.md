@@ -858,23 +858,13 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 **Test**: Google Rich Results Test
 **Commit**: `SEO: Remove invalid keywords property from WebSite schema`
 
-#### T3-28: Add focus trap to contact form modal (NEW — Feb 3 second audit)
+#### ~~T3-28: Add focus trap to contact form modal~~ **DUPLICATE — See T3-18**
 
-**Problem**: Contact form modal (lines 4287-4483) has no focus trap. Tab key cycles through background content behind the modal. WCAG 2.1 focus management concern.
+*This item was a duplicate of T3-18. Consolidated.*
 
-**Fix**: Add focus trap logic — on open, move focus to first input; on Tab past last element, wrap to first; on Escape, close modal.
-**Files**: src/App.jsx (contact form modal section)
-**Test**: `npm run build` + open contact modal + Tab through all elements + verify focus stays in modal
-**Commit**: `A11y: Add focus trap to contact form modal`
+#### ~~T3-29: Reset contact form after successful submission~~ **DUPLICATE — See T3-20**
 
-#### T3-29: Reset contact form after successful submission (NEW — Feb 3 second audit)
-
-**Problem**: After successful form submission, `formSubmitted` is set true and modal closes after 3s, but HTML form fields are never reset. If modal reopens, previous values persist.
-
-**Fix**: Add `e.target.reset()` in the submit handler after successful EmailJS submission.
-**Files**: src/App.jsx (handleContactFormSubmit function, lines ~175-179)
-**Test**: `npm run build` + submit form + reopen modal + verify fields are cleared
-**Commit**: `UX: Reset contact form fields after successful submission`
+*This item was a duplicate of T3-20. Consolidated.*
 
 ---
 
@@ -1081,7 +1071,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 > **Cross-Reference Guide:**
 > - T-prefix items (T1-1 through T4-8) are defined in Section 3 (Findings by Risk Tier)
 > - Checklist items below reference T-prefix in parentheses for traceability
-> - Duplicates removed: T2-22 → T1-16, T3-24 → T2-29
+> - Duplicates removed: T2-22 → T1-16, T3-24 → T2-29, T3-28 → T3-18, T3-29 → T3-20
 > - Total unique items: ~77 (after adding 9 new items and removing 2 duplicates from ~68+9-2)
 
 ### Tier 1 — Zero Risk Cleanup ✅ COMPLETE (February 2, 2026)
@@ -1420,13 +1410,13 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + open mobile menu, verify focus moves correctly
   - Commit: `A11y: Add focus management to mobile menu`
 
-- [ ] **43. Add width/height to camp card images** (T3-20, NEW)
+- [ ] **43. Add width/height to camp card images** (T3-19, NEW)
   - Lines 1196, 1738, 1988 lack explicit dimensions, causing CLS.
   - Files: src/App.jsx (camp card image elements)
   - Test: `npm run build` + verify no visual changes, check CLS in Lighthouse
   - Commit: `Perf: Add width/height to camp card images (CLS prevention)`
 
-- [ ] **44. Reset contact form after submission** (T3-21, NEW)
+- [ ] **44. Reset contact form after submission** (T3-20, NEW)
   - After successful submission, form fields retain values if modal reopens.
   - Files: src/App.jsx (~line 175)
   - Test: `npm run build` + submit form, close, reopen — fields should be empty
@@ -1550,7 +1540,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 8. **AggregateRating schema per camp** — generates star ratings in SERPs (world-camps.org does this)
 9. Proper canonical tags per page, one H1 per route
 
-### Overall SEO Score: 6.5/10 (ADJUSTED February 3, 2026 — down from 7.0)
+### Overall SEO Score: 6.0/10 (ADJUSTED February 3, 2026 — down from 7.0 → 6.5 → 6.0)
 
 *Score reduced: user-scalable=no mobile penalty, robots.txt issues, og:image/sitemap mismatch, Organization schema gaps offset prior improvements.*
 
@@ -2065,7 +2055,7 @@ All Tier 2 claims verified against actual code:
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
 
-*Total checklist items: ~77 (Tier 1: 8 done + 7 pending = 15, Tier 2: 15 done + 14 pending = 29, Tier 3: 8 done + 17 pending = 25 (after consolidations), Tier 4: 8)*
+*Total checklist items: ~75 (Tier 1: 8 done + 7 pending = 15, Tier 2: 15 done + 14 pending = 29, Tier 3: 8 done + 15 pending = 23 (after consolidations), Tier 4: 8)*
 
 *February 3, 2026 second audit: Added 9 new items (T1-17, T1-18, T2-29, T2-30, T3-27, T3-28, T3-29 and updates). Consolidated 2 duplicates (T2-22 → T1-16, T3-24 → T2-29). Added tier upgrade recommendations for T3-22, T3-23, T3-25.*
 
