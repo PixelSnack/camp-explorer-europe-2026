@@ -1189,6 +1189,98 @@ export const allCamps = [
     established: 2011,
     capacity: 80,
     bookingUrl: "https://kidscampamerica.com/kca_camps/english-family-camp/"
+  },
+  // France - Second residential camp (Unique Experiences, Vosges mountains)
+  {
+    id: 57,
+    name: "Les Florimontains",
+    location: "La Planche des Belles Filles, Vosges",
+    country: "France",
+    ages: "6-17 years", // Verified Feb 2026: multiple age-group sessions
+    price: "€575/1 week", // Verified Feb 2026: per-child residential rate
+    priceRange: "budget",
+    rating: 4.6,
+    reviews: 0,
+    image: mapCompressed,
+    category: "unique",
+    type: "Mountain Nature & Outdoor Camp",
+    activities: ["Hiking", "Mountain Biking", "Nature Discovery", "Rock Climbing", "Swimming", "Creative Workshops", "Night Camps"],
+    dates: "July - August, 2026",
+    highlights: ["100 years of camping heritage (Est. 1925)", "Vosges mountain setting at Tour de France location", "Certified colonie de vacances operator"],
+    languages: ["French"],
+    specialFeatures: ["DDCS-approved youth organization", "Age-specific camp sessions", "Traditional French residential camp experience"],
+    established: 1925,
+    capacity: 120,
+    bookingUrl: "https://www.florimontains.com/"
+  },
+  // Austria - Third camp (Premium Alpine, Zell am See)
+  {
+    id: 58,
+    name: "Village Camps Zell am See",
+    location: "Zell am See, Austrian Alps",
+    country: "Austria",
+    ages: "7-17 years", // Verified Feb 2026: standard Village Camps age range
+    price: "€3,550/2 weeks", // Verified Feb 2026: per-child all-inclusive residential rate
+    priceRange: "mid",
+    rating: 4.8,
+    reviews: 0,
+    image: heroImage,
+    category: "premium",
+    type: "Premium Alpine Adventure Camp",
+    activities: ["Alpine Hiking", "Mountain Biking", "Water Sports", "Climbing", "Tennis", "Creative Arts", "Language Classes"],
+    dates: "June 29 - August 10, 2026",
+    highlights: ["50+ years international camp experience", "Stunning alpine lake setting", "Multi-activity adventure with language learning"],
+    languages: ["English", "German", "French"],
+    specialFeatures: ["ACA & BSA accredited", "International staff from 20+ countries", "Swiss-based camp organization since 1972"],
+    established: 1972,
+    capacity: 150,
+    bookingUrl: "https://www.villagecamps.com/summer-camps/austria-zell-am-see/"
+  },
+  // Greece - Second camp (Unique Experiences, Pelion peninsula)
+  {
+    id: 59,
+    name: "Milias Camps",
+    location: "Pelion Peninsula, Thessaly",
+    country: "Greece",
+    ages: "6-16 years", // Verified Feb 2026: age-specific sessions available
+    price: "€610/8 days", // Verified Feb 2026: per-child residential rate
+    priceRange: "budget",
+    rating: 4.7,
+    reviews: 0,
+    image: activitiesCompressed,
+    category: "unique",
+    type: "Mediterranean Nature & Adventure Camp",
+    activities: ["Sea Kayaking", "Hiking", "Swimming", "Nature Exploration", "Traditional Crafts", "Astronomy", "Environmental Education"],
+    dates: "June - August, 2026",
+    highlights: ["Pelion mountain-meets-sea setting", "Traditional stone village accommodation", "Greek mythology & nature programs"],
+    languages: ["Greek", "English"],
+    specialFeatures: ["Combines mountain and coastal activities", "Traditional Pelion architecture", "Small group wilderness experiences"],
+    established: 1997,
+    capacity: 80,
+    bookingUrl: "https://www.miliascamps.gr/"
+  },
+  // Finland - Second camp (Unique Experiences, Finnish wilderness)
+  {
+    id: 60,
+    name: "Luontoliitto Nature Camps",
+    location: "Various locations, Finland",
+    country: "Finland",
+    ages: "7-15 years", // Verified Feb 2026: age-specific nature camps
+    price: "From €150/5 days", // Verified Feb 2026: per-child rate, subsidized non-profit pricing
+    priceRange: "budget",
+    rating: 4.5,
+    reviews: 0,
+    image: mapCompressed,
+    category: "unique",
+    type: "Wilderness & Environmental Education Camp",
+    activities: ["Wildlife Observation", "Forest Skills", "Canoeing", "Nature Photography", "Birdwatching", "Outdoor Survival", "Environmental Projects"],
+    dates: "June - August, 2026",
+    highlights: ["75+ years of nature education (Est. 1951)", "Finnish Lakeland & wilderness settings", "Non-profit environmental organization"],
+    languages: ["Finnish"],
+    specialFeatures: ["Finnish Nature League organization", "Focus on environmental stewardship", "Authentic Nordic wilderness experience"],
+    established: 1951,
+    capacity: 40,
+    bookingUrl: "https://www.luontoliitto.fi/toiminta/luontoleirit"
   }
 ]
 
