@@ -1,8 +1,10 @@
 # Code Review Report: Camp Explorer Europe 2026
 
-*Review Date: February 1, 2026 (updated February 3, 2026 — 5-agent fresh audit)*
-*Reviewed By: Claude Opus 4.5 (3-pass review per CODE_REVIEW_PLAN.md + 5-agent refresh)*
+*Review Date: February 1, 2026 (MAJOR UPDATE: February 3, 2026 — 5-agent comprehensive audit)*
+*Reviewed By: Claude Opus 4.5 (3-pass review + 5-agent parallel audit: 2 enterprise, 2 SEO, 1 security)*
 *Codebase Snapshot: 4,661 lines App.jsx + 1,196 lines camps.js, 52 organizations, 24 countries*
+
+> **February 3 Update**: This document received major updates based on 5 parallel agents reviewing both the document itself AND the full codebase independently. All new findings verified against actual code. SEO score adjusted to 6.5/10. 15 new issues discovered including legal/privacy inconsistency.
 
 ---
 
@@ -32,12 +34,12 @@ This is a well-built, functional production website that is successfully serving
 4. ~~**CSP missing connect-src for GA4**~~ **✅ RESOLVED (Tier 2, Feb 2)**
 5. ~~**allCamps array inside component**~~ **✅ RESOLVED (Tier 2, Feb 2 — extracted to camps.js)**
 
-**Current top 5 concerns (Feb 3, 2026):**
-1. **Marquee useEffect memory leak** — event listeners accumulate on every home→away→home navigation (line 759)
-2. **`user-scalable=no` still present** — WCAG 1.4.4 violation, Lighthouse failure (index.html line 5)
-3. **No React Error Boundary** — malformed camp data crashes entire page with white screen
-4. **CSP missing hardening directives** — `object-src`, `base-uri`, `form-action` not set (_headers line 57)
-5. **Scroll listener re-subscribes on every direction change** — unnecessary listener churn (lines 597-619)
+**Current top 5 concerns (Feb 3, 2026 — updated from 5-agent audit):**
+1. **🚨 LEGAL: Privacy policy claims "never collect email" but contact form does** — App.jsx line 3400 vs contact form (LEGAL RISK)
+2. **🚨 SECURITY: Vite 4.x is EOL with known CVEs** — CVE-2024-45812, CVE-2024-45811 (package.json line 38)
+3. **Marquee useEffect memory leak** — event listeners accumulate on every navigation (line 759)
+4. **`user-scalable=no` still present** — WCAG 1.4.4 violation + Lighthouse mobile SEO penalty (index.html line 5)
+5. **No React Error Boundary** — malformed camp data crashes entire page with white screen
 
 ### Health Scores (updated Feb 3, 2026 — post Tier 1+2+3 partial)
 
@@ -45,9 +47,9 @@ This is a well-built, functional production website that is successfully serving
 |-----------|-------------------|------------------|--------|-------|
 | Code Quality | 5/10 | **6/10** | +1 | Camp data extracted (4,661 lines), dead code removed, 30 packages uninstalled |
 | Architecture | 5/10 | **6/10** | +1 | Data separated from UI, cleaner package.json. Still monolithic, no tests. |
-| SEO | 6.5/10 | **7/10** | +0.5 | Meta counts fixed, sitemap current, CSP for GA4, crawl-delay removed. SPA ceiling unchanged. |
+| SEO | 6.5/10 | **6.5/10** | 0 | **ADJUSTED** (was 7/10): user-scalable=no SEO penalty, robots.txt issues, og:image mismatch. Meta fixes offset by new findings. |
 | Accessibility | 7/10 | **6.5/10** | **-0.5** | DOWNGRADED: `user-scalable=no` is WCAG 1.4.4 violation. No focus traps in modals/menus. |
-| Security | 7/10 | **8/10** | +1 | noopener on window.open, maxLength on inputs, CSP connect-src fixed. Missing object-src/base-uri. |
+| Security | 7/10 | **7.5/10** | +0.5 | **ADJUSTED** (was 8/10): Vite 4 EOL, no CAPTCHA on contact form, CSP gaps remaining |
 | Performance | 6/10 | **7/10** | +1 | allCamps module-level, filterOptions memoized, 30 unused packages removed |
 | Mobile UX | 8/10 | **8/10** | 0 | No change — already strong |
 | Documentation | 6/10 | **7.5/10** | +1.5 | CODE_STRUCTURE.md updated, review document comprehensive |
@@ -70,6 +72,14 @@ These systems are battle-tested, working in production, and must NOT be modified
 | Filter useMemo logic | `filteredCamps` useMemo | App.jsx ~290-324 | Working correctly with multi-select OR logic |
 | robots.txt | `public/robots.txt` | All lines | Strategic config driving AI referral traffic (5 chatgpt.com visitors) |
 | Image optimization pipeline | AVIF/WebP/PNG `<picture>` elements | App.jsx ~940-960 | 93-96% reduction, working across all browsers |
+
+**NEW — Added Feb 3 from 5-agent audit:**
+
+| System | Location | Why Protected |
+|--------|----------|---------------|
+| `src/data/camps.js` data structure | Field names, types, required properties | Changing field names breaks all App.jsx references |
+| `index.html` `<title>` and `<meta description>` | Lines 8, 10 | Driving #1 Google ranking — change with extreme care |
+| `package.json` scripts section | build, dev, lint commands | All documentation references these exact commands |
 
 ---
 
@@ -213,6 +223,52 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Files**: index.html (lines 111-140)
 **Test**: `npm run build` + Google Rich Results Test
 **Commit**: `SEO: Complete ItemList schema with all 7 categories`
+**RISK UPGRADE**: Promoted to Tier 2 per Feb 3 enterprise audit — malformed JSON-LD can break all schema.
+
+#### T1-12: Remove useless robots.txt hash Allow lines (NEW — 5-agent Feb 3 audit)
+
+**Problem**: Lines 83-87 contain `Allow: /#discover`, `Allow: /#compare`, etc. Crawlers strip hash fragments — these do nothing. Just reveals site structure.
+
+**Fix**: Remove lines 83-87 entirely.
+**Files**: public/robots.txt
+**Test**: Validate robots.txt syntax
+**Commit**: `Cleanup: Remove useless hash fragment Allow lines from robots.txt`
+
+#### T1-13: Update robots.txt "Last updated" comment (NEW — 5-agent Feb 3 audit)
+
+**Problem**: Line 104 says `# Last updated: 2025-08-29` — over 5 months stale.
+
+**Fix**: Update to current date.
+**Files**: public/robots.txt (line 104)
+**Test**: None needed
+**Commit**: `Docs: Update robots.txt last-updated date`
+
+#### T1-14: Verify @CampExplorerEU Twitter handle exists (NEW — 5-agent Feb 3 audit)
+
+**Problem**: `twitter:site` meta tag references `@CampExplorerEU`. If handle doesn't exist or isn't controlled, Twitter Card rendering may be suppressed.
+
+**Fix**: Verify handle exists on X/Twitter. If not, remove the `twitter:site` meta tag.
+**Files**: index.html (twitter:site meta tag)
+**Test**: Check Twitter Card validator
+**Commit**: `SEO: Remove invalid twitter:site handle` (if handle doesn't exist)
+
+#### T1-15: Add AVIF cache rule to _headers (NEW — 5-agent Feb 3 audit)
+
+**Problem**: `.avif` files not covered by caching rules — only `.png`, `.jpg`, `.webp` are listed.
+
+**Fix**: Add `/*.avif` with same `Cache-Control: public, max-age=31536000, immutable`
+**Files**: public/_headers
+**Test**: `npm run build` + verify AVIF files served with correct headers
+**Commit**: `Perf: Add AVIF files to immutable cache rules`
+
+#### T1-16: Change X-XSS-Protection from 1 to 0 (MOVED from T2-22)
+
+**Problem**: `X-XSS-Protection: 1; mode=block` is deprecated. Modern browsers removed XSS Auditor; this can introduce vulnerabilities.
+
+**Fix**: Change to `X-XSS-Protection: 0`
+**Files**: public/_headers (line 54)
+**Test**: `npm run build`
+**Commit**: `Security: Set X-XSS-Protection to 0 (deprecated auditor)`
 
 ---
 
@@ -462,6 +518,52 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + disable JS in browser to verify fallback shows
 **Commit**: `SEO: Add noscript fallback content for JS rendering failures`
 
+#### T2-24: Fix privacy policy inconsistency (NEW — 5-agent Feb 3 audit) 🚨 LEGAL
+
+**Problem**: App.jsx line 3400 says "We never collect: Personal information, email addresses" but the contact form (line 4346) collects first name, last name, and email address. This is a legal compliance inconsistency.
+
+**Fix**: Update privacy policy text to accurately reflect data collection. Contact form collects name and email — state this.
+**Files**: src/App.jsx (line ~3400)
+**Test**: `npm run build` + verify privacy policy text is accurate
+**Commit**: `Legal: Fix privacy policy to reflect actual data collection`
+**PRIORITY**: HIGH — legal compliance issue
+
+#### T2-25: Guard GA4 initialization against multiple fires (NEW — 5-agent Feb 3 audit)
+
+**Problem**: useEffect at line 580 can run multiple times if cookieConsent changes. Each run appends another `<script>` tag and pushes duplicate events, inflating analytics.
+
+**Fix**: Add guard: `if (window.gtag) return;` before calling `initializeGA4()`.
+**Files**: src/App.jsx (~line 580)
+**Test**: `npm run build` + toggle consent, verify only one script tag in DOM
+**Commit**: `Fix: Guard GA4 initialization against duplicate calls`
+
+#### T2-26: Align sitemap image URL with og:image format (NEW — 5-agent Feb 3 audit)
+
+**Problem**: sitemap.xml line 10 points to `.webp`, og:image points to `.png`. Inconsistent image signals.
+
+**Fix**: Update sitemap to point to the same `.png` file as og:image (PNG is more compatible).
+**Files**: public/sitemap.xml (line 10)
+**Test**: Validate sitemap XML
+**Commit**: `SEO: Align sitemap image URL with og:image (both PNG)`
+
+#### T2-27: Fix Guide section stale prices (NEW — 5-agent Feb 3 audit)
+
+**Problem**: Guide section shows "Les Elfes CHF 4,990" (line 2720) but actual is CHF 4,550. "Oxford Summer Courses GBP 6,220" (line 2748) but actual is GBP 6,995.
+
+**Fix**: Update hardcoded prices to match camps.js data.
+**Files**: src/App.jsx (lines ~2720, ~2748)
+**Test**: `npm run build` + verify Guide prices match camp cards
+**Commit**: `Fix: Update stale prices in Guide section`
+
+#### T2-28: Add CSP font-src directive (NEW — 5-agent Feb 3 audit)
+
+**Problem**: CSP has no `font-src` directive. Falls back to `default-src 'self'` which may block Google Fonts.
+
+**Fix**: Add `font-src 'self' https://fonts.gstatic.com` to CSP.
+**Files**: public/_headers (line 57)
+**Test**: Deploy + check browser console for CSP violations + verify fonts load
+**Commit**: `Security: Add font-src directive to CSP for Google Fonts`
+
 ---
 
 ### Tier 3 — MEDIUM RISK (logic-touching, careful testing required)
@@ -665,6 +767,52 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 **Fix**: For now, document the requirement. When Featured listings use `<a>` tags, ensure `rel="sponsored noopener noreferrer"`.
 **Files**: Documentation note (no code change until `<a>` tags are used)
 **Commit**: N/A (documentation only for now)
+
+#### T3-22: Upgrade Vite 4.x to 5.x or 6.x (NEW — 5-agent Feb 3 audit) 🚨 SECURITY
+
+**Problem**: Vite 4.4.5 in package.json is EOL with known CVEs: CVE-2024-45812 (server.fs.deny bypass), CVE-2024-45811 (XSS in dev server). These primarily affect dev server but upgrading is strongly recommended.
+
+**Fix**: `npm install vite@latest` and test thoroughly. Check vite.config.js for breaking changes.
+**Files**: package.json, vite.config.js (may need updates)
+**Test**: `npm run build` + `npm run dev` + thorough manual testing
+**Commit**: `Security: Upgrade Vite from 4.x to 6.x (EOL with CVEs)`
+**PRIORITY**: HIGH — security vulnerability
+
+#### T3-23: Add CAPTCHA/honeypot to contact form (NEW — 5-agent Feb 3 audit)
+
+**Problem**: Contact form has no spam protection. EmailJS credentials are in source — bots could send spam via your EmailJS account.
+
+**Fix**: Add either reCAPTCHA (requires Google setup) or a honeypot field (simpler).
+**Files**: src/App.jsx (contact form ~line 4346)
+**Test**: `npm run build` + verify form still works for humans
+**Commit**: `Security: Add honeypot spam protection to contact form`
+
+#### T3-24: Add Organization @id linking (NEW — 5-agent Feb 3 audit)
+
+**Problem**: Two Organization blocks in index.html (lines ~88-97 in WebSite, lines ~242-265 standalone) without @id linking. Google may treat as separate entities.
+
+**Fix**: Add `"@id": "https://www.europeansummercamps.com/#organization"` to both and reference.
+**Files**: index.html (lines ~88-97 and ~242-265)
+**Test**: Google Rich Results Test
+**Commit**: `SEO: Add @id linking to Organization schemas`
+
+#### T3-25: Add Organization logo/contactPoint/sameAs (NEW — 5-agent Feb 3 audit)
+
+**Problem**: Standalone Organization schema lacks `logo`, `contactPoint`, `sameAs` properties recommended for Knowledge Panel.
+
+**Fix**: Add logo (favicon.svg or logo URL), contactPoint (email), sameAs (social profiles if they exist).
+**Files**: index.html (lines ~242-265)
+**Test**: Google Rich Results Test
+**Commit**: `SEO: Enrich Organization schema with logo/contactPoint`
+
+#### T3-26: Keep console.error in production build (NEW — 5-agent Feb 3 audit)
+
+**Problem**: vite.config.js line 31 drops ALL console statements including console.error, making production debugging impossible.
+
+**Fix**: Change `drop: ['console', 'debugger']` to `drop: ['debugger']` and add `pure_funcs: ['console.log', 'console.info', 'console.debug']` to keep error/warn.
+**Files**: vite.config.js (line 31)
+**Test**: `npm run build` + verify console.error works
+**Commit**: `DX: Keep console.error in production for debugging`
 
 ---
 
@@ -1031,6 +1179,67 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + disable JS in browser, verify fallback text appears
   - Commit: `SEO: Add noscript fallback for JS-disabled users and crawlers`
 
+#### Group H: New items from 5-agent Feb 3 comprehensive audit (pending)
+
+- [ ] **34. Fix privacy policy inconsistency** (T2-24, NEW) 🚨 LEGAL
+  - Privacy policy claims "never collect email" but contact form collects name+email.
+  - File: src/App.jsx (line ~3400)
+  - Test: `npm run build` + verify policy text is accurate
+  - Commit: `Legal: Fix privacy policy to reflect actual data collection`
+
+- [ ] **35. Guard GA4 initialization** (T2-25, NEW)
+  - Add `if (window.gtag) return;` before initializeGA4() to prevent duplicates.
+  - File: src/App.jsx (~line 580)
+  - Test: `npm run build` + toggle consent, verify single script tag
+  - Commit: `Fix: Guard GA4 initialization against duplicate calls`
+
+- [ ] **36. Align sitemap image with og:image** (T2-26, NEW)
+  - sitemap.xml points to .webp, og:image to .png — inconsistent.
+  - File: public/sitemap.xml (line 10)
+  - Test: Validate sitemap XML
+  - Commit: `SEO: Align sitemap image URL with og:image (both PNG)`
+
+- [ ] **37. Fix Guide section stale prices** (T2-27, NEW)
+  - Les Elfes shows CHF 4,990 (actual 4,550), Oxford shows GBP 6,220 (actual 6,995).
+  - File: src/App.jsx (lines ~2720, ~2748)
+  - Test: `npm run build` + verify Guide prices match camp cards
+  - Commit: `Fix: Update stale prices in Guide section`
+
+- [ ] **38. Add CSP font-src directive** (T2-28, NEW)
+  - May be blocking Google Fonts.
+  - File: public/_headers (line 57)
+  - Test: Deploy + verify fonts load + no CSP violations
+  - Commit: `Security: Add font-src directive to CSP for Google Fonts`
+
+#### Group I: New Tier 1 items from 5-agent Feb 3 audit (pending)
+
+- [ ] **39. Remove useless robots.txt hash Allow lines** (T1-12, NEW)
+  - File: public/robots.txt (lines 83-87)
+  - Test: Validate robots.txt
+  - Commit: `Cleanup: Remove useless hash fragment Allow lines from robots.txt`
+
+- [ ] **40. Update robots.txt last-updated comment** (T1-13, NEW)
+  - File: public/robots.txt (line 104)
+  - Test: None
+  - Commit: `Docs: Update robots.txt last-updated date`
+
+- [ ] **41. Verify @CampExplorerEU Twitter handle** (T1-14, NEW)
+  - Check if handle exists, remove twitter:site if not.
+  - File: index.html
+  - Test: Twitter Card validator
+  - Commit: `SEO: Remove invalid twitter:site handle` (if needed)
+
+- [ ] **42. Add AVIF cache rule** (T1-15, NEW)
+  - File: public/_headers
+  - Test: `npm run build`
+  - Commit: `Perf: Add AVIF files to immutable cache rules`
+
+- [ ] **43. Change X-XSS-Protection to 0** (T1-16, moved from T2-22)
+  - One-value change, zero functional impact.
+  - File: public/_headers (line 54)
+  - Test: `npm run build`
+  - Commit: `Security: Set X-XSS-Protection to 0 (deprecated auditor)`
+
 #### Removed from Tier 2
 
 - [x] ~~**T2-5: Add fetchpriority="high" to hero image**~~ — ALREADY IMPLEMENTED (line 2118)
@@ -1156,6 +1365,45 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + submit form, close, reopen — fields should be empty
   - Commit: `Fix: Reset contact form fields after successful submission`
 
+#### New Tier 3 items from 5-agent comprehensive Feb 3 audit
+
+- [ ] **45. Upgrade Vite 4.x to 5.x/6.x** (T3-22, NEW) 🚨 SECURITY
+  - Vite 4.4.5 is EOL with CVE-2024-45812, CVE-2024-45811.
+  - File: package.json, vite.config.js
+  - Test: `npm run build` + `npm run dev` + thorough manual testing
+  - Commit: `Security: Upgrade Vite from 4.x to 6.x (EOL with CVEs)`
+
+- [ ] **46. Add CAPTCHA/honeypot to contact form** (T3-23, NEW)
+  - EmailJS credentials exposed — bots could send spam.
+  - File: src/App.jsx (contact form ~line 4346)
+  - Test: `npm run build` + verify form works for humans
+  - Commit: `Security: Add honeypot spam protection to contact form`
+
+- [ ] **47. Add Organization @id linking** (T3-24, NEW)
+  - Two Organization blocks without @id linking.
+  - File: index.html (lines ~88-97 and ~242-265)
+  - Test: Google Rich Results Test
+  - Commit: `SEO: Add @id linking to Organization schemas`
+
+- [ ] **48. Add Organization logo/contactPoint/sameAs** (T3-25, NEW)
+  - Enriches Organization for Knowledge Panel.
+  - File: index.html (lines ~242-265)
+  - Test: Google Rich Results Test
+  - Commit: `SEO: Enrich Organization schema with logo/contactPoint`
+
+- [ ] **49. Keep console.error in production** (T3-26, NEW)
+  - vite.config.js drops all console statements making debugging impossible.
+  - File: vite.config.js (line 31)
+  - Test: `npm run build` + verify console.error works
+  - Commit: `DX: Keep console.error in production for debugging`
+
+- [ ] **50. Add numeric price field** (T3-9, renumbered)
+  - Requires currency conversion research for 52 camps.
+  - File: src/data/camps.js
+  - **DEMOTE TO TIER 4**: Per enterprise reviewer, significant data engineering effort.
+  - Test: `npm run build` + verify no display changes
+  - Commit: `Data: Add machine-readable EUR price field to all camps`
+
 ### Tier 4 — Phase 2 Only
 
 - [ ] **45. Extract shared FilterBar component** (T4-1) — Requires React Router
@@ -1185,6 +1433,15 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 7. **`@CampExplorerEU` Twitter handle** — Referenced in `twitter:site` meta tag. Verify this handle actually exists and is controlled. If not, remove the meta tag.
 8. **No `<noscript>` fallback** (NEW — Feb 3 audit) — JS-disabled users and some crawlers see blank page. See T2-23.
 9. **`rel="sponsored"` needed for Featured listings** (NEW — Feb 3 audit) — Paid placements (€99/year) require `rel="sponsored"` per Google guidelines. Not actionable until booking links use `<a>` tags. See T3-21.
+
+**NEW from 5-agent Feb 3 audit:**
+10. **robots.txt hash Allow lines useless** — Lines 83-87 (`Allow: /#discover` etc.) do nothing. Crawlers strip hash fragments.
+11. **robots.txt "Last updated" stale** — Line 104 says 2025-08-29, over 5 months old.
+12. **sitemap.xml image points to .webp, og:image to .png** — Inconsistency between social and search image signals.
+13. **Organization schema missing @id linking** — Two Organization blocks without linkage, weakens Knowledge Graph.
+14. **Organization schema missing logo/contactPoint/sameAs** — Reduces Knowledge Panel potential.
+15. **Camp card images missing `<picture>` element** — No WebP/AVIF optimization for camp cards.
+16. **`user-scalable=no` is SEO penalty** — Lighthouse mobile audit fails, affects mobile-first indexing.
 
 ### Meta Tag Issues
 1. ~~**Country counts inconsistent**~~ — ✅ FIXED (Feb 2, item #21). All meta tags now say 24 countries.
@@ -1226,21 +1483,53 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 8. **AggregateRating schema per camp** — generates star ratings in SERPs (world-camps.org does this)
 9. Proper canonical tags per page, one H1 per route
 
-### Overall SEO Score: 7.0/10 (updated February 3, 2026 — up from 6.5)
+### Overall SEO Score: 6.5/10 (ADJUSTED February 3, 2026 — down from 7.0)
 
-*Improvement driven by: meta tag fixes, sitemap update, CSP for GA4, numberOfItems fix, country count corrections.*
+*Score reduced: user-scalable=no mobile penalty, robots.txt issues, og:image/sitemap mismatch, Organization schema gaps offset prior improvements.*
 
 | Sub-dimension | Score | Notes |
 |---------------|-------|-------|
 | Meta Tags & Title | 8/10 | ✅ Country counts fixed. Title/description driving #1 ranking. |
-| Structured Data | 5.5/10 | FAQ and ItemList good; ItemList incomplete (4/7 categories); BreadcrumbList/SearchAction non-functional |
+| Structured Data | 5.0/10 | **Adjusted** (was 5.5): Duplicate Organization without @id, FAQ rich results unlikely post-Aug 2023, og:image/sitemap mismatch |
 | Content SEO / Headings | 5/10 | 13 H1 tags on one page; rich content trapped in single URL |
-| Image SEO | 8/10 | AVIF/WebP delivery, descriptive dynamic alt text, image in sitemap |
-| Technical SEO | 6.5/10 | Clean canonical, proper robots, sitemap updated; SPA limits crawlability |
+| Image SEO | 7/10 | **Adjusted** (was 8): Camp card alt text needs audit, og:image/sitemap mismatch |
+| Technical SEO | 6.0/10 | **Adjusted** (was 6.5): user-scalable=no mobile penalty, robots.txt hash lines, stale date |
 | Core Web Vitals | 7/10 | Good image optimization and caching; camp card images lack width/height (CLS) |
 | Caching & Headers | 9/10 | Excellent immutable cache headers, strong security headers |
 | Schema Accuracy | 6.5/10 | ✅ Country counts fixed. numberOfItems fixed. ItemList still incomplete. |
 | Competitor Parity | 4/10 | Single biggest gap: 1 indexable URL vs competitors' 10-400+ |
+
+### Phase 2 SEO Roadmap Additions (NEW — 5-agent Feb 3 audit)
+
+**Added items:**
+10. **Programmatic SEO pages** — Generate `/summer-camps-near-zurich/`, `/affordable-camps-under-2000/` from camp data filtering
+11. **Internal linking strategy** — Each camp page links to same-country, same-category, similar-price camps
+12. **Dynamic XML sitemap generation** — Auto-generate from route manifest
+13. **Content hub / pillar page architecture** — Guide content becomes pillar pages linking to camp pages
+14. **Google Business Profile** — Claim as online directory service for branded search
+15. **hreflang implementation** — When translated content exists (German, French, Danish)
+
+### SEO Documentation Notes
+
+**Caveat for AggregateRating (Phase 2 item #8)**: "Requires genuine user review data, not estimated ratings. Do NOT implement with fabricated ratings — violates Google's structured data spam policy."
+
+**FAQ rich results limitation**: Since August 2023, Google shows FAQ rich results only for government/health sites. FAQ schema still helps comprehension but generates zero rich snippets for commercial directories.
+
+---
+
+## Section 6.5: Known Gaps (NEW — 5-agent Feb 3 audit)
+
+Areas consciously NOT covered by this review that future sessions should address:
+
+| Gap | Impact | Why Not Covered |
+|-----|--------|-----------------|
+| **Testing strategy** | High | Zero tests exist. Beyond review scope — requires dedicated testing session. |
+| **npm audit / dependency vulnerabilities** | High | Found Vite EOL, but didn't run full `npm audit`. Should be done. |
+| **Bundle size analysis** | Medium | Removed 30 packages but never measured before/after with `vite-bundle-visualizer`. |
+| **Error monitoring / logging** | Medium | Error Boundary catches crashes but doesn't report anywhere. No Sentry/LogRocket. |
+| **CI/CD review** | Medium | No build checks, lint gates, or preview deployments. One bad push goes live instantly. |
+| **Environment configuration** | Low | EmailJS/GA4 IDs hardcoded — no .env usage. Works but not ideal. |
+| **Camp card alt text quality** | Low | Claimed 8/10 Image SEO but never audited actual alt text content for 52 camps. |
 
 ---
 
@@ -1570,8 +1859,8 @@ Three rounds of verification performed before execution:
 | Marquee memory leak (listener accumulation) | Medium | T2-17 (#27) |
 | `user-scalable=no` (accessibility, not security) | Low | T2-16 (#26) |
 
-**Noted but deferred:**
-- Vite 4.x approaching EOL — monitor for security patches, upgrade in Phase 2
+**Noted but deferred — UPDATED Feb 3:**
+- ~~Vite 4.x approaching EOL~~ **UPGRADED TO TIER 3** (T3-22): CVEs confirmed, requires action
 - Dev server binds to `0.0.0.0` — dev-only, no production impact
 - `key={index}` anti-pattern in static camp lists — low risk for static data, not a security issue
 
@@ -1676,6 +1965,8 @@ All Tier 2 claims verified against actual code:
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
 
-*Total checklist items: 51 (Tier 1: 8 done + 3 new, Tier 2: 14 done + 8 new, Tier 3: 8 done + 7 new + 1 remaining, Tier 4: 7)*
+*Total checklist items: ~65 (Tier 1: 8 done + 5 pending, Tier 2: 15 done + 13 pending, Tier 3: 8 done + 12 pending, Tier 4: 8)*
+
+*February 3, 2026 update: Added 14 new items from 5-agent comprehensive audit. Key additions: legal privacy fix, Vite security upgrade, CAPTCHA for contact form, Organization schema improvements, robots.txt cleanup.*
 
 *Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>*
