@@ -270,6 +270,27 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build`
 **Commit**: `Security: Set X-XSS-Protection to 0 (deprecated auditor)`
 
+#### T1-17: Add security.txt file (NEW — Feb 3 second audit)
+
+**Problem**: No `/.well-known/security.txt` file exists. Modern security best practice includes this file with contact information for security researchers to report vulnerabilities.
+
+**Fix**: Create `public/.well-known/security.txt` with:
+- Contact email (partnerships@europeansummercamps.com)
+- Preferred language (en)
+- Optional: Expires date, policy URL
+**Files**: public/.well-known/security.txt (new)
+**Test**: After deploy, verify https://www.europeansummercamps.com/.well-known/security.txt loads
+**Commit**: `Security: Add security.txt for vulnerability reporting`
+
+#### T1-18: Run npm audit and document findings (NEW — Feb 3 second audit)
+
+**Problem**: No `npm audit` has been run and documented. Unknown vulnerability status.
+
+**Fix**: Run `npm audit`, document findings, fix any HIGH/CRITICAL issues.
+**Files**: N/A (command only)
+**Test**: `npm audit` output should show 0 high/critical vulnerabilities
+**Commit**: `Docs: npm audit run — document findings`
+
 ---
 
 ### Tier 2 — LOW RISK (isolated extractions, no logic changes)
@@ -559,6 +580,25 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: Deploy + check browser console for CSP violations + verify fonts load
 **Commit**: `Security: Add font-src directive to CSP for Google Fonts`
 
+#### T2-29: Add Organization schema @id linking (NEW — Feb 3 second audit)
+
+**Problem**: Two Organization schema blocks exist in index.html (lines 79-97 as WebSite author/publisher, and lines 242-264 as standalone). Neither has @id — Google may treat them as separate entities.
+
+**Fix**: Add `"@id": "https://www.europeansummercamps.com/#organization"` to the standalone Organization block. Reference this @id in the WebSite author/publisher properties.
+**Files**: index.html (lines 79-97 and 242-264)
+**Test**: Google Rich Results Test after deployment
+**Commit**: `SEO: Add @id linking between Organization schema blocks`
+
+#### T2-30: Add CSP report-uri directive (NEW — Feb 3 second audit)
+
+**Problem**: CSP has no reporting endpoint. CSP violations go unnoticed — XSS attempts, mixed content, and third-party injection attempts are invisible.
+
+**Fix**: Add `report-uri https://your-report-endpoint` or use `Report-To` header with a free service like report-uri.com.
+**Files**: public/_headers (line 57)
+**Test**: Deploy + trigger intentional CSP violation + verify report received
+**Commit**: `Security: Add CSP report-uri for violation monitoring`
+**Note**: Optional but recommended for production monitoring.
+
 ---
 
 ### Tier 3 — MEDIUM RISK (logic-touching, careful testing required)
@@ -808,6 +848,33 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 **Files**: vite.config.js (line 31)
 **Test**: `npm run build` + verify console.error works
 **Commit**: `DX: Keep console.error in production for debugging`
+
+#### T3-27: Remove invalid `keywords` property from WebSite schema (NEW — Feb 3 second audit)
+
+**Problem**: WebSite schema at index.html line ~87 has a `keywords` property. This is not a valid schema.org WebSite property — it may be ignored or cause validation warnings.
+
+**Fix**: Remove the `keywords` line from the WebSite JSON-LD block.
+**Files**: index.html (line ~87)
+**Test**: Google Rich Results Test
+**Commit**: `SEO: Remove invalid keywords property from WebSite schema`
+
+#### T3-28: Add focus trap to contact form modal (NEW — Feb 3 second audit)
+
+**Problem**: Contact form modal (lines 4287-4483) has no focus trap. Tab key cycles through background content behind the modal. WCAG 2.1 focus management concern.
+
+**Fix**: Add focus trap logic — on open, move focus to first input; on Tab past last element, wrap to first; on Escape, close modal.
+**Files**: src/App.jsx (contact form modal section)
+**Test**: `npm run build` + open contact modal + Tab through all elements + verify focus stays in modal
+**Commit**: `A11y: Add focus trap to contact form modal`
+
+#### T3-29: Reset contact form after successful submission (NEW — Feb 3 second audit)
+
+**Problem**: After successful form submission, `formSubmitted` is set true and modal closes after 3s, but HTML form fields are never reset. If modal reopens, previous values persist.
+
+**Fix**: Add `e.target.reset()` in the submit handler after successful EmailJS submission.
+**Files**: src/App.jsx (handleContactFormSubmit function, lines ~175-179)
+**Test**: `npm run build` + submit form + reopen modal + verify fields are cleared
+**Commit**: `UX: Reset contact form fields after successful submission`
 
 ---
 
