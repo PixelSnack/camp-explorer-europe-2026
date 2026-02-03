@@ -47,7 +47,7 @@ This is a well-built, functional production website that is successfully serving
 |-----------|-------------------|------------------|--------|-------|
 | Code Quality | 5/10 | **6/10** | +1 | Camp data extracted (4,661 lines), dead code removed, 30 packages uninstalled |
 | Architecture | 5/10 | **6/10** | +1 | Data separated from UI, cleaner package.json. Still monolithic, no tests. |
-| SEO | 6.5/10 | **6.5/10** | 0 | **ADJUSTED** (was 7/10): user-scalable=no SEO penalty, robots.txt issues, og:image mismatch. Meta fixes offset by new findings. |
+| SEO | 6.5/10 | **6.0/10** | -0.5 | **ADJUSTED** (was 7/10 → 6.5 → 6.0): user-scalable=no SEO penalty, robots.txt issues, og:image mismatch, ItemList incomplete (4/7 categories). Score 6.0 until T1-11 complete. |
 | Accessibility | 7/10 | **6.5/10** | **-0.5** | DOWNGRADED: `user-scalable=no` is WCAG 1.4.4 violation. No focus traps in modals/menus. |
 | Security | 7/10 | **7.5/10** | +0.5 | **ADJUSTED** (was 8/10): Vite 4 EOL, no CAPTCHA on contact form, CSP gaps remaining |
 | Performance | 6/10 | **7/10** | +1 | allCamps module-level, filterOptions memoized, 30 unused packages removed |
@@ -500,14 +500,9 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + verify site loads normally
 **Commit**: `Security: Add Permissions-Policy header`
 
-#### T2-22: Replace deprecated X-XSS-Protection header (NEW — Feb 3 audit)
+#### ~~T2-22: Replace deprecated X-XSS-Protection header~~ **DUPLICATE — See T1-16**
 
-**Problem**: `X-XSS-Protection: 1; mode=block` at `_headers` line 54 is deprecated in modern browsers and can actually introduce vulnerabilities in edge cases.
-
-**Fix**: Change to `X-XSS-Protection: 0`
-**Files**: public/_headers (line 54)
-**Test**: `npm run build`
-**Commit**: `Security: Set X-XSS-Protection to 0 (deprecated header)`
+*This item was a duplicate of T1-16. Consolidated to Tier 1 as zero-risk header change.*
 
 #### T2-23: Add `<noscript>` fallback content (NEW — Feb 3 audit)
 
@@ -1052,7 +1047,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Commit: `Perf: Move allCamps outside component function`
 
 - [x] **10. Extract allCamps to src/data/camps.js** (T2-2) ✅ Feb 2
-  - Created src/data/camps.js with 3 image imports + allCamps. App.jsx 5,825→4,636 lines.
+  - Created src/data/camps.js with 3 image imports + allCamps. App.jsx 5,825→4,661 lines.
   - Fix: Re-exported activitiesCompressed, mapCompressed (used in JSX outside allCamps).
   - Commit: `Refactor: Extract camp data to src/data/camps.js`
 
@@ -1552,7 +1547,7 @@ A buyer who is comfortable with React could take this over, but they would immed
 - Camp data is well-structured with consistent fields
 
 **Negatives:**
-- ~~5,825-line God Component~~ **Improved**: Now 4,636-line App.jsx + 1,196-line camps.js — still a God Component but data separated
+- ~~5,825-line God Component~~ **Improved**: Now 4,661-line App.jsx + 1,196-line camps.js — still a God Component but data separated
 - ~~Camp data embedded in UI code~~ **✅ RESOLVED (Feb 2)**: Camp data extracted to `src/data/camps.js`
 - Zero tests of any kind — no safety net for changes
 - ~~38 unused UI components and ~10 unused npm packages signal "kitchen sink" installation~~ **✅ RESOLVED (Tier 1)** — 41 components + 30 packages removed
@@ -1589,7 +1584,7 @@ No hidden state dependency issues found — useMemo dependency arrays are correc
 
 ### Function Design Issues
 
-- **App() function**: 5,713 lines — the entire application is one function
+- **App() function**: 4,661 lines (after camp data extraction) — the entire application is one function
 - **Marquee useEffect** (~lines 1792-1932): 140 lines with inline debounce utility, retry logic, IntersectionObserver, and platform detection. Should be a custom hook `useMarqueeAnimation`.
 - **`handleResourceLink`**: Switch with 7+ cases of duplicated scroll-to-element logic. Each case does the same thing with minor variations.
 - **`generateBreadcrumbs`** (~lines 1587-1617): Verbose switch statement that could be replaced with a simple object lookup (map section name to breadcrumb config).
@@ -1838,7 +1833,7 @@ Three rounds of verification performed before execution:
 
 *Fresh audit by security-audit-specialist agent as part of 5-agent parallel review.*
 
-### Security Score: 8.0/10 (up from 7.0 in Section 1)
+### Security Score: 7.5/10 (reconciled with Section 1 health table)
 
 **Improvements since September 2025 audit:**
 - ✅ `noopener,noreferrer` on all `window.open` calls (Feb 2)
@@ -1964,7 +1959,7 @@ All Tier 2 claims verified against actual code:
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
 
-*Total checklist items: ~65 (Tier 1: 8 done + 5 pending, Tier 2: 15 done + 13 pending, Tier 3: 8 done + 12 pending, Tier 4: 8)*
+*Total checklist items: ~68 (Tier 1: 8 done + 5 pending = 13, Tier 2: 15 done + 12 pending = 27 (T2-22 was duplicate of T1-16), Tier 3: 8 done + 12 pending = 20, Tier 4: 8)*
 
 *February 3, 2026 update: Added 14 new items from 5-agent comprehensive audit. Key additions: legal privacy fix, Vite security upgrade, CAPTCHA for contact form, Organization schema improvements, robots.txt cleanup.*
 
