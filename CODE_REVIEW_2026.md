@@ -917,6 +917,49 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 
 *This item was a duplicate of T3-20. Consolidated.*
 
+#### T3-31: Add testing strategy with smoke tests (NEW — Feb 3 meta-audit)
+
+**Problem**: Zero tests exist. This is consistently flagged by enterprise reviewers as a buyer-readiness concern and creates no safety net for refactoring. Any change could break core functionality without detection.
+
+**Fix**: Set up Vitest with at least 3 smoke tests covering critical paths:
+1. **Search test**: Verify search filters camps by name/location
+2. **Filter test**: Verify category/country filters produce expected results
+3. **Form test**: Verify contact form validation and submission flow
+
+**Files**: New `src/__tests__/` directory, `vitest.config.js`, `package.json` (add vitest devDependency)
+**Test**: `npm run test` should pass all 3 smoke tests
+**Commit**: `Test: Add Vitest with 3 smoke tests (search, filter, form)`
+**Note**: Addresses enterprise-code-reviewer concern about zero test coverage.
+
+#### T3-32: Audit camp card alt text quality (NEW — Feb 3 SEO meta-audit)
+
+**Problem**: Section 6 claims 7/10 Image SEO score but camp card alt text was never audited. 52 camp cards may have generic or inadequate alt text affecting image search visibility.
+
+**Fix**: Audit all camp card `<img>` alt attributes. Each should include: camp name, location, and primary activity type.
+**Files**: src/data/camps.js (if alt text stored there) or src/App.jsx (camp card rendering)
+**Test**: Manual review of all 52 alt texts
+**Commit**: `SEO: Audit and improve camp card alt text quality`
+**Note**: Addresses SEO agent concern about unaudited Image SEO claims.
+
+#### T3-33: Add `loading="lazy"` to below-fold images (NEW — Feb 3 SEO meta-audit)
+
+**Problem**: Camp card images below the initial viewport load immediately, competing with LCP resources. Lazy loading defers non-critical images.
+
+**Fix**: Add `loading="lazy"` to camp card `<img>` elements (NOT the hero image which needs immediate load).
+**Files**: src/App.jsx (camp card image elements ~lines 1196, 1738, 1988)
+**Test**: `npm run build` + verify images lazy-load on scroll (Network tab)
+**Commit**: `Perf: Add lazy loading to below-fold camp card images`
+
+#### T3-34: Establish Core Web Vitals monitoring baseline (NEW — Feb 3 SEO meta-audit)
+
+**Problem**: No documented baseline for LCP, CLS, INP metrics. Cannot track improvements or regressions without baseline.
+
+**Fix**: Run PageSpeed Insights on production URL, document baseline scores in this section.
+**Files**: Documentation update only
+**Test**: N/A
+**Commit**: `Docs: Document Core Web Vitals baseline scores`
+**Note**: Add to monthly maintenance schedule (Section 9).
+
 ---
 
 ### Tier 4 — PHASE 2 ONLY (architectural, defer to React Router migration)
@@ -1525,6 +1568,32 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 - [x] **T3-27**: Remove invalid `keywords` property from WebSite schema ✅ Feb 3
   - Removed non-standard `keywords` property from WebSite JSON-LD
   - Commit: `f24f7ff` — Code Review Batch 1
+
+#### New Tier 3 items from Feb 3 meta-audit (8 agents)
+
+- [ ] **T3-31**: Add testing strategy with smoke tests (NEW)
+  - Enterprise concern: zero tests, buyer-readiness gap
+  - Set up Vitest with 3 smoke tests (search, filter, form)
+  - Files: New `src/__tests__/`, `vitest.config.js`, `package.json`
+  - Commit: `Test: Add Vitest with 3 smoke tests`
+
+- [ ] **T3-32**: Audit camp card alt text quality (NEW)
+  - SEO concern: 7/10 Image SEO claimed but never audited
+  - Audit all 52 camp alt texts for quality
+  - Files: src/App.jsx or src/data/camps.js
+  - Commit: `SEO: Audit and improve camp card alt text quality`
+
+- [ ] **T3-33**: Add `loading="lazy"` to below-fold images (NEW)
+  - Performance: defer non-LCP images
+  - Add to camp card images (NOT hero)
+  - Files: src/App.jsx (~lines 1196, 1738, 1988)
+  - Commit: `Perf: Add lazy loading to below-fold camp card images`
+
+- [ ] **T3-34**: Establish Core Web Vitals baseline (NEW)
+  - No documented LCP/CLS/INP baseline to track against
+  - Run PageSpeed Insights, document results
+  - Files: Documentation only
+  - Commit: `Docs: Document Core Web Vitals baseline scores`
 
 ### Tier 4 — Phase 2 Only
 
