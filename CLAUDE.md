@@ -767,6 +767,33 @@ Every code change must be evaluated holistically against these criteria:
 6. **Vercel auto-deploys** in 30-60 seconds
 7. **NEVER use `git commit --amend`** — always create new commits (amending rewrites history and blocks GitHub Desktop from pushing)
 
+### 5.4.1 Batched Commits for Multi-Item Tasks (Context Window Protection)
+
+**When implementing multiple items (code review fixes, bulk updates, etc.):**
+
+1. **Group by file/risk**: Batch related changes that touch the same files or have similar risk profiles
+2. **Commit after each logical batch**: Don't wait until all items are done — commit working batches as you complete them
+3. **Test before each commit**: Run `npm run build` to verify each batch works independently
+4. **Why this matters**:
+   - Auto-compaction can occur mid-session, losing uncommitted context
+   - A crash or interruption won't lose completed work
+   - Each commit is independently revertible
+   - Easier to track what was done vs what remains
+
+**Example batching strategy:**
+```
+Batch 1: Static files (index.html, sitemap.xml, robots.txt, _headers)
+  → Test → Commit → ✓ Secured
+
+Batch 2: App.jsx changes (all in one file)
+  → Test → Commit → ✓ Secured
+
+Batch 3: Documentation updates
+  → Commit → ✓ Secured
+```
+
+**Rule**: If you have 5+ items to implement, commit in batches of 3-6 related items rather than one giant commit at the end.
+
 ### 5.5 Pre-Commit Checklist (MANDATORY)
 
 **Before EVERY commit:**
