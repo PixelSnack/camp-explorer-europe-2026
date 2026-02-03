@@ -1374,11 +1374,9 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Commit: `09952e1` — SEO: Complete ItemList schema + Organization @id + noscript
 
 - [x] **T2-32**: Add Organization logo/contactPoint/sameAs (moved from T3-25) ✅ Feb 3
-  - Added logo (favicon.svg) and contactPoint (email) to Organization schema
+  - Added logo (android-chrome-512x512.png) and contactPoint (email) to Organization schema
   - sameAs deferred — no social profiles exist yet
-  - Commit: `6ff0be6`
-  - Test: Google Rich Results Test
-  - Commit: `SEO: Enrich Organization schema with logo/contactPoint`
+  - Commits: `6ff0be6`, `d704829`
 
 #### Group J: Security priorities from Feb 3 meta-audit (NEW)
 
