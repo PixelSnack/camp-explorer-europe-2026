@@ -1066,13 +1066,14 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 
 Ordered by risk tier (Tier 1 first). One item per commit.
 
-> **Numbering Note (Feb 3, 2026 — updated by second audit):** Due to document evolution, sequential numbers (#26-38 in Tier 2, #27-50 in Tier 3) overlap between tiers. **Always use the T-prefix (T1-XX, T2-XX, T3-XX, T4-XX) as the authoritative identifier** — these are unique across the document. The sequential numbers are for checklist tracking within each tier only.
+> **Numbering Convention (Updated Feb 3, 2026):**
+> - **Completed items** retain historical sequential numbers (#1-25) for commit traceability
+> - **Pending items** use ONLY T-prefix identifiers (T1-12, T2-16, T3-15, etc.) — future-proof, no conflicts when adding items
+> - T-prefix definitions are in Section 3 (Findings by Risk Tier)
 >
-> **Cross-Reference Guide:**
-> - T-prefix items (T1-1 through T4-8) are defined in Section 3 (Findings by Risk Tier)
-> - Checklist items below reference T-prefix in parentheses for traceability
-> - Duplicates removed: T2-22 → T1-16, T3-24 → T2-29, T3-28 → T3-18, T3-29 → T3-20
-> - Total unique items: ~77 (after adding 9 new items and removing 2 duplicates from ~68+9-2)
+> **Consolidations:** T2-22 → T1-16, T3-24 → T2-29, T3-28 → T3-18, T3-29 → T3-20
+>
+> **Total unique items:** ~75
 
 ### Tier 1 — Zero Risk Cleanup ✅ COMPLETE (February 2, 2026)
 
@@ -1096,12 +1097,15 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 *Revised February 2, 2026 after 4-agent parallel review. Executed February 2, 2026. 14 items completed, 1 already done, 1 not needed. See Section 9 for verification log.*
 
 **Execution groups** (respect dependencies):
-- **Group A** (#9→#10→#11): Foundation — sequential, T2-2 depends on T2-1, T2-7 depends on both
-- **Group B** (#12-#16): Independent fixes — any order
-- **Group C** (#17-#19): SEO static files — any order
-- **Group D** (#20-#21): Promoted from Tier 3 — low-risk, high-impact
-- **Group E** (#22): Performance — after Group A
-- **Group F** (#23-#25): Documentation — LAST, after all code changes
+- **Group A** (T2-1→T2-2→T2-7): Foundation — sequential, T2-2 depends on T2-1, T2-7 depends on both
+- **Group B** (T2-3, T2-4, T2-12, T2-13): Independent fixes — any order
+- **Group C** (T2-10, T2-11): SEO static files — any order
+- **Group D** (T3-1→T2, T3-2→T2): Promoted from Tier 3 — low-risk, high-impact
+- **Group E** (T2-9): Performance — after Group A
+- **Group F** (T2-14, T2-15): Documentation — LAST, after all code changes
+- **Group G** (T2-16 through T2-23): New items from Feb 3 audit — pending
+- **Group H** (T2-24 through T2-30): More Feb 3 audit items — pending
+- **Group I** (T1-12 through T1-18): New Tier 1 items — pending
 
 #### Group A: Foundation (sequential)
 
@@ -1188,13 +1192,13 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 #### Group G: New items from February 3 five-agent audit (pending)
 
-- [ ] **26. Remove user-scalable=no from viewport** (T2-16, promoted from T3-7)
+- [ ] **T2-16**: Remove user-scalable=no from viewport (promoted from T3-7)
   - **WCAG 1.4.4 violation** on a site claiming AA compliance. One-line fix.
   - File: index.html (line ~5). Remove `user-scalable=no` from viewport meta.
   - Test: `npm run build` + verify pinch-to-zoom works on mobile, no layout shifts
   - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
 
-- [ ] **27. Fix marquee memory leak** (T2-17, NEW)
+- [ ] **T2-17**: Fix marquee memory leak
   - `initializeMarqueeSystem()` never returns cleanup from `initWithDelay()`. Line 759 gets `undefined`.
   - Event listeners (resize, visibilitychange, IntersectionObserver, motionMediaQuery) accumulate on every home→away→home navigation.
   - Fix: Restructure so cleanup function is captured and returned. Minimal change — do NOT extract the hook.
@@ -1202,38 +1206,34 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + navigate home→discover→home 5 times, check DevTools for listener count
   - Commit: `Fix: Capture marquee cleanup function to prevent memory leak`
 
-- [ ] **28. Add React Error Boundary** (T2-18, NEW)
+- [ ] **T2-18**: Add React Error Boundary
   - A single malformed camp entry currently crashes the entire page (white screen).
   - Wrap main content in an error boundary component. Show fallback "Something went wrong" instead of blank page.
   - Files: New src/components/ErrorBoundary.jsx + src/App.jsx (wrap root)
   - Test: `npm run build` + temporarily corrupt a camp entry, verify fallback renders
   - Commit: `Resilience: Add React Error Boundary for crash prevention`
 
-- [ ] **29. Cache generateBreadcrumbs() result** (T2-19, NEW)
+- [ ] **T2-19**: Cache generateBreadcrumbs() result
   - Called twice per render at lines 906 and 923. Store in variable.
   - File: src/App.jsx (~lines 906, 923)
   - Test: `npm run build`
   - Commit: `Perf: Cache generateBreadcrumbs() call (was called twice per render)`
 
-- [ ] **30. Harden CSP directives** (T2-20, NEW)
+- [ ] **T2-20**: Harden CSP directives
   - Add `object-src 'none'; base-uri 'self'; form-action 'self' https://api.emailjs.com` to `_headers` line 57
   - File: public/_headers
   - Test: `npm run build` + verify site loads, contact form submits, no CSP errors in console
   - Commit: `Security: Add object-src, base-uri, form-action to CSP`
 
-- [ ] **31. Add Permissions-Policy header** (T2-21, NEW)
+- [ ] **T2-21**: Add Permissions-Policy header
   - Add `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()` to `_headers`
   - File: public/_headers
   - Test: `npm run build` + check response headers
   - Commit: `Security: Add Permissions-Policy header (restrict unused APIs)`
 
-- [ ] **32. Fix deprecated X-XSS-Protection** (T2-22, NEW)
-  - Change from `1; mode=block` to `0` at `_headers` line 54. Modern browsers removed XSS Auditor; `1; mode=block` can introduce vulnerabilities.
-  - File: public/_headers
-  - Test: `npm run build` + check response headers
-  - Commit: `Security: Set X-XSS-Protection to 0 (deprecated auditor)`
+- [ ] ~~**T2-22**~~: ~~Fix deprecated X-XSS-Protection~~ — **CONSOLIDATED TO T1-16**
 
-- [ ] **33. Add `<noscript>` fallback** (T2-23, NEW)
+- [ ] **T2-23**: Add `<noscript>` fallback
   - Basic content summary in index.html for JavaScript rendering failures and no-JS crawlers.
   - File: index.html (inside `<body>`, after `<div id="root">`)
   - Test: `npm run build` + disable JS in browser, verify fallback text appears
@@ -1241,64 +1241,86 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 #### Group H: New items from 5-agent Feb 3 comprehensive audit (pending)
 
-- [ ] **34. Fix privacy policy inconsistency** (T2-24, NEW) 🚨 LEGAL
+- [ ] **T2-24**: Fix privacy policy inconsistency 🚨 LEGAL — TOP PRIORITY
   - Privacy policy claims "never collect email" but contact form collects name+email.
   - File: src/App.jsx (line ~3400)
   - Test: `npm run build` + verify policy text is accurate
   - Commit: `Legal: Fix privacy policy to reflect actual data collection`
 
-- [ ] **35. Guard GA4 initialization** (T2-25, NEW)
+- [ ] **T2-25**: Guard GA4 initialization
   - Add `if (window.gtag) return;` before initializeGA4() to prevent duplicates.
   - File: src/App.jsx (~line 580)
   - Test: `npm run build` + toggle consent, verify single script tag
   - Commit: `Fix: Guard GA4 initialization against duplicate calls`
 
-- [ ] **36. Align sitemap image with og:image** (T2-26, NEW)
+- [ ] **T2-26**: Align sitemap image with og:image
   - sitemap.xml points to .webp, og:image to .png — inconsistent.
   - File: public/sitemap.xml (line 10)
   - Test: Validate sitemap XML
   - Commit: `SEO: Align sitemap image URL with og:image (both PNG)`
 
-- [ ] **37. Fix Guide section stale prices** (T2-27, NEW)
+- [ ] **T2-27**: Fix Guide section stale prices
   - Les Elfes shows CHF 4,990 (actual 4,550), Oxford shows GBP 6,220 (actual 6,995).
   - File: src/App.jsx (lines ~2720, ~2748)
   - Test: `npm run build` + verify Guide prices match camp cards
   - Commit: `Fix: Update stale prices in Guide section`
 
-- [ ] **38. Add CSP font-src directive** (T2-28, NEW)
+- [ ] **T2-28**: Add CSP font-src directive
   - May be blocking Google Fonts.
   - File: public/_headers (line 57)
   - Test: Deploy + verify fonts load + no CSP violations
   - Commit: `Security: Add font-src directive to CSP for Google Fonts`
 
+- [ ] **T2-29**: Add Organization schema @id linking
+  - Two Organization blocks without @id linking.
+  - File: index.html (lines ~88-97 and ~242-265)
+  - Test: Google Rich Results Test
+  - Commit: `SEO: Add @id linking to Organization schemas`
+
+- [ ] **T2-30**: Add CSP report-uri directive (optional)
+  - Enable CSP violation monitoring.
+  - File: public/_headers (line 57)
+  - Test: Deploy + verify reports received
+  - Commit: `Security: Add CSP report-uri for violation monitoring`
+
 #### Group I: New Tier 1 items from 5-agent Feb 3 audit (pending)
 
-- [ ] **39. Remove useless robots.txt hash Allow lines** (T1-12, NEW)
+- [ ] **T1-12**: Remove useless robots.txt hash Allow lines
   - File: public/robots.txt (lines 83-87)
   - Test: Validate robots.txt
   - Commit: `Cleanup: Remove useless hash fragment Allow lines from robots.txt`
 
-- [ ] **40. Update robots.txt last-updated comment** (T1-13, NEW)
+- [ ] **T1-13**: Update robots.txt last-updated comment
   - File: public/robots.txt (line 104)
   - Test: None
   - Commit: `Docs: Update robots.txt last-updated date`
 
-- [ ] **41. Verify @CampExplorerEU Twitter handle** (T1-14, NEW)
+- [ ] **T1-14**: Verify @CampExplorerEU Twitter handle
   - Check if handle exists, remove twitter:site if not.
   - File: index.html
   - Test: Twitter Card validator
   - Commit: `SEO: Remove invalid twitter:site handle` (if needed)
 
-- [ ] **42. Add AVIF cache rule** (T1-15, NEW)
+- [ ] **T1-15**: Add AVIF cache rule
   - File: public/_headers
   - Test: `npm run build`
   - Commit: `Perf: Add AVIF files to immutable cache rules`
 
-- [ ] **43. Change X-XSS-Protection to 0** (T1-16, moved from T2-22)
+- [ ] **T1-16**: Change X-XSS-Protection to 0
   - One-value change, zero functional impact.
   - File: public/_headers (line 54)
   - Test: `npm run build`
   - Commit: `Security: Set X-XSS-Protection to 0 (deprecated auditor)`
+
+- [ ] **T1-17**: Add security.txt file
+  - File: public/.well-known/security.txt (new)
+  - Test: Verify accessible after deploy
+  - Commit: `Security: Add security.txt for vulnerability reporting`
+
+- [ ] **T1-18**: Run npm audit and document findings
+  - Command: `npm audit`
+  - Test: 0 high/critical vulnerabilities
+  - Commit: `Docs: npm audit run — document findings`
 
 #### Removed from Tier 2
 
@@ -1349,11 +1371,9 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - "RESPONSIVE INTELLIGENCE - RESIZE DETECTION" → "Resize detection"
   - Commit: `Cleanup: Replace hyperbolic comments with factual descriptions`
 
-- [ ] **33. Add numeric price field to camp data** (T3-9)
-  - File: src/App.jsx or src/data/camps.js (after T2-2)
-  - Note: Requires currency conversion research for 52 camps in 8+ currencies
-  - Test: `npm run build` + verify no display changes
-  - Commit: `Data: Add machine-readable EUR price field to all camps`
+- [ ] ~~**T3-9**~~: ~~Add numeric price field to camp data~~ — **DEMOTED TO T4-8**
+  - Requires currency conversion research for 52 camps in 8+ currencies
+  - Significant data engineering effort — defer to Phase 2
 
 - [x] **34. Remove meta keywords tag** (T3-10) ✅ Feb 3
   - Removed entire meta keywords tag from index.html
@@ -1378,103 +1398,94 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 #### New Tier 3 items from February 3 five-agent audit
 
-- [ ] **38. Fix scroll listener re-subscription** (T3-15, NEW)
+- [ ] **T3-15**: Fix scroll listener re-subscription
   - useEffect at lines 597-619 has `[showBackToTop, scrollDirection]` deps causing listener churn on every scroll direction change.
   - Fix: Use refs instead of state in the scroll handler to avoid re-subscription.
   - Files: src/App.jsx (~lines 597-619)
   - Test: `npm run build` + scroll up/down, verify performance in DevTools
   - Commit: `Perf: Use refs in scroll listener to prevent re-subscription churn`
 
-- [ ] **39. Move static filter arrays to module scope** (T3-16, NEW)
+- [ ] **T3-16**: Move static filter arrays to module scope
   - `priceTierOptions` and `ageGroupOptions` (lines 374-387) are static arrays recreated every render.
   - Fix: Move to module scope above `function App()`.
   - Files: src/App.jsx (~lines 374-387)
   - Test: `npm run build` + verify filters still work
   - Commit: `Perf: Move static filter option arrays to module scope`
 
-- [ ] **40. Fix footer semantic structure** (T3-17, NEW)
+- [ ] **T3-17**: Fix footer semantic structure
   - `<footer>` is currently inside `<main>`. Should be a sibling of `<main>` per HTML5 semantics.
   - Files: src/App.jsx (~line 3600)
   - Test: `npm run build` + verify footer renders correctly
   - Commit: `A11y: Move footer outside main element (HTML5 semantics)`
 
-- [ ] **41. Add focus trap for contact modal** (T3-18, NEW)
+- [ ] **T3-18**: Add focus trap for contact modal
   - No focus trap in contact form modal (lines 4287-4483). Tab key can escape modal.
   - Files: src/App.jsx (contact modal section)
   - Test: `npm run build` + open modal, Tab through all fields, verify focus stays within
   - Commit: `A11y: Add focus trap to contact form modal`
 
-- [ ] **42. Add focus management for mobile menu** (T3-19, NEW)
+- [ ] **T3-19**: Add focus management for mobile menu
   - No focus management when mobile nav opens (lines 885-896). Focus should move to first menu item.
   - Files: src/App.jsx (mobile menu section)
   - Test: `npm run build` + open mobile menu, verify focus moves correctly
   - Commit: `A11y: Add focus management to mobile menu`
 
-- [ ] **43. Add width/height to camp card images** (T3-19, NEW)
+- [ ] **T3-20**: Add width/height to camp card images
   - Lines 1196, 1738, 1988 lack explicit dimensions, causing CLS.
   - Files: src/App.jsx (camp card image elements)
   - Test: `npm run build` + verify no visual changes, check CLS in Lighthouse
   - Commit: `Perf: Add width/height to camp card images (CLS prevention)`
 
-- [ ] **44. Reset contact form after submission** (T3-20, NEW)
-  - After successful submission, form fields retain values if modal reopens.
-  - Files: src/App.jsx (~line 175)
-  - Test: `npm run build` + submit form, close, reopen — fields should be empty
-  - Commit: `Fix: Reset contact form fields after successful submission`
-
 #### New Tier 3 items from 5-agent comprehensive Feb 3 audit
 
-- [ ] **45. Upgrade Vite 4.x to 5.x/6.x** (T3-22, NEW) 🚨 SECURITY
+- [ ] **T3-22**: Upgrade Vite 4.x to 5.x/6.x 🚨 SECURITY (⬆️ treat as Tier 2)
   - Vite 4.4.5 is EOL with CVE-2024-45812, CVE-2024-45811.
   - File: package.json, vite.config.js
   - Test: `npm run build` + `npm run dev` + thorough manual testing
   - Commit: `Security: Upgrade Vite from 4.x to 6.x (EOL with CVEs)`
 
-- [ ] **46. Add CAPTCHA/honeypot to contact form** (T3-23, NEW)
+- [ ] **T3-23**: Add CAPTCHA/honeypot to contact form (⬆️ treat as Tier 2)
   - EmailJS credentials exposed — bots could send spam.
   - File: src/App.jsx (contact form ~line 4346)
   - Test: `npm run build` + verify form works for humans
   - Commit: `Security: Add honeypot spam protection to contact form`
 
-- [ ] **47. Add Organization @id linking** (T3-24, NEW)
-  - Two Organization blocks without @id linking.
-  - File: index.html (lines ~88-97 and ~242-265)
-  - Test: Google Rich Results Test
-  - Commit: `SEO: Add @id linking to Organization schemas`
+- [ ] ~~**T3-24**~~: ~~Add Organization @id linking~~ — **CONSOLIDATED TO T2-29**
 
-- [ ] **48. Add Organization logo/contactPoint/sameAs** (T3-25, NEW)
+- [ ] **T3-25**: Add Organization logo/contactPoint/sameAs (⬆️ treat as Tier 2)
   - Enriches Organization for Knowledge Panel.
   - File: index.html (lines ~242-265)
   - Test: Google Rich Results Test
   - Commit: `SEO: Enrich Organization schema with logo/contactPoint`
 
-- [ ] **49. Keep console.error in production** (T3-26, NEW)
+- [ ] **T3-26**: Keep console.error in production
   - vite.config.js drops all console statements making debugging impossible.
   - File: vite.config.js (line 31)
   - Test: `npm run build` + verify console.error works
   - Commit: `DX: Keep console.error in production for debugging`
 
-- [ ] **50. Add numeric price field** (T3-9, renumbered)
-  - Requires currency conversion research for 52 camps.
-  - File: src/data/camps.js
-  - **DEMOTE TO TIER 4**: Per enterprise reviewer, significant data engineering effort.
-  - Test: `npm run build` + verify no display changes
-  - Commit: `Data: Add machine-readable EUR price field to all camps`
+- [ ] **T3-27**: Remove invalid `keywords` property from WebSite schema
+  - File: index.html (line ~87)
+  - Test: Google Rich Results Test
+  - Commit: `SEO: Remove invalid keywords property from WebSite schema`
 
 ### Tier 4 — Phase 2 Only
 
-- [ ] **45. Extract shared FilterBar component** (T4-1) — Requires React Router
-- [ ] **46. Extract shared CampCard component** (T4-2) — Requires React Router
-- [ ] **47. Split sections into route components** (T4-3) — IS Phase 2
-- [ ] **48. Fix multiple H1 elements** (T4-4) — Natural with real routes
-- [ ] **49. Fix schema hash fragment URLs** (T4-5) — Requires real routes
-- [ ] **50. Remove/replace non-functional BreadcrumbList/SearchAction schema** (T3-13 → demoted from Tier 3)
+- [ ] **T4-1**: Extract shared FilterBar component — Requires React Router
+- [ ] **T4-2**: Extract shared CampCard component — Requires React Router
+- [ ] **T4-3**: Split sections into route components — IS Phase 2
+- [ ] **T4-4**: Fix multiple H1 elements — Natural with real routes
+- [ ] **T4-5**: Fix schema hash fragment URLs — Requires real routes
+- [ ] **T4-6**: Remove/replace non-functional BreadcrumbList/SearchAction schema (demoted from T3-13)
   - Demoted Feb 2, 2026: SEO reviewer found removing schema is riskier than keeping non-functional schema
   - When Phase 2 provides real routes, replace hash URLs with real paths instead of removing
-- [ ] **51. Extract marquee useEffect to custom hook** (T3 #26 → demoted to Tier 4, Feb 3)
+- [ ] **T4-7**: Extract marquee useEffect to custom hook (demoted from Tier 3)
   - Demoted Feb 3, 2026: Contradicts DO NOT TOUCH list (Section 2). Pure refactor with high mobile risk (70% traffic).
   - The actual bug (memory leak) is now a separate Tier 2 item (T2-17). This extraction is cosmetic.
   - When Phase 2 splits App.jsx into route components, extraction becomes natural and lower-risk.
+- [ ] **T4-8**: Add numeric price field to camp data (demoted from T3-9)
+  - Requires currency conversion research for 52 camps in 8+ currencies
+  - Significant data engineering effort — defer to Phase 2
 
 ---
 
@@ -2055,7 +2066,7 @@ All Tier 2 claims verified against actual code:
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
 
-*Total checklist items: ~75 (Tier 1: 8 done + 7 pending = 15, Tier 2: 15 done + 14 pending = 29, Tier 3: 8 done + 15 pending = 23 (after consolidations), Tier 4: 8)*
+*Total checklist items: ~71 (Tier 1: 8 done + 7 pending = 15, Tier 2: 15 done + 14 pending = 29, Tier 3: 8 done + 11 pending = 19 (after consolidations/demotions), Tier 4: 8)*
 
 *February 3, 2026 second audit: Added 9 new items (T1-17, T1-18, T2-29, T2-30, T3-27, T3-28, T3-29 and updates). Consolidated 2 duplicates (T2-22 → T1-16, T3-24 → T2-29). Added tier upgrade recommendations for T3-22, T3-23, T3-25.*
 
