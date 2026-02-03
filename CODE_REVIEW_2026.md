@@ -543,6 +543,7 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + verify privacy policy text is accurate
 **Commit**: `Legal: Fix privacy policy to reflect actual data collection`
 **PRIORITY**: HIGH — legal compliance issue
+**🚨 TOP PRIORITY**: Per Feb 3 second audit, this is the #1 most critical item in the entire checklist. Legal/GDPR compliance on a live production site serving real families.
 
 #### T2-25: Guard GA4 initialization against multiple fires (NEW — 5-agent Feb 3 audit)
 
@@ -561,6 +562,7 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Files**: public/sitemap.xml (line 10)
 **Test**: Validate sitemap XML
 **Commit**: `SEO: Align sitemap image URL with og:image (both PNG)`
+**⬇️ TIER DOWNGRADE POSSIBLE**: Per Feb 3 second audit, this is zero-risk (changing one URL in a static file) — could be Tier 1.
 
 #### T2-27: Fix Guide section stale prices (NEW — 5-agent Feb 3 audit)
 
@@ -812,6 +814,7 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 **Test**: `npm run build` + `npm run dev` + thorough manual testing
 **Commit**: `Security: Upgrade Vite from 4.x to 6.x (EOL with CVEs)`
 **PRIORITY**: HIGH — security vulnerability
+**⬆️ TIER UPGRADE RECOMMENDED**: Per Feb 3 second audit, should be treated as Tier 2 priority due to known CVEs.
 
 #### T3-23: Add CAPTCHA/honeypot to contact form (NEW — 5-agent Feb 3 audit)
 
@@ -821,15 +824,11 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 **Files**: src/App.jsx (contact form ~line 4346)
 **Test**: `npm run build` + verify form still works for humans
 **Commit**: `Security: Add honeypot spam protection to contact form`
+**⬆️ TIER UPGRADE RECOMMENDED**: Per Feb 3 second audit, honeypot is zero-risk implementation — treat as Tier 2 priority.
 
-#### T3-24: Add Organization @id linking (NEW — 5-agent Feb 3 audit)
+#### ~~T3-24: Add Organization @id linking~~ **CONSOLIDATED TO T2-29**
 
-**Problem**: Two Organization blocks in index.html (lines ~88-97 in WebSite, lines ~242-265 standalone) without @id linking. Google may treat as separate entities.
-
-**Fix**: Add `"@id": "https://www.europeansummercamps.com/#organization"` to both and reference.
-**Files**: index.html (lines ~88-97 and ~242-265)
-**Test**: Google Rich Results Test
-**Commit**: `SEO: Add @id linking to Organization schemas`
+*This item was promoted to Tier 2 as T2-29 per Feb 3 second audit (low-risk schema addition).*
 
 #### T3-25: Add Organization logo/contactPoint/sameAs (NEW — 5-agent Feb 3 audit)
 
@@ -839,6 +838,7 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 **Files**: index.html (lines ~242-265)
 **Test**: Google Rich Results Test
 **Commit**: `SEO: Enrich Organization schema with logo/contactPoint`
+**⬆️ TIER UPGRADE RECOMMENDED**: Per Feb 3 second audit, adding schema properties is low-risk — treat as Tier 2 priority.
 
 #### T3-26: Keep console.error in production build (NEW — 5-agent Feb 3 audit)
 
