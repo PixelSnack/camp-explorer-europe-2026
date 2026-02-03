@@ -21,11 +21,13 @@
 | 4 | **T2-17** | Marquee memory leak fix | Low | Performance, listener accumulation |
 | 5 | **T2-31** | Complete ItemList schema | Zero | SEO - 3 missing categories |
 
-**Tier Status Summary:**
+**Tier Status Summary (updated Feb 3 meta-audit):**
 - **Tier 1**: 15 items (8 done, 7 pending) — zero-risk cleanup
-- **Tier 2**: 34 items (16 done, 18 pending) — low-risk improvements
-- **Tier 3**: 14 items (8 done, 6 pending) — medium-risk fixes
+- **Tier 2**: 36 items (16 done, 20 pending) — low-risk improvements (+2 promoted from T3)
+- **Tier 3**: 18 items (10 done/promoted, 8 pending) — medium-risk fixes (+4 new, -2 promoted)
 - **Tier 4**: 8 items (0 done, 8 pending) — Phase 2 only
+
+**Total: 77 items** (34 done, 43 pending)
 
 **Key Files:** `src/App.jsx` (4,661 lines) | `src/data/camps.js` (1,196 lines) | `public/_headers` | `index.html`
 
@@ -1160,14 +1162,20 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 
 Ordered by risk tier (Tier 1 first). One item per commit.
 
-> **Numbering Convention (Updated Feb 3, 2026):**
+> **Numbering Convention (Updated Feb 3, 2026 — meta-audit):**
 > - **Completed items** retain historical sequential numbers (#1-25) for commit traceability
 > - **Pending items** use ONLY T-prefix identifiers (T1-12, T2-16, T3-15, etc.) — future-proof, no conflicts when adding items
 > - T-prefix definitions are in Section 3 (Findings by Risk Tier)
 >
 > **Consolidations:** T2-22 → T1-16, T3-24 → T2-29, T3-28 → T3-18, T3-29 → T3-20
 >
-> **Total unique items:** ~75
+> **Promotions (Feb 3 meta-audit):** T3-22 → **T2-33** (Vite CVEs), T3-23 → **T2-34** (honeypot)
+>
+> **New items (Feb 3 meta-audit):** T3-31 (testing), T3-32 (alt text audit), T3-33 (lazy loading), T3-34 (CWV baseline)
+>
+> **Total unique items:** ~77
+>
+> *Note: Enterprise reviewer recommends future cleanup to use ONLY T-prefix and archive historical #1-25 numbers to appendix.*
 
 ### Tier 1 — Zero Risk Cleanup ✅ COMPLETE (February 2, 2026)
 
@@ -1711,19 +1719,24 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 ---
 
-## Section 6.5: Known Gaps (NEW — 5-agent Feb 3 audit)
+## Section 6.5: Known Gaps (UPDATED — 8-agent Feb 3 meta-audit)
 
 Areas consciously NOT covered by this review that future sessions should address:
 
-| Gap | Impact | Why Not Covered |
-|-----|--------|-----------------|
-| **Testing strategy** | High | Zero tests exist. Beyond review scope — requires dedicated testing session. |
-| **npm audit / dependency vulnerabilities** | High | Found Vite EOL, but didn't run full `npm audit`. Should be done. |
-| **Bundle size analysis** | Medium | Removed 30 packages but never measured before/after with `vite-bundle-visualizer`. |
-| **Error monitoring / logging** | Medium | Error Boundary catches crashes but doesn't report anywhere. No Sentry/LogRocket. |
-| **CI/CD review** | Medium | No build checks, lint gates, or preview deployments. One bad push goes live instantly. |
-| **Environment configuration** | Low | EmailJS/GA4 IDs hardcoded — no .env usage. Works but not ideal. |
-| **Camp card alt text quality** | Low | Claimed 8/10 Image SEO but never audited actual alt text content for 52 camps. |
+| Gap | Impact | Status | Checklist Item |
+|-----|--------|--------|----------------|
+| **Testing strategy** | High | 🆕 NOW TRACKED | **T3-31** — Add Vitest with 3 smoke tests |
+| **npm audit / dependency vulnerabilities** | High | 🆕 NOW TRACKED | **T1-18** — Run npm audit and document |
+| **Vite CVEs** | High | 🆕 NOW TRACKED | **T2-33** — Upgrade Vite 4.x to 6.x |
+| **Spam protection** | High | 🆕 NOW TRACKED | **T2-34** — Add honeypot to contact form |
+| **Camp card alt text quality** | Medium | 🆕 NOW TRACKED | **T3-32** — Audit all 52 camp alt texts |
+| **Core Web Vitals baseline** | Medium | 🆕 NOW TRACKED | **T3-34** — Document LCP/CLS/INP baseline |
+| **Bundle size analysis** | Medium | Not tracked | Removed 30 packages but never measured before/after with `vite-bundle-visualizer`. |
+| **Error monitoring / logging** | Medium | Not tracked | Error Boundary catches crashes but doesn't report anywhere. No Sentry/LogRocket. |
+| **CI/CD review** | Medium | Not tracked | No build checks, lint gates, or preview deployments. One bad push goes live instantly. |
+| **Environment configuration** | Low | Not tracked | EmailJS/GA4 IDs hardcoded — no .env usage. Works but not ideal. |
+
+*Feb 3 meta-audit addressed 6 of 10 gaps by creating checklist items.*
 
 ---
 
@@ -1842,6 +1855,8 @@ Items #1-4 from the Top 10 table above (extract data, CampCard, FilterBar, and r
 ---
 
 ## Section 8: Tier 1 Implementation Plan — ✅ EXECUTED (February 2, 2026)
+
+> **📦 ARCHIVE CANDIDATE**: This section is 100% complete (all 8 items executed Feb 2). Enterprise reviewer recommends moving to `docs/archive/CODE_REVIEW_TIER1_COMPLETE.md` to reduce document length. Kept here for now as historical reference and verification audit trail.
 
 *Pre-implementation verification performed by Claude Opus 4.5 using 3 parallel Explore agents to cross-check every claim in the original review against actual file contents.*
 
@@ -2033,7 +2048,9 @@ Three rounds of verification performed before execution:
 
 *Fresh audit by security-audit-specialist agent as part of 5-agent parallel review.*
 
-### Security Score: 7.5/10 (reconciled with Section 1 health table)
+### Security Score: 7.0/10 (ADJUSTED Feb 3 meta-audit — reconciled with Section 1)
+
+*Lowered from 7.5 to 7.0: Vite 4.x CVEs (-0.3) and no spam protection (-0.2) offset X-XSS-Protection fix (+0.5). Will return to 7.5 after T2-33 (Vite upgrade) and T2-34 (honeypot) are implemented.*
 
 **Improvements since September 2025 audit:**
 - ✅ `noopener,noreferrer` on all `window.open` calls (Feb 2)
@@ -2188,14 +2205,16 @@ All Tier 2 claims verified against actual code:
 
 ---
 
-*This review document is a living audit. Updated February 3, 2026 with 5-agent fresh audit findings.*
+*This review document is a living audit. Updated February 3, 2026 with 8-agent meta-audit findings.*
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
 
-*Total checklist items: ~72 (Tier 1: 8 done + 7 pending = 15, Tier 2: 16 done + 15 pending = 31, Tier 3: 8 done + 10 pending = 18 (after consolidations/moves), Tier 4: 8)*
+*Total checklist items: **77** (Tier 1: 8 done + 7 pending = 15, Tier 2: 16 done + 20 pending = 36, Tier 3: 10 done/promoted + 8 pending = 18, Tier 4: 8)*
 
 *February 3, 2026 second audit: Added 9 new items (T1-17, T1-18, T2-29, T2-30, T3-27, T3-28, T3-29 and updates). Consolidated 2 duplicates (T2-22 → T1-16, T3-24 → T2-29). Promoted T1-11 → T2-31, T3-25 → T2-32.*
 
-*February 3, 2026 update: Added 14 new items from 5-agent comprehensive audit. Key additions: legal privacy fix, Vite security upgrade, CAPTCHA for contact form, Organization schema improvements, robots.txt cleanup.*
+*February 3, 2026 5-agent audit: Added 14 new items. Key additions: legal privacy fix, Vite security upgrade, CAPTCHA for contact form, Organization schema improvements, robots.txt cleanup.*
+
+*February 3, 2026 8-agent meta-audit: Scores reconciled (SEO 6.0, Security 7.0). Promoted T3-22 → T2-33 (Vite CVEs), T3-23 → T2-34 (honeypot). Added T3-31 (testing), T3-32 (alt text), T3-33 (lazy loading), T3-34 (CWV baseline). Quick Reference section added. Known Gaps updated with checklist cross-references.*
 
 *Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>*
