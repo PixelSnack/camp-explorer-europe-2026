@@ -4,7 +4,30 @@
 *Reviewed By: Claude Opus 4.5 (3-pass review + 5-agent parallel audit: 2 enterprise, 2 SEO, 1 security)*
 *Codebase Snapshot: 4,661 lines App.jsx + 1,196 lines camps.js, 52 organizations, 24 countries*
 
-> **February 3 Update**: This document received major updates based on 5 parallel agents reviewing both the document itself AND the full codebase independently, then a second 6-agent audit for verification. All new findings verified against actual code. SEO score adjusted to 6.0/10 (was 6.5). ~24 new issues discovered including legal/privacy inconsistency. Total items now ~77.
+> **February 3 Update**: This document received major updates based on 5 parallel agents reviewing both the document itself AND the full codebase independently, then a second 6-agent audit for verification, then a third 8-agent meta-audit of the document itself. All new findings verified against actual code. SEO score adjusted to 6.0/10 (was 6.5), Security to 7.0/10 (was 7.5). Total items now ~80.
+
+---
+
+## Quick Reference (Start Here)
+
+**Current Health Scores:** Code 6.5 | Arch 6.0 | SEO 6.0 | A11y 7.0 | Security 7.0 | Perf 7.0 | Mobile 8.0 | Docs 7.5
+
+**Next 5 Priority Items (in order):**
+| # | Item | Type | Risk | Why Priority |
+|---|------|------|------|--------------|
+| 1 | **T2-33** (was T3-22) | Vite 6.x upgrade | Medium | Known CVEs - security critical |
+| 2 | **T2-34** (was T3-23) | Honeypot spam protection | Zero | EmailJS abuse prevention |
+| 3 | **T2-18** | React Error Boundary | Low | Prevents white-screen crashes |
+| 4 | **T2-17** | Marquee memory leak fix | Low | Performance, listener accumulation |
+| 5 | **T2-31** | Complete ItemList schema | Zero | SEO - 3 missing categories |
+
+**Tier Status Summary:**
+- **Tier 1**: 15 items (8 done, 7 pending) — zero-risk cleanup
+- **Tier 2**: 34 items (16 done, 18 pending) — low-risk improvements
+- **Tier 3**: 14 items (8 done, 6 pending) — medium-risk fixes
+- **Tier 4**: 8 items (0 done, 8 pending) — Phase 2 only
+
+**Key Files:** `src/App.jsx` (4,661 lines) | `src/data/camps.js` (1,196 lines) | `public/_headers` | `index.html`
 
 ---
 
@@ -34,12 +57,16 @@ This is a well-built, functional production website that is successfully serving
 4. ~~**CSP missing connect-src for GA4**~~ **✅ RESOLVED (Tier 2, Feb 2)**
 5. ~~**allCamps array inside component**~~ **✅ RESOLVED (Tier 2, Feb 2 — extracted to camps.js)**
 
-**Current top 5 concerns (Feb 3, 2026 — updated from 5-agent audit):**
-1. ~~**🚨 LEGAL: Privacy policy claims "never collect email" but contact form does**~~ **✅ RESOLVED (T2-24, Feb 3)**
-2. **🚨 SECURITY: Vite 4.x is EOL with known CVEs** — CVE-2024-45812, CVE-2024-45811 (package.json line 38)
-3. **Marquee useEffect memory leak** — event listeners accumulate on every navigation (line 759)
-4. ~~**`user-scalable=no` still present**~~ **✅ RESOLVED (T2-16, Feb 3)** — pinch-to-zoom now enabled
-5. **No React Error Boundary** — malformed camp data crashes entire page with white screen
+**Current top 5 concerns (Feb 3, 2026 — updated from 8-agent meta-audit):**
+1. **🚨 SECURITY: Vite 4.x is EOL with known CVEs** — CVE-2024-45812, CVE-2024-45811 → **T2-33** (promoted from T3-22)
+2. **🚨 SECURITY: No spam protection on contact form** — EmailJS credentials exposed, bots can abuse → **T2-34** (promoted from T3-23)
+3. **Marquee useEffect memory leak** — event listeners accumulate on every navigation → **T2-17**
+4. **No React Error Boundary** — malformed camp data crashes entire page with white screen → **T2-18**
+5. **Zero test coverage** — no safety net for changes, buyer-readiness concern → **T3-31** (NEW)
+
+*Resolved since last update:*
+- ~~Privacy policy inconsistency~~ ✅ (T2-24, Feb 3)
+- ~~`user-scalable=no`~~ ✅ (T2-16, Feb 3)
 
 ### Health Scores (updated Feb 3, 2026 — post Immediate Batch)
 
@@ -47,9 +74,9 @@ This is a well-built, functional production website that is successfully serving
 |-----------|-------------------|------------------|--------|-------|
 | Code Quality | 5/10 | **6.5/10** | +1.5 | Camp data extracted, dead code removed, 30 packages uninstalled, Guide prices fixed |
 | Architecture | 5/10 | **6/10** | +1 | Data separated from UI, cleaner package.json. Still monolithic, no tests. |
-| SEO | 6.5/10 | **6.5/10** | 0 | **IMPROVED**: user-scalable=no fixed (+0.5), robots.txt cleaned (+0.25), sitemap/og:image aligned (+0.25), invalid schema keywords removed. ItemList still incomplete (4/7). |
+| SEO | 6.5/10 | **6.0/10** | -0.5 | **NET DOWN**: Improvements (user-scalable fix, robots.txt, sitemap alignment) offset by discovered gaps (ItemList 4/7, Organization @id missing, camp alt text unaudited). See Section 6. |
 | Accessibility | 7/10 | **7/10** | 0 | **RESTORED**: `user-scalable=no` removed — WCAG 1.4.4 compliance restored. Focus traps still needed. |
-| Security | 7/10 | **7.5/10** | +0.5 | X-XSS-Protection fixed. Vite 4 EOL and CAPTCHA still pending. |
+| Security | 7/10 | **7.0/10** | 0 | X-XSS-Protection fixed (+0.5), but Vite 4.x CVEs (-0.3) and no CAPTCHA (-0.2) keep score at 7.0. Will improve to 7.5 after T3-22 and T3-23. |
 | Performance | 6/10 | **7/10** | +1 | allCamps module-level, filterOptions memoized, 30 unused packages removed |
 | Mobile UX | 8/10 | **8/10** | 0 | No change — already strong |
 | Documentation | 6/10 | **7.5/10** | +1.5 | CODE_STRUCTURE.md updated, review document comprehensive |
