@@ -47,7 +47,7 @@ This is a well-built, functional production website that is successfully serving
 |-----------|-------------------|------------------|--------|-------|
 | Code Quality | 5/10 | **6/10** | +1 | Camp data extracted (4,661 lines), dead code removed, 30 packages uninstalled |
 | Architecture | 5/10 | **6/10** | +1 | Data separated from UI, cleaner package.json. Still monolithic, no tests. |
-| SEO | 6.5/10 | **6.0/10** | -0.5 | **ADJUSTED** (was 7/10 → 6.5 → 6.0): user-scalable=no SEO penalty, robots.txt issues, og:image mismatch, ItemList incomplete (4/7 categories). Score 6.0 until T1-11 complete. |
+| SEO | 6.5/10 | **6.0/10** | -0.5 | **ADJUSTED** (was 7/10 → 6.5 → 6.0): user-scalable=no SEO penalty, robots.txt issues, og:image mismatch, ItemList incomplete (4/7 categories). Score 6.0 until T2-31 complete. |
 | Accessibility | 7/10 | **6.5/10** | **-0.5** | DOWNGRADED: `user-scalable=no` is WCAG 1.4.4 violation. No focus traps in modals/menus. |
 | Security | 7/10 | **7.5/10** | +0.5 | **ADJUSTED** (was 8/10): Vite 4 EOL, no CAPTCHA on contact form, CSP gaps remaining |
 | Performance | 6/10 | **7/10** | +1 | allCamps module-level, filterOptions memoized, 30 unused packages removed |
@@ -215,15 +215,9 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build`
 **Commit**: `Cleanup: Fix remaining hyperbolic comment at line 217`
 
-#### T1-11: Complete ItemList schema — add 3 missing categories (NEW — Feb 3 audit)
+#### ~~T1-11: Complete ItemList schema~~ — **MOVED TO T2-31**
 
-**Problem**: The ItemList in index.html (lines 111-140) only includes 4 of 7 categories: Premium Alpine, Academic & STEM, Language Immersion, Sports Specialty. Missing: Family Programs, Budget Excellence, Unique Experiences. The `numberOfItems: 100` suggests comprehensive coverage but the list is incomplete.
-
-**Fix**: Add 3 ListItem entries for the missing categories after position 4.
-**Files**: index.html (lines 111-140)
-**Test**: `npm run build` + Google Rich Results Test
-**Commit**: `SEO: Complete ItemList schema with all 7 categories`
-**RISK UPGRADE**: Promoted to Tier 2 per Feb 3 enterprise audit — malformed JSON-LD can break all schema.
+*Promoted to Tier 2 per Feb 3 enterprise audit — malformed JSON-LD can break all schema. See T2-31 for full definition.*
 
 #### T1-12: Remove useless robots.txt hash Allow lines (NEW — 5-agent Feb 3 audit)
 
@@ -601,6 +595,26 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Commit**: `Security: Add CSP report-uri for violation monitoring`
 **Note**: Optional but recommended for production monitoring.
 
+#### T2-31: Complete ItemList schema — add 3 missing categories (MOVED from T1-11)
+
+**Problem**: The ItemList in index.html (lines 111-140) only includes 4 of 7 categories: Premium Alpine, Academic & STEM, Language Immersion, Sports Specialty. Missing: Family Programs, Budget Excellence, Unique Experiences. The `numberOfItems: 100` suggests comprehensive coverage but the list is incomplete.
+
+**Fix**: Add 3 ListItem entries for the missing categories after position 4.
+**Files**: index.html (lines 111-140)
+**Test**: `npm run build` + Google Rich Results Test
+**Commit**: `SEO: Complete ItemList schema with all 7 categories`
+**Note**: Promoted from Tier 1 — malformed JSON-LD can break all schema.
+
+#### T2-32: Add Organization logo/contactPoint/sameAs (MOVED from T3-25)
+
+**Problem**: Standalone Organization schema lacks `logo`, `contactPoint`, `sameAs` properties recommended for Knowledge Panel.
+
+**Fix**: Add logo (favicon.svg or logo URL), contactPoint (email), sameAs (social profiles if they exist).
+**Files**: index.html (lines ~242-265)
+**Test**: Google Rich Results Test
+**Commit**: `SEO: Enrich Organization schema with logo/contactPoint`
+**Note**: Promoted from Tier 3 — adding schema properties is low-risk.
+
 ---
 
 ### Tier 3 — MEDIUM RISK (logic-touching, careful testing required)
@@ -830,15 +844,9 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 
 *This item was promoted to Tier 2 as T2-29 per Feb 3 second audit (low-risk schema addition).*
 
-#### T3-25: Add Organization logo/contactPoint/sameAs (NEW — 5-agent Feb 3 audit)
+#### ~~T3-25: Add Organization logo/contactPoint/sameAs~~ — **MOVED TO T2-32**
 
-**Problem**: Standalone Organization schema lacks `logo`, `contactPoint`, `sameAs` properties recommended for Knowledge Panel.
-
-**Fix**: Add logo (favicon.svg or logo URL), contactPoint (email), sameAs (social profiles if they exist).
-**Files**: index.html (lines ~242-265)
-**Test**: Google Rich Results Test
-**Commit**: `SEO: Enrich Organization schema with logo/contactPoint`
-**⬆️ TIER UPGRADE RECOMMENDED**: Per Feb 3 second audit, adding schema properties is low-risk — treat as Tier 2 priority.
+*Promoted to Tier 2 per Feb 3 second audit — adding schema properties is low-risk. See T2-32 for full definition.*
 
 #### T3-26: Keep console.error in production build (NEW — 5-agent Feb 3 audit)
 
@@ -1104,7 +1112,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 - **Group E** (T2-9): Performance — after Group A
 - **Group F** (T2-14, T2-15): Documentation — LAST, after all code changes
 - **Group G** (T2-16 through T2-23): New items from Feb 3 audit — pending
-- **Group H** (T2-24 through T2-30): More Feb 3 audit items — pending
+- **Group H** (T2-24 through T2-32): More Feb 3 audit items + promoted items — pending
 - **Group I** (T1-12 through T1-18): New Tier 1 items — pending
 
 #### Group A: Foundation (sequential)
@@ -1283,6 +1291,18 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: Deploy + verify reports received
   - Commit: `Security: Add CSP report-uri for violation monitoring`
 
+- [ ] **T2-31**: Complete ItemList schema — add 3 missing categories (moved from T1-11)
+  - ItemList missing Family Programs, Budget Excellence, Unique Experiences.
+  - File: index.html (lines 111-140)
+  - Test: `npm run build` + Google Rich Results Test
+  - Commit: `SEO: Complete ItemList schema with all 7 categories`
+
+- [ ] **T2-32**: Add Organization logo/contactPoint/sameAs (moved from T3-25)
+  - Enriches Organization for Knowledge Panel.
+  - File: index.html (lines ~242-265)
+  - Test: Google Rich Results Test
+  - Commit: `SEO: Enrich Organization schema with logo/contactPoint`
+
 #### Group I: New Tier 1 items from 5-agent Feb 3 audit (pending)
 
 - [ ] **T1-12**: Remove useless robots.txt hash Allow lines
@@ -1325,7 +1345,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 #### Removed from Tier 2
 
 - [x] ~~**T2-5: Add fetchpriority="high" to hero image**~~ — ALREADY IMPLEMENTED (line 2118)
-- [x] ~~**T2-8: Extract marquee useEffect to custom hook**~~ — RECLASSIFIED TO TIER 3 → TIER 4 (see #43)
+- [x] ~~**T2-8: Extract marquee useEffect to custom hook**~~ — RECLASSIFIED TO TIER 3 → TIER 4 (see T4-7)
   - 140-line battle-tested useEffect on DO NOT TOUCH list (Section 2)
   - Complex: inline debounce, retry logic, IntersectionObserver, iOS/Android platform detection
   - Affects 70% of users (mobile). Risk too high for Tier 2.
@@ -1339,7 +1359,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 - [x] ~~**T3-1. Fix CSP connect-src for GA4**~~ — **PROMOTED TO TIER 2** (item #20)
 - [x] ~~**T3-2. Fix meta tag country counts**~~ — **PROMOTED TO TIER 2** (item #21)
 
-- [x] ~~**26. Extract marquee useEffect to custom hook**~~ — **DEMOTED TO TIER 4** (item #43, Feb 3)
+- [x] ~~**26. Extract marquee useEffect to custom hook**~~ — **DEMOTED TO TIER 4** (T4-7)
   - Contradicts DO NOT TOUCH list. The actual bug (memory leak) is T2-17. This extraction is cosmetic refactor only.
   - Defer to Phase 2 when component splits make extraction natural.
 
@@ -1452,11 +1472,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 - [ ] ~~**T3-24**~~: ~~Add Organization @id linking~~ — **CONSOLIDATED TO T2-29**
 
-- [ ] **T3-25**: Add Organization logo/contactPoint/sameAs (⬆️ treat as Tier 2)
-  - Enriches Organization for Knowledge Panel.
-  - File: index.html (lines ~242-265)
-  - Test: Google Rich Results Test
-  - Commit: `SEO: Enrich Organization schema with logo/contactPoint`
+- [ ] ~~**T3-25**~~: ~~Add Organization logo/contactPoint/sameAs~~ — **MOVED TO T2-32**
 
 - [ ] **T3-26**: Keep console.error in production
   - vite.config.js drops all console statements making debugging impossible.
@@ -1497,7 +1513,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 3. **BreadcrumbList uses hash URLs** — Same issue. Keeping until Phase 2 provides real URLs.
 4. **Event schema is NOT implemented** — CLAUDE.md incorrectly claims "Event schema for camps." Actual schema uses `EducationalOrganization` in an `ItemList` in index.html. This is a documentation error in CLAUDE.md (should say "EducationalOrganization schema"). Event schema is better suited for Phase 2 individual camp pages with specific dates/locations.
 5. **No individual camp structured data** — Camps have zero schema markup. AggregateRating schema would generate star ratings in SERPs (competitor world-camps.org does this). Requires Phase 2 individual camp pages.
-6. **ItemList schema incomplete** (NEW — Feb 3 audit) — Only 4 of 7 categories listed in index.html lines 111-140 (missing Family Programs, Budget Excellence, Unique Experiences). See T1-11.
+6. **ItemList schema incomplete** (NEW — Feb 3 audit) — Only 4 of 7 categories listed in index.html lines 111-140 (missing Family Programs, Budget Excellence, Unique Experiences). See T2-31.
 7. **`@CampExplorerEU` Twitter handle** — Referenced in `twitter:site` meta tag. Verify this handle actually exists and is controlled. If not, remove the meta tag.
 8. **No `<noscript>` fallback** (NEW — Feb 3 audit) — JS-disabled users and some crawlers see blank page. See T2-23.
 9. **`rel="sponsored"` needed for Featured listings** (NEW — Feb 3 audit) — Paid placements (€99/year) require `rel="sponsored"` per Google guidelines. Not actionable until booking links use `<a>` tags. See T3-21.
@@ -1921,7 +1937,7 @@ Three rounds of verification performed before execution:
 |---------|----------|---------------|
 | CSP missing `object-src`, `base-uri`, `form-action` | Medium | T2-20 (#30) |
 | No `Permissions-Policy` header | Low | T2-21 (#31) |
-| `X-XSS-Protection: 1; mode=block` deprecated | Low | T2-22 (#32) |
+| `X-XSS-Protection: 1; mode=block` deprecated | Low | T1-16 |
 | No `<noscript>` fallback | Low | T2-23 (#33) |
 | No React Error Boundary | Medium | T2-18 (#28) |
 | Marquee memory leak (listener accumulation) | Medium | T2-17 (#27) |
@@ -2066,9 +2082,9 @@ All Tier 2 claims verified against actual code:
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
 
-*Total checklist items: ~71 (Tier 1: 8 done + 7 pending = 15, Tier 2: 15 done + 14 pending = 29, Tier 3: 8 done + 11 pending = 19 (after consolidations/demotions), Tier 4: 8)*
+*Total checklist items: ~72 (Tier 1: 8 done + 7 pending = 15, Tier 2: 15 done + 16 pending = 31, Tier 3: 8 done + 10 pending = 18 (after consolidations/moves), Tier 4: 8)*
 
-*February 3, 2026 second audit: Added 9 new items (T1-17, T1-18, T2-29, T2-30, T3-27, T3-28, T3-29 and updates). Consolidated 2 duplicates (T2-22 → T1-16, T3-24 → T2-29). Added tier upgrade recommendations for T3-22, T3-23, T3-25.*
+*February 3, 2026 second audit: Added 9 new items (T1-17, T1-18, T2-29, T2-30, T3-27, T3-28, T3-29 and updates). Consolidated 2 duplicates (T2-22 → T1-16, T3-24 → T2-29). Promoted T1-11 → T2-31, T3-25 → T2-32.*
 
 *February 3, 2026 update: Added 14 new items from 5-agent comprehensive audit. Key additions: legal privacy fix, Vite security upgrade, CAPTCHA for contact form, Organization schema improvements, robots.txt cleanup.*
 
