@@ -143,6 +143,13 @@ function App() {
   // Handle Contact Form Submission
   const handleContactFormSubmit = async (e) => {
     e.preventDefault()
+
+    // Honeypot spam protection - bots fill hidden fields, humans don't see them
+    if (e.target.website && e.target.website.value) {
+      console.log('Honeypot triggered - bot detected')
+      return
+    }
+
     setIsSubmittingForm(true)
 
     const formData = new FormData(e.target)
@@ -4306,6 +4313,15 @@ function App() {
 
             <div className="p-6 contact-modal-container">
               <form className="space-y-6" onSubmit={handleContactFormSubmit}>
+                {/* Honeypot field - hidden from humans, bots fill it */}
+                <input
+                  type="text"
+                  name="website"
+                  className="hidden"
+                  tabIndex="-1"
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
