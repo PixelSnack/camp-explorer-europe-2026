@@ -215,6 +215,7 @@ When starting a new Claude Code session, follow this protocol to restore context
 ✅ FEATURED_LISTINGS_POLICY.md (monetization operations and camp operator communications)
 ✅ CODE_STRUCTURE.md (App.jsx architecture and code locations)
 ✅ CODE_REVIEW_2026.md (comprehensive review with ~65-item checklist — THE definitive review doc)
+✅ LESSONS_LEARNED.md (errors encountered and rules derived from them)
 ```
 
 ### **Step 2: Current Status Assessment**
@@ -1234,7 +1235,7 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 | **FEATURED_LISTINGS_POLICY.md** ⭐ | Monetization operations guide |
 | **CODE_STRUCTURE.md** ⭐ | App.jsx architecture and code locations |
 | **CODE_REVIEW_2026.md** ⭐ | Comprehensive review with ~65-item checklist (THE definitive review doc) |
-| **CODE_REVIEW_2026.md** | Code review findings & 35-item implementation checklist |
+| **LESSONS_LEARNED.md** ⭐ | Errors encountered and rules derived from them |
 | **README.md** | Public-facing documentation (GitHub convention - at root) |
 
 ### Reference Documents (`docs/reference/`)
