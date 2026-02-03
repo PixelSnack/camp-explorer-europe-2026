@@ -1,6 +1,6 @@
 # Lessons Learned & Rules
 
-*Last Updated: February 3, 2026*
+*Last Updated: February 3, 2026 (Session 2)*
 *Purpose: Centralized reference for errors encountered and rules derived from them*
 
 ---
@@ -19,8 +19,9 @@
 2. [Agent Management](#agent-management)
 3. [Git & Version Control](#git--version-control)
 4. [Context Window & Session Management](#context-window--session-management)
-5. [SEO & Technical](#seo--technical)
-6. [ResourceHub Universal Principles](#resourcehub-universal-principles)
+5. [Communication & Workflow](#communication--workflow)
+6. [SEO & Technical](#seo--technical)
+7. [ResourceHub Universal Principles](#resourcehub-universal-principles)
 
 ---
 
@@ -125,6 +126,38 @@ Batch 1: Static files (index.html, sitemap.xml, robots.txt) → Test → Commit 
 Batch 2: App.jsx changes → Test → Commit ✓
 Batch 3: Documentation → Commit ✓
 ```
+
+---
+
+## Communication & Workflow
+
+### Lesson: Ask Before Implementing During Investigation (February 2026)
+
+**Problem**: User asked investigative questions about an iOS hero wobble issue. Claude immediately implemented a fix without asking permission first.
+
+**Root Cause**: Misinterpreting the user's intent — questions about a problem don't automatically mean "fix it now."
+
+**Impact**: User lost control of when code changes happen. The fix was correct, but the user should decide when to implement.
+
+**Solution**: When user is asking questions/investigating, explain the cause and proposed fix, then explicitly ask "Would you like me to implement this?" before making code changes.
+
+**Rule**: When the user is in "investigation mode" (asking questions about an issue, not explicitly requesting a fix):
+1. Explain the root cause
+2. Describe the proposed solution
+3. **ASK**: "Would you like me to implement this fix?"
+4. Wait for explicit approval before editing any files
+
+**Signs of investigation mode**:
+- "Can you look into..."
+- "Why is this happening?"
+- "What's causing..."
+- "I noticed [issue], can you explain?"
+
+**Signs of implementation mode** (OK to proceed):
+- "Fix the..."
+- "Update the..."
+- "Change X to Y"
+- "Implement..."
 
 ---
 
