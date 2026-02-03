@@ -402,37 +402,38 @@ function App() {
   ]
 
   // Breadcrumb generation function
-  const generateBreadcrumbs = () => {
-    const breadcrumbs = [{ name: 'Home', href: '#home', current: false }]
+  // Breadcrumb generation - memoized to prevent double computation per render
+  const breadcrumbs = useMemo(() => {
+    const crumbs = [{ name: 'Home', href: '#home', current: false }]
 
     switch (activeSection) {
       case 'home':
-        breadcrumbs[0].current = true
+        crumbs[0].current = true
         break
       case 'discover':
-        breadcrumbs.push({ name: 'Discover Camps', href: '#discover', current: true })
+        crumbs.push({ name: 'Discover Camps', href: '#discover', current: true })
         break
       case 'compare':
-        breadcrumbs.push({ name: 'Compare', href: '#compare', current: true })
+        crumbs.push({ name: 'Compare', href: '#compare', current: true })
         break
       case 'plan':
-        breadcrumbs.push({ name: 'Plan Your Summer', href: '#plan', current: true })
+        crumbs.push({ name: 'Plan Your Summer', href: '#plan', current: true })
         break
       case 'guide':
-        breadcrumbs.push({ name: 'Guide', href: '#guide', current: true })
+        crumbs.push({ name: 'Guide', href: '#guide', current: true })
         break
       case 'about':
-        breadcrumbs.push({ name: 'About', href: '#about', current: true })
+        crumbs.push({ name: 'About', href: '#about', current: true })
         break
       case 'privacy':
-        breadcrumbs.push({ name: 'Privacy', href: '#privacy', current: true })
+        crumbs.push({ name: 'Privacy', href: '#privacy', current: true })
         break
       default:
-        breadcrumbs[0].current = true
+        crumbs[0].current = true
     }
 
-    return breadcrumbs
-  }
+    return crumbs
+  }, [activeSection])
 
   // Navigation handlers
   const handleNavigation = (section) => {
@@ -587,6 +588,9 @@ function App() {
   // Google Analytics 4 Initialization - Enterprise Privacy Compliance
   useEffect(() => {
     if (cookieConsent === true && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX') {
+      // Guard against duplicate initialization (consent state can change multiple times)
+      if (window.gtag) return
+
       // Initialize GA4 only after explicit user consent and with valid tracking ID
       initializeGA4()
 
@@ -912,7 +916,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <Breadcrumb>
               <BreadcrumbList>
-                {generateBreadcrumbs().map((breadcrumb, index) => (
+                {breadcrumbs.map((breadcrumb, index) => (
                   <React.Fragment key={breadcrumb.name}>
                     <BreadcrumbItem>
                       {breadcrumb.current ? (
@@ -929,7 +933,7 @@ function App() {
                         </BreadcrumbLink>
                       )}
                     </BreadcrumbItem>
-                    {index < generateBreadcrumbs().length - 1 && <BreadcrumbSeparator />}
+                    {index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
                   </React.Fragment>
                 ))}
               </BreadcrumbList>
