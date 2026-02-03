@@ -15,19 +15,19 @@
 **Next 5 Priority Items (in order):**
 | # | Item | Type | Risk | Why Priority |
 |---|------|------|------|--------------|
-| 1 | **T2-17** | Marquee memory leak fix | Low | Performance, listener accumulation |
-| 2 | **T2-32** | Organization logo/contactPoint | Low | SEO - Knowledge Panel enrichment |
-| 3 | **T3-19** | Camp card image dimensions | Low | CLS/Core Web Vitals |
-| 4 | **T3-34** | Core Web Vitals baseline | Zero | Measurement prerequisite |
-| 5 | **T1-14** | Verify Twitter handle | Zero | Social card validation |
+| 1 | **T2-17** | Marquee memory leak fix | Low | Performance, listener accumulation (DEFERRED - needs iOS testing) |
+| 2 | **T3-19** | Camp card image dimensions | Low | CLS/Core Web Vitals |
+| 3 | **T3-34** | Core Web Vitals baseline | Zero | Measurement prerequisite |
+| 4 | **T1-17** | Add security.txt | Zero | Security best practice (DEFERRED - low value) |
+| 5 | **T2-21** | Permissions-Policy header | Zero | Security hardening (DEFERRED - over-engineering) |
 
-**Tier Status Summary (updated Feb 3 post-implementation):**
-- **Tier 1**: 15 items (10 done, 5 pending) — zero-risk cleanup
-- **Tier 2**: 36 items (26 done, 10 pending) — low-risk improvements
+**Tier Status Summary (updated Feb 3 Session 3):**
+- **Tier 1**: 15 items (11 done, 4 pending) — zero-risk cleanup
+- **Tier 2**: 36 items (27 done, 9 pending) — low-risk improvements
 - **Tier 3**: 18 items (10 done/promoted, 8 pending) — medium-risk fixes
 - **Tier 4**: 8 items (0 done, 8 pending) — Phase 2 only
 
-**Total: 77 items** (46 done, 31 pending)
+**Total: 77 items** (48 done, 29 pending)
 
 **Key Files:** `src/App.jsx` (4,661 lines) | `src/data/camps.js` (1,196 lines) | `public/_headers` | `index.html`
 
@@ -1373,9 +1373,10 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Now lists all 7 categories instead of 4.
   - Commit: `09952e1` — SEO: Complete ItemList schema + Organization @id + noscript
 
-- [ ] **T2-32**: Add Organization logo/contactPoint/sameAs (moved from T3-25)
-  - Enriches Organization for Knowledge Panel.
-  - File: index.html (lines ~242-265)
+- [x] **T2-32**: Add Organization logo/contactPoint/sameAs (moved from T3-25) ✅ Feb 3
+  - Added logo (favicon.svg) and contactPoint (email) to Organization schema
+  - sameAs deferred — no social profiles exist yet
+  - Commit: `6ff0be6`
   - Test: Google Rich Results Test
   - Commit: `SEO: Enrich Organization schema with logo/contactPoint`
 
@@ -1401,9 +1402,9 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Updated from 2025-08-29 to 2026-02-03
   - Commit: `f24f7ff` — Code Review Batch 1
 
-- [ ] **T1-14**: Verify @CampExplorerEU Twitter handle
-  - Check if handle exists, remove twitter:site if not.
-  - File: index.html
+- [x] **T1-14**: Verify @CampExplorerEU Twitter handle ✅ Feb 3
+  - Handle doesn't exist (no social accounts yet) — removed twitter:site meta tag
+  - Commit: `6ff0be6`
   - Test: Twitter Card validator
   - Commit: `SEO: Remove invalid twitter:site handle` (if needed)
 
