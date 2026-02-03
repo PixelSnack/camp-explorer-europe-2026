@@ -842,13 +842,13 @@ function App() {
         <nav className="relative" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
-            <div className="flex items-baseline flex-wrap">
+            <button onClick={() => handleNavigation('home')} className="flex items-baseline flex-wrap cursor-pointer" aria-label="Go to homepage">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
                 <span className="inline">Camp Explorer</span>
                 <span className="inline ml-1">Europe</span>
               </div>
               <span className="ml-2 text-base sm:text-lg md:text-xl text-orange-500 font-semibold">2026</span>
-            </div>
+            </button>
             
             {/* Desktop Navigation */}
             <div className="hidden md:block">
