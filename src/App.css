@@ -102,28 +102,17 @@
     }
   }
   
-  /* Modern mobile browsers: Dynamic Viewport Height (90.57% support 2025) */
-  @supports (height: 100dvh) {
+  /* Modern mobile browsers: Small Viewport Height for iOS scroll stability (no wobble) */
+  /* SVH uses smallest viewport (browser chrome visible) - height never changes during scroll */
+  /* DVH caused wobble because it recalculates when iOS browser chrome collapses/expands */
+  @supports (height: 100svh) {
     .hero-full-height {
-      min-height: calc(100dvh - 56px - env(safe-area-inset-top)); /* Minimum with safe area, can grow */
+      min-height: calc(100svh - 56px - env(safe-area-inset-top)); /* Stable height, can grow */
     }
 
     @media (min-width: 640px) {
       .hero-full-height {
-        min-height: calc(100dvh - 64px - env(safe-area-inset-top)); /* Desktop minimum, can grow */
-      }
-    }
-  }
-
-  /* Alternative fallback using CSS Small Viewport Height for maximum compatibility */
-  @supports (height: 100svh) and (not (height: 100dvh)) {
-    .hero-full-height {
-      min-height: calc(100svh - 56px - env(safe-area-inset-top)); /* Minimum small viewport, can grow */
-    }
-
-    @media (min-width: 640px) {
-      .hero-full-height {
-        min-height: calc(100svh - 64px - env(safe-area-inset-top)); /* Desktop minimum, can grow */
+        min-height: calc(100svh - 64px - env(safe-area-inset-top)); /* Desktop stable, can grow */
       }
     }
   }
