@@ -202,7 +202,7 @@
 ## 📚 DOCUMENTATION STRUCTURE
 
 ```
-/                                    # ROOT - Mandatory Reading (12 files)
+/                                    # ROOT - Mandatory Reading (11 files)
 ├── CLAUDE.md                        ⭐ Master control document
 ├── CODE_STRUCTURE.md                ⭐ App.jsx architecture & code locations
 ├── DEVELOPMENT_GUIDELINES.md        ⭐ Rule #0, standards
@@ -212,8 +212,7 @@
 ├── STRATEGIC_ROADMAP.md             ⭐ Path to monetization
 ├── FEATURED_CAMPS.md                ⭐ Featured listings tracker
 ├── FEATURED_LISTINGS_POLICY.md      ⭐ Monetization operations
-├── CODE_REVIEW_PLAN.md              ⭐ 3-pass code review plan (ready to execute)
-├── CODE_REVIEW_2026.md              Code review findings & 35-item checklist
+├── CODE_REVIEW_2026.md              ⭐ Code review findings & ~65-item checklist (MAIN REVIEW DOC)
 └── README.md                        Public-facing documentation (GitHub convention)
 
 /docs/reference/                     # Reference docs (7 files)
@@ -232,9 +231,11 @@
 ├── security-audit-specialist.md
 └── seo-performance-optimizer.md
 
-/docs/archive/                       # Historical documents (10 files)
+/docs/archive/                       # Historical documents (12 files)
 ├── CAMP_RESEARCH_JAN25_2026.md      Jan 25 camp research (NL, LT, NO, DK)
 ├── CLAUDE-BACKUP-*.md               Control document backups
+├── CODE_REVIEW_PLAN.md              Original review plan (archived Feb 3, 2026)
+├── CODE_REVIEW_PLAN_BACKUP_FEB3_2026.md  Backup before archiving
 ├── IMAGE_OPTIMIZATION_COMPLETE.md
 ├── IMPLEMENTATION_CHECKLIST.md
 ├── MOBILE_HERO_OVERFLOW_ANALYSIS.md
@@ -289,17 +290,17 @@ git reset --hard HEAD~1  # Rollback if broken
 3. Test live site: https://www.europeansummercamps.com/
 4. Monitor Vercel dashboard
 
-## 🎉 CURRENT STATUS (February 2, 2026)
+## 🎉 CURRENT STATUS (February 3, 2026)
 - ✅ Database: 52 verified organizations across 24 European countries
 - ✅ Pricing: 100% verified (all camps have accurate per-child pricing)
-- ✅ Code quality: EXCELLENT (5,823 lines App.jsx, 5 shadcn/ui components, clean)
+- ✅ Code quality: EXCELLENT (~4,636 lines App.jsx + ~1,196 lines camps.js, 5 shadcn/ui components)
 - ✅ Build/lint: WORKING (~8s build, 0 errors / 4 warnings)
-- ✅ Code Review Tier 1: COMPLETE (8 commits — ~10.6MB orphaned assets removed, 41 unused components deleted, 30 unused packages uninstalled, broken og:image fixed, preconnect corrected)
-- ✅ Security: ENTERPRISE-GRADE (CSP enforced, no critical vulnerabilities)
+- ✅ Code Review: Tier 1+2 COMPLETE, Tier 3 partial (8/20), ~65 total items in CODE_REVIEW_2026.md
+- ✅ Security: 7.5/10 (CSP enforced, but Vite 4.x EOL with CVEs — upgrade needed)
 - ✅ Performance: FULLY OPTIMIZED (93-96% total image reduction)
-- ✅ Accessibility: WCAG 2.1 AA COMPLIANT (full keyboard navigation + mobile optimized)
-- ✅ SEO: 8.5/10 SCORE (ranking page 1 for target keywords, 73% traffic from search)
-- ✅ Schema: RICH SNIPPET READY (Event schema, FAQPage, BreadcrumbList implemented)
+- ✅ Accessibility: WCAG 2.1 AA mostly compliant (user-scalable=no fix pending)
+- ✅ SEO: 6.5/10 SCORE (ranking #1 for primary query, but schema/robots.txt gaps found)
+- ✅ Schema: Rich snippets ready but Organization @id linking needed
 - ✅ GDPR: EU LAW COMPLIANT (cookie banner, dual analytics blocking, privacy policy)
 - ✅ Analytics: DUAL INTELLIGENCE SYSTEM (Google Analytics 4 + Vercel Analytics)
 - ✅ Mobile UX: CROSS-PLATFORM PERFECTION (70% mobile traffic: iOS 50%, Android 18%)
@@ -310,6 +311,14 @@ git reset --hard HEAD~1  # Rollback if broken
 - 🔄 Phase 2: READY WHEN TRAFFIC JUSTIFIES (React Router + SSG)
 
 **STATUS: FIRST MONETIZATION TEST - Email sent to Boundless Life (Jan 16, 00:28), awaiting response** 💰
+
+### 🚨 KEY FINDINGS FROM 5-AGENT AUDIT (Feb 3, 2026)
+| Priority | Issue | Action |
+|----------|-------|--------|
+| 🚨 LEGAL | Privacy policy claims no email but form collects it | Fix T2-24 |
+| 🚨 SECURITY | Vite 4.x EOL with CVEs | Upgrade T3-22 |
+| ⚠️ A11y | user-scalable=no blocks pinch-to-zoom | Fix T2-16 |
+| ⚠️ SEO | Organization schema missing @id linking | Fix T3-24 |
 
 ## ✅ PHASE D: PROFESSIONAL CONTACT SYSTEM (Sept 18, 2025)
 - [x] EmailJS service setup with Gmail integration (COMPLETED ✅)

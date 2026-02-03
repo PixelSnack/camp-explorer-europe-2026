@@ -1,9 +1,9 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** February 2, 2026
-**Current Status:** 52 camps across 24 countries, filter system live
-**Ready for:** Code review Tier 1 execution, then content expansion, monetization, traffic growth
+**Last Updated:** February 3, 2026
+**Current Status:** 52 camps across 24 countries, filter system live, code review updated
+**Ready for:** Code review Tier 3 remaining items, then content expansion, monetization, traffic growth
 
 ---
 
@@ -29,6 +29,35 @@
 - ✅ **Security**: Enterprise-grade CSP enforced, no critical vulnerabilities
 - ✅ **Dual Analytics**: Google Analytics 4 + Vercel Analytics implemented
 - 🔄 **Next Priority**: Add duration to ~18 camps missing it (consistency fix)
+
+---
+
+## ✅ **COMPLETED: 5-Agent Fresh Audit of CODE_REVIEW_2026.md (February 3, 2026)**
+
+**Status**: ✅ COMPREHENSIVE UPDATE COMPLETE AND COMMITTED
+**Commit**: `aee2d32` - "Docs: Comprehensive code review update — 5-agent fresh audit findings"
+
+**What was done:**
+- Ran 5 agents in parallel: enterprise (doc + codebase), SEO (doc + codebase), security (codebase)
+- Synthesized all findings into CODE_REVIEW_2026.md
+- Archived CODE_REVIEW_PLAN.md to docs/archive/ (no longer needed — use CODE_REVIEW_2026.md directly)
+- Created backup at docs/archive/CODE_REVIEW_PLAN_BACKUP_FEB3_2026.md
+
+**Key new findings incorporated:**
+| Priority | Issue | Source |
+|----------|-------|--------|
+| 🚨 LEGAL | Privacy policy claims no email but contact form collects it | Enterprise |
+| 🚨 SECURITY | Vite 4.x EOL with CVEs (CVE-2024-45812, CVE-2024-45811) | Security |
+| ⚠️ HIGH | No CAPTCHA/honeypot on contact form | Security |
+| ⚠️ HIGH | GA4 can initialize multiple times | Enterprise |
+| ⚠️ SEO | Organization schema missing @id linking | SEO |
+| ⚠️ A11y | user-scalable=no (WCAG 1.4.4 violation) | SEO |
+
+**Score adjustments:**
+- SEO: 7.0 → 6.5/10 (robots.txt issues, schema gaps, og:image/sitemap mismatch)
+- Security: 8.0 → 7.5/10 (Vite EOL, no CAPTCHA)
+
+**Checklist expanded:** ~51 → ~65 items (added Groups H, I to Tier 2, T3-22 through T3-26 to Tier 3)
 
 ---
 
@@ -414,16 +443,17 @@ Check all camps in App.jsx where price does NOT contain "/":
 
 **Decision:** Focus on English-speaking international market for now. Revisit when traffic justifies investment.
 
-### **Comprehensive Code Review** (Ready to Execute)
-**Status:** PLAN COMPLETE — See `CODE_REVIEW_PLAN.md` for detailed execution plan
+### **Comprehensive Code Review** (ACTIVE — Tier 3 in progress)
+**Status:** Tier 1+2 COMPLETE, Tier 3 partially done (8 of ~20), ~65 total items
+**Document:** `CODE_REVIEW_2026.md` (CODE_REVIEW_PLAN.md archived — no longer needed)
 **Business Impact:** Sale-readiness, maintainability, professional credibility
 
-#### **Plan Summary (created February 1, 2026):**
-- **3-pass review**: enterprise-code-reviewer + seo-performance-optimizer + direct Claude analysis
-- **Safety**: Bash removed from both agents pre-review, all analysis read-only
-- **Output**: `CODE_REVIEW_2026.md` with findings in 4 risk tiers + DO NOT TOUCH list
-- **Explore agents run first** to re-learn codebase (new session has no memory)
-- **Full details**: `CODE_REVIEW_PLAN.md` (self-contained, copy-paste prompts included)
+#### **Summary (updated February 3, 2026):**
+- **5-agent fresh audit completed**: enterprise (doc+code), SEO (doc+code), security (code)
+- **All agents READ-ONLY**: Bash/Edit/Write permanently removed via `/agents` UI
+- **Output**: `CODE_REVIEW_2026.md` with ~65 items in 4 risk tiers + DO NOT TOUCH list
+- **New critical findings**: Legal privacy issue, Vite EOL with CVEs, Organization schema gaps
+- **Archived**: CODE_REVIEW_PLAN.md → docs/archive/ (backup also created)
 
 ### **Mobile Scroll Navigation** (UX Enhancement)
 **Status:** ✅ COMPLETED (January 28, 2026)
@@ -500,7 +530,8 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 ---
 
-**Last Session:** February 3, 2026 - Executed Code Review Tier 3 quick wins (8 of 11 items). Fixed: broken "Local" footer link, "Book Now" text, null established year, badge CSS inconsistency, hyperbolic comments (5), meta keywords removal, og:image:type added, hreflang tags removed, resourceSection investigated (not dead). 3 Tier 3 items remain: marquee hook (#26), user-scalable (#31), numeric price field (#33).
+**Last Session:** February 3, 2026 (Session 2) - 5-agent parallel audit of CODE_REVIEW_2026.md. Ran enterprise+SEO agents on the review document AND enterprise+SEO+security agents on full codebase simultaneously. Synthesized all findings into comprehensive update. Key new issues found: legal privacy policy inconsistency, Vite 4.x EOL with CVEs, Organization schema gaps. Adjusted scores: SEO 7→6.5, Security 8→7.5. Added ~14 new checklist items (total now ~65). Archived CODE_REVIEW_PLAN.md to docs/archive/.
+**Previous Session:** February 3, 2026 (Session 1) - Executed Code Review Tier 3 quick wins (8 of 11 items). Fixed: broken "Local" footer link, "Book Now" text, null established year, badge CSS inconsistency, hyperbolic comments (5), meta keywords removal, og:image:type added, hreflang tags removed, resourceSection investigated (not dead).
 **Previous Session:** February 2, 2026 - Executed Code Review Tier 1 (8 commits) + Tier 2 (17 commits). Tier 1: ~10.6MB removed, 4,234 lines deleted, og:image fixed. Tier 2: camp data extracted to camps.js, dynamic org counts, maxLength on inputs, noopener on window.open, CSP GA4 fix, meta country counts, sitemap updates, filterOptions memoized.
 **Previous Session:** February 1, 2026 - Documentation & tooling session + comprehensive CODE_REVIEW_PLAN.md
 **Previous Session:** January 28, 2026 - Implemented context-aware scroll navigation + complete filter system
@@ -509,16 +540,26 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 ## 🎯 **NEXT SESSION CHECKLIST**
 
-**Option A: Code Review Session**
-1. Complete pre-review safety steps in CODE_REVIEW_PLAN.md (remove Bash from agents)
-2. Tell Claude: "Read CODE_REVIEW_PLAN.md and follow it exactly"
-3. Review produces CODE_REVIEW_2026.md — no code changes
+**Option A: Continue Code Review Execution (Recommended)**
+1. Read `CODE_REVIEW_2026.md` — the comprehensive review document with ~65 checklist items
+2. Focus on pending items:
+   - **Tier 1 new (5 items)**: robots.txt cleanup, AVIF cache rule, Twitter handle verify
+   - **Tier 2 Group G (8 items)**: user-scalable fix, marquee memory leak, Error Boundary
+   - **Tier 2 Group H (5 items)**: privacy policy fix, GA4 guard, sitemap/og:image align
+   - **Tier 3 new (12 items)**: Vite upgrade, CAPTCHA, Organization schema
+3. Execute one tier at a time, one item per commit, test after each
 
 **Option B: Content Expansion Session**
 1. Identify underrepresented countries/categories for new camps
 2. Use camp-content-researcher agent to find candidates
-3. Verify and add approved camps to App.jsx
+3. Verify and add approved camps to src/data/camps.js
 4. Update all stats and documentation
+
+**⚠️ Key context for new sessions:**
+- CODE_REVIEW_PLAN.md is ARCHIVED (in docs/archive/) — use CODE_REVIEW_2026.md directly
+- All 5 agents are permanently READ-ONLY (Bash/Edit/Write removed via `/agents` UI)
+- Camp data is now in `src/data/camps.js` (extracted from App.jsx Feb 2)
+- ~65 total checklist items: Tier 1 (8 done + 5 pending), Tier 2 (15 done + 13 pending), Tier 3 (8 done + 12 pending), Tier 4 (8)
 
 **Other items:**
 - Monitor Boundless Life response (monetization test)
