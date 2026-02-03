@@ -3404,14 +3404,7 @@ function App() {
                   <li>Contact details (name, email) when you submit our contact form</li>
                   <li>Any additional information you include in your message</li>
                 </ul>
-                <p className="mb-4">We use this information to respond to your inquiry and improve our services. We do not sell your personal information.</p>
-
-                <h3 className="text-lg font-semibold mb-2">What We Don't Collect</h3>
-                <ul>
-                  <li>Payment or financial information (camp bookings are made directly with camps)</li>
-                  <li>Passwords or account credentials (we have no user accounts)</li>
-                  <li>Location data or device identifiers</li>
-                </ul>
+                <p>We use this information to respond to your inquiry and improve our services. We do not sell your personal information.</p>
               </Card>
               
               <Card className="p-8">
