@@ -76,7 +76,7 @@ This is a well-built, functional production website that is successfully serving
 | Architecture | 5/10 | **6/10** | +1 | Data separated from UI, cleaner package.json. Still monolithic, no tests. |
 | SEO | 6.5/10 | **6.0/10** | -0.5 | **NET DOWN**: Improvements (user-scalable fix, robots.txt, sitemap alignment) offset by discovered gaps (ItemList 4/7, Organization @id missing, camp alt text unaudited). See Section 6. |
 | Accessibility | 7/10 | **7/10** | 0 | **RESTORED**: `user-scalable=no` removed — WCAG 1.4.4 compliance restored. Focus traps still needed. |
-| Security | 7/10 | **7.0/10** | 0 | X-XSS-Protection fixed (+0.5), but Vite 4.x CVEs (-0.3) and no CAPTCHA (-0.2) keep score at 7.0. Will improve to 7.5 after T3-22 and T3-23. |
+| Security | 7/10 | **7.0/10** | 0 | X-XSS-Protection fixed (+0.5), but Vite 4.x CVEs (-0.3) and no CAPTCHA (-0.2) keep score at 7.0. Will improve to 7.5 after T2-33 and T2-34. |
 | Performance | 6/10 | **7/10** | +1 | allCamps module-level, filterOptions memoized, 30 unused packages removed |
 | Mobile UX | 8/10 | **8/10** | 0 | No change — already strong |
 | Documentation | 6/10 | **7.5/10** | +1.5 | CODE_STRUCTURE.md updated, review document comprehensive |
@@ -640,6 +640,37 @@ Removed unnecessary "What We Don't Collect" section (mentioning passwords/paymen
 **Commit**: `SEO: Enrich Organization schema with logo/contactPoint`
 **Note**: Promoted from Tier 3 — adding schema properties is low-risk.
 
+#### T2-33: Upgrade Vite 4.x to 6.x (PROMOTED from T3-22 — Feb 3 meta-audit) 🚨 SECURITY
+
+**Problem**: Vite 4.4.5 in package.json is EOL with known CVEs: CVE-2024-45812 (server.fs.deny bypass), CVE-2024-45811 (XSS in dev server). These primarily affect dev server but upgrading is strongly recommended.
+
+**Fix**: `npm install vite@latest` and test thoroughly. Check vite.config.js for breaking changes.
+**Files**: package.json, vite.config.js (may need updates)
+**Test**: `npm run build` + `npm run dev` + thorough manual testing
+**Commit**: `Security: Upgrade Vite from 4.x to 6.x (EOL with CVEs)`
+**PRIORITY**: HIGH — security vulnerability. All 3 review agents (enterprise, SEO, security) unanimously recommended promotion.
+**Note**: Promoted from Tier 3 (was T3-22) — known CVEs warrant immediate action despite "primarily dev server" impact.
+
+#### T2-34: Add honeypot spam protection to contact form (PROMOTED from T3-23 — Feb 3 meta-audit) 🛡️
+
+**Problem**: Contact form has no spam protection. EmailJS credentials are in source — bots could send spam via your EmailJS account, potentially exhausting quota or causing account suspension.
+
+**Fix**: Add a honeypot field (hidden input that bots fill but humans don't see). Zero-risk implementation.
+```jsx
+// In form JSX:
+<input type="text" name="website" className="hidden" tabIndex="-1" autoComplete="off" />
+
+// In submit handler:
+if (e.target.website.value) return; // Bot detected
+```
+**Files**: src/App.jsx (contact form ~line 4346)
+**Test**: `npm run build` + verify form still works for humans + test with filled honeypot
+**Commit**: `Security: Add honeypot spam protection to contact form`
+**PRIORITY**: HIGH — zero-risk implementation with high value. All review agents recommended promotion.
+**Note**: Promoted from Tier 3 (was T3-23) — honeypot is simpler than CAPTCHA, requires no external service.
+
+**Also recommended (not checklist item):** Verify EmailJS dashboard has domain restrictions set to `europeansummercamps.com` and reasonable monthly quota limits.
+
 ---
 
 ### Tier 3 — MEDIUM RISK (logic-touching, careful testing required)
@@ -844,26 +875,13 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 **Files**: Documentation note (no code change until `<a>` tags are used)
 **Commit**: N/A (documentation only for now)
 
-#### T3-22: Upgrade Vite 4.x to 5.x or 6.x (NEW — 5-agent Feb 3 audit) 🚨 SECURITY
+#### ~~T3-22: Upgrade Vite 4.x to 5.x or 6.x~~ **PROMOTED TO T2-33**
 
-**Problem**: Vite 4.4.5 in package.json is EOL with known CVEs: CVE-2024-45812 (server.fs.deny bypass), CVE-2024-45811 (XSS in dev server). These primarily affect dev server but upgrading is strongly recommended.
+*Promoted to Tier 2 per Feb 3 meta-audit (8 agents unanimous). Known CVEs warrant higher priority. See T2-33 for full definition.*
 
-**Fix**: `npm install vite@latest` and test thoroughly. Check vite.config.js for breaking changes.
-**Files**: package.json, vite.config.js (may need updates)
-**Test**: `npm run build` + `npm run dev` + thorough manual testing
-**Commit**: `Security: Upgrade Vite from 4.x to 6.x (EOL with CVEs)`
-**PRIORITY**: HIGH — security vulnerability
-**⬆️ TIER UPGRADE RECOMMENDED**: Per Feb 3 second audit, should be treated as Tier 2 priority due to known CVEs.
+#### ~~T3-23: Add CAPTCHA/honeypot to contact form~~ **PROMOTED TO T2-34**
 
-#### T3-23: Add CAPTCHA/honeypot to contact form (NEW — 5-agent Feb 3 audit)
-
-**Problem**: Contact form has no spam protection. EmailJS credentials are in source — bots could send spam via your EmailJS account.
-
-**Fix**: Add either reCAPTCHA (requires Google setup) or a honeypot field (simpler).
-**Files**: src/App.jsx (contact form ~line 4346)
-**Test**: `npm run build` + verify form still works for humans
-**Commit**: `Security: Add honeypot spam protection to contact form`
-**⬆️ TIER UPGRADE RECOMMENDED**: Per Feb 3 second audit, honeypot is zero-risk implementation — treat as Tier 2 priority.
+*Promoted to Tier 2 per Feb 3 meta-audit (8 agents unanimous). Honeypot is zero-risk. See T2-34 for full definition.*
 
 #### ~~T3-24: Add Organization @id linking~~ **CONSOLIDATED TO T2-29**
 
@@ -1321,6 +1339,22 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: Google Rich Results Test
   - Commit: `SEO: Enrich Organization schema with logo/contactPoint`
 
+#### Group J: Security priorities from Feb 3 meta-audit (NEW)
+
+- [ ] **T2-33**: Upgrade Vite 4.x to 6.x 🚨 SECURITY (promoted from T3-22)
+  - Known CVEs: CVE-2024-45812, CVE-2024-45811. Unanimously recommended by all review agents.
+  - Files: package.json, vite.config.js
+  - Test: `npm run build` + `npm run dev` + thorough manual testing
+  - Commit: `Security: Upgrade Vite from 4.x to 6.x (EOL with CVEs)`
+  - **PRIORITY**: #1 in Quick Reference — execute first
+
+- [ ] **T2-34**: Add honeypot spam protection 🛡️ (promoted from T3-23)
+  - Zero-risk implementation. Prevents EmailJS account abuse.
+  - File: src/App.jsx (~line 4346)
+  - Test: `npm run build` + verify form works + test with filled honeypot rejects
+  - Commit: `Security: Add honeypot spam protection to contact form`
+  - **PRIORITY**: #2 in Quick Reference — execute after T2-33
+
 #### Group I: New Tier 1 items from 5-agent Feb 3 audit (partial)
 
 - [x] **T1-12**: Remove useless robots.txt hash Allow lines ✅ Feb 3
@@ -1472,17 +1506,11 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 
 #### New Tier 3 items from 5-agent comprehensive Feb 3 audit
 
-- [ ] **T3-22**: Upgrade Vite 4.x to 5.x/6.x 🚨 SECURITY (⬆️ treat as Tier 2)
-  - Vite 4.4.5 is EOL with CVE-2024-45812, CVE-2024-45811.
-  - File: package.json, vite.config.js
-  - Test: `npm run build` + `npm run dev` + thorough manual testing
-  - Commit: `Security: Upgrade Vite from 4.x to 6.x (EOL with CVEs)`
+- [x] ~~**T3-22**~~: ~~Upgrade Vite 4.x~~ — **PROMOTED TO T2-33** (Feb 3 meta-audit)
+  - See T2-33 in Tier 2 section for full definition
 
-- [ ] **T3-23**: Add CAPTCHA/honeypot to contact form (⬆️ treat as Tier 2)
-  - EmailJS credentials exposed — bots could send spam.
-  - File: src/App.jsx (contact form ~line 4346)
-  - Test: `npm run build` + verify form works for humans
-  - Commit: `Security: Add honeypot spam protection to contact form`
+- [x] ~~**T3-23**~~: ~~Add CAPTCHA/honeypot~~ — **PROMOTED TO T2-34** (Feb 3 meta-audit)
+  - See T2-34 in Tier 2 section for full definition
 
 - [ ] ~~**T3-24**~~: ~~Add Organization @id linking~~ — **CONSOLIDATED TO T2-29**
 
@@ -1957,7 +1985,7 @@ Three rounds of verification performed before execution:
 | `user-scalable=no` (accessibility, not security) | Low | T2-16 (#26) |
 
 **Noted but deferred — UPDATED Feb 3:**
-- ~~Vite 4.x approaching EOL~~ **UPGRADED TO TIER 3** (T3-22): CVEs confirmed, requires action
+- ~~Vite 4.x approaching EOL~~ **PROMOTED TO TIER 2** (T2-33): CVEs confirmed, requires immediate action
 - Dev server binds to `0.0.0.0` — dev-only, no production impact
 - `key={index}` anti-pattern in static camp lists — low risk for static data, not a security issue
 
@@ -1987,7 +2015,7 @@ The following are known limitations accepted for this project:
 |------|-----------|------------|
 | `'unsafe-inline'` in CSP for styles | Required for Tailwind CSS and React inline styles | Low risk — no user-generated CSS |
 | No SRI for dynamically loaded scripts | GA4 and Vercel scripts are dynamically generated; SRI hashes not feasible | Domain-restricted CSP provides partial protection |
-| EmailJS credentials in frontend source | By design — EmailJS is intended for client-side use | Domain restrictions + honeypot (T3-23) |
+| EmailJS credentials in frontend source | By design — EmailJS is intended for client-side use | Domain restrictions + honeypot (T2-34) |
 | Dev server binds to `0.0.0.0` | Development only, no production impact | Documented, not a production issue |
 | `key={index}` in static camp lists | Low risk for static data that never reorders | Acceptable performance trade-off |
 
