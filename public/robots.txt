@@ -80,11 +80,6 @@ Disallow: /config/
 
 # Allow all public content and sections
 Allow: /
-Allow: /#discover
-Allow: /#compare  
-Allow: /#plan
-Allow: /#guide
-Allow: /#resources
 
 # Allow images and assets for better SEO
 Allow: /assets/
@@ -101,5 +96,5 @@ Allow: /favicon.svg
 Allow: /favicon.ico
 Allow: /favicon-32x32.png
 
-# Last updated: 2025-08-29
+# Last updated: 2026-02-03
 # Contact: Contact via website for crawling permissions
