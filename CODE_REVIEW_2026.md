@@ -878,7 +878,7 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 | `@radix-ui/react-checkbox` | NO | Only in unused checkbox.jsx | Remove |
 | `@radix-ui/react-collapsible` | NO | Only in unused collapsible.jsx | Remove |
 | `@radix-ui/react-context-menu` | NO | Only in unused context-menu.jsx | Remove |
-| `@radix-ui/react-dialog` | NO | Only in unused dialog.jsx | Remove |
+| `@radix-ui/react-dialog` | YES* | Required internally by vaul (drawer) | **KEEP** |
 | `@radix-ui/react-dropdown-menu` | NO | Only in unused dropdown-menu.jsx | Remove |
 | `@radix-ui/react-hover-card` | NO | Only in unused hover-card.jsx | Remove |
 | `@radix-ui/react-label` | NO | Only in unused label.jsx | Remove |
@@ -1277,11 +1277,8 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Changed Discover section activity/language badges from `text-xs` to `badge-responsive`
   - Commit: `Fix: Use consistent badge-responsive class in Discover`
 
-- [ ] **31. Remove user-scalable=no from viewport** (T3-7 → **PROMOTED TO TIER 2** as T2-16, Feb 3)
-  - **See T2-16 below for updated priority.** WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix.
-  - File: index.html (line ~5)
-  - Test: `npm run build` + verify pinch-to-zoom works on mobile, no layout shifts
-  - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
+- [x] ~~**T3-7. Remove user-scalable=no from viewport**~~ → **PROMOTED TO TIER 2** as T2-16 (#26)
+  - See Tier 2 Group G item #26 for updated tracking.
 
 - [x] **32. Remove hyperbolic code comments** (T3-8) ✅ Feb 3
   - Replaced 5 hyperbolic comments with factual descriptions
@@ -1292,7 +1289,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - "RESPONSIVE INTELLIGENCE - RESIZE DETECTION" → "Resize detection"
   - Commit: `Cleanup: Replace hyperbolic comments with factual descriptions`
 
-- [ ] **31. Add numeric price field to camp data** (T3-9)
+- [ ] **33. Add numeric price field to camp data** (T3-9)
   - File: src/App.jsx or src/data/camps.js (after T2-2)
   - Note: Requires currency conversion research for 52 camps in 8+ currencies
   - Test: `npm run build` + verify no display changes
@@ -1310,7 +1307,7 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Removed hreflang="en" and x-default alternate links (monolingual site)
   - Commit: `Cleanup: Remove unnecessary hreflang tags (monolingual site)`
 
-- [x] ~~**35. Remove non-functional BreadcrumbList/SearchAction schema** (T3-13)~~ — **DEMOTED TO TIER 4**
+- [x] ~~**37. Remove non-functional BreadcrumbList/SearchAction schema** (T3-13)~~ — **DEMOTED TO TIER 4**
   - SEO reviewer (Feb 2, 2026): Removing structured data is riskier than keeping non-functional schema. Google may interpret removal negatively. Wait for Phase 2 real routes.
 
 - [x] **37. Investigate resourceSection state variable** (T3-14) ✅ Feb 3 — NOT DEAD
@@ -1835,7 +1832,7 @@ Three rounds of verification performed before execution:
 
 ---
 
-## Section 10: Security Audit (February 3, 2026)
+## Section 9: Security Audit (February 3, 2026)
 
 *Fresh audit by security-audit-specialist agent as part of 5-agent parallel review.*
 
@@ -1896,7 +1893,7 @@ Three rounds of verification performed before execution:
 
 ---
 
-## Section 9: Tier 2 Pre-Implementation Verification (February 2, 2026)
+## Section 10: Tier 2 Pre-Implementation Verification (February 2, 2026)
 
 *4 parallel agents reviewed the Tier 2 plan and affected code simultaneously.*
 
