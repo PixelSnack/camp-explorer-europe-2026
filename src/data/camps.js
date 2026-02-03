@@ -1190,13 +1190,13 @@ export const allCamps = [
     capacity: 80,
     bookingUrl: "https://kidscampamerica.com/kca_camps/english-family-camp/"
   },
-  // France - Second residential camp (Unique Experiences, Vosges mountains)
+  // France - Second residential camp (Unique Experiences, Savoie/French Alps)
   {
     id: 57,
     name: "Les Florimontains",
-    location: "La Planche des Belles Filles, Vosges",
+    location: "Col de Tamié, Savoie",
     country: "France",
-    ages: "6-17 years", // Verified Feb 2026: multiple age-group sessions
+    ages: "9-17 years", // Verified Feb 2026: 9-13 and 14-17 age groups
     price: "€575/1 week", // Verified Feb 2026: per-child residential rate
     priceRange: "budget",
     rating: 4.6,
@@ -1204,14 +1204,14 @@ export const allCamps = [
     image: mapCompressed,
     category: "unique",
     type: "Mountain Nature & Outdoor Camp",
-    activities: ["Hiking", "Mountain Biking", "Nature Discovery", "Rock Climbing", "Swimming", "Creative Workshops", "Night Camps"],
-    dates: "July - August, 2026",
-    highlights: ["100 years of camping heritage (Est. 1925)", "Vosges mountain setting at Tour de France location", "Certified colonie de vacances operator"],
+    activities: ["Hiking", "Mountain Biking", "Nature Discovery", "Rock Climbing", "Swimming", "Creative Workshops", "Tour du Mont-Blanc"],
+    dates: "July 5 - August 23, 2026",
+    highlights: ["100 years of camping heritage (Est. 1925)", "French Alps setting between Annecy and Albertville", "Certified colonie de vacances operator"],
     languages: ["French"],
-    specialFeatures: ["DDCS-approved youth organization", "Age-specific camp sessions", "Traditional French residential camp experience"],
+    specialFeatures: ["Secular popular education association", "Age-specific camp sessions (9-13, 14-17)", "Traditional French residential camp experience"],
     established: 1925,
     capacity: 120,
-    bookingUrl: "https://www.florimontains.com/"
+    bookingUrl: "https://www.lesflorimontains.fr/sejours-jeunes/"
   },
   // Austria - Third camp (Premium Alpine, Zell am See)
   {
@@ -1234,7 +1234,7 @@ export const allCamps = [
     specialFeatures: ["ACA & BSA accredited", "International staff from 20+ countries", "Swiss-based camp organization since 1972"],
     established: 1972,
     capacity: 150,
-    bookingUrl: "https://www.villagecamps.com/summer-camps/austria-zell-am-see/"
+    bookingUrl: "https://www.villagecamps.com/summer-camp-programmes-in-zell-am-see-austria"
   },
   // Greece - Second camp (Unique Experiences, Pelion peninsula)
   {
