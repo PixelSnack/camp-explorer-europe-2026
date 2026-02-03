@@ -481,11 +481,23 @@ function App() {
       case 'privacy':
         setActiveSection('privacy')
         window.location.hash = 'privacy'
-        break
+        setTimeout(() => {
+          const element = document.getElementById('privacy-content')
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }, 100)
+        return
       case 'about':
         setActiveSection('about')
         window.location.hash = 'about'
-        break
+        setTimeout(() => {
+          const element = document.getElementById('about-content')
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }, 100)
+        return
       case 'impressum':
         setActiveSection('impressum')
         window.location.hash = 'impressum'
@@ -3359,7 +3371,7 @@ function App() {
 
       {/* Privacy Policy Section */}
       {activeSection === 'privacy' && (
-        <section className="py-12 bg-white min-h-screen">
+        <section id="privacy-content" className="py-12 bg-white min-h-screen">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
@@ -4074,7 +4086,7 @@ function App() {
 
       {/* About Section - E-E-A-T Authority Building */}
       {activeSection === 'about' && (
-        <section className="py-12 bg-white min-h-screen">
+        <section id="about-content" className="py-12 bg-white min-h-screen">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">About Camp Explorer Europe</h1>
