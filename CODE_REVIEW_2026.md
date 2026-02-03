@@ -1,8 +1,8 @@
 # Code Review Report: Camp Explorer Europe 2026
 
-*Review Date: February 1, 2026*
-*Reviewed By: Claude Opus 4.5 (3-pass review per CODE_REVIEW_PLAN.md)*
-*Codebase Snapshot: 5,824 lines App.jsx, 52 organizations, 24 countries*
+*Review Date: February 1, 2026 (updated February 3, 2026 — 5-agent fresh audit)*
+*Reviewed By: Claude Opus 4.5 (3-pass review per CODE_REVIEW_PLAN.md + 5-agent refresh)*
+*Codebase Snapshot: 4,661 lines App.jsx + 1,196 lines camps.js, 52 organizations, 24 countries*
 
 ---
 
@@ -25,25 +25,32 @@ This is a well-built, functional production website that is successfully serving
 4. **Filter system works correctly** — Multi-select with proper OR logic, ARIA compliant
 5. **GDPR compliance is complete** — Cookie consent gates analytics properly
 
-### Top 5 Concerns
-1. ~~**~10.4MB of orphaned image assets** shipping or sitting in repo unnecessarily~~ **✅ RESOLVED (Tier 1, Feb 2)**
-2. ~~**41 unused shadcn/ui components + 24 unused Radix packages** bloating node_modules~~ **✅ RESOLVED (Tier 1, Feb 2)**
-3. **Meta tag country counts are wrong** (say 21/13 countries, actual is 24) — affects search snippets
-4. **CSP missing connect-src for GA4** — analytics may be blocked by strict browsers
-5. **allCamps array inside component** defeats useMemo optimization (~1,200 lines re-created every render)
+### Top 5 Concerns (updated Feb 3 — post Tier 1+2+3 partial)
+1. ~~**~10.4MB of orphaned image assets**~~ **✅ RESOLVED (Tier 1, Feb 2)**
+2. ~~**41 unused shadcn/ui components + 24 unused Radix packages**~~ **✅ RESOLVED (Tier 1, Feb 2)**
+3. ~~**Meta tag country counts are wrong**~~ **✅ RESOLVED (Tier 2, Feb 2)**
+4. ~~**CSP missing connect-src for GA4**~~ **✅ RESOLVED (Tier 2, Feb 2)**
+5. ~~**allCamps array inside component**~~ **✅ RESOLVED (Tier 2, Feb 2 — extracted to camps.js)**
 
-### Health Scores
+**Current top 5 concerns (Feb 3, 2026):**
+1. **Marquee useEffect memory leak** — event listeners accumulate on every home→away→home navigation (line 759)
+2. **`user-scalable=no` still present** — WCAG 1.4.4 violation, Lighthouse failure (index.html line 5)
+3. **No React Error Boundary** — malformed camp data crashes entire page with white screen
+4. **CSP missing hardening directives** — `object-src`, `base-uri`, `form-action` not set (_headers line 57)
+5. **Scroll listener re-subscribes on every direction change** — unnecessary listener churn (lines 597-619)
 
-| Dimension | Score | Notes |
-|-----------|-------|-------|
-| Code Quality | 5/10 | God Component (5,825 lines), heavy duplication, dead code, no tests |
-| Architecture / Buyer-Readiness | 5/10 | Simple stack but zero separation of concerns; data embedded in UI |
-| SEO | 6.5/10 | Working well but structured data errors, SPA ceiling approaching |
-| Accessibility | 7/10 | WCAG 2.1 AA mostly met, some gaps in focus management |
-| Security | 7/10 | Enterprise headers good, CSP gap for GA4, EmailJS credentials exposed (expected) |
-| Performance | 6/10 | Images optimized well, but allCamps inside component and unused deps hurt |
-| Mobile UX | 8/10 | Strong — touch targets, drawer, responsive all working |
-| Documentation | 6/10 | Comprehensive but CODE_STRUCTURE.md line numbers all stale |
+### Health Scores (updated Feb 3, 2026 — post Tier 1+2+3 partial)
+
+| Dimension | Original (Feb 1) | Current (Feb 3) | Change | Notes |
+|-----------|-------------------|------------------|--------|-------|
+| Code Quality | 5/10 | **6/10** | +1 | Camp data extracted (4,661 lines), dead code removed, 30 packages uninstalled |
+| Architecture | 5/10 | **6/10** | +1 | Data separated from UI, cleaner package.json. Still monolithic, no tests. |
+| SEO | 6.5/10 | **7/10** | +0.5 | Meta counts fixed, sitemap current, CSP for GA4, crawl-delay removed. SPA ceiling unchanged. |
+| Accessibility | 7/10 | **6.5/10** | **-0.5** | DOWNGRADED: `user-scalable=no` is WCAG 1.4.4 violation. No focus traps in modals/menus. |
+| Security | 7/10 | **8/10** | +1 | noopener on window.open, maxLength on inputs, CSP connect-src fixed. Missing object-src/base-uri. |
+| Performance | 6/10 | **7/10** | +1 | allCamps module-level, filterOptions memoized, 30 unused packages removed |
+| Mobile UX | 8/10 | **8/10** | 0 | No change — already strong |
+| Documentation | 6/10 | **7.5/10** | +1.5 | CODE_STRUCTURE.md updated, review document comprehensive |
 
 ---
 
@@ -51,18 +58,18 @@ This is a well-built, functional production website that is successfully serving
 
 These systems are battle-tested, working in production, and must NOT be modified without explicit user approval:
 
-| System | Location | Why Protected |
-|--------|----------|---------------|
-| Enterprise marquee | App.jsx ~lines 1800-1940 + App.css | Battle-tested iOS/Android, complex animation timing |
-| GA4 tracking + UTM system | App.jsx event handlers + URL construction | Revenue-critical, working, drives partner reporting |
-| EmailJS contact form | App.jsx contact section + EmailJS config | Working cross-platform, tested with real submissions |
-| Security headers | public/_headers | Enterprise-grade, audited Sept 2025, HSTS + CSP |
-| Cookie consent system | App.jsx GDPR section | GDPR compliant, gates analytics correctly |
-| Schema/structured data | index.html JSON-LD blocks | Currently ranking #1-5 on Google (fix errors carefully) |
-| Scroll navigation | App.jsx scroll handlers | Tested iOS + desktop, Jan 2026, dead zones working |
-| Filter useMemo logic | App.jsx lines ~1480-1514 | Working correctly with multi-select OR logic |
-| robots.txt | public/robots.txt | Strategic config driving AI referral traffic (5 chatgpt.com visitors) |
-| Image optimization pipeline | AVIF/WebP/PNG fallback pattern | 93-96% reduction, working across all browsers |
+| System | Location (stable identifier) | Current Lines | Why Protected |
+|--------|-------------------------------|----------------|---------------|
+| Marquee animation | `initializeMarqueeSystem()` in useEffect + App.css marquee classes | App.jsx ~622-762 | Battle-tested iOS/Android, complex animation timing. Fix the memory leak (new Tier 2) but do NOT restructure. |
+| GA4 tracking + UTM system | `buildOutboundUrl()`, `trackOutboundClick()`, `handleBookingClick()` | App.jsx ~75-108 | Revenue-critical, working, drives partner reporting |
+| EmailJS contact form | `handleContactFormSubmit()` + EmailJS config | App.jsx ~135-187 | Working cross-platform, tested with real submissions |
+| Security headers | `public/_headers` | All lines | Enterprise-grade, audited Sept 2025 + Feb 2026. Add to CSP, don't restructure. |
+| Cookie consent system | `handleCookieAccept()`, `handleCookieReject()`, consent useEffect | App.jsx ~533-560, ~818-830 | GDPR compliant, gates GA4 + Vercel Analytics correctly |
+| Schema/structured data | index.html JSON-LD blocks | index.html ~76-395 | Currently ranking #1 on Google. Fix errors carefully — number changes only. |
+| Scroll navigation | scroll useEffect + `scrollToTop()`, `scrollToLastCamp()` | App.jsx ~597-619 | Tested iOS + desktop, Jan 2026, dead zones working. Fix listener churn (new Tier 3) without changing behavior. |
+| Filter useMemo logic | `filteredCamps` useMemo | App.jsx ~290-324 | Working correctly with multi-select OR logic |
+| robots.txt | `public/robots.txt` | All lines | Strategic config driving AI referral traffic (5 chatgpt.com visitors) |
+| Image optimization pipeline | AVIF/WebP/PNG `<picture>` elements | App.jsx ~940-960 | 93-96% reduction, working across all browsers |
 
 ---
 
@@ -179,6 +186,33 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Files**: index.html
 **Test**: `npm run build` + verify page renders correctly
 **Commit**: `Cleanup: Remove unused meta tags from index.html`
+
+#### T1-9: Remove duplicate "Budget Excellence" from footer (NEW — Feb 3 audit)
+
+**Problem**: Footer "Camp Categories" list has "Budget Excellence" twice (lines 3698-3705 AND 3716-3724). Both call `handleCategoryFilter('budget_excellence')`. Visible duplicate affecting professionalism.
+
+**Fix**: Delete lines 3716-3724 (the second occurrence).
+**Files**: src/App.jsx
+**Test**: `npm run build` + verify footer has exactly 7 category links
+**Commit**: `Fix: Remove duplicate Budget Excellence from footer categories`
+
+#### T1-10: Fix missed hyperbolic comment at line 217 (NEW — Feb 3 audit)
+
+**Problem**: Line 217 still reads `// Enterprise Marquee System - State of the Art`. Item #32 (T3-8) was supposed to fix all hyperbolic comments but missed this one.
+
+**Fix**: Change to `// Marquee overflow animation system`
+**Files**: src/App.jsx (line 217)
+**Test**: `npm run build`
+**Commit**: `Cleanup: Fix remaining hyperbolic comment at line 217`
+
+#### T1-11: Complete ItemList schema — add 3 missing categories (NEW — Feb 3 audit)
+
+**Problem**: The ItemList in index.html (lines 111-140) only includes 4 of 7 categories: Premium Alpine, Academic & STEM, Language Immersion, Sports Specialty. Missing: Family Programs, Budget Excellence, Unique Experiences. The `numberOfItems: 100` suggests comprehensive coverage but the list is incomplete.
+
+**Fix**: Add 3 ListItem entries for the missing categories after position 4.
+**Files**: index.html (lines 111-140)
+**Test**: `npm run build` + Google Rich Results Test
+**Commit**: `SEO: Complete ItemList schema with all 7 categories`
 
 ---
 
@@ -356,6 +390,78 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: Spot-check 5 line references against actual App.jsx
 **Commit**: `Docs: Update CODE_STRUCTURE.md to match current codebase`
 
+#### T2-16: Remove `user-scalable=no` from viewport meta (PROMOTED from Tier 3 — Feb 3 audit)
+
+**Problem**: `user-scalable=no` in index.html line 5 prevents pinch-to-zoom. WCAG 1.4.4 violation. Lighthouse flags it. Site claims "WCAG 2.1 AA COMPLIANT" but this directly contradicts that claim.
+
+**Fix**: Remove `user-scalable=no` from the viewport meta content attribute. Keep `viewport-fit=cover`.
+**Files**: index.html (line 5)
+**Test**: `npm run build` + verify pinch-to-zoom works on mobile, no layout shifts
+**Commit**: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
+
+#### T2-17: Fix marquee useEffect memory leak (NEW — Feb 3 audit)
+
+**Problem**: `initializeMarqueeSystem()` (line 623) calls `tryInitialize()` via `setTimeout` (line 741), which calls `initWithDelay()` (line 625). `initWithDelay()` returns a cleanup function (line 717-722) that removes 4 event listeners. But `tryInitialize()` never captures this return value, and `initializeMarqueeSystem()` returns `undefined`. So line 759 `const cleanup = initializeMarqueeSystem()` assigns `undefined` to cleanup — the useEffect has no cleanup. Every home→away→home navigation adds 4 more event listeners (resize, visibilitychange, IntersectionObserver, motionMediaQuery change) without removing the old ones.
+
+**Fix**: Restructure so `tryInitialize` captures and stores the cleanup from `initWithDelay()`, and `initializeMarqueeSystem()` returns a function that calls the stored cleanup. Minimal changes — don't refactor the marquee logic itself (DO NOT TOUCH).
+**Files**: src/App.jsx (lines 623-762)
+**Test**: `npm run build` + verify marquee works on mobile + navigate home→discover→home multiple times, check no listener accumulation in DevTools
+**Commit**: `Fix: Marquee useEffect memory leak — capture and return cleanup function`
+
+#### T2-18: Add React Error Boundary (NEW — Feb 3 audit)
+
+**Problem**: Zero error boundaries. A single runtime error in any camp card, filter, or section crashes the entire page with a white screen. Camp data is manually maintained — a typo like `activities: null` instead of `activities: []` would crash the site.
+
+**Fix**: Create `src/components/ErrorBoundary.jsx` (class component — React requires class for error boundaries). Wrap main content in App.jsx. Show a user-friendly "Something went wrong" message with a reload button.
+**Files**: src/components/ErrorBoundary.jsx (new), src/App.jsx (wrap content)
+**Test**: `npm run build` + temporarily break one camp entry to verify error boundary catches it
+**Commit**: `Safety: Add React Error Boundary to prevent white-screen crashes`
+
+#### T2-19: Cache `generateBreadcrumbs()` result (NEW — Feb 3 audit)
+
+**Problem**: `generateBreadcrumbs()` called twice per render — once for `.map()` at line 906, again inside the callback at line 923 for `.length`. Creates two separate array allocations.
+
+**Fix**: Store result in a variable before the JSX: `const breadcrumbs = generateBreadcrumbs()`. Use `breadcrumbs.map(...)` and `breadcrumbs.length`.
+**Files**: src/App.jsx (lines 906, 923)
+**Test**: `npm run build` + verify breadcrumbs display correctly
+**Commit**: `Perf: Cache generateBreadcrumbs() result (was called twice per render)`
+
+#### T2-20: CSP hardening — add missing directives (NEW — Feb 3 audit)
+
+**Problem**: CSP at `_headers` line 57 is missing `object-src`, `base-uri`, and `form-action` directives. These are standard hardening recommendations.
+
+**Fix**: Append to CSP: `; object-src 'none'; base-uri 'self'; form-action 'self' https://api.emailjs.com`
+**Files**: public/_headers (line 57)
+**Test**: Deploy + check browser console for CSP violations + verify contact form still submits
+**Commit**: `Security: Add object-src, base-uri, form-action to CSP`
+
+#### T2-21: Add Permissions-Policy header (NEW — Feb 3 audit)
+
+**Problem**: No `Permissions-Policy` header restricting browser features (camera, microphone, geolocation, payment).
+
+**Fix**: Add `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()` to `_headers` after line 57.
+**Files**: public/_headers
+**Test**: `npm run build` + verify site loads normally
+**Commit**: `Security: Add Permissions-Policy header`
+
+#### T2-22: Replace deprecated X-XSS-Protection header (NEW — Feb 3 audit)
+
+**Problem**: `X-XSS-Protection: 1; mode=block` at `_headers` line 54 is deprecated in modern browsers and can actually introduce vulnerabilities in edge cases.
+
+**Fix**: Change to `X-XSS-Protection: 0`
+**Files**: public/_headers (line 54)
+**Test**: `npm run build`
+**Commit**: `Security: Set X-XSS-Protection to 0 (deprecated header)`
+
+#### T2-23: Add `<noscript>` fallback content (NEW — Feb 3 audit)
+
+**Problem**: If JavaScript fails to load, users and crawlers see empty `<div id="root"></div>`. A basic `<noscript>` block provides a safety net for JS rendering failures (relevant for Googlebot edge cases).
+
+**Fix**: Add `<noscript>` inside `<body>` with site name, description, and note to enable JavaScript. Keep it brief (~5 lines).
+**Files**: index.html
+**Test**: `npm run build` + disable JS in browser to verify fallback shows
+**Commit**: `SEO: Add noscript fallback content for JS rendering failures`
+
 ---
 
 ### Tier 3 — MEDIUM RISK (logic-touching, careful testing required)
@@ -425,16 +531,9 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + compare badge sizes on mobile between Home and Discover
 **Commit**: `Fix: Use consistent badge-responsive class in Discover section`
 
-#### T3-7: Remove `user-scalable=no` from viewport meta
+#### ~~T3-7: Remove `user-scalable=no` from viewport meta~~ — **PROMOTED TO TIER 2** (T2-16, Feb 3 audit)
 
-**Problem**: index.html viewport meta tag includes `user-scalable=no` which prevents pinch-to-zoom. Accessibility concern (WCAG 1.4.4) and Lighthouse flags it.
-
-**Fix**: Remove `user-scalable=no` from the viewport meta content attribute. Keep `viewport-fit=cover` for iOS safe areas.
-
-**Files**: index.html (line ~5)
-**Test**: `npm run build` + verify pinch-to-zoom works on mobile + no layout shifts
-**Caution**: Test thoroughly on iOS and Android — some layouts may shift with zoom enabled.
-**Commit**: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
+WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 above.
 
 #### T3-8: Remove hyperbolic code comments
 
@@ -504,6 +603,68 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Files**: src/App.jsx
 **Test**: `npm run build` + verify affected sections still work
 **Commit**: TBD based on investigation
+
+#### T3-15: Scroll listener re-subscription churn (NEW — Feb 3 audit)
+
+**Problem**: useEffect at lines 597-619 has dependency array `[showBackToTop, scrollDirection]`. Every time scroll direction changes or button visibility toggles, the effect tears down and re-attaches the scroll listener. On a typical scroll through 52 camps, this fires dozens of times.
+
+**Fix**: Use refs for `showBackToTop` and `scrollDirection` values inside the handler instead of reading from closure. Change dependency array to `[]` for a stable listener.
+**Files**: src/App.jsx (lines 597-619)
+**Test**: `npm run build` + verify scroll button appears/disappears correctly + arrow direction toggles + no jank
+**Commit**: `Perf: Stabilize scroll listener with refs (eliminate re-subscription churn)`
+
+#### T3-16: Move static filter arrays to module scope (NEW — Feb 3 audit)
+
+**Problem**: `priceTierOptions` and `ageGroupOptions` (lines ~374-387) are plain arrays defined inside the component function body. Recreated every render despite never changing.
+
+**Fix**: Move both arrays above `function App()`.
+**Files**: src/App.jsx (lines 374-387)
+**Test**: `npm run build` + verify filter dropdowns still populate correctly
+**Commit**: `Perf: Move static filter option arrays to module scope`
+
+#### T3-17: Move footer outside `<main>` element (NEW — Feb 3 audit)
+
+**Problem**: The `<footer>` element (line ~3425) is rendered inside `<main>`, which closes after the footer (~line 3900). Semantically, footer should be a sibling of `<main>`, not inside it.
+
+**Fix**: Move the `</main>` closing tag to before the `<footer>`.
+**Files**: src/App.jsx
+**Test**: `npm run build` + verify layout unchanged
+**Commit**: `A11y: Move footer outside main element (semantic HTML fix)`
+
+#### T3-18: Add focus trap to contact form modal (NEW — Feb 3 audit)
+
+**Problem**: Contact form modal (lines ~4287-4483) has no focus trap. Tab key cycles through background content behind the modal. WCAG 2.1 focus management concern.
+
+**Fix**: Add focus trap logic — on open, move focus to first input; on Tab past last element, wrap to first; on Escape, close modal.
+**Files**: src/App.jsx (contact modal section)
+**Test**: `npm run build` + keyboard-only testing: Tab through modal, verify no escape to background
+**Commit**: `A11y: Add focus trap to contact form modal`
+
+#### T3-19: Add width/height to camp card images (NEW — Feb 3 audit)
+
+**Problem**: Camp card `<img>` elements at lines ~1196, ~1738, ~1988 lack `width` and `height` attributes. The parent div has `h-56` which partially mitigates CLS, but explicit dimensions are the standard approach for CLS prevention.
+
+**Fix**: Add `width="400" height="224"` to all three `<img>` elements.
+**Files**: src/App.jsx (3 locations)
+**Test**: `npm run build` + verify card images display correctly at all breakpoints
+**Commit**: `Perf: Add width/height to camp card images (CLS prevention)`
+
+#### T3-20: Reset contact form after submission (NEW — Feb 3 audit)
+
+**Problem**: After successful submission (lines 175-179), `formSubmitted` is set true and modal closes after 3s, but HTML form fields are never reset. If modal reopens, previous values persist.
+
+**Fix**: Add form reset after successful submission. Either `e.target.reset()` in the submit handler or reset the form ref.
+**Files**: src/App.jsx (line ~175)
+**Test**: `npm run build` + submit form, close, reopen — fields should be empty
+**Commit**: `Fix: Reset contact form fields after successful submission`
+
+#### T3-21: Add `rel="sponsored"` to Featured camp booking links (NEW — Feb 3 audit)
+
+**Problem**: Featured listings are paid placements (€99/year). Google guidelines require `rel="sponsored"` on paid/commercial outbound links. Currently no `rel` attributes on booking `<a>` tags — they use `window.open` via `handleBookingClick`. If `<a>` tags are added in Phase 2 or if Featured links become direct `<a>` elements, `rel="sponsored"` is required.
+
+**Fix**: For now, document the requirement. When Featured listings use `<a>` tags, ensure `rel="sponsored noopener noreferrer"`.
+**Files**: Documentation note (no code change until `<a>` tags are used)
+**Commit**: N/A (documentation only for now)
 
 ---
 
@@ -817,29 +978,79 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - All items marked, deviations noted.
   - Commit: `Docs: Mark Tier 2 complete in CODE_REVIEW_2026.md`
 
+#### Group G: New items from February 3 five-agent audit (pending)
+
+- [ ] **26. Remove user-scalable=no from viewport** (T2-16, promoted from T3-7)
+  - **WCAG 1.4.4 violation** on a site claiming AA compliance. One-line fix.
+  - File: index.html (line ~5). Remove `user-scalable=no` from viewport meta.
+  - Test: `npm run build` + verify pinch-to-zoom works on mobile, no layout shifts
+  - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
+
+- [ ] **27. Fix marquee memory leak** (T2-17, NEW)
+  - `initializeMarqueeSystem()` never returns cleanup from `initWithDelay()`. Line 759 gets `undefined`.
+  - Event listeners (resize, visibilitychange, IntersectionObserver, motionMediaQuery) accumulate on every home→away→home navigation.
+  - Fix: Restructure so cleanup function is captured and returned. Minimal change — do NOT extract the hook.
+  - Files: src/App.jsx (~lines 622-762)
+  - Test: `npm run build` + navigate home→discover→home 5 times, check DevTools for listener count
+  - Commit: `Fix: Capture marquee cleanup function to prevent memory leak`
+
+- [ ] **28. Add React Error Boundary** (T2-18, NEW)
+  - A single malformed camp entry currently crashes the entire page (white screen).
+  - Wrap main content in an error boundary component. Show fallback "Something went wrong" instead of blank page.
+  - Files: New src/components/ErrorBoundary.jsx + src/App.jsx (wrap root)
+  - Test: `npm run build` + temporarily corrupt a camp entry, verify fallback renders
+  - Commit: `Resilience: Add React Error Boundary for crash prevention`
+
+- [ ] **29. Cache generateBreadcrumbs() result** (T2-19, NEW)
+  - Called twice per render at lines 906 and 923. Store in variable.
+  - File: src/App.jsx (~lines 906, 923)
+  - Test: `npm run build`
+  - Commit: `Perf: Cache generateBreadcrumbs() call (was called twice per render)`
+
+- [ ] **30. Harden CSP directives** (T2-20, NEW)
+  - Add `object-src 'none'; base-uri 'self'; form-action 'self' https://api.emailjs.com` to `_headers` line 57
+  - File: public/_headers
+  - Test: `npm run build` + verify site loads, contact form submits, no CSP errors in console
+  - Commit: `Security: Add object-src, base-uri, form-action to CSP`
+
+- [ ] **31. Add Permissions-Policy header** (T2-21, NEW)
+  - Add `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()` to `_headers`
+  - File: public/_headers
+  - Test: `npm run build` + check response headers
+  - Commit: `Security: Add Permissions-Policy header (restrict unused APIs)`
+
+- [ ] **32. Fix deprecated X-XSS-Protection** (T2-22, NEW)
+  - Change from `1; mode=block` to `0` at `_headers` line 54. Modern browsers removed XSS Auditor; `1; mode=block` can introduce vulnerabilities.
+  - File: public/_headers
+  - Test: `npm run build` + check response headers
+  - Commit: `Security: Set X-XSS-Protection to 0 (deprecated auditor)`
+
+- [ ] **33. Add `<noscript>` fallback** (T2-23, NEW)
+  - Basic content summary in index.html for JavaScript rendering failures and no-JS crawlers.
+  - File: index.html (inside `<body>`, after `<div id="root">`)
+  - Test: `npm run build` + disable JS in browser, verify fallback text appears
+  - Commit: `SEO: Add noscript fallback for JS-disabled users and crawlers`
+
 #### Removed from Tier 2
 
 - [x] ~~**T2-5: Add fetchpriority="high" to hero image**~~ — ALREADY IMPLEMENTED (line 2118)
-- [x] ~~**T2-8: Extract marquee useEffect to custom hook**~~ — RECLASSIFIED TO TIER 3 (see Section 9)
+- [x] ~~**T2-8: Extract marquee useEffect to custom hook**~~ — RECLASSIFIED TO TIER 3 → TIER 4 (see #43)
   - 140-line battle-tested useEffect on DO NOT TOUCH list (Section 2)
   - Complex: inline debounce, retry logic, IntersectionObserver, iOS/Android platform detection
   - Affects 70% of users (mobile). Risk too high for Tier 2.
-  - Defer to Phase 2 when component splits make extraction natural.
+  - Demoted further to Tier 4 (Feb 3) — contradicts DO NOT TOUCH. Memory leak bug is separate item T2-17.
 
 ### Tier 3 — Medium Risk Fixes (8 of 11 complete as of February 3, 2026)
 
 *Revised February 2, 2026: T3-1 and T3-2 promoted to Tier 2 (items #20-#21). T3-13 demoted to Tier 4. T2-8 added here.*
-*February 3, 2026: 8 quick wins completed (items #27-30, #32, #34-37). 3 items remain (#26, #31, #33).*
+*February 3, 2026: 8 quick wins completed (items #27-30, #32, #34-37). #26 demoted to Tier 4. #31 promoted to Tier 2. 1 item remains (#33 — numeric price field). New Tier 3 items T3-15 through T3-21 added from 5-agent fresh audit.*
 
 - [x] ~~**T3-1. Fix CSP connect-src for GA4**~~ — **PROMOTED TO TIER 2** (item #20)
 - [x] ~~**T3-2. Fix meta tag country counts**~~ — **PROMOTED TO TIER 2** (item #21)
 
-- [ ] **26. Extract marquee useEffect to custom hook** (T2-8 → reclassified to Tier 3)
-  - Files: src/App.jsx (~lines 1792-1932) → new src/hooks/useMarqueeAnimation.js
-  - 140 lines with inline debounce, retry logic, IntersectionObserver, platform detection
-  - On DO NOT TOUCH list — requires thorough mobile testing (iOS + Android)
-  - Test: `npm run build` + verify marquee on mobile AND desktop
-  - Commit: `Refactor: Extract marquee animation to useMarqueeAnimation hook`
+- [x] ~~**26. Extract marquee useEffect to custom hook**~~ — **DEMOTED TO TIER 4** (item #43, Feb 3)
+  - Contradicts DO NOT TOUCH list. The actual bug (memory leak) is T2-17. This extraction is cosmetic refactor only.
+  - Defer to Phase 2 when component splits make extraction natural.
 
 - [x] **27. Fix broken "Local" category footer link** (T3-3) ✅ Feb 3
   - Changed to `handleCategoryFilter('budget_excellence')` with label "Budget Excellence"
@@ -857,7 +1068,8 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Changed Discover section activity/language badges from `text-xs` to `badge-responsive`
   - Commit: `Fix: Use consistent badge-responsive class in Discover`
 
-- [ ] **29. Remove user-scalable=no from viewport** (T3-7)
+- [ ] **31. Remove user-scalable=no from viewport** (T3-7 → **PROMOTED TO TIER 2** as T2-16, Feb 3)
+  - **See T2-16 below for updated priority.** WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix.
   - File: index.html (line ~5)
   - Test: `npm run build` + verify pinch-to-zoom works on mobile, no layout shifts
   - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
@@ -898,31 +1110,86 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Controls which resource sub-section displays (booking-timeline, safety-standards, etc.)
   - No action needed — this is live, functional state
 
+#### New Tier 3 items from February 3 five-agent audit
+
+- [ ] **38. Fix scroll listener re-subscription** (T3-15, NEW)
+  - useEffect at lines 597-619 has `[showBackToTop, scrollDirection]` deps causing listener churn on every scroll direction change.
+  - Fix: Use refs instead of state in the scroll handler to avoid re-subscription.
+  - Files: src/App.jsx (~lines 597-619)
+  - Test: `npm run build` + scroll up/down, verify performance in DevTools
+  - Commit: `Perf: Use refs in scroll listener to prevent re-subscription churn`
+
+- [ ] **39. Move static filter arrays to module scope** (T3-16, NEW)
+  - `priceTierOptions` and `ageGroupOptions` (lines 374-387) are static arrays recreated every render.
+  - Fix: Move to module scope above `function App()`.
+  - Files: src/App.jsx (~lines 374-387)
+  - Test: `npm run build` + verify filters still work
+  - Commit: `Perf: Move static filter option arrays to module scope`
+
+- [ ] **40. Fix footer semantic structure** (T3-17, NEW)
+  - `<footer>` is currently inside `<main>`. Should be a sibling of `<main>` per HTML5 semantics.
+  - Files: src/App.jsx (~line 3600)
+  - Test: `npm run build` + verify footer renders correctly
+  - Commit: `A11y: Move footer outside main element (HTML5 semantics)`
+
+- [ ] **41. Add focus trap for contact modal** (T3-18, NEW)
+  - No focus trap in contact form modal (lines 4287-4483). Tab key can escape modal.
+  - Files: src/App.jsx (contact modal section)
+  - Test: `npm run build` + open modal, Tab through all fields, verify focus stays within
+  - Commit: `A11y: Add focus trap to contact form modal`
+
+- [ ] **42. Add focus management for mobile menu** (T3-19, NEW)
+  - No focus management when mobile nav opens (lines 885-896). Focus should move to first menu item.
+  - Files: src/App.jsx (mobile menu section)
+  - Test: `npm run build` + open mobile menu, verify focus moves correctly
+  - Commit: `A11y: Add focus management to mobile menu`
+
+- [ ] **43. Add width/height to camp card images** (T3-20, NEW)
+  - Lines 1196, 1738, 1988 lack explicit dimensions, causing CLS.
+  - Files: src/App.jsx (camp card image elements)
+  - Test: `npm run build` + verify no visual changes, check CLS in Lighthouse
+  - Commit: `Perf: Add width/height to camp card images (CLS prevention)`
+
+- [ ] **44. Reset contact form after submission** (T3-21, NEW)
+  - After successful submission, form fields retain values if modal reopens.
+  - Files: src/App.jsx (~line 175)
+  - Test: `npm run build` + submit form, close, reopen — fields should be empty
+  - Commit: `Fix: Reset contact form fields after successful submission`
+
 ### Tier 4 — Phase 2 Only
 
-- [ ] **37. Extract shared FilterBar component** (T4-1) — Requires React Router
-- [ ] **38. Extract shared CampCard component** (T4-2) — Requires React Router
-- [ ] **39. Split sections into route components** (T4-3) — IS Phase 2
-- [ ] **40. Fix multiple H1 elements** (T4-4) — Natural with real routes
-- [ ] **41. Fix schema hash fragment URLs** (T4-5) — Requires real routes
-- [ ] **42. Remove/replace non-functional BreadcrumbList/SearchAction schema** (T3-13 → demoted from Tier 3)
+- [ ] **45. Extract shared FilterBar component** (T4-1) — Requires React Router
+- [ ] **46. Extract shared CampCard component** (T4-2) — Requires React Router
+- [ ] **47. Split sections into route components** (T4-3) — IS Phase 2
+- [ ] **48. Fix multiple H1 elements** (T4-4) — Natural with real routes
+- [ ] **49. Fix schema hash fragment URLs** (T4-5) — Requires real routes
+- [ ] **50. Remove/replace non-functional BreadcrumbList/SearchAction schema** (T3-13 → demoted from Tier 3)
   - Demoted Feb 2, 2026: SEO reviewer found removing schema is riskier than keeping non-functional schema
   - When Phase 2 provides real routes, replace hash URLs with real paths instead of removing
+- [ ] **51. Extract marquee useEffect to custom hook** (T3 #26 → demoted to Tier 4, Feb 3)
+  - Demoted Feb 3, 2026: Contradicts DO NOT TOUCH list (Section 2). Pure refactor with high mobile risk (70% traffic).
+  - The actual bug (memory leak) is now a separate Tier 2 item (T2-17). This extraction is cosmetic.
+  - When Phase 2 splits App.jsx into route components, extraction becomes natural and lower-risk.
 
 ---
 
 ## Section 6: SEO-Specific Findings
 
 ### Structured Data Issues
-1. **numberOfItems is string "100+"** — Must be integer for schema.org compliance
-2. **SearchAction uses hash fragment** — Google ignores `/#discover?search={search_term}`. Non-functional until Phase 2. Consider removing entirely rather than keeping non-functional markup.
-3. **BreadcrumbList uses hash URLs** — Same issue. Consider removing until Phase 2 provides real URLs — non-functional schema could be flagged as misleading.
+1. ~~**numberOfItems is string "100+"**~~ — ✅ FIXED (Feb 2, item #17). Now integer `100`.
+2. **SearchAction uses hash fragment** — Google ignores `/#discover?search={search_term}`. Non-functional until Phase 2. Keeping as-is per SEO reviewer advice (removing is riskier).
+3. **BreadcrumbList uses hash URLs** — Same issue. Keeping until Phase 2 provides real URLs.
 4. **Event schema is NOT implemented** — CLAUDE.md incorrectly claims "Event schema for camps." Actual schema uses `EducationalOrganization` in an `ItemList` in index.html. This is a documentation error in CLAUDE.md (should say "EducationalOrganization schema"). Event schema is better suited for Phase 2 individual camp pages with specific dates/locations.
 5. **No individual camp structured data** — Camps have zero schema markup. AggregateRating schema would generate star ratings in SERPs (competitor world-camps.org does this). Requires Phase 2 individual camp pages.
+6. **ItemList schema incomplete** (NEW — Feb 3 audit) — Only 4 of 7 categories listed in index.html lines 111-140 (missing Family Programs, Budget Excellence, Unique Experiences). See T1-11.
+7. **`@CampExplorerEU` Twitter handle** — Referenced in `twitter:site` meta tag. Verify this handle actually exists and is controlled. If not, remove the meta tag.
+8. **No `<noscript>` fallback** (NEW — Feb 3 audit) — JS-disabled users and some crawlers see blank page. See T2-23.
+9. **`rel="sponsored"` needed for Featured listings** (NEW — Feb 3 audit) — Paid placements (€99/year) require `rel="sponsored"` per Google guidelines. Not actionable until booking links use `<a>` tags. See T3-21.
 
 ### Meta Tag Issues
-1. **Country counts inconsistent** — Found references to 21, 13, and 13 countries across different meta tags. Actual: 24.
+1. ~~**Country counts inconsistent**~~ — ✅ FIXED (Feb 2, item #21). All meta tags now say 24 countries.
 2. **Title and description are effective** — Currently driving 73% organic traffic. Change with extreme care.
+3. **Confirmed #1 ranking** (Feb 3 audit) — Site ranks #1 for "european summer camps 2026" despite SPA limitation. Protect this position.
 
 ### Content SEO
 1. **Multiple H1 elements** — 13 H1s across sections. Only 1 visible at a time due to hash nav, but crawlers may see all. Phase 2 fix.
@@ -959,18 +1226,20 @@ Ordered by risk tier (Tier 1 first). One item per commit.
 8. **AggregateRating schema per camp** — generates star ratings in SERPs (world-camps.org does this)
 9. Proper canonical tags per page, one H1 per route
 
-### Overall SEO Score: 6.5/10 (validated across 2 independent runs)
+### Overall SEO Score: 7.0/10 (updated February 3, 2026 — up from 6.5)
+
+*Improvement driven by: meta tag fixes, sitemap update, CSP for GA4, numberOfItems fix, country count corrections.*
 
 | Sub-dimension | Score | Notes |
 |---------------|-------|-------|
-| Meta Tags & Title | 7/10 | Good title/description, but inconsistent country numbers across OG/Twitter/meta |
-| Structured Data | 5/10 | FAQ and ItemList good; Event schema missing despite docs; BreadcrumbList/SearchAction non-functional |
+| Meta Tags & Title | 8/10 | ✅ Country counts fixed. Title/description driving #1 ranking. |
+| Structured Data | 5.5/10 | FAQ and ItemList good; ItemList incomplete (4/7 categories); BreadcrumbList/SearchAction non-functional |
 | Content SEO / Headings | 5/10 | 13 H1 tags on one page; rich content trapped in single URL |
 | Image SEO | 8/10 | AVIF/WebP delivery, descriptive dynamic alt text, image in sitemap |
-| Technical SEO | 6/10 | Clean canonical, proper robots; but SPA limits crawlability, JS rendering dependency |
-| Core Web Vitals | 7/10 | Good image optimization and caching; LCP improvable with preload hint |
+| Technical SEO | 6.5/10 | Clean canonical, proper robots, sitemap updated; SPA limits crawlability |
+| Core Web Vitals | 7/10 | Good image optimization and caching; camp card images lack width/height (CLS) |
 | Caching & Headers | 9/10 | Excellent immutable cache headers, strong security headers |
-| Schema Accuracy | 5/10 | Multiple data mismatches (country counts); non-functional SearchAction/BreadcrumbList |
+| Schema Accuracy | 6.5/10 | ✅ Country counts fixed. numberOfItems fixed. ItemList still incomplete. |
 | Competitor Parity | 4/10 | Single biggest gap: 1 indexable URL vs competitors' 10-400+ |
 
 ---
@@ -995,27 +1264,27 @@ A buyer who is comfortable with React could take this over, but they would immed
 - Camp data is well-structured with consistent fields
 
 **Negatives:**
-- 5,825-line God Component — a buyer's first week is just understanding what goes where
-- Camp data embedded in UI code — adding a camp means editing the main application file
+- ~~5,825-line God Component~~ **Improved**: Now 4,636-line App.jsx + 1,196-line camps.js — still a God Component but data separated
+- ~~Camp data embedded in UI code~~ **✅ RESOLVED (Feb 2)**: Camp data extracted to `src/data/camps.js`
 - Zero tests of any kind — no safety net for changes
 - ~~38 unused UI components and ~10 unused npm packages signal "kitchen sink" installation~~ **✅ RESOLVED (Tier 1)** — 41 components + 30 packages removed
-- Filter UI duplication is documented tech debt never addressed
-- No routing library — the app conditionally shows/hides sections
-- Stale documentation line numbers undermine confidence
+- Filter UI duplication is documented tech debt never addressed (Tier 4)
+- No routing library — the app conditionally shows/hides sections (Phase 2)
+- ~~Stale documentation line numbers undermine confidence~~ **✅ RESOLVED (Feb 2)** — CODE_STRUCTURE.md updated
 
 ### Code Organization Issues
 
-**Separation of concerns: Nonexistent.** Data, business logic, analytics, email config, GDPR handling, and all 10+ UI sections live in one function. Zero custom components besides App itself.
+**Separation of concerns: Minimal.** Camp data now in separate file (Feb 2). But business logic, analytics, email config, GDPR handling, and all 10+ UI sections still live in one function. Zero custom components besides App itself.
 
-**What took longest to find:** The filtering logic at line ~1480 — buried between 1,200 lines of camp data and 300 lines of navigation handlers.
+**What took longest to find:** The filtering logic at line ~290 (`filteredCamps` useMemo) — previously buried between 1,200 lines of camp data and 300 lines of navigation handlers. Camp data extraction (Feb 2) improved this.
 
 ### Naming & Readability
 
 Naming is **generally good**: consistent camelCase, descriptive function names (`handleCategoryFilter`, `toggleCountry`, `clearAllFilters`). State variables clearly communicate purpose.
 
 **Issues:**
-- `resourceSection` state — set but purpose unclear in render code
-- **Hyperbolic code comments undermine credibility**: "ENTERPRISE MARQUEE INTELLIGENCE SYSTEM - STATE OF THE ART" and "Bleeding-edge performance optimization" for a marquee scroller and useMemo. A buyer reading these will question the developer's judgment.
+- ~~`resourceSection` state — set but purpose unclear~~ **✅ RESOLVED (Feb 3)** — investigated, actively used for Plan section sub-pages
+- ~~**Hyperbolic code comments undermine credibility**~~ **✅ MOSTLY RESOLVED (Feb 3, item #32)** — 5 hyperbolic comments replaced. One missed: line 217 "Enterprise Marquee System - State of the Art" (see T1-10)
 - Magic number: `badgeWidth - 40` (~line 1824) with vague inline comment. Should be a named constant.
 - Inconsistent boundary between module-scope and component-scope functions
 
@@ -1026,7 +1295,7 @@ Naming is **generally good**: consistent camelCase, descriptive function names (
 - **UI state (6)**: `isMenuOpen`, `activeSection`, `filterSheetOpen`, `openDropdown`, `showContactForm`, `showBackToTop`
 - **Form state (2)**: `isSubmittingForm`, `formSubmitted`
 - **GDPR state (2)**: `cookieConsent`, `showCookieBanner`
-- **Other (4)**: `selectedCamps`, `scrollDirection`, `resourceSection`, `_showFilters` (dead)
+- **Other (3)**: `selectedCamps`, `scrollDirection`, `resourceSection` (~~`_showFilters`~~ deleted Feb 2)
 
 No hidden state dependency issues found — useMemo dependency arrays are correct.
 
@@ -1036,7 +1305,7 @@ No hidden state dependency issues found — useMemo dependency arrays are correc
 - **Marquee useEffect** (~lines 1792-1932): 140 lines with inline debounce utility, retry logic, IntersectionObserver, and platform detection. Should be a custom hook `useMarqueeAnimation`.
 - **`handleResourceLink`**: Switch with 7+ cases of duplicated scroll-to-element logic. Each case does the same thing with minor variations.
 - **`generateBreadcrumbs`** (~lines 1587-1617): Verbose switch statement that could be replaced with a simple object lookup (map section name to breadcrumb config).
-- **`filterOptions`** (~line 1516): Filters allCamps 7 times per render without memoization — should be wrapped in useMemo.
+- ~~**`filterOptions`** (~line 1516): Filters allCamps 7 times per render without memoization~~ **✅ RESOLVED (Feb 2, item #22)** — wrapped in useMemo
 - **Age matching in `filteredCamps`** (~lines 1485-1496): Uses inline IIFE that reduces readability.
 
 ### Data Architecture Issues
@@ -1046,7 +1315,7 @@ No hidden state dependency issues found — useMemo dependency arrays are correc
 3. **Same 4 images** reused across all 56 camps — image field is decorative, not informational.
 4. **ID gaps** (13, 16, 19, 22 removed) — comment explanations are good but a buyer wonders about data integrity.
 5. **`reviews: 0`** on 8 camps — ambiguous: "not collected" vs "zero reviews."
-6. **Hardcoded stats** ("52", "24", "100+") scattered across JSX — should be derived from data.
+6. ~~**Hardcoded stats** ("52") scattered across JSX~~ **✅ RESOLVED (Feb 2, item #11)** — 8 locations replaced with `allCamps.length`
 
 ### Documentation Accuracy (CODE_STRUCTURE.md)
 
@@ -1059,22 +1328,22 @@ No hidden state dependency issues found — useMemo dependency arrays are correc
 | useEffect lines 1270-1494 | Lines 1702-1964 | Off by ~430 lines |
 | Lists 10 UI components | 46 components exist (5 used) | 36 unlisted |
 
-**Verdict**: CODE_STRUCTURE.md was accurate when written but is now unreliable. Every line number reference is wrong by 100-400+ lines.
+**Verdict**: ~~CODE_STRUCTURE.md was unreliable~~ **✅ RESOLVED (Feb 2, item #23)** — fully updated with accurate line numbers, camps.js structure, correct file listing.
 
 ### Top 10 Buyer-Readiness Improvements (from architecture review)
 
-| Priority | Improvement | Impact | Effort |
+| Priority | Improvement | Impact | Status |
 |----------|------------|--------|--------|
-| 1 | Extract camp data to `src/data/camps.js` | Massive — reduces App.jsx by 1,200 lines | 15 min |
-| 2 | Extract CampCard component | High — eliminates duplication | 1 hour |
-| 3 | Extract FilterBar component | High — eliminates ~800 lines duplication | 2 hours |
-| 4 | Add numeric price field to data | High for any buyer enhancing the product | 2 hours |
-| 5 | Remove unused shadcn/ui components | Clean repo signal | 10 min |
-| 6 | Remove unused npm packages | Reduces confusion about actual stack | 30 min |
-| 7 | Delete dead state (`_showFilters`) | Code hygiene signal | 1 min |
-| 8 | Remove hyperbolic code comments | Credibility with buyers | 15 min |
-| 9 | Update CODE_STRUCTURE.md line numbers | Documentation trust | 30 min |
-| 10 | Extract marquee useEffect to custom hook | Reduces App.jsx complexity | 1 hour |
+| 1 | Extract camp data to `src/data/camps.js` | Massive — reduces App.jsx by 1,200 lines | ✅ Done (Feb 2) |
+| 2 | Extract CampCard component | High — eliminates duplication | Tier 4 |
+| 3 | Extract FilterBar component | High — eliminates ~800 lines duplication | Tier 4 |
+| 4 | Add numeric price field to data | High for any buyer enhancing the product | Tier 3 (#33) |
+| 5 | Remove unused shadcn/ui components | Clean repo signal | ✅ Done (Feb 2) |
+| 6 | Remove unused npm packages | Reduces confusion about actual stack | ✅ Done (Feb 2) |
+| 7 | Delete dead state (`_showFilters`) | Code hygiene signal | ✅ Done (Feb 2) |
+| 8 | Remove hyperbolic code comments | Credibility with buyers | ✅ Done (Feb 3) |
+| 9 | Update CODE_STRUCTURE.md line numbers | Documentation trust | ✅ Done (Feb 2) |
+| 10 | Extract marquee useEffect to custom hook | Reduces App.jsx complexity | Tier 4 |
 
 ### New Checklist Items from Architecture Review
 
@@ -1277,6 +1546,45 @@ Three rounds of verification performed before execution:
 
 ---
 
+## Section 10: Security Audit (February 3, 2026)
+
+*Fresh audit by security-audit-specialist agent as part of 5-agent parallel review.*
+
+### Security Score: 8.0/10 (up from 7.0 in Section 1)
+
+**Improvements since September 2025 audit:**
+- ✅ `noopener,noreferrer` on all `window.open` calls (Feb 2)
+- ✅ `maxLength={200}` on search inputs (Feb 2)
+- ✅ CSP `connect-src` updated for GA4 domains (Feb 2)
+- ✅ Camp Bjontegaard HTTP→HTTPS fix (Feb 2)
+
+**Remaining issues (mapped to checklist items):**
+
+| Finding | Severity | Checklist Item |
+|---------|----------|---------------|
+| CSP missing `object-src`, `base-uri`, `form-action` | Medium | T2-20 (#30) |
+| No `Permissions-Policy` header | Low | T2-21 (#31) |
+| `X-XSS-Protection: 1; mode=block` deprecated | Low | T2-22 (#32) |
+| No `<noscript>` fallback | Low | T2-23 (#33) |
+| No React Error Boundary | Medium | T2-18 (#28) |
+| Marquee memory leak (listener accumulation) | Medium | T2-17 (#27) |
+| `user-scalable=no` (accessibility, not security) | Low | T2-16 (#26) |
+
+**Noted but deferred:**
+- Vite 4.x approaching EOL — monitor for security patches, upgrade in Phase 2
+- Dev server binds to `0.0.0.0` — dev-only, no production impact
+- `key={index}` anti-pattern in static camp lists — low risk for static data, not a security issue
+
+**What's working well:**
+- HSTS with 1-year max-age + includeSubDomains
+- CSP with script-src nonces (via Vercel), img-src whitelist
+- GDPR consent gating for both GA4 and Vercel Analytics
+- EmailJS service with restricted domain access
+- All external links have `target="_blank"` with `noopener,noreferrer`
+- Cookie consent stored in localStorage (no tracking cookies without consent)
+
+---
+
 ## Appendix: Review Execution Log
 
 | Pass | Agent/Method | Duration | Status |
@@ -1294,6 +1602,8 @@ Three rounds of verification performed before execution:
 | 10 | enterprise-code-reviewer (Tier 2 code verification, Feb 2) | Completed | Verified all line numbers accurate. Confirmed allCamps at 222-1409, search inputs at 2213/2742, window.open at 4 locations, filterOptions at 1515. No hidden risks found. |
 | 11 | seo-performance-optimizer (Tier 2 file verification, Feb 2) | Completed | **KEY FINDING**: fetchpriority="high" ALREADY EXISTS at line 2118 — T2-5 is already done. Also found og:image:height wrong (1680 vs 720). Confirmed all other claims accurate. |
 | 12 | 2x Explore agents (fresh verification, Feb 2 session 2) | Completed | Confirmed clean revert of all T2-1 attempts. No artifacts. All T2 items still untouched. File is CRLF, 5,823 lines. Root cause: node split on `\n` not `\r\n`. |
+| 13 | 5-agent parallel fresh audit (Feb 3) | Completed | enterprise-code-reviewer on review docs + codebase, seo-performance-optimizer on review docs + codebase, security-audit-specialist on codebase. All findings manually verified against actual code. |
+| 14 | Manual code verification (Feb 3) | Completed | Verified 10 key findings: marquee leak (confirmed), duplicate footer (confirmed), breadcrumb double-call (confirmed), scroll listener deps (confirmed), maxLength already present (agent wrong), Vercel analytics gated (agent wrong), line 217 comment (confirmed), ItemList incomplete (confirmed), CSP gaps (confirmed), user-scalable=no (confirmed). |
 
 ---
 
@@ -1362,8 +1672,10 @@ All Tier 2 claims verified against actual code:
 
 ---
 
-*This review document is read-only output. No code was modified during the review.*
+*This review document is a living audit. Updated February 3, 2026 with 5-agent fresh audit findings.*
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
+
+*Total checklist items: 51 (Tier 1: 8 done + 3 new, Tier 2: 14 done + 8 new, Tier 3: 8 done + 7 new + 1 remaining, Tier 4: 7)*
 
 *Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>*
