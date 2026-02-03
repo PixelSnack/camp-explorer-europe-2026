@@ -35,21 +35,21 @@ This is a well-built, functional production website that is successfully serving
 5. ~~**allCamps array inside component**~~ **✅ RESOLVED (Tier 2, Feb 2 — extracted to camps.js)**
 
 **Current top 5 concerns (Feb 3, 2026 — updated from 5-agent audit):**
-1. **🚨 LEGAL: Privacy policy claims "never collect email" but contact form does** — App.jsx line 3400 vs contact form (LEGAL RISK)
+1. ~~**🚨 LEGAL: Privacy policy claims "never collect email" but contact form does**~~ **✅ RESOLVED (T2-24, Feb 3)**
 2. **🚨 SECURITY: Vite 4.x is EOL with known CVEs** — CVE-2024-45812, CVE-2024-45811 (package.json line 38)
 3. **Marquee useEffect memory leak** — event listeners accumulate on every navigation (line 759)
-4. **`user-scalable=no` still present** — WCAG 1.4.4 violation + Lighthouse mobile SEO penalty (index.html line 5)
+4. ~~**`user-scalable=no` still present**~~ **✅ RESOLVED (T2-16, Feb 3)** — pinch-to-zoom now enabled
 5. **No React Error Boundary** — malformed camp data crashes entire page with white screen
 
-### Health Scores (updated Feb 3, 2026 — post Tier 1+2+3 partial)
+### Health Scores (updated Feb 3, 2026 — post Immediate Batch)
 
 | Dimension | Original (Feb 1) | Current (Feb 3) | Change | Notes |
 |-----------|-------------------|------------------|--------|-------|
-| Code Quality | 5/10 | **6/10** | +1 | Camp data extracted (4,661 lines), dead code removed, 30 packages uninstalled |
+| Code Quality | 5/10 | **6.5/10** | +1.5 | Camp data extracted, dead code removed, 30 packages uninstalled, Guide prices fixed |
 | Architecture | 5/10 | **6/10** | +1 | Data separated from UI, cleaner package.json. Still monolithic, no tests. |
-| SEO | 6.5/10 | **6.0/10** | -0.5 | **ADJUSTED** (was 7/10 → 6.5 → 6.0): user-scalable=no SEO penalty, robots.txt issues, og:image mismatch, ItemList incomplete (4/7 categories). Score 6.0 until T2-31 complete. |
-| Accessibility | 7/10 | **6.5/10** | **-0.5** | DOWNGRADED: `user-scalable=no` is WCAG 1.4.4 violation. No focus traps in modals/menus. |
-| Security | 7/10 | **7.5/10** | +0.5 | **ADJUSTED** (was 8/10): Vite 4 EOL, no CAPTCHA on contact form, CSP gaps remaining |
+| SEO | 6.5/10 | **6.5/10** | 0 | **IMPROVED**: user-scalable=no fixed (+0.5), robots.txt cleaned (+0.25), sitemap/og:image aligned (+0.25), invalid schema keywords removed. ItemList still incomplete (4/7). |
+| Accessibility | 7/10 | **7/10** | 0 | **RESTORED**: `user-scalable=no` removed — WCAG 1.4.4 compliance restored. Focus traps still needed. |
+| Security | 7/10 | **7.5/10** | +0.5 | X-XSS-Protection fixed. Vite 4 EOL and CAPTCHA still pending. |
 | Performance | 6/10 | **7/10** | +1 | allCamps module-level, filterOptions memoized, 30 unused packages removed |
 | Mobile UX | 8/10 | **8/10** | 0 | No change — already strong |
 | Documentation | 6/10 | **7.5/10** | +1.5 | CODE_STRUCTURE.md updated, review document comprehensive |
@@ -197,23 +197,19 @@ accordion, alert, alert-dialog, aspect-ratio, avatar, calendar, carousel, chart,
 **Test**: `npm run build` + verify page renders correctly
 **Commit**: `Cleanup: Remove unused meta tags from index.html`
 
-#### T1-9: Remove duplicate "Budget Excellence" from footer (NEW — Feb 3 audit)
+#### T1-9: Remove duplicate "Budget Excellence" from footer ✅ COMPLETE (Feb 3, 2026)
 
 **Problem**: Footer "Camp Categories" list has "Budget Excellence" twice (lines 3698-3705 AND 3716-3724). Both call `handleCategoryFilter('budget_excellence')`. Visible duplicate affecting professionalism.
 
-**Fix**: Delete lines 3716-3724 (the second occurrence).
-**Files**: src/App.jsx
-**Test**: `npm run build` + verify footer has exactly 7 category links
-**Commit**: `Fix: Remove duplicate Budget Excellence from footer categories`
+**Fix applied**: Deleted lines 3723-3731 (the second occurrence).
+**Commit**: `6b38a4e` — Code Review Batch 2
 
-#### T1-10: Fix missed hyperbolic comment at line 217 (NEW — Feb 3 audit)
+#### T1-10: Fix missed hyperbolic comment at line 217 ✅ COMPLETE (Feb 3, 2026)
 
 **Problem**: Line 217 still reads `// Enterprise Marquee System - State of the Art`. Item #32 (T3-8) was supposed to fix all hyperbolic comments but missed this one.
 
-**Fix**: Change to `// Marquee overflow animation system`
-**Files**: src/App.jsx (line 217)
-**Test**: `npm run build`
-**Commit**: `Cleanup: Fix remaining hyperbolic comment at line 217`
+**Fix applied**: Changed to `// Marquee overflow animation system`
+**Commit**: `6b38a4e` — Code Review Batch 2
 
 #### ~~T1-11: Complete ItemList schema~~ — **MOVED TO T2-31**
 
@@ -1200,13 +1196,11 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - All items marked, deviations noted.
   - Commit: `Docs: Mark Tier 2 complete in CODE_REVIEW_2026.md`
 
-#### Group G: New items from February 3 five-agent audit (pending)
+#### Group G: New items from February 3 five-agent audit (partial)
 
-- [ ] **T2-16**: Remove user-scalable=no from viewport (promoted from T3-7)
-  - **WCAG 1.4.4 violation** on a site claiming AA compliance. One-line fix.
-  - File: index.html (line ~5). Remove `user-scalable=no` from viewport meta.
-  - Test: `npm run build` + verify pinch-to-zoom works on mobile, no layout shifts
-  - Commit: `A11y: Remove user-scalable=no to allow pinch-to-zoom`
+- [x] **T2-16**: Remove user-scalable=no from viewport ✅ Feb 3
+  - **WCAG 1.4.4 violation** fixed. Pinch-to-zoom now enabled.
+  - Commit: `f24f7ff` — Code Review Batch 1
 
 - [ ] **T2-17**: Fix marquee memory leak
   - `initializeMarqueeSystem()` never returns cleanup from `initWithDelay()`. Line 759 gets `undefined`.
@@ -1262,17 +1256,13 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + toggle consent, verify single script tag
   - Commit: `Fix: Guard GA4 initialization against duplicate calls`
 
-- [ ] **T2-26**: Align sitemap image with og:image
-  - sitemap.xml points to .webp, og:image to .png — inconsistent.
-  - File: public/sitemap.xml (line 10)
-  - Test: Validate sitemap XML
-  - Commit: `SEO: Align sitemap image URL with og:image (both PNG)`
+- [x] **T2-26**: Align sitemap image with og:image ✅ Feb 3
+  - Changed sitemap.xml from .webp to .png — now matches og:image.
+  - Commit: `f24f7ff` — Code Review Batch 1
 
-- [ ] **T2-27**: Fix Guide section stale prices
-  - Les Elfes shows CHF 4,990 (actual 4,550), Oxford shows GBP 6,220 (actual 6,995).
-  - File: src/App.jsx (lines ~2720, ~2748)
-  - Test: `npm run build` + verify Guide prices match camp cards
-  - Commit: `Fix: Update stale prices in Guide section`
+- [x] **T2-27**: Fix Guide section stale prices ✅ Feb 3
+  - Les Elfes: CHF 4,990 → CHF 4,550, Oxford: £6,220 → £6,995, UK range: £1,575-6,220 → £1,595-6,995
+  - Commit: `6b38a4e` — Code Review Batch 2
 
 - [ ] **T2-28**: Add CSP font-src directive
   - May be blocking Google Fonts.
@@ -1304,17 +1294,15 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: Google Rich Results Test
   - Commit: `SEO: Enrich Organization schema with logo/contactPoint`
 
-#### Group I: New Tier 1 items from 5-agent Feb 3 audit (pending)
+#### Group I: New Tier 1 items from 5-agent Feb 3 audit (partial)
 
-- [ ] **T1-12**: Remove useless robots.txt hash Allow lines
-  - File: public/robots.txt (lines 83-87)
-  - Test: Validate robots.txt
-  - Commit: `Cleanup: Remove useless hash fragment Allow lines from robots.txt`
+- [x] **T1-12**: Remove useless robots.txt hash Allow lines ✅ Feb 3
+  - Removed 5 hash Allow lines (/#discover, /#compare, /#plan, /#guide, /#resources)
+  - Commit: `f24f7ff` — Code Review Batch 1
 
-- [ ] **T1-13**: Update robots.txt last-updated comment
-  - File: public/robots.txt (line 104)
-  - Test: None
-  - Commit: `Docs: Update robots.txt last-updated date`
+- [x] **T1-13**: Update robots.txt last-updated comment ✅ Feb 3
+  - Updated from 2025-08-29 to 2026-02-03
+  - Commit: `f24f7ff` — Code Review Batch 1
 
 - [ ] **T1-14**: Verify @CampExplorerEU Twitter handle
   - Check if handle exists, remove twitter:site if not.
@@ -1327,11 +1315,9 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build`
   - Commit: `Perf: Add AVIF files to immutable cache rules`
 
-- [ ] **T1-16**: Change X-XSS-Protection to 0
-  - One-value change, zero functional impact.
-  - File: public/_headers (line 54)
-  - Test: `npm run build`
-  - Commit: `Security: Set X-XSS-Protection to 0 (deprecated auditor)`
+- [x] **T1-16**: Change X-XSS-Protection to 0 ✅ Feb 3
+  - Changed from `1; mode=block` to `0` (deprecated auditor)
+  - Commit: `f24f7ff` — Code Review Batch 1
 
 - [ ] **T1-17**: Add security.txt file
   - File: public/.well-known/security.txt (new)
@@ -1481,10 +1467,9 @@ Ordered by risk tier (Tier 1 first). One item per commit.
   - Test: `npm run build` + verify console.error works
   - Commit: `DX: Keep console.error in production for debugging`
 
-- [ ] **T3-27**: Remove invalid `keywords` property from WebSite schema
-  - File: index.html (line ~87)
-  - Test: Google Rich Results Test
-  - Commit: `SEO: Remove invalid keywords property from WebSite schema`
+- [x] **T3-27**: Remove invalid `keywords` property from WebSite schema ✅ Feb 3
+  - Removed non-standard `keywords` property from WebSite JSON-LD
+  - Commit: `f24f7ff` — Code Review Batch 1
 
 ### Tier 4 — Phase 2 Only
 
