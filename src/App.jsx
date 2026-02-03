@@ -214,7 +214,7 @@ function App() {
     }
   }, [showContactForm])
 
-  // Enterprise Marquee System - State of the Art
+  // Marquee overflow animation system
   const heroBadgeRef = useRef(null)
 
   // Camp directory data compiled from public sources
@@ -2479,7 +2479,7 @@ function App() {
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Academic excellence and comprehensive family programs. Oxford Summer Courses and Bede's Summer School.</p>
                   <div className="text-xs text-gray-500">
-                    <div>• £1,575 - 6,220</div>
+                    <div>• £1,595 - 6,995</div>
                     <div>• Ages 6-20</div>
                     <div>• Historic locations</div>
                   </div>
@@ -2717,7 +2717,7 @@ function App() {
                   <p className="text-sm text-gray-600 mb-3">Switzerland's gold-standard Alpine camp with 37+ years experience. 25,000+ alumni from 75+ countries.</p>
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div><strong>Ages:</strong> 6-17</div>
-                    <div><strong>Price:</strong> CHF 4,990</div>
+                    <div><strong>Price:</strong> CHF 4,550</div>
                     <div><strong>Languages:</strong> 5+ languages</div>
                     <div><strong>Special:</strong> 24/7 medical center</div>
                   </div>
@@ -2745,7 +2745,7 @@ function App() {
                   <p className="text-sm text-gray-600 mb-3">University preparation in Oxford's historic colleges. Medicine, engineering, and business programs.</p>
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div><strong>Ages:</strong> 13-18</div>
-                    <div><strong>Price:</strong> £6,220</div>
+                    <div><strong>Price:</strong> £6,995</div>
                     <div><strong>Languages:</strong> English</div>
                     <div><strong>Special:</strong> College accommodation</div>
                   </div>
@@ -3720,18 +3720,9 @@ function App() {
                     Unique Experiences
                   </button>
                 </li>
-                <li>
-                  <button 
-                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
-                    onClick={() => handleCategoryFilter('budget_excellence')}
-                    aria-label="Filter budget excellence camps"
-                  >
-                    Budget Excellence
-                  </button>
-                </li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4 text-lg">Resources</h4>
               <ul className="space-y-2 text-gray-400">
