@@ -1076,7 +1076,13 @@ WCAG 1.4.4 violation on a site claiming AA compliance. One-line fix. See T2-16 a
 
 Ordered by risk tier (Tier 1 first). One item per commit.
 
-> **Numbering Note (Feb 3, 2026):** Due to document evolution, sequential numbers (#26-38 in Tier 2, #27-50 in Tier 3) overlap between tiers. **Always use the T-prefix (T1-XX, T2-XX, T3-XX, T4-XX) as the authoritative identifier** — these are unique across the document. The sequential numbers are for checklist tracking within each tier only.
+> **Numbering Note (Feb 3, 2026 — updated by second audit):** Due to document evolution, sequential numbers (#26-38 in Tier 2, #27-50 in Tier 3) overlap between tiers. **Always use the T-prefix (T1-XX, T2-XX, T3-XX, T4-XX) as the authoritative identifier** — these are unique across the document. The sequential numbers are for checklist tracking within each tier only.
+>
+> **Cross-Reference Guide:**
+> - T-prefix items (T1-1 through T4-8) are defined in Section 3 (Findings by Risk Tier)
+> - Checklist items below reference T-prefix in parentheses for traceability
+> - Duplicates removed: T2-22 → T1-16, T3-24 → T2-29
+> - Total unique items: ~77 (after adding 9 new items and removing 2 duplicates from ~68+9-2)
 
 ### Tier 1 — Zero Risk Cleanup ✅ COMPLETE (February 2, 2026)
 
@@ -2059,7 +2065,9 @@ All Tier 2 claims verified against actual code:
 *Follow the Implementation Checklist (Section 5) in order, one item per commit.*
 *Always test with `npm run build` + `npm run dev` after each change.*
 
-*Total checklist items: ~68 (Tier 1: 8 done + 5 pending = 13, Tier 2: 15 done + 12 pending = 27 (T2-22 was duplicate of T1-16), Tier 3: 8 done + 12 pending = 20, Tier 4: 8)*
+*Total checklist items: ~77 (Tier 1: 8 done + 7 pending = 15, Tier 2: 15 done + 14 pending = 29, Tier 3: 8 done + 17 pending = 25 (after consolidations), Tier 4: 8)*
+
+*February 3, 2026 second audit: Added 9 new items (T1-17, T1-18, T2-29, T2-30, T3-27, T3-28, T3-29 and updates). Consolidated 2 duplicates (T2-22 → T1-16, T3-24 → T2-29). Added tier upgrade recommendations for T3-22, T3-23, T3-25.*
 
 *February 3, 2026 update: Added 14 new items from 5-agent comprehensive audit. Key additions: legal privacy fix, Vite security upgrade, CAPTCHA for contact form, Organization schema improvements, robots.txt cleanup.*
 
