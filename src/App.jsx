@@ -3391,13 +3391,27 @@ function App() {
               
               <Card className="p-8 mb-8">
                 <h2 className="text-2xl font-bold mb-4">Data We Collect</h2>
-                <p className="mb-4">We only collect:</p>
+
+                <h3 className="text-lg font-semibold mb-2">Automatic Data (with your consent)</h3>
                 <ul className="mb-4">
-                  <li>Anonymous usage statistics (which camps you view, search terms)</li>
-                  <li>Technical information (browser type, device type for optimization)</li>
+                  <li>Anonymous usage statistics (pages viewed, search terms used)</li>
+                  <li>Technical information (browser type, device type) for site optimization</li>
                   <li>Your cookie preferences</li>
                 </ul>
-                <p><strong>We never collect:</strong> Personal information, email addresses, or any identifying data.</p>
+
+                <h3 className="text-lg font-semibold mb-2">Information You Provide</h3>
+                <ul className="mb-4">
+                  <li>Contact details (name, email) when you submit our contact form</li>
+                  <li>Any additional information you include in your message</li>
+                </ul>
+                <p className="mb-4">We use this information to respond to your inquiry and improve our services. We do not sell your personal information.</p>
+
+                <h3 className="text-lg font-semibold mb-2">What We Don't Collect</h3>
+                <ul>
+                  <li>Payment or financial information (camp bookings are made directly with camps)</li>
+                  <li>Passwords or account credentials (we have no user accounts)</li>
+                  <li>Location data or device identifiers</li>
+                </ul>
               </Card>
               
               <Card className="p-8">
