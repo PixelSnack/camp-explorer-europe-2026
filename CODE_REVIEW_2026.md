@@ -1933,6 +1933,39 @@ Three rounds of verification performed before execution:
 - All external links have `target="_blank"` with `noopener,noreferrer`
 - Cookie consent stored in localStorage (no tracking cookies without consent)
 
+### Core Web Vitals Status (NEW — Feb 3 second audit)
+
+| Metric | Target | Current Status | Related Items |
+|--------|--------|----------------|---------------|
+| **LCP** | <2.5s | ✅ `fetchpriority="high"` on hero image (T2-5 DONE) | Hero image optimized, 93-96% size reduction |
+| **CLS** | <0.1 | ⚠️ Camp images have container `h-56` but no explicit width/height | T3-20 pending (camp card images) |
+| **INP** | <200ms | ✅ Not measured, no known issues | React event handlers are lightweight |
+
+*Monitor via PageSpeed Insights and Lighthouse regularly.*
+
+### Accepted Risks (NEW — Feb 3 second audit)
+
+The following are known limitations accepted for this project:
+
+| Risk | Rationale | Mitigation |
+|------|-----------|------------|
+| `'unsafe-inline'` in CSP for styles | Required for Tailwind CSS and React inline styles | Low risk — no user-generated CSS |
+| No SRI for dynamically loaded scripts | GA4 and Vercel scripts are dynamically generated; SRI hashes not feasible | Domain-restricted CSP provides partial protection |
+| EmailJS credentials in frontend source | By design — EmailJS is intended for client-side use | Domain restrictions + honeypot (T3-23) |
+| Dev server binds to `0.0.0.0` | Development only, no production impact | Documented, not a production issue |
+| `key={index}` in static camp lists | Low risk for static data that never reorders | Acceptable performance trade-off |
+
+### Security Maintenance Schedule (NEW — Feb 3 second audit)
+
+| Frequency | Action | Notes |
+|-----------|--------|-------|
+| **Monthly** | Run `npm audit` | Address HIGH/CRITICAL findings immediately |
+| **Monthly** | Check Vercel security dashboard | Review deployment logs for anomalies |
+| **Quarterly** | Review and update dependencies | `npm outdated`, evaluate breaking changes |
+| **Quarterly** | Re-run security-audit-specialist agent | Fresh audit against current codebase |
+| **Annually** | Review security headers | Compare against latest OWASP recommendations |
+| **As needed** | Check for CVEs in major dependencies | Subscribe to Vite, React security advisories |
+
 ---
 
 ## Appendix: Review Execution Log
