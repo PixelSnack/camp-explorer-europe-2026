@@ -1194,7 +1194,7 @@ export const allCamps = [
   {
     id: 57,
     name: "Les Florimontains",
-    location: "Col de Tamié, Savoie",
+    location: "Plancherine, Savoie",
     country: "France",
     ages: "9-17 years", // Verified Feb 2026: 9-13 and 14-17 age groups
     price: "€575/1 week", // Verified Feb 2026: per-child residential rate
@@ -1219,7 +1219,7 @@ export const allCamps = [
     name: "Village Camps Zell am See",
     location: "Zell am See, Austrian Alps",
     country: "Austria",
-    ages: "7-17 years", // Verified Feb 2026: standard Village Camps age range
+    ages: "10-17 years", // Verified Feb 2026: Austria location age range
     price: "€3,550/2 weeks", // Verified Feb 2026: per-child all-inclusive residential rate
     priceRange: "mid",
     rating: 4.8,
@@ -1228,36 +1228,36 @@ export const allCamps = [
     category: "premium",
     type: "Premium Alpine Adventure Camp",
     activities: ["Alpine Hiking", "Mountain Biking", "Water Sports", "Climbing", "Tennis", "Creative Arts", "Language Classes"],
-    dates: "June 29 - August 10, 2026",
-    highlights: ["50+ years international camp experience", "Stunning alpine lake setting", "Multi-activity adventure with language learning"],
+    dates: "July 5 - August 1, 2026",
+    highlights: ["52 years international camp experience (Est. 1972)", "Stunning alpine lake setting at Kitzsteinhorn Klub", "Multi-activity adventure with language learning"],
     languages: ["English", "German", "French"],
     specialFeatures: ["ACA & BSA accredited", "International staff from 20+ countries", "Swiss-based camp organization since 1972"],
     established: 1972,
-    capacity: 150,
+    capacity: 80,
     bookingUrl: "https://www.villagecamps.com/summer-camp-programmes-in-zell-am-see-austria"
   },
-  // Greece - Second camp (Unique Experiences, Pelion peninsula)
+  // Greece - Second camp (Unique Experiences, Mount Parnassos)
   {
     id: 59,
     name: "Milias Camps",
-    location: "Pelion Peninsula, Thessaly",
+    location: "Gravia, Mount Parnassos",
     country: "Greece",
-    ages: "6-16 years", // Verified Feb 2026: age-specific sessions available
-    price: "€610/8 days", // Verified Feb 2026: per-child residential rate
+    ages: "7-17 years", // Verified Feb 2026: 7-15 standard, 12-17 advanced mountaineering
+    price: "€610/1 week", // Verified Feb 2026: per-child residential rate
     priceRange: "budget",
     rating: 4.7,
     reviews: 0,
     image: activitiesCompressed,
     category: "unique",
-    type: "Mediterranean Nature & Adventure Camp",
-    activities: ["Sea Kayaking", "Hiking", "Swimming", "Nature Exploration", "Traditional Crafts", "Astronomy", "Environmental Education"],
+    type: "Mountain Adventure Camp",
+    activities: ["Rock Climbing", "Mountain Hiking", "Swimming Pool", "Mountain Biking", "Archery", "Cave Exploration", "Environmental Education"],
     dates: "June - August, 2026",
-    highlights: ["Pelion mountain-meets-sea setting", "Traditional stone village accommodation", "Greek mythology & nature programs"],
+    highlights: ["24,000m² mountain facility on Mount Parnassos", "Stone and wood cottage accommodation", "40km from ancient Delphi"],
     languages: ["Greek", "English"],
-    specialFeatures: ["Combines mountain and coastal activities", "Traditional Pelion architecture", "Small group wilderness experiences"],
+    specialFeatures: ["Operating summer camps since 1997", "Northern slopes of Mount Parnassos", "Small group wilderness experiences"],
     established: 1997,
     capacity: 80,
-    bookingUrl: "https://www.miliascamps.gr/"
+    bookingUrl: "https://miliascamps.gr/en/"
   },
   // Finland - Second camp (Unique Experiences, Finnish wilderness)
   {
@@ -1265,8 +1265,8 @@ export const allCamps = [
     name: "Luontoliitto Nature Camps",
     location: "Various locations, Finland",
     country: "Finland",
-    ages: "7-15 years", // Verified Feb 2026: age-specific nature camps
-    price: "From €150/5 days", // Verified Feb 2026: per-child rate, subsidized non-profit pricing
+    ages: "5-17 years", // Verified Feb 2026: children 5-15, youth up to 17
+    price: "From €70", // Verified Feb 2026: member pricing, non-members €100+
     priceRange: "budget",
     rating: 4.5,
     reviews: 0,
@@ -1275,12 +1275,12 @@ export const allCamps = [
     type: "Wilderness & Environmental Education Camp",
     activities: ["Wildlife Observation", "Forest Skills", "Canoeing", "Nature Photography", "Birdwatching", "Outdoor Survival", "Environmental Projects"],
     dates: "June - August, 2026",
-    highlights: ["75+ years of nature education (Est. 1951)", "Finnish Lakeland & wilderness settings", "Non-profit environmental organization"],
+    highlights: ["80+ years of nature education (Est. 1943)", "Finnish Lakeland & wilderness settings", "Non-profit environmental organization"],
     languages: ["Finnish"],
     specialFeatures: ["Finnish Nature League organization", "Focus on environmental stewardship", "Authentic Nordic wilderness experience"],
-    established: 1951,
-    capacity: 40,
-    bookingUrl: "https://www.luontoliitto.fi/toiminta/luontoleirit"
+    established: 1943,
+    capacity: 35,
+    bookingUrl: "https://luontoliitto.fi/leirit/"
   }
 ]
 
