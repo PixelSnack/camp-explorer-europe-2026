@@ -1250,7 +1250,7 @@ export const allCamps = [
     image: activitiesCompressed,
     category: "unique",
     type: "Mountain Adventure Camp",
-    activities: ["Rock Climbing", "Mountain Hiking", "Swimming Pool", "Mountain Biking", "Archery", "Cave Exploration", "Environmental Education"],
+    activities: ["Rock Climbing", "Mountain Hiking", "River Kayaking", "Mountain Biking", "Archery", "Cave Exploration", "Swimming Pool"],
     dates: "June - August, 2026",
     highlights: ["24,000m² mountain facility on Mount Parnassos", "Stone and wood cottage accommodation", "40km from ancient Delphi"],
     languages: ["Greek", "English"],

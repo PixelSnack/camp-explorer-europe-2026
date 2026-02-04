@@ -1,6 +1,6 @@
 # Lessons Learned & Rules
 
-*Last Updated: February 3, 2026 (Session 3)*
+*Last Updated: February 4, 2026 (Session 4)*
 *Purpose: Centralized reference for errors encountered and rules derived from them*
 
 ---
@@ -96,6 +96,33 @@ When you discover a problem, don't just fix it. Ask: "What rule would have preve
 **Solution**: Don't run read-only research agents in the background when their findings need to be processed immediately.
 
 **Rule**: Never use `run_in_background: true` for READ-ONLY agents whose output you need to act on. Run them in the foreground so findings are returned directly. Background mode is only appropriate for fire-and-forget tasks where you don't need the output.
+
+---
+
+### Lesson: Agent Verification Requires Second Pass with Strict Instructions (February 2026)
+
+**Problem**: Initial camp-data-verifier agents reported 4 new camps as "verified" but contained critical errors:
+- Milias Camps listed as "Pelion Peninsula, Thessaly" — actually located at Mount Parnassos (wrong region entirely)
+- Village Camps ages listed as 7-17 — actually 10-17 (could cause invalid bookings)
+- Luontoliitto established year listed as 1951 — actually 1943
+- Two booking URLs returned 404 errors
+
+**Root Cause**: Agents took shortcuts, made assumptions, and didn't verify claims against actual website content. Initial verification prompts weren't strict enough.
+
+**Impact**: Deployed incorrect data to production. Required manual verification and multiple correction commits. Could have misled real families.
+
+**Solution**: Ran second verification pass with 4 parallel agents using strict instructions:
+- "DO NOT GUESS"
+- "Only report what you can verify on the website"
+- "If you cannot find information, say 'NOT FOUND ON SITE'"
+- Field-by-field verification checklist
+
+**Rule**: For data accuracy tasks:
+1. **Always run a second verification pass** before implementing agent findings
+2. Include explicit "DO NOT GUESS" and "verify each field" instructions
+3. **Manually spot-check URLs** — agents often report URLs that 404
+4. For geographic data, cross-reference location claims (agents confused Pelion with Parnassos)
+5. When in doubt, verify yourself using WebFetch/WebSearch
 
 ---
 
