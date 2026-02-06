@@ -118,7 +118,7 @@ This project runs bash on Windows. Always use `2>/dev/null` (Unix-style), never 
 - **Tested**: iOS and PC - confirmed looks great
 
 ### ✅ **COMPLETED: Geographic Expansion (January 26, 2026)**
-- **Status**: ✅ 52 organizations verified across 24 countries
+- **Status**: ✅ 56 organizations verified across 24 countries
 - **New Countries Added**: Belgium (1 camp - CERAN Academy)
 - **New Camps Added**: 3 camps (IDs 47-49)
   - Belgium: CERAN Academy Juniors (Language Immersion)
@@ -128,7 +128,7 @@ This project runs bash on Windows. Always use `2>/dev/null` (Unix-style), never 
 - **Previous expansion (Jan 25)**: Netherlands (2), Lithuania (1), Norway (+2), Denmark (+1)
 
 ### ✅ **COMPLETED: Pricing Verification & Database Expansion (January 13-18, 2026)**
-- **Status**: ✅ All 52 organizations verified (100% complete)
+- **Status**: ✅ All 56 organizations verified (100% complete)
 - **Geographic Expansion**: 15 → 24 countries (Hungary, Romania, Slovenia, Croatia, Ireland, Sweden, Netherlands, Lithuania, Belgium added)
 - **New Camps Added**: 11 camps (IDs 30-40)
 - **Camps Removed**: 3 (ID 13 not a camp, IDs 16 & 22 group-only)
@@ -168,7 +168,7 @@ This project runs bash on Windows. Always use `2>/dev/null` (Unix-style), never 
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
 - [ ] **Virtual Scrolling**: Implement TanStack React Virtual (already installed)
 - [ ] **Phase 2 Planning**: React Router + SSG when traffic justifies (1K+ sessions/month)
-- [x] **Content Expansion**: ✅ Belgium, France, Germany added (Jan 26) - now 52 camps, 24 countries
+- [x] **Content Expansion**: ✅ Belgium, France, Germany added (Jan 26) - now 56 camps, 24 countries
 
 ### 🔍 **Ongoing Maintenance**:
 - [ ] Monitor camp websites for price changes (quarterly review)
@@ -222,14 +222,14 @@ When starting a new Claude Code session, follow this protocol to restore context
 ### **Step 2: Current Status Assessment**
 
 **Database Status:**
-- **52 verified organizations** representing 100+ programs across 24 countries
+- **56 verified organizations** representing 100+ programs across 24 countries
 - **Pricing Verification**: ✅ COMPLETE (100% - all camps verified January 2026)
 - **Recent Additions**: Belgium (1 camp), France (+1), Germany (+1) - January 26, 2026
 - **Recent Removals**: ID 13 (not a camp), ID 16 (group-only), ID 22 (group-only)
 
 **Technical Status:**
 - ✅ **Phase 1 COMPLETE**: All optimizations deployed
-- ✅ **Code Quality**: EXCELLENT (App.jsx ~4,636 lines + camps.js ~1,196 lines)
+- ✅ **Code Quality**: EXCELLENT (App.jsx ~4,636 lines + camps.js ~1,289 lines)
 - ✅ **Performance**: OPTIMIZED (93-96% image reduction)
 - ✅ **Security**: ENTERPRISE-GRADE (HSTS + CSP headers)
 - ✅ **Accessibility**: WCAG 2.1 AA COMPLIANT
@@ -294,9 +294,9 @@ Build the **#1 Google-ranked resource for European summer camps**, providing acc
 
 ### Current Status (January 2026)
 - **Live Site**: https://www.europeansummercamps.com
-- **Database**: 52 verified organizations, 100+ programs, 24 countries
+- **Database**: 56 verified organizations, 100+ programs, 24 countries
 - **Camp Data Location**: `src/data/camps.js` (`export const allCamps = [...]`)
-- **App.jsx Total Lines**: ~4,636 lines (camp data extracted to camps.js ~1,196 lines)
+- **App.jsx Total Lines**: ~4,636 lines (camp data extracted to camps.js ~1,289 lines)
 - **Pricing Verification**: ✅ COMPLETE (100% verified January 2026)
 - **Phase Status**: Phase 1 complete, Phase 2 planning (React Router + SSG)
 - **Performance**: 93-96% image optimization, Lighthouse 90+ scores
@@ -313,7 +313,7 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 - **Styling**: Tailwind CSS + shadcn/ui component library
 - **State**: React hooks (useState, useEffect, useMemo)
 - **Data**: Camp data in `src/data/camps.js` as exported `allCamps` array
-- **Components**: App.jsx (~4,636 lines) + camps.js (~1,196 lines) + shadcn/ui in `src/components/ui/`
+- **Components**: App.jsx (~4,636 lines) + camps.js (~1,289 lines) + shadcn/ui in `src/components/ui/`
 
 ### Business Model & Goals
 - **Target Audience**: Parents seeking European summer camps for children/youth
@@ -851,7 +851,7 @@ europeansummercamps/
 ├── src/
 │   ├── App.jsx (main component - ~4,636 lines)
 │   ├── data/
-│   │   └── camps.js (camp data array - ~1,196 lines)
+│   │   └── camps.js (camp data array - ~1,289 lines)
 │   ├── App.css (custom global styles)
 │   ├── main.jsx (React entry point)
 │   ├── assets/ (optimized images - 93-96% reduced)
@@ -1047,26 +1047,26 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 
 | Number | Always Refers To | Example Usage |
 |--------|------------------|---------------|
-| **52** | Organizations/Operators | "52 verified organizations", "52 camp operators" |
+| **56** | Organizations/Operators | "56 verified organizations", "56 camp operators" |
 | **100+** | Camps/Programs | "100+ camps", "100+ verified camps", "100+ camp programs" |
 
-*Note: 52 is the current count (January 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
+*Note: 56 is the current count (February 2026). Update this number across the site as organizations are added. The "100+" naturally scales.*
 
 **Both numbers are TRUE:**
-- We list **52 camp organizations** (the companies/operators)
+- We list **56 camp organizations** (the companies/operators)
 - These organizations collectively offer **100+ individual camp programs**
 
 **Analogy:** Like a university with 10 colleges offering 500+ degree programs.
 
 **Where Each Number Appears:**
 - **Search Snippet (meta):** "100+ Camp Programs" - DO NOT CHANGE (SEO working)
-- **Hero Stats:** "52 Organizations" with "100+ verified camps" subtitle
-- **Footer Stats:** "52 Organizations"
-- **Footer Text:** "52 verified organizations"
+- **Hero Stats:** "56 Organizations" with "100+ verified camps" subtitle
+- **Footer Stats:** "56 Organizations"
+- **Footer Text:** "56 verified organizations"
 
 **NEVER:**
-- ❌ Say "52 camps" (incorrect - we have 100+ camps)
-- ❌ Say "100+ organizations" (incorrect - we have 52 organizations)
+- ❌ Say "56 camps" (incorrect - we have 100+ camps)
+- ❌ Say "100+ organizations" (incorrect - we have 56 organizations)
 - ❌ Change search snippet numbers without SEO impact assessment
 
 **Rationale:** Organizations like Piispala offer "300+ camps annually" - each org runs multiple programs.
@@ -1079,17 +1079,17 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 ### 8.1 Database Status (January 2026)
 
 **Geographic Coverage (24 Countries):**
-- **Well Covered**: Norway (6), Switzerland (4), United Kingdom (4), Denmark (4), Poland (2), Portugal (2), Austria (2), Sweden (2), Netherlands (2), France (2), Germany (2)
-- **Current**: Spain (1), Italy (1), Czech Republic (1), Finland (1), Iceland (1), Greece (1), Hungary (1), Romania (1), Slovenia (1), Croatia (1), Ireland (1), Lithuania (1), Belgium (1)
+- **Well Covered**: Norway (6), Spain (5), Switzerland (4), United Kingdom (4), Denmark (4), France (3), Germany (3), Italy (3), Austria (3), Poland (2), Portugal (2), Sweden (2), Netherlands (2), Finland (2), Greece (2)
+- **Current**: Czech Republic (1), Iceland (1), Hungary (1), Romania (1), Slovenia (1), Croatia (1), Ireland (1), Lithuania (1), Belgium (1)
 
-**Category Distribution (52 Organizations):**
-- Unique Experiences: 9 organizations
+**Category Distribution (56 Organizations):**
+- Unique Experiences: 12 organizations
 - Sports Specialty: 9 organizations
 - Language Immersion: 8 organizations
 - Family Programs: 8 organizations
 - Budget Excellence: 8 organizations
 - Academic & STEM: 7 organizations
-- Premium Alpine: 3 organizations
+- Premium Alpine: 4 organizations
 
 **Price Ranges:**
 - Budget: €335 - €1,999 (4 camps)
@@ -1189,7 +1189,7 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 
 ### 8.3 Technical Foundation Status (Current)
 
-- **Code Quality**: ✅ EXCEPTIONAL (App.jsx ~4,636 lines + camps.js ~1,196 lines, well-structured)
+- **Code Quality**: ✅ EXCEPTIONAL (App.jsx ~4,636 lines + camps.js ~1,289 lines, well-structured)
 - **Design System**: ✅ PROFESSIONAL EXCELLENCE (responsive typography, button hierarchy)
 - **Mobile UX**: ✅ CROSS-PLATFORM PERFECTION (iOS + Android optimized)
 - **International**: ✅ MULTILINGUAL (5 European languages)
@@ -1391,12 +1391,12 @@ npm run build && npm run dev
 ```
 
 ### Key Numbers (January 2026)
-- **Total organizations**: 52 verified
+- **Total organizations**: 56 verified
 - **Total programs**: 100+ individual camps
 - **Countries**: 24 European countries
 - **Categories**: 7 distinct categories
-- **Verified pricing**: ✅ 52/52 (100% complete)
-- **Camp data**: src/data/camps.js (~1,196 lines)
+- **Verified pricing**: ✅ 56/56 (100% complete)
+- **Camp data**: src/data/camps.js (~1,289 lines)
 - **Total App.jsx lines**: ~4,636 lines
 - **Image optimization**: 93-96% size reduction
 - **Lighthouse target**: 90+ all categories

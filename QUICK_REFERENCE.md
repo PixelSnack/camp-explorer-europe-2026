@@ -193,7 +193,7 @@
 
 ## 📁 KEY FILES & LOCATIONS
 - **Main Component**: `src/App.jsx` (~4,636 lines, well-structured)
-- **Camp Data**: `src/data/camps.js` (~1,196 lines, allCamps array)
+- **Camp Data**: `src/data/camps.js` (~1,289 lines, allCamps array)
 - **Sitemap**: `public/sitemap.xml` (single clean URL)
 - **Security**: `public/_headers` (HSTS, CSP enforced)
 - **Schema**: `index.html` (Event schema, FAQPage, BreadcrumbList)
@@ -291,9 +291,9 @@ git reset --hard HEAD~1  # Rollback if broken
 4. Monitor Vercel dashboard
 
 ## 🎉 CURRENT STATUS (February 3, 2026)
-- ✅ Database: 52 verified organizations across 24 European countries
+- ✅ Database: 56 verified organizations across 24 European countries
 - ✅ Pricing: 100% verified (all camps have accurate per-child pricing)
-- ✅ Code quality: EXCELLENT (~4,636 lines App.jsx + ~1,196 lines camps.js, 5 shadcn/ui components)
+- ✅ Code quality: EXCELLENT (~4,636 lines App.jsx + ~1,289 lines camps.js, 5 shadcn/ui components)
 - ✅ Build/lint: WORKING (~8s build, 0 errors / 4 warnings)
 - ✅ Code Review: Tier 1+2 COMPLETE, Tier 3 partial (8/20), ~65 total items in CODE_REVIEW_2026.md
 - ✅ Security: 7.5/10 (CSP enforced, but Vite 4.x EOL with CVEs — upgrade needed)
@@ -395,5 +395,5 @@ git reset --hard HEAD~1  # Rollback if broken
 - [x] Norway expanded: 4 → 6 camps (RS Sjøleir, Sirdal Huskyfarm) (COMPLETED ✅)
 - [x] Denmark expanded: 3 → 4 camps (SceneKunst Sommercamp) (COMPLETED ✅)
 - [x] Footer country links added for Netherlands & Lithuania (COMPLETED ✅)
-- [x] All stats updated: 52 organizations across 24 countries (COMPLETED ✅)
+- [x] All stats updated: 56 organizations across 24 countries (COMPLETED ✅)
 - [x] Research documented in docs/archive/CAMP_RESEARCH_JAN25_2026.md (COMPLETED ✅)

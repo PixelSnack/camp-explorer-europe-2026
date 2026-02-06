@@ -14,7 +14,7 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 - Live site: www.europeansummercamps.com
 - SEO Score: 8.5/10 (ranking page 1)
 - Security Score: 7.5/10 (no critical vulnerabilities)
-- Database: 52 organizations, 24 countries, 100% pricing verified
+- Database: 56 organizations, 24 countries, 100% pricing verified
 - Traffic: Growing (approaching monetization thresholds)
 
 ---
@@ -69,7 +69,7 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 ## Priority 4: Content Expansion Strategy
 
 **Status:** URGENT - Booking season is NOW
-**Goal:** Grow from 52 → 65 organizations by end of March (+13)
+**Goal:** Grow from 56 → 65 organizations by end of March (+13)
 **Timeline:** 8 weeks (not 6 months) - must complete before summer
 **New Countries Target:** 23 → 25 countries
 **Scandinavian Priority:** Maintain 30%+ Nordic representation
@@ -172,7 +172,7 @@ Luxembourg
 | Premium Alpine | 3 | **Gap - add 1-2** |
 
 **Scandinavian Priority (User Request):**
-Current Nordic coverage: 14 camps (27% of 52-camp database) — approaching target
+Current Nordic coverage: 14 camps (27% of 56-camp database) — approaching target
 - Norway: 6, Denmark: 4, Sweden: 2, Finland: 1, Iceland: 1
 - Target: 16+ camps (~30% of database) — need 2 more Nordic camps
 - Focus: Finland lakes, Swedish forests

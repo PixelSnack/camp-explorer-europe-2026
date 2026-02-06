@@ -15,7 +15,7 @@ camp-explorer-europe-2026/
 ├── src/
 │   ├── App.jsx              # Main component (~4,636 lines)
 │   ├── data/
-│   │   └── camps.js         # Camp data array (52 orgs, ~1,196 lines)
+│   │   └── camps.js         # Camp data array (56 orgs, ~1,289 lines)
 │   ├── App.css              # Custom global styles + marquee system
 │   ├── main.jsx             # React entry point
 │   ├── index.css            # Tailwind imports
@@ -91,12 +91,12 @@ camp-explorer-europe-2026/
 | ~4400-4620 | **Contact Form & Drawer** | EmailJS modal, filter drawer |
 | 4635 | **Closing** | Export default App |
 
-### camps.js Structure (~1,196 lines)
+### camps.js Structure (~1,289 lines)
 
 | Lines | Content |
 |-------|---------|
 | 1-5 | Imports (heroImage, activitiesCompressed, mapCompressed) |
-| 7-1193 | `export const allCamps = [...]` (52 camp objects) |
+| 7-1193 | `export const allCamps = [...]` (56 camp objects) |
 | 1195-1196 | Re-exports (activitiesCompressed, mapCompressed) + default export |
 
 ---
@@ -136,7 +136,7 @@ export const allCamps = [
     bookingUrl: "https://...",
     videoUrl: "https://..."  // Optional
   },
-  // ... 51 more camps (52 total)
+  // ... 55 more camps (56 total)
 ]
 
 // Re-exported for use in App.jsx JSX

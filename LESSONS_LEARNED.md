@@ -59,7 +59,7 @@ When you discover a problem, don't just fix it. Ask: "What rule would have preve
 
 **Impact**: Only 4 of 23 camps were properly verified. Real families making booking decisions saw wrong prices.
 
-**Solution**: Systematic verification of all 52 camps via PRICING_VERIFICATION_URGENT.md (now 100% complete).
+**Solution**: Systematic verification of all camps via PRICING_VERIFICATION_URGENT.md (now 100% complete).
 
 **Rule**: ALWAYS verify price is per-child for the camp program only. Watch for:
 - Facility rental rates (for groups renting the whole venue)
