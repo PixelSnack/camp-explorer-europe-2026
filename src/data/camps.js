@@ -1426,6 +1426,75 @@ export const allCamps = [
     established: 1937,
     capacity: 200,
     bookingUrl: "https://nov.gr/en/summer-camp/"
+  },
+  // Spain - Sports Specialty (tennis - Rafa Nadal brand, high SEO value)
+  {
+    id: 67,
+    name: "Rafa Nadal Academy Summer Camp",
+    location: "Manacor, Mallorca",
+    country: "Spain",
+    ages: "8-18 years", // Verified Feb 2026: official site states 8-18 for Summer Tennis Camp Junior
+    price: "From €2,200/week", // Verified Feb 2026: residential boarding starting price via mallorcatennisacademy.com
+    priceRange: "mid",
+    rating: 4.6,
+    reviews: 0,
+    image: activitiesCompressed,
+    category: "sports",
+    type: "Tennis Training Academy",
+    activities: ["Tennis Training", "Padel", "Beach Volleyball", "Basketball", "Table Tennis", "Swimming", "FIFA Gaming"],
+    dates: "May 31 - August 30, 2026 (weekly, Sunday to Sunday)",
+    highlights: ["Founded by Rafael Nadal — world-class tennis methodology", "20.5 hours tennis training per week (1:4 player-to-court ratio)", "Bundesliga-style stadium visit & Mallorca excursions included"],
+    languages: ["English", "Spanish"],
+    specialFeatures: ["En-suite twin rooms in supervised Rafa Nadal Residence", "Full board + airport transfers included", "45 tennis courts (hard & clay, indoor & outdoor)"],
+    established: 2016,
+    capacity: null,
+    bookingUrl: "https://www.rafanadalacademy.com/en/junior-programs/summer-camps/summer-tennis-camp-junior/"
+  },
+  // Belgium - Language Immersion (château-based, 50+ years heritage, fills Belgium gap)
+  {
+    id: 68,
+    name: "SKITEN International Summer Camp",
+    location: "Château d'Emines, Namur",
+    country: "Belgium",
+    ages: "7-15 years", // Verified Feb 2026: confirmed via job listing + RCF Namur article (juniors 7-10, teens 11-15)
+    price: "€950/week", // Verified Feb 2026: €950/1wk, €1,890/2wk — visually verified on skitenfamily.com
+    priceRange: "budget",
+    rating: 4.8,
+    reviews: 0,
+    image: mapCompressed,
+    category: "language",
+    type: "Multilingual Sports & Culture Camp",
+    activities: ["Football", "Volleyball", "Hockey", "Basketball", "Tennis", "Archery", "Rugby", "Water Polo", "Swimming", "Golf", "Music", "Photography"],
+    dates: "July - August 2026 (1-week or 2-week sessions)",
+    highlights: ["50+ years heritage since 1975 — château-based camp", "15+ nationalities, 67% camper return rate", "1:3 staff-to-child ratio with experienced alumni counselors"],
+    languages: ["French", "English"],
+    specialFeatures: ["Historic Château d'Emines with heated pool & private pond", "2 hours daily language immersion (chosen language)", "Organic & dietary-inclusive meals (vegetarian, vegan, gluten-free)"],
+    established: 1975,
+    capacity: 70,
+    bookingUrl: "https://www.skitenfamily.com/en/skitensummercamp"
+  },
+  // Germany - Sports Specialty (football/soccer - high search demand, bilingual)
+  {
+    id: 69,
+    name: "Ferienfussball International Football Camp",
+    location: "Hinsbeck, North Rhine-Westphalia",
+    country: "Germany",
+    ages: "11-16 years", // Verified Feb 2026: International Football Camp age range from official site
+    price: "€695/week", // Verified Feb 2026: International Football Camp 7 days/6 nights per ferienfussball.de
+    priceRange: "budget",
+    rating: 4.7,
+    reviews: 0,
+    image: heroImage,
+    category: "sports",
+    type: "International Football Training Camp",
+    activities: ["Football Training", "Goalkeeper Training", "Street Soccer", "Beach Volleyball", "Basketball", "Table Tennis", "Trampoline", "E-Sports"],
+    dates: "Easter, Summer & Autumn holidays 2026 (7 or 14 day sessions)",
+    highlights: ["25+ years experience since 1999 — Germany's premier football camp", "Bilingual coaching staff (German & English)", "Bundesliga stadium visit included in every session"],
+    languages: ["German", "English"],
+    specialFeatures: ["Sport- und Erlebnisdorf Hinsbeck: 30 houses with 24h supervision", "2-3 football training sessions daily with certified coaches", "Also offers Junior Camps (ages 8-14) and Girls Camps (ages 12-18)"],
+    established: 1999,
+    capacity: 240,
+    bookingUrl: "https://www.ferienfussball.de/fussballcamp/international-football-camp-germany/"
   }
 ]
 
