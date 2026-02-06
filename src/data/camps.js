@@ -1381,7 +1381,7 @@ export const allCamps = [
     name: "Vierumäki Finnhockey School",
     location: "Vierumäki, Päijät-Häme",
     country: "Finland",
-    ages: "10-16 years", // Manual verification Feb 2026: was 9-14 per agent, actually 10-16
+    ages: "9-12 years", // Manual verification Feb 2026: U9-U12 per official site (ages 9-12)
     price: "From €460/4 days", // Verified Feb 2026: €460 basic, €490 development camp
     priceRange: "budget",
     rating: 4.7,
