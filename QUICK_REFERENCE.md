@@ -212,7 +212,7 @@
 ├── STRATEGIC_ROADMAP.md             ⭐ Path to monetization
 ├── FEATURED_CAMPS.md                ⭐ Featured listings tracker
 ├── FEATURED_LISTINGS_POLICY.md      ⭐ Monetization operations
-├── CODE_REVIEW_2026.md              ⭐ Code review findings & ~65-item checklist (MAIN REVIEW DOC)
+├── CODE_REVIEW_2026.md              📋 Code review findings & ~65-item checklist (read when doing code work)
 └── README.md                        Public-facing documentation (GitHub convention)
 
 /docs/reference/                     # Reference docs (7 files)
