@@ -1272,7 +1272,7 @@ export const allCamps = [
     ages: "8-17 years", // Verified Feb 2026: Luppi/Uusimaa children 8-13, youth 12-17
     price: "From €130/week", // Verified Feb 2026: non-member pricing €130-210 (Luppi/Uusimaa district)
     priceRange: "budget",
-    bookingStatus: "Opens Feb 15",
+    bookingStatus: "Opens Feb 17",
     rating: 4.5,
     reviews: 0,
     image: mapCompressed,
