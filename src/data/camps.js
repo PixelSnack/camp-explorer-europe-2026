@@ -1281,6 +1281,145 @@ export const allCamps = [
     established: 1943,
     capacity: 35,
     bookingUrl: "https://luontoliitto.fi/leirit/"
+  },
+  // NEW CAMPS ADDED February 6, 2026 - Data-Driven Content Expansion (Analytics-informed)
+  // France - Academic & STEM (Normandy - new region)
+  {
+    id: 61,
+    name: "École des Roches Summer Camp",
+    location: "Verneuil d'Avre et d'Iton, Normandy",
+    country: "France",
+    ages: "9-17 years",
+    price: "€3,950/2 weeks", // Verified Feb 2026: French Classic program, per-child residential
+    priceRange: "mid",
+    rating: 4.7,
+    reviews: 0,
+    image: heroImage,
+    category: "academic",
+    type: "French Academic & Elite Sports",
+    activities: ["French Language Intensive", "Science & Coding", "Tennis", "Golf", "Horseback Riding", "Swimming", "Cultural Excursions"],
+    dates: "June 28 - August 9, 2026",
+    highlights: ["125-year-old prestigious boarding school campus", "60-hectare campus 1.5 hours from Paris", "50+ nationalities represented"],
+    languages: ["French", "English"],
+    specialFeatures: ["3 tracks: French Classic, Science, Elite Sports (€4,850)", "Paris excursions (Eiffel Tower, Louvre, Disneyland)", "IB World School campus"],
+    established: 1899,
+    capacity: 200,
+    bookingUrl: "https://www.ecoledesroches.com/en/traineeship/summer-camp-learning-french/"
+  },
+  // Germany - Language Immersion (Baden-Württemberg - new region)
+  {
+    id: 62,
+    name: "Humboldt-Institut Bad Schussenried",
+    location: "Bad Schussenried, Baden-Württemberg",
+    country: "Germany",
+    ages: "10-17 years",
+    price: "€1,395/1 week", // Verified Feb 2026: 2+ week courses, +€50/wk summer surcharge Jun-Aug
+    priceRange: "mid",
+    rating: 4.7,
+    reviews: 0,
+    image: activitiesCompressed,
+    category: "language",
+    type: "German Language Boarding School",
+    activities: ["German Lessons", "Sports", "Swimming", "Cultural Excursions", "Arts & Crafts", "Evening Activities"],
+    dates: "Year-round with weekly starts (summer: June-August 2026)",
+    highlights: ["47 years of German language education since 1977", "25-30 lessons/week in small classes (10-11 students)", "69 nationalities represented annually"],
+    languages: ["German"],
+    specialFeatures: ["Germany's largest boarding school for German as foreign language", "Twin rooms with en-suite bathrooms", "All-inclusive: meals, materials, excursions"],
+    established: 1977,
+    capacity: 300,
+    bookingUrl: "https://www.humboldt-institut.org/en/german-courses-in/bad-schussenried/"
+  },
+  // Italy - Budget Excellence (Adriatic coast - new region, fills budget + beach gap)
+  {
+    id: 63,
+    name: "AERAT Colonia al Mare Cesenatico",
+    location: "Cesenatico, Emilia-Romagna",
+    country: "Italy",
+    ages: "6-15 years",
+    price: "€490/14 days", // Verified Feb 2026: includes insurance, excursions, 24h medical
+    priceRange: "budget",
+    rating: 4.7,
+    reviews: 0,
+    image: mapCompressed,
+    category: "budget_excellence",
+    type: "Adriatic Beach Camp",
+    activities: ["Beach Activities", "Swimming", "Creative Workshops", "Team Sports", "Dance", "Nature Exploration", "Themed Evenings"],
+    dates: "June 17 - August 30, 2026 (5 × 14-day sessions)",
+    highlights: ["Adriatic Riviera beachside location", "46 years of trusted operation since 1980", "Exceptional value: €245/week equivalent"],
+    languages: ["Italian"],
+    specialFeatures: ["Non-profit social cooperative", "24-hour medical assistance included", "1,370 places sold out in hours annually"],
+    established: 1980,
+    capacity: 274,
+    bookingUrl: "https://aerat.it/iscrizioni/"
+  },
+  // Italy - Unique Experiences (Elba Island - Tuscan coast, live-aboard sailing)
+  {
+    id: 64,
+    name: "Campi del Vento Sailing Camp",
+    location: "Isola d'Elba, Tuscany",
+    country: "Italy",
+    ages: "7-19 years",
+    price: "€850/1 week", // Verified Feb 2026: per-child, €790 for siblings
+    priceRange: "mid",
+    rating: 4.7,
+    reviews: 0,
+    image: heroImage,
+    category: "unique",
+    type: "Live-Aboard Sailing & Marine Biology",
+    activities: ["Sailing", "Snorkeling", "Marine Biology", "Trekking", "Astronomy", "Swimming", "Environmental Education"],
+    dates: "June - September 2026",
+    highlights: ["Live aboard sailing vessel in Tuscan Archipelago", "Marine biology and whale/dolphin observation", "Top Camp 2025 award recognized"],
+    languages: ["Italian"],
+    specialFeatures: ["Sleep aboard sailing vessel (4 cabins)", "UISP affiliated sports association", "Participants share shipboard duties"],
+    established: null,
+    capacity: 12,
+    bookingUrl: "https://www.campidelvento.com/campi-estivi-per-ragazzi"
+  },
+  // Finland - Sports Specialty (ice hockey - uniquely Nordic)
+  {
+    id: 65,
+    name: "Vierumäki Finnhockey School",
+    location: "Vierumäki, Päijät-Häme",
+    country: "Finland",
+    ages: "9-14 years",
+    price: "From €460/4 days", // Research Feb 2026: €460 (9-12), €490 (12-14)
+    priceRange: "budget",
+    rating: 4.7,
+    reviews: 0,
+    image: activitiesCompressed,
+    category: "sports",
+    type: "Ice Hockey Training Camp",
+    activities: ["Ice Hockey Training", "Skating Technique", "Shooting Drills", "Game Tactics", "Physical Training", "Team Building"],
+    dates: "June 1-5, June 8-12, July 13-17, 2026",
+    highlights: ["Finland's premier sports training institute", "8+ hours ice training per camp", "Finnish Ice Hockey Association certified coaching"],
+    languages: ["Finnish", "English"],
+    specialFeatures: ["International Hockey Center of Excellence", "On-site dormitory accommodation", "All meals included"],
+    established: null,
+    capacity: 100,
+    bookingUrl: "https://vierumaki.fi/en/finnhockey-school"
+  },
+  // Greece - Sports Specialty (water sports day camp - Athens Riviera)
+  {
+    id: 66,
+    name: "Nautical Club of Vouliagmeni Summer Camp",
+    location: "Vouliagmeni, Athens Riviera",
+    country: "Greece",
+    ages: "5-13 years",
+    price: "From €380/1 week", // Research Feb 2026: morning program; extended €480/week
+    priceRange: "budget",
+    rating: 4.8,
+    reviews: 0,
+    image: mapCompressed,
+    category: "sports",
+    type: "Water Sports Day Camp",
+    activities: ["Sailing", "Windsurfing", "Water Polo", "Swimming", "SUP", "Canoeing", "Archery", "Robotics"],
+    dates: "June 15 - September 4, 2026 (4 periods)",
+    highlights: ["⚠️ DAY CAMP - No overnight accommodation", "Olympic-level coaching (est. 1937)", "14,000m² facility with Olympic pool and bay access"],
+    languages: ["Greek", "English"],
+    specialFeatures: ["Day Program 8:30am-2:30pm or extended to 4pm/8pm", "Optional waterskiing & wakeboarding", "Mediterranean diet meals by certified nutritionist"],
+    established: 1937,
+    capacity: 200,
+    bookingUrl: "https://nov.gr/en/summer-camp/"
   }
 ]
 
