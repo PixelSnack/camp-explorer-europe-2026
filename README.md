@@ -43,7 +43,7 @@ Each camp listing includes:
 - **Language Immersion** - Native language learning environments
 - **Sports Specialty** - Professional sports training and academies
 - **Family Programs** - Multi-age programs welcoming families
-- **Budget Excellence** - Quality programs under €2,000
+- **Budget Excellence** - Quality programs under €800/week
 - **Unique Experiences** - Nature-based and unique outdoor experiences
 
 ## 🛠️ Technology Stack

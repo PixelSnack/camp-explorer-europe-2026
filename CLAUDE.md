@@ -1031,7 +1031,7 @@ europeansummercamps/
 - **Language Immersion**: Primary language learning focus with native speakers
 - **Sports Specialty**: Dedicated sports training (football, tennis, sailing, etc.)
 - **Family Programs**: Parents can attend, multi-age welcome
-- **Budget Excellence**: Quality programs under €2,000
+- **Budget Excellence**: Quality programs under €800/week
 - **Unique Experiences**: Nature-based, wilderness, unique outdoor focus
 
 **Category Logic**: Single categories only (no multi-tagging) for optimal UX and SEO positioning.

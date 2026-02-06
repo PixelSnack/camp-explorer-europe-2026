@@ -91,7 +91,7 @@ Our criteria should have elasticity for programs that fit the spirit of summer c
 - **Language Immersion**: Primary focus on language learning
 - **Sports Specialty**: Dedicated sports training (football, tennis, etc.)
 - **Family Programs**: Multi-age programs welcoming families
-- **Budget Excellence**: Quality programs under €2,000
+- **Budget Excellence**: Quality programs under €800/week
 - **Unique Experiences**: Nature-based, unique outdoor experiences
 
 ---

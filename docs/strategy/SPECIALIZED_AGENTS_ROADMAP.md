@@ -138,7 +138,7 @@ Extract and format the following mandatory data points:
 - **Language Immersion**: Primary focus on language learning with native speakers
 - **Sports Specialty**: Dedicated sports training (football, tennis, sailing, etc.)
 - **Family Programs**: Multi-age programs welcoming families/parents
-- **Budget Excellence**: Quality programs under €2,000
+- **Budget Excellence**: Quality programs under €800/week
 - **Unique Experiences**: Nature-based, unique outdoor experiences
 
 ### 5. LEGAL COMPLIANCE

@@ -437,16 +437,16 @@ const filteredCountries = countries.filter(c =>
 **Specifications:**
 - **Quick presets:** Budget / Mid / Premium / Luxury buttons
 - **Dual-handle slider:** Using existing Slider component
-- **Currency display:** Shows formatted: €2,000 - €4,000
+- **Currency display:** Shows formatted: €800 - €1,500/week
 - **Debounce:** 300ms on drag for performance
 
-**Price Ranges:**
+**Price Ranges (EUR/week equivalent):**
 | Preset | Range | Label |
 |--------|-------|-------|
-| Budget | €0 - €1,999 | "Under €2,000" |
-| Mid | €2,000 - €3,999 | "€2,000 - €4,000" |
-| Premium | €4,000 - €5,999 | "€4,000 - €6,000" |
-| Luxury | €6,000+ | "€6,000+" |
+| Budget | Under €800/week | "Under €800/week" |
+| Mid | €800 - €1,500/week | "€800-€1,500/week" |
+| Premium | €1,500 - €3,000/week | "€1,500-€3,000/week" |
+| Luxury | €3,000+/week | "€3,000+/week" |
 
 **Code:**
 ```jsx
