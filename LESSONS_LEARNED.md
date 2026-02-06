@@ -1,6 +1,6 @@
 # Lessons Learned & Rules
 
-*Last Updated: February 4, 2026 (Session 4)*
+*Last Updated: February 6, 2026 (Session 5)*
 *Purpose: Centralized reference for errors encountered and rules derived from them*
 
 ---
@@ -132,6 +132,40 @@ When you discover a problem, don't just fix it. Ask: "What rule would have preve
 3. **Manually spot-check URLs** — agents often report URLs that 404
 4. For geographic data, cross-reference location claims (agents confused Pelion with Parnassos)
 5. When in doubt, verify yourself using WebFetch/WebSearch
+
+---
+
+### Lesson: Always Search in Native Language for Non-English Countries (February 2026)
+
+**Problem**: When researching camps in France, Germany, Italy, Greece, and Finland, English-only searches miss many local camps that don't have English websites.
+
+**Root Cause**: Local residential camps (especially budget/community-run ones) often only appear in native-language search results. For example, French "colonies de vacances" have a 140-year tradition but many don't appear in English searches.
+
+**Solution**: Instructed all research agents to search in BOTH native language AND English. Examples:
+- France: "colonie de vacances 2026", "séjour jeunes été"
+- Germany: "Ferienlager 2026", "Sommercamp Kinder"
+- Italy: "campo estivo 2026", "colonia estiva"
+- Greece: "kataskinosi kalokairi", "nautiko camp"
+- Finland: "kesäleiri 2026", "lasten leiri"
+
+**Rule**: When researching camps in a non-English country, ALWAYS search in BOTH the native language AND English. Include native-language search terms in agent prompts.
+
+---
+
+### Lesson: Agent-Reported Age Ranges May Be Wrong (February 2026)
+
+**Problem**: Camp-content-researcher agent reported Vierumäki Finnhockey School ages as "9-14 years". Manual verification via web search revealed actual ages are "10-16 years".
+
+**Root Cause**: Agent likely misread or inferred age data. JS-heavy sites (like vierumaki.fi) don't render properly via WebFetch, so agent may have gotten data from a secondary source.
+
+**Impact**: Would have shown incorrect age range to parents, potentially causing families to register children who are too young or overlooking the camp for eligible teens.
+
+**Solution**: Manual web search verification caught the error before deployment. Fixed in camps.js with correction comment.
+
+**Rule**:
+1. **Always manually verify at least the price and age range** for every camp before final deployment
+2. For JS-rendered sites that WebFetch can't scrape, use WebSearch or Chrome MCP for verification
+3. Add verification comments in code noting corrections from agent data
 
 ---
 
