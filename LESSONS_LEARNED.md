@@ -85,17 +85,26 @@ When you discover a problem, don't just fix it. Ask: "What rule would have preve
 
 ---
 
-### Lesson: Background Agents Return Empty Output (February 2026)
+### Lesson: Background Agents Return Empty Output & Cause Session Crashes (February 2026)
 
-**Problem**: When agents run in the background (`run_in_background: true`), their output file appears empty when read later, requiring the agent to be run again.
+**Problem**: When agents run in the background (`run_in_background: true`), their output file appears empty when read later. In a February 6, 2026 session, 5 background camp-research agents were launched simultaneously. All 5 completed (12,000-18,000+ tokens each, 20+ tools used), but every one returned empty results. The contingency plan of reading output files directly (`C:\Users\Soda\AppData\Local\Temp\claude\...\tasks\[id].output`) also returned empty. Recovery attempts consumed the remaining context window, causing a session crash — losing ALL research work.
 
-**Root Cause**: Unknown glitch in the background task output retrieval mechanism. The agent completes work but the findings aren't accessible when reading the output file.
+**Root Cause**: Bug in background task output retrieval mechanism. Agents complete their work but findings are never written to the output file. The bug has been reported to Anthropic.
 
-**Impact**: Wasted time re-running agents. Defeats the purpose of parallelization when findings need to be "off-loaded" back to Claude Code for implementation.
+**Impact**:
+- All 5 agents' research was lost (hours of web searches across 5 countries)
+- Recovery attempts (TaskOutput calls, direct file reads) consumed context window
+- Session crashed, requiring full restart from zero
+- Total waste: the entire session's work
 
-**Solution**: Don't run read-only research agents in the background when their findings need to be processed immediately.
+**Solution**: Never use `run_in_background: true` for any agent whose output you need. Run agents in foreground only. Limit parallel foreground agents to 2-3 max to avoid context window pressure.
 
-**Rule**: Never use `run_in_background: true` for READ-ONLY agents whose output you need to act on. Run them in the foreground so findings are returned directly. Background mode is only appropriate for fire-and-forget tasks where you don't need the output.
+**Rule**:
+1. **NEVER use `run_in_background: true`** for any research agent — the output will be empty
+2. Reading output files directly is NOT a viable workaround (also empty)
+3. Run agents in **foreground only** so findings are returned inline
+4. Up to **4 parallel foreground agents** is safe and has been done many times without issue
+5. The crash was caused by background mode + failed recovery attempts consuming context — NOT by the number of agents
 
 ---
 
