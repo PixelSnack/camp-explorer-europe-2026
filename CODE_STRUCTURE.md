@@ -134,9 +134,10 @@ export const allCamps = [
     established: 1987,
     capacity: 180,
     bookingUrl: "https://...",
-    videoUrl: "https://..."  // Optional
+    videoUrl: "https://...",  // Optional
+    bookingStatus: "Opens Feb 15"  // Optional override (see Booking Status Badges below)
   },
-  // ... 55 more camps (56 total)
+  // ... 61 more camps (62 total)
 ]
 
 // Re-exported for use in App.jsx JSX
@@ -292,6 +293,59 @@ className={camp.featured
 // Shows 3 highlights instead of 2
 camp.highlights.slice(0, camp.featured ? 3 : 2)
 ```
+
+---
+
+## Booking Status Badges (Default-Green System)
+
+**Added February 6, 2026** — Data-driven badges replacing arbitrary priceRange/rating logic.
+
+### Design: Default-Green, Exception-Only Overrides
+
+Every camp in the database is verified for 2026. The green "2026 Open" badge is the DEFAULT for all camps — no per-camp field needed. The `bookingStatus` field is only an OVERRIDE for exceptions.
+
+| Scenario | bookingStatus field | Badge shown |
+|----------|-------------------|-------------|
+| Normal camp (no field) | absent/undefined | Green "2026 Open" (pulsing) |
+| Known future opening date | `"Opens Feb 15"` | Blue badge with that text (pulsing) |
+| Confirmed not yet accepting 2026 | `"not yet open"` | No badge (hidden) |
+| Explicitly open | `"open"` | Green "2026 Open" (same as default) |
+
+### Implementation (App.jsx — 2 locations ~line 1257 and ~1799)
+
+```jsx
+{camp.bookingStatus !== 'not yet open' && (
+  <div className="absolute bottom-4 right-4">
+    <Badge className={`${
+      !camp.bookingStatus || camp.bookingStatus === 'open'
+        ? 'bg-green-500/90'
+        : 'bg-blue-500/90'
+    } text-white backdrop-blur-sm text-xs animate-pulse`}>
+      {!camp.bookingStatus || camp.bookingStatus === 'open' ? '2026 Open' : camp.bookingStatus}
+    </Badge>
+  </div>
+)}
+```
+
+### Current Exception Camps (February 2026)
+
+| Camp ID | Name | bookingStatus | Badge |
+|---------|------|--------------|-------|
+| 28 | Jagiellonian University | `"Opens Feb 9"` | Blue |
+| 60 | Luontoliitto Nature Camps | `"Opens Feb 15"` | Blue |
+| 30 | Funside Balaton | `"Opens Feb 18"` | Blue |
+| 65 | Vierumaki Finnhockey | `"Opens April"` | Blue |
+| 15 | Camp Bjontegaard | `"not yet open"` | Hidden |
+| 18 | Nordic Terrain Academy | `"not yet open"` | Hidden |
+
+### Maintenance Guide
+
+- **Adding a new camp**: Nothing extra needed — green badge automatic
+- **Camp opens registration**: Delete the `bookingStatus` field (falls back to green)
+- **Camp sells out or closes**: Add `bookingStatus: "not yet open"`
+- **New year rollover**: Change `"2026 Open"` text in App.jsx (one string, two locations)
+- **Future opening date**: Add `bookingStatus: "Opens [date]"` — shows blue badge
+- **"Opens" date passes**: Delete the field — falls back to green
 
 ---
 

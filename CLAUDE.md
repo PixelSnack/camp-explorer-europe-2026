@@ -987,8 +987,20 @@ europeansummercamps/
   established: YYYY,            // Year established
   capacity: XXX,                // Maximum participants
   reviews: XXX,                 // Review count
-  rating: X.X                   // Rating out of 5
+  rating: X.X,                  // Rating out of 5
+  bookingStatus: "Opens Feb 15" // OPTIONAL override - see Booking Status Badges
 }
+```
+
+**Booking Status Badges** (Default-Green System, added Feb 6, 2026):
+- **No `bookingStatus` field** (default) → green "2026 Open" badge shown automatically
+- `bookingStatus: "Opens [date]"` → blue badge with that text
+- `bookingStatus: "not yet open"` → badge hidden entirely
+- Only add this field for exceptions. New camps get green badge with zero extra work.
+- Year rollover: change "2026 Open" in App.jsx (one string, two locations)
+- See CODE_STRUCTURE.md "Booking Status Badges" section for full maintenance guide
+
+```
 ```
 
 ### 7.2 Camp Verification Criteria (5-Point Test)

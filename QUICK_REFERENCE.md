@@ -290,10 +290,11 @@ git reset --hard HEAD~1  # Rollback if broken
 3. Test live site: https://www.europeansummercamps.com/
 4. Monitor Vercel dashboard
 
-## 🎉 CURRENT STATUS (February 3, 2026)
-- ✅ Database: 56 verified organizations across 24 European countries
+## 🎉 CURRENT STATUS (February 6, 2026)
+- ✅ Database: 62 verified organizations across 24 European countries
 - ✅ Pricing: 100% verified (all camps have accurate per-child pricing)
-- ✅ Code quality: EXCELLENT (~4,636 lines App.jsx + ~1,289 lines camps.js, 5 shadcn/ui components)
+- ✅ Booking badges: Data-driven (56 green "2026 Open", 4 blue future dates, 2 hidden)
+- ✅ Code quality: EXCELLENT (~4,636 lines App.jsx + ~1,430 lines camps.js, 5 shadcn/ui components)
 - ✅ Build/lint: WORKING (~8s build, 0 errors / 4 warnings)
 - ✅ Code Review: Tier 1+2 COMPLETE, Tier 3 partial (8/20), ~65 total items in CODE_REVIEW_2026.md
 - ✅ Security: 7.5/10 (CSP enforced, but Vite 4.x EOL with CVEs — upgrade needed)
