@@ -380,10 +380,10 @@ function App() {
   }, [allCamps])
 
   const priceTierOptions = [
-    { value: 'budget', label: 'Budget', description: 'Under €2,000' },
-    { value: 'mid', label: 'Mid-Range', description: '€2,000-€4,000' },
-    { value: 'premium', label: 'Premium', description: '€4,000-€5,500' },
-    { value: 'luxury', label: 'Luxury', description: '€5,500+' }
+    { value: 'budget', label: 'Budget', description: 'Under €800/week' },
+    { value: 'mid', label: 'Mid-Range', description: '€800-€1,500/week' },
+    { value: 'premium', label: 'Premium', description: '€1,500-€3,000/week' },
+    { value: 'luxury', label: 'Luxury', description: '€3,000+/week' }
   ]
 
   const ageGroupOptions = [

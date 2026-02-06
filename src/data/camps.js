@@ -14,7 +14,7 @@ export const allCamps = [
     country: "Switzerland",
     ages: "6-17 years",
     price: "From CHF 4,550/1 week", // Verified Jan 2026: per-week pricing
-    priceRange: "premium",
+    priceRange: "luxury",
     rating: 4.9,
     reviews: 847,
     image: heroImage,
@@ -126,7 +126,7 @@ export const allCamps = [
     country: "United Kingdom",
     ages: "6-20 years",
     price: "From £1,595/1 week", // Verified Jan 2026: per-week residential rate
-    priceRange: "mid",
+    priceRange: "premium",
     rating: 4.8,
     reviews: 892,
     image: mapCompressed,
@@ -262,7 +262,7 @@ export const allCamps = [
     country: "Greece",
     ages: "7-17 years",
     price: "From £845/1 week", // Family package price - youth sailing included with parent holiday
-    priceRange: "luxury",
+    priceRange: "mid",
     rating: 4.8,
     reviews: 89,
     image: mapCompressed,
@@ -307,7 +307,7 @@ export const allCamps = [
     country: "Norway",
     ages: "12-18 years",
     price: "NOK 5,890/1 week",
-    priceRange: "mid",
+    priceRange: "budget",
     bookingStatus: "not yet open",
     rating: 4.9,
     reviews: 127,
@@ -331,7 +331,7 @@ export const allCamps = [
     country: "Iceland",
     ages: "14-18 years",
     price: "$5,988/2 weeks", // Verified Jan 2026: 14-day expedition
-    priceRange: "luxury",
+    priceRange: "premium",
     rating: 4.8,
     reviews: 73,
     image: heroImage,
@@ -353,7 +353,7 @@ export const allCamps = [
     country: "Norway",
     ages: "6-12 years",
     price: "NOK 5,700/1 week", // Verified Jan 2026: DAY CAMP (8:30-15:30), 5-day program
-    priceRange: "mid",
+    priceRange: "budget",
     bookingStatus: "not yet open",
     rating: 4.6,
     reviews: 87,
@@ -421,7 +421,7 @@ export const allCamps = [
     country: "Norway",
     ages: "7-18 years",
     price: "NOK 6,950/5 days",
-    priceRange: "premium",
+    priceRange: "budget",
     rating: 4.8,
     reviews: 89,
     image: activitiesCompressed,
@@ -512,7 +512,7 @@ export const allCamps = [
     country: "Austria",
     ages: "8-15 years",
     price: "From €1,377/1 week", // Verified Jan 2026: 1-week €1,377, 2-week €2,940
-    priceRange: "budget",
+    priceRange: "mid",
     rating: 4.7,
     reviews: 156,
     image: heroImage,
@@ -535,7 +535,7 @@ export const allCamps = [
     country: "Poland",
     ages: "12-16 years",
     price: "PLN 7,730/2 weeks",
-    priceRange: "budget",
+    priceRange: "mid",
     bookingStatus: "Opens Feb 9",
     rating: 4.8,
     reviews: 203,
@@ -559,7 +559,7 @@ export const allCamps = [
     country: "Portugal",
     ages: "10-17 years", // Verified Jan 2026: was 13-17
     price: "€3,500/1 week", // Verified Jan 2026: was €2,700
-    priceRange: "mid",
+    priceRange: "luxury",
     rating: 4.8,
     reviews: 412,
     image: mapCompressed,
@@ -745,7 +745,7 @@ export const allCamps = [
     country: "Sweden",
     ages: "10-17 years",
     price: "SEK 7,600/1 week", // Verified Jan 2026
-    priceRange: "mid",
+    priceRange: "budget",
     rating: 4.8,
     reviews: 156,
     image: heroImage,
@@ -836,7 +836,7 @@ export const allCamps = [
     country: "Netherlands",
     ages: "7-17 years",
     price: "€730/1 week",
-    priceRange: "mid",
+    priceRange: "budget",
     rating: 4.4,
     reviews: 612,
     image: heroImage,
@@ -858,7 +858,7 @@ export const allCamps = [
     country: "Netherlands",
     ages: "6-18 years",
     price: "From €715/1 week",
-    priceRange: "mid",
+    priceRange: "budget",
     rating: 4.6,
     reviews: 95,
     image: activitiesCompressed,
@@ -904,7 +904,7 @@ export const allCamps = [
     country: "Norway",
     ages: "9-15 years",
     price: "NOK 7,900/1 week",
-    priceRange: "mid",
+    priceRange: "budget",
     rating: 4.7,
     reviews: 0,
     image: heroImage,
@@ -949,7 +949,7 @@ export const allCamps = [
     country: "Denmark",
     ages: "8-18 years",
     price: "DKK 3,995/1 week",
-    priceRange: "mid",
+    priceRange: "budget",
     rating: 4.5,
     reviews: 0,
     image: mapCompressed,
@@ -972,7 +972,7 @@ export const allCamps = [
     country: "Belgium",
     ages: "9-17 years",
     price: "€1,790/1 week", // Verified Jan 2026: per-child residential rate
-    priceRange: "mid",
+    priceRange: "premium",
     rating: 4.7,
     reviews: 0,
     image: mapCompressed,
@@ -1179,7 +1179,7 @@ export const allCamps = [
     country: "Germany",
     ages: "All ages (families)", // Verified Feb 2026: family camp, no minimum age
     price: "€745/1 week", // Verified Feb 2026: per-person all-inclusive rate
-    priceRange: "mid",
+    priceRange: "budget",
     rating: 4.7,
     reviews: 0,
     image: heroImage,
@@ -1225,7 +1225,7 @@ export const allCamps = [
     country: "Austria",
     ages: "10-17 years", // Verified Feb 2026: Austria location age range
     price: "€3,550/2 weeks", // Verified Feb 2026: per-child all-inclusive residential rate
-    priceRange: "mid",
+    priceRange: "premium",
     rating: 4.8,
     reviews: 0,
     image: heroImage,
@@ -1296,7 +1296,7 @@ export const allCamps = [
     country: "France",
     ages: "9-17 years",
     price: "€3,950/2 weeks", // Verified Feb 2026: French Classic program, per-child residential
-    priceRange: "mid",
+    priceRange: "premium",
     rating: 4.7,
     reviews: 0,
     image: heroImage,
@@ -1435,7 +1435,7 @@ export const allCamps = [
     country: "Spain",
     ages: "8-18 years", // Verified Feb 2026: official site states 8-18 for Summer Tennis Camp Junior
     price: "From €2,200/week", // Verified Feb 2026: residential boarding starting price via mallorcatennisacademy.com
-    priceRange: "mid",
+    priceRange: "premium",
     rating: 4.6,
     reviews: 0,
     image: activitiesCompressed,
@@ -1458,7 +1458,7 @@ export const allCamps = [
     country: "Belgium",
     ages: "7-15 years", // Verified Feb 2026: confirmed via job listing + RCF Namur article (juniors 7-10, teens 11-15)
     price: "€950/week", // Verified Feb 2026: €950/1wk, €1,890/2wk — visually verified on skitenfamily.com
-    priceRange: "budget",
+    priceRange: "mid",
     rating: 4.8,
     reviews: 0,
     image: mapCompressed,

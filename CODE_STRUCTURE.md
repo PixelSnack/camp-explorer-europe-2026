@@ -153,17 +153,17 @@ export { activitiesCompressed, mapCompressed }
 | Language Immersion | `language` | Primary language learning |
 | Sports Specialty | `sports` | Dedicated sports training |
 | Family Programs | `family` | Parents can attend |
-| Budget Excellence | `budget_excellence` | Quality under €2,000 |
+| Budget Excellence | `budget_excellence` | Quality under €800/week |
 | Unique Experiences | `unique` | Nature-based, wilderness |
 
-### Price Ranges
+### Price Ranges (EUR/week equivalent)
 
-| Range | Value | Typical Price |
-|-------|-------|---------------|
-| Budget | `budget` | €330 - €1,999 |
-| Mid | `mid` | €2,000 - €3,999 |
-| Premium | `premium` | €4,000 - €5,999 |
-| Luxury | `luxury` | €6,000+ |
+| Range | Value | Weekly Price |
+|-------|-------|-------------|
+| Budget | `budget` | Under €800/week |
+| Mid-Range | `mid` | €800 - €1,500/week |
+| Premium | `premium` | €1,500 - €3,000/week |
+| Luxury | `luxury` | €3,000+/week |
 
 ---
 

@@ -1046,10 +1046,11 @@ europeansummercamps/
 - ❌ **Wrong**: Corporate event pricing
 - ❌ **Wrong**: Pricing that includes flights
 
-**Price Ranges:**
-- **Budget**: €330 - €1,999
-- **Mid-range**: €2,000 - €3,999
-- **Premium**: €4,000 - €6,980
+**Price Ranges (EUR/week equivalent):**
+- **Budget**: Under €800/week
+- **Mid-Range**: €800 - €1,500/week
+- **Premium**: €1,500 - €3,000/week
+- **Luxury**: €3,000+/week
 
 **Critical Lesson**: Always verify price is per-child consumer pricing, not facility rental or group rates. This is the #1 data accuracy issue affecting real families.
 
@@ -1105,10 +1106,11 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 - Academic & STEM: 7 organizations
 - Premium Alpine: 4 organizations
 
-**Price Ranges:**
-- Budget: €335 - €1,999 (4 camps)
-- Mid-range: €2,000 - €3,999 (majority)
-- Premium: €4,000 - €6,980 (3 camps)
+**Price Tier Distribution (EUR/week equivalent):**
+- Budget (under €800/wk): 32 camps (49%)
+- Mid-Range (€800-€1,500/wk): 21 camps (32%)
+- Premium (€1,500-€3,000/wk): 7 camps (11%)
+- Luxury (€3,000+/wk): 5 camps (8%)
 
 **Critical**: All must be per-child pricing (not facility rentals).
 
