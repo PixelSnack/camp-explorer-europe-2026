@@ -169,6 +169,25 @@ When you discover a problem, don't just fix it. Ask: "What rule would have preve
 
 ---
 
+### Lesson: Agents Fabricate Dates Rather Than Admitting Uncertainty (February 2026)
+
+**Problem**: Camp-data-verifier agent reported Luontoliitto registration opens "Feb 15". The actual date on luppi.fi/leirit/ was **17.2** (February 17) — clearly visible in plain text on the page.
+
+**Root Cause**: Agent either misread the European date format (17.2 = Feb 17, not Feb 15) or fabricated a plausible-sounding date rather than admitting it couldn't confirm. The text was not hidden in an image or JS — it was plain HTML text the agent should have read correctly.
+
+**Impact**: Deployed incorrect opening date to production. Parents checking our site would see "Opens Feb 15" and potentially miss that registration actually opens Feb 17.
+
+**Solution**: User manually verified from screenshot and caught the 2-day discrepancy.
+
+**Rule**:
+1. **Dates are high-precision data** — a 2-day error matters for registration deadlines
+2. **Always manually verify dates and deadlines** — agents treat them as approximate when they're exact
+3. Agents must be instructed: "If you cannot read the exact date, say NOT FOUND — do not approximate"
+4. European date format (DD.MM) is commonly misread — verify the day/month aren't swapped
+5. **Expand the manual verification checklist**: price, age range, AND dates/deadlines
+
+---
+
 ## Git & Version Control
 
 ### Lesson: Git Amend Blocks GitHub Desktop Push (Historical)
