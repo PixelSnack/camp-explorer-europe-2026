@@ -244,33 +244,45 @@ Batch 3: Documentation → Commit ✓
 
 ## Communication & Workflow
 
-### Lesson: Ask Before Implementing During Investigation (February 2026)
+### Lesson: Ask Before Implementing During Investigation or Discussion (February 2026)
 
-**Problem**: User asked investigative questions about an iOS hero wobble issue. Claude immediately implemented a fix without asking permission first.
+**Problem**: Repeated pattern of Claude editing code when the user is asking for advice or investigating an issue — not requesting implementation. Examples:
+1. User asked investigative questions about an iOS hero wobble issue. Claude immediately implemented a fix without asking.
+2. User said "we should consider ignoring it unless you have a great fix" about a badge overlap. Claude immediately started editing files instead of discussing options first.
 
-**Root Cause**: Misinterpreting the user's intent — questions about a problem don't automatically mean "fix it now."
+**Root Cause**: Misinterpreting the user's intent — questions or requests for advice don't mean "fix it now." When the user asks "should we do X?" or "what do you think?", they want a discussion, not file edits.
 
-**Impact**: User lost control of when code changes happen. The fix was correct, but the user should decide when to implement.
+**Impact**: User loses control of when code changes happen. Even if the fix is correct, editing before the user has a chance to weigh in bypasses their decision-making.
 
-**Solution**: When user is asking questions/investigating, explain the cause and proposed fix, then explicitly ask "Would you like me to implement this?" before making code changes.
+**Solution**: When user is asking questions, requesting advice, or discussing options — ONLY respond with analysis and recommendations. Never open an editor. Explicitly ask "Would you like me to implement this?" and wait for a clear "yes."
 
-**Rule**: When the user is in "investigation mode" (asking questions about an issue, not explicitly requesting a fix):
-1. Explain the root cause
-2. Describe the proposed solution
-3. **ASK**: "Would you like me to implement this fix?"
-4. Wait for explicit approval before editing any files
+**Rule**: When the user is in "discussion mode" (asking for advice, weighing options, investigating):
+1. Explain the root cause or trade-offs
+2. Describe the proposed solution(s) — in text, not in code edits
+3. Give your recommendation
+4. **ASK**: "Would you like me to implement this?"
+5. **Wait for explicit approval before editing any files**
+6. **NEVER use Edit, Write, or Bash tools** until the user says to proceed
 
-**Signs of investigation mode**:
+**Signs of discussion/investigation mode** (DO NOT EDIT):
 - "Can you look into..."
 - "Why is this happening?"
 - "What's causing..."
 - "I noticed [issue], can you explain?"
+- "We should consider..."
+- "Unless you have a great fix..."
+- "What do you think about..."
+- "Should we..."
+- Any phrasing that asks for your opinion or presents options
 
 **Signs of implementation mode** (OK to proceed):
 - "Fix the..."
 - "Update the..."
 - "Change X to Y"
 - "Implement..."
+- "Go ahead"
+- "Do it"
+- Explicit "yes" after you asked for permission
 
 ---
 
