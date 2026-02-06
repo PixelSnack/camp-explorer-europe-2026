@@ -1433,19 +1433,19 @@ export const allCamps = [
     name: "Rafa Nadal Academy Summer Camp",
     location: "Manacor, Mallorca",
     country: "Spain",
-    ages: "8-18 years", // Verified Feb 2026: official site states 8-18 for Summer Tennis Camp Junior
-    price: "From €2,200/week", // Verified Feb 2026: residential boarding starting price via mallorcatennisacademy.com
+    ages: "6-18 years", // Verified Feb 2026: Kids Camp 6-10 (parents required), Junior Camp 8-18, Tennis & Language 12-18, Padel 12-18
+    price: "From €2,789/week", // Verified Feb 2026: cheapest boarding option per user review of official site
     priceRange: "premium",
     rating: 4.6,
     reviews: 0,
     image: activitiesCompressed,
     category: "sports",
     type: "Tennis Training Academy",
-    activities: ["Tennis Training", "Padel", "Beach Volleyball", "Basketball", "Table Tennis", "Swimming", "FIFA Gaming"],
+    activities: ["Tennis Training", "Padel", "Beach Volleyball", "Basketball", "Table Tennis", "Swimming", "Paddle Surfing"],
     dates: "May 31 - August 30, 2026 (weekly, Sunday to Sunday)",
-    highlights: ["Founded by Rafael Nadal — world-class tennis methodology", "20.5 hours tennis training per week (1:4 player-to-court ratio)", "Bundesliga-style stadium visit & Mallorca excursions included"],
+    highlights: ["Founded by Rafael Nadal — world-class tennis methodology", "20.5 hours tennis training per week (1:4 player-to-court ratio)", "Rafa Nadal Museum tour & Mallorca excursions included"],
     languages: ["English", "Spanish"],
-    specialFeatures: ["En-suite twin rooms in supervised Rafa Nadal Residence", "Full board + airport transfers included", "45 tennis courts (hard & clay, indoor & outdoor)"],
+    specialFeatures: ["4 programs: Tennis Junior, Tennis & Language, Tennis Kids, Padel", "En-suite twin rooms in supervised Rafa Nadal Residence, full board + airport transfers", "45 tennis courts + 19 padel courts (hard & clay, indoor & outdoor)"],
     established: 2016,
     capacity: null,
     bookingUrl: "https://www.rafanadalacademy.com/en/junior-programs/summer-camps/summer-tennis-camp-junior/"
@@ -1464,13 +1464,13 @@ export const allCamps = [
     image: mapCompressed,
     category: "language",
     type: "Multilingual Sports & Culture Camp",
-    activities: ["Football", "Volleyball", "Hockey", "Basketball", "Tennis", "Archery", "Rugby", "Water Polo", "Swimming", "Golf", "Music", "Photography"],
-    dates: "July - August 2026 (1-week or 2-week sessions)",
+    activities: ["Football", "Volleyball", "Hockey", "Basketball", "Tennis", "Archery", "Rugby", "Water Polo", "Swimming", "Cooking", "Music", "Photography"],
+    dates: "July 5 - August 29, 2026 (8 weekly sessions)",
     highlights: ["50+ years heritage since 1975 — château-based camp", "15+ nationalities, 67% camper return rate", "1:3 staff-to-child ratio with experienced alumni counselors"],
-    languages: ["French", "English"],
-    specialFeatures: ["Historic Château d'Emines with heated pool & private pond", "2 hours daily language immersion (chosen language)", "Organic & dietary-inclusive meals (vegetarian, vegan, gluten-free)"],
+    languages: ["French", "English", "Spanish"],
+    specialFeatures: ["Historic Château d'Emines with heated pool & private pond", "Daily structure: 2h language + 2h activity choice + 2h sports/arts", "Organic & dietary-inclusive meals (vegetarian, vegan, gluten-free)"],
     established: 1975,
-    capacity: 70,
+    capacity: 65,
     bookingUrl: "https://www.skitenfamily.com/en/skitensummercamp"
   },
   // Germany - Sports Specialty (football/soccer - high search demand, bilingual)
@@ -1480,7 +1480,7 @@ export const allCamps = [
     location: "Hinsbeck, North Rhine-Westphalia",
     country: "Germany",
     ages: "11-16 years", // Verified Feb 2026: International Football Camp age range from official site
-    price: "€695/week", // Verified Feb 2026: International Football Camp 7 days/6 nights per ferienfussball.de
+    price: "From €730/1 week", // Updated Feb 2026: €729.60 early bird (regular €768), 7 days per official site
     priceRange: "budget",
     rating: 4.7,
     reviews: 0,
@@ -1488,7 +1488,7 @@ export const allCamps = [
     category: "sports",
     type: "International Football Training Camp",
     activities: ["Football Training", "Goalkeeper Training", "Street Soccer", "Beach Volleyball", "Basketball", "Table Tennis", "Trampoline", "E-Sports"],
-    dates: "Easter, Summer & Autumn holidays 2026 (7 or 14 day sessions)",
+    dates: "July 26 - August 8, 2026 (7 or 14 day sessions)",
     highlights: ["25+ years experience since 1999 — Germany's premier football camp", "Bilingual coaching staff (German & English)", "Bundesliga stadium visit included in every session"],
     languages: ["German", "English"],
     specialFeatures: ["Sport- und Erlebnisdorf Hinsbeck: 30 houses with 24h supervision", "2-3 football training sessions daily with certified coaches", "Also offers Junior Camps (ages 8-14) and Girls Camps (ages 12-18)"],
