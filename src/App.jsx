@@ -1253,11 +1253,15 @@ function App() {
                       {camp.dates}
                     </Badge>
                   </div>
-                  {/* 2026 Availability Badge for High-Demand Camps */}
-                  {(camp.priceRange === 'luxury' || camp.priceRange === 'premium' || camp.rating >= 4.8) && (
+                  {/* 2026 Booking Status Badge - default green, blue for future dates, hidden for not yet open */}
+                  {camp.bookingStatus !== 'not yet open' && (
                     <div className="absolute bottom-4 right-4">
-                      <Badge className="bg-green-500/90 text-white backdrop-blur-sm text-xs animate-pulse">
-                        2026 Open
+                      <Badge className={`${
+                        !camp.bookingStatus || camp.bookingStatus === 'open'
+                          ? 'bg-green-500/90'
+                          : 'bg-blue-500/90'
+                      } text-white backdrop-blur-sm text-xs animate-pulse`}>
+                        {!camp.bookingStatus || camp.bookingStatus === 'open' ? '2026 Open' : camp.bookingStatus}
                       </Badge>
                     </div>
                   )}
@@ -1795,11 +1799,15 @@ function App() {
                         {camp.dates}
                       </Badge>
                     </div>
-                    {/* 2026 Availability Badge for High-Demand Camps */}
-                    {(camp.priceRange === 'luxury' || camp.priceRange === 'premium' || camp.rating >= 4.8) && (
+                    {/* 2026 Booking Status Badge - default green, blue for future dates, hidden for not yet open */}
+                    {camp.bookingStatus !== 'not yet open' && (
                       <div className="absolute bottom-4 right-4">
-                        <Badge className="bg-green-500/90 text-white backdrop-blur-sm text-xs animate-pulse">
-                          2026 Open
+                        <Badge className={`${
+                          !camp.bookingStatus || camp.bookingStatus === 'open'
+                            ? 'bg-green-500/90'
+                            : 'bg-blue-500/90'
+                        } text-white backdrop-blur-sm text-xs animate-pulse`}>
+                          {!camp.bookingStatus || camp.bookingStatus === 'open' ? '2026 Open' : camp.bookingStatus}
                         </Badge>
                       </div>
                     )}

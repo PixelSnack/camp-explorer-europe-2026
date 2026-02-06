@@ -308,6 +308,7 @@ export const allCamps = [
     ages: "12-18 years",
     price: "NOK 5,890/1 week",
     priceRange: "mid",
+    bookingStatus: "not yet open",
     rating: 4.9,
     reviews: 127,
     image: mapCompressed,
@@ -353,6 +354,7 @@ export const allCamps = [
     ages: "6-12 years",
     price: "NOK 5,700/1 week", // Verified Jan 2026: DAY CAMP (8:30-15:30), 5-day program
     priceRange: "mid",
+    bookingStatus: "not yet open",
     rating: 4.6,
     reviews: 87,
     image: activitiesCompressed,
@@ -534,6 +536,7 @@ export const allCamps = [
     ages: "12-16 years",
     price: "PLN 7,730/2 weeks",
     priceRange: "budget",
+    bookingStatus: "Opens Feb 9",
     rating: 4.8,
     reviews: 203,
     image: activitiesCompressed,
@@ -581,6 +584,7 @@ export const allCamps = [
     ages: "8-17 years",
     price: "€625/1 week", // Verified Jan 2026
     priceRange: "budget",
+    bookingStatus: "Opens Feb 18",
     rating: 4.8,
     reviews: 234,
     image: heroImage,
@@ -1268,6 +1272,7 @@ export const allCamps = [
     ages: "8-17 years", // Verified Feb 2026: Luppi/Uusimaa children 8-13, youth 12-17
     price: "From €130/week", // Verified Feb 2026: non-member pricing €130-210 (Luppi/Uusimaa district)
     priceRange: "budget",
+    bookingStatus: "Opens Feb 15",
     rating: 4.5,
     reviews: 0,
     image: mapCompressed,
@@ -1384,6 +1389,7 @@ export const allCamps = [
     ages: "9-12 years", // Manual verification Feb 2026: U9-U12 per official site (ages 9-12)
     price: "From €460/4 days", // Verified Feb 2026: €460 basic, €490 development camp
     priceRange: "budget",
+    bookingStatus: "Opens April",
     rating: 4.7,
     reviews: 0,
     image: activitiesCompressed,
