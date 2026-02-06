@@ -1275,7 +1275,7 @@ export const allCamps = [
     type: "Wilderness & Environmental Education Camp",
     activities: ["Wildlife Observation", "Forest Skills", "Canoeing", "Nature Photography", "Birdwatching", "Outdoor Survival", "Environmental Projects"],
     dates: "June - August, 2026",
-    highlights: ["80+ years of nature education (Est. 1943)", "Finnish-language registration — use browser translation", "Non-profit environmental organization (Finnish Nature League)"],
+    highlights: ["80+ years of nature education (Est. 1943)", "Finnish-language registration - use browser translation", "Non-profit environmental organization (Finnish Nature League)"],
     languages: ["Finnish"],
     specialFeatures: ["Finnish Nature League organization", "Focus on environmental stewardship", "Authentic Nordic wilderness experience"],
     established: 1943,
