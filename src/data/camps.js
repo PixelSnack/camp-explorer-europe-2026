@@ -1263,10 +1263,10 @@ export const allCamps = [
   {
     id: 60,
     name: "Luontoliitto Nature Camps",
-    location: "Various locations, Finland",
+    location: "Uusimaa & Helsinki Region, Finland",
     country: "Finland",
-    ages: "5-17 years", // Verified Feb 2026: children 5-15, youth up to 17
-    price: "From €70", // Verified Feb 2026: member pricing, non-members €100+
+    ages: "8-17 years", // Verified Feb 2026: Luppi/Uusimaa children 8-13, youth 12-17
+    price: "From €130/week", // Verified Feb 2026: non-member pricing €130-210 (Luppi/Uusimaa district)
     priceRange: "budget",
     rating: 4.5,
     reviews: 0,
@@ -1275,12 +1275,12 @@ export const allCamps = [
     type: "Wilderness & Environmental Education Camp",
     activities: ["Wildlife Observation", "Forest Skills", "Canoeing", "Nature Photography", "Birdwatching", "Outdoor Survival", "Environmental Projects"],
     dates: "June - August, 2026",
-    highlights: ["80+ years of nature education (Est. 1943)", "Finnish Lakeland & wilderness settings", "Non-profit environmental organization"],
+    highlights: ["80+ years of nature education (Est. 1943)", "Finnish-language registration — use browser translation", "Non-profit environmental organization (Finnish Nature League)"],
     languages: ["Finnish"],
     specialFeatures: ["Finnish Nature League organization", "Focus on environmental stewardship", "Authentic Nordic wilderness experience"],
     established: 1943,
     capacity: 35,
-    bookingUrl: "https://luontoliitto.fi/leirit/"
+    bookingUrl: "https://www.luppi.fi/leirit/"
   },
   // NEW CAMPS ADDED February 6, 2026 - Data-Driven Content Expansion (Analytics-informed)
   // France - Academic & STEM (Normandy - new region)
