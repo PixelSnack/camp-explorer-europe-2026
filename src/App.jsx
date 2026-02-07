@@ -1234,10 +1234,12 @@ function App() {
                     </Badge>
                   </div>
                   <div className="absolute top-4 right-4 flex gap-2">
+                    {camp.rating !== null && (
                     <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
                       <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
                       {camp.rating}
                     </Badge>
+                    )}
                     <Button
                       size="sm"
                       variant={selectedCamps.find(c => c.id === camp.id) ? "default" : "outline"}
@@ -1348,8 +1350,17 @@ function App() {
                         </div>
                         )}
                         <div className="trust-indicator">
-                          <Heart className="w-4 h-4" />
-                          <span>{camp.reviews} reviews</span>
+                          {camp.reviews > 0 ? (
+                            <>
+                              <Heart className="w-4 h-4" />
+                              <span>{camp.reviews} reviews</span>
+                            </>
+                          ) : (
+                            <>
+                              <Shield className="w-4 h-4 text-green-600" aria-hidden="true" />
+                              <span>Verified Camp</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -1780,10 +1791,12 @@ function App() {
                       </Badge>
                     </div>
                     <div className="absolute top-4 right-4 flex gap-2">
+                      {camp.rating !== null && (
                       <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
                         <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
                         {camp.rating}
                       </Badge>
+                      )}
                       <Button
                         size="sm"
                         variant={selectedCamps.find(c => c.id === camp.id) ? "default" : "outline"}
@@ -1892,9 +1905,18 @@ function App() {
                           Est. {camp.established}
                         </div>
                         )}
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Heart className="w-4 h-4 mr-1" />
-                          {camp.reviews} reviews
+                        <div className="flex items-center text-sm text-gray-600">
+                          {camp.reviews > 0 ? (
+                            <>
+                              <Heart className="w-4 h-4 mr-1" />
+                              {camp.reviews} reviews
+                            </>
+                          ) : (
+                            <>
+                              <Shield className="w-4 h-4 mr-1 text-green-600" aria-hidden="true" />
+                              Verified Camp
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -2036,6 +2058,7 @@ function App() {
                             <span className="font-semibold">{camp.ages}</span>
                           </div>
                           
+                          {camp.rating !== null && (
                           <div className="flex justify-between">
                             <span className="text-gray-600">Rating:</span>
                             <span className="font-semibold flex items-center">
@@ -2043,6 +2066,7 @@ function App() {
                               {camp.rating}
                             </span>
                           </div>
+                          )}
                           
                           <div className="flex justify-between">
                             <span className="text-gray-600">Capacity:</span>

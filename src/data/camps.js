@@ -4,6 +4,45 @@ import heroImage from '../assets/european-summer-camps-lakeside-hero.png'
 import activitiesCompressed from '../assets/activities-collage-compressed.png'
 import mapCompressed from '../assets/camps-map-compressed.png'
 
+/**
+ * Review source platform registry with tier-based weighting.
+ * Tier 1 (1.3x): Camp/education-specific platforms — most relevant
+ * Tier 2 (1.0x): Major general platforms — high trust, universal coverage
+ * Tier 3 (0.8x): Country/regional platforms — narrower but valuable
+ */
+export const REVIEW_SOURCES = {
+  // Tier 1 — Camp/Education-Specific
+  campratingz: { label: 'CampRatingz', tier: 1, weight: 1.3 },
+  worldcamps: { label: 'WorldCamps', tier: 1, weight: 1.3 },
+  bestsummercourses: { label: 'Best Summer Courses', tier: 1, weight: 1.3 },
+  goabroad: { label: 'GoAbroad', tier: 1, weight: 1.3 },
+  // Tier 2 — Major General Platforms
+  google: { label: 'Google Reviews', tier: 2, weight: 1.0 },
+  trustpilot: { label: 'Trustpilot', tier: 2, weight: 1.0 },
+  tripadvisor: { label: 'TripAdvisor', tier: 2, weight: 1.0 },
+  facebook: { label: 'Facebook', tier: 2, weight: 1.0 },
+  // Tier 3 — Country/Regional
+  camping2be: { label: 'Camping2Be', tier: 3, weight: 0.8 },
+  ukcampsite: { label: 'UKCampsite', tier: 3, weight: 0.8 },
+  campsde: { label: 'Camps.de', tier: 3, weight: 0.8 },
+  firstcamp: { label: 'First Camp', tier: 3, weight: 0.8 }
+}
+
+/**
+ * Camp data shape — reviewData field documentation
+ *
+ * @typedef {Object} ReviewData
+ * @property {string} lastVerified - "YYYY-MM" format, when sources were last checked
+ * @property {Object.<string, {rating: number, count: number}>} sources
+ *   Keys must be from REVIEW_SOURCES. rating: 1.0-5.0 normalized, count: integer >= 1
+ * @property {string} [notes] - Only include when needed (omit if not applicable)
+ *
+ * Top-level fields:
+ * - rating: number|null — weighted average from sources (null = no review data)
+ * - reviews: number — total count across all sources (0 = no reviews found)
+ * - reviewData: ReviewData|undefined — detailed breakdown (added gradually per batch)
+ */
+
 export const allCamps = [
   // Premium Alpine Experiences
   {
@@ -882,7 +921,7 @@ export const allCamps = [
     ages: "8-18 years",
     price: "€410-440/1 week",
     priceRange: "budget",
-    rating: 4.5,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "budget_excellence",
@@ -905,7 +944,7 @@ export const allCamps = [
     ages: "9-15 years",
     price: "NOK 7,900/1 week",
     priceRange: "budget",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: heroImage,
     category: "sports",
@@ -950,7 +989,7 @@ export const allCamps = [
     ages: "8-18 years",
     price: "DKK 3,995/1 week",
     priceRange: "budget",
-    rating: 4.5,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "unique",
@@ -973,7 +1012,7 @@ export const allCamps = [
     ages: "9-17 years",
     price: "€1,790/1 week", // Verified Jan 2026: per-child residential rate
     priceRange: "premium",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "language",
@@ -996,7 +1035,7 @@ export const allCamps = [
     ages: "6-17 years",
     price: "€685/1 week", // Verified Jan 2026: per-child residential rate
     priceRange: "budget",
-    rating: 4.6,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "budget_excellence",
@@ -1019,7 +1058,7 @@ export const allCamps = [
     ages: "12-16 years",
     price: "€1,290/1 week", // Verified Jan 2026: per-child residential rate
     priceRange: "mid",
-    rating: 4.5,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "sports",
@@ -1042,7 +1081,7 @@ export const allCamps = [
     ages: "6-17 years", // Verified Feb 2026: residential from age 8
     price: "€2,675/2 weeks", // Verified Feb 2026: per-child Core+ residential rate
     priceRange: "mid",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: heroImage,
     category: "academic",
@@ -1065,7 +1104,7 @@ export const allCamps = [
     ages: "5-18 years", // Verified Feb 2026
     price: "€1,950/2 weeks", // Verified Feb 2026: per-child residential rate
     priceRange: "mid",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: activitiesCompressed,
     category: "language",
@@ -1088,7 +1127,7 @@ export const allCamps = [
     ages: "6-16 years", // Verified Feb 2026
     price: "€1,390/1 week", // Verified Feb 2026: per-child residential rate
     priceRange: "mid",
-    rating: 4.8,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "academic",
@@ -1111,7 +1150,7 @@ export const allCamps = [
     ages: "12-17 years", // Verified Feb 2026: was estimated 12-16
     price: "€2,100/2 weeks", // Verified Feb 2026: per-child residential rate
     priceRange: "mid",
-    rating: 4.6,
+    rating: null,
     reviews: 0,
     image: heroImage,
     category: "language",
@@ -1157,7 +1196,7 @@ export const allCamps = [
     ages: "5-16 years", // Verified Feb 2026: age-specific sessions (5-8, 6-13, 8-13, 12-16)
     price: "From €235/5 days", // Historical verified price; inquiry-based pricing model
     priceRange: "budget",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "family",
@@ -1180,7 +1219,7 @@ export const allCamps = [
     ages: "All ages (families)", // Verified Feb 2026: family camp, no minimum age
     price: "€745/1 week", // Verified Feb 2026: per-person all-inclusive rate
     priceRange: "budget",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: heroImage,
     category: "family",
@@ -1203,7 +1242,7 @@ export const allCamps = [
     ages: "9-17 years", // Verified Feb 2026: 9-13 and 14-17 age groups
     price: "€575/1 week", // Verified Feb 2026: per-child residential rate
     priceRange: "budget",
-    rating: 4.6,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "unique",
@@ -1226,7 +1265,7 @@ export const allCamps = [
     ages: "10-17 years", // Verified Feb 2026: Austria location age range
     price: "€3,550/2 weeks", // Verified Feb 2026: per-child all-inclusive residential rate
     priceRange: "premium",
-    rating: 4.8,
+    rating: null,
     reviews: 0,
     image: heroImage,
     category: "premium",
@@ -1249,7 +1288,7 @@ export const allCamps = [
     ages: "7-17 years", // Verified Feb 2026: 7-15 standard, 12-17 advanced mountaineering
     price: "€610/1 week", // Verified Feb 2026: per-child residential rate
     priceRange: "budget",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: activitiesCompressed,
     category: "unique",
@@ -1273,7 +1312,7 @@ export const allCamps = [
     price: "From €130/week", // Verified Feb 2026: non-member pricing €130-210 (Luppi/Uusimaa district)
     priceRange: "budget",
     bookingStatus: "Opens Feb 17",
-    rating: 4.5,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "unique",
@@ -1297,7 +1336,7 @@ export const allCamps = [
     ages: "9-17 years",
     price: "€3,950/2 weeks", // Verified Feb 2026: French Classic program, per-child residential
     priceRange: "premium",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: heroImage,
     category: "academic",
@@ -1320,7 +1359,7 @@ export const allCamps = [
     ages: "10-17 years",
     price: "€1,395/1 week", // Verified Feb 2026: 2+ week courses, +€50/wk summer surcharge Jun-Aug
     priceRange: "mid",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: activitiesCompressed,
     category: "language",
@@ -1343,7 +1382,7 @@ export const allCamps = [
     ages: "6-15 years",
     price: "€490/14 days", // Verified Feb 2026: includes insurance, excursions, 24h medical
     priceRange: "budget",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "budget_excellence",
@@ -1366,7 +1405,7 @@ export const allCamps = [
     ages: "7-19 years",
     price: "€850/1 week", // Verified Feb 2026: per-child, €790 for siblings
     priceRange: "mid",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: heroImage,
     category: "unique",
@@ -1390,7 +1429,7 @@ export const allCamps = [
     price: "From €460/4 days", // Verified Feb 2026: €460 basic, €490 development camp
     priceRange: "budget",
     bookingStatus: "Opens April",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: activitiesCompressed,
     category: "sports",
@@ -1413,7 +1452,7 @@ export const allCamps = [
     ages: "5-13 years",
     price: "From €380/1 week", // Research Feb 2026: morning program; extended €480/week
     priceRange: "budget",
-    rating: 4.8,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "sports",
@@ -1436,7 +1475,7 @@ export const allCamps = [
     ages: "6-18 years", // Verified Feb 2026: Kids Camp 6-10 (parents required), Junior Camp 8-18, Tennis & Language 12-18, Padel 12-18
     price: "From €2,789/week", // Verified Feb 2026: cheapest boarding option per user review of official site
     priceRange: "premium",
-    rating: 4.6,
+    rating: null,
     reviews: 0,
     image: activitiesCompressed,
     category: "sports",
@@ -1459,7 +1498,7 @@ export const allCamps = [
     ages: "7-15 years", // Verified Feb 2026: confirmed via job listing + RCF Namur article (juniors 7-10, teens 11-15)
     price: "€950/week", // Verified Feb 2026: €950/1wk, €1,890/2wk — visually verified on skitenfamily.com
     priceRange: "mid",
-    rating: 4.8,
+    rating: null,
     reviews: 0,
     image: mapCompressed,
     category: "language",
@@ -1482,7 +1521,7 @@ export const allCamps = [
     ages: "11-16 years", // Verified Feb 2026: International Football Camp age range from official site
     price: "From €730/1 week", // Updated Feb 2026: €729.60 early bird (regular €768), 7 days per official site
     priceRange: "budget",
-    rating: 4.7,
+    rating: null,
     reviews: 0,
     image: heroImage,
     category: "sports",
