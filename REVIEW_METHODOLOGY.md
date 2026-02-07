@@ -70,7 +70,7 @@ All sources normalized to 1.0-5.0 scale. Facebook "Recommended %" converted: `(r
 
 ### Minimum Thresholds
 - **1+ source with 1+ review**: Display rating and review count normally
-- **0 sources / 0 reviews**: Show "Verified Camp" badge (no star rating displayed)
+- **0 sources / 0 reviews**: Hide review row entirely (no rating badge, no review count — camp still shows established year and all other info)
 
 ---
 
@@ -226,7 +226,7 @@ When adding any new camp, include review research in the camp-content-researcher
 ### Phase 1: Foundation (February 7, 2026) — COMPLETE
 - REVIEW_SOURCES constants + JSDoc in camps.js
 - Set `rating: null` for 25 zero-review camps
-- UI: "Verified Camp" badge for 0-review camps, hide rating when null
+- UI: Hide review row entirely for 0-review camps, hide rating badge when null
 - Build-time validation script (prebuild hook)
 - This documentation
 
@@ -237,7 +237,7 @@ When adding any new camp, include review research in the camp-content-researcher
 
 ### Phase 3: Research 25 zero-review camps (1-2 sessions)
 - Search all platforms for each camp
-- Some will gain reviews, some stay at 0 with "Verified Camp" badge
+- Some will gain reviews, some stay at 0 (review row hidden, camp still fully displayed)
 
 ### Phase 4: Documentation updates (1 session)
 - Update CLAUDE.md, CODE_STRUCTURE.md, CAMP_VERIFICATION_CRITERIA.md
@@ -252,7 +252,7 @@ When adding any new camp, include review research in the camp-content-researcher
 | Total camps | 65 |
 | Camps with reviews | 40 (62%) |
 | Camps without reviews | 25 (38%) |
-| Camps showing "Verified Camp" | 25 |
+| Camps with hidden review row | 25 |
 | Review sources defined | 12 |
 | Validation rules | 8+ |
 

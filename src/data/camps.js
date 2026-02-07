@@ -54,8 +54,15 @@ export const allCamps = [
     ages: "6-17 years",
     price: "From CHF 4,550/1 week", // Verified Jan 2026: per-week pricing
     priceRange: "luxury",
-    rating: 4.9,
-    reviews: 847,
+    rating: 4.7,
+    reviews: 259,
+    reviewData: {
+      lastVerified: "2026-02",
+      sources: {
+        google: { rating: 4.7, count: 258 },
+        worldcamps: { rating: 5.0, count: 1 }
+      }
+    },
     image: heroImage,
     category: "premium",
     type: "Alpine Adventure",
