@@ -1899,7 +1899,7 @@ function App() {
                         </div>
                         )}
                         {camp.reviews > 0 && (
-                        <div className="flex items-center text-sm text-gray-600">
+                        <div className="flex items-center text-sm text-gray-500">
                           <Heart className="w-4 h-4 mr-1" />
                           {camp.reviews} reviews
                         </div>
