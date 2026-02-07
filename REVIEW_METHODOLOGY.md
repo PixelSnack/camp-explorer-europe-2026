@@ -117,15 +117,19 @@ All sources normalized to 1.0-5.0 scale. Facebook "Recommended %" converted: `(r
 
 ### Camps with reviews (reviews > 0):
 - Star rating badge on card image (top-right)
-- Heart icon + "{count} reviews" text in trust indicator area
+- Heart icon + "{count} reviews" in trust indicator area
 
 ### Camps without reviews (reviews === 0, rating === null):
 - No star rating badge on card image
-- Shield icon + "Verified Camp" text in trust indicator area
-- "Verified Camp" means the camp passed our 5-point verification criteria
+- Trust indicator row hidden entirely (clean card, no negative signal)
+- All camps are verified — showing a badge on only some implies others are not
 
 ### Compare Panel:
 - Rating row hidden entirely when rating is null
+
+### Styling consistency:
+- Home and Discover sections use matching styles: `font-weight: 400`, `text-sm`, `gray-500`
+- Home uses `.trust-indicator` CSS class (App.css), Discover uses inline Tailwind classes
 
 ---
 
