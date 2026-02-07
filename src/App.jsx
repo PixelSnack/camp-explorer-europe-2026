@@ -1349,19 +1349,12 @@ function App() {
                           <span>Est. {camp.established}</span>
                         </div>
                         )}
+                        {camp.reviews > 0 && (
                         <div className="trust-indicator">
-                          {camp.reviews > 0 ? (
-                            <>
-                              <Heart className="w-4 h-4" />
-                              <span>{camp.reviews} reviews</span>
-                            </>
-                          ) : (
-                            <>
-                              <Shield className="w-4 h-4 text-green-600" aria-hidden="true" />
-                              <span>Verified Camp</span>
-                            </>
-                          )}
+                          <Heart className="w-4 h-4" />
+                          <span>{camp.reviews} reviews</span>
                         </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1905,19 +1898,12 @@ function App() {
                           Est. {camp.established}
                         </div>
                         )}
+                        {camp.reviews > 0 && (
                         <div className="flex items-center text-sm text-gray-600">
-                          {camp.reviews > 0 ? (
-                            <>
-                              <Heart className="w-4 h-4 mr-1" />
-                              {camp.reviews} reviews
-                            </>
-                          ) : (
-                            <>
-                              <Shield className="w-4 h-4 mr-1 text-green-600" aria-hidden="true" />
-                              Verified Camp
-                            </>
-                          )}
+                          <Heart className="w-4 h-4 mr-1" />
+                          {camp.reviews} reviews
                         </div>
+                        )}
                       </div>
                     </div>
 
