@@ -1,9 +1,9 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** February 3, 2026
-**Current Status:** 56 camps across 24 countries, filter system live, code review updated
-**Ready for:** Code review Tier 3 remaining items, then content expansion, monetization, traffic growth
+**Last Updated:** February 25, 2026
+**Current Status:** 65 organizations across 24 countries, review system Phase 1 live, code review in progress
+**Ready for:** Review system Phase 2 (verify review data), content expansion to 70, code review Tier 3
 
 ---
 
@@ -22,7 +22,7 @@
 
 ### **Current Project Context (January 26, 2026):**
 - ✅ **Live Production Website**: www.europeansummercamps.com serving real families daily
-- ✅ **Database**: 56 verified organizations across 24 European countries
+- ✅ **Database**: 65 verified organizations across 24 European countries
 - ✅ **Pricing Verified**: 100% of camps have accurate per-child pricing
 - ✅ **Price Display**: Two-line layout (price + duration) with "From" label above
 - ✅ **Mobile UX**: Footer spacing optimized for iOS
@@ -261,22 +261,24 @@
 ---
 
 ### **🌍 1. CONTENT EXPANSION** - Target: 100+ Organizations
-**Status:** IN PROGRESS - Currently 56, milestone 50 PASSED, then 60
+**Status:** IN PROGRESS - Currently 65, milestone 60 PASSED, target 70 next
 **Business Impact:** More camps = more search traffic = faster path to monetization
 
 #### **Milestones:**
 | Milestone | Target | Status |
 |-----------|--------|--------|
 | 50 organizations | — | ✅ Passed |
-| 60 organizations | +4 camps | Next |
-| 75 organizations | +19 camps | Medium-term |
-| 100 organizations | +44 camps | Long-term goal |
+| 60 organizations | — | ✅ Passed (Feb 6, 2026) |
+| 65 organizations | — | ✅ Current (Feb 6, 2026) |
+| 70 organizations | +5 camps | Next (see CAMP_EXPANSION_ROADMAP.md) |
+| 100 organizations | +35 camps | Long-term goal |
 
 #### **Expansion Focus:**
-- Fill underrepresented countries (Spain, Italy, Germany, France each have 1-2)
+- Fill underrepresented single-camp countries (8 countries with 1 camp each)
 - Add new countries (Luxembourg still at 0)
-- Strengthen Nordic coverage (maintain ~30%)
-- Balance category distribution (Premium Alpine only has 3)
+- Maintain Nordic coverage (~25%)
+- Balance category distribution (Family Programs and Budget Excellence have room to grow)
+- See CAMP_EXPANSION_ROADMAP.md for Batch 2 plan (IDs 70-74)
 
 ---
 
@@ -509,8 +511,8 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 | File | Purpose | Lines |
 |------|---------|-------|
-| `src/App.jsx` | Main component (camp data extracted) | ~4,636 |
-| `src/data/camps.js` | allCamps array (56 orgs) | ~1,289 |
+| `src/App.jsx` | Main component (camp data extracted) | ~4,700 |
+| `src/data/camps.js` | allCamps array (65 orgs) | ~1,545 |
 | `public/_headers` | Security headers | ~20 |
 | `public/sitemap.xml` | SEO sitemap | ~30 |
 
@@ -530,38 +532,41 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 
 ---
 
-**Last Session:** February 3, 2026 (Session 2) - 5-agent parallel audit of CODE_REVIEW_2026.md. Ran enterprise+SEO agents on the review document AND enterprise+SEO+security agents on full codebase simultaneously. Synthesized all findings into comprehensive update. Key new issues found: legal privacy policy inconsistency, Vite 4.x EOL with CVEs, Organization schema gaps. Adjusted scores: SEO 7→6.5, Security 8→7.5. Added ~14 new checklist items (total now ~65). Archived CODE_REVIEW_PLAN.md to docs/archive/.
-**Previous Session:** February 3, 2026 (Session 1) - Executed Code Review Tier 3 quick wins (8 of 11 items). Fixed: broken "Local" footer link, "Book Now" text, null established year, badge CSS inconsistency, hyperbolic comments (5), meta keywords removal, og:image:type added, hreflang tags removed, resourceSection investigated (not dead).
-**Previous Session:** February 2, 2026 - Executed Code Review Tier 1 (8 commits) + Tier 2 (17 commits). Tier 1: ~10.6MB removed, 4,234 lines deleted, og:image fixed. Tier 2: camp data extracted to camps.js, dynamic org counts, maxLength on inputs, noopener on window.open, CSP GA4 fix, meta country counts, sitemap updates, filterOptions memoized.
-**Previous Session:** February 1, 2026 - Documentation & tooling session + comprehensive CODE_REVIEW_PLAN.md
-**Previous Session:** January 28, 2026 - Implemented context-aware scroll navigation + complete filter system
+**Last Session:** February 25, 2026 - Documentation update session. Updated all outdated docs to match current state (65 orgs, ~4,700 lines App.jsx, ~1,545 lines camps.js).
+**Previous Session:** February 9, 2026 - Removed expired booking status badges (IDs 28, 30, 60). Review system Phase 2 started (Les Elfes verified with reviewData).
+**Previous Session:** February 7-8, 2026 - Review aggregation system Phase 1 deployed. REVIEW_METHODOLOGY.md created. Build-time validation. 8 camps Google data collected via Chrome extension.
+**Previous Session:** February 6, 2026 - Added 9 new camps (IDs 61-69). Price tier realignment. Booking status badge system. Reached 65 organizations.
+**Previous Session:** February 3, 2026 - 5-agent code review audit. Code review Tier 3 quick wins (8 items).
+**Previous Session:** February 2, 2026 - Code Review Tier 1 (8 commits) + Tier 2 (17 commits).
 
 ---
 
 ## 🎯 **NEXT SESSION CHECKLIST**
 
-**Option A: Continue Code Review Execution (Recommended)**
-1. Read `CODE_REVIEW_2026.md` — the comprehensive review document with ~65 checklist items
-2. Focus on pending items:
-   - **Tier 1 new (5 items)**: robots.txt cleanup, AVIF cache rule, Twitter handle verify
-   - **Tier 2 Group G (8 items)**: user-scalable fix, marquee memory leak, Error Boundary
-   - **Tier 2 Group H (5 items)**: privacy policy fix, GA4 guard, sitemap/og:image align
-   - **Tier 3 new (12 items)**: Vite upgrade, CAPTCHA, Organization schema
-3. Execute one tier at a time, one item per commit, test after each
+**Option A: Review System Phase 2 (Recommended)**
+1. Read `REVIEW_SYSTEM_NEXT_STEPS.md` for batch plan and agent prompt templates
+2. Verify review data for Batch 1-2 (9 camps with 400+ reviews — highest visibility)
+3. Use camp-data-verifier agents (up to 4 parallel, 5 camps each)
+4. Manually spot-check at least 2 camps per batch
+5. Run `npm run validate:camps` after each batch, commit in groups of ~5
 
-**Option B: Content Expansion Session**
-1. Identify underrepresented countries/categories for new camps
-2. Use camp-content-researcher agent to find candidates
-3. Verify and add approved camps to src/data/camps.js
-4. Update all stats and documentation
+**Option B: Content Expansion to 70**
+1. Read `CAMP_EXPANSION_ROADMAP.md` for Batch 2 plan (IDs 70-74)
+2. Priority: France +1, Germany +1, Belgium +1, Spain +1, Greece/Poland +1
+3. Use camp-content-researcher agents, verify, add to camps.js
+
+**Option C: Code Review Tier 3 Remaining**
+1. Read `CODE_REVIEW_2026.md` for pending items (~22 remaining)
+2. Focus: marquee hook extraction, privacy policy fix, Organization schema
 
 **⚠️ Key context for new sessions:**
-- CODE_REVIEW_PLAN.md is ARCHIVED (in docs/archive/) — use CODE_REVIEW_2026.md directly
 - All 5 agents are permanently READ-ONLY (Bash/Edit/Write removed via `/agents` UI)
-- Camp data is now in `src/data/camps.js` (extracted from App.jsx Feb 2)
-- ~65 total checklist items: Tier 1 (8 done + 5 pending), Tier 2 (15 done + 13 pending), Tier 3 (8 done + 12 pending), Tier 4 (8)
+- Camp data is in `src/data/camps.js` (65 orgs, ~1,545 lines, extracted Feb 2)
+- Next camp ID to use: 70
+- Review system Phase 1 complete, Phase 2 in progress (1/40 camps verified)
+- Build includes `validate:camps` prebuild hook
 
 **Other items:**
-- Monitor Boundless Life response (monetization test)
+- Boundless Life: 5+ weeks without response — consider follow-up or moving on
+- LINESA: In discussion — re-engage
 - Check GA4 for traffic patterns
-- Review Google Search Console for indexing progress

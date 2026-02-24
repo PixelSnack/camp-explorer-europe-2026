@@ -3,7 +3,7 @@
 *Technical reference for codebase architecture and App.jsx structure*
 
 **Created:** January 24, 2026
-**Last Updated:** February 2, 2026
+**Last Updated:** February 24, 2026
 **Purpose:** Quick reference for understanding code organization
 
 ---
@@ -13,9 +13,9 @@
 ```
 camp-explorer-europe-2026/
 ├── src/
-│   ├── App.jsx              # Main component (~4,636 lines)
+│   ├── App.jsx              # Main component (~4,700 lines)
 │   ├── data/
-│   │   └── camps.js         # Camp data array (56 orgs, ~1,289 lines)
+│   │   └── camps.js         # Camp data array (65 orgs, ~1,545 lines)
 │   ├── App.css              # Custom global styles + marquee system
 │   ├── main.jsx             # React entry point
 │   ├── index.css            # Tailwind imports
@@ -61,7 +61,7 @@ camp-explorer-europe-2026/
 
 ---
 
-## App.jsx Structure (~4,636 lines)
+## App.jsx Structure (~4,700 lines)
 
 *Camp data extracted to `src/data/camps.js` (February 2, 2026)*
 
@@ -91,13 +91,15 @@ camp-explorer-europe-2026/
 | ~4400-4620 | **Contact Form & Drawer** | EmailJS modal, filter drawer |
 | 4635 | **Closing** | Export default App |
 
-### camps.js Structure (~1,289 lines)
+### camps.js Structure (~1,545 lines)
 
 | Lines | Content |
 |-------|---------|
 | 1-5 | Imports (heroImage, activitiesCompressed, mapCompressed) |
-| 7-1193 | `export const allCamps = [...]` (56 camp objects) |
-| 1195-1196 | Re-exports (activitiesCompressed, mapCompressed) + default export |
+| 7-12 | `REVIEW_SOURCES` constant (12 platforms, 3 tiers) |
+| 14-25 | JSDoc for `reviewData` shape |
+| ~27-1530 | `export const allCamps = [...]` (65 camp objects) |
+| ~1532-1545 | Re-exports (activitiesCompressed, mapCompressed) + default export |
 
 ---
 
@@ -137,7 +139,7 @@ export const allCamps = [
     videoUrl: "https://...",  // Optional
     bookingStatus: "Opens Feb 15"  // Optional override (see Booking Status Badges below)
   },
-  // ... 61 more camps (62 total)
+  // ... 64 more camps (65 total)
 ]
 
 // Re-exported for use in App.jsx JSX
@@ -327,16 +329,15 @@ Every camp in the database is verified for 2026. The green "2026 Open" badge is 
 )}
 ```
 
-### Current Exception Camps (February 2026)
+### Current Exception Camps (February 24, 2026)
 
 | Camp ID | Name | bookingStatus | Badge |
 |---------|------|--------------|-------|
-| 28 | Jagiellonian University | `"Opens Feb 9"` | Blue |
-| 60 | Luontoliitto Nature Camps | `"Opens Feb 15"` | Blue |
-| 30 | Funside Balaton | `"Opens Feb 18"` | Blue |
 | 65 | Vierumaki Finnhockey | `"Opens April"` | Blue |
 | 15 | Camp Bjontegaard | `"not yet open"` | Hidden |
 | 18 | Nordic Terrain Academy | `"not yet open"` | Hidden |
+
+*Note: IDs 28, 30, 60 had their expired "Opens" badges removed on Feb 9, 2026 (commit e8abc05).*
 
 ### Maintenance Guide
 
