@@ -641,7 +641,7 @@ export const allCamps = [
     specialFeatures: ["Bilingual English-Hungarian", "30+ Activities Available", "24/7 Medical Staff"],
     established: 2007,
     capacity: 120,
-    bookingUrl: "https://funside.hu/en/pricing-balaton/"
+    bookingUrl: "https://funside.hu/en/camps-and-activities-balaton/" // Corrected Aug 2026 per operator request (Réka Nagy, 21 Apr 2026) — old /pricing-balaton/ link reported redirecting wrongly; new URL verified live
   },
   // Romania - NEW COUNTRY
   {
