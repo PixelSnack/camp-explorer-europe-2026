@@ -768,6 +768,38 @@ Decision: Accuracy and basic security without harming SEO
 
 **Look for where recommendations align and implement those first.**
 
+### 4.8 External AI Second Opinions (Multi-Model Panel) ⭐ USE ACTIVELY
+
+**The `multi-model-second-opinions` skill (user-level, loads in every project) gives access to a stable of external frontier models. Owner directive (16 Aug 2026): actively use them as tools whenever it makes sense — not as a novelty, but as part of normal quality work.** Invoke via `Skill(multi-model-second-opinions)` for full doctrine; this section is the ESC-adapted operating summary.
+
+#### The stable (verified live 16 Aug 2026 — re-verify at time of use, model IDs rot)
+
+| Model | Role for ESC | Status at last check |
+|-------|--------------|---------------------|
+| **GPT-5.6-SOL** (OpenAI Responses API, `gpt-5.6-sol`, effort=high) | Adversarial reviewer: App.jsx diffs touching state/filtering/analytics/security, plan reviews before big changes (e.g. season rollover, Phase 2 architecture) | ✅ LIVE (confirmed on API) |
+| **Gemini top pro** (`gemini-3.1-pro-preview`; alias `gemini-pro-latest`) | Third reviewer with different training data: SEO strategy second opinions, competitive analysis, vision critique of UI screenshots | ✅ LIVE (no 3.5-pro exists on API; flash line is at 3.7) |
+| **Grok** (xAI) | Cheap third reviewer, vision-critique pair partner with Gemini | ❌ BLOCKED: key valid but team credits exhausted — needs owner top-up. ALT key window ended 2026-08-06 |
+| Image/audio generation (gpt-image-1.5, Gemini image, ElevenLabs) | Not currently needed for ESC | Keys present, unused here |
+
+#### When to reach for a second opinion (ESC-specific)
+
+- **Strategy calls made on inference**: e.g. the year-agnostic rollover decision — a model with different training data challenging the reasoning is cheap insurance
+- **SEO/competitive questions**: external models see different corpora; useful for "what would rank against us" analysis
+- **Code review on risky diffs**: anything touching filtering logic, GA4/consent, or the marquee system gets a SOL adversarial pass alongside my own review
+- **Camp-data adversarial verification**: before a batch of new camps ships, an external model hunting for "why might this be a tour operator / wrong price" complements the read-only agents
+- **Design forks where I'm uncertain**: three-consult pattern (SOL + Gemini + Grok, synthesize rather than average)
+- **NOT for**: routine data updates, small mechanical fixes, doc edits. The battery scales to the task; don't run reviewers to look diligent.
+
+#### Non-negotiable rules (inherited from skill, apply verbatim)
+
+1. **I always adjudicate.** External findings are input, never authority. Every finding gets ACCEPTED / REJECTED-with-reason / DEFERRED. Never auto-apply.
+2. **Never unpaired.** An external review is always paired with my own full review of the same surface. External models make confident, plausible mistakes.
+3. **Verify live before planning a panel.** Model IDs and key validity rot silently (xAI died between checks). A free `/models` list call before committing to a provider.
+4. **Key safety**: keys live in `~/.bashrc`; `source ~/.bashrc` at use time. Curl auth via 600-perm config file + `curl -K` in the scratchpad — NEVER on argv, never under the repo tree. Curl on this machine needs `--ssl-no-revoke` (corp-AV TLS interception).
+5. **State the real audience in every brief**: "parents making booking decisions for their children on a live production site" — otherwise reviewers mis-calibrate.
+6. **Verify every external claim myself** before acting on it — the agents-fabricate lesson extends to external models.
+7. **SOL mechanics**: give it 16-20k max_output_tokens (reasoning eats the budget first); reviews take ~7 min at effort=high — batch, don't loop.
+
 ---
 
 <a name="development-standards"></a>
