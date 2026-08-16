@@ -26,7 +26,7 @@
 
 ## Resume-state block (update on every step)
 
-**Current step:** 6-7 (awaiting 4 agent reports; SOL DONE and persisted to agent-sol-security-2026-08-17.md)
+**Current step:** 6-7 (Fix 1 vercel.json DONE + committed; plan file written docs/plans/2026-08-17-overnight-fixes.md; next after reset: persist agent reports, then Fixes 2-6) (awaiting 4 agent reports; SOL DONE and persisted to agent-sol-security-2026-08-17.md)
 **In-flight:** SOL detached run (scratchpad/sol_status.txt shows start; result lands in scratchpad/sol_resp.json). Wave 2 planned after 4 agents: seo-performance-optimizer + camp-data-verifier for the 5 broken links.
 **Last commit:** (see git log)
 **SESSION LIMIT WARNING at ~00:55: 98% used, reset ~02:30. Cron wake-up set for 02:47.** If you are the post-reset session: agents may have finished while paused; their reports arrive as task notifications. Persist them first.
