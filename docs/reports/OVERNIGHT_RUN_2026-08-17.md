@@ -26,9 +26,11 @@
 
 ## Resume-state block (update on every step)
 
-**Current step:** 5 (agents)
+**Current step:** 6-7 (awaiting 4 agent reports; SOL DONE and persisted to agent-sol-security-2026-08-17.md)
 **In-flight:** SOL detached run (scratchpad/sol_status.txt shows start; result lands in scratchpad/sol_resp.json). Wave 2 planned after 4 agents: seo-performance-optimizer + camp-data-verifier for the 5 broken links.
 **Last commit:** (see git log)
+**SESSION LIMIT WARNING at ~00:55: 98% used, reset ~02:30. Cron wake-up set for 02:47.** If you are the post-reset session: agents may have finished while paused; their reports arrive as task notifications. Persist them first.
+**SOL adjudication (lead, Fable):** ACCEPTED: vercel.json had invalid JSON escape (\. must be \.) - SOL caught a real bug in my proposal; ACCEPTED: replace interest-cohort=() with browsing-topics=(); ACCEPTED (defer): drop HSTS includeSubDomains until DNS subdomain inventory checked, keep Vercel default HSTS; ACCEPTED: tighten img-src to 'self' data: + GA hosts in Report-Only; ACCEPTED: EmailJS abuse = Medium, fix = owner dashboard (hardcode template recipient, enable CAPTCHA/rate limit) + maxLength tonight; REJECTED-with-reason: "ld+json inline script violates script-src" - CSP script-src governs execution and application/ld+json data blocks are not executed, so no violation is expected; Report-Only phase will settle it empirically. Lead's own Fable pass agrees on all else (honeypot present line 149; consent gating correct lines 590/4688; no maxLength on form fields).
 **Notes for successor:** ILC draft traffic sentence already corrected via Gmail MCP update_draft (draft r7720695598990534240). Owner granted git push for emergencies only; default is no push. Plan-mode discipline: write a plan file before any code fix (step 9).
 
 ## Findings scratch (append as they arrive)
