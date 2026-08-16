@@ -4,17 +4,23 @@
 *Template for camp operator inquiries and monetization operations*
 
 **Created:** January 16, 2026
-**Last Updated:** January 16, 2026
+**Last Updated:** August 16, 2026 (new tier structure, onboarding fee, payment rules rewritten for Revolut/PMV)
 **Status:** Active
 
 ---
 
-## 1. TIER STRUCTURE
+## 1. TIER STRUCTURE (Updated August 2026 — owner approved 16 Aug 2026)
 
-### Basic Listing (Free)
+### The core distinction: editorial vs. inbound
+
+- **Editorial listings** (WE initiate): camps we research and add on our own initiative. Free, unpaid both ways, not requestable. This preserves editorial independence and builds the directory asset.
+- **Inbound listings** (THEY request): a camp asking to be added is requesting a service (research, 5-point verification, data entry, maintenance). Services have prices. No business inquiry hears the word "free" anymore.
+
+### Basic Listing (inbound: €79 one-time onboarding)
 | Aspect | Details |
 |--------|---------|
-| **Price** | Free |
+| **Price** | €79 one-time onboarding & verification fee (WAIVED if camp takes Featured or Premium in year one) |
+| **What it covers** | Hand verification: pricing, facilities, operator status, 5-point criteria check, data entry |
 | **Visibility** | Standard placement in category |
 | **Card Design** | Standard card design |
 | **Badge** | None |
@@ -30,28 +36,40 @@
 | **Duration** | 12 months from activation date |
 | **Requirements** | Must pass camp verification criteria |
 
+### Premium Listing (€299/year list — premium categories)
+For camps in high-value categories (Premium Alpine first). Everything in Featured, plus:
+| Aspect | Details |
+|--------|---------|
+| **List price** | €299 per listing per year |
+| **Founding Partner rate** | €199 first year, rate-locked for renewals (2027-cycle anchor partners) |
+| **Video button** | "Watch Camp Video" button on card (Premium only) |
+| **Category cap** | Maximum 3 featured/premium slots per category — committed scarcity |
+| **Tracking** | UTM-tagged outbound links, verifiable in the camp's own Google Analytics |
+| **Commission** | 0% — all traffic goes direct to the camp's site; they own the parent relationship |
+
+### Sustainability basis (checked against real GA4 data, Aug 2026)
+1,668 outbound booking clicks Jan-Aug 2026; roughly a third of active users click out to a camp. A premium camp realistically receives 100-150 qualified referrals/year, putting €199/year under €2 per referral — below paid-search CPC for camp keywords. Do not raise above €299 until traffic materially grows.
+
+### Grandfather clauses
+- **LINEŠA**: explicitly offered a free standard listing in January 2026 (owner's own email). That offer stands; Camp Pasaka (ID 43) is already listed editorially. No invoice.
+- **Les Elfes**: January featured demo. Offer the €199 Founding Partner rate; if declined, their listing reverts to editorial Basic (free, no featured styling).
+
 ---
 
 ## 2. PRICING & DISCOUNTS
 
 ### Standard Pricing
-| Quantity | Price per Listing | Total |
-|----------|-------------------|-------|
-| 1 listing | €99 | €99 |
-| 2 listings | €99 each | €198 |
-| 3+ listings | €79 each | Varies |
-| 5 listings | €69.80 each (bundle) | €349 |
+| Item | Price |
+|------|-------|
+| Inbound Basic onboarding (one-time) | €79 (waived with Featured/Premium year one) |
+| Featured listing | €99/year |
+| Premium listing (premium categories) | €299/year list |
+| Premium Founding Partner (2027 cycle) | €199 first year, rate-locked |
 
-### Volume Discount Structure
+### Volume Discounts (Featured tier)
 - **1-2 listings:** Full price (€99 each)
 - **3-4 listings:** 20% discount (€79 each)
-- **5+ listings:** 30% discount (€69.80 each, rounded to €349 for 5)
-
-### Introductory Offers (Optional)
-For early adopters or strategic partnerships, may offer:
-- First-year discount (e.g., €79 instead of €99)
-- "Founding Featured Partner" status
-- Price lock for future renewals
+- **5+ listings:** 30% discount (€69.80 each, e.g. €349 for 5)
 
 ---
 
@@ -91,29 +109,36 @@ For early adopters or strategic partnerships, may offer:
 
 ---
 
-## 4. PAYMENT & BILLING
+## 4. PAYMENT & BILLING (Rewritten August 2026 — read fully before invoicing)
 
 ### Payment Methods
-- **Primary:** PayPal invoice
-- **Business PayPal:** partnerships@europeansummercamps.com
+- **Primary:** Invoice payable by bank transfer in EUR (business account receives EUR natively — no conversion for European camps). Bank details go on the invoice itself, privately, per transaction. **Never publish account numbers on the site, in this repo, or in outreach emails.**
+- **PayPal:** ⛔ NOT ready as of Aug 2026 (no bank account linked; DAC7 filing due 5 Sept 2026). Do not advertise PayPal until both are cleared.
+- **Card payment links:** possible once the Revolut Merchant account is activated (owner action pending).
 - **Currency:** EUR (€)
+
+### Legal invoicing rules (PMV — non-negotiable)
+- Invoices issue from **ResourceHub Cph, CVR DK46200462** — the legal entity. "European Summer Camps" appears only as the description of what was sold, never as the issuer (binavne not permitted on a PMV).
+- **No VAT, ever.** A PMV may not charge moms. Amounts are flat; every invoice carries the basis line: "Momsfri — omsætning under registreringsgrænsen, jf. momsloven § 71e, stk. 1."
+- **Turnover register BEFORE the first payment**: every payment received must be logged against the shared rolling-12-month 50,000 DKK cap (shared across ALL ResourceHub brands). Report each ESC payment for consolidation in the cross-brand register.
 
 ### Payment Process
 1. Agreement on listing details via email
-2. We send PayPal invoice with description: "Featured Camp Listing - 12 months - [Camp Name]"
-3. Payment received
-4. Featured listing activated within 3 business days
+2. Invoice sent from ResourceHub Cph (CVR DK46200462), description e.g. "Directory listing services - 12 months - [Camp Name]", flat EUR amount, no VAT, with the § 71e stk. 1 basis line and bank details for EUR transfer
+3. Payment received; log in turnover register
+4. Listing activated within 3 business days
 5. Confirmation email sent with activation date and renewal date
 
 ### Invoice Details Template
 ```
-Invoice from: Camp Explorer Europe
+Invoice from: ResourceHub Cph (CVR DK46200462)
 To: [Camp Name / Company]
-Amount: €99.00 (or bundle price)
-Description: Featured Camp Listing - 12 months
-            [Camp Name] - [Location]
+Amount: €[amount] flat (no VAT — momsloven § 71e, stk. 1)
+Description: Directory listing services - 12 months
+            [Camp Name] - [Location] on europeansummercamps.com
             Activation: [Date]
             Expires: [Date + 12 months]
+Payment: Bank transfer (EUR) — details on invoice
 ```
 
 ### Renewal Process

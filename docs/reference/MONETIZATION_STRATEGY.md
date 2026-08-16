@@ -50,22 +50,28 @@ Despite not reaching our 1K sessions/month threshold (currently ~168/month), we 
 
 ---
 
-## 💰 **CURRENT TIER STRUCTURE (January 2026)**
+## 💰 **CURRENT TIER STRUCTURE (Updated August 16, 2026 — owner approved)**
 
-### **Two-Tier Model (Testing Phase)**
+### **The editorial/inbound distinction (new)**
+
+Listings WE initiate remain free (asset building, editorial independence). Listings CAMPS request are a service and carry a price. No inbound business inquiry is offered "free" anymore.
 
 | Tier | Price | Deliverables |
 |------|-------|--------------|
-| **Basic** | Free | Standard listing in directory |
+| **Editorial** | Free (our initiative only, not requestable) | Standard listing |
+| **Basic (inbound)** | €79 one-time onboarding & verification (waived with Featured/Premium year one) | Hand verification + standard listing |
 | **Featured** | €99/year | "Featured Camp" badge, priority placement in category, highlighted card design |
+| **Premium** (premium categories) | €299/year list; €199 Founding Partner first year, rate-locked | Featured deliverables + video button + max-3-per-category cap + UTM-verifiable tracking. 0% commission |
 
-**Note:** No Premium Partner tier until we have social media presence and active blog to deliver on promises.
+**Sustainability basis (real GA4 data, Aug 2026):** 1,668 outbound booking clicks Jan 1-Aug 16; ~1/3 of active users click out to a camp. Premium camp ≈ 100-150 qualified referrals/year → €199 is under €2/referral, below paid-search CPC for camp keywords. Hold €299 as ceiling until traffic grows. Pitch is always "qualified referrals at below paid-search cost, 0% commission" — never raw traffic volume.
+
+**Payment**: invoice from ResourceHub Cph (CVR DK46200462), flat EUR, no VAT (PMV, momsloven § 71e stk. 1), bank transfer; details per-invoice only, never published. PayPal not ready (Aug 2026). See FEATURED_LISTINGS_POLICY.md §4.
 
 ### **Future Tiers (When Ready)**
 
 | Tier | Price | Requirements First |
 |------|-------|-------------------|
-| Premium Partner | €299-399/year | Active blog, social media presence |
+| Premium Partner+ (blog/social promotion) | €399+/year | Active blog, social media presence |
 | Enterprise | Custom | API, data licensing capabilities |
 
 ---

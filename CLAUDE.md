@@ -287,6 +287,16 @@ GA4 is separate and **already works** (property `521172443`). Both were repaired
 
 When starting a new Claude Code session, follow this protocol to restore context and ensure continuity.
 
+### **Step 0: Check the Claude bridge inbox (EVERY session)**
+
+```
+C:\Users\Soda\Downloads\Console issues\Claude bridge\
+```
+
+The message channel with Playground Claude. List the top level: any `*.md` there is an UNREAD note (the inbox holds only unread items — a check costs ~20 tokens when empty). Read notes addressed `to-esc`, action them, then move them to `archive/`. Never archive notes addressed to Playground. `reference/` holds durable how-tos and stays put. Both instances write here; reply in the folder to close loops.
+
+⚠️ **Never scan the parent folder** `Console issues\` — it holds the owner's personal material (tax, finances, CV). Sole exception if a drop may not have been relayed yet: the tag-filtered glob `ls "C:/Users/Soda/Downloads/Console issues/" | grep -iE '^esc|esc\.[a-z0-9]+$'` — never a full listing.
+
 ### **Step 1: Mandatory Reading (Essential Context)**
 
 **Read these documents FIRST, in order:**
