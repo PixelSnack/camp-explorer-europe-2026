@@ -1,9 +1,49 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** February 25, 2026
-**Current Status:** 65 organizations across 24 countries, review system Phase 1 live, code review in progress
-**Ready for:** Review system Phase 2 (verify review data), content expansion to 70, code review Tier 3
+**Last Updated:** August 16, 2026
+**Current Status:** Reactivated after six months dormant. 65 organizations, 24 countries. Season rollover is the live thread.
+**Ready for:** Gmail scan → GSC access grant → security review under Fable → season rollover Wave 1
+
+---
+
+## 🔴 **START HERE — SESSION PICKUP FOR 17 AUGUST 2026**
+
+Agreed with the owner on the evening of 16 August. Do these in order.
+
+### **1. Gmail scan — FIRST THING** 📧
+The owner has confirmed there are camp-related mails waiting. Six months of contact-form traffic has landed unread.
+
+- Search the **five address strings**, not just keywords: `contact@` · `info@` · `hello@` · `partnerships@` · `media@` (all `@europeansummercamps.com`)
+- **DRAFTS ONLY. NEVER SEND.** See the email conduct section in CLAUDE.md. This is absolute.
+- Expect: camp operators wanting listings, corrections to existing entries, partnership approaches
+- **Oldest open thread**: Boundless Life / Megan Miller (`megan.miller@boundless.life`), outstanding since 17 Jan 2026, now 7 months. Resolving it (replied? never answered? bounced?) closes the oldest item on the board.
+- If delegating: give the agent all five addresses explicitly, state what must NOT be excluded, require "if you cannot verify, say NOT FOUND." Triage subagents over-filter and silently drop threads.
+- Gmail MCP **cannot download attachments**. PDFs must come through the browser.
+
+### **2. Grant Search Console access — via Claude in Chrome** 🔑
+Owner asked to be walked through this in the browser.
+
+- Load browser tools in **one** ToolSearch call, then drive: Search Console → `europeansummercamps.com` → Settings → Users and permissions → Add user
+- Account to add: `claude-mcp@gen-lang-client-0613109458.iam.gserviceaccount.com`
+- He performs the grant; guide and then verify with `mcp__gsc__list_properties`
+- Unblocks ranking data, which is what would confirm or challenge the year-agnostic title-tag call
+
+### **3. Switch to Fable and run a security review** 🛡️
+Owner's plan; he rates Fable strongest on security.
+
+- Note before starting: `security-audit-specialist` **has no Bash**, so it cannot run `npm audit` despite its brief promising "Automated Vulnerability Assessment". It will produce confident conclusions from reading alone. Decide the tooling question first or run the audit directly.
+- Also note: `App.jsx` is ~2.4x over the read cap, so an unqualified Read returns a **truncated** file and the reviewer may report as though it covered everything. Use explicit offset/limit segments and state which ranges were covered.
+- Known standing item: Vite was flagged EOL with CVEs in the February review. Re-check current state rather than trusting the old note.
+
+### **4. Season rollover Wave 1** 🗓️
+Only after the above. See the CURRENT PRIORITY TASKS section in CLAUDE.md for the full decision, rationale and the two-wave split.
+
+⚠️ **Do NOT find-and-replace `camps.js`** — ~70 of its "2026" strings are verification provenance that must survive.
+⚠️ **Invert the badge default**, do not swap the string to "2027 Open".
+⚠️ **No em dashes** in any copy that ships. Total ban, grep U+2014 must return zero.
+
+### **Nothing was changed on 16 August.** No code touched, no files committed beyond documentation. HEAD before this session: `4f0857f`.
 
 ---
 

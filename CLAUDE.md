@@ -57,7 +57,92 @@ This project runs bash on Windows. Always use `2>/dev/null` (Unix-style), never 
 
 ---
 
-## 📋 **CURRENT PRIORITY TASKS** (February 2026)
+## 🚫 **NEVER SEND EMAIL — DRAFTS ONLY** 🚫
+
+### **⚠️ ABSOLUTE RULE, NO EXCEPTIONS ⚠️**
+
+**NEVER send an email**, by any method, from any tool. Creating drafts is fine and encouraged. Sending requires **explicit per-message approval from the user**, given for that specific message. No blanket permissions, no standing authorisation, no "he probably meant to send it."
+
+**NEVER write on Messenger or Facebook.** Read-only, for context gathering. Never send, reply, or react.
+
+If a task appears to require sending, **draft it and stop.** Hand it over and say plainly that it is a draft awaiting a send decision.
+
+**Why this matters here:** ESC's five addresses reach real camp operators and partners. An outward-facing message carries the owner's name and the site's reputation with families. One wrong send is not recoverable.
+
+**Mail context** — all five forward to sorenthoning@gmail.com:
+`contact@` · `info@` · `hello@` · `partnerships@` · `media@` (all `@europeansummercamps.com`)
+
+Camp mail is findable by searching those five address strings, not only by keyword. Note the Gmail MCP **cannot download attachments**; PDF brochures must come through the browser.
+
+**Delegation warning**: email-triage subagents systematically over-filter and quietly drop relevant threads. If delegating a scan, give the agent all five addresses explicitly, state what must NOT be excluded, and require "if you cannot verify, say NOT FOUND."
+
+---
+
+## 🔐 **NEVER REVEAL OR COMMIT SECRETS** 🔐
+
+**Never print, echo, or commit an API key or any secret value.** To check whether a key exists, test presence only — never output a value, a prefix, a suffix, or a character count.
+
+- Keys live in `~/.bashrc`, outside this repo. **Custody belongs to the Playground Claude instance**; ESC is a consumer only. Do not rotate, relocate, copy, or add keys here.
+- **Never `git add .`** Stage explicit paths, and run `git status` before staging.
+- Secret and name scans must be **case-insensitive across the whole tree**, or a false clean results.
+- This is a public repository. A committed key is public on push and stays in history after deletion, requiring rotation rather than a revert.
+
+---
+
+## ✍️ **EM DASH: TOTAL BAN IN OUTWARD-FACING TEXT**
+
+As of August 2026 this is a **total prohibition**, hardened from the earlier "use sparingly" guidance. The mechanical check is a grep for U+2014 returning **zero** before shipping. `---` and `--` separators count as banned doubled forms in outward-facing prose; use headings and whitespace instead.
+
+**Outward-facing means anything a third party reads**: all site copy, camp descriptions, highlights, meta descriptions, the public README, any email draft to a camp operator, any press or partnership material.
+
+**Exempt**: internal Claude tooling — this file, CODE_STRUCTURE.md, LESSONS_LEARNED.md, NEXT_STEPS.md and the other control documents.
+
+Also avoid X-not-Y formulas ("not just X, but Y"), tricolons, quippy closers, and abstract bridges ("In essence…", "At its core…").
+
+⚠️ **Open debt**: the 65 camp descriptions and their highlights have never been scanned under this rule. That is its own pass.
+
+---
+
+## 📋 **CURRENT PRIORITY TASKS** (August 2026)
+
+### 🔴 **REACTIVATED 16 AUGUST 2026 AFTER SIX MONTHS DORMANT**
+
+No session ran between 2026-02-25 and 2026-08-16. HEAD was still `4f0857f`, tree clean. **Everything dated February below is six months old — verify before relying on it.**
+
+**Traffic did not decay. It grew.** July 2026 was the strongest month on record: 302 active users, 382 sessions, against March's 174 users. A 74% increase achieved with zero code changes and zero content updates. The site compounded on its search position without maintenance.
+
+⚠️ **Never read an August number as decline.** It is the post-season trough for a summer camp directory. A May report reading "down 9-11%" was a seasonal dip mistaken for a trend.
+
+### 🚨 **SEASON ROLLOVER — the site is making false claims today**
+
+The 2026 season is over and the codebase does not know. Zero occurrences of "2027" anywhere in the tree. Right now a visitor sees "2026 Season NOW OPEN", 62 green "2026 Open" badges, and a booking timeline telling them to book by "February 2026". On a site whose whole proposition is verified accuracy, that is the problem, ahead of the SEO angle.
+
+**Direction approved by the owner, 16 Aug 2026: go year-agnostic, do NOT roll 2026 → 2027.**
+
+Evergreen core, dated edges. Title, meta, H1, brand, hero, schema, guide title and copyright lose the year. Years stay only where factually load-bearing: per-camp session dates, booking timelines, verification provenance.
+
+*Rationale*: `europeansummercamps.com` carries no year and is the asset holding the ranking. A literal year in the title tag signals staleness to Google and to a parent reading the snippet, and rolling it annually discards accumulated ranking every twelve months. Year-agnostic compounds instead of resetting.
+
+*Reservation on record*: this judgement was made **without Search Console data** (see blocker below). Re-check once GSC access lands.
+
+**Deadline is late September, not August.** Booking runs November to February, and Google needs lead time to re-crawl. The 2027 cycle opens in roughly ten weeks.
+
+**Two waves, forced by data availability** — most operators publish next-summer dates September to December, so a full rollover in August is impossible, not merely hard:
+- **Wave 1** (one evening, no research needed): remove false present-tense claims, de-year evergreen surfaces, invert the badge default, fix dead booking timelines and the stale `bookingUrl`.
+- **Wave 2** (Sept–Nov, rolling): re-verify session dates camp by camp as operators publish. Lands on top of the overdue quarterly price review and is the natural moment to restart review-aggregation Phase 2.
+
+⚠️ **Do NOT find-and-replace `camps.js`.** Of its 143 "2026" occurrences only **64 are drift** (63 `dates:` fields plus 1 `bookingUrl`). The other ~70 are `// Verified Jan 2026` provenance comments and `lastVerified` values that are **correct history and must survive**. No "2026" appears inside any quoted `price` or `ages` value.
+
+⚠️ **Invert the badge default, do not swap the string.** Absence of `bookingStatus` currently renders green "2026 Open" on 62 camps. Changing that to "2027 Open" replaces a stale claim with an unverified one. Default becomes hidden; the badge shows only where verified.
+
+### 🚧 **BLOCKER: Search Console returns zero properties**
+
+GSC authenticates cleanly and correctly returns nothing, because the service account was never granted access to the property. Owner action required; walkthrough planned via Claude in Chrome.
+
+- **Grant**: `claude-mcp@gen-lang-client-0613109458.iam.gserviceaccount.com`
+- **On**: `europeansummercamps.com` → Settings → Users and permissions → Add user
+
+GA4 is separate and **already works** (property `521172443`). Both were repaired at machine level in August; the GSC credential fix lives inside `site-packages` and **will be lost on a package upgrade**.
 
 ### 🎉 **AWAITING RESPONSE: First Monetization Test (Boundless Life)**
 - **Status**: Email sent January 17, 2026 at 00:28 - awaiting response
