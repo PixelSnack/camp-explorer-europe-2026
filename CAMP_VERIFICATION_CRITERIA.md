@@ -12,7 +12,7 @@
 **MANDATORY PRE-SCREENING (Updated January 2026):**
 
 **RESIDENTIAL CAMPS (Primary Focus):**
-- **✅ RESIDENTIAL CAMP FACILITY**: Dedicated camp accommodation (cabins, dormitories, camp buildings, boarding-school or college halls). **Hotel-based camps (owner decision 17 Aug 2026):** acceptable ONLY when the operator runs the supervised programme itself, the accommodation is included in the per-child price, and the listing states explicitly that campers are housed in a hotel (name it). Hotels selling their own activity programmes, and tour lodging, remain disqualified.
+- **✅ RESIDENTIAL CAMP FACILITY**: Dedicated camp accommodation (cabins, dormitories, camp buildings, boarding-school or college halls). **Hotel-based camps (owner decision 17 Aug 2026):** on-site dedicated housing remains the preferred and stronger configuration. A camp that houses its campers in a hotel is NOT disqualified by that alone, provided the operator runs the supervised programme itself, the accommodation is included in the per-child price, and the listing states explicitly that campers are housed in a hotel (name it). Treat it as a weaker point in the assessment, not as equal to on-site housing. Hotels selling their own activity programmes, and tour lodging, remain disqualified.
 - **✅ CAMP OPERATOR STATUS**: Camp organization - NOT travel agency, tour operator, or hospitality company
 - **✅ CAMP-ONLY PRICING**: Pricing excludes flights, transportation, and travel packages
 - **✅ ON-SITE CAMP PROGRAMS**: Multi-day residential programs with camp supervision - NOT guided tours or travel itineraries

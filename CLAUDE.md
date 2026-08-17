@@ -1140,7 +1140,7 @@ europeansummercamps/
 
 **ALL 5 must be true for camp inclusion:**
 
-1. ✅ **Residential Camp Facility**: Dedicated camp accommodation (cabins, dormitories, boarding-school halls). Hotel-based camps allowed only if the operator runs the programme, accommodation is included in the per-child price, and the listing says so explicitly (owner decision 17 Aug 2026); hotels selling their own activity programmes stay out
+1. ✅ **Residential Camp Facility**: Dedicated camp accommodation (cabins, dormitories, boarding-school halls). On-site housing preferred; a hotel-housed camp is not disqualified by that alone if the operator runs the programme, accommodation is included in the per-child price, and the listing says so explicitly (owner decision 17 Aug 2026), but it scores weaker; hotels selling their own activity programmes stay out
 2. ✅ **Camp Operator Status**: Camp organization - NOT travel agency, tour operator, or hospitality company
 3. ✅ **Camp-Only Pricing**: Pricing excludes flights, transportation, and travel packages
 4. ✅ **On-Site Camp Programs**: Multi-day residential programs with camp supervision - NOT guided tours or travel itineraries
