@@ -1140,7 +1140,7 @@ europeansummercamps/
 
 **ALL 5 must be true for camp inclusion:**
 
-1. ✅ **Residential Camp Facility**: Dedicated camp accommodation (cabins, dormitories) - NOT hotels or tour lodging
+1. ✅ **Residential Camp Facility**: Dedicated camp accommodation (cabins, dormitories, boarding-school halls). Hotel-based camps allowed only if the operator runs the programme, accommodation is included in the per-child price, and the listing says so explicitly (owner decision 17 Aug 2026); hotels selling their own activity programmes stay out
 2. ✅ **Camp Operator Status**: Camp organization - NOT travel agency, tour operator, or hospitality company
 3. ✅ **Camp-Only Pricing**: Pricing excludes flights, transportation, and travel packages
 4. ✅ **On-Site Camp Programs**: Multi-day residential programs with camp supervision - NOT guided tours or travel itineraries
@@ -1159,7 +1159,7 @@ europeansummercamps/
 
 **Must choose exactly ONE category per camp:**
 
-- **Premium Alpine**: CHF 4,000+ Swiss/Austrian mountain experiences
+- **Premium Alpine**: CHF 4,000+ (or equivalent) mountain experiences in the Swiss, Austrian or French Alps
 - **Academic & STEM**: University prep, intensive learning, STEM focus
 - **Language Immersion**: Primary language learning focus with native speakers
 - **Sports Specialty**: Dedicated sports training (football, tennis, sailing, etc.)

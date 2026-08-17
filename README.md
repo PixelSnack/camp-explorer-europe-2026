@@ -38,7 +38,7 @@ Each camp listing includes:
 
 ## 🌍 Camp Categories
 
-- **Premium Alpine** - Luxury Swiss and Austrian mountain experiences
+- **Premium Alpine** - Luxury mountain experiences in the Swiss, Austrian and French Alps
 - **Academic & STEM** - University preparation and intensive learning programs
 - **Language Immersion** - Native language learning environments
 - **Sports Specialty** - Professional sports training and academies

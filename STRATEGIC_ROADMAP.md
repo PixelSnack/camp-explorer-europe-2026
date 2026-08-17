@@ -161,7 +161,7 @@ Luxembourg
 | **Sweden** | +2 | Forest/nature camps, STEM programs | ⏳ PENDING |
 | **Norway** | +2 | Fjord adventures, water sports | ✅ COMPLETE (Jan 25) |
 | **Greece** | +2 | Sailing academies, island adventure camps | ⏳ PENDING |
-| **Premium Alpine** | +1 | Swiss/Austrian premium option (currently only 3) | ⏳ PENDING |
+| **Premium Alpine** | +1 | Swiss/Austrian/French Alps premium option (currently only 3) | ⏳ PENDING |
 
 **Completed (January 25, 2026):**
 - ✅ Norway +2: RS Sjøleir (ID 44), Sirdal Huskyfarm (ID 45)

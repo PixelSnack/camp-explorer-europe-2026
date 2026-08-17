@@ -150,7 +150,7 @@ export { activitiesCompressed, mapCompressed }
 
 | Category | Value | Description |
 |----------|-------|-------------|
-| Premium Alpine | `premium` | CHF 4,000+ Swiss/Austrian camps |
+| Premium Alpine | `premium` | CHF 4,000+ camps in the Swiss, Austrian or French Alps |
 | Academic & STEM | `academic` | University prep, learning focus |
 | Language Immersion | `language` | Primary language learning |
 | Sports Specialty | `sports` | Dedicated sports training |

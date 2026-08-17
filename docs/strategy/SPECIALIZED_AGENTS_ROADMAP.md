@@ -133,7 +133,7 @@ Extract and format the following mandatory data points:
 ```
 
 ### 4. CATEGORY ASSIGNMENT CRITERIA
-- **Premium Alpine**: CHF 4,000+ in Swiss/Austrian mountain locations
+- **Premium Alpine**: CHF 4,000+ in Swiss, Austrian or French Alpine locations
 - **Academic & STEM**: University prep, intensive learning, STEM focus
 - **Language Immersion**: Primary focus on language learning with native speakers
 - **Sports Specialty**: Dedicated sports training (football, tennis, sailing, etc.)

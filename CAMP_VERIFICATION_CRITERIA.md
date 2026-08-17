@@ -12,7 +12,7 @@
 **MANDATORY PRE-SCREENING (Updated January 2026):**
 
 **RESIDENTIAL CAMPS (Primary Focus):**
-- **✅ RESIDENTIAL CAMP FACILITY**: Dedicated camp accommodation (cabins, dormitories, camp buildings) - NOT hotels or tour lodging
+- **✅ RESIDENTIAL CAMP FACILITY**: Dedicated camp accommodation (cabins, dormitories, camp buildings, boarding-school or college halls). **Hotel-based camps (owner decision 17 Aug 2026):** acceptable ONLY when the operator runs the supervised programme itself, the accommodation is included in the per-child price, and the listing states explicitly that campers are housed in a hotel (name it). Hotels selling their own activity programmes, and tour lodging, remain disqualified.
 - **✅ CAMP OPERATOR STATUS**: Camp organization - NOT travel agency, tour operator, or hospitality company
 - **✅ CAMP-ONLY PRICING**: Pricing excludes flights, transportation, and travel packages
 - **✅ ON-SITE CAMP PROGRAMS**: Multi-day residential programs with camp supervision - NOT guided tours or travel itineraries
@@ -27,7 +27,7 @@
 
 **AUTOMATIC DISQUALIFIERS:**
 - ❌ Tour operators offering travel packages
-- ❌ Hotels with activity programs
+- ❌ Hotels selling their own activity programs (a camp operator housing its campers in a hotel is handled under the residential-facility rule above)
 - ❌ Travel agencies with family tours
 - ❌ Pricing that includes flights/transportation
 - ❌ Multi-country travel itineraries
@@ -86,7 +86,7 @@ Our criteria should have elasticity for programs that fit the spirit of summer c
 - **Established Year**: Foundation/operation start year
 
 ### **Category Assignment Criteria**
-- **Premium Alpine**: CHF 4,000+ Swiss/Austrian mountain locations
+- **Premium Alpine**: CHF 4,000+ (or equivalent) mountain locations in the Swiss, Austrian or French Alps (French Alps added 17 Aug 2026, owner decision)
 - **Academic & STEM**: University prep, intensive learning, STEM focus
 - **Language Immersion**: Primary focus on language learning
 - **Sports Specialty**: Dedicated sports training (football, tennis, etc.)
