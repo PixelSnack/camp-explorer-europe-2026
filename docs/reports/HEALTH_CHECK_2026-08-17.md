@@ -14,7 +14,7 @@
 
 **Numbers you can now quote with confidence** (all GA4, in `docs/PARTNER_STATS_2026.md`): 94% engagement rate, 35% booking click-through, 1,668 booking clicks this year, **ChatGPT is your #2 traffic source at 21% of sessions**, 95 countries, 69% mobile. The ILC draft was corrected to these figures.
 
-**⚠️ Needs your eyes, not mine:** the Resources page carries three five-star testimonials ("Sarah M., Munich", "Marcus K., Amsterdam", "Elena R., London", each labelled "Platform User"). Neither the SEO reviewer nor I could verify their provenance, and this project's own LESSONS_LEARNED records agents fabricating testimonials in January 2026. If these are not real families, they are a consumer-law problem (fake reviews are banned under EU UCPD and UK DMCC 2024) and an E-E-A-T problem. I did not remove them (content decision), but please confirm or delete today.
+**Testimonials note:** the SEO reviewer flagged the three testimonials in Resources as unverifiable from the code alone. Owner context (17 Aug): these were checked and fixed in an earlier pass and are NOT to be removed; the sources may simply have updated their pages since. No action beyond the owner's own re-verification when convenient.
 
 **What I did NOT do** (deliberately, for you to decide): flip CSP to enforced; enable HSTS includeSubDomains; change any UI; remove `to_email` from code (must follow the dashboard change, not precede it); add any camp; touch the season-rollover strings.
 
@@ -26,7 +26,7 @@
 5. **GitHub**: 2FA on, secret-scanning push protection on (free for public repos), Dependabot alerts on.
 6. **Google Analytics**: turn off Google Signals unless you use it (CSP scope + consent).
 7. Send the 10 drafts when ready (ILC now has correct traffic figures).
-8. Decide on the testimonials (above) and on the visible-FAQ recommendation (section 6).
+8. Decide on the visible-FAQ recommendation (section 6).
 9. After 48h of CSP report-only with a clean browser console on production: tell me and I flip it to enforced.
 
 ---
@@ -103,7 +103,7 @@ Strong: **Stadium Sports Camp** (Sweden, residential hockey, all 5 pass) and **L
 | Q17 | Validator only checked review fields | ACCEPTED | PARTIAL: URL checks added; id/category/priceRange/ages checks next |
 | Q18 | Age filter blind spot for "6+ years (families)" / "All ages" | ACCEPTED | DEFERRED (filter behavior decision) |
 | Q19 | Docs drift: CODE_STRUCTURE line map, README counts (36/21), CLAUDE.md schema fields | ACCEPTED | DEFERRED: docs regeneration pass |
-| Q20 | Testimonials of unverifiable provenance | ACCEPTED as risk | **FLAGGED URGENT for owner** (briefing) |
+| Q20 | Testimonials flagged as unverifiable from code | NOTED, no action | Owner: previously checked and fixed; keep; re-verify sources at leisure |
 | Q21 | Google-Extended Disallow forgoes Gemini-app citations only | noted | Owner decision |
 | Q22 | H1 wording / title length | reviewer left alone | AGREE: ranks; do not touch |
 | Q23 | Guides .docx/.txt crawlable in public/ | noted | Owner call (may be intended downloads) |
