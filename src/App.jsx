@@ -989,7 +989,7 @@ function App() {
           <p className="hero-fluid-booking-notice text-sm text-orange-200 max-w-2xl mx-auto px-4 mt-4 bg-black/20 rounded-lg py-2">
             <span className="inline-flex items-start">
               <Calendar className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-              Booking opens in autumn; many popular programs fill by March
+              Booking opens in autumn; many programs fill by March
             </span>
           </p>
           
