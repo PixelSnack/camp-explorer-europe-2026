@@ -41,7 +41,7 @@ For camps in high-value categories (Premium Alpine first). Everything in Feature
 | Aspect | Details |
 |--------|---------|
 | **List price** | €299 per listing per year |
-| **Founding Partner rate** | €199 first year, rate-locked for renewals (2027-cycle anchor partners) |
+| **Introductory rate** | €199 first year, rate-locked for renewals (2027-cycle premium listings; renamed from "Founding Partner" 17 Aug 2026, owner dislikes the label) |
 | **Video button** | "Watch Camp Video" button on card (Premium only) |
 | **Category cap** | Maximum 3 featured/premium slots per category — committed scarcity |
 | **Tracking** | UTM-tagged outbound links, verifiable in the camp's own Google Analytics |
@@ -52,7 +52,7 @@ For camps in high-value categories (Premium Alpine first). Everything in Feature
 
 ### Grandfather clauses
 - **LINEŠA**: explicitly offered a free standard listing in January 2026 (owner's own email). That offer stands; Camp Pasaka (ID 43) is already listed editorially. No invoice.
-- **Les Elfes**: January featured demo. Offer the €199 Founding Partner rate; if declined, their listing reverts to editorial Basic (free, no featured styling).
+- **Les Elfes**: January featured demo. Offer the €199 introductory rate; if declined, their listing reverts to editorial Basic (free, no featured styling).
 
 ---
 
@@ -64,7 +64,7 @@ For camps in high-value categories (Premium Alpine first). Everything in Feature
 | Inbound Basic onboarding (one-time) | €79 (waived with Featured/Premium year one) |
 | Featured listing | €99/year |
 | Premium listing (premium categories) | €299/year list |
-| Premium Founding Partner (2027 cycle) | €199 first year, rate-locked |
+| Premium introductory rate (2027 cycle) | €199 first year, rate-locked |
 
 ### Volume Discounts (Featured tier)
 - **1-2 listings:** Full price (€99 each)
