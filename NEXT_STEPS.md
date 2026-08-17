@@ -1,33 +1,30 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** August 17, 2026 (evening)
+**Last Updated:** August 18, 2026 (00:10, exit protocol)
 **Current Status:** Reactivated after six months dormant. 65 organizations, 24 countries. Season rollover is the live thread.
 **Ready for:** Gmail scan → GSC access grant → security review under Fable → season rollover Wave 1
 
 ---
 
-## 🔴 **START HERE — SESSION PICKUP (after 17 August 2026)**
+## 🔴 **START HERE — SESSION PICKUP (after 18 August 2026)**
 
-**State on exit 17 Aug 2026 ~05:30:** overnight health check COMPLETE and deployed (owner pushed; production visually verified). Read `docs/reports/HEALTH_CHECK_2026-08-17.md` top section for the full picture. Memory checkpoint `esc-session-checkpoint.md` is current.
+**State on exit 18 Aug 2026 ~00:10:** long evening session (17 Aug) closed cleanly. Everything below is committed; the owner pushes via GitHub Desktop. Memory checkpoint `esc-session-checkpoint` is current; rules learned tonight are in memories `gmail-draft-handling`, `email-and-messaging-conduct`, `booking-copy-must-cover-winter`.
+
+**Done 17 Aug evening (all pushed except the last one or two commits):** hero copy de-dated; About page "as published by camps"; EmailJS To hardcoded to contact@ (relay closed, live form test OK); GSC access granted then set to **Restricted** after a paired security review (docs/reports/GSC_ACCESS_REVIEW_2026-08-17.md); Premium Alpine widened to the French Alps; hotel-housed camps tolerated (not preferred) under conditions; "Founding Partner" renamed "introductory rate"; Funside + Camp Pasaka live data corrected; full verification of every inbound camp (docs/reports/INBOUND_CAMP_VERIFICATION_2026-08-17.md); **all ten reply drafts SENT by the owner ~23:30 on 17 Aug** (nine from partnerships@, ILC by mistake from the personal Gmail; a one-line follow-up giving partnerships@ as the reply address is drafted, owner to send FROM partnerships@).
 
 **Do in this order:**
-1. **Bridge inbox** (CLAUDE.md Step 0). Playground owes a reply on the cross-brand turnover register and the Vercel `_headers` warning.
-2. **CSP flip (ask first):** report-only is live and clean. Around 19-20 Aug: load production in Chrome with consent accepted, check console on 2-3 views; if clean, ASK the owner, then change `Content-Security-Policy-Report-Only` to `Content-Security-Policy` in `vercel.json` (one word), owner pushes, verify visually + console.
-3. **Owner dashboard items** (in HEALTH_CHECK checklist): ~~EmailJS template recipient hardcode + security~~ ✅ DONE 17 Aug evening (To Email = contact@, domains already restricted, non-browser API off; live form test delivered OK). Still open: Vercel plan; Cloudflare SPF/DKIM/DMARC; GitHub 2FA + secret scanning. Small follow-ups from the EmailJS pass: (a) code still sends the now-unused `to_email` + `getEmailRouting`; template footer reads "Sent to: {{to_email}}" and a "Topic: {{topic}}" line renders blank because the code never sends `topic`. Fix code + template body together in one small pass (cosmetic, not security). (b) Owner decision: tick "Do not save private data" on the template (privacy-friendlier, loses Resend). (c) Optional reCAPTCHA V2 (needs widget in our form).
-4. ~~**GSC access grant**~~ ✅ DONE 17 Aug evening: `claude-mcp@...` is a Full user on the **URL-prefix** property `https://www.europeansummercamps.com/` (not sc-domain); `mcp__gsc__list_properties` returns it. Use GSC data to re-check the year-agnostic title decision BEFORE Wave 1 touches the title tag.
-5. **Season rollover Wave 1** (year-agnostic, ONE deploy, never iterate title twice; fold in the meta "from €330" price fix and a visible FAQ mirroring the JSON-LD). Wait for GSC data if it lands first.
-6. **Camp additions**: Stadium Sports Camp (SE, hockey) and Les Elfes Winter are STRONG candidates in CAMP_EXPANSION_ROADMAP.md Batch 3; winter as a separate section, only after rollover.
-7. **Deferred code items** (HEALTH_CHECK section 6): camp names as h3, CampCard/FilterBar extraction, marquee cleanup leak, contact modal dialog semantics, Vitest suite, validator field checks, docs regeneration (CODE_STRUCTURE line map, README stale counts).
-8. **Wave 2 re-verification**: IDs 24, 28 (online-course URL, "Est. 1364"), 31, 41 ages, 64 ages, 65 rename to Finnhockey Camp.
+1. **Bridge inbox** (CLAUDE.md Step 0). Playground owes replies on: turnover register, Vercel `_headers` warning, and the GSC key-custody note (mcp-gsc 0.1.0 → 0.3.3, `GSC_CREDENTIALS_PATH`, OAuth artefacts, key rotation). Owner said "I suppose that's okay" to Playground doing the upgrade. If nothing has moved by ~20 Aug, ask the owner whether ESC should do it at session end.
+2. **Watch replies from the ten camps** (search the five addresses). Per-camp playbook: ILC = no invoice until entity, price (CHF 3,840 vs EUR 2,770), hotel arrangement and enrolment URL are answered in writing; LayosCamp = must answer the 2025 review/safeguarding question; Sharena Fabrika = price + lodging before anything; BELT, CBS, Samiad = onboard on answers (79 EUR fee or Featured 99; ask owner whether to offer Samiad Premium, see item 3). Rules for any new draft: no links (write "www.site .com"), reply-thread via replyToMessageId, tell the owner to switch sender to partnerships@, retitle superseded drafts [SUPERSEDED, DISCARD]. Never claim verification not run.
+3. **Owner decision pending:** should Premium (299 / introductory 199) also be offered by *price tier* (Premium/Luxury camps in any category, e.g. Samiad) rather than only in Premium Alpine? Recommendation given 17 Aug: yes, one sentence in FEATURED_LISTINGS_POLICY.md; offer Samiad on reply.
+4. **CSP flip (ask first):** ~19-20 Aug, load production in Chrome with consent accepted, check console on 2-3 views; if clean, ASK, then Report-Only → enforce in vercel.json; owner pushes; visual + console verify.
+5. **Owner dashboard items still open:** Vercel plan (Hobby forbids commercial); Cloudflare proxy + SPF/DKIM/DMARC; GitHub 2FA + secret scanning; GA Signals; EmailJS "Do not save private data" (owner call); Gmail setting "reply from the same address the message was sent to"; PayPal tax info by 5 Sept.
+6. **EmailJS cosmetic follow-ups (one small pass, code + template together):** template "Topic: {{topic}}" renders blank (code never sends `topic`); footer "Sent to: {{to_email}}" now misleading; code still sends `to_email` + `getEmailRouting`.
+7. **Season rollover Wave 1** (year-agnostic, ONE deploy, fold in "from EUR 330" meta price fix + visible FAQ). **First discuss the GSC finding** (docs/reports/GSC_FIRST_PULL_2026-08-17.md): ~21% of top clicks carry "2026" at positions 1-2, ~79% year-less at 3-7; three options listed there. Also: hero "Ages 3-24" should be dynamic (data max is 20); country count hardcoded 24.
+8. **Camp additions**: BELT, CBS, LayosCamp, Samiad become listable on their answers; Stadium Sports Camp (SE) and Les Elfes Winter remain strong editorial candidates (winter as a separate section, after rollover).
+9. **Deferred code items** (HEALTH_CHECK section 6) and **Wave 2 re-verification** (IDs 24, 28, 31, 41 ages, 64 ages, 65 rename; Funside/Pasaka 2027 dates when published).
 
-**Standing rules refreshed 17 Aug:** visual verification on production after any significant change (CLAUDE.md 5.7); testimonials in Resources are agreed content, do NOT remove; truthful but not saints (memory: business-tone-and-testimonials); drafts only, never send; agents read-only; scalpel not axe; commit after every step.
-
-**Drafts (rebuilt 17 Aug evening):** 10 Gmail drafts await the owner's send, all threaded, all built on the full verification (docs/reports/INBOUND_CAMP_VERIFICATION_2026-08-17.md), all WITHOUT links (addresses written "www.site .com"; owner closes the space). Twelve older versions are titled [SUPERSEDED, DISCARD]. Rules: memory `gmail-draft-handling`. When replies arrive: ILC needs entity/price/hotel/enrolment answers before any invoice; LayosCamp must answer the 2025 review question; Sharena Fabrika needs a price and lodging answer; BELT, CBS, Samiad can be onboarded on answers (79 EUR fee or Featured).
-
-**GSC (access live, Restricted):** first 90-day pull shows ~21% of top-query clicks carry "2026" at positions 1-2 (27-31% CTR) vs ~79% year-less at 3-7. Discuss with owner before Wave 1 touches the title tag; write the numbers up from scratchpad notes into docs/reports.
-
-**EmailJS follow-ups:** template "Topic" line blank (code never sends `topic`), footer "Sent to: {{to_email}}" now misleading, code still sends `to_email`; fix code + template together. Owner to decide "Do not save private data". Monetization structure live in FEATURED_LISTINGS_POLICY.md (Premium Alpine now includes the French Alps; hotel-housed camps tolerated under conditions, see CAMP_VERIFICATION_CRITERIA.md).
+**Standing rules refreshed 17 Aug:** visual verification on production after significant changes; testimonials in Resources stay; truthful but not saints; drafts only, never message third parties (forms and mail to the owner are fine); agents read-only; scalpel not axe; commit after every step; em-dash ban in outward text; booking copy must hold for winter camps.
 
 ---
 
