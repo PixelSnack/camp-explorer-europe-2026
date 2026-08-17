@@ -23,7 +23,11 @@
 
 **Standing rules refreshed 17 Aug:** visual verification on production after any significant change (CLAUDE.md 5.7); testimonials in Resources are agreed content, do NOT remove; truthful but not saints (memory: business-tone-and-testimonials); drafts only, never send; agents read-only; scalpel not axe; commit after every step.
 
-**Drafts:** 10 Gmail drafts await the owner's send (ILC corrected). Monetization structure live in FEATURED_LISTINGS_POLICY.md.
+**Drafts (rebuilt 17 Aug evening):** 10 Gmail drafts await the owner's send, all threaded, all built on the full verification (docs/reports/INBOUND_CAMP_VERIFICATION_2026-08-17.md), all WITHOUT links (addresses written "www.site .com"; owner closes the space). Twelve older versions are titled [SUPERSEDED, DISCARD]. Rules: memory `gmail-draft-handling`. When replies arrive: ILC needs entity/price/hotel/enrolment answers before any invoice; LayosCamp must answer the 2025 review question; Sharena Fabrika needs a price and lodging answer; BELT, CBS, Samiad can be onboarded on answers (79 EUR fee or Featured).
+
+**GSC (access live, Restricted):** first 90-day pull shows ~21% of top-query clicks carry "2026" at positions 1-2 (27-31% CTR) vs ~79% year-less at 3-7. Discuss with owner before Wave 1 touches the title tag; write the numbers up from scratchpad notes into docs/reports.
+
+**EmailJS follow-ups:** template "Topic" line blank (code never sends `topic`), footer "Sent to: {{to_email}}" now misleading, code still sends `to_email`; fix code + template together. Owner to decide "Do not save private data". Monetization structure live in FEATURED_LISTINGS_POLICY.md (Premium Alpine now includes the French Alps; hotel-housed camps tolerated under conditions, see CAMP_VERIFICATION_CRITERIA.md).
 
 ---
 
