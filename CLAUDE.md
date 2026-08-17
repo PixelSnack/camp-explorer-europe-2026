@@ -329,7 +329,7 @@ The message channel with Playground Claude. List the top level: any `*.md` there
 - ✅ **Phase 1 COMPLETE**: All optimizations deployed
 - ✅ **Code Quality**: EXCELLENT (App.jsx ~4,700 lines + camps.js ~1,545 lines)
 - ✅ **Performance**: OPTIMIZED (93-96% image reduction)
-- ✅ **Security**: ENTERPRISE-GRADE (HSTS + CSP headers, Vite 7.3.1)
+- ✅ **Security**: headers served via `vercel.json` since 17 Aug 2026 (X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy, CSP report-only pending enforce); Vite 7.3.1. ⚠️ Before 17 Aug 2026 NO security headers were live: `public/_headers` is a Netlify format Vercel ignores
 - ✅ **Accessibility**: WCAG 2.1 AA COMPLIANT
 - ✅ **SEO**: FOUNDATION READY (clean sitemap, EducationalOrganization schema)
 - ✅ **Contact System**: COMPLETE (EmailJS + 5 Cloudflare addresses)
@@ -988,7 +988,7 @@ europeansummercamps/
 │   ├── assets/ (optimized images - 93-96% reduced)
 │   └── components/ui/ (5 shadcn/ui components: button, card, badge, breadcrumb, drawer)
 ├── public/
-│   ├── _headers (security: HSTS, CSP, etc.)
+│   ├── (security headers live in /vercel.json, not in public/)
 │   ├── sitemap.xml (single URL, optimized)
 │   ├── robots.txt (strategic AI/bot configuration)
 │   └── [optimized images]
@@ -1011,7 +1011,7 @@ europeansummercamps/
   - Custom events: `camp_booking_click`, `video_click`
   - UTM parameters on all outbound links for partner tracking
 - **Contact Forms**: EmailJS → 5 Cloudflare addresses → Gmail
-- **Security**: HSTS + CSP headers, enterprise-grade
+- **Security**: security headers via vercel.json (CSP report-only, enforce after observation)
 - **Virtual Scrolling**: TanStack React Virtual (ready, not yet implemented)
 
 ### 6.3 Key Features Implemented
@@ -1048,7 +1048,7 @@ europeansummercamps/
 - Clean single-URL sitemap
 
 **Security:**
-- Enterprise HSTS + CSP headers
+- Security headers via vercel.json (added 17 Aug 2026; the earlier public/_headers file was never applied by Vercel)
 - Strategic robots.txt (allow beneficial AI, block scrapers)
 - GDPR-compliant cookie consent
 - EmailJS security configuration
@@ -1343,7 +1343,7 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 - **Performance**: ✅ OPTIMIZED (93-96% image reduction)
 - **Accessibility**: ✅ WCAG 2.1 AA COMPLIANT (full compliance)
 - **SEO Architecture**: ✅ FOUNDATION READY (EducationalOrganization schema, clean sitemap)
-- **Security**: ✅ ENTERPRISE-GRADE (HSTS + CSP headers)
+- **Security**: ✅ headers live via vercel.json since 17 Aug 2026 (CSP report-only, enforce pending)
 - **User Experience**: ✅ STRATEGIC EXCELLENCE (enhanced scannability)
 
 ### 8.4 Upcoming Phases (Future)

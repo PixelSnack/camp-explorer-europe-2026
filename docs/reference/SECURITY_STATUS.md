@@ -1,5 +1,8 @@
 # SECURITY STATUS - Camp Explorer Europe 2026
 
+> **⚠️ CORRECTION, 17 August 2026.** Everything below that says security headers were "enterprise-grade" or "enforced" via `public/_headers` was WRONG. Vercel does not read `_headers` (a Netlify/Cloudflare Pages format), so from September 2025 until 17 August 2026 production served ONLY Vercel's default HSTS: no CSP, no X-Frame-Options, no nosniff, no Referrer-Policy. Fixed by `vercel.json` (safe headers enforced, CSP in report-only pending a production console check, then enforce). Also stale below: GA4 uses the real ID G-3FMMGNJRLE (not a placeholder); the contact-form honeypot exists (App.jsx ~149); Vite is 7.3.1. The authoritative current assessment is `docs/reports/HEALTH_CHECK_2026-08-17.md` (full audit: security agent on Fable + SOL adversarial review + lead pass). Owner-dashboard actions (EmailJS template recipient hardcoding, CAPTCHA/rate limits, Vercel plan check, Cloudflare proxy, SPF/DKIM/DMARC, GitHub 2FA + secret scanning) are listed there.
+
+
 *Ongoing security tracking document for www.europeansummercamps.com*
 
 ---
@@ -13,7 +16,7 @@
 | **High Vulnerabilities** | 0 (fixed) | January 14, 2026 |
 | **Moderate Vulnerabilities** | 2 (deferred) | January 14, 2026 |
 | **GDPR Compliance** | ✅ Compliant | January 14, 2026 |
-| **Security Headers** | ✅ Enterprise-grade | January 14, 2026 |
+| **Security Headers** | ⚠️ NOT LIVE until 17 Aug 2026; now via vercel.json (CSP report-only) | August 17, 2026 |
 
 ---
 

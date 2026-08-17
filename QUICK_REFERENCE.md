@@ -195,7 +195,7 @@
 - **Main Component**: `src/App.jsx` (~4,700 lines, well-structured)
 - **Camp Data**: `src/data/camps.js` (~1,545 lines, allCamps array)
 - **Sitemap**: `public/sitemap.xml` (single clean URL)
-- **Security**: `public/_headers` (HSTS, CSP enforced)
+- **Security**: `vercel.json` headers block (X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy, CSP report-only). NOTE: `public/_headers` was never applied by Vercel; removed 17 Aug 2026
 - **Schema**: `index.html` (Event schema, FAQPage, BreadcrumbList)
 - **Hero Image**: `public/european-summer-camps-hero.png` (optimized)
 
@@ -298,7 +298,7 @@ git reset --hard HEAD~1  # Rollback if broken
 - ✅ Review system: Phase 1 COMPLETE (build-time validation, REVIEW_SOURCES, honest trust signals)
 - ✅ Build/lint: WORKING (~25s build incl. validation, 0 errors / 4 warnings)
 - ✅ Code Review: Tier 1+2 COMPLETE, Tier 3 partial (8/20), ~65 total items in CODE_REVIEW_2026.md
-- ✅ Security: 7.5/10 (CSP enforced, but Vite 4.x EOL with CVEs — upgrade needed)
+- ✅ Security: headers finally live via vercel.json (17 Aug 2026; nothing but default HSTS was served before). Vite 7.3.1. npm audit: 0 prod, 1 dev-only (sharp). Full audit: docs/reports/HEALTH_CHECK_2026-08-17.md
 - ✅ Performance: FULLY OPTIMIZED (93-96% total image reduction)
 - ✅ Accessibility: WCAG 2.1 AA mostly compliant (user-scalable=no fix pending)
 - ✅ SEO: 6.5/10 SCORE (ranking #1 for primary query, but schema/robots.txt gaps found)

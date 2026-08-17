@@ -35,7 +35,7 @@ camp-explorer-europe-2026/
 │       ├── card.jsx
 │       └── drawer.jsx
 ├── public/
-│   ├── _headers             # Security headers (HSTS, CSP)
+│   ├── (security headers: see /vercel.json at repo root)
 │   ├── sitemap.xml          # SEO sitemap
 │   ├── robots.txt           # Bot/AI crawler config
 │   ├── favicon.ico          # Multi-size favicon
