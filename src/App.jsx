@@ -24,26 +24,9 @@ const initializeGA4 = () => {
   window.gtag = gtag
 
   gtag('js', new Date())
-  gtag('config', GA_MEASUREMENT_ID, {
-    // Enterprise configuration for summer camp discovery platform
-    page_title: 'Camp Explorer Europe 2026',
-    custom_map: {
-      custom_parameter_1: 'camp_category',
-      custom_parameter_2: 'country_filter'
-    },
-    // Enhanced e-commerce preparation for future monetization
-    send_page_view: true,
-    // Privacy-compliant configuration
-    anonymize_ip: true,
-    respect_dnt: true
-  })
-
-  // Track initial page view
-  gtag('event', 'page_view', {
-    page_title: 'Camp Explorer Europe 2026 - European Summer Camps Discovery',
-    page_location: window.location.href,
-    custom_parameter_1: 'homepage'
-  })
+  // send_page_view defaults to true, so no explicit page_view event is needed
+  // (the previous explicit event double-counted every consented page load)
+  gtag('config', GA_MEASUREMENT_ID)
 }
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
@@ -66,6 +49,9 @@ import activitiesAvif from './assets/activities-collage.avif'
 import activitiesWebp from './assets/activities-collage.webp'
 import './App.css'
 import { allCamps, activitiesCompressed, mapCompressed } from './data/camps.js'
+
+// Hash-routed sections; unknown hashes (e.g. the #main-content skip link) must not change the view
+const KNOWN_SECTIONS = new Set(['home', 'discover', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])
 
 // Scroll navigation constants
 const SCROLL_SHOW_THRESHOLD = 300
@@ -565,7 +551,7 @@ function App() {
       // Supports "#section?search=term" (the WebSite SearchAction schema in index.html
       // links to #discover?search=...); previously the whole string became the section name
       const [section, query] = rawHash.split('?')
-      if (section) setActiveSection(section)
+      if (KNOWN_SECTIONS.has(section)) setActiveSection(section)
       if (query) {
         const term = new URLSearchParams(query).get('search')
         if (term) setSearchTerm(term.slice(0, 200))
@@ -1192,7 +1178,7 @@ function App() {
           {/* Results Count */}
           <div className="text-center mb-8">
             <p className="text-gray-600" aria-live="polite">
-              Showing <span className="font-semibold text-blue-600">{filteredCamps.length}</span> camps
+              Showing <span className="font-semibold text-blue-600">{filteredCamps.length}</span> organizations
               {searchTerm && (
                 <span> matching "<span className="font-semibold">{searchTerm}</span>"</span>
               )}
@@ -1251,6 +1237,8 @@ function App() {
                       variant={selectedCamps.find(c => c.id === camp.id) ? "default" : "outline"}
                       className="h-8 px-2"
                       onClick={(e) => { e.stopPropagation(); handleCampSelection(camp); }}
+                      aria-pressed={!!selectedCamps.find(c => c.id === camp.id)}
+                      aria-label={selectedCamps.find(c => c.id === camp.id) ? `Remove ${camp.name} from comparison` : `Add ${camp.name} to comparison`}
                     >
                       {selectedCamps.find(c => c.id === camp.id) ? '✓' : '+'}
                     </Button>
@@ -1307,7 +1295,7 @@ function App() {
                       </span>
                       <span className="text-gray-600 flex items-center">
                         <Globe className="w-4 h-4 mr-1" />
-                        {camp.capacity} max
+                        {camp.capacity ? `${camp.capacity} max` : 'Capacity on request'}
                       </span>
                     </div>
                     
@@ -1732,7 +1720,7 @@ function App() {
             {/* Results Count */}
             <div className="text-center mb-8">
               <p className="text-gray-600" aria-live="polite">
-                Showing <span className="font-semibold text-blue-600">{filteredCamps.length}</span> camps
+                Showing <span className="font-semibold text-blue-600">{filteredCamps.length}</span> organizations
                 {searchTerm && (
                   <span> matching "<span className="font-semibold">{searchTerm}</span>"</span>
                 )}
@@ -1801,6 +1789,8 @@ function App() {
                         variant={selectedCamps.find(c => c.id === camp.id) ? "default" : "outline"}
                         className="h-8 px-2"
                         onClick={(e) => { e.stopPropagation(); handleCampSelection(camp); }}
+                        aria-pressed={!!selectedCamps.find(c => c.id === camp.id)}
+                        aria-label={selectedCamps.find(c => c.id === camp.id) ? `Remove ${camp.name} from comparison` : `Add ${camp.name} to comparison`}
                       >
                         {selectedCamps.find(c => c.id === camp.id) ? '✓' : '+'}
                       </Button>
@@ -1857,7 +1847,7 @@ function App() {
                         </span>
                         <span className="text-gray-600 flex items-center">
                           <Globe className="w-4 h-4 mr-1" />
-                          {camp.capacity} max
+                          {camp.capacity ? `${camp.capacity} max` : 'Capacity on request'}
                         </span>
                       </div>
 
@@ -2015,6 +2005,7 @@ function App() {
                         variant="ghost"
                         className="absolute top-2 right-2 h-6 w-6 p-0"
                         onClick={() => handleCampSelection(camp)}
+                        aria-label={`Remove ${camp.name} from comparison`}
                       >
                         <X className="h-4 w-4" />
                       </Button>
@@ -4560,7 +4551,7 @@ function App() {
               <X className="w-5 h-5" />
             </button>
             <DrawerTitle className="text-lg">Filter Camps</DrawerTitle>
-            <DrawerDescription>Showing {filteredCamps.length} of {allCamps.length} camps</DrawerDescription>
+            <DrawerDescription>Showing {filteredCamps.length} of {allCamps.length} organizations</DrawerDescription>
           </DrawerHeader>
 
           <div className="overflow-y-auto px-4 pb-4 space-y-6 max-h-[60vh]">

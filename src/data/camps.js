@@ -895,7 +895,7 @@ export const allCamps = [
     specialFeatures: ["Keurmerk Kindervakanties certified", "VZR & STO Garant", "Frisian Lakes"],
     established: 2006,
     capacity: 50,
-    bookingUrl: "https://www.summercamps.nl/en/sailing"
+    bookingUrl: "https://www.summercamps.nl/en/camps" // Corrected Aug 2026: /en/sailing 404s; org overview page (all camps, all ages) verified 200
   },
   {
     id: 42,
@@ -949,7 +949,7 @@ export const allCamps = [
     location: "Horten, Vestfold",
     country: "Norway",
     ages: "9-15 years",
-    price: "NOK 7,900/1 week",
+    price: "From NOK 8,190/5 days", // Verified Aug 2026 (sjoliv.rs.no: 8190/8490 NOK, five days Sun-Fri; was NOK 7,900)
     priceRange: "budget",
     rating: null,
     reviews: 0,
@@ -963,7 +963,7 @@ export const allCamps = [
     specialFeatures: ["CPR/Water Safety Education", "1:6 instructor ratio", "All meals included"],
     established: 1891,
     capacity: 50,
-    bookingUrl: "https://www.rs-noatun.no/rs-sjoleir/"
+    bookingUrl: "https://sjoliv.rs.no/ungdomkurs/rs-sjoleir" // Corrected Aug 2026: rs-noatun.no page gone; sjoliv.rs.no is Redningsselskapet's own subdomain
   },
   {
     id: 45,
@@ -1423,7 +1423,7 @@ export const allCamps = [
     specialFeatures: ["Sleep aboard sailing vessel (4 cabins)", "UISP affiliated sports association", "Participants share shipboard duties"],
     established: null,
     capacity: 12,
-    bookingUrl: "https://www.campidelvento.com/campi-estivi-per-ragazzi"
+    bookingUrl: "https://www.campidelvento.com/campi-estivi-per-ragazzi.html" // Corrected Aug 2026: slug requires .html (old URL 404)
   },
   // Finland - Sports Specialty (ice hockey - uniquely Nordic)
   {
@@ -1447,7 +1447,7 @@ export const allCamps = [
     specialFeatures: ["International Hockey Center of Excellence", "On-site dormitory accommodation", "All meals included"],
     established: null,
     capacity: 100,
-    bookingUrl: "https://vierumaki.fi/en/finnhockey-school"
+    bookingUrl: "https://vierumaki.fi/urheilutoiminnan-paasivu/jaakiekko/finnhockey-school-vierumaki" // Corrected Aug 2026: /en/ page 404s; program rebranded "Finnhockey Camp" (Finnish page). Wave 2: rename + re-verify price/dates
   },
   // Greece - Sports Specialty (water sports day camp - Athens Riviera)
   {
@@ -1488,7 +1488,7 @@ export const allCamps = [
     type: "Tennis Training Academy",
     activities: ["Tennis Training", "Padel", "Beach Volleyball", "Basketball", "Table Tennis", "Swimming", "Paddle Surfing"],
     dates: "May 31 - August 30, 2026 (weekly, Sunday to Sunday)",
-    highlights: ["Founded by Rafael Nadal — world-class tennis methodology", "20.5 hours tennis training per week (1:4 player-to-court ratio)", "Rafa Nadal Museum tour & Mallorca excursions included"],
+    highlights: ["Founded by Rafael Nadal: world-class tennis methodology", "20.5 hours tennis training per week (1:4 player-to-court ratio)", "Rafa Nadal Museum tour & Mallorca excursions included"],
     languages: ["English", "Spanish"],
     specialFeatures: ["4 programs: Tennis Junior, Tennis & Language, Tennis Kids, Padel", "En-suite twin rooms in supervised Rafa Nadal Residence, full board + airport transfers", "45 tennis courts + 19 padel courts (hard & clay, indoor & outdoor)"],
     established: 2016,
@@ -1511,7 +1511,7 @@ export const allCamps = [
     type: "Multilingual Sports & Culture Camp",
     activities: ["Football", "Volleyball", "Hockey", "Basketball", "Tennis", "Archery", "Rugby", "Water Polo", "Swimming", "Cooking", "Music", "Photography"],
     dates: "July 5 - August 29, 2026 (8 weekly sessions)",
-    highlights: ["50+ years heritage since 1975 — château-based camp", "15+ nationalities, 67% camper return rate", "1:3 staff-to-child ratio with experienced alumni counselors"],
+    highlights: ["50+ years heritage since 1975, château-based camp", "15+ nationalities, 67% camper return rate", "1:3 staff-to-child ratio with experienced alumni counselors"],
     languages: ["French", "English", "Spanish"],
     specialFeatures: ["Historic Château d'Emines with heated pool & private pond", "Daily structure: 2h language + 2h activity choice + 2h sports/arts", "Organic & dietary-inclusive meals (vegetarian, vegan, gluten-free)"],
     established: 1975,
@@ -1534,7 +1534,7 @@ export const allCamps = [
     type: "International Football Training Camp",
     activities: ["Football Training", "Goalkeeper Training", "Street Soccer", "Beach Volleyball", "Basketball", "Table Tennis", "Trampoline", "E-Sports"],
     dates: "July 26 - August 8, 2026 (7 or 14 day sessions)",
-    highlights: ["25+ years experience since 1999 — Germany's premier football camp", "Bilingual coaching staff (German & English)", "Bundesliga stadium visit included in every session"],
+    highlights: ["25+ years experience since 1999, Germany's premier football camp", "Bilingual coaching staff (German & English)", "Bundesliga stadium visit included in every session"],
     languages: ["German", "English"],
     specialFeatures: ["Sport- und Erlebnisdorf Hinsbeck: 30 houses with 24h supervision", "2-3 football training sessions daily with certified coaches", "Also offers Junior Camps (ages 8-14) and Girls Camps (ages 12-18)"],
     established: 1999,
