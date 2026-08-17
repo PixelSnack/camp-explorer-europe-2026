@@ -67,7 +67,7 @@ export const allCamps = [
     category: "premium",
     type: "Alpine Adventure",
     activities: ["Rock Climbing", "5 Languages", "Glacier Expeditions", "Cultural Tours"],
-    dates: "June 6 - August 28, 2027 (six 2-week sessions)", // Verified Aug 2026: 2027 dates published on operator site
+    dates: "June 6 - Aug 28, 2027", // Verified Aug 2026: 2027 dates published on operator site
     bookingStatus: "2027 dates published",
     highlights: ["38+ years experience", "10,000+ campers annually", "45+ activities offered", "Swiss Alps at 1,500m"],
     languages: ["English", "French", "German", "Spanish", "Mandarin"],
@@ -270,7 +270,7 @@ export const allCamps = [
     category: "budget_excellence",
     type: "Outdoor Adventure",
     activities: ["Canoeing", "Rock Climbing", "German Culture", "Survival Skills"],
-    dates: "June 27 - September 11, 2027 (weekly sessions)", // Verified Aug 2026: 2027 calendar published (bookacamp.de)
+    dates: "June 27 - Sept 11, 2027", // Verified Aug 2026: 2027 calendar published (bookacamp.de)
     bookingStatus: "2027 dates published",
     highlights: ["Bavarian Forest", "Mountain lake", "German traditions", "Great value"],
     languages: ["German", "English"],
