@@ -87,6 +87,34 @@ Priority-ranked by analytics data (GA4 traffic, engagement, search demand):
 
 ---
 
+## Batch 3: Ice hockey + winter (researched 17 Aug 2026, owner-requested; NOT yet added)
+
+Source: docs/reports/agent-camp-research-hockey-winter-2026-08-17.md (read-only research, five-point test on every candidate). Owner decides; lead verifies again before any addition.
+
+### Ice hockey (currently one entry: Vierumaki Finnhockey School, ID 65)
+| Candidate | Country | Status | Key facts (quoted from operator pages) | Next step |
+|---|---|---|---|---|
+| **Stadium Sports Camp (Ice Hockey)** | Sweden, Norrkoping | **STRONG** (all 5 PASS) | Ages 10-14 (15 some weeks), 4,595 kr/week incl. meals + insurance, 6-day weeks late June/early July, leaders sleep on site, sponsor-backed since 1995 | Confirm English booking support, then add |
+| Hockey Talent School, Trinec | Czech Republic | POSSIBLE | Born 2011-2018, 13,400 Kc full board, 11-15 and 15-19 July 2026, 2x60 min ice/day | Email: where do children sleep? Would lift Czechia off the single-listing list |
+| Leksands Hockeyskola | Sweden | POSSIBLE | "Sveriges aldsta hockeyskola", ages 10-15 (junior 8-9), weeks 26-29; boarding in arena rooms | Price page did not render; read 2027 boarding price directly first |
+| Lysekils Sommarhockeyskola | Sweden | POSSIBLE | 6,695 kr internat incl. full board; same page rents houses (point 1 unclear) | Clarify accommodation |
+| Ceska Hokejova Skola / Sports Events (CZ), SOV Ferlach (AT), Bukac Hockey, Slovak hotel-based camps | | REJECT | Events agency / conflicting prices / hotel-based / day-only | Do not list |
+
+### Winter camps (currently zero)
+| Candidate | Country | Status | Key facts | Next step |
+|---|---|---|---|---|
+| **Les Elfes International Winter Camp** | Switzerland, Verbier | **STRONG** (all 5 PASS; same operator as ID 1) | Ages 6-17, season 12 Dec 2026 to 24 Apr 2027, CHF 2,200-2,950/week, ensuite rooms, full board, 1:7 slope ratio, 24/7 supervision | Verify ski pass/equipment inclusion, then add as first winter entry |
+| UCPA colos ski | France (Les Orres, Val Thorens) | POSSIBLE, near STRONG | Ages 6-17, from 475 EUR (5 days) to 1,035 EUR (7 days), UCPA owns its centres | Re-check autumn 2026 for 2027 dates + inclusion list |
+| La Garenne Winter Camps | Switzerland, Villars | POSSIBLE | Snippets only: ages 5-14, from CHF 4,400/week boarder incl. pass + equipment, Jan-Mar 2027, min 2 weeks | Fee table needs a real browser (Chrome), then STRONG |
+| Village Camps Winter, Camp Suisse Ski | Switzerland | REJECT (for now) | Group bookings only | Recheck next year |
+| Juvigo, ruf Jugendreisen, Schneefuchs | DE resellers | REJECT | Hotel-bed resellers; fail points 2 and 5 by construction | Never list |
+
+### Winter positioning (researcher recommendation, lead concurs)
+Add winter as a **separately labelled section** with its own filter value, kept out of the default summer grid; do NOT add "Winter" as an eighth category (single-category rule) and do NOT add it before the year-agnostic season rollover lands (bolting a second season onto "2026 Season NOW OPEN" compounds the false-claim problem). Winter demand peaks Sept-Nov, the summer directory's quiet season, and operators overlap with already-verified camps, so marginal cost is low. If winter grows past a handful of listings, that argues for a second domain rather than stretching europeansummercamps.com.
+
+### Gap map (best next additions for parents)
+1. Sweden: Stadium Sports Camp (residential hockey). 2. Switzerland: Les Elfes Winter (opens winter at near-zero verification cost). 3. France: UCPA winter (France thin at 4). 4. Czech Republic: Hockey Talent School if accommodation resolves. 5. Slovakia: absent from all 24 countries; hockey market exists but candidates look hotel-based.
+
 ## Distribution After 70 Camps (Projected)
 
 | Category | Current (65) | Target (70) | Change |
