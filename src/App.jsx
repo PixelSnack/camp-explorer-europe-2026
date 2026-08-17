@@ -52,6 +52,7 @@ import { allCamps, activitiesCompressed, mapCompressed } from './data/camps.js'
 
 // Hash-routed sections; unknown hashes (e.g. the #main-content skip link) must not change the view
 const KNOWN_SECTIONS = new Set(['home', 'discover', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])
+const KNOWN_CATEGORIES = new Set(['premium', 'academic', 'language', 'sports', 'family', 'budget_excellence', 'unique'])
 
 // Scroll navigation constants
 const SCROLL_SHOW_THRESHOLD = 300
@@ -553,8 +554,11 @@ function App() {
       const [section, query] = rawHash.split('?')
       if (KNOWN_SECTIONS.has(section)) setActiveSection(section)
       if (query) {
-        const term = new URLSearchParams(query).get('search')
+        const params = new URLSearchParams(query)
+        const term = params.get('search')
         if (term) setSearchTerm(term.slice(0, 200))
+        const category = params.get('category')
+        if (category && KNOWN_CATEGORIES.has(category)) setSelectedFilter(category)
       }
     }
 
