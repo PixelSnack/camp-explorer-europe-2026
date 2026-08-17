@@ -57,15 +57,19 @@ This project runs bash on Windows. Always use `2>/dev/null` (Unix-style), never 
 
 ---
 
-## 🚫 **NEVER SEND EMAIL — DRAFTS ONLY** 🚫
+## 🚫 **NEVER SEND MESSAGES TO THIRD PARTIES — DRAFTS ONLY** 🚫
 
 ### **⚠️ ABSOLUTE RULE, NO EXCEPTIONS ⚠️**
 
-**NEVER send an email**, by any method, from any tool. Creating drafts is fine and encouraged. Sending requires **explicit per-message approval from the user**, given for that specific message. No blanket permissions, no standing authorisation, no "he probably meant to send it."
+**Never send, reply, or forward an email to a third party on the owner's behalf**, from any tool or any of the owner's accounts (Gmail, the five ESC addresses, or anything else that carries the owner's name). Creating drafts is fine and encouraged. Sending to a third party requires **explicit per-message approval from the user**, given for that specific message. No blanket permissions, no standing authorisation, no "he probably meant to send it."
 
 **NEVER write on Messenger or Facebook.** Read-only, for context gathering. Never send, reply, or react.
 
-If a task appears to require sending, **draft it and stop.** Hand it over and say plainly that it is a draft awaiting a send decision.
+If a task appears to require sending to a third party, **draft it and stop.** Hand it over and say plainly that it is a draft awaiting a send decision.
+
+**Scope, precisely (clarified by the owner 17 Aug 2026):** the ban is about *who receives* the message, not about the mechanism.
+- ✅ **Permitted without a per-message ask**: filling in and submitting web forms when the task calls for it (including our own contact form); test messages whose only recipient is the owner (a contact-form submission lands at contact@, which forwards to the owner's own inbox); saving drafts; sending anything to the owner himself.
+- ❌ **Requires explicit per-message approval**: any message that reaches a camp operator, partner, journalist, or any other third party, by any channel.
 
 **Why this matters here:** ESC's five addresses reach real camp operators and partners. An outward-facing message carries the owner's name and the site's reputation with families. One wrong send is not recoverable.
 

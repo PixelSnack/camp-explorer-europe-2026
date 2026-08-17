@@ -1,7 +1,7 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** August 16, 2026
+**Last Updated:** August 17, 2026 (evening)
 **Current Status:** Reactivated after six months dormant. 65 organizations, 24 countries. Season rollover is the live thread.
 **Ready for:** Gmail scan → GSC access grant → security review under Fable → season rollover Wave 1
 
@@ -14,8 +14,8 @@
 **Do in this order:**
 1. **Bridge inbox** (CLAUDE.md Step 0). Playground owes a reply on the cross-brand turnover register and the Vercel `_headers` warning.
 2. **CSP flip (ask first):** report-only is live and clean. Around 19-20 Aug: load production in Chrome with consent accepted, check console on 2-3 views; if clean, ASK the owner, then change `Content-Security-Policy-Report-Only` to `Content-Security-Policy` in `vercel.json` (one word), owner pushes, verify visually + console.
-3. **Owner dashboard items** (in HEALTH_CHECK checklist): EmailJS template recipient hardcode + security; Vercel plan; Cloudflare SPF/DKIM/DMARC; GitHub 2FA + secret scanning. Then remove `to_email` from templateParams in code ONLY after the template is hardcoded.
-4. **GSC access grant** via Claude in Chrome (extension works again): add `claude-mcp@gen-lang-client-0613109458.iam.gserviceaccount.com` to the property; then verify with `mcp__gsc__list_properties`.
+3. **Owner dashboard items** (in HEALTH_CHECK checklist): ~~EmailJS template recipient hardcode + security~~ ✅ DONE 17 Aug evening (To Email = contact@, domains already restricted, non-browser API off; live form test delivered OK). Still open: Vercel plan; Cloudflare SPF/DKIM/DMARC; GitHub 2FA + secret scanning. Small follow-ups from the EmailJS pass: (a) code still sends the now-unused `to_email` + `getEmailRouting`; template footer reads "Sent to: {{to_email}}" and a "Topic: {{topic}}" line renders blank because the code never sends `topic`. Fix code + template body together in one small pass (cosmetic, not security). (b) Owner decision: tick "Do not save private data" on the template (privacy-friendlier, loses Resend). (c) Optional reCAPTCHA V2 (needs widget in our form).
+4. ~~**GSC access grant**~~ ✅ DONE 17 Aug evening: `claude-mcp@...` is a Full user on the **URL-prefix** property `https://www.europeansummercamps.com/` (not sc-domain); `mcp__gsc__list_properties` returns it. Use GSC data to re-check the year-agnostic title decision BEFORE Wave 1 touches the title tag.
 5. **Season rollover Wave 1** (year-agnostic, ONE deploy, never iterate title twice; fold in the meta "from €330" price fix and a visible FAQ mirroring the JSON-LD). Wait for GSC data if it lands first.
 6. **Camp additions**: Stadium Sports Camp (SE, hockey) and Les Elfes Winter are STRONG candidates in CAMP_EXPANSION_ROADMAP.md Batch 3; winter as a separate section, only after rollover.
 7. **Deferred code items** (HEALTH_CHECK section 6): camp names as h3, CampCard/FilterBar extraction, marquee cleanup leak, contact modal dialog semantics, Vitest suite, validator field checks, docs regeneration (CODE_STRUCTURE line map, README stale counts).
