@@ -61,7 +61,7 @@ Listings WE initiate remain free (asset building, editorial independence). Listi
 | **Editorial** | Free (our initiative only, not requestable) | Standard listing |
 | **Basic (inbound)** | €79 one-time onboarding & verification (waived with Featured/Premium year one) | Hand verification + standard listing |
 | **Featured** | €99/year | "Featured Camp" badge, priority placement in category, highlighted card design |
-| **Premium** (premium categories) | €299/year list; €199 introductory rate first year, rate-locked | Featured deliverables + video button + max-3-per-category cap + UTM-verifiable tracking. 0% commission |
+| **Premium** (high-end camps, any category) | €299/year list; €199 introductory rate first year, rate-locked | Featured deliverables + video button + max-3-per-category cap + UTM-verifiable tracking. 0% commission |
 
 **Sustainability basis (real GA4 data, Aug 2026):** 1,668 outbound booking clicks Jan 1-Aug 16; ~1/3 of active users click out to a camp. Premium camp ≈ 100-150 qualified referrals/year → €199 is under €2/referral, below paid-search CPC for camp keywords. Hold €299 as ceiling until traffic grows. Pitch is always "qualified referrals at below paid-search cost, 0% commission" — never raw traffic volume.
 

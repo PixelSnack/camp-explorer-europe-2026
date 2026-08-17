@@ -36,12 +36,12 @@
 | **Duration** | 12 months from activation date |
 | **Requirements** | Must pass camp verification criteria |
 
-### Premium Listing (€299/year list — premium categories)
-For camps in high-value categories (Premium Alpine first). Everything in Featured, plus:
+### Premium Listing (€299/year list — high-end camps, any category)
+**Eligibility (owner decision 18 Aug 2026):** Premium is for camps that are a cut above, judged on the camp itself, not on its category or location. Indicators: Premium or Luxury price tier (roughly €1,500+/week), high staff ratio, standout facilities, strong reputation and longevity, professional presentation. Alpine is not a requirement; a UK boarding-school summer school, a top sailing academy or a language camp in a luxury setting all qualify if they meet the bar. Editorial judgment by the lead, owner has the final say. Everything in Featured, plus:
 | Aspect | Details |
 |--------|---------|
 | **List price** | €299 per listing per year |
-| **Introductory rate** | €199 first year, rate-locked for renewals (2027-cycle premium listings; renamed from "Founding Partner" 17 Aug 2026, owner dislikes the label) |
+| **Introductory rate** | €199 first year, rate-locked for renewals (2027-cycle premium listings; renamed from "Founding Partner" 17 Aug 2026) |
 | **Video button** | "Watch Camp Video" button on card (Premium only) |
 | **Category cap** | Maximum 3 featured/premium slots per category — committed scarcity |
 | **Tracking** | UTM-tagged outbound links, verifiable in the camp's own Google Analytics |
@@ -63,7 +63,7 @@ For camps in high-value categories (Premium Alpine first). Everything in Feature
 |------|-------|
 | Inbound Basic onboarding (one-time) | €79 (waived with Featured/Premium year one) |
 | Featured listing | €99/year |
-| Premium listing (premium categories) | €299/year list |
+| Premium listing (high-end camps, any category) | €299/year list |
 | Premium introductory rate (2027 cycle) | €199 first year, rate-locked |
 
 ### Volume Discounts (Featured tier)
