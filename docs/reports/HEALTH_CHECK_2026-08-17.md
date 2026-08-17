@@ -14,6 +14,8 @@
 
 **Numbers you can now quote with confidence** (all GA4, in `docs/PARTNER_STATS_2026.md`): 94% engagement rate, 35% booking click-through, 1,668 booking clicks this year, **ChatGPT is your #2 traffic source at 21% of sessions**, 95 countries, 69% mobile. The ILC draft was corrected to these figures.
 
+**⚠️ Needs your eyes, not mine:** the Resources page carries three five-star testimonials ("Sarah M., Munich", "Marcus K., Amsterdam", "Elena R., London", each labelled "Platform User"). Neither the SEO reviewer nor I could verify their provenance, and this project's own LESSONS_LEARNED records agents fabricating testimonials in January 2026. If these are not real families, they are a consumer-law problem (fake reviews are banned under EU UCPD and UK DMCC 2024) and an E-E-A-T problem. I did not remove them (content decision), but please confirm or delete today.
+
 **What I did NOT do** (deliberately, for you to decide): flip CSP to enforced; enable HSTS includeSubDomains; change any UI; remove `to_email` from code (must follow the dashboard change, not precede it); add any camp; touch the season-rollover strings.
 
 ### Your morning checklist (in order)
@@ -24,7 +26,8 @@
 5. **GitHub**: 2FA on, secret-scanning push protection on (free for public repos), Dependabot alerts on.
 6. **Google Analytics**: turn off Google Signals unless you use it (CSP scope + consent).
 7. Send the 10 drafts when ready (ILC now has correct traffic figures).
-8. After 48h of CSP report-only with a clean browser console on production: tell me and I flip it to enforced.
+8. Decide on the testimonials (above) and on the visible-FAQ recommendation (section 6).
+9. After 48h of CSP report-only with a clean browser console on production: tell me and I flip it to enforced.
 
 ---
 
@@ -75,12 +78,51 @@ Campi del Vento (404), Vierumaki Finnhockey (404), RS Sjøleir (404), Summer Cam
 ## 5. Camp gap map (hockey + winter)
 Strong: **Stadium Sports Camp** (Sweden, residential hockey, all 5 pass) and **Les Elfes Winter** (Verbier, all 5 pass, same operator as ID 1). Possible: Hockey Talent School Trinec (CZ), UCPA colos ski (FR), La Garenne winter, Leksand. Rejected: agency/hotel-based/reseller/group-only candidates (details in roadmap). **Winter recommendation: add as a separately labelled section, not an eighth category, and only after the year-agnostic rollover.** Full table in CAMP_EXPANSION_ROADMAP.md Batch 3.
 
-## 6. Code quality and SEO (agent reports pending at time of writing; will be appended)
+## 6. Code quality and SEO (adjudicated)
 
-## 7. Link repair (agent report pending; will be appended)
+**Code review verdict: B-** (enterprise-code-reviewer, Fable): coherent, accessibility-minded, SEO-literate, but one 4,700-line component with ~600 duplicated lines, no tests, a thin data validator, a routing bug reachable from the skip link, and stale docs. Full report: agent-code-review-2026-08-17.md. **SEO verdict** (seo-performance-optimizer, Fable): fundamentals strong (canonical, single H1, no AggregateRating, entity-linked schema, terminology clean, robots/sitemap match live); biggest risk is staleness as 2027 opens (rollover); biggest structured-data issue is FAQPage markup for invisible content. Full report: agent-seo-review-2026-08-17.md.
+
+| # | Finding | Verdict | Status |
+|---|---|---|---|
+| Q1 | Hash handler: SearchAction `#discover?search=` and ItemList `#discover?category=` landed on blank/unfiltered pages; skip link `#main-content` blanked the page | ACCEPTED (SEO + a11y bug) | **FIXED**: split on `?`, whitelist sections, apply search + category |
+| Q2 | esbuild.drop under wrong key; console.log shipped | ACCEPTED (verified in dist) | **FIXED** |
+| Q3 | GA4: dead config keys + explicit page_view double-counted every consented load | ACCEPTED | **FIXED** (views metric halves from now; sessions/users unaffected) |
+| Q4 | Compare toggle/remove buttons unlabeled | ACCEPTED | **FIXED** (aria-label, aria-pressed) |
+| Q5 | `capacity: null` rendered " max" | ACCEPTED | **FIXED** |
+| Q6 | "Showing 65 camps" breaks the 65-organizations rule | ACCEPTED | **FIXED** |
+| Q7 | Three em dashes in camp highlights | ACCEPTED (ban) | **FIXED** |
+| Q8 | ItemList numberOfItems 100 vs 7 items; sitemap lastmod stale | ACCEPTED | **FIXED** |
+| Q9 | Citation crawlers implicit under * | ACCEPTED | **FIXED** (explicit Allow) |
+| Q10 | FAQPage JSON-LD for content not visible on page | ACCEPTED | **DEFERRED to rollover deploy**: render a visible FAQ mirroring the JSON-LD (content addition, your call on placement) |
+| Q11 | Meta/FAQ/Guide price claims "from €330" vs €130 floor and "under €800/wk" tier | ACCEPTED | **DEFERRED, deliberately**: change the snippet ONCE, in the same deploy as the year-agnostic title/meta |
+| Q12 | Camp names rendered as div, not h3 | ACCEPTED (Low risk, real benefit) | **DEFERRED**: top structural recommendation, needs your nod (heading outline change) |
+| Q13 | ~600 duplicated lines (CampCard, FilterBar, VideoButton, footer) | ACCEPTED | DEFERRED: Phase 2 refactor; note footer country list is hand-coded and MISSES Romania and Slovenia |
+| Q14 | Marquee effect leaks timers/listeners | ACCEPTED | DEFERRED: patch recorded, apply with visual check (marquee is delicate) |
+| Q15 | Contact modal: alert(), no dialog semantics/focus trap, timer not cleared | ACCEPTED | DEFERRED (UI behavior) |
+| Q16 | No tests | ACCEPTED | DEFERRED: Vitest suite for filteredCamps/buildOutboundUrl/hash/validator recommended next session |
+| Q17 | Validator only checked review fields | ACCEPTED | PARTIAL: URL checks added; id/category/priceRange/ages checks next |
+| Q18 | Age filter blind spot for "6+ years (families)" / "All ages" | ACCEPTED | DEFERRED (filter behavior decision) |
+| Q19 | Docs drift: CODE_STRUCTURE line map, README counts (36/21), CLAUDE.md schema fields | ACCEPTED | DEFERRED: docs regeneration pass |
+| Q20 | Testimonials of unverifiable provenance | ACCEPTED as risk | **FLAGGED URGENT for owner** (briefing) |
+| Q21 | Google-Extended Disallow forgoes Gemini-app citations only | noted | Owner decision |
+| Q22 | H1 wording / title length | reviewer left alone | AGREE: ranks; do not touch |
+| Q23 | Guides .docx/.txt crawlable in public/ | noted | Owner call (may be intended downloads) |
+
+Rollover guidance from SEO review, adopted into the plan: do title, meta (fold in the price fix), H1 sub-line, alternateName/ItemList names, FAQ text + visible FAQ, noscript H1 and sitemap lastmod as ONE deploy; never iterate the title twice; expect days-to-weeks CTR wobble; re-check once GSC lands.
+
+## 7. Link repair (5 broken → 4 replaced, 1 false alarm)
+
+| Camp | Old | New | Notes |
+|---|---|---|---|
+| Campi del Vento (64) | .../campi-estivi-per-ragazzi (404) | .../campi-estivi-per-ragazzi.html | HIGH confidence; ages on site go to 25 (ours 7-19) |
+| Vierumaki Finnhockey (65) | /en/finnhockey-school (404) | Finnish Finnhockey Camp page | Program REBRANDED "Finnhockey Camp"; Wave 2: rename + re-verify |
+| RS Sjøleir (44) | rs-noatun.no (404) | sjoliv.rs.no/ungdomkurs/rs-sjoleir | Price updated From NOK 8,190/5 days (was 7,900); "no courses currently scheduled" on booking page |
+| Summer Camps Holland (41) | /en/sailing (404) | /en/camps (org overview) | Lead chose overview over the keelboat course page (ours is an org-level listing, ages 7-17; course pages are 12-18) |
+| Nordisk Sommerlejr (40) | 454 on curl | unchanged | Bot block on curl; page loads and matches our data |
+All replacements verified 200 by the agent (WebFetch) and the lead (curl). Committed 7ba5075.
 
 ## 8. Commits tonight (all local, none pushed)
-See `git log --oneline a1beb8d..HEAD`. Highlights: d54606e (vercel.json headers), 7cc6622 (camp data), 50d99ab (App.jsx batch A), b12b5a1 (config batch B), bdf8487 (audit fix), 138a183 (docs truth + remove _headers), 2628476 (roadmap Batch 3), plus reports.
+See `git log --oneline a1beb8d..HEAD`. Code/config: d54606e (vercel.json headers), 7cc6622 (camp data, 4 camps), 50d99ab (App.jsx batch A), b12b5a1 (config batch B), bdf8487 (npm audit fix), 138a183 (docs truth + remove _headers), 7ba5075 (links, hash whitelist, GA4, a11y, terminology), 117dd05 (category hash param, robots). Docs: traffic, partner stats, plan, roadmap Batch 3, six agent/external reports, this synthesis. Total ~30 commits. Build, prebuild validation and lint green on HEAD (2 shadcn lint warnings only).
 
 ## 9. Method notes
 Plan file written before fixes (docs/plans/2026-08-17-overnight-fixes.md). Every fix: smallest change, build + prebuild validation + lint green, separate commit. SOL paired with two Fable passes (agent + lead). Session limit hit at ~22:53 and 02:30 reset; cron wake-up at 02:47 resumed cleanly; agents resumed from saved transcripts.
