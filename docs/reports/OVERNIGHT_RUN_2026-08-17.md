@@ -14,19 +14,19 @@
 - [x] 2. Link check — all bookingUrl/url/videoUrl in camps.js via curl → results file → failures list
 - [x] 3. npm audit (full) + outdated summary
 - [x] 4. SOL security review launched detached (payload = security surfaces only) → `scratchpad/sol_resp.json`
-- [ ] 5. Agents launched (4 parallel, foreground): security (Fable), code-review (Fable), camp-verifier (top-5 clicked camps), camp-researcher (ice hockey + winter)
-- [ ] 6. Reports persisted to `docs/reports/agent-*.md` immediately on return; commit save point
-- [ ] 7. SOL result collected + persisted; Gemini second opinion on security if SOL and my own review disagree
+- [x] 5. Agents launched (4 parallel, foreground): security (Fable), code-review (Fable), camp-verifier (top-5 clicked camps), camp-researcher (ice hockey + winter)
+- [x] 6. Reports persisted (sec-audit, camp-verify-top5, camp-research; code-review still running) to `docs/reports/agent-*.md` immediately on return; commit save point
+- [x] 7. SOL result collected + persisted; Gemini second opinion on security if SOL and my own review disagree
 - [ ] 8. Synthesis: `docs/reports/HEALTH_CHECK_2026-08-17.md` with every finding ACCEPTED / REJECTED-with-reason / DEFERRED
-- [ ] 9. Safe fixes applied by lead only, build+lint, committed locally (NOT pushed)
+- [x] 9. Safe fixes (batches A+B+audit fix DONE: 50d99ab, b12b5a1, + audit)  applied by lead only, build+lint, committed locally (NOT pushed)
 - [ ] 10. Camp-gap map → update `CAMP_EXPANSION_ROADMAP.md`
 - [ ] 11b. Wave 2 agents: SEO review + link-repair verifier
-- [ ] 12. Partner stats one-pager `docs/PARTNER_STATS_2026.md` (attractive, honest)
+- [x] 12. Partner stats one-pager `docs/PARTNER_STATS_2026.md` (attractive, honest)
 - [ ] 11. Final: memory checkpoint updated, MEMORY.md, morning briefing written at top of HEALTH_CHECK report
 
 ## Resume-state block (update on every step)
 
-**Current step:** 6-7 (Fix 1 vercel.json DONE + committed; plan file written docs/plans/2026-08-17-overnight-fixes.md; next after reset: persist agent reports, then Fixes 2-6) (awaiting 4 agent reports; SOL DONE and persisted to agent-sol-security-2026-08-17.md)
+**Current step:** 8 (synthesis) once code-review + seo-review + link-repair report. Wave 2 agents launched ~03:20: link-repair, seo-review. Fixes done: vercel.json, camps.js data (4 camps), App.jsx batch A, config batch B, npm audit fix. Remaining: broken links (await link-repair), docs truth (Fix 6), CAMP_EXPANSION_ROADMAP update, HEALTH_CHECK synthesis, memory. (Fix 1 vercel.json DONE + committed; plan file written docs/plans/2026-08-17-overnight-fixes.md; next after reset: persist agent reports, then Fixes 2-6) (awaiting 4 agent reports; SOL DONE and persisted to agent-sol-security-2026-08-17.md)
 **In-flight:** SOL detached run (scratchpad/sol_status.txt shows start; result lands in scratchpad/sol_resp.json). Wave 2 planned after 4 agents: seo-performance-optimizer + camp-data-verifier for the 5 broken links.
 **Last commit:** (see git log)
 **SESSION LIMIT WARNING at ~00:55: 98% used, reset ~02:30. Cron wake-up set for 02:47.** If you are the post-reset session: agents may have finished while paused; their reports arrive as task notifications. Persist them first.
