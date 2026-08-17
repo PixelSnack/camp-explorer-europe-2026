@@ -329,7 +329,7 @@ function App() {
 
       return baseMatch && matchesSearch
     })
-  }, [allCamps, selectedFilter, selectedCountries, searchTerm, selectedPriceTier, selectedAgeGroups])
+  }, [selectedFilter, selectedCountries, searchTerm, selectedPriceTier, selectedAgeGroups])
 
   const filterOptions = useMemo(() => [
     { value: 'all', label: 'All Camps', count: allCamps.length },
@@ -377,7 +377,7 @@ function App() {
     return Object.entries(counts)
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([name, count]) => ({ name, count }))
-  }, [allCamps])
+  }, [])
 
   const priceTierOptions = [
     { value: 'budget', label: 'Budget', description: 'Under €800/week' },
@@ -560,9 +560,15 @@ function App() {
   // Listen for hash changes
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.slice(1)
-      if (hash) {
-        setActiveSection(hash)
+      const rawHash = window.location.hash.slice(1)
+      if (!rawHash) return
+      // Supports "#section?search=term" (the WebSite SearchAction schema in index.html
+      // links to #discover?search=...); previously the whole string became the section name
+      const [section, query] = rawHash.split('?')
+      if (section) setActiveSection(section)
+      if (query) {
+        const term = new URLSearchParams(query).get('search')
+        if (term) setSearchTerm(term.slice(0, 200))
       }
     }
 
@@ -4203,7 +4209,7 @@ function App() {
               <div className="mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Commitment to You</h2>
                 <p className="text-lg text-gray-700 mb-6">
-                  Camp Explorer Europe operates as an independent information portal. We do not handle bookings, process payments, or receive commissions from camps. This independence ensures our recommendations remain unbiased and focused solely on quality and fit for your family.
+                  Camp Explorer Europe operates as an independent information portal. We do not handle bookings, process payments, or take commissions on bookings. Some camps pay for a Featured placement, which is always marked as such and never affects whether a camp is listed or how it is verified. Our recommendations stay focused on quality and fit for your family.
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8">
@@ -4355,6 +4361,7 @@ function App() {
                       type="text"
                       id="firstName"
                       name="firstName"
+                      maxLength={100}
                       autoComplete="given-name"
                       autoFocus
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-base"
@@ -4370,6 +4377,7 @@ function App() {
                       type="text"
                       id="lastName"
                       name="lastName"
+                      maxLength={100}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                       placeholder="Your last name"
                       required
@@ -4385,6 +4393,7 @@ function App() {
                     type="email"
                     id="email"
                     name="email"
+                    maxLength={254}
                     inputMode="email"
                     autoComplete="email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-base"
@@ -4437,6 +4446,7 @@ function App() {
                     type="text"
                     id="preferredCountries"
                     name="preferredCountries"
+                    maxLength={200}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     placeholder="e.g., Switzerland, Nordic countries, anywhere in Europe"
                   />
@@ -4449,6 +4459,7 @@ function App() {
                   <textarea
                     id="message"
                     name="message"
+                    maxLength={3000}
                     rows="4"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical"
                     placeholder="Please describe your specific needs, interests, or questions. The more details you provide, the better we can help you find the perfect camp match!"
