@@ -52,7 +52,7 @@ export const allCamps = [
     location: "Verbier, Switzerland",
     country: "Switzerland",
     ages: "6-17 years",
-    price: "From CHF 4,550/1 week", // Verified Jan 2026: per-week pricing
+    price: "From CHF 4,750/2 weeks", // Verified Aug 2026 (leselfes.com/dates-and-pricing): summer sold as two-week sessions only; 2027 sessions CHF 4,750-6,500 per two weeks. Jan 2026 value 4,550/1 week no longer shown
     priceRange: "luxury",
     rating: 4.7,
     reviews: 259,
@@ -67,7 +67,8 @@ export const allCamps = [
     category: "premium",
     type: "Alpine Adventure",
     activities: ["Rock Climbing", "5 Languages", "Glacier Expeditions", "Cultural Tours"],
-    dates: "June - August 2026", // 6 x 2-week sessions available
+    dates: "June 6 - August 28, 2027 (six 2-week sessions)", // Verified Aug 2026: 2027 dates published on operator site
+    bookingStatus: "2027 dates published",
     highlights: ["38+ years experience", "10,000+ campers annually", "45+ activities offered", "Swiss Alps at 1,500m"],
     languages: ["English", "French", "German", "Spanish", "Mandarin"],
     specialFeatures: ["On-site Nurse & 24/7 Care", "Traditional Swiss Chalets", "European Travel Awards 2024"],
@@ -134,7 +135,7 @@ export const allCamps = [
     category: "budget_excellence", // Budget Excellence for day camps
     type: "Day & Residential Camps",
     activities: ["English Immersion", "Mountain Adventure", "Outdoor Skills", "Marmots Program"],
-    dates: "June 30 - August 15, 2026",
+    dates: "June 29 - August 14, 2026", // Verified Aug 2026 (altitude-camps.com day camp 29 Jun-14 Aug; residential weekly 28 Jun-1 Aug)
     highlights: ["Youngest accepted (3 years)", "Day & residential options", "English focus", "Swiss Alps setting"],
     languages: ["English", "French"],
     specialFeatures: ["Marmots Program (3-5 years)", "Day Camp Options", "Residential Camps (7-14)"],
@@ -193,8 +194,8 @@ export const allCamps = [
     name: "Enforex Barcelona Beach",
     location: "Castelldefels, Barcelona, Spain",
     country: "Spain",
-    ages: "5-14 years", // Verified Jan 2026: was 5-13
-    price: "€1,295/1 week", // Verified Jan 2026: was €3,200 (multi-week total)
+    ages: "5-15 years", // Verified Aug 2026 (enforex.com/summercamps/barcelona: "5 to 15"; Jan 2026 read 5-14)
+    price: "€1,350/1 week", // Verified Aug 2026 (enforex.com dates-prices: €1,350 1 wk, €2,395 2 wks; was €1,295)
     priceRange: "mid",
     rating: 4.7,
     reviews: 445,
@@ -260,8 +261,8 @@ export const allCamps = [
     name: "Adventure Camp Bavaria",
     location: "Bayerischer Wald, Germany",
     country: "Germany",
-    ages: "9-16 years",
-    price: "€445/1 week",
+    ages: "7-17 years", // Verified Aug 2026 (bookacamp.de: 7-17 on every summer row; was 9-16)
+    price: "From €435/1 week", // Verified Aug 2026 (bookacamp.de summer 2027: €435-585/week, most weeks €495; was €445)
     priceRange: "budget",
     rating: 4.6,
     reviews: 189,
@@ -269,7 +270,8 @@ export const allCamps = [
     category: "budget_excellence",
     type: "Outdoor Adventure",
     activities: ["Canoeing", "Rock Climbing", "German Culture", "Survival Skills"],
-    dates: "July 22-29, 2026",
+    dates: "June 27 - September 11, 2027 (weekly sessions)", // Verified Aug 2026: 2027 calendar published (bookacamp.de)
+    bookingStatus: "2027 dates published",
     highlights: ["Bavarian Forest", "Mountain lake", "German traditions", "Great value"],
     languages: ["German", "English"],
     specialFeatures: ["Traditional Crafts", "Castle Visits", "Folk Culture"],
