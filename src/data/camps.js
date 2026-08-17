@@ -1,6 +1,6 @@
 // Camp directory data - extracted from App.jsx for maintainability
 // Image imports used as camp card thumbnails
-import heroImage from '../assets/european-summer-camps-lakeside-hero.png'
+import heroImage from '../assets/hero-lakeside.webp' // Same 1680x720 image as the PNG original (127KB vs 1,674KB); PNG stays in public/ for og:image
 import activitiesCompressed from '../assets/activities-collage-compressed.png'
 import mapCompressed from '../assets/camps-map-compressed.png'
 

@@ -20,6 +20,17 @@ function fail(campId, campName, message) {
 console.log(`Validating ${allCamps.length} camps...\n`);
 
 for (const camp of allCamps) {
+  // URL safety: booking links open via window.open, so they must be https and parseable;
+  // video links must point at YouTube (the only host the video button is designed for)
+  if (typeof camp.bookingUrl !== 'string' || !/^https:\/\//i.test(camp.bookingUrl)) {
+    fail(camp.id, camp.name, `bookingUrl must be an https URL, got: ${camp.bookingUrl}`);
+  } else {
+    try { new URL(camp.bookingUrl); } catch { fail(camp.id, camp.name, `bookingUrl is not a valid URL: ${camp.bookingUrl}`); }
+  }
+  if (camp.videoUrl !== undefined && !/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(camp.videoUrl)) {
+    fail(camp.id, camp.name, `videoUrl must be an https YouTube URL, got: ${camp.videoUrl}`);
+  }
+
   // Basic field checks
   if (camp.rating !== null && (typeof camp.rating !== 'number' || camp.rating < 1.0 || camp.rating > 5.0)) {
     fail(camp.id, camp.name, `rating must be null or number 1.0-5.0, got: ${camp.rating}`);

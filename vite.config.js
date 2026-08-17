@@ -26,10 +26,11 @@ export default defineConfig({
                                                   ui: ['lucide-react']
                                     }
                         }
-              },
-              esbuild: {
-                        drop: ['console', 'debugger']
               }
+      },
+      // Top-level so it actually applies (under build.* it was silently ignored)
+      esbuild: {
+              drop: ['console', 'debugger']
       },
       server: {
               host: '0.0.0.0',
