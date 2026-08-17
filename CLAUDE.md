@@ -957,10 +957,10 @@ npm run lint         # Code quality (4 warnings OK - shadcn/ui)
 
 **Claude-in-Chrome MCP is connected but has specific usage guidelines.**
 
-**DO NOT use Chrome MCP for:**
-- ❌ Visual inspection of our own site (europeansummercamps.com) — the user is faster at manual visual checks
-- ❌ Post-deployment smoke testing — user can eyeball the site in seconds vs minutes of browser automation round-trips
-- ❌ Testing filters, search, or layout — manual testing is more efficient on this machine
+**MANDATORY (owner rule, 17 Aug 2026): after any significant change is deployed, visually verify it on production via Claude in Chrome as the FINAL step** (desktop + phone-width viewport, the touched views, console for errors). This superseded the earlier "user is faster" guidance after a real overlap defect was caught only by looking.
+
+**Do NOT use Chrome MCP for:**
+- ❌ Idle browsing of our own site with no change to verify
 
 **DO use Chrome MCP for:**
 - ✅ Scraping data from external camp websites during verification (reading pricing pages, activity lists)
