@@ -629,7 +629,7 @@ export const allCamps = [
     location: "Balatongyörök, Lake Balaton",
     country: "Hungary",
     ages: "8-17 years",
-    price: "€625/1 week", // Verified Jan 2026
+    price: "From €639/1 week", // Verified Aug 2026 (funside.hu/en/pricing-balaton-2: early bird 639, standard 722 EUR; was 625, Jan 2026)
     priceRange: "budget",
     rating: 4.8,
     reviews: 234,
@@ -637,7 +637,7 @@ export const allCamps = [
     category: "language",
     type: "Bilingual Adventure Camp",
     activities: ["English Classes", "Sailing", "Windsurfing", "Tennis", "Adventure Parks"],
-    dates: "Summer 2026 (registration opens Feb 18, 2026)",
+    dates: "12 Jul - 8 Aug 2026 (weekly sessions)", // Verified Aug 2026 (funside.hu/en/dates-2)
     highlights: ["18 years operating experience", "25-30 countries represented", "5:1 staff ratio", "Lake Balaton setting"],
     languages: ["English", "Hungarian"],
     specialFeatures: ["Bilingual English-Hungarian", "30+ Activities Available", "24/7 Medical Staff"],
@@ -926,7 +926,7 @@ export const allCamps = [
     location: "Kukuliškiai, Klaipėda District",
     country: "Lithuania",
     ages: "8-18 years",
-    price: "€410-440/1 week",
+    price: "€440/1 week", // Verified Aug 2026 (linesa.lt/stovyklaviete-pasaka: 7-day shift 440 EUR; a 45 EUR code expired 15 Aug; was 410-440)
     priceRange: "budget",
     rating: null,
     reviews: 0,
@@ -934,7 +934,7 @@ export const allCamps = [
     category: "budget_excellence",
     type: "Government Seaside Camp",
     activities: ["Baltic Sea Swimming", "Sports", "Film Creation", "STEAM Workshops", "Creative Arts"],
-    dates: "June 28-July 4, Aug 9-15, Aug 17-23, 2026",
+    dates: "Jun 28-Jul 4, Aug 2-8, Aug 9-15, Aug 17-23, 2026", // Verified Aug 2026 (linesa.lt/stovyklaviete-pasaka)
     highlights: ["500m from Baltic Sea", "Government-operated facility", "Lithuanian language only"],
     languages: ["Lithuanian"],
     specialFeatures: ["Ministry of Education backed", "Renovated 2023", "5 program tracks (AI/STEAM, Movement, Creativity, Events, Leadership)", "Phone-free environment", "8 cabins in pine forest", "Lithuanian language only"],
