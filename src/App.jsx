@@ -4147,7 +4147,7 @@ function App() {
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">Verification Standards</h3>
                     <ul className="space-y-2 text-gray-700">
                       <li>• Licensed operation and regulatory compliance</li>
-                      <li>• Staff qualifications</li>
+                      <li>• Staff qualifications as published by camps</li>
                       <li>• Safety information as published by camps</li>
                       <li>• Insurance coverage and liability assessment</li>
                       <li>• Information about facilities and activities from camp materials</li>
