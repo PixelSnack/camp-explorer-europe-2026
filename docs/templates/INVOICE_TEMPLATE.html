@@ -7,7 +7,10 @@
   INVOICE TEMPLATE for ESC listing sales (and other ResourceHub Cph services).
   Legal basis: PMV (personligt ejet mindre virksomhed), NOT VAT registered.
   Rules (see FEATURED_LISTINGS_POLICY.md section 4 and the banking memory):
-    1. Issuer is ALWAYS ResourceHub Cph, CVR DK46200462. "European Summer Camps"
+    1. Issuer is ALWAYS the registered entity. Verified against the CVR register
+       2 Sept 2026: the registered name is "ResourceHub" (no "Cph"), CVR 46200462.
+       Write the CVR without the DK prefix: "DK + number" is the VAT-number format,
+       which a non-VAT-registered PMV should not display. "European Summer Camps"
        appears only in the service description, never as the issuer.
     2. No VAT, ever. Flat amounts. Keep both exemption lines (Danish + English).
     3. Bank details (IBAN/BIC) are entered per invoice, privately, at send time.
@@ -46,10 +49,10 @@
     <div style="margin-top:8px; font-size:12px; color:#555;">Faktura</div>
   </div>
   <div class="issuer">
-    <strong>ResourceHub Cph</strong><br>
+    <strong>ResourceHub</strong><br>
     [SELLER STREET ADDRESS]<br>
     [POSTCODE CITY], Denmark<br>
-    CVR: DK46200462<br>
+    CVR: 46200462<br>
     partnerships@europeansummercamps.com
   </div>
 </header>
@@ -119,14 +122,14 @@
 <div class="payment">
   <div class="label">Payment / Betaling</div>
   Bank transfer in EUR.<br>
-  Account holder: ResourceHub Cph<br>
+  Account holder: ResourceHub (use this exact string; it is how the bank holds the account)<br>
   IBAN: [IBAN, added at send time, never stored in the repository]<br>
   BIC: [BIC]<br>
   Payment reference: invoice number [YYYY-NNN]
 </div>
 
 <div class="footer">
-  European Summer Camps (europeansummercamps.com) is a service operated by ResourceHub Cph, CVR DK46200462, Denmark.
+  European Summer Camps (europeansummercamps.com) is a service operated by ResourceHub, CVR 46200462, Denmark.
   A 14-day money-back guarantee applies from listing activation. Renewal reminders are sent 30 days before expiry;
   without renewal, the listing reverts to the free Basic tier.
 </div>
