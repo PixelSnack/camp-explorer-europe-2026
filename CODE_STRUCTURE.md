@@ -282,12 +282,15 @@ className={camp.featured
   : 'border-0 shadow-lg'
 }
 
-// Featured badge (top-left ribbon)
+// Paid-listing badge (top-left ribbon), 2 locations (~line 1219 and ~1771).
+// Label follows the camp's price class (owner decision 2 Sept 2026):
+// priceRange premium/luxury -> PREMIUM, mid/budget -> FEATURED. Objective rule,
+// never negotiated per camp.
 {camp.featured && (
   <div className="absolute top-0 left-0 z-10">
     <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 ...">
       <Star className="w-4 h-4 fill-white" />
-      <span>FEATURED</span>
+      <span>{camp.priceRange === 'premium' || camp.priceRange === 'luxury' ? 'PREMIUM' : 'FEATURED'}</span>
     </div>
   </div>
 )}

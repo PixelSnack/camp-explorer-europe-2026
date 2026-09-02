@@ -208,7 +208,7 @@ Every listing card displays the following information:
 ## 7. PREMIUM LISTING BENEFITS (What Premium Adds)
 
 ### Visual Elements (Premium Only)
-- **Badge on camp card** (the on-card artwork currently reads FEATURED; whether to relabel it PREMIUM is an open cosmetic decision requiring an App.jsx change)
+- **Badge on camp card, label derived from the camp's price class (owner decision 2 Sept 2026):** camps with priceRange premium or luxury show PREMIUM; camps with priceRange mid or budget show FEATURED. Same product, same price; the label follows the price class already displayed on the card. The rule is objective and NOT negotiable per camp — never let a camp choose its label
 - **Highlighted card border** (distinguished from standard cards)
 - **Priority position** in category listing (premium camps appear first)
 - **"Watch Camp Video" button** when the camp supplies a video link
