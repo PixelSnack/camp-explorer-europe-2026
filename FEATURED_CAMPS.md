@@ -240,14 +240,14 @@ Before activating any Featured listing:
 
 ---
 
-## Pricing Reference
+## Pricing Reference (updated 2 Sept 2026 — two tiers only)
 
-| Quantity | Price per Listing | Total |
-|----------|-------------------|-------|
-| 1 listing | €99/year | €99 |
-| 2 listings | €99 each | €198 |
-| 3-4 listings | €79 each (20% off) | Varies |
-| 5+ listings | €69.80 each (30% off) | Varies |
+| Tier | Price |
+|------|-------|
+| Basic (inbound onboarding & verification, one-time) | €79 (waived with Premium year one) |
+| Premium (any verified camp) | €299/year list; €199 introductory first year, rate-locked |
+
+*The Featured tier (€99/year) was discontinued 2 Sept 2026. Outstanding 17 Aug quotes (BELT, CBS, Samiad, Sharena) are decided case by case by the owner if accepted.*
 
 See FEATURED_LISTINGS_POLICY.md for full pricing and operations details.
 

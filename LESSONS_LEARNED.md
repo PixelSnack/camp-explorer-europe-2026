@@ -286,6 +286,23 @@ Batch 3: Documentation → Commit ✓
 
 ---
 
+### Lesson: Gmail Search Results Truncate Thread Message Lists (September 2026)
+
+**Problem**: Gmail MCP `search_threads` returned only the first ~5 of 9 messages in the LINEŠA thread, consistently across four different queries (including a sent-mail search scoped to the recipient). Based on that view, the 17 Aug reply was declared "never sent", an apology email stating so was drafted, and the owner sent it. The full thread (`get_thread`) showed the reply HAD been sent, and LINEŠA had already answered it on 24 Aug.
+
+**Root Cause**: Search results include a per-thread message list that silently caps its length. It was treated as the complete thread. Multiple queries agreeing proved nothing, since all shared the same truncation.
+
+**Impact**: A factually false statement ("our reply was never sent") went to a government agency contact who knew it was false. Owner decision: leave it, no correction email.
+
+**Solution**: Full-thread verification before negative claims; tool bug reported to Anthropic.
+
+**Rule**:
+1. NEVER conclude a message was not sent, or that a thread received no reply, from search results alone
+2. Before ANY "this never happened" claim about correspondence, read the full thread with `get_thread`
+3. Several queries agreeing is not confirmation when they share the same data path
+
+---
+
 ## SEO & Technical
 
 ### Lesson: og:image Must Actually Exist (February 2026)

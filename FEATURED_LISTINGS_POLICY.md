@@ -4,12 +4,12 @@
 *Template for camp operator inquiries and monetization operations*
 
 **Created:** January 16, 2026
-**Last Updated:** August 16, 2026 (new tier structure, onboarding fee, payment rules rewritten for Revolut/PMV)
+**Last Updated:** September 2, 2026 (Featured tier discontinued; two tiers, Basic and Premium; Premium features open to any verified camp; issuer name corrected to registered "ResourceHub")
 **Status:** Active
 
 ---
 
-## 1. TIER STRUCTURE (Updated August 2026 — owner approved 16 Aug 2026)
+## 1. TIER STRUCTURE (Updated 2 September 2026 — owner decision: two tiers only, Basic and Premium)
 
 ### The core distinction: editorial vs. inbound
 
@@ -19,31 +19,25 @@
 ### Basic Listing (inbound: €79 one-time onboarding)
 | Aspect | Details |
 |--------|---------|
-| **Price** | €79 one-time onboarding & verification fee (WAIVED if camp takes Featured or Premium in year one) |
+| **Price** | €79 one-time onboarding & verification fee (WAIVED if camp takes Premium in year one) |
 | **What it covers** | Hand verification: pricing, facilities, operator status, 5-point criteria check, data entry |
 | **Visibility** | Standard placement in category |
 | **Card Design** | Standard card design |
 | **Badge** | None |
 | **Requirements** | Must pass camp verification criteria |
 
-### Featured Listing (€99/year)
-| Aspect | Details |
-|--------|---------|
-| **Price** | €99 per listing per year |
-| **Visibility** | Priority placement (appears FIRST in category) |
-| **Card Design** | Highlighted card with enhanced styling |
-| **Badge** | "Featured Camp" badge displayed on card |
-| **Duration** | 12 months from activation date |
-| **Requirements** | Must pass camp verification criteria |
+### Featured Listing (€99/year): DISCONTINUED 2 September 2026
+The €99/year Featured tier was retired by owner decision on 2 Sept 2026 ("99 EUR per year is simply too little; too many tiers"). The structure is now Basic + Premium only.
+**Outstanding quotes:** the 17 Aug 2026 replies to LayosCamp, BELT, CBS, Samiad and Sharena Fabrika quoted Featured at €99 in writing. LayosCamp's September follow-up was rewritten to the new terms before sending (2 Sept, states the discontinuation plainly). If any of the other four replies accepting €99, the owner decides case by case; do not honor or refuse without asking him.
 
-### Premium Listing (€299/year list — high-end camps, any category)
-**Eligibility (owner decision 18 Aug 2026):** Premium is for camps that are a cut above, judged on the camp itself, not on its category or location. Indicators: Premium or Luxury price tier (roughly €1,500+/week), high staff ratio, standout facilities, strong reputation and longevity, professional presentation. Alpine is not a requirement; a UK boarding-school summer school, a top sailing academy or a language camp in a luxury setting all qualify if they meet the bar. Editorial judgment by the lead, owner has the final say. Everything in Featured, plus:
+### Premium Listing (€299/year list — the only paid visibility tier)
+**Eligibility (owner decision 2 Sept 2026, supersedes the 18 Aug "cut above" gate):** open to ANY camp that passes verification. Buying Premium grants the premium feature set (badge, priority placement, highlighted card, video button); it does NOT re-categorize the camp on the site, move it into a premium price tier, or imply a quality designation. A mid-range camp with a Premium listing stays presented as what it is, with premium visibility features. Includes:
 | Aspect | Details |
 |--------|---------|
 | **List price** | €299 per listing per year |
 | **Introductory rate** | €199 first year, rate-locked for renewals (2027-cycle premium listings; renamed from "Founding Partner" 17 Aug 2026) |
 | **Video button** | "Watch Camp Video" button on card (Premium only) |
-| **Category cap** | Maximum 3 featured/premium slots per category — committed scarcity |
+| **Category cap** | Maximum 3 premium slots per category — committed scarcity |
 | **Tracking** | UTM-tagged outbound links, verifiable in the camp's own Google Analytics |
 | **Commission** | 0% — all traffic goes direct to the camp's site; they own the parent relationship |
 
@@ -61,15 +55,12 @@
 ### Standard Pricing
 | Item | Price |
 |------|-------|
-| Inbound Basic onboarding (one-time) | €79 (waived with Featured/Premium year one) |
-| Featured listing | €99/year |
-| Premium listing (high-end camps, any category) | €299/year list |
+| Inbound Basic onboarding (one-time) | €79 (waived with Premium year one) |
+| Premium listing (any verified camp) | €299/year list |
 | Premium introductory rate (2027 cycle) | €199 first year, rate-locked |
 
-### Volume Discounts (Featured tier)
-- **1-2 listings:** Full price (€99 each)
-- **3-4 listings:** 20% discount (€79 each)
-- **5+ listings:** 30% discount (€69.80 each, e.g. €349 for 5)
+### Volume Discounts
+The Featured-tier volume pricing was retired with the tier (2 Sept 2026). A Premium subscription covers one listing, and most will stay at one; multi-listing bundles under Premium are negotiated case by case with the owner.
 
 ---
 
@@ -78,8 +69,8 @@
 ### Included Edits
 | Tier | Edits Included | Additional Edits |
 |------|----------------|------------------|
-| Basic (Free) | 2 per year | Not available |
-| Featured (€99) | 4 per year (quarterly) | €19 per additional edit |
+| Basic | 2 per year | Not available |
+| Premium (€299 / €199 intro) | 4 per year (quarterly) | €19 per additional edit |
 
 ### Edit Request Process
 1. Camp operator emails edit request to contact@europeansummercamps.com
@@ -118,20 +109,20 @@
 - **Currency:** EUR (€)
 
 ### Legal invoicing rules (PMV — non-negotiable)
-- Invoices issue from **ResourceHub Cph, CVR DK46200462** — the legal entity. "European Summer Camps" appears only as the description of what was sold, never as the issuer (binavne not permitted on a PMV).
+- Invoices issue from **ResourceHub, CVR 46200462** — the legal entity as registered (CVR register verified 2 Sept 2026: the name carries no "Cph" suffix, and the CVR is written without the DK prefix since that format denotes a VAT number). "European Summer Camps" appears only as the description of what was sold, never as the issuer (binavne not permitted on a PMV).
 - **No VAT, ever.** A PMV may not charge moms. Amounts are flat; every invoice carries the basis line: "Momsfri — omsætning under registreringsgrænsen, jf. momsloven § 71e, stk. 1."
 - **Turnover register BEFORE the first payment**: every payment received must be logged against the shared rolling-12-month 50,000 DKK cap (shared across ALL ResourceHub brands). Report each ESC payment for consolidation in the cross-brand register.
 
 ### Payment Process
 1. Agreement on listing details via email
-2. Invoice sent from ResourceHub Cph (CVR DK46200462), description e.g. "Directory listing services - 12 months - [Camp Name]", flat EUR amount, no VAT, with the § 71e stk. 1 basis line and bank details for EUR transfer
+2. Invoice sent from ResourceHub (CVR 46200462), description e.g. "Directory listing services - 12 months - [Camp Name]", flat EUR amount, no VAT, with the § 71e stk. 1 basis line and bank details for EUR transfer
 3. Payment received; log in turnover register
 4. Listing activated within 3 business days
 5. Confirmation email sent with activation date and renewal date
 
 ### Invoice Details Template
 ```
-Invoice from: ResourceHub Cph (CVR DK46200462)
+Invoice from: ResourceHub (CVR 46200462)
 To: [Camp Name / Company]
 Amount: €[amount] flat (no VAT — momsloven § 71e, stk. 1)
 Description: Directory listing services - 12 months
@@ -214,17 +205,19 @@ Every listing card displays the following information:
 
 ---
 
-## 7. FEATURED LISTING BENEFITS (What Featured Adds)
+## 7. PREMIUM LISTING BENEFITS (What Premium Adds)
 
-### Visual Elements (Featured Only)
-- **"Featured Camp" badge** on camp card
+### Visual Elements (Premium Only)
+- **Badge on camp card** (the on-card artwork currently reads FEATURED; whether to relabel it PREMIUM is an open cosmetic decision requiring an App.jsx change)
 - **Highlighted card border** (distinguished from standard cards)
-- **Priority position** in category listing (featured camps appear first)
+- **Priority position** in category listing (premium camps appear first)
+- **"Watch Camp Video" button** when the camp supplies a video link
 
 ### Placement Rules
-- Featured camps appear BEFORE non-featured camps in their category
-- Among featured camps: ordered by activation date (oldest first)
-- Search results: Featured camps prioritized when matching search terms
+- Premium camps appear BEFORE standard camps in their category
+- Among premium camps: ordered by activation date (oldest first)
+- Search results: premium camps prioritized when matching search terms
+- Hard cap: three premium placements per category
 
 ### What We DON'T Promise
 - Specific traffic numbers or click counts
@@ -250,13 +243,17 @@ I've looked into [Camp Name] and it looks like a great fit for our
 
 We offer two listing options:
 
-• Basic Listing (Free)
+• Basic Listing (79 EUR one-time onboarding and verification fee
+  for camps requesting a listing)
   Listing in our directory with your key program information,
   pricing, activities, and direct link to your booking page
 
-• Featured Listing (€99/year)
-  Everything in Basic, plus "Featured Camp" badge, priority
-  placement in your category, and highlighted card design
+• Premium Listing (299 EUR/year; introductory rate 199 EUR for the
+  first 12 months, rate-locked for renewals)
+  Everything in Basic, plus a badge on your card, priority placement
+  in your category, highlighted card design, and an optional video
+  button. The onboarding fee is waived in year one, and premium
+  placements are capped at three per category.
 
 To create your listing, could you share:
 1. [Specific questions for their program]
@@ -376,8 +373,8 @@ get locked in at this rate for renewals."
 - [ ] Age ranges confirmed
 - [ ] Key activities/highlights identified
 
-### For Featured Listings
-- [ ] Payment received via PayPal
+### For Premium Listings
+- [ ] Payment received (bank transfer in EUR; PayPal is NOT ready, do not advertise it)
 - [ ] Invoice sent and recorded
 - [ ] Activation date documented
 - [ ] Renewal date calculated (activation + 12 months)
