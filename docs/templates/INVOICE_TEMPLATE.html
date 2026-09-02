@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice Template - ResourceHub Cph</title>
+<!--
+  INVOICE TEMPLATE for ESC listing sales (and other ResourceHub Cph services).
+  Legal basis: PMV (personligt ejet mindre virksomhed), NOT VAT registered.
+  Rules (see FEATURED_LISTINGS_POLICY.md section 4 and the banking memory):
+    1. Issuer is ALWAYS ResourceHub Cph, CVR DK46200462. "European Summer Camps"
+       appears only in the service description, never as the issuer.
+    2. No VAT, ever. Flat amounts. Keep both exemption lines (Danish + English).
+    3. Bank details (IBAN/BIC) are entered per invoice, privately, at send time.
+       NEVER commit real bank details, buyer data, or a filled invoice to this repo.
+    4. Invoice numbers are sequential across ALL ResourceHub Cph invoicing: 2026-001, 2026-002, ...
+    5. Every payment received must be reported to the owner for the cross-brand
+       turnover register (50,000 DKK rolling 12-month cap, shared across brands).
+  To use: copy this file OUTSIDE the repo, replace every [BRACKETED] placeholder,
+  open in a browser and print to PDF (A4).
+-->
+<style>
+  @page { size: A4; margin: 18mm; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #1a1a1a; max-width: 720px; margin: 40px auto; line-height: 1.5; font-size: 14px; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #1a1a1a; padding-bottom: 16px; }
+  h1 { font-size: 30px; letter-spacing: 4px; margin: 0; text-transform: uppercase; }
+  .issuer { text-align: right; font-size: 13px; }
+  .issuer strong { font-size: 15px; }
+  .meta, .parties { display: flex; justify-content: space-between; margin-top: 28px; gap: 24px; }
+  .block { flex: 1; }
+  .label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #666; margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+  th { text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #666; border-bottom: 1px solid #999; padding: 8px 6px; }
+  td { padding: 12px 6px; border-bottom: 1px solid #ddd; vertical-align: top; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  .total-row td { border-bottom: none; border-top: 2px solid #1a1a1a; font-weight: bold; font-size: 16px; }
+  .vatnote { margin-top: 24px; padding: 12px 16px; background: #f5f5f0; border-left: 3px solid #999; font-size: 12.5px; }
+  .payment { margin-top: 28px; }
+  .footer { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 12px; font-size: 11.5px; color: #555; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Invoice</h1>
+    <div style="margin-top:8px; font-size:12px; color:#555;">Faktura</div>
+  </div>
+  <div class="issuer">
+    <strong>ResourceHub Cph</strong><br>
+    [SELLER STREET ADDRESS]<br>
+    [POSTCODE CITY], Denmark<br>
+    CVR: DK46200462<br>
+    partnerships@europeansummercamps.com
+  </div>
+</header>
+
+<div class="meta">
+  <div class="block">
+    <div class="label">Invoice number / Fakturanummer</div>
+    [YYYY-NNN]
+  </div>
+  <div class="block">
+    <div class="label">Issue date / Fakturadato</div>
+    [DD Month YYYY]
+  </div>
+  <div class="block">
+    <div class="label">Due date / Forfaldsdato</div>
+    [DD Month YYYY] (net 14 days)
+  </div>
+</div>
+
+<div class="parties">
+  <div class="block">
+    <div class="label">Billed to / Faktureres til</div>
+    <strong>[BUYER LEGAL NAME]</strong><br>
+    [BUYER STREET ADDRESS]<br>
+    [POSTCODE CITY]<br>
+    [COUNTRY]<br>
+    Company reg. no.: [BUYER REGISTRATION NUMBER, if any]
+  </div>
+  <div class="block">
+    <div class="label">Service period / Leveringsperiode</div>
+    [12 months from activation. Activation upon receipt of payment; listing live within 3 business days of payment.]
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description / Beskrivelse</th>
+      <th class="num">Qty</th>
+      <th class="num">Unit price</th>
+      <th class="num">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        Directory listing services, 12 months:<br>
+        [TIER] listing for [CAMP NAME] ([LOCATION]) on europeansummercamps.com.<br>
+        [OPTIONAL: Introductory rate, rate-locked for renewals.]
+      </td>
+      <td class="num">1</td>
+      <td class="num">EUR [AMOUNT]</td>
+      <td class="num">EUR [AMOUNT]</td>
+    </tr>
+    <tr class="total-row">
+      <td colspan="3">Total due / At betale</td>
+      <td class="num">EUR [AMOUNT]</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="vatnote">
+  <strong>Momsfri:</strong> omsætning under registreringsgrænsen, jf. momsloven &sect; 71e, stk. 1. Virksomheden er ikke momsregistreret; beløbet er uden moms.<br>
+  <strong>VAT exempt:</strong> the business is not registered for VAT as its turnover is below the Danish VAT registration threshold, cf. the Danish VAT Act (momsloven) section 71e(1). No VAT is charged; the amount is a flat fee.
+</div>
+
+<div class="payment">
+  <div class="label">Payment / Betaling</div>
+  Bank transfer in EUR.<br>
+  Account holder: ResourceHub Cph<br>
+  IBAN: [IBAN, added at send time, never stored in the repository]<br>
+  BIC: [BIC]<br>
+  Payment reference: invoice number [YYYY-NNN]
+</div>
+
+<div class="footer">
+  European Summer Camps (europeansummercamps.com) is a service operated by ResourceHub Cph, CVR DK46200462, Denmark.
+  A 14-day money-back guarantee applies from listing activation. Renewal reminders are sent 30 days before expiry;
+  without renewal, the listing reverts to the free Basic tier.
+</div>
+
+</body>
+</html>
