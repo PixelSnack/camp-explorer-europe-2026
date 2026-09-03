@@ -415,7 +415,7 @@ get locked in at this rate for renewals."
 ### Featured Listings Tracker
 | Camp Name | Tier | Activated | Expires | Amount | Invoice # | Status |
 |-----------|------|-----------|---------|--------|-----------|--------|
-| [Example] | Featured | YYYY-MM-DD | YYYY-MM-DD | €99 | INV-001 | Active |
+| The International Language Camps (ILC), Megève | Premium (€199 introductory, rate-locked) | on payment | activation + 12 months | €199 | 2026-001 (issued 3 Sept 2026, due 17 Sept 2026) | Invoice issued, awaiting payment |
 
 ### Revenue Tracking
 | Month | Featured Sales | Revenue | Renewals | Churn |

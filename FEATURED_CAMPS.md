@@ -3,8 +3,8 @@
 *Tracking document for Featured listings (€99/year tier)*
 
 **Created:** January 18, 2026
-**Last Updated:** January 24, 2026
-**Status:** Demo/Test Phase + Active Partner Inquiries
+**Last Updated:** September 3, 2026
+**Status:** First paid Premium listing sold (ILC, invoice 2026-001 issued); Les Elfes remains the demo
 
 ---
 
@@ -75,8 +75,9 @@ This document tracks all Featured camp listings, including verification status, 
 
 | Camp | Contact | Inquiry Date | Status | Notes |
 |------|---------|--------------|--------|-------|
-| Boundless Life | Megan Miller | Jan 16, 2026 | Awaiting response | Offered €99/year Featured tier |
-| LINEŠA | Jolita Bečienė | Jan 2026 | In discussion | Lithuanian gov org, asked for stats |
+| The International Language Camps (ILC), Megève | ILC admissions office | Aug 13, 2026 | ✅ Accepted Premium at the €199 introductory rate (1 Sept 2026) | Invoice 2026-001 issued 3 Sept 2026, due 17 Sept. On payment: activate within 3 business days as new camp ID 70 (featured, video button, hotel named on card, CHF international prices) |
+| Boundless Life | Megan Miller | Jan 16, 2026 | ❌ No response since Jan 17, 2026 | Treat as closed |
+| LINEŠA | Jolita Bečienė | Jan 2026 | Dormant (closed by LINEŠA 24 Aug 2026, may return for 2027) | Free listing stands; Camp Pasaka (ID 43) listed editorially |
 
 ---
 
@@ -234,9 +235,10 @@ Before activating any Featured listing:
 | Month | New Featured | Renewals | Revenue | Notes |
 |-------|--------------|----------|---------|-------|
 | Jan 2026 | 0 | 0 | €0 | Demo phase |
+| Sep 2026 | 1 (ILC) | 0 | €0 received; €199 invoiced (2026-001) | First sale; payment pending |
 
-**Total Revenue (2026):** €0
-**Active Paid Listings:** 0
+**Total Revenue (2026):** €0 received, €199 invoiced
+**Active Paid Listings:** 0 (1 pending payment)
 
 ---
 
@@ -259,6 +261,7 @@ See FEATURED_LISTINGS_POLICY.md for full pricing and operations details.
 |------|--------|-----|
 | Jan 18, 2026 | Created document, added Les Elfes as demo listing | Claude Code |
 | Jan 24, 2026 | Added Partner Inquiries section with Boundless Life and LINEŠA correspondence | Claude Code |
+| Sep 3, 2026 | ILC recorded as first paid Premium listing (invoice 2026-001 issued); Boundless closed; LINEŠA dormant | Claude Code |
 
 ---
 
