@@ -46,7 +46,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Which European countries does this directory cover?",
-    answer: "The directory covers 24 countries: Austria, Belgium, Croatia, the Czech Republic, Denmark, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Lithuania, the Netherlands, Norway, Poland, Portugal, Romania, Slovenia, Spain, Sweden, Switzerland and the United Kingdom. Spain and Norway have the most listings. Use the country filter or the footer links to browse a single country."
+    answer: "Our directory covers 24 countries: Austria, Belgium, Croatia, the Czech Republic, Denmark, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Lithuania, the Netherlands, Norway, Poland, Portugal, Romania, Slovenia, Spain, Sweden, Switzerland and the United Kingdom. Spain and Norway have the most listings. Use the country filter or the footer links to browse a single country."
   },
   {
     question: "Are there European summer camps where parents can attend?",
