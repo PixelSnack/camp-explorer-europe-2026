@@ -11,7 +11,7 @@ A comprehensive web application featuring **65 verified summer camp organization
 ### 🎯 **Verified Camp Directory**
 - **65 verified camp organizations** representing 100+ individual programs
 - **24 European countries** including Switzerland, Norway, UK, Germany, Sweden, Denmark, and more
-- **Comprehensive pricing range** from €335 to CHF 6,980
+- **Comprehensive pricing range** from €130 per week to CHF 6,980
 - **Detailed camp profiles** with activities, languages, age groups, and special features
 - **Featured listings** with premium visibility for partner camps
 

@@ -220,7 +220,7 @@ grep -n "OLD_ORG_COUNT Verified\|OLD_COUNTRY_COUNT Countries\|OLD_COUNTRY_COUNT 
   capacity: number,              // Maximum participants
   reviews: number,               // Review count
   rating: number,                // Rating out of 5
-  bookingStatus?: string         // OPTIONAL override for badge ("Opens Feb 15" | "not yet open")
+  bookingStatus?: string         // OPTIONAL, verified only: "open" | "not yet open" | "<SEASON_YEAR> dates published"; no field = no badge
 }
 ```
 

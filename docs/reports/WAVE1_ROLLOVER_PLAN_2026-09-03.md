@@ -55,3 +55,5 @@ Roll the year in `<title>`, og:title, twitter:title and the meta description; re
 **Observation, not changed:** at 800px the header navigation labels wrap to two lines. Pre-existing between the tablet breakpoints and unrelated to Wave 1; candidate for the deferred cosmetic list.
 
 **Commit stack awaiting the owner's push:** 244bdc2, 9c7099c, db5f003, bb7be98, a12af02, cfc7b32, 3314abe, f2a9af7, f9cfb67, 1ac393d, 7b7ea92, d55e2e7, plus the closing docs commit.
+
+**Reviewer's written verdict cross-checked (4 Sept ~10:30):** two items had not fully landed and are now in the follow-up commit: README.md line 14 still said prices start at EUR 335 (now EUR 130 per week, matching the site and the data), and the FAQ summary was 40px tall, not 48px (details px-4 py-1, summary py-3, answer mt-1 pb-3; measured 48px single-line and 72px wrapped at 390px, disclosure marker intact). DEVELOPMENT_GUIDELINES.md's data-shape comment now lists the verified-only bookingStatus vocabulary. CLAUDE.md lines 125 to 143 describe the August history under a heading that says so and stay as context.

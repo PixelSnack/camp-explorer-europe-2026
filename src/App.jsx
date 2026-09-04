@@ -1596,9 +1596,9 @@ function App() {
           <h2 id="faq-heading" className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {FAQ_ITEMS.map(({ question, answer }) => (
-              <details key={question} className="bg-white rounded-lg border border-gray-200 p-4">
-                <summary className="cursor-pointer font-semibold text-gray-900 py-2">{question}</summary>
-                <p className="mt-3 text-gray-600">{answer}</p>
+              <details key={question} className="bg-white rounded-lg border border-gray-200 px-4 py-1">
+                <summary className="cursor-pointer font-semibold text-gray-900 py-3">{question}</summary>
+                <p className="mt-1 pb-3 text-gray-600">{answer}</p>
               </details>
             ))}
           </div>
