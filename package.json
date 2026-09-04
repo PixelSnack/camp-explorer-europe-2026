@@ -6,7 +6,8 @@
     "scripts": {
         "dev": "vite",
         "validate:camps": "node --import ./scripts/register-loader.mjs scripts/validate-camps.js",
-        "prebuild": "npm run validate:camps",
+        "validate:faq": "node scripts/validate-faq.js",
+        "prebuild": "npm run validate:camps && npm run validate:faq",
         "build": "vite build",
         "lint": "eslint .",
         "preview": "vite preview"
