@@ -10,7 +10,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "How much do European summer camps cost?",
-    answer: "European summer camp costs range from \u20ac130 per week for local programs to around \u20ac8,000 for two-week premium programs. Budget-friendly options (under \u20ac800 per week) include Czech and Eastern European camps, while premium programs in Switzerland, the UK and Scandinavia typically cost \u20ac1,500 to more than \u20ac3,000 per week. Most camps include accommodation, meals, activities, and supervision."
+    answer: "European summer camp costs range from €130 per week for local programs to around €8,000 for two-week premium programs. Budget-friendly options (under €800 per week) include Czech and Eastern European camps, while premium programs in Switzerland, the UK and Scandinavia typically cost €1,500 to more than €3,000 per week. Most camps include accommodation, meals, activities, and supervision."
   },
   {
     question: "Are European summer camps safe for international children?",
@@ -42,6 +42,6 @@ export const FAQ_ITEMS = [
   },
   {
     question: "What's the difference between premium and budget European summer camps?",
-    answer: "Premium European camps (typically \u20ac1,500 to more than \u20ac3,000 per week) offer smaller group sizes, specialized activities, luxury facilities, and prime locations like the Swiss Alps. Budget camps (under \u20ac800 per week) provide excellent value with quality programs, experienced staff, and safe environments, often in Eastern Europe. Price tier alone does not determine safety or supervision standards; they vary by camp and country, so confirm staffing, medical support, insurance and safeguarding policies directly with each organization."
+    answer: "Premium European camps (typically €1,500 to more than €3,000 per week) offer smaller group sizes, specialized activities, luxury facilities, and prime locations like the Swiss Alps. Budget camps (under €800 per week) provide excellent value with quality programs, experienced staff, and safe environments, often in Eastern Europe. Price tier alone does not determine safety or supervision standards; they vary by camp and country, so confirm staffing, medical support, insurance and safeguarding policies directly with each organization."
   }
 ]

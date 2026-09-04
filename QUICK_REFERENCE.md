@@ -293,7 +293,7 @@ git reset --hard HEAD~1  # Rollback if broken
 ## 🎉 CURRENT STATUS (February 25, 2026)
 - ✅ Database: 65 verified organizations across 24 European countries
 - ✅ Pricing: 100% verified (all camps have accurate per-child pricing)
-- ✅ Booking badges: Data-driven (62 green "2026 Open", 1 blue future date, 2 hidden)
+- ✅ Booking badges: verified-only since 4 Sept 2026 (no badge unless the data carries "open" or "<year> dates published"; see CODE_STRUCTURE.md)
 - ✅ Code quality: EXCELLENT (~4,700 lines App.jsx + ~1,545 lines camps.js, 5 shadcn/ui components)
 - ✅ Review system: Phase 1 COMPLETE (build-time validation, REVIEW_SOURCES, honest trust signals)
 - ✅ Build/lint: WORKING (~25s build incl. validation, 0 errors / 4 warnings)

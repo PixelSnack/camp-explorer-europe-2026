@@ -788,7 +788,7 @@ export const allCamps = [
     location: "Trollhättan, Västra Götaland",
     country: "Sweden",
     ages: "10-17 years",
-    price: "SEK 7,600/1 week", // Verified Jan 2026
+    price: "SEK 7,800/1 week", // Verified 4 Sept 2026 (filmkollo.se/anmalan: 7800 kr per week for 2027; was 7,600 in Jan 2026)
     priceRange: "budget",
     rating: 4.8,
     reviews: 156,
@@ -796,7 +796,8 @@ export const allCamps = [
     category: "academic",
     type: "Film Production Camp",
     activities: ["Film Production", "Screenwriting", "Special Effects Makeup", "Acting", "Voice Dubbing", "Night Filming"],
-    dates: "Weeks 25-33: June 14 - August 15, 2026",
+    dates: "June 13 - Aug 7, 2027", // Verified 4 Sept 2026: eight weekly sessions (weeks 24-31) published on filmkollo.se/anmalan
+    bookingStatus: "open", // Verified 4 Sept 2026: 2027 registration open
     highlights: ["Professional film studio (iFocus)", "Create your own film", "Film premiere with family streaming", "15+ years experience"],
     languages: ["Swedish", "English"],
     specialFeatures: ["3000 sqm Professional Studio", "All Equipment Provided", "No Experience Required"],

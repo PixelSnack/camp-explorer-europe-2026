@@ -48,7 +48,7 @@ import heroLakesideCompressed from './assets/hero-lakeside-compressed.png'
 import activitiesAvif from './assets/activities-collage.avif'
 import activitiesWebp from './assets/activities-collage.webp'
 import './App.css'
-import { allCamps, activitiesCompressed, mapCompressed, AGE_SPAN } from './data/camps.js'
+import { allCamps, activitiesCompressed, mapCompressed, AGE_SPAN, parseAges } from './data/camps.js'
 import { SEASON_YEAR, DIRECTORY_UPDATED } from './data/season.js'
 import { FAQ_ITEMS } from './data/faq.js'
 
@@ -106,6 +106,13 @@ const getBookingBadge = (camp) => {
     ? { label: 'Booking open', tone: 'bg-green-500/90' }
     : { label: status, tone: 'bg-blue-500/90' }
 }
+
+// Explains why most cards still show last season's dates until operators publish the next ones.
+const SeasonNotice = () => (
+  <p className="text-sm text-gray-600 text-center mb-8">
+    Most organizations publish their {SEASON_YEAR} dates between September and December. Cards show the latest verified dates; a blue badge marks camps with {SEASON_YEAR} dates published.
+  </p>
+)
 
 const BookingStatusBadge = ({ camp }) => {
   const badge = getBookingBadge(camp)
@@ -313,14 +320,13 @@ function App() {
       const matchesPrice = selectedPriceTier === 'all' || camp.priceRange === selectedPriceTier
       const matchesAge = (() => {
         if (selectedAgeGroups.length === 0) return true
-        const ageMatch = camp.ages.match(/(\d+)-(\d+)/)
-        if (!ageMatch) return true
-        const [, minStr, maxStr] = ageMatch
-        const [campMin, campMax] = [parseInt(minStr), parseInt(maxStr)]
+        const ages = parseAges(camp.ages)
+        if (!ages || ages.min === null) return true // "All ages" programs match every group
+        const campMax = ages.max === null ? Infinity : ages.max // open-ended ("6+ years") matches upward
         const groupMap = { '3-6': [3,6], '7-10': [7,10], '11-14': [11,14], '15-17': [15,17], '18-24': [18,24] }
         return selectedAgeGroups.some(group => {
           const [filterMin, filterMax] = groupMap[group]
-          return campMax >= filterMin && campMin <= filterMax
+          return campMax >= filterMin && ages.min <= filterMax
         })
       })()
 
@@ -1216,7 +1222,7 @@ function App() {
       {/* Enhanced Camps Grid */}
       <section id="discover" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-gray-600 text-center mb-8">Most organizations publish their {SEASON_YEAR} dates between September and December. Cards show the latest verified dates; a blue badge marks camps with {SEASON_YEAR} dates published.</p>
+          <SeasonNotice />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Sort featured camps first, then by ID */}
             {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
@@ -1591,7 +1597,7 @@ function App() {
           <div className="space-y-3">
             {FAQ_ITEMS.map(({ question, answer }) => (
               <details key={question} className="bg-white rounded-lg border border-gray-200 p-4">
-                <summary className="cursor-pointer font-semibold text-gray-900">{question}</summary>
+                <summary className="cursor-pointer font-semibold text-gray-900 py-2">{question}</summary>
                 <p className="mt-3 text-gray-600">{answer}</p>
               </details>
             ))}
@@ -1773,7 +1779,7 @@ function App() {
         {/* Enhanced Camps Grid */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-sm text-gray-600 text-center mb-8">Most organizations publish their {SEASON_YEAR} dates between September and December. Cards show the latest verified dates; a blue badge marks camps with {SEASON_YEAR} dates published.</p>
+            <SeasonNotice />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Sort featured camps first */}
               {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
