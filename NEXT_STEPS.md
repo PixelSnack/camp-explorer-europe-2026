@@ -1,38 +1,41 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 2, 2026 (~23:30, exit protocol)
-**Current Status:** ILC accepted Premium — first revenue pending invoice. Featured tier discontinued (two tiers now). Season rollover Wave 1 is TOMORROW's task, owner-scheduled.
-**Ready for:** Season rollover Wave 1 (3 Sept) → ILC invoice on Elodie's reply → LayosCamp send
+**Last Updated:** September 4, 2026 (~08:30, exit protocol after the overnight rollover session)
+**Current Status:** Season rollover Wave 1 implemented and committed on main, NOT pushed. ILC invoice 2026-001 attached to a send-ready draft. PayPal tax info due 5 Sept.
+**Ready for:** Owner push -> production verification -> URL Inspection + request indexing -> Wave 2 (per-camp 2027 dates)
 
 ---
 
-## 🔴 **START HERE — SESSION PICKUP (3 September 2026)**
+## 🔴 **START HERE — SESSION PICKUP (4 September 2026, morning)**
 
-**State on exit 2 Sept ~23:30:** all code/policy commits through the badge change (76537bd) are PUSHED and visually verified on production (Les Elfes card shows PREMIUM, console clean). One further docs commit from this exit protocol awaits push. Session memory: `esc-email-sweep-sept-2026` (read it — it also corrects a wrong "LINEŠA never sent" claim from earlier the same day).
+**State on exit 4 Sept ~08:30:** Season rollover Wave 1 is IMPLEMENTED and COMMITTED, NOT PUSHED. Commits on main since 7058a70, awaiting the owner's push in GitHub Desktop: 244bdc2 (docs, invoice + GSC pull), 9c7099c (plan), db5f003 (data), bb7be98 (FAQ module), a12af02 (App.jsx), cfc7b32 (evergreen metadata, rollback target), 3314abe (title 2027), f2a9af7 (control docs), f9cfb67 (review fixes), plus this exit-protocol docs commit. Decision record with the reviewer adjudications: `docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md`. Session memory: `esc-wave1-night-2026-09-03`.
 
-### 🎯 TODAY'S MAIN TASK: Season rollover Wave 1 (owner scheduled for 3 Sept)
-1. **FIRST discuss the GSC finding** (docs/reports/GSC_FIRST_PULL_2026-08-17.md): ~21% of top-20 clicks carry "2026" ranking 1-2 with 27-31% CTR; ~79% year-less at positions 3-7; three options in the report. GSC MCP works now (Restricted) — pull fresh data before deciding the title tag.
-2. Then ONE deploy, year-agnostic direction (approved 16 Aug): de-year title, meta, H1, brand/header logo "2026", hero, schema, guide title, copyright. Still live today: marquee "2026 Season NOW OPEN", footer "2026 Camp Season", CTA "Ready to Plan the Perfect Summer 2026?".
-3. **Badge default inversion**: absence of `bookingStatus` currently renders green "2026 Open" (~60 camps). Default becomes hidden; badge shows only where verified. IDs 1 (Les Elfes) and 10 (Adventure Camp Bavaria) already carry `bookingStatus: "2027 dates published"` with verified 2027 dates — that is the Wave 2 pattern to roll forward.
-4. ⚠️ **Do NOT find-and-replace camps.js** (63 `dates:` fields + 1 bookingUrl are drift; ~70 provenance comments and lastVerified values are correct history and must survive).
-5. Fold in: "from EUR 330" meta price fix; visible FAQ; hero "Ages 3-24" → dynamic (verify actual data max first); hardcoded country count 24; booking copy must hold for winter camps.
-6. Also fold in the About page fix (owner screenshot "ESC promising too much" in the bridge folder): "Our Research Process" bullets imply WE verify licensing, staff background checks and insurance — soften to "as published by camps" style per CAMP_VERIFICATION_CRITERIA "Claims We Cannot Make".
-7. Build + lint + dev-server visual check, commit in batches, owner pushes, then production visual + console verify.
+### Owner, in this order
+1. **Push** in GitHub Desktop (Vercel deploys in about a minute).
+2. **Send the ILC invoice**: Gmail Drafts, ILC thread, PDF already attached, sender already partnerships@; close the space in "www.europeansummercamps .com" and send. Invoice 2026-001, EUR 199, due 17 Sept; PDF copies in Downloads and Claude bridge/reference.
+3. **PayPal tax information is due 5 Sept** (owner-only, policy dashboard).
+4. Delete the detached duplicate LayosCamp draft (opens without conversation history).
 
-### 💰 Money pipeline (check the five addresses first, get_thread before any conclusion)
-- **ILC = first paying partner. Invoice 2026-001 is ATTACHED to the send-ready draft in the ILC thread (3 Sept 2026).** Elodie sent the ISC SARL billing address and video link on 3 Sept; the invoice (EUR 199, issued 3 Sept, due 17 Sept) was rendered to PDF, attached to the cover-email draft and the sender switched to partnerships@. PDF copies: `Downloads/Invoice-2026-001-ResourceHub-ILC.pdf` and `Claude bridge/reference/`. Owner: open the draft, close the space in the signature URL, send. On payment: **log in the turnover register** and activate within 3 business days as NEW camp ID 70 (`featured: true`, `videoUrl` youtu.be/-HKzc8K6Zt0 without the ?si tracker, hotel named on the card, CHF international prices, priceRange luxury so the badge reads PREMIUM).
-- **LayosCamp follow-up WAS SENT 2 Sept 21:04 UTC** from partnerships@ (two-tier terms, Featured discontinuation stated). Only the detached duplicate draft remains in Drafts (opens WITHOUT conversation history); owner deletes it. Awaiting Curro or Gonzalo.
-- **PayPal tax info deadline Friday 5 Sept** (CRS/FATCA flow via the policy dashboard "Tilføj skatteoplysninger": tax residency + TIN (CPR/CVR) + US-person status). Owner-only; features get disabled if missed.
-- **Old €99 Featured quotes** (BELT, CBS, Samiad, Sharena, quoted 17 Aug): if any replies accepting, the OWNER decides case by case — never honor or refuse unprompted.
-- **LINEŠA: dormant by owner decision.** Liuda closed it 24 Aug ("no longer relevant, season over, maybe next year"); our 2 Sept mail contains a wrong "reply was never sent" claim; NO correction email; clarify briefly only if they reply confused. Free listing stands for 2027.
-- **Revolut**: owner forgot his passkey — recover access at leisure and TOP UP (Dkr 85/month plan fee vs small balance). Invoicing does not need it; details are captured in Playground's banking file.
+### Claude, immediately after the push (production gates, mandatory)
+1. Claude in Chrome on https://www.europeansummercamps.com/ at desktop and phone width: brand without year, marquee text, "Verified directory | Updated September 2026", stats 24 / 65 / 3-20, grid notice, Les Elfes PREMIUM ribbon with the blue "2027 dates published" badge, no green badges anywhere, FAQ accordion, footer ("Booking Information", "EUR 130+ starting price per week"), Plan / Guide / About; console clean.
+2. `curl` the live HTML: title "European Summer Camps 2027 | 100+ Camp Programs | Camp Explorer Europe", description with "EUR 130 per week", noscript H1 "European Summer Camps | Camp Explorer Europe".
+3. Search Console in the owner's Chrome: URL Inspection on the root URL, Test live URL, Request indexing; resubmit sitemap.xml (lastmod 2026-09-04).
+4. Watch GSC weekly for six weeks: head-term positions and CTR, "2027" query impressions, the title link as displayed. Rollback if the title link misbehaves: `git revert 3314abe` (lands on the year-agnostic metadata, never on 2026).
+5. If the extension cannot reach a page, the CDP fallback is `scratchpad/cdp_verify.mjs` (pattern recorded in LESSONS_LEARNED).
+6. Bridge: Playground owes a reply on `2026-09-04-to-playground-gsc-mcp-tls-broken.md` (GSC MCP transport). Until fixed, pull GSC with the standalone script pattern (service account + truststore + HTTPLIB2_CA_CERTS).
 
-### ✅ Done 2 Sept (all pushed): Gmail sweep (ILC accepted; LayosCamp deferred-to-Sept; Funside closed till 2027; GFL closed); tier restructure to Basic + Premium (Featured €99 killed; policy + FEATURED_CAMPS updated); paid-badge label by price class (PREMIUM for premium/luxury, FEATURED for mid/budget — objective rule, never negotiable per camp); invoice template at docs/templates/INVOICE_TEMPLATE.html (issuer = registered "ResourceHub", CVR 46200462 without DK prefix, CVR-verified); ILC acceptance + LINEŠA replies sent by owner; LESSONS_LEARNED entry on Gmail search truncating threads.
+### Wave 2 (September to December, rolling)
+- **Warsaw Montessori (ID 24)**: bookingUrl is a 2025 page (still 200); the operator's 2026 page advertises a children-only camp, not the listed family camp. Re-verify the product with the operator before touching URL or listing; never remove a camp without owner consent.
+- **Per-camp 2027 dates as operators publish**: update `dates:` with a provenance comment and set `bookingStatus: "2027 dates published"` (the validator enforces the SEASON_YEAR). Start with the top-clicked camps: EUROCAM Bohemia, Altitude Camps, Enforex Barcelona, Quinta da Broeira, Evasoleil, Kalkalpen, Camp California Croatia, Explorer International (Les Elfes and Adventure Camp Bavaria are done).
+- Carried over: IDs 28, 31, 41 ages, 64 ages, 65 rename; Funside 2027 dates early 2027; overdue quarterly price review; review-aggregation Phase 2.
+- **ILC activation on payment** (within 3 business days): new camp ID 70, `featured: true`, `videoUrl` youtu.be/-HKzc8K6Zt0 (drop the ?si tracker), Hotel Au Vieux Moulin named on the card, CHF international prices, priceRange luxury (badge reads PREMIUM); log the payment in the cross-brand turnover register.
+- **Every September**: roll SEASON_YEAR and DIRECTORY_UPDATED in `src/data/season.js`, the title and three descriptions in index.html, sitemap lastmod, review every explicit bookingStatus, request indexing (checklist in the plan record; the validator fails the build if the title and SEASON_YEAR disagree).
 
-### Still open from before: EmailJS cosmetic pass (template "Topic: {{topic}}" blank; "Sent to: {{to_email}}" misleading); CSP report-only → enforce (ask first, console-check 2-3 views); owner dashboard items (Vercel plan, Cloudflare proxy + SPF/DKIM/DMARC, GitHub 2FA + secret scanning, GA Signals, EmailJS "Do not save private data", Gmail reply-from-same-address setting); camp additions on answers (BELT, CBS, Samiad, LayosCamp); Stadium Sports Camp (SE) + Les Elfes Winter editorial candidates (winter section after rollover); deferred code items (HEALTH_CHECK section 6); Wave 2 re-verification (IDs 24, 28, 31, 41 ages, 64 ages, 65 rename; Funside 2027 in early 2027); review-aggregation Phase 2.
+### Still open (unchanged)
+EmailJS cosmetic pass; CSP report-only to enforce (ask first, console-check 2-3 views); owner dashboard items (Vercel plan, Cloudflare proxy + SPF/DKIM/DMARC, GitHub 2FA + secret scanning, GA Signals, EmailJS "Do not save private data", Gmail reply-from-same-address setting); camp additions on answers (BELT, CBS, Samiad, LayosCamp); Stadium Sports Camp (SE) + Les Elfes Winter editorial candidates (winter section); deferred code items (HEALTH_CHECK section 6: Q12 camp-name h3, Q13 to Q19); Les Elfes demo formalization (offer EUR 199 intro or revert to editorial Basic); old EUR 99 quotes decided by the owner case by case if accepted.
 
-**Standing rules:** visual verification on production after significant changes; testimonials in Resources stay; truthful but not saints; drafts only, never message third parties (forms and mail to the owner are fine); agents read-only; scalpel not axe; commit after every step; em-dash ban in outward text; booking copy must hold for winter camps; never conclude a message "was never sent" without a full get_thread read.
+**Standing rules:** visual verification on production after significant changes; testimonials in Resources stay; truthful but not saints; drafts only, never message third parties (forms and mail to the owner are fine); agents read-only, briefed to answer under 4,500 characters; scalpel not axe; commit after every step; em-dash ban in outward text; booking copy must hold for winter camps; never conclude a message "was never sent" without a full get_thread read; no badge is the honest default, a badge needs a verified status; never find-and-replace camps.js.
 
 ---
 

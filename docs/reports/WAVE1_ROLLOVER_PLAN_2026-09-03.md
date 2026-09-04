@@ -31,3 +31,15 @@ Build, lint, validator; dev server at 320px, 390px and desktop across Home, Disc
 
 ## September checklist (every year from 2027)
 Roll the year in `<title>`, og:title, twitter:title and the meta description; refresh DIRECTORY_UPDATED; review every explicit `bookingStatus`; confirm the FAQ price answer against the data; bump sitemap lastmod; request indexing.
+
+## Implementation record (4 September 2026, morning)
+
+**Commits on main (owner pushes):** db5f003 data + validator; bb7be98 FAQ module + build-time sync; a12af02 App.jsx (year-agnostic surfaces, verified-only badge, visible FAQ, derived counts, price floor); cfc7b32 evergreen metadata, JSON-LD, noscript, sitemap, README, orphan guides removed (this is the year-agnostic state and the rollback target); 3314abe title and descriptions rolled to 2027; f2a9af7 control documents; f9cfb67 review fixes (season.js, stricter validators, FAQ safety sentence, price labels, badge pulse removed, README counts).
+
+**Verification:** build 6 to 12 s with both validators; lint 0 errors, 2 pre-existing warnings; JSON-LD parses (WebSite, ItemList, Organization, FAQPage, BreadcrumbList); rendered-DOM checks via headless Chrome over the DevTools protocol against `vite preview` (title, marquee, stamp, notice, exactly two blue badges across 65 cards, ten FAQ items, six hash routes, iPhone emulation with document width 390 and no overflow, zero console errors or exceptions); screenshots reviewed at desktop and phone emulation for hero, grid, premium and standard cards, FAQ open and closed, footer, Plan, Guide, About; full-tree stale-string audit clean including the built output (remaining years are the Terms "Last Updated February 3, 2026", "since 2025", favicon cache-busters and provenance comments); zero U+2014 in outward files.
+
+**Reviews:** Fable SEO pre-check: GO WITH CHANGES; adopted the corrected FAQ cost ceiling, the structured-data policy citation (Google retired FAQ rich results on 7 May 2026, confirmed in the Search Central changelog) and the no-JS H1; declined putting the year into the owner-chosen hero booking line because the hero marquee already carries the season year. GPT-5.6-SOL diff review: SHIP WITH FIXES, 12 findings; accepted 1 (FAQ safety claim), 3 (price units), 4 (status enum), 5 (season as editorial data), 6 (static claims validated), 7 (age bounds), 8 (FAQ schema shape), 9 (badge pulse), 12 (README counts), all landed in f9cfb67; rejected 2 ("100+ verified camps" is the documented terminology and has ranked since January), 10 (the Filmkollo URL change is a deliberate data fix, the dated URL redirects), 11 (the guide deletion was outside the diff paths supplied to the reviewer; it is in cfc7b32). Fable security and code reviews: see the addendum below.
+
+**Not done overnight, by design:** production verification and URL Inspection require the owner's push (see NEXT_STEPS pickup block).
+
+**Decision rejected during implementation:** the visitor-clock season year (first cut) was replaced by an editorial constant in `src/data/season.js` so the visible copy can never disagree with the static title; the validator enforces the pairing.
