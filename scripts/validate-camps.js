@@ -155,6 +155,10 @@ const ageClaim = `spans ages ${AGE_SPAN.replace('-', ' to ')}`;
 if (!FAQ_ITEMS.some(item => item.answer.includes(ageClaim))) {
   staticFail('src/data/faq.js', `an answer must state "${ageClaim}" (AGE_SPAN is ${AGE_SPAN})`);
 }
+const countryClaim = `covers ${countryCount} countries`;
+if (!FAQ_ITEMS.some(item => item.answer.includes(countryClaim))) {
+  staticFail('src/data/faq.js', `an answer must state "${countryClaim}" (data has ${countryCount})`);
+}
 
 console.log('');
 if (errors > 0) {

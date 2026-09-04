@@ -10,19 +10,19 @@ export const FAQ_ITEMS = [
   },
   {
     question: "How much do European summer camps cost?",
-    answer: "European summer camp costs range from €130 per week for local programs to around €8,000 for two-week premium programs. Budget-friendly options (under €800 per week) include Czech and Eastern European camps, while premium programs in Switzerland, the UK and Scandinavia typically cost €1,500 to more than €3,000 per week. Most camps include accommodation, meals, activities, and supervision."
+    answer: "European summer camp costs range from €130 per week for local programs to around €8,000 for two-week premium programs. Budget-friendly options (under €800 per week) include Czech and Eastern European camps, while premium programs in Switzerland and the UK typically cost €1,500 to more than €3,000 per week. Most camps include accommodation, meals, activities, and supervision."
   },
   {
     question: "Are European summer camps safe for international children?",
-    answer: "Many European summer camps report maintaining safety standards with trained staff and supervision. Parents should research individual camps' safety protocols, staff qualifications, medical facilities, and emergency procedures directly with each camp. Safety standards vary by country and individual camp."
+    answer: "Most established European summer camps publish their supervision ratios, staff training and medical cover; our listings are compiled from public sources, not site inspections. Parents should confirm safety protocols, staff qualifications, medical facilities and emergency procedures directly with each camp. Safety standards vary by country and individual camp."
   },
   {
     question: "Do children need to speak the local language at European camps?",
-    answer: "Most European summer camps operate in English and welcome international children regardless of local language skills. Many camps specifically offer English-language programs, while language immersion camps provide structured learning environments. Multilingual staff typically support children who need language assistance."
+    answer: "Most European summer camps operate in English or have English-speaking staff and welcome international children regardless of local language skills, though some camps run only in the national language; each listing shows the languages spoken. Many camps specifically offer English-language programs, while language immersion camps provide structured learning environments. Multilingual staff typically support children who need language assistance."
   },
   {
     question: "When should I book a European summer camp?",
-    answer: "Book European summer camps 3-6 months in advance for best availability and early bird discounts. Premium camps in Switzerland and Scandinavia often fill by February. Early booking (November-January) can save 8-18% on fees. Popular language immersion and sports programs should be booked by January."
+    answer: "Book European summer camps 3-6 months in advance for the best availability and any early-bird discounts. Premium camps in Switzerland and the UK often fill by early spring. Early booking (November to January) earns a discount at camps that publish one; the size varies by camp. Popular language immersion and sports programs are best booked early in the year."
   },
   {
     question: "What activities do European summer camps offer?",
@@ -34,7 +34,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Do European summer camps provide meals and accommodation?",
-    answer: "Yes, virtually all European residential summer camps include accommodation and all meals. Most camps provide dormitory-style housing with shared rooms, though some premium camps offer private accommodations. Meals typically include breakfast, lunch, dinner, and snacks, with options for dietary restrictions and allergies."
+    answer: "Yes, virtually all European residential summer camps include accommodation and all meals. Most camps provide dormitory-style housing with shared rooms, though some premium camps offer private accommodations. Meals typically include breakfast, lunch, dinner, and snacks, with options for dietary restrictions and allergies. A few day camps are listed as well; they are labelled as day camps in their name or highlights."
   },
   {
     question: "How do I verify if a European summer camp is legitimate?",
@@ -42,6 +42,14 @@ export const FAQ_ITEMS = [
   },
   {
     question: "What's the difference between premium and budget European summer camps?",
-    answer: "Premium European camps (typically €1,500 to more than €3,000 per week) offer smaller group sizes, specialized activities, luxury facilities, and prime locations like the Swiss Alps. Budget camps (under €800 per week) provide excellent value with quality programs, experienced staff, and safe environments, often in Eastern Europe. Price tier alone does not determine safety or supervision standards; they vary by camp and country, so confirm staffing, medical support, insurance and safeguarding policies directly with each organization."
+    answer: "Premium European camps (typically €1,500 to more than €3,000 per week) offer smaller group sizes, specialized activities, luxury facilities, and prime locations like the Swiss Alps. Budget camps (under €800 per week) provide excellent value with quality programs and experienced staff, across Europe from Norway and Finland to Spain, Italy and Portugal. Price tier alone does not determine safety or supervision standards; they vary by camp and country, so confirm staffing, medical support, insurance and safeguarding policies directly with each organization."
+  },
+  {
+    question: "Which European countries does this directory cover?",
+    answer: "The directory covers 24 countries: Austria, Belgium, Croatia, the Czech Republic, Denmark, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Lithuania, the Netherlands, Norway, Poland, Portugal, Romania, Slovenia, Spain, Sweden, Switzerland and the United Kingdom. Spain and Norway have the most listings. Use the country filter or the footer links to browse a single country."
+  },
+  {
+    question: "Are there European summer camps where parents can attend?",
+    answer: "Yes. The Family Programs category lists organizations in Austria, Germany, Greece, Ireland, Spain and the United Kingdom, from short family adventure breaks to a Greek sailing holiday and a German family camp. Check each listing for whether parents stay on site or children attend alone."
   }
 ]
