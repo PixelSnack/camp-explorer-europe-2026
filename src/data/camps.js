@@ -356,7 +356,6 @@ export const allCamps = [
     ages: "12-18 years",
     price: "NOK 5,890/1 week",
     priceRange: "budget",
-    bookingStatus: "not yet open",
     rating: 4.9,
     reviews: 127,
     image: mapCompressed,
@@ -402,7 +401,6 @@ export const allCamps = [
     ages: "6-12 years",
     price: "NOK 5,700/1 week", // Verified Jan 2026: DAY CAMP (8:30-15:30), 5-day program
     priceRange: "budget",
-    bookingStatus: "not yet open",
     rating: 4.6,
     reviews: 87,
     image: activitiesCompressed,
@@ -804,7 +802,7 @@ export const allCamps = [
     specialFeatures: ["3000 sqm Professional Studio", "All Equipment Provided", "No Experience Required"],
     established: 2010,
     capacity: 120,
-    bookingUrl: "https://filmkollo.se/anmalan-2026/"
+    bookingUrl: "https://filmkollo.se/anmalan/" // Year-less registration page (the dated URL redirects here); verified 3 Sept 2026
   },
   {
     id: 38,
@@ -1434,7 +1432,6 @@ export const allCamps = [
     ages: "9-12 years", // Manual verification Feb 2026: U9-U12 per official site (ages 9-12)
     price: "From €460/4 days", // Verified Feb 2026: €460 basic, €490 development camp
     priceRange: "budget",
-    bookingStatus: "Opens April",
     rating: null,
     reviews: 0,
     image: activitiesCompressed,
@@ -1542,6 +1539,41 @@ export const allCamps = [
     bookingUrl: "https://www.ferienfussball.de/fussballcamp/international-football-camp-germany/"
   }
 ]
+
+// ---------------------------------------------------------------------------
+// Derived directory facts. Computed once at module load so the UI never
+// hardcodes a number the data can answer. Bump DIRECTORY_UPDATED whenever camp
+// data is re-verified; it is the only dated string in this block.
+// ---------------------------------------------------------------------------
+
+export const DIRECTORY_UPDATED = 'September 2026'
+
+const AGE_RANGE = /^(\d{1,2})\s*-\s*(\d{1,2})\s*years?\b/i      // "6-17 years"
+const AGE_OPEN_ENDED = /^(\d{1,2})\+\s*years?\b/i                 // "6+ years (families)"
+const AGE_ALL = /^all ages\b/i                                     // "All ages (families)"
+
+/**
+ * Parses an `ages` string into numeric bounds. Open-ended and all-ages values
+ * carry no upper bound and therefore never widen the displayed span.
+ * @returns {{min: number|null, max: number|null} | null} null when the format is unknown
+ */
+export function parseAges(ages) {
+  if (typeof ages !== 'string') return null
+  const range = AGE_RANGE.exec(ages)
+  if (range) return { min: Number(range[1]), max: Number(range[2]) }
+  const open = AGE_OPEN_ENDED.exec(ages)
+  if (open) return { min: Number(open[1]), max: null }
+  if (AGE_ALL.test(ages)) return { min: null, max: null }
+  return null
+}
+
+/** Youngest and oldest ages served by any listed range, e.g. "3-20". */
+export const AGE_SPAN = (() => {
+  const bounds = allCamps.map(camp => parseAges(camp.ages)).filter(Boolean)
+  const mins = bounds.map(b => b.min).filter(n => n !== null)
+  const maxs = bounds.map(b => b.max).filter(n => n !== null)
+  return `${Math.min(...mins)}-${Math.max(...maxs)}`
+})()
 
 export { activitiesCompressed, mapCompressed }
 export default allCamps

@@ -7,7 +7,7 @@
  * Usage: node --import ./scripts/register-loader.mjs scripts/validate-camps.js
  */
 
-import { allCamps, REVIEW_SOURCES } from '../src/data/camps.js';
+import { allCamps, REVIEW_SOURCES, parseAges } from '../src/data/camps.js';
 
 const validSourceKeys = new Set(Object.keys(REVIEW_SOURCES));
 let errors = 0;
@@ -29,6 +29,17 @@ for (const camp of allCamps) {
   }
   if (camp.videoUrl !== undefined && !/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(camp.videoUrl)) {
     fail(camp.id, camp.name, `videoUrl must be an https YouTube URL, got: ${camp.videoUrl}`);
+  }
+
+  // Fields the UI derives numbers or badges from
+  if (typeof camp.country !== 'string' || camp.country.trim() === '') {
+    fail(camp.id, camp.name, `country must be a non-empty string, got: ${camp.country}`);
+  }
+  if (parseAges(camp.ages) === null) {
+    fail(camp.id, camp.name, `ages must read like "6-17 years", "6+ years (families)" or "All ages (families)", got: ${camp.ages}`);
+  }
+  if (camp.bookingStatus !== undefined && (typeof camp.bookingStatus !== 'string' || camp.bookingStatus.trim() === '')) {
+    fail(camp.id, camp.name, `bookingStatus, when present, must be a non-empty string, got: ${camp.bookingStatus}`);
   }
 
   // Basic field checks
