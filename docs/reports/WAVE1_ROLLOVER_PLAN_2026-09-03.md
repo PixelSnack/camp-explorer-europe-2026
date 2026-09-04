@@ -65,3 +65,15 @@ Owner pushed all commits through 10ed969 at about 19:00. Live HTML fetched with 
 Claude in Chrome, desktop 1920px: marquee, stamp, stats 24 / 65 / 3-20 / 100%, 65 cards, exactly three badges (blue on IDs 1 and 10, green on 37), the grid notice, ten FAQ items at 48px, footer copy; no console errors or exceptions after a fresh load. The extension could not shrink the maximized window below desktop width, so the phone pass ran in headless Chrome against production (DevTools protocol, iPhone emulation, 390px): document width 390 with no overflow, marquee animating, all six hash routes render, cards, FAQ and footer screenshots reviewed. The only console message is Chrome noting that `upgrade-insecure-requests` is ignored inside a report-only CSP, which is expected until the policy is enforced.
 
 Search Console (URL Inspection API via the service account): root URL "Submitted and indexed", verdict PASS, last crawl 2026-09-04T01:40Z (before the push), crawled as mobile, canonical correct, rich results PASS for Breadcrumbs only (FAQ rich results were retired in May). Sitemap last downloaded 2026-09-01, zero errors. Request indexing and the sitemap resubmission are one click each in the Search Console UI and were left for the owner's confirmation.
+
+## Mobile-first review after the push (4 September 2026, evening)
+
+Fable enterprise-code-reviewer briefed purely on mobile (iOS Safari and Android Chrome, 320 to 390px): SHIP WITH FIXES, two HIGH. Every finding was checked against rendered measurements over the DevTools protocol before acting, because the reviewer estimated widths from font metrics and the site already performs well on phones.
+
+Accepted and shipped: (1) marquee keyframe stopped at -30%, so the tail of the 89-character banner never entered a phone-width pill; now -100% with durations scaled to keep the speed. (2) date chip and booking badge overlapped at 320px (327px needed in 288px); the two absolute boxes are now one wrapping flex row, the badge drops to a second row when needed. (3) long date strings were clipped without an ellipsis; they now wrap inside the chip (longest, ID 39 at 58 characters, is two lines at every width). (4) under reduced motion the pill showed only the first 40 characters; the text now wraps in a 48px pill. (6) season notice capped at max-w-2xl. (7) stamp halves kept intact if the line ever wraps (it fits on one line down to 320px).
+
+Rejected: (5) tablet marquee clipping between 769 and 1023px; measured 697px pill inside an 800px viewport with no clipping, screenshot reviewed.
+
+Deferred with reason: (8) safe-area offset on the fixed filter and scroll buttons is pre-existing, the owner verified those buttons on an iPhone in January and they work today; revisit only if a real report arrives. (9) stat-description contrast over the hero photo, NOT VERIFIED by the reviewer, pre-existing, 12px gray-400 text; candidate for the cosmetic list.
+
+Wave 2 data rule from finding (3): keep new `dates:` strings under about 40 characters so the chip stays one line on phones.

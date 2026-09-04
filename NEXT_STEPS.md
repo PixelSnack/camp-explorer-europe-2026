@@ -2,7 +2,7 @@
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
 **Last Updated:** September 4, 2026 (~10:00, closing batch after the Fable reviews)
-**Current Status:** Season rollover Wave 1 implemented and committed on main, NOT pushed. ILC invoice 2026-001 attached to a send-ready draft. PayPal tax info due 5 Sept.
+**Current Status:** Season rollover Wave 1 pushed and live 4 Sept 2026, production gates 1 and 2 clean, mobile-first review fixes committed after the push. ILC invoice 2026-001 SENT 3 Sept, due 17 Sept. PayPal tax info due 5 Sept.
 **Ready for:** Owner push -> production verification -> URL Inspection + request indexing -> Wave 2 (per-camp 2027 dates)
 
 ---
@@ -13,7 +13,7 @@
 
 ### Owner, in this order
 1. **Push** in GitHub Desktop (Vercel deploys in about a minute).
-2. **Send the ILC invoice**: Gmail Drafts, ILC thread, PDF already attached, sender already partnerships@; close the space in "www.europeansummercamps .com" and send. Invoice 2026-001, EUR 199, due 17 Sept; PDF copies in Downloads and Claude bridge/reference.
+2. ~~Send the ILC invoice~~ DONE: invoice 2026-001 (EUR 199, due 17 Sept) went out 3 Sept 21:54 from partnerships@ with the PDF attached (confirmed in the thread on 4 Sept). Payment reminder at 7 days if unpaid (10 Sept); activation on payment. LayosCamp has NO invoice: the thread ends with the 2 Sept quote (79 EUR onboarding or Premium 199) and waits for their 2027 dates and prices.
 3. **PayPal tax information is due 5 Sept** (owner-only, policy dashboard).
 4. Delete the detached duplicate LayosCamp draft (opens without conversation history).
 
@@ -29,7 +29,7 @@
 
 ### Wave 2 (September to December, rolling)
 - **Warsaw Montessori (ID 24)**: bookingUrl is a 2025 page (still 200); the operator's 2026 page advertises a children-only camp, not the listed family camp. Re-verify the product with the operator before touching URL or listing; never remove a camp without owner consent.
-- **Per-camp 2027 dates as operators publish**: update `dates:` with a provenance comment and set `bookingStatus: "2027 dates published"` (the validator enforces the SEASON_YEAR). Start with the top-clicked camps: EUROCAM Bohemia, Altitude Camps, Enforex Barcelona, Quinta da Broeira, Evasoleil, Kalkalpen, Camp California Croatia, Explorer International (Les Elfes, Adventure Camp Bavaria and Filmkollo are done).
+- **Per-camp 2027 dates as operators publish**: update `dates:` with a provenance comment (keep the string under about 40 characters so the card chip stays one line on phones) and set `bookingStatus: "2027 dates published"` (the validator enforces the SEASON_YEAR). Start with the top-clicked camps: EUROCAM Bohemia, Altitude Camps, Enforex Barcelona, Quinta da Broeira, Evasoleil, Kalkalpen, Camp California Croatia, Explorer International (Les Elfes, Adventure Camp Bavaria and Filmkollo are done).
 - Carried over: IDs 28, 31, 41 ages, 64 ages, 65 rename; Funside 2027 dates early 2027; overdue quarterly price review; review-aggregation Phase 2.
 - **ILC activation on payment** (within 3 business days): new camp ID 70, `featured: true`, `videoUrl` youtu.be/-HKzc8K6Zt0 (drop the ?si tracker), Hotel Au Vieux Moulin named on the card, CHF international prices, priceRange luxury (badge reads PREMIUM); log the payment in the cross-brand turnover register.
 - **Every September**: roll SEASON_YEAR and DIRECTORY_UPDATED in `src/data/season.js`, the title and three descriptions in index.html, sitemap lastmod, review every explicit bookingStatus, request indexing (checklist in the plan record; the validator fails the build if the title and SEASON_YEAR disagree).

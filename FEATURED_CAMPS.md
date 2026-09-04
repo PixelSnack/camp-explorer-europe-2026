@@ -4,7 +4,7 @@
 
 **Created:** January 18, 2026
 **Last Updated:** September 3, 2026
-**Status:** First paid Premium listing sold (ILC, invoice 2026-001 issued); Les Elfes remains the demo
+**Status:** First paid Premium listing sold (ILC, invoice 2026-001 sent 3 Sept 2026, payment pending); Les Elfes remains the demo
 
 ---
 
@@ -75,7 +75,7 @@ This document tracks all Featured camp listings, including verification status, 
 
 | Camp | Contact | Inquiry Date | Status | Notes |
 |------|---------|--------------|--------|-------|
-| The International Language Camps (ILC), Megève | ILC admissions office | Aug 13, 2026 | ✅ Accepted Premium at the €199 introductory rate (1 Sept 2026) | Invoice 2026-001 issued 3 Sept 2026, due 17 Sept. On payment: activate within 3 business days as new camp ID 70 (featured, video button, hotel named on card, CHF international prices) |
+| The International Language Camps (ILC), Megève | ILC admissions office | Aug 13, 2026 | ✅ Accepted Premium at the €199 introductory rate (1 Sept 2026) | Invoice 2026-001 sent 3 Sept 2026 from partnerships@ (PDF attached), due 17 Sept. On payment: activate within 3 business days as new camp ID 70 (featured, video button, hotel named on card, CHF international prices) |
 | Boundless Life | Megan Miller | Jan 16, 2026 | ❌ No response since Jan 17, 2026 | Treat as closed |
 | LINEŠA | Jolita Bečienė | Jan 2026 | Dormant (closed by LINEŠA 24 Aug 2026, may return for 2027) | Free listing stands; Camp Pasaka (ID 43) listed editorially |
 
