@@ -443,7 +443,7 @@
 /* MOBILE MARQUEE ANIMATION - iOS/ANDROID COMPLIANT */
 .hero-fluid-badge.marquee-enabled .marquee-content {
   /* Enterprise animation parameters */
-  animation: enterpriseMarquee 18s linear infinite;
+  animation: enterpriseMarquee 28s linear infinite; /* Duration scaled with the -100% travel to keep the original speed */
   animation-play-state: running;
 
   /* iOS-style smooth motion with Android spring option */
@@ -457,7 +457,7 @@
     transform: translateX(100%);
   }
   100% {
-    transform: translateX(-30%); /* Reduced from -100% for continuous flow */
+    transform: translateX(-100%); /* Full travel: the whole sentence passes through the pill before the loop restarts */
   }
 }
 
@@ -467,9 +467,9 @@
     animation: none !important;
     transform: translateX(0) !important;
 
-    /* Graceful fallback: Fade text edges for overflow indication */
-    mask-image: linear-gradient(90deg, transparent, black 20px, black calc(100% - 20px), transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, black 20px, black calc(100% - 20px), transparent);
+    /* Graceful fallback: let the text wrap so the whole sentence is readable without motion */
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -483,12 +483,12 @@
 @media (max-width: 768px) {
   /* iOS-specific faster timing */
   .hero-fluid-badge.marquee-enabled:not(.material-motion) .marquee-content {
-    animation-duration: 15s; /* iOS optimized speed */
+    animation-duration: 23s; /* iOS optimized speed (scaled with the -100% travel) */
   }
 
   /* Android maintains material motion timing */
   .hero-fluid-badge.marquee-enabled.material-motion .marquee-content {
-    animation-duration: 16s; /* Android Material 3 speed */
+    animation-duration: 25s; /* Android Material 3 speed (scaled with the -100% travel) */
   }
 }
 

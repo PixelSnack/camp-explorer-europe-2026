@@ -109,7 +109,7 @@ const getBookingBadge = (camp) => {
 
 // Explains why most cards still show last season's dates until operators publish the next ones.
 const SeasonNotice = () => (
-  <p className="text-sm text-gray-600 text-center mb-8">
+  <p className="text-sm text-gray-600 text-center max-w-2xl mx-auto mb-8">
     Most organizations publish their {SEASON_YEAR} dates between September and December. Cards show the latest verified dates; a blue badge marks camps with {SEASON_YEAR} dates published.
   </p>
 )
@@ -118,11 +118,9 @@ const BookingStatusBadge = ({ camp }) => {
   const badge = getBookingBadge(camp)
   if (!badge) return null
   return (
-    <div className="absolute bottom-4 right-4">
-      <Badge className={`${badge.tone} text-white backdrop-blur-sm text-xs`}>
-        {badge.label}
-      </Badge>
-    </div>
+    <Badge className={`${badge.tone} text-white backdrop-blur-sm text-xs ml-auto`}>
+      {badge.label}
+    </Badge>
   )
 }
 
@@ -1040,7 +1038,7 @@ function App() {
           {/* Verification Badge */}
           <div className="flex justify-center items-start gap-2 text-white/90 text-sm max-w-md mx-auto px-4 mb-4">
             <Shield className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
-            <span>Verified directory | Updated {DIRECTORY_UPDATED}</span>
+            <span><span className="whitespace-nowrap">Verified directory</span> | <span className="whitespace-nowrap">Updated {DIRECTORY_UPDATED}</span></span>
           </div>
 
           {/* Stats Bar */}
@@ -1277,14 +1275,14 @@ function App() {
                       {selectedCamps.find(c => c.id === camp.id) ? '✓' : '+'}
                     </Button>
                   </div>
-                  <div className="absolute bottom-4 left-4">
-                    <Badge className="bg-black/70 text-white backdrop-blur-sm">
-                      <Calendar className="w-3 h-3 mr-1" />
+                  {/* Bottom overlay row: date chip left, verified booking badge right; wraps instead of overlapping on narrow phones */}
+                  <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end gap-2">
+                    <Badge className="bg-black/70 text-white backdrop-blur-sm whitespace-normal text-left">
+                      <Calendar className="w-3 h-3 mr-1 flex-shrink-0" />
                       {camp.dates}
                     </Badge>
+                    <BookingStatusBadge camp={camp} />
                   </div>
-                  {/* Booking-status badge: shown only for verified statuses (see getBookingBadge) */}
-                  <BookingStatusBadge camp={camp} />
                 </div>
                 
                 <CardHeader className="pb-3">
@@ -1834,14 +1832,14 @@ function App() {
                         {selectedCamps.find(c => c.id === camp.id) ? '✓' : '+'}
                       </Button>
                     </div>
-                    <div className="absolute bottom-4 left-4">
-                      <Badge className="bg-black/70 text-white backdrop-blur-sm">
-                        <Calendar className="w-3 h-3 mr-1" />
+                    {/* Bottom overlay row: date chip left, verified booking badge right; wraps instead of overlapping on narrow phones */}
+                    <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end gap-2">
+                      <Badge className="bg-black/70 text-white backdrop-blur-sm whitespace-normal text-left">
+                        <Calendar className="w-3 h-3 mr-1 flex-shrink-0" />
                         {camp.dates}
                       </Badge>
+                      <BookingStatusBadge camp={camp} />
                     </div>
-                    {/* Booking-status badge: shown only for verified statuses (see getBookingBadge) */}
-                    <BookingStatusBadge camp={camp} />
                   </div>
                   
                   <CardHeader className="pb-3">
