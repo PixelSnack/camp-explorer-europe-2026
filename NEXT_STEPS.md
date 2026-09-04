@@ -1,8 +1,8 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 4, 2026 (~10:00, closing batch after the Fable reviews)
-**Current Status:** Season rollover Wave 1 pushed and live 4 Sept 2026, production gates 1 and 2 clean, mobile-first review fixes committed after the push. ILC invoice 2026-001 SENT 3 Sept, due 17 Sept. PayPal tax info due 5 Sept.
+**Last Updated:** September 5, 2026 (~00:30, everything live; FAQ refinements verified by the owner)
+**Current Status:** Season rollover Wave 1, mobile-first fixes, documentation audit, footer countries and the FAQ accuracy pass are all LIVE (last push 5 Sept ~00:30, owner-verified on phone and desktop). ILC invoice 2026-001 SENT 3 Sept, due 17 Sept. PayPal tax info due 5 Sept. Next: weekly GSC watch from the week of 7 Sept; Wave 2 per-camp 2027 dates.
 **Ready for:** Owner push -> production verification -> URL Inspection + request indexing -> Wave 2 (per-camp 2027 dates)
 
 ---
@@ -12,7 +12,7 @@
 **State 4 Sept evening:** Season rollover Wave 1 is LIVE (owner pushed at about 19:00; production gates 1 and 2 clean). Later commits (mobile-first fixes 8823451, docs) await the next push. Commits on main since 7058a70: 244bdc2 (docs, invoice + GSC pull), 9c7099c (plan), db5f003 (data), bb7be98 (FAQ module), a12af02 (App.jsx), cfc7b32 (evergreen metadata, rollback target), 3314abe (title 2027), f2a9af7 (control docs), f9cfb67 (review fixes), 1ac393d and 7b7ea92 (docs), d55e2e7 (code-review closing batch + Filmkollo 2027), da811e9 (closing docs), 78a6feb (README price floor, FAQ 48px, guidelines vocabulary). Everything after 7058a70 is unpushed; `git rev-list --count origin/main..HEAD` gives the exact count. Reviews: Fable SEO GO WITH CHANGES, SOL SHIP WITH FIXES, Fable security SHIP, Fable code SHIP WITH FIXES; every accepted item landed. Decision record with the reviewer adjudications: `docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md`. Session memory: `esc-wave1-night-2026-09-03`.
 
 ### Owner, in this order
-1. **Push again** (GitHub Desktop): six commits after the 19:00 push: 8823451 mobile-first fixes, 90dee94 and the closing docs, cbe4515 documentation audit, e403d76 footer Romania + Slovenia, ce40a6b FAQ accuracy pass. Then a quick look at the FAQ (12 items) and the footer on the phone.
+1. ~~Push again~~ DONE: everything through 3e7847b is live (pushed and verified by the owner on desktop and phone, 5 Sept ~00:30). The FAQ has 12 questions; five owner refinements landed after the SEO pass (verification work stated, Central and Eastern Europe named for substance, day-camp audience, directory as a well-researched source, "Our directory").
 1b. **Search Console** (two clicks, your call): URL Inspection on the root URL then Request indexing; Sitemaps then resubmit sitemap.xml. Google's last crawl was before the push.
 1c. ~~Archive decision~~ DONE 4 Sept: five superseded files moved to docs/archive (owner: leave the existing archive twins alone).
 2. ~~Send the ILC invoice~~ DONE: invoice 2026-001 (EUR 199, due 17 Sept) went out 3 Sept 21:54 from partnerships@ with the PDF attached (confirmed in the thread on 4 Sept). Payment reminder at 7 days if unpaid (10 Sept); activation on payment. LayosCamp has NO invoice: the thread ends with the 2 Sept quote (79 EUR onboarding or Premium 199) and waits for their 2027 dates and prices.
