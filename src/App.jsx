@@ -3706,6 +3706,24 @@ function App() {
                     🇱🇹 Lithuania (STEAM & Baltic)
                   </button>
                 </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Romania')}
+                    aria-label="Filter camps in Romania"
+                  >
+                    🇷🇴 Romania (Carpathian Wilderness)
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:text-white cursor-pointer transition-colors text-left w-full"
+                    onClick={() => handleCountryFilter('Slovenia')}
+                    aria-label="Filter camps in Slovenia"
+                  >
+                    🇸🇮 Slovenia (Tech-Free Adventure)
+                  </button>
+                </li>
               </ul>
             </div>
 
