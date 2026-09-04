@@ -34,7 +34,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Do European summer camps provide meals and accommodation?",
-    answer: "Yes, virtually all European residential summer camps include accommodation and all meals. Most camps provide dormitory-style housing with shared rooms, though some premium camps offer private accommodations. Meals typically include breakfast, lunch, dinner, and snacks, with options for dietary restrictions and allergies. A few day camps are listed as well; they are labelled as day camps in their name or highlights."
+    answer: "Yes, virtually all European residential summer camps include accommodation and all meals. Most camps provide dormitory-style housing with shared rooms, though some premium camps offer private accommodations. Meals typically include breakfast, lunch, dinner, and snacks, with options for dietary restrictions and allergies. A few day camps are listed as well, for families who prefer to arrange their own accommodation and have the children back with their parents each evening; they are labelled as day camps in their name or highlights."
   },
   {
     question: "How do I verify if a European summer camp is legitimate?",
