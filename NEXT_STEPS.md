@@ -1,7 +1,7 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 4, 2026 (~08:30, exit protocol after the overnight rollover session)
+**Last Updated:** September 4, 2026 (~10:00, closing batch after the Fable reviews)
 **Current Status:** Season rollover Wave 1 implemented and committed on main, NOT pushed. ILC invoice 2026-001 attached to a send-ready draft. PayPal tax info due 5 Sept.
 **Ready for:** Owner push -> production verification -> URL Inspection + request indexing -> Wave 2 (per-camp 2027 dates)
 
@@ -9,7 +9,7 @@
 
 ## 🔴 **START HERE — SESSION PICKUP (4 September 2026, morning)**
 
-**State on exit 4 Sept ~08:30:** Season rollover Wave 1 is IMPLEMENTED and COMMITTED, NOT PUSHED. Commits on main since 7058a70, awaiting the owner's push in GitHub Desktop: 244bdc2 (docs, invoice + GSC pull), 9c7099c (plan), db5f003 (data), bb7be98 (FAQ module), a12af02 (App.jsx), cfc7b32 (evergreen metadata, rollback target), 3314abe (title 2027), f2a9af7 (control docs), f9cfb67 (review fixes), plus this exit-protocol docs commit. Decision record with the reviewer adjudications: `docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md`. Session memory: `esc-wave1-night-2026-09-03`.
+**State on exit 4 Sept ~10:00:** Season rollover Wave 1 is IMPLEMENTED and COMMITTED, NOT PUSHED. Commits on main since 7058a70, awaiting the owner's push in GitHub Desktop: 244bdc2 (docs, invoice + GSC pull), 9c7099c (plan), db5f003 (data), bb7be98 (FAQ module), a12af02 (App.jsx), cfc7b32 (evergreen metadata, rollback target), 3314abe (title 2027), f2a9af7 (control docs), f9cfb67 (review fixes), 1ac393d and 7b7ea92 (docs), d55e2e7 (code-review closing batch + Filmkollo 2027), plus the closing docs commit. Reviews: Fable SEO GO WITH CHANGES, SOL SHIP WITH FIXES, Fable security SHIP, Fable code SHIP WITH FIXES; every accepted item landed. Decision record with the reviewer adjudications: `docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md`. Session memory: `esc-wave1-night-2026-09-03`.
 
 ### Owner, in this order
 1. **Push** in GitHub Desktop (Vercel deploys in about a minute).
@@ -18,7 +18,7 @@
 4. Delete the detached duplicate LayosCamp draft (opens without conversation history).
 
 ### Claude, immediately after the push (production gates, mandatory)
-1. Claude in Chrome on https://www.europeansummercamps.com/ at desktop and phone width: brand without year, marquee text, "Verified directory | Updated September 2026", stats 24 / 65 / 3-20, grid notice, Les Elfes PREMIUM ribbon with the blue "2027 dates published" badge, no green badges anywhere, FAQ accordion, footer ("Booking Information", "EUR 130+ starting price per week"), Plan / Guide / About; console clean.
+1. Claude in Chrome on https://www.europeansummercamps.com/ at desktop and phone width: brand without year, marquee text, "Verified directory | Updated September 2026", stats 24 / 65 / 3-20, grid notice, Les Elfes and Adventure Camp Bavaria with the blue "2027 dates published" badge, Filmkollo with the green "Booking open" badge, no badge on the other 62 cards, FAQ accordion, footer ("Booking Information", "EUR 130+ starting price per week"), Plan / Guide / About; console clean.
 2. `curl` the live HTML: title "European Summer Camps 2027 | 100+ Camp Programs | Camp Explorer Europe", description with "EUR 130 per week", noscript H1 "European Summer Camps | Camp Explorer Europe".
 3. Search Console in the owner's Chrome: URL Inspection on the root URL, Test live URL, Request indexing; resubmit sitemap.xml (lastmod 2026-09-04).
 4. Watch GSC weekly for six weeks: head-term positions and CTR, "2027" query impressions, the title link as displayed. Rollback if the title link misbehaves: `git revert 3314abe` (lands on the year-agnostic metadata, never on 2026).
@@ -27,13 +27,13 @@
 
 ### Wave 2 (September to December, rolling)
 - **Warsaw Montessori (ID 24)**: bookingUrl is a 2025 page (still 200); the operator's 2026 page advertises a children-only camp, not the listed family camp. Re-verify the product with the operator before touching URL or listing; never remove a camp without owner consent.
-- **Per-camp 2027 dates as operators publish**: update `dates:` with a provenance comment and set `bookingStatus: "2027 dates published"` (the validator enforces the SEASON_YEAR). Start with the top-clicked camps: EUROCAM Bohemia, Altitude Camps, Enforex Barcelona, Quinta da Broeira, Evasoleil, Kalkalpen, Camp California Croatia, Explorer International (Les Elfes and Adventure Camp Bavaria are done).
+- **Per-camp 2027 dates as operators publish**: update `dates:` with a provenance comment and set `bookingStatus: "2027 dates published"` (the validator enforces the SEASON_YEAR). Start with the top-clicked camps: EUROCAM Bohemia, Altitude Camps, Enforex Barcelona, Quinta da Broeira, Evasoleil, Kalkalpen, Camp California Croatia, Explorer International (Les Elfes, Adventure Camp Bavaria and Filmkollo are done).
 - Carried over: IDs 28, 31, 41 ages, 64 ages, 65 rename; Funside 2027 dates early 2027; overdue quarterly price review; review-aggregation Phase 2.
 - **ILC activation on payment** (within 3 business days): new camp ID 70, `featured: true`, `videoUrl` youtu.be/-HKzc8K6Zt0 (drop the ?si tracker), Hotel Au Vieux Moulin named on the card, CHF international prices, priceRange luxury (badge reads PREMIUM); log the payment in the cross-brand turnover register.
 - **Every September**: roll SEASON_YEAR and DIRECTORY_UPDATED in `src/data/season.js`, the title and three descriptions in index.html, sitemap lastmod, review every explicit bookingStatus, request indexing (checklist in the plan record; the validator fails the build if the title and SEASON_YEAR disagree).
 
 ### Still open (unchanged)
-EmailJS cosmetic pass; CSP report-only to enforce (ask first, console-check 2-3 views); owner dashboard items (Vercel plan, Cloudflare proxy + SPF/DKIM/DMARC, GitHub 2FA + secret scanning, GA Signals, EmailJS "Do not save private data", Gmail reply-from-same-address setting); camp additions on answers (BELT, CBS, Samiad, LayosCamp); Stadium Sports Camp (SE) + Les Elfes Winter editorial candidates (winter section); deferred code items (HEALTH_CHECK section 6: Q12 camp-name h3, Q13 to Q19); Les Elfes demo formalization (offer EUR 199 intro or revert to editorial Basic); old EUR 99 quotes decided by the owner case by case if accepted.
+EmailJS cosmetic pass; CSP report-only to enforce (ask first, console-check 2-3 views); owner dashboard items (Vercel plan, Cloudflare proxy + SPF/DKIM/DMARC, GitHub 2FA + secret scanning, GA Signals, EmailJS "Do not save private data", Gmail reply-from-same-address setting); camp additions on answers (BELT, CBS, Samiad, LayosCamp); Stadium Sports Camp (SE) + Les Elfes Winter editorial candidates (winter section); deferred code items (HEALTH_CHECK section 6: Q12 camp-name h3, Q13 to Q19; header nav labels wrap at ~800px, pre-existing); Les Elfes demo formalization (offer EUR 199 intro or revert to editorial Basic); old EUR 99 quotes decided by the owner case by case if accepted.
 
 **Standing rules:** visual verification on production after significant changes; testimonials in Resources stay; truthful but not saints; drafts only, never message third parties (forms and mail to the owner are fine); agents read-only, briefed to answer under 4,500 characters; scalpel not axe; commit after every step; em-dash ban in outward text; booking copy must hold for winter camps; never conclude a message "was never sent" without a full get_thread read; no badge is the honest default, a badge needs a verified status; never find-and-replace camps.js.
 

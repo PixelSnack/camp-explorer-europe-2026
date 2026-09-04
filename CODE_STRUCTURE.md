@@ -329,6 +329,7 @@ const getBookingBadge = (camp) => {
 }
 
 const BookingStatusBadge = ({ camp }) => { /* renders the badge or null */ }
+- `SeasonNotice` (module scope, next to the badge helpers): the one-paragraph notice rendered above both camp grids explaining that most organizations publish next-season dates between September and December; edit the text once, it renders in both places.
 ```
 
 Both card grids (Home and Discover) render `<BookingStatusBadge camp={camp} />` in the image overlay; grep for `BookingStatusBadge` to find them. `animate-pulse` carries `motion-reduce:animate-none`.

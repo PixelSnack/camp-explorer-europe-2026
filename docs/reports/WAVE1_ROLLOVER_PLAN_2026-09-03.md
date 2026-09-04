@@ -43,3 +43,15 @@ Roll the year in `<title>`, og:title, twitter:title and the meta description; re
 **Not done overnight, by design:** production verification and URL Inspection require the owner's push (see NEXT_STEPS pickup block).
 
 **Decision rejected during implementation:** the visitor-clock season year (first cut) was replaced by an editorial constant in `src/data/season.js` so the visible copy can never disagree with the static title; the validator enforces the pairing.
+
+## Addendum: Fable reviews and the closing batch (4 September 2026, ~10:00)
+
+**Fable security-audit-specialist, diff review: SHIP.** No HIGH or MEDIUM findings; no new `dangerouslySetInnerHTML`, no new script or origin, `noopener` preserved, consent gating untouched. Five LOW notes, all closed: the guide deletion sat outside the diff paths supplied (it is in cfc7b32); Filmkollo's live price was 7,800 SEK against the listed 7,600 (updated in d55e2e7); the season year had three sources (collapsed into `src/data/season.js` in f9cfb67); the validate-faq parse message (f9cfb67); a case-sensitive `"open"` status (the validator enum guards the value).
+
+**Fable enterprise-code-reviewer, diff review: SHIP WITH FIXES.** F1 AGE_SPAN guard against an empty parse (f9cfb67); F2 the age filter kept its own regex instead of `parseAges` (d55e2e7; identical results for all five groups across all 65 age strings, verified by script); F3 FAQ summary hit area, `py-2` (d55e2e7); F4 README counts (f9cfb67). Nits taken in d55e2e7: the duplicated notice paragraph is one `SeasonNotice` component; literal euro signs in faq.js; the QUICK_REFERENCE badge line. Manual layout checks requested and done over the DevTools protocol: at 375px the date chip and the badge on cards 1, 10 and 37 keep a 15 to 63px gap; at 800px and 1024px the hero marquee content (657px) fits its 697px badge statically with no horizontal overflow.
+
+**Wave 2 item closed early:** Filmkollo (ID 37) published its 2027 season on filmkollo.se/anmalan (verified 4 Sept 2026: eight weekly sessions 13 June to 7 August 2027, 7,800 SEK per week, ages 10 to 17, registration open). Price, dates and `bookingStatus: "open"` updated with provenance comments; it is the only green badge on the site.
+
+**Observation, not changed:** at 800px the header navigation labels wrap to two lines. Pre-existing between the tablet breakpoints and unrelated to Wave 1; candidate for the deferred cosmetic list.
+
+**Commit stack awaiting the owner's push:** 244bdc2, 9c7099c, db5f003, bb7be98, a12af02, cfc7b32, 3314abe, f2a9af7, f9cfb67, 1ac393d, 7b7ea92, d55e2e7, plus the closing docs commit.
