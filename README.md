@@ -1,10 +1,10 @@
-# Camp Explorer Europe 2026 🏕️
+# Camp Explorer Europe 🏕️
 
 **Discover Quality European Summer Camps for Kids & Youth**
 
 A comprehensive web application featuring **36 verified summer camp organizations** representing 100+ individual programs across **21 European countries**. Built with React and modern web technologies, offering advanced search and filtering to help families find the perfect summer camp experience.
 
-*Last Updated: January 2026*
+*Last Updated: September 2026*
 
 ## 🌟 Features
 
