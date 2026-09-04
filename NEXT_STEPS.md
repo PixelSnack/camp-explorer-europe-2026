@@ -18,6 +18,8 @@
 4. Delete the detached duplicate LayosCamp draft (opens without conversation history).
 
 ### Claude, immediately after the push (production gates, mandatory)
+**Status 4 Sept ~19:40: gates 1 and 2 DONE and clean (record in the plan file). Gate 3 (Request indexing, sitemap resubmit) awaits the owner's click or go-ahead; Google's last crawl was 01:40Z, before the push. Gate 4 (weekly watch) starts the week of 7 Sept.**
+
 1. Claude in Chrome on https://www.europeansummercamps.com/ at desktop and phone width: brand without year, marquee text, "Verified directory | Updated September 2026", stats 24 / 65 / 3-20, grid notice, Les Elfes and Adventure Camp Bavaria with the blue "2027 dates published" badge, Filmkollo with the green "Booking open" badge, no badge on the other 62 cards, FAQ accordion, footer ("Booking Information", "EUR 130+ starting price per week"), Plan / Guide / About; console clean.
 2. `curl` the live HTML: title "European Summer Camps 2027 | 100+ Camp Programs | Camp Explorer Europe", description with "EUR 130 per week", noscript H1 "European Summer Camps | Camp Explorer Europe".
 3. Search Console in the owner's Chrome: URL Inspection on the root URL, Test live URL, Request indexing; resubmit sitemap.xml (lastmod 2026-09-04).
