@@ -3,7 +3,7 @@
 *Technical reference for codebase architecture and App.jsx structure*
 
 **Created:** January 24, 2026
-**Last Updated:** February 24, 2026
+**Last Updated:** September 4, 2026 (season rollover Wave 1)
 **Purpose:** Quick reference for understanding code organization
 
 ---
@@ -15,7 +15,8 @@ camp-explorer-europe-2026/
 ├── src/
 │   ├── App.jsx              # Main component (~4,700 lines)
 │   ├── data/
-│   │   └── camps.js         # Camp data array (65 orgs, ~1,545 lines)
+│   │   ├── camps.js         # Camp data array (65 orgs) + derived facts (DIRECTORY_UPDATED, parseAges, AGE_SPAN)
+│   │   └── faq.js           # FAQ questions/answers; index.html FAQPage JSON-LD must mirror it (scripts/validate-faq.js)
 │   ├── App.css              # Custom global styles + marquee system
 │   ├── main.jsx             # React entry point
 │   ├── index.css            # Tailwind imports
@@ -99,7 +100,7 @@ camp-explorer-europe-2026/
 | 7-12 | `REVIEW_SOURCES` constant (12 platforms, 3 tiers) |
 | 14-25 | JSDoc for `reviewData` shape |
 | ~27-1530 | `export const allCamps = [...]` (65 camp objects) |
-| ~1532-1545 | Re-exports (activitiesCompressed, mapCompressed) + default export |
+| after the array | Derived directory facts: `DIRECTORY_UPDATED`, `parseAges()`, `AGE_SPAN` (computed once at module load), then re-exports + default export |
 
 ---
 
@@ -301,55 +302,53 @@ camp.highlights.slice(0, camp.featured ? 3 : 2)
 
 ---
 
-## Booking Status Badges (Default-Green System)
+## Booking Status Badges (Verified-Only System)
 
-**Added February 6, 2026** — Data-driven badges replacing arbitrary priceRange/rating logic.
+**Rewritten September 4, 2026 (season rollover Wave 1).** The February "default-green" design rendered a green "2026 Open" badge on every camp without a `bookingStatus` field, which became 60 false claims the moment the season ended. A badge now appears only when the data carries an explicit, verified status.
 
-### Design: Default-Green, Exception-Only Overrides
+### Semantics
 
-Every camp in the database is verified for 2026. The green "2026 Open" badge is the DEFAULT for all camps — no per-camp field needed. The `bookingStatus` field is only an OVERRIDE for exceptions.
+| `bookingStatus` value | Badge |
+|---|---|
+| absent, empty or whitespace | none |
+| `"not yet open"` | none (kept as an explicit way to say "verified: not bookable") |
+| `"open"` | green "Booking open" |
+| any other string, e.g. `"2027 dates published"` | blue badge showing that text verbatim |
 
-| Scenario | bookingStatus field | Badge shown |
-|----------|-------------------|-------------|
-| Normal camp (no field) | absent/undefined | Green "2026 Open" (pulsing) |
-| Known future opening date | `"Opens Feb 15"` | Blue badge with that text (pulsing) |
-| Confirmed not yet accepting 2026 | `"not yet open"` | No badge (hidden) |
-| Explicitly open | `"open"` | Green "2026 Open" (same as default) |
+The prebuild validator rejects a `bookingStatus` that is present but not a non-empty string.
 
-### Implementation (App.jsx — 2 locations ~line 1257 and ~1799)
+### Implementation (App.jsx, module scope near the tracking helpers)
 
 ```jsx
-{camp.bookingStatus !== 'not yet open' && (
-  <div className="absolute bottom-4 right-4">
-    <Badge className={`${
-      !camp.bookingStatus || camp.bookingStatus === 'open'
-        ? 'bg-green-500/90'
-        : 'bg-blue-500/90'
-    } text-white backdrop-blur-sm text-xs animate-pulse`}>
-      {!camp.bookingStatus || camp.bookingStatus === 'open' ? '2026 Open' : camp.bookingStatus}
-    </Badge>
-  </div>
-)}
+const getBookingBadge = (camp) => {
+  const status = typeof camp.bookingStatus === 'string' ? camp.bookingStatus.trim() : ''
+  if (!status || status === 'not yet open') return null
+  return status === 'open'
+    ? { label: 'Booking open', tone: 'bg-green-500/90' }
+    : { label: status, tone: 'bg-blue-500/90' }
+}
+
+const BookingStatusBadge = ({ camp }) => { /* renders the badge or null */ }
 ```
 
-### Current Exception Camps (February 24, 2026)
+Both card grids (Home and Discover) render `<BookingStatusBadge camp={camp} />` in the image overlay; grep for `BookingStatusBadge` to find them. `animate-pulse` carries `motion-reduce:animate-none`.
+
+### Current explicit values (September 4, 2026)
 
 | Camp ID | Name | bookingStatus | Badge |
 |---------|------|--------------|-------|
-| 65 | Vierumaki Finnhockey | `"Opens April"` | Blue |
-| 15 | Camp Bjontegaard | `"not yet open"` | Hidden |
-| 18 | Nordic Terrain Academy | `"not yet open"` | Hidden |
+| 1 | Les Elfes International | `"2027 dates published"` | Blue |
+| 10 | Adventure Camp Bavaria | `"2027 dates published"` | Blue |
 
-*Note: IDs 28, 30, 60 had their expired "Opens" badges removed on Feb 9, 2026 (commit e8abc05).*
+The stale February values ("not yet open" on IDs 15 and 18, "Opens April" on ID 65) were removed on September 4, 2026.
 
 ### Maintenance Guide
 
-- **Adding a new camp**: Nothing extra needed — green badge automatic
-- **Camp opens registration**: Delete the `bookingStatus` field (falls back to green)
-- **Camp sells out or closes**: Add `bookingStatus: "not yet open"`
-- **New year rollover**: Change `"2026 Open"` text in App.jsx (one string, two locations)
-- **Future opening date**: Add `bookingStatus: "Opens [date]"` — shows blue badge
-- **"Opens" date passes**: Delete the field — falls back to green
+- **Operator publishes next-season dates**: update `dates:` (with a provenance comment) and set `bookingStatus: "<year> dates published"`.
+- **Bookings confirmed open**: set `bookingStatus: "open"`.
+- **Status no longer verified**: delete the field; the card simply shows no badge.
+- **Never** reintroduce a default badge; the absence of a badge is the honest state.
+- The season year shown in the marquee and the grid notice is `SEASON_YEAR` (derived from the date: September onward means next year), so no annual edit is needed there. The annual edits live in index.html (see the September checklist in docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md).
 
 ---
 

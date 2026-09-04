@@ -1,6 +1,6 @@
 # Lessons Learned & Rules
 
-*Last Updated: February 6, 2026 (Session 5)*
+*Last Updated: September 4, 2026*
 *Purpose: Centralized reference for errors encountered and rules derived from them*
 
 ---
@@ -286,6 +286,24 @@ Batch 3: Documentation → Commit ✓
 
 ---
 
+### Lesson: A decision made without data needs a recorded re-check trigger (September 2026)
+
+**Problem**: The 16 Aug "year-agnostic title" decision was made without Search Console access. The reservation was written down. When the data arrived (3 Sept), it showed year-bearing queries were the best-converting segment, competitors already carried "2027" in their titles, and Google documents no ranking cost for a title change.
+
+**Solution**: Re-decided explicitly with the owner's delegated authority: the title and descriptions keep a season year (rolled every September); everything else went year-agnostic. Recorded in docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md with the evidence and the reviewer verdicts.
+
+**Rule**: When deciding without a key data source, write the missing evidence and the re-check trigger next to the decision, and when the evidence lands, re-decide on the record instead of defending the earlier call.
+
+---
+
+### Lesson: Agent reports are truncated by the message channel at roughly 5,000 characters (September 2026)
+
+**Problem**: Three agent reports arrived cut off mid-sentence, twice each, and re-requests were cut again.
+
+**Rule**: Brief every agent to answer in under 4,500 characters, ask for the most important sections first, and split long deliverables across separate requests. Verify anything critical yourself rather than waiting on a resend.
+
+---
+
 ### Lesson: Gmail Search Results Truncate Thread Message Lists (September 2026)
 
 **Problem**: Gmail MCP `search_threads` returned only the first ~5 of 9 messages in the LINEŠA thread, consistently across four different queries (including a sent-mail search scoped to the recipient). Based on that view, the 17 Aug reply was declared "never sent", an apology email stating so was drafted, and the owner sent it. The full thread (`get_thread`) showed the reply HAD been sent, and LINEŠA had already answered it on 24 Aug.
@@ -300,6 +318,30 @@ Batch 3: Documentation → Commit ✓
 1. NEVER conclude a message was not sent, or that a thread received no reply, from search results alone
 2. Before ANY "this never happened" claim about correspondence, read the full thread with `get_thread`
 3. Several queries agreeing is not confirmation when they share the same data path
+
+---
+
+## Tooling & Environment
+
+### Lesson: A Python MCP server loses its TLS workaround on package upgrade (September 2026)
+
+**Problem**: Every `gsc` MCP call failed with `[SSL: CERTIFICATE_VERIFY_FAILED]` on 3 Sept 2026, although the same calls worked on 17 Aug.
+
+**Root Cause**: Playground upgraded the server package on 22 Aug (mcp-gsc 0.1.0 to mcp-search-console 0.3.3). The old TLS fix for the corporate-AV interception lived inside site-packages; the new version uses a code path that ignores the `HTTPLIB2_CA_CERTS` env var still set in `~/.claude.json`. CLAUDE.md had predicted exactly this.
+
+**Solution**: Pulled the data with a standalone script using the same service-account file plus `truststore.inject_into_ssl()` and `HTTPLIB2_CA_CERTS`, validation never disabled. Bridge note to Playground for the server fix.
+
+**Rule**: After any MCP server upgrade, run one live call before relying on it. Keep a direct-API fallback for critical data sources. Never fix a TLS failure by disabling certificate validation.
+
+---
+
+### Lesson: Visual verification without the Chrome extension (September 2026)
+
+**Problem**: The Claude in Chrome extension stopped responding on `localhost` (site permission not granted for that origin), and headless `chrome --screenshot` with a 16,000px window produced a 16,000px hero because the hero is sized to the viewport.
+
+**Solution**: Drove headless Chrome over the DevTools protocol with a small Node script (dismiss consent, `scrollIntoView` per section, iPhone device emulation, console and exception capture, FAQ toggle), captured viewport screenshots per section and a JSON report of rendered strings.
+
+**Rule**: For local or preview visual checks use a CDP script against `vite preview`, not tall-window screenshots. Read the rendered DOM for strings (title, marquee, badges, counts) and read screenshots for layout. Production verification through the extension still follows after the owner pushes.
 
 ---
 

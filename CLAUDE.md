@@ -1,6 +1,6 @@
 # CLAUDE.md - Camp Explorer Europe 2026 Control Document
 
-*Last Updated: February 24, 2026*
+*Last Updated: September 4, 2026*
 *Purpose: Central control document for Claude Code continuity and project management*
 *Part of ResourceHub umbrella project - Building niche authority websites*
 
@@ -117,7 +117,10 @@ No session ran between 2026-02-25 and 2026-08-16. HEAD was still `4f0857f`, tree
 
 ⚠️ **Never read an August number as decline.** It is the post-season trough for a summer camp directory. A May report reading "down 9-11%" was a seasonal dip mistaken for a trend.
 
-### 🚨 **SEASON ROLLOVER — the site is making false claims today**
+### ✅ **SEASON ROLLOVER: Wave 1 shipped 4 Sept 2026, Wave 2 rolling**
+
+**Status 4 Sept 2026:** Wave 1 is implemented (commits db5f003 to 3314abe) per `docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md`, the decision record. One deliberate exception to the 16 Aug direction, decided on Search Console data and confirmed by two SEO reviews and a SOL adversarial pass: the title tag, og/twitter titles and the three descriptions carry the season year ("European Summer Camps 2027 | ...") and roll every September; every other surface is year-agnostic. Booking badges show only for explicit verified statuses (see §7.1). The marquee and grid notice derive the season year from the date. Rollback for the title is `git revert 3314abe`, which lands on the year-agnostic metadata, never on 2026. **Wave 2** (per-camp 2027 dates as operators publish; first item: Warsaw Montessori ID 24, whose booking URL is a 2025 page and whose operator now advertises a children-only camp, not the listed family camp) runs September to December. The analysis below is the August history and stays for context.
+
 
 The 2026 season is over and the codebase does not know. Zero occurrences of "2027" anywhere in the tree. Right now a visitor sees "2026 Season NOW OPEN", 62 green "2026 Open" badges, and a booking timeline telling them to book by "February 2026". On a site whose whole proposition is verified accuracy, that is the problem, ahead of the SEO angle.
 
@@ -139,14 +142,9 @@ Evergreen core, dated edges. Title, meta, H1, brand, hero, schema, guide title a
 
 ⚠️ **Invert the badge default, do not swap the string.** Absence of `bookingStatus` currently renders green "2026 Open" on 62 camps. Changing that to "2027 Open" replaces a stale claim with an unverified one. Default becomes hidden; the badge shows only where verified.
 
-### 🚧 **BLOCKER: Search Console returns zero properties**
+### ⚠️ **Search Console: access works; the MCP server's TLS broke on 22 Aug 2026**
 
-GSC authenticates cleanly and correctly returns nothing, because the service account was never granted access to the property. Owner action required; walkthrough planned via Claude in Chrome.
-
-- **Grant**: `claude-mcp@gen-lang-client-0613109458.iam.gserviceaccount.com`
-- **On**: `europeansummercamps.com` → Settings → Users and permissions → Add user
-
-GA4 is separate and **already works** (property `521172443`). Both were repaired at machine level in August; the GSC credential fix lives inside `site-packages` and **will be lost on a package upgrade**.
+Access was granted 17 Aug 2026 (service account, Restricted, URL-prefix property `https://www.europeansummercamps.com/`). The `gsc` MCP server was upgraded by Playground on 22 Aug (mcp-search-console 0.3.3) and has failed every call since with `[SSL: CERTIFICATE_VERIFY_FAILED]`, exactly the "lost on a package upgrade" warning. Bridge note to Playground sent 4 Sept 2026 (their custody). **Workaround that works:** a standalone Python pull using the same service-account file with `truststore.inject_into_ssl()` and `HTTPLIB2_CA_CERTS` (never disable validation); the 3 Sept pull is `docs/reports/GSC_PULL_2026-09-03.md`. GA4 (property `521172443`) works when its server connects; it timed out on 3 Sept.
 
 ### 🎉 **AWAITING RESPONSE: First Monetization Test (Boundless Life)**
 - **Status**: Email sent January 17, 2026 at 00:28 - awaiting response
@@ -349,9 +347,11 @@ The message channel with Playground Claude. List the top level: any `*.md` there
 ### **Step 3: Verify Build Status**
 
 ```bash
-npm run build    # Should complete in ~7-9 seconds
-npm run lint     # Should pass (4 warnings OK - shadcn/ui components)
+npm run build    # ~7-9 seconds; prebuild runs validate:camps and validate:faq first
+npm run lint     # Should pass (2 warnings OK - shadcn/ui components)
 npm run dev      # Should start on http://localhost:5173
+npm run validate:camps   # camp data integrity (ages, country, bookingStatus, URLs, reviews)
+npm run validate:faq     # index.html FAQPage JSON-LD must mirror src/data/faq.js
 ```
 
 ### **Step 4: Follow Development Guidelines**
@@ -1125,13 +1125,13 @@ europeansummercamps/
 }
 ```
 
-**Booking Status Badges** (Default-Green System, added Feb 6, 2026):
-- **No `bookingStatus` field** (default) → green "2026 Open" badge shown automatically
-- `bookingStatus: "Opens [date]"` → blue badge with that text
-- `bookingStatus: "not yet open"` → badge hidden entirely
-- Only add this field for exceptions. New camps get green badge with zero extra work.
-- Year rollover: change "2026 Open" in App.jsx (one string, two locations)
-- See CODE_STRUCTURE.md "Booking Status Badges" section for full maintenance guide
+**Booking Status Badges** (Verified-only system since Sept 4, 2026; replaced the Feb "default-green" design that produced 60 false "2026 Open" claims after the season):
+- **No `bookingStatus` field** (default) → no badge. Absence of a badge is the honest state.
+- `bookingStatus: "open"` → green "Booking open"
+- `bookingStatus: "<year> dates published"` (or any other verified text) → blue badge with that text
+- `bookingStatus: "not yet open"` → no badge
+- Set the field only from a verified operator source, with a provenance comment on the `dates:` line
+- See CODE_STRUCTURE.md "Booking Status Badges" section for the implementation and maintenance guide
 
 ```
 ```
