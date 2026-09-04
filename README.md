@@ -13,7 +13,7 @@ A comprehensive web application featuring **65 verified summer camp organization
 - **24 European countries** including Switzerland, Norway, UK, Germany, Sweden, Denmark, and more
 - **Comprehensive pricing range** from €130 per week to CHF 6,980
 - **Detailed camp profiles** with activities, languages, age groups, and special features
-- **Featured listings** with premium visibility for partner camps
+- **Premium listings** with priority placement for partner camps
 
 ### 🔍 **Advanced Search & Discovery**
 - **Real-time search** across camp names, locations, and countries
@@ -97,9 +97,15 @@ camp-explorer-europe-2026/
 │   ├── assets/            # Optimized images and media files
 │   ├── components/        # Reusable UI components
 │   │   └── ui/           # Shadcn/ui component library
+│   ├── data/
+│   │   ├── camps.js      # Camp data (allCamps), review sources, age parser
+│   │   ├── faq.js        # FAQ content (mirrored into the FAQPage JSON-LD at build time)
+│   │   └── season.js     # Season year and directory "Updated" month
 │   ├── App.jsx           # Main application component
 │   ├── App.css           # Global styles and utilities
 │   └── main.jsx          # Application entry point
+├── scripts/               # Build-time validators (camp data, FAQ sync)
+├── vercel.json           # Security headers and deployment config
 ├── package.json          # Dependencies and scripts
 ├── tailwind.config.js    # Tailwind CSS configuration
 └── vite.config.js        # Vite build configuration
@@ -118,7 +124,7 @@ npm run lint         # Run ESLint code quality checks
 
 ### Adding New Camps
 
-1. Open `src/App.jsx`
+1. Open `src/data/camps.js`
 2. Add new camp object to the `allCamps` array
 3. Follow the established data structure:
    ```javascript
@@ -164,7 +170,7 @@ Any static hosting service that supports single-page applications will work with
 
 - **GDPR Compliant:** Cookie consent implementation for EU users
 - **Privacy Focused:** Analytics only loaded with user consent
-- **Secure Headers:** HSTS and CSP security implementations
+- **Secure Headers:** HSTS, X-Frame-Options, nosniff, Referrer-Policy and Permissions-Policy served from vercel.json; Content Security Policy in report-only mode
 - **User Control:** Clear privacy options and data handling
 
 ## 🤝 Contributing

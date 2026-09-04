@@ -39,7 +39,7 @@ Camp Explorer Europe 2026 has achieved **Phase 1 excellence**. The site is live,
 
 ### Actions:
 1. **Configure Google Analytics 4**
-   - Replace placeholder `G-XXXXXXXXXX` in `src/App.jsx:8`
+   - ✅ Done January 2026: live Measurement ID G-3FMMGNJRLE, consent-gated
    - Create GA4 property if not exists
    - Set up conversion goals (camp clicks, contact form submissions)
 
@@ -261,7 +261,7 @@ Current Nordic coverage: 16 camps (25% of 65-camp database) — target achieved
 
 ## Priority 5: Monetization Preparation
 
-**Trigger:** At 1K+ sessions/month
+**Trigger:** At 1K+ sessions/month (overtaken by events: first paid Premium listing sold September 2026 on inbound demand)
 
 ### Revenue Stream Roadmap:
 | Stream | Effort | Potential | Order |

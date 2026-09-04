@@ -131,46 +131,7 @@ Before implementing ANY change:
 
 ### **🚨 CRITICAL: Stats appear in MULTIPLE locations - update ALL of them!**
 
-When the number of camps, organizations, or countries changes, you MUST update ALL these locations:
-
-```bash
-# Search for current values before updating:
-grep -n "32\|36" src/App.jsx  # Find organization count
-grep -n "20\|21" src/App.jsx  # Find country count
-```
-
-**ALL LOCATIONS IN App.jsx to update (as of January 2026):**
-
-| Line ~# | Location | What to Update |
-|---------|----------|----------------|
-| ~1604 | **Orange marquee banner** | "X Verified Organizations • Y Countries" |
-| ~1667 | **Hero stats array** | `value: "Y"` for Countries |
-| ~1671 | **Hero stats array** | `value: "X"` for Organizations |
-| ~2643 | **Blue badge** | "X Verified Organizations" |
-| ~2644 | **Green badge** | "Y Countries" |
-| ~2793 | **Featured Countries heading** | "Explore camps across Y European countries" |
-| ~4068 | **Footer stats** | "X" Organizations bold number |
-| ~4072 | **Footer stats** | "Y" Countries bold number |
-| ~4462 | **About - Geographic Expertise** | "Y European countries, Nordic specialization" |
-
-**Search commands to find ALL instances:**
-```bash
-grep -n "Verified Organizations" src/App.jsx
-grep -n "Countries" src/App.jsx | grep -v "handleCountryFilter\|country\|Country:"
-grep -n "European countries" src/App.jsx
-```
-
-**When adding a NEW COUNTRY:**
-1. Add country to footer quick links (with flag emoji) - search `handleCountryFilter`
-2. Update ALL country counts (currently 9+ locations)
-3. Add country's search terms to multilingual support - search `searchTerms`
-
-**Verification command after updates:**
-```bash
-# Ensure NO old values remain:
-grep -n "OLD_ORG_COUNT Verified\|OLD_COUNTRY_COUNT Countries\|OLD_COUNTRY_COUNT European" src/App.jsx
-# Should return NO matches
-```
+When the number of organizations or countries changes, the site updates itself: the hero and footer counts, the marquee, the age span and the country list derive from `allCamps` in `src/data/camps.js`. Three literal claims remain and are checked by `npm run validate:camps` before every build: the country count and organization count in `public/sitemap.xml`, the "across N countries" phrase in `index.html`, and the FAQ age sentence. Update those when the validator fails, and the counts in README.md by hand.
 
 ---
 
@@ -210,7 +171,7 @@ grep -n "OLD_ORG_COUNT Verified\|OLD_COUNTRY_COUNT Countries\|OLD_COUNTRY_COUNT 
   country: string,               // Must match existing country filters
   ages: string,                  // Age range format: "X-Y years"
   price: string,                 // Include currency symbol
-  category: string,              // One of: premium|academic|language|sports|family|budget|unique|local
+  category: string,              // One of: premium|academic|language|sports|family|budget|unique
   activities: string[],          // Array of activity strings
   languages: string[],           // Array of language codes/names
   highlights: string[],          // Array of special features
@@ -389,7 +350,7 @@ npm run dev        # Manual testing required
 
 ### **Emergency Fixes**
 1. **Hot Fix Protocol**: Follow automated workflow with immediate deployment
-2. **Rollback Ready**: `git reset --hard HEAD~1` if needed (rare with automated testing)
+2. **Rollback Ready**: `git revert <sha>` if needed (never reset --hard; the owner pushes via GitHub Desktop)
 3. **Post-Fix Analysis**: Document what went wrong and prevention
 
 ---
@@ -485,15 +446,15 @@ If manual commits are needed, follow the automated format above.
 
 #### **Schema Type Selection**
 ```javascript
-// ✅ CORRECT: For directory portals listing events
+// ✅ CORRECT: For a directory of camp operators (what index.html ships)
 {
-  "@type": "Event",
+  "@type": "EducationalOrganization",
   "name": "Summer Camp Name",
-  "startDate": "2026-06-15", 
-  "endDate": "2026-08-31",
-  "location": { /* Place schema */ },
-  "organizer": { /* Organization schema */ }
+  "url": "https://camp-website.example",
+  "address": { /* PostalAddress */ }
 }
+// Site-level: WebSite, Organization, ItemList (categories), FAQPage, BreadcrumbList.
+// Never AggregateRating (Google prohibits it for directory sites) and never Event for camps.
 
 // ❌ INCORRECT: Product schema for non-e-commerce
 {
@@ -503,13 +464,13 @@ If manual commits are needed, follow the automated format above.
 ```
 
 #### **Business Model Alignment**
-- **Directory Portal**: Use Event, ListItem, Organization schemas
+- **Directory Portal**: Use EducationalOrganization, ItemList, Organization, FAQPage, BreadcrumbList schemas
 - **E-commerce Site**: Use Product, Offer schemas
 - **Rule**: Schema must match actual business model and user actions
 
 #### **Google Policy Compliance**
 - **Product schema**: Only for sites where users can purchase directly
-- **Event schema**: For camps, conferences, activities with dates/locations
+- **EducationalOrganization**: For the camps we list (implemented Sept 2025, replacing an earlier Product schema)
 - **Penalty Risk**: Misusing e-commerce schema on directory sites triggers manual penalties
 
 #### **Schema Implementation Checklist**

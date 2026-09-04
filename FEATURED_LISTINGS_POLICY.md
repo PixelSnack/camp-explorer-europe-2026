@@ -172,7 +172,7 @@ Every listing card displays the following information:
 | **Category badge** | Color-coded category label | "Outdoor Adventure", "Family Sailing Resort" |
 | **Rating** | Star rating (out of 5) | 4.6, 4.9, 4.8 |
 | **Program dates** | When the program runs | "July 22-29, 2026", "May-October 2026" |
-| **2026 Open badge** | Indicates bookings open | "2026 Open" |
+| **Booking badge** | Verified-only: green "Booking open" or blue "<year> dates published"; no badge is the default | "2027 dates published" |
 | **Camp name** | Full name of camp/program | "Adventure Camp Bavaria" |
 | **Price** | Cost with duration | "€445 per 2 weeks", "From £845 per 2 weeks" |
 | **Location** | City/region, Country | "Bayerischer Wald, Germany" |
@@ -314,8 +314,8 @@ Camp Explorer Europe
 ```
 
 **If she has 5 locations and asks about pricing:**
-- Single location: €99/year
-- All 5 locations: Offer €349/year (30% bundle discount)
+- Single location: Premium €299/year list (€199 introductory first year)
+- Multiple locations: one listing presents the organization and its locations; a bundle price is the owner's call, case by case
 
 ---
 
@@ -349,7 +349,7 @@ individual rate)."
 ```
 "I can't promise specific click numbers - that wouldn't be honest.
 What I can offer is priority visibility to parents actively searching
-for [category] programs in Europe. The €99 investment is modest enough
+for [category] programs in Europe. The €199 investment is modest enough
 that even a single booking inquiry would likely deliver strong ROI
 given your program pricing."
 ```

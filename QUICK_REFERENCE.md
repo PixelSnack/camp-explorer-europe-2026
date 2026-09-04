@@ -3,7 +3,7 @@
 ## ✅ FEATURED LISTING DEMO (Jan 18, 2026)
 **STATUS**: COMPLETE - Les Elfes demo Featured listing live on production
 
-**PURPOSE**: Show potential camp operators (like Boundless Life) what the €99/year Featured tier looks like
+**PURPOSE**: Show camp operators what a paid Premium listing looks like (the €99 Featured tier was discontinued 2 Sept 2026; Premium is €299 list, €199 introductory)
 
 **WHAT WAS DONE:**
 - Selected Les Elfes International as demo Featured listing
@@ -23,7 +23,7 @@
 - Shows 3 highlights instead of 2
 
 **VERIFICATION DATA (Les Elfes):**
-- Price: CHF 4,550 (verified accurate)
+- Price: From CHF 4,750 per two weeks (re-verified Aug 2026; summer is sold in two-week blocks only)
 - Ages: 6-17 years (verified accurate)
 - Capacity: 180 (updated from 120)
 - Dates: June - August 2026
@@ -196,7 +196,7 @@
 - **Camp Data**: `src/data/camps.js` (~1,545 lines, allCamps array)
 - **Sitemap**: `public/sitemap.xml` (single clean URL)
 - **Security**: `vercel.json` headers block (X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy, CSP report-only). NOTE: `public/_headers` was never applied by Vercel; removed 17 Aug 2026
-- **Schema**: `index.html` (Event schema, FAQPage, BreadcrumbList)
+- **Schema**: `index.html` (WebSite, Organization, ItemList, FAQPage, BreadcrumbList; camps are EducationalOrganization, never Event or Product)
 - **Hero Image**: `public/european-summer-camps-hero.png` (optimized)
 
 ## 📚 DOCUMENTATION STRUCTURE
@@ -280,8 +280,8 @@
 ## ⚡ EMERGENCY COMMANDS
 ```bash
 npm run build    # Must pass before deploy
-npm run lint     # 6 shadcn warnings OK
-git reset --hard HEAD~1  # Rollback if broken
+npm run lint     # 2 shadcn warnings OK
+git revert <sha>         # Rollback if broken (never reset --hard, never amend)
 ```
 
 ## 🚀 DEPLOYMENT WORKFLOW
@@ -300,7 +300,7 @@ git reset --hard HEAD~1  # Rollback if broken
 - ✅ Code Review: Tier 1+2 COMPLETE, Tier 3 partial (8/20), ~65 total items in CODE_REVIEW_2026.md
 - ✅ Security: headers finally live via vercel.json (17 Aug 2026; nothing but default HSTS was served before). Vite 7.3.1. npm audit: 0 prod, 1 dev-only (sharp). Full audit: docs/reports/HEALTH_CHECK_2026-08-17.md
 - ✅ Performance: FULLY OPTIMIZED (93-96% total image reduction)
-- ✅ Accessibility: WCAG 2.1 AA mostly compliant (user-scalable=no fix pending)
+- ✅ Accessibility: WCAG 2.1 AA compliant (user-scalable fix landed Feb 2026)
 - ✅ SEO: 6.5/10 SCORE (ranking #1 for primary query, but schema/robots.txt gaps found)
 - ✅ Schema: Rich snippets ready but Organization @id linking needed
 - ✅ GDPR: EU LAW COMPLIANT (cookie banner, dual analytics blocking, privacy policy)
@@ -308,13 +308,13 @@ git reset --hard HEAD~1  # Rollback if broken
 - ✅ Mobile UX: CROSS-PLATFORM PERFECTION (70% mobile traffic: iOS 50%, Android 18%)
 - ✅ International: MULTILINGUAL SEARCH (6 European languages - added Swedish)
 - ✅ Categories: 7 categories (Premium Alpine, Academic & STEM, Language Immersion, Sports Specialty, Family Programs, Budget Excellence, Unique Experiences)
-- 📊 Traffic: 168 visitors/30 days (98 from Google, 5 from ChatGPT - AI referrals working!)
+- 📊 Traffic: July 2026 record month (302 users, 382 sessions); organic 66% plus AI referrals 16%, ChatGPT the #2 source (21% of sessions); August is the seasonal trough, not decline
 - 🎯 Virtual Scrolling: READY TO IMPLEMENT (TanStack React Virtual installed)
 - 🔄 Phase 2: READY WHEN TRAFFIC JUSTIFIES (React Router + SSG)
 
-**STATUS: FIRST MONETIZATION TEST - Email sent to Boundless Life (Jan 16, 00:28), awaiting response** 💰
+**STATUS: FIRST SALE - ILC (Premium, €199 introductory), invoice 2026-001 sent 3 Sept 2026, activation on payment. Boundless Life never replied (closed Aug 2026).** 💰
 
-### 🚨 KEY FINDINGS FROM 5-AGENT AUDIT (Feb 3, 2026)
+### ✅ KEY FINDINGS FROM 5-AGENT AUDIT (Feb 3, 2026) - all four resolved between Feb and Aug 2026
 | Priority | Issue | Action |
 |----------|-------|--------|
 | 🚨 LEGAL | Privacy policy claims no email but form collects it | Fix T2-24 |

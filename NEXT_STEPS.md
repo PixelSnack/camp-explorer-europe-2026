@@ -9,10 +9,10 @@
 
 ## 🔴 **START HERE — SESSION PICKUP (4 September 2026, morning)**
 
-**State on exit 4 Sept ~10:00:** Season rollover Wave 1 is IMPLEMENTED and COMMITTED, NOT PUSHED. Commits on main since 7058a70, awaiting the owner's push in GitHub Desktop: 244bdc2 (docs, invoice + GSC pull), 9c7099c (plan), db5f003 (data), bb7be98 (FAQ module), a12af02 (App.jsx), cfc7b32 (evergreen metadata, rollback target), 3314abe (title 2027), f2a9af7 (control docs), f9cfb67 (review fixes), 1ac393d and 7b7ea92 (docs), d55e2e7 (code-review closing batch + Filmkollo 2027), da811e9 (closing docs), 78a6feb (README price floor, FAQ 48px, guidelines vocabulary). Everything after 7058a70 is unpushed; `git rev-list --count origin/main..HEAD` gives the exact count. Reviews: Fable SEO GO WITH CHANGES, SOL SHIP WITH FIXES, Fable security SHIP, Fable code SHIP WITH FIXES; every accepted item landed. Decision record with the reviewer adjudications: `docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md`. Session memory: `esc-wave1-night-2026-09-03`.
+**State 4 Sept evening:** Season rollover Wave 1 is LIVE (owner pushed at about 19:00; production gates 1 and 2 clean). Later commits (mobile-first fixes 8823451, docs) await the next push. Commits on main since 7058a70: 244bdc2 (docs, invoice + GSC pull), 9c7099c (plan), db5f003 (data), bb7be98 (FAQ module), a12af02 (App.jsx), cfc7b32 (evergreen metadata, rollback target), 3314abe (title 2027), f2a9af7 (control docs), f9cfb67 (review fixes), 1ac393d and 7b7ea92 (docs), d55e2e7 (code-review closing batch + Filmkollo 2027), da811e9 (closing docs), 78a6feb (README price floor, FAQ 48px, guidelines vocabulary). Everything after 7058a70 is unpushed; `git rev-list --count origin/main..HEAD` gives the exact count. Reviews: Fable SEO GO WITH CHANGES, SOL SHIP WITH FIXES, Fable security SHIP, Fable code SHIP WITH FIXES; every accepted item landed. Decision record with the reviewer adjudications: `docs/reports/WAVE1_ROLLOVER_PLAN_2026-09-03.md`. Session memory: `esc-wave1-night-2026-09-03`.
 
 ### Owner, in this order
-1. **Push** in GitHub Desktop (Vercel deploys in about a minute).
+1. ~~Push~~ DONE 4 Sept ~19:00; push again for the mobile-first fixes and the documentation batch.
 2. ~~Send the ILC invoice~~ DONE: invoice 2026-001 (EUR 199, due 17 Sept) went out 3 Sept 21:54 from partnerships@ with the PDF attached (confirmed in the thread on 4 Sept). Payment reminder at 7 days if unpaid (10 Sept); activation on payment. LayosCamp has NO invoice: the thread ends with the 2 Sept quote (79 EUR onboarding or Premium 199) and waits for their 2027 dates and prices.
 3. **PayPal tax information is due 5 Sept** (owner-only, policy dashboard).
 4. Delete the detached duplicate LayosCamp draft (opens without conversation history).
@@ -60,7 +60,7 @@ EmailJS cosmetic pass; CSP report-only to enforce (ask first, console-check 2-3 
 - ✅ **Pricing Verified**: 100% of camps have accurate per-child pricing
 - ✅ **Price Display**: Two-line layout (price + duration) with "From" label above
 - ✅ **Mobile UX**: Footer spacing optimized for iOS
-- ✅ **Security**: Enterprise-grade CSP enforced, no critical vulnerabilities
+- ✅ **Security**: headers served from vercel.json since 17 Aug 2026 (CSP report-only); before that date no headers were live
 - ✅ **Dual Analytics**: Google Analytics 4 + Vercel Analytics implemented
 - 🔄 **Next Priority**: Add duration to ~18 camps missing it (consistency fix)
 

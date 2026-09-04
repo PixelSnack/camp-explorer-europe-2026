@@ -122,15 +122,15 @@ export const allCamps = [
     location: "Verbier, Switzerland",
     country: "Switzerland",
     ages: "6-17 years",
-    price: "From CHF 4,550",
+    price: "From CHF 4,750/2 weeks",  // Verified Aug 2026 (two-week blocks only)
     priceRange: "premium",  // budget | mid | premium | luxury
-    rating: 4.9,
-    reviews: 847,
+    rating: 4.7,   // weighted aggregate; null when no reviews exist
+    reviews: 259,
     image: heroImage,
     category: "premium",  // See categories below
     type: "Alpine Adventure",
     activities: ["Activity1", "Activity2", ...],
-    dates: "June - August 2026",
+    dates: "June 6 - Aug 28, 2027",  // keep under ~40 characters so the card chip stays one line on phones
     highlights: ["Highlight1", "Highlight2", ...],
     languages: ["English", "French", ...],
     specialFeatures: ["Feature1", "Feature2", ...],
@@ -138,7 +138,7 @@ export const allCamps = [
     capacity: 180,
     bookingUrl: "https://...",
     videoUrl: "https://...",  // Optional
-    bookingStatus: "Opens Feb 15"  // Optional override (see Booking Status Badges below)
+    bookingStatus: "2027 dates published"  // Optional, verified only (see Booking Status Badges below)
   },
   // ... 64 more camps (65 total)
 ]
@@ -268,7 +268,7 @@ const [showCookieBanner, setShowCookieBanner] = useState(false)
 
 ## Featured Listing Implementation
 
-Featured camps (€99/year tier) have special treatment:
+Premium listings (€299/year list, €199 introductory; the €99 Featured tier was discontinued 2 Sept 2026) have special treatment:
 
 ```javascript
 // In camp object
@@ -332,7 +332,7 @@ const BookingStatusBadge = ({ camp }) => { /* renders the badge or null */ }
 - `SeasonNotice` (module scope, next to the badge helpers): the one-paragraph notice rendered above both camp grids explaining that most organizations publish next-season dates between September and December; edit the text once, it renders in both places.
 ```
 
-Both card grids (Home and Discover) render `<BookingStatusBadge camp={camp} />` in the image overlay; grep for `BookingStatusBadge` to find them. `animate-pulse` carries `motion-reduce:animate-none`.
+Both card grids (Home and Discover) render `<BookingStatusBadge camp={camp} />` inside the bottom overlay row of the card image (date chip left, badge right, wrapping to a second row on narrow phones); grep for `BookingStatusBadge` to find them. The badge has no animation.
 
 ### Current explicit values (September 4, 2026)
 
@@ -340,6 +340,7 @@ Both card grids (Home and Discover) render `<BookingStatusBadge camp={camp} />` 
 |---------|------|--------------|-------|
 | 1 | Les Elfes International | `"2027 dates published"` | Blue |
 | 10 | Adventure Camp Bavaria | `"2027 dates published"` | Blue |
+| 37 | Filmkollo | `"open"` | Green "Booking open" (2027 registration verified 4 Sept 2026) |
 
 The stale February values ("not yet open" on IDs 15 and 18, "Opens April" on ID 65) were removed on September 4, 2026.
 

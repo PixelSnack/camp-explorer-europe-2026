@@ -146,7 +146,7 @@ Evergreen core, dated edges. Title, meta, H1, brand, hero, schema, guide title a
 
 Access was granted 17 Aug 2026 (service account, Restricted, URL-prefix property `https://www.europeansummercamps.com/`). The `gsc` MCP server was upgraded by Playground on 22 Aug (mcp-search-console 0.3.3) and has failed every call since with `[SSL: CERTIFICATE_VERIFY_FAILED]`, exactly the "lost on a package upgrade" warning. Bridge note to Playground sent 4 Sept 2026 (their custody). **Workaround that works:** a standalone Python pull using the same service-account file with `truststore.inject_into_ssl()` and `HTTPLIB2_CA_CERTS` (never disable validation); the 3 Sept pull is `docs/reports/GSC_PULL_2026-09-03.md`. GA4 (property `521172443`) works when its server connects; it timed out on 3 Sept.
 
-### 🎉 **AWAITING RESPONSE: First Monetization Test (Boundless Life)**
+### ✅ **CLOSED: First Monetization Test (Boundless Life, no reply); first sale is ILC, September 2026 (see FEATURED_CAMPS.md)**
 - **Status**: Email sent January 17, 2026 at 00:28 - awaiting response
 - **Contact**: Megan Miller (megan.miller@boundless.life)
 - **Company**: Boundless Life - $2M seed-funded family co-living startup
@@ -251,7 +251,7 @@ Access was granted 17 Aug 2026 (service account, Restricted, URL-prefix property
 - [x] **Code Review Implementation**: ✅ Complete (Feb 3 PM) — 12 items: Vite 7.3.1, honeypot, Error Boundary, CSP, SEO schema
 - [ ] **Code Review Tier 3**: ~8 items pending (marquee memory leak, test coverage, image dimensions, etc.)
 - [ ] **Filter UI Refactor**: Extract shared `<FilterBar />` component (tech debt)
-- [ ] **Await Boundless Life Response**: Process Featured listing if accepted, create Basic if declined
+- [ ] **ILC activation on payment** (invoice 2026-001 sent 3 Sept 2026): camp ID 70, Premium styling, video button; see NEXT_STEPS Wave 2
 - [ ] **Traffic Growth**: Monitor Google Analytics for traffic patterns
 - [ ] **Virtual Scrolling**: Implement TanStack React Virtual (already installed)
 - [ ] **Phase 2 Planning**: React Router + SSG when traffic justifies (1K+ sessions/month)
@@ -431,13 +431,12 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 <a name="critical-workflows"></a>
 ## 3. 🔄 **CRITICAL WORKFLOWS**
 
-### 3.1 Pricing Verification Workflow (URGENT - ACTIVE)
+### 3.1 Pricing Verification Workflow (COMPLETE January 2026; the workflow stays for the quarterly re-check)
 
 **Crisis Context**: Found Camp Bjøntegaard showing facility rental rate (NOK 12,500) instead of per-child price (NOK 5,890) - 112% overcharge affecting real families.
 
-**Progress Tracking**: See PRICING_VERIFICATION_URGENT.md
-- ✅ **Verified (11/27)**: Camp Bjøntegaard, Myhre Gård, EUROCAM, Adventure Camp Bavaria, Les Elfes, La Garenne, Camp Suisse, Adventure Treks Norway, Nordic Terrain Academy, Oxford Summer Courses, Bede's Summer School
-- ⚠️ **Next Priority (16/27)**: New camps (IDs 24-29), Spanish/Finnish/Danish camps, remaining unverified camps
+**Progress Tracking**: docs/archive/PRICING_VERIFICATION_URGENT.md (100% complete January 2026). The quarterly re-check is overdue as of September 2026 and folds into Wave 2.
+- ✅ All 65 organizations verified (per-child pricing, January 2026); top-5 clicked camps re-verified 17 Aug 2026; Filmkollo re-verified 4 Sept 2026
 
 **Process:**
 1. **Check Progress**: Read PRICING_VERIFICATION_URGENT.md for next unverified camps
@@ -451,7 +450,7 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
    Report findings only, do not edit files."
    ```
 3. **Review Agent Report**: Critically assess findings for accuracy
-4. **Implement Changes**: YOU update `App.jsx` (lines ~23-2500) with correct prices
+4. **Implement Changes**: YOU update `src/data/camps.js` with correct prices and a provenance comment
 5. **Track Progress**: Update PRICING_VERIFICATION_URGENT.md with completion
 6. **Commit**: Include verification source and methodology in commit message
 
@@ -487,7 +486,7 @@ Part of **ResourceHub** umbrella project - building high-authority niche informa
 3. **Make Specific Change**: Only change required field(s)
 4. **Test Locally**: `npm run dev` - verify change displays correctly
 5. **Build Test**: `npm run build` - ensure no errors
-6. **Lint Check**: `npm run lint` - 4 warnings OK (shadcn/ui)
+6. **Lint Check**: `npm run lint` - 2 warnings OK (shadcn/ui)
 7. **Commit**: Clear description of what changed and why
 
 ### 3.4 GitHub Desktop Deployment Workflow
@@ -859,7 +858,7 @@ Every code change must be evaluated holistically against these criteria:
 - ✅ "All Camps" reset works properly
 - ✅ Mobile responsiveness maintained
 - ✅ `npm run build` passes
-- ✅ `npm run lint` passes (4 warnings OK)
+- ✅ `npm run lint` passes (2 warnings OK)
 
 ### 5.3 Accuracy-First Verification (September 2025)
 
@@ -898,7 +897,7 @@ Every code change must be evaluated holistically against these criteria:
 3. **Test before committing**:
    - `npm run dev` (check functionality)
    - `npm run build` (ensure builds successfully)
-   - `npm run lint` (4 warnings OK - shadcn/ui)
+   - `npm run lint` (2 warnings OK - shadcn/ui)
 4. **Write comprehensive commit messages** (see Workflow section)
 5. **Push to main branch only** via GitHub Desktop
 6. **Vercel auto-deploys** in 30-60 seconds
@@ -949,12 +948,12 @@ Batch 3: Documentation updates
 npm install          # Install dependencies
 npm run dev          # Local development (localhost:5173)
 npm run build        # Production build test (~7-9 seconds)
-npm run lint         # Code quality (4 warnings OK - shadcn/ui)
+npm run lint         # Code quality (2 warnings OK - shadcn/ui)
 ```
 
 **Expected Results:**
 - **Build**: ~7-9 seconds, no errors
-- **Lint**: 4 warnings (safe shadcn/ui component warnings)
+- **Lint**: 2 warnings (safe shadcn/ui component warnings)
 - **Dev Server**: Starts on http://localhost:5173
 
 ### 5.7 Chrome MCP Usage Policy
@@ -1103,26 +1102,32 @@ europeansummercamps/
 
 ```javascript
 {
-  id: [unique_number],          // Assign next sequential number
+  id: [unique_number],          // Assign next sequential number (next: 70)
+  featured: true,               // OPTIONAL, paid Premium listing only
   name: "Camp Name",
   location: "City, Region",
   country: "Country Name",      // Full name, not country code
-  ages: "X-Y years",
-  price: "€X,XXX" or "CHF X,XXX",  // Local currency, per-child
-  duration: "X weeks",
-  category: "category_name",    // Only ONE category
+  ages: "X-Y years",            // Parsed by parseAges(); "6+ years" and "All ages" also accepted
+  price: "From €X,XXX/1 week",  // Local currency, per-child, with the unit; provenance comment on the line
+  priceRange: "budget",         // budget | mid | premium | luxury (EUR/week equivalent)
+  rating: X.X,                  // Weighted aggregate, or null when no reviews exist
+  reviews: XXX,                 // Total review count (0 hides the review row)
+  image: importedImage,         // Imported asset, not a filename
+  category: "category_key",     // Only ONE: premium | academic | language | sports | family | budget | unique
+  type: "Short label",          // Card chip, e.g. "Alpine Adventure"
   activities: ["activity1", "activity2", "activity3"],
-  languages: ["Language1", "Language2"],
-  description: "Brief description of the camp...",
-  image: "camp-image.jpg",
-  url: "https://campwebsite.com",  // Must be tested working
+  dates: "June 6 - Aug 28, 2027",  // Keep under ~40 characters; provenance comment on the line
   highlights: ["highlight1", "highlight2", "highlight3"],
+  languages: ["Language1", "Language2"],
+  specialFeatures: ["feature1"],
   established: YYYY,            // Year established
   capacity: XXX,                // Maximum participants
-  reviews: XXX,                 // Review count
-  rating: X.X,                  // Rating out of 5
-  bookingStatus: "Opens Feb 15" // OPTIONAL override - see Booking Status Badges
+  bookingUrl: "https://...",    // Tested, https only
+  videoUrl: "https://youtu.be/...",  // OPTIONAL
+  bookingStatus: "open",        // OPTIONAL, verified only: "open" | "not yet open" | "<SEASON_YEAR> dates published"
+  reviewData: { lastVerified: "2026-02", sources: {} }  // OPTIONAL, see REVIEW_METHODOLOGY.md
 }
+// Authoritative field checks: scripts/validate-camps.js (runs before every build).
 ```
 
 **Booking Status Badges** (Verified-only system since Sept 4, 2026; replaced the Feb "default-green" design that produced 60 false "2026 Open" claims after the season):
@@ -1595,7 +1600,7 @@ npm run build && npm run dev
 npm install          # Install dependencies
 npm run dev          # Start dev server (localhost:5173)
 npm run build        # Production build (~7-9 sec)
-npm run lint         # Code quality (4 warnings OK)
+npm run lint         # Code quality (2 warnings OK)
 ```
 
 ---

@@ -1,3 +1,5 @@
+> **Superseded (4 September 2026):** this file is a January 2026 snapshot kept for history. Current facts live in README.md, CLAUDE.md and QUICK_REFERENCE.md; security state in docs/reports/HEALTH_CHECK_2026-08-17.md. Counts, prices and header claims below are out of date.
+
 # 🚀 Complete Vercel Deployment Guide
 
 **Step-by-Step Instructions for Deploying Camp Explorer Europe 2026**

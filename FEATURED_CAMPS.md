@@ -1,6 +1,6 @@
 # FEATURED CAMPS - Camp Explorer Europe 2026
 
-*Tracking document for Featured listings (€99/year tier)*
+*Tracking document for paid Premium listings (€299/year list, €199 introductory; the €99 Featured tier was discontinued 2 Sept 2026)*
 
 **Created:** January 18, 2026
 **Last Updated:** September 3, 2026
@@ -40,13 +40,13 @@ This document tracks all Featured camp listings, including verification status, 
 
 | Data Point | Current Value | Verified Value | Status |
 |------------|---------------|----------------|--------|
-| Price | From CHF 4,550 | From CHF 4,550 | ✅ Accurate |
+| Price | From CHF 4,750/2 weeks | CHF 4,750 to 6,500 per two-week session (2027) | ✅ Re-verified Aug 2026 |
 | Ages | 6-17 years | 6-17 years | ✅ Accurate |
 | Established | 1987 | 1987 | ✅ Accurate |
 | Capacity | 180 | 180 (Verbier) | ✅ Updated |
 | Activities | 4 listed | 45+ available | ✅ Accurate |
 | Languages | 5 listed | 5 confirmed | ✅ Accurate |
-| Dates | June - August 2026 | June-August 2026 | ✅ Updated |
+| Dates | June 6 - Aug 28, 2027 | Six two-week sessions, 2027 | ✅ Re-verified Aug 2026 |
 | Booking URL | /summer-camps/ | /summer-camps/ | ✅ Verified working |
 | Video URL | YouTube promo | https://www.youtube.com/watch?v=Z9--hHAq40g | ✅ Added Jan 22 |
 | Highlights | 3 shown | 38+ yrs, 10K campers, 45+ activities | ✅ Updated |
@@ -98,7 +98,7 @@ This document tracks all Featured camp listings, including verification status, 
 | **Category Fit** | Family Programs |
 | **Inquiry Date** | January 16, 2026 |
 | **Our Response** | January 17, 2026 (00:28) |
-| **Status** | ⏳ Awaiting response |
+| **Status** | ❌ Closed, no reply (Jan to Aug 2026) |
 
 **Their Request:**
 - Asked to be added to our listing

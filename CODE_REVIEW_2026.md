@@ -29,7 +29,7 @@
 
 **Total: 77 items** (48 done, 29 pending)
 
-**Key Files:** `src/App.jsx` (4,661 lines) | `src/data/camps.js` (1,196 lines) | `public/_headers` | `index.html`
+**Key Files:** `src/App.jsx` | `src/data/camps.js` | `vercel.json` (headers; `public/_headers` was never applied by Vercel and was removed 17 Aug 2026) | `index.html`
 
 ---
 
@@ -48,7 +48,7 @@ This is a well-built, functional production website that is successfully serving
 ### Top 5 Strengths (DO NOT TOUCH)
 1. **SEO is working** — 73% organic traffic, ranking #1-5 for target keywords
 2. **Mobile UX is solid** — 70% mobile traffic handled well, touch targets correct
-3. **Security headers are enterprise-grade** — HSTS, CSP, X-Frame-Options all correct
+3. **Security headers** — served from vercel.json since 17 Aug 2026 (X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy enforced; CSP report-only). Before that date nothing but the default HSTS was live; the February claim was wrong
 4. **Filter system works correctly** — Multi-select with proper OR logic, ARIA compliant
 5. **GDPR compliance is complete** — Cookie consent gates analytics properly
 
@@ -96,7 +96,7 @@ These systems are battle-tested, working in production, and must NOT be modified
 | Marquee animation | `initializeMarqueeSystem()` in useEffect + App.css marquee classes | App.jsx ~622-762 | Battle-tested iOS/Android, complex animation timing. Fix the memory leak (new Tier 2) but do NOT restructure. |
 | GA4 tracking + UTM system | `buildOutboundUrl()`, `trackOutboundClick()`, `handleBookingClick()` | App.jsx ~75-108 | Revenue-critical, working, drives partner reporting |
 | EmailJS contact form | `handleContactFormSubmit()` + EmailJS config | App.jsx ~135-187 | Working cross-platform, tested with real submissions |
-| Security headers | `public/_headers` | All lines | Enterprise-grade, audited Sept 2025 + Feb 2026. Add to CSP, don't restructure. |
+| Security headers | `vercel.json` | headers block | Live since 17 Aug 2026 (see docs/reports/HEALTH_CHECK_2026-08-17.md). CSP report-only; enforce after a clean production console check. |
 | Cookie consent system | `handleCookieAccept()`, `handleCookieReject()`, consent useEffect | App.jsx ~533-560, ~818-830 | GDPR compliant, gates GA4 + Vercel Analytics correctly |
 | Schema/structured data | index.html JSON-LD blocks | index.html ~76-395 | Currently ranking #1 on Google. Fix errors carefully — number changes only. |
 | Scroll navigation | scroll useEffect + `scrollToTop()`, `scrollToLastCamp()` | App.jsx ~597-619 | Tested iOS + desktop, Jan 2026, dead zones working. Fix listener churn (new Tier 3) without changing behavior. |
@@ -2060,8 +2060,8 @@ Three rounds of verification performed before execution:
 - `key={index}` anti-pattern in static camp lists — low risk for static data, not a security issue
 
 **What's working well:**
-- HSTS with 1-year max-age + includeSubDomains
-- CSP with script-src nonces (via Vercel), img-src whitelist
+- HSTS (Vercel default, max-age 2 years, no includeSubDomains yet: DNS subdomain inventory pending)
+- CSP report-only with an explicit script-src and img-src allowlist (no nonces)
 - GDPR consent gating for both GA4 and Vercel Analytics
 - EmailJS service with restricted domain access
 - All external links have `target="_blank"` with `noopener,noreferrer`
