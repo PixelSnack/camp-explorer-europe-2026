@@ -430,3 +430,10 @@ When you encounter an error and find a fix, add it here using this template:
 ---
 
 *This document complements CLAUDE.md Section 10 (Historical Context) — both are maintained for different purposes. This doc is for quick lookup during active work; Section 10 provides narrative context.*
+
+## 5 September 2026 (season rollover close-out)
+
+- **Never undersell the verification work in outward copy.** A FAQ answer written from the schema phrase "compiled from public sources, not site inspections" made the site sound like it does no verification. The owner corrected it: state the five-point test, the manual checks and the direct enquiries to camps, without claiming inspections or guarantees. Rule: describe what we actually do, no more and no less; the claims list in CAMP_VERIFICATION_CRITERIA.md is the boundary.
+- **Reviewer estimates are not measurements.** The mobile-first reviewer estimated widths from font metrics and flagged tablet clipping that did not exist (measured 697px pill inside 800px) while correctly finding a 320px overlap. Every layout finding is checked against rendered DevTools measurements before code changes; rejections are recorded with the numbers.
+- **Regional copy must name substance, not only price.** "Eastern Europe offers budget-friendly programs" read as condescending; the fix names the listed camps' strengths (university summer school, Lake Balaton sailing, national-park wilderness, seaside camps). Check every country sentence for this pattern.
+- **Tooling:** `grep -c` exits 1 on zero matches and silently breaks a `&&` chain (a commit was skipped once); use `|| true` or check the count in Python. A Python file named `inspect.py` shadows the stdlib and breaks every import. The Search Console URL-inspection deep link with an `id` parameter returns 404; open the property and use the top inspection bar. The Claude in Chrome window ignores resize when maximized; phone-width verification runs through the headless DevTools script.
