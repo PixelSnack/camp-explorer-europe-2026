@@ -14,10 +14,10 @@
 ### Owner, in this order
 1. **Push again** (GitHub Desktop): six commits after the 19:00 push: 8823451 mobile-first fixes, 90dee94 and the closing docs, cbe4515 documentation audit, e403d76 footer Romania + Slovenia, ce40a6b FAQ accuracy pass. Then a quick look at the FAQ (12 items) and the footer on the phone.
 1b. **Search Console** (two clicks, your call): URL Inspection on the root URL then Request indexing; Sitemaps then resubmit sitemap.xml. Google's last crawl was before the push.
-1c. **Archive decision** (delete or move, your call): the seven files listed under "Documentation audit" in the plan record's evening section.
+1c. ~~Archive decision~~ DONE 4 Sept: five superseded files moved to docs/archive (owner: leave the existing archive twins alone).
 2. ~~Send the ILC invoice~~ DONE: invoice 2026-001 (EUR 199, due 17 Sept) went out 3 Sept 21:54 from partnerships@ with the PDF attached (confirmed in the thread on 4 Sept). Payment reminder at 7 days if unpaid (10 Sept); activation on payment. LayosCamp has NO invoice: the thread ends with the 2 Sept quote (79 EUR onboarding or Premium 199) and waits for their 2027 dates and prices.
 3. **PayPal tax information is due 5 Sept** (owner-only, policy dashboard).
-4. Delete the detached duplicate LayosCamp draft (opens without conversation history).
+4. ~~Delete the detached duplicate LayosCamp draft~~ DONE by the owner 4 Sept.
 
 ### Claude, immediately after the push (production gates, mandatory)
 **Status 4 Sept ~19:40: gates 1 and 2 DONE and clean (record in the plan file). Gate 3 (Request indexing, sitemap resubmit) awaits the owner's click or go-ahead; Google's last crawl was 01:40Z, before the push. Gate 4 (weekly watch) starts the week of 7 Sept.**
@@ -53,7 +53,7 @@ EmailJS cosmetic pass; CSP report-only to enforce (ask first, console-check 2-3 
 3. QUICK_REFERENCE.md           # Current status and quick facts
 4. NEXT_STEPS.md               # This file - immediate priorities
 5. STRATEGIC_ROADMAP.md         # Path from foundation to monetization
-6. SPECIALIZED_AGENTS_ROADMAP.md # Agent capabilities
+6. CAMP_VERIFICATION_CRITERIA.md # Camp inclusion standards (agent prompts live in .claude/agents/)
 ```
 
 ### **Current Project Context (January 26, 2026):**
@@ -292,7 +292,7 @@ EmailJS cosmetic pass; CSP report-only to enforce (ask first, console-check 2-3 
 #### **Known Tech Debt:**
 - Filter UI is **duplicated** between Home section (~line 2048-2140) and Discover section (~line 2577-2670)
 - **TODO**: Extract shared `<FilterBar />` component to deduplicate
-- See `docs/strategy/FILTER_SYSTEM_IMPLEMENTATION_PLAN.md` for original plan (marked complete)
+- See `docs/archive/FILTER_SYSTEM_IMPLEMENTATION_PLAN.md` for the original plan (shipped Jan 2026, archived 4 Sept 2026)
 
 ---
 

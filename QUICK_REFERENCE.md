@@ -215,13 +215,10 @@
 ├── CODE_REVIEW_2026.md              📋 Code review findings & ~65-item checklist (read when doing code work)
 └── README.md                        Public-facing documentation (GitHub convention)
 
-/docs/reference/                     # Reference docs (7 files)
-├── QUICK-START.md                   5-minute deployment guide
+/docs/reference/                     # Reference docs (4 files)
 ├── MONETIZATION_STRATEGY.md         Revenue roadmap & pricing
-├── SECURITY_STATUS.md               Security tracking
-├── FEATURES.md                      Feature breakdown
-├── DEPLOYMENT-GUIDE.md              Deployment workflow
-├── PACKAGE-CONTENTS.md              Package overview
+├── SECURITY_STATUS.md               Security tracking (Jan 2026 snapshot; see docs/reports/HEALTH_CHECK_2026-08-17.md)
+├── DEPLOYMENT-GUIDE.md              Deployment workflow (Jan 2026 snapshot)
 └── ENTERPRISE_MARQUEE_SOLUTION.md   Mobile hero technical reference
 
 /.claude/agents/                     # Agent instructions (5 files, READ-ONLY)
@@ -231,8 +228,11 @@
 ├── security-audit-specialist.md
 └── seo-performance-optimizer.md
 
-/docs/archive/                       # Historical documents (12 files)
+/docs/archive/                       # Historical documents
 ├── CAMP_RESEARCH_JAN25_2026.md      Jan 25 camp research (NL, LT, NO, DK)
+├── FEATURES.md / QUICK-START.md / PACKAGE-CONTENTS.md   Jan 2026 README duplicates (archived 4 Sept 2026)
+├── FILTER_SYSTEM_IMPLEMENTATION_PLAN.md  Filter system plan, shipped Jan 2026 (archived 4 Sept 2026)
+├── SPECIALIZED_AGENTS_ROADMAP.md    Superseded by .claude/agents/ (archived 4 Sept 2026)
 ├── CLAUDE-BACKUP-*.md               Control document backups
 ├── CODE_REVIEW_PLAN.md              Original review plan (archived Feb 3, 2026)
 ├── CODE_REVIEW_PLAN_BACKUP_FEB3_2026.md  Backup before archiving
@@ -244,11 +244,9 @@
 ├── SECURITY_AUDIT_REPORT.md
 └── site-analysis-report.md
 
-/docs/strategy/                      # Future planning (5 files)
+/docs/strategy/                      # Future planning (3 files)
 ├── ANALYTICS_AND_STATS.md           GA4 reports, pitch metrics, milestones
-├── FILTER_SYSTEM_IMPLEMENTATION_PLAN.md  Filter system design (completed Jan 2026)
 ├── PHASE_2_IMPLEMENTATION_PLAN.md
-├── SPECIALIZED_AGENTS_ROADMAP.md
 └── VIRTUAL_SCROLLING_IMPLEMENTATION_PLAN.md
 ```
 

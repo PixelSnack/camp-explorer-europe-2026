@@ -1398,12 +1398,9 @@ Our SEO is ranking #1-5 on Google. Do NOT change search snippets or meta tags wi
 
 | Document | Purpose |
 |----------|---------|
-| **QUICK-START.md** | 5-minute deployment guide |
 | **MONETIZATION_STRATEGY.md** | Revenue roadmap and pricing |
-| **SECURITY_STATUS.md** | Ongoing security tracking |
-| **FEATURES.md** | Feature breakdown |
-| **DEPLOYMENT-GUIDE.md** | Deployment workflow |
-| **PACKAGE-CONTENTS.md** | Package overview |
+| **SECURITY_STATUS.md** | Security tracking (January 2026 snapshot; current state in docs/reports/HEALTH_CHECK_2026-08-17.md) |
+| **DEPLOYMENT-GUIDE.md** | Deployment workflow (January 2026 snapshot) |
 | **ENTERPRISE_MARQUEE_SOLUTION.md** | Mobile hero technical reference |
 
 ### Agent Instructions (`.claude/agents/`)
@@ -1423,18 +1420,15 @@ All 5 agents READ-ONLY mode:
 **VIRTUAL_SCROLLING_IMPLEMENTATION_PLAN.md**
 - TanStack Virtual implementation plan
 
-**SPECIALIZED_AGENTS_ROADMAP.md**
-- Agent development status and guidelines
-
 **ANALYTICS_AND_STATS.md**
 - GA4 reports to check, pitch metrics, milestone tracking
-
-**FILTER_SYSTEM_IMPLEMENTATION_PLAN.md**
-- Filter system design and implementation (completed Jan 2026)
 
 ### Archive Documents (`docs/archive/`)
 
 Historical documents from completed work:
+- `QUICK-START.md`, `FEATURES.md`, `PACKAGE-CONTENTS.md` - January 2026 README duplicates (archived 4 Sept 2026)
+- `FILTER_SYSTEM_IMPLEMENTATION_PLAN.md` - filter system plan, shipped Jan 2026 (archived 4 Sept 2026)
+- `SPECIALIZED_AGENTS_ROADMAP.md` - superseded by `.claude/agents/` (archived 4 Sept 2026)
 - `CODE_REVIEW_PLAN.md` - Original 3-pass review plan (archived Feb 3, 2026 — use CODE_REVIEW_2026.md instead)
 - `CODE_REVIEW_PLAN_BACKUP_FEB3_2026.md` - Backup before archiving
 - `IMPLEMENTATION_CHECKLIST.md` - Phase 1 completion (Sept 2025)

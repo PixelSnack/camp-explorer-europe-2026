@@ -405,7 +405,7 @@ The platform is live at www.europeansummercamps.com, ranking on page 1 for targe
 - **`CLAUDE.md`** - Complete technical documentation and architecture
 - **`DEVELOPMENT_GUIDELINES.md`** - Enterprise development standards
 - **`QUICK_REFERENCE.md`** - Current status and quick commands
-- **`FEATURES.md`** - Detailed feature breakdown
+- **`docs/archive/FEATURES.md`** - Detailed feature breakdown (January 2026 snapshot, archived)
 
 ### **Support Communities:**
 - **Vercel Community:** [vercel.com/community](https://vercel.com/community)
