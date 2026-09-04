@@ -30,7 +30,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Which European countries have the best summer camps?",
-    answer: "Switzerland leads in premium Alpine camps with stunning mountain settings. The UK offers excellent academic programs and language immersion. Scandinavia (Norway, Sweden, Denmark) provides unique Nordic experiences with outdoor adventures. France and Spain excel in language immersion, while Czech Republic and Eastern Europe offer budget-friendly quality programs."
+    answer: "Switzerland leads in premium Alpine camps with stunning mountain settings. The UK offers excellent academic programs and language immersion. Scandinavia (Norway, Sweden, Denmark) provides unique Nordic experiences with outdoor adventures. France and Spain excel in language immersion. Central and Eastern Europe combine strong value with real substance: English immersion in South Bohemia, a university-run Polish summer school in Kraków, sailing and windsurfing on Lake Balaton, wilderness camps in a Romanian national park and on Slovenian rivers, and seaside adventure camps on the Baltic and Adriatic coasts."
   },
   {
     question: "Do European summer camps provide meals and accommodation?",
