@@ -48,7 +48,8 @@ import heroLakesideCompressed from './assets/hero-lakeside-compressed.png'
 import activitiesAvif from './assets/activities-collage.avif'
 import activitiesWebp from './assets/activities-collage.webp'
 import './App.css'
-import { allCamps, activitiesCompressed, mapCompressed } from './data/camps.js'
+import { allCamps, activitiesCompressed, mapCompressed, AGE_SPAN, DIRECTORY_UPDATED } from './data/camps.js'
+import { FAQ_ITEMS } from './data/faq.js'
 
 // Hash-routed sections; unknown hashes (e.g. the #main-content skip link) must not change the view
 const KNOWN_SECTIONS = new Set(['home', 'discover', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])
@@ -93,6 +94,34 @@ const handleBookingClick = (camp) => {
   trackOutboundClick(camp)
   const trackedUrl = buildOutboundUrl(camp.bookingUrl, camp)
   window.open(trackedUrl, '_blank', 'noopener,noreferrer')
+}
+
+// The season parents are planning for: from September onward that is next summer.
+const SEASON_YEAR = (() => {
+  const now = new Date()
+  return now.getMonth() >= 8 ? now.getFullYear() + 1 : now.getFullYear()
+})()
+
+// Booking-status badge: rendered only when a camp carries a verified bookingStatus.
+// "open" is the only green state; any other verified text (e.g. "2027 dates published") is blue.
+const getBookingBadge = (camp) => {
+  const status = typeof camp.bookingStatus === 'string' ? camp.bookingStatus.trim() : ''
+  if (!status || status === 'not yet open') return null
+  return status === 'open'
+    ? { label: 'Booking open', tone: 'bg-green-500/90' }
+    : { label: status, tone: 'bg-blue-500/90' }
+}
+
+const BookingStatusBadge = ({ camp }) => {
+  const badge = getBookingBadge(camp)
+  if (!badge) return null
+  return (
+    <div className="absolute bottom-4 right-4">
+      <Badge className={`${badge.tone} text-white backdrop-blur-sm text-xs animate-pulse motion-reduce:animate-none`}>
+        {badge.label}
+      </Badge>
+    </div>
+  )
 }
 
 function App() {
@@ -382,9 +411,9 @@ function App() {
   ]
 
   const stats = [
-    { icon: Globe, label: "Countries", value: "24", description: "Across Europe" },
+    { icon: Globe, label: "Countries", value: String(countryList.length), description: "Across Europe" },
     { icon: Award, label: "Organizations", value: allCamps.length.toString(), description: "100+ verified camps" },
-    { icon: Users, label: "Ages", value: "3-24", description: "Years covered" },
+    { icon: Users, label: "Ages", value: AGE_SPAN, description: "Years covered" },
     { icon: Shield, label: "Researched", value: "100%", description: "Directory" }
   ]
 
@@ -856,7 +885,6 @@ function App() {
                 <span className="inline">Camp Explorer</span>
                 <span className="inline ml-1">Europe</span>
               </div>
-              <span className="ml-2 text-base sm:text-lg md:text-xl text-orange-500 font-semibold">2026</span>
             </button>
             
             {/* Desktop Navigation */}
@@ -971,7 +999,7 @@ function App() {
               aria-label="Camp information banner"
             >
               <span className="marquee-content">
-                {`2026 Season NOW OPEN • ${allCamps.length} Verified Organizations • 24 Countries`}
+                {`${allCamps.length} Verified Organizations • ${countryList.length} Countries • ${SEASON_YEAR} dates added as organizations publish them`}
               </span>
             </div>
           </div>
@@ -1011,7 +1039,7 @@ function App() {
           {/* Verification Badge */}
           <div className="flex justify-center items-start gap-2 text-white/90 text-sm max-w-md mx-auto px-4 mb-4">
             <Shield className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
-            <span>Camps verified for 2026 season | Updated August 2026</span>
+            <span>Verified directory | Updated {DIRECTORY_UPDATED}</span>
           </div>
 
           {/* Stats Bar */}
@@ -1193,6 +1221,7 @@ function App() {
       {/* Enhanced Camps Grid */}
       <section id="discover" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-sm text-gray-600 text-center mb-8">Most organizations publish their {SEASON_YEAR} dates between September and December. Cards show the latest verified dates; a blue badge marks camps with {SEASON_YEAR} dates published.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {/* Sort featured camps first, then by ID */}
             {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
@@ -1253,18 +1282,8 @@ function App() {
                       {camp.dates}
                     </Badge>
                   </div>
-                  {/* 2026 Booking Status Badge - default green, blue for future dates, hidden for not yet open */}
-                  {camp.bookingStatus !== 'not yet open' && (
-                    <div className="absolute bottom-4 right-4">
-                      <Badge className={`${
-                        !camp.bookingStatus || camp.bookingStatus === 'open'
-                          ? 'bg-green-500/90'
-                          : 'bg-blue-500/90'
-                      } text-white backdrop-blur-sm text-xs animate-pulse`}>
-                        {!camp.bookingStatus || camp.bookingStatus === 'open' ? '2026 Open' : camp.bookingStatus}
-                      </Badge>
-                    </div>
-                  )}
+                  {/* Booking-status badge: shown only for verified statuses (see getBookingBadge) */}
+                  <BookingStatusBadge camp={camp} />
                 </div>
                 
                 <CardHeader className="pb-3">
@@ -1429,7 +1448,7 @@ function App() {
                 <Globe className="w-10 h-10 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Cultural Diversity</h3>
-              <p className="text-gray-600">Experience 24 countries and meet children from 75+ nationalities</p>
+              <p className="text-gray-600">Experience {countryList.length} countries and meet children from 75+ nationalities</p>
             </div>
             
             <div className="text-center">
@@ -1545,7 +1564,7 @@ function App() {
       <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-700">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Plan the Perfect Summer 2026?
+            Ready to Plan the Perfect Summer?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
             Browse our directory to research camp options for your family.
@@ -1567,6 +1586,20 @@ function App() {
             >
               Complete Guide
             </Button>
+          </div>
+        </div>
+      </section>
+      {/* FAQ: visible counterpart of the FAQPage JSON-LD in index.html (scripts/validate-faq.js keeps them in sync) */}
+      <section className="py-16 bg-gray-50" aria-labelledby="faq-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 id="faq-heading" className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-3">
+            {FAQ_ITEMS.map(({ question, answer }) => (
+              <details key={question} className="bg-white rounded-lg border border-gray-200 p-4">
+                <summary className="cursor-pointer font-semibold text-gray-900">{question}</summary>
+                <p className="mt-3 text-gray-600">{answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
@@ -1745,6 +1778,7 @@ function App() {
         {/* Enhanced Camps Grid */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-sm text-gray-600 text-center mb-8">Most organizations publish their {SEASON_YEAR} dates between September and December. Cards show the latest verified dates; a blue badge marks camps with {SEASON_YEAR} dates published.</p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Sort featured camps first */}
               {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
@@ -1805,18 +1839,8 @@ function App() {
                         {camp.dates}
                       </Badge>
                     </div>
-                    {/* 2026 Booking Status Badge - default green, blue for future dates, hidden for not yet open */}
-                    {camp.bookingStatus !== 'not yet open' && (
-                      <div className="absolute bottom-4 right-4">
-                        <Badge className={`${
-                          !camp.bookingStatus || camp.bookingStatus === 'open'
-                            ? 'bg-green-500/90'
-                            : 'bg-blue-500/90'
-                        } text-white backdrop-blur-sm text-xs animate-pulse`}>
-                          {!camp.bookingStatus || camp.bookingStatus === 'open' ? '2026 Open' : camp.bookingStatus}
-                        </Badge>
-                      </div>
-                    )}
+                    {/* Booking-status badge: shown only for verified statuses (see getBookingBadge) */}
+                    <BookingStatusBadge camp={camp} />
                   </div>
                   
                   <CardHeader className="pb-3">
@@ -2152,7 +2176,7 @@ function App() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Plan Your Perfect Summer 2026
+                Plan Your Perfect Summer
               </h2>
               <p className="text-xl text-gray-600">
                 General booking timeline information based on typical camp patterns
@@ -2170,7 +2194,7 @@ function App() {
                       <Calendar className="w-6 h-6 text-green-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg text-gray-900">September - October 2025</h4>
+                      <h4 className="font-semibold text-lg text-gray-900">September - October</h4>
                       <p className="text-gray-600">Research and shortlist camps. Some camps may offer early booking incentives.</p>
                       <ul className="mt-2 text-sm text-gray-500">
                         <li>• Browse camp options</li>
@@ -2185,7 +2209,7 @@ function App() {
                       <Award className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg text-gray-900">November - December 2025</h4>
+                      <h4 className="font-semibold text-lg text-gray-900">November - December</h4>
                       <p className="text-gray-600">Secure your preferred camps with deposits</p>
                       <ul className="mt-2 text-sm text-gray-500">
                         <li>• Submit applications</li>
@@ -2200,7 +2224,7 @@ function App() {
                       <Globe className="w-6 h-6 text-orange-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg text-gray-900">January - March 2026</h4>
+                      <h4 className="font-semibold text-lg text-gray-900">January - March</h4>
                       <p className="text-gray-600">Complete documentation and preparations</p>
                       <ul className="mt-2 text-sm text-gray-500">
                         <li>• Arrange travel and visas</li>
@@ -2215,7 +2239,7 @@ function App() {
                       <Star className="w-6 h-6 text-purple-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg text-gray-900">April - May 2026</h4>
+                      <h4 className="font-semibold text-lg text-gray-900">April - May</h4>
                       <p className="text-gray-600">Final preparations and packing</p>
                       <ul className="mt-2 text-sm text-gray-500">
                         <li>• Receive detailed information packets</li>
@@ -2237,7 +2261,7 @@ function App() {
                     <div className="space-y-3">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Budget Excellence</span>
-                        <span className="font-semibold">€330 - €400</span>
+                        <span className="font-semibold">€130 - €800</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Mid-Range Programs</span>
@@ -2328,19 +2352,19 @@ function App() {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Comprehensive Guide to 
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600">
-                  European Kids Summer Camps 2026
+                  European Kids Summer Camps
                 </span>
               </h1>
               
               <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-                European summer camps in 2026 offer children unparalleled opportunities to learn, play, and grow in some of the world's most stunning locations. From Alpine adventure bases to Mediterranean beach retreats, there are options tailored to every age (3-24) and interest.
+                European summer camps offer children unparalleled opportunities to learn, play, and grow in some of the world's most stunning locations. From Alpine adventure bases to Mediterranean beach retreats, there are options tailored to every age ({AGE_SPAN}) and interest.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">{allCamps.length} Verified Organizations</Badge>
-                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">24 Countries</Badge>
+                <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">{countryList.length} Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
-                <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€330-CHF 7,000 Range</Badge>
+                <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€130-CHF 6,980 Range</Badge>
               </div>
             </div>
 
@@ -2396,7 +2420,7 @@ function App() {
                         <span className="font-semibold text-green-800">Excellent value</span>
                       </div>
                       <div className="flex flex-col sm:flex-row sm:justify-between">
-                        <span>💰 Budget (€330-800)</span>
+                        <span>💰 Budget (€130-800)</span>
                         <span className="font-semibold text-green-800">Outstanding bargains</span>
                       </div>
                     </div>
@@ -2487,7 +2511,7 @@ function App() {
             <Card className="p-8 mb-16 border-0 shadow-lg">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Featured Countries & Camp Types</h3>
-                <p className="text-lg text-gray-600">Explore camps across 24 European countries, each offering unique experiences</p>
+                <p className="text-lg text-gray-600">Explore camps across {countryList.length} European countries, each offering unique experiences</p>
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -2639,7 +2663,7 @@ function App() {
                   <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
                     <Calendar className="w-6 h-6 text-purple-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Booking Timeline 2026</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">Booking Timeline</h3>
                 </div>
                 
                 <div className="space-y-4">
@@ -2648,15 +2672,15 @@ function App() {
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center">
                         <div className="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
-                        <span><strong>Sept-Oct 2025:</strong> Research camps & check for offers</span>
+                        <span><strong>Sept-Oct:</strong> Research camps & check for offers</span>
                       </div>
                       <div className="flex items-center">
                         <div className="w-4 h-4 bg-blue-500 rounded-full mr-3"></div>
-                        <span><strong>Nov-Jan 2026:</strong> Prime booking period</span>
+                        <span><strong>Nov-Jan:</strong> Prime booking period</span>
                       </div>
                       <div className="flex items-center">
                         <div className="w-4 h-4 bg-orange-500 rounded-full mr-3"></div>
-                        <span><strong>Feb 2026:</strong> Final call for most camps</span>
+                        <span><strong>Feb:</strong> Final call for most camps</span>
                       </div>
                       <div className="flex items-center">
                         <div className="w-4 h-4 bg-red-500 rounded-full mr-3"></div>
@@ -2803,7 +2827,7 @@ function App() {
             <Card className="p-8 bg-gradient-to-r from-blue-500 to-orange-500 text-white text-center">
               <h3 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Camp?</h3>
               <p className="text-blue-100 mb-8 text-lg">
-                {`Use our directory to explore ${allCamps.length} verified camp organizations offering 100+ programs, compare options, and research your child's potential European summer adventure for 2026.`}
+                {`Use our directory to explore ${allCamps.length} verified camp organizations offering 100+ programs, compare options, and research your child's potential European summer adventure for the coming season.`}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -2855,37 +2879,37 @@ function App() {
               <div>
                 <div className="text-center mb-12">
                   <h1 className="text-4xl font-bold text-gray-900 mb-4">Booking Timeline & Tips</h1>
-                  <p className="text-xl text-gray-600">Your complete guide to securing the perfect camp spot for 2026</p>
+                  <p className="text-xl text-gray-600">Your complete guide to securing the perfect camp spot for the coming season</p>
                 </div>
                 
                 <Card className="p-8 mb-8">
-                  <h2 className="text-2xl font-bold mb-6">Critical Booking Dates for 2026</h2>
+                  <h2 className="text-2xl font-bold mb-6">Critical Booking Dates</h2>
                   <div className="space-y-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-4 h-4 bg-green-500 rounded-full mt-2"></div>
                       <div>
-                        <h3 className="font-bold text-green-800">September - October 2025</h3>
+                        <h3 className="font-bold text-green-800">September - October</h3>
                         <p className="text-gray-600">Research camps and check their websites for any booking offers. Many camps release new brochures in fall.</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
                       <div className="w-4 h-4 bg-blue-500 rounded-full mt-2"></div>
                       <div>
-                        <h3 className="font-bold text-blue-800">November 2025 - January 2026</h3>
+                        <h3 className="font-bold text-blue-800">November - January</h3>
                         <p className="text-gray-600">Common booking period. Popular camps may fill during this time. Contact camps directly about availability.</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
                       <div className="w-4 h-4 bg-orange-500 rounded-full mt-2"></div>
                       <div>
-                        <h3 className="font-bold text-orange-800">February 2026</h3>
+                        <h3 className="font-bold text-orange-800">February</h3>
                         <p className="text-gray-600">Many international camps approach capacity. Check with individual camps for current availability.</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-4">
                       <div className="w-4 h-4 bg-red-500 rounded-full mt-2"></div>
                       <div>
-                        <h3 className="font-bold text-red-800">March - May 2026</h3>
+                        <h3 className="font-bold text-red-800">March - May</h3>
                         <p className="text-gray-600">Late booking phase. Limited availability, mostly day camps or less popular sessions.</p>
                       </div>
                     </div>
@@ -3001,7 +3025,7 @@ function App() {
                     <div className="space-y-6">
                       <div className="border-l-4 border-green-500 pl-4">
                         <h3 className="font-bold text-green-800">Budget Camps</h3>
-                        <p className="text-gray-600">€330 - €800</p>
+                        <p className="text-gray-600">€130 - €800</p>
                         <p className="text-sm text-gray-500">Day camps, municipal programs, Eastern Europe</p>
                       </div>
                       <div className="border-l-4 border-blue-500 pl-4">
@@ -3255,26 +3279,26 @@ function App() {
                 </div>
 
                 <Card className="p-8 mt-8">
-                  <h2 className="text-2xl font-bold mb-6 text-center">Booking Timeline 2026</h2>
+                  <h2 className="text-2xl font-bold mb-6 text-center">Booking Timeline</h2>
                   <div className="space-y-4">
                     <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
                       <div className="w-6 h-6 bg-green-500 rounded-full"></div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-green-800">Now - October 2025</h3>
+                        <h3 className="font-bold text-green-800">September - October</h3>
                         <p className="text-green-700">Best discounts available, full selection of dates and programs</p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg">
                       <div className="w-6 h-6 bg-blue-500 rounded-full"></div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-blue-800">November 2025 - January 2026</h3>
+                        <h3 className="font-bold text-blue-800">November - January</h3>
                         <p className="text-blue-700">Good discounts still available, popular sessions filling up</p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-4 p-4 bg-orange-50 rounded-lg">
                       <div className="w-6 h-6 bg-orange-500 rounded-full"></div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-orange-800">February - March 2026</h3>
+                        <h3 className="font-bold text-orange-800">February - March</h3>
                         <p className="text-orange-700">Limited discounts, premium camps mostly full</p>
                       </div>
                     </div>
@@ -3467,7 +3491,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-orange-400">Camp Explorer Europe</h3>
               <p className="text-gray-400 mb-4">
-                {`European summer camp directory featuring ${allCamps.length} verified organizations offering 100+ programs across 24 countries. Information compiled from public sources to help parents research camp options.`}
+                {`European summer camp directory featuring ${allCamps.length} verified organizations offering 100+ programs across ${countryList.length} countries. Information compiled from public sources to help parents research camp options.`}
               </p>
               <div className="flex space-x-4">
                 <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
@@ -3762,9 +3786,9 @@ function App() {
                   <button 
                     className="hover:text-white cursor-pointer transition-colors text-left w-full"
                     onClick={() => handleResourceLink('guide')}
-                    aria-label="View complete camp guide 2026"
+                    aria-label="View complete camp guide"
                   >
-                    Complete Camp Guide 2026
+                    Complete Camp Guide
                   </button>
                 </li>
                 <li>
@@ -3855,7 +3879,7 @@ function App() {
           <div className="border-t border-gray-800 pt-8">
             <div className="grid md:grid-cols-3 gap-6 md:gap-8 items-center">
               <div className="text-center md:text-left">
-                <h5 className="font-semibold mb-2">2026 Camp Season</h5>
+                <h5 className="font-semibold mb-2">Booking Information</h5>
                 <p className="text-sm text-gray-400">Browse camps and contact them directly for current availability and offers.</p>
               </div>
 
@@ -3866,12 +3890,12 @@ function App() {
                     <div>Organizations</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">24</div>
+                    <div className="text-2xl font-bold text-white">{countryList.length}</div>
                     <div>Countries</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-white">€330+</div>
-                    <div>Starting Price</div>
+                    <div className="text-2xl font-bold text-white">€130+</div>
+                    <div>Starting price per week</div>
                   </div>
                 </div>
               </div>
@@ -3889,7 +3913,7 @@ function App() {
           </div>
           
           <div className="border-t border-gray-800 pt-6 md:pt-8 mt-6 md:mt-8 text-center text-gray-400">
-            <p className="text-sm md:text-base">&copy; 2026 Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
+            <p className="text-sm md:text-base">&copy; {new Date().getFullYear()} Camp Explorer Europe. Directory of European summer camps. Information compiled from public sources.</p>
             <p className="mt-2 text-xs md:text-sm">{`Directory featuring ${allCamps.length} verified organizations • Information from camp websites • Independent resource portal`}</p>
             <div className="mt-3 space-x-3 text-xs text-gray-500">
               <button 
@@ -4131,7 +4155,7 @@ function App() {
                   Camp Explorer Europe is an information directory that compiles publicly available data about European summer camps. We organize camp information from websites and public sources to help parents research summer camp options across Europe.
                 </p>
                 <p className="text-lg text-gray-700 mb-6">
-                  {`Our directory includes ${allCamps.length} verified organizations offering 100+ programs across 24 countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.`}
+                  {`Our directory includes ${allCamps.length} verified organizations offering 100+ programs across ${countryList.length} countries, from Alpine programs in Switzerland to Nordic camps in Scandinavia. We compile information from camp websites and public sources to help parents research options.`}
                 </p>
               </div>
 
@@ -4146,10 +4170,10 @@ function App() {
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">Verification Standards</h3>
                     <ul className="space-y-2 text-gray-700">
-                      <li>• Licensed operation and regulatory compliance</li>
+                      <li>• Licensing and registration information as published by each organization</li>
                       <li>• Staff qualifications as published by camps</li>
                       <li>• Safety information as published by camps</li>
-                      <li>• Insurance coverage and liability assessment</li>
+                      <li>• Insurance information as published by each organization</li>
                       <li>• Information about facilities and activities from camp materials</li>
                     </ul>
                   </div>
@@ -4182,7 +4206,7 @@ function App() {
                   <div className="grid md:grid-cols-3 gap-4 text-gray-700">
                     <div>
                       <strong>Geographic Expertise:</strong><br />
-                      24 European countries, Nordic specialization, Alpine programs
+                      {countryList.length} European countries, Nordic specialization, Alpine programs
                     </div>
                     <div>
                       <strong>Program Types:</strong><br />
@@ -4246,7 +4270,7 @@ function App() {
                   <div className="text-center p-4">
                     <Globe className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                     <h4 className="font-semibold text-gray-900 mb-2">Cultural Immersion</h4>
-                    <p className="text-gray-600">Experience 24 countries, 25+ languages, and countless cultural traditions</p>
+                    <p className="text-gray-600">Experience {countryList.length} countries, 25+ languages, and countless cultural traditions</p>
                   </div>
                   <div className="text-center p-4">
                     <Star className="w-12 h-12 text-purple-600 mx-auto mb-4" />
