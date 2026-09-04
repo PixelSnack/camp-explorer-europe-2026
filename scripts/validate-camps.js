@@ -7,7 +7,10 @@
  * Usage: node --import ./scripts/register-loader.mjs scripts/validate-camps.js
  */
 
-import { allCamps, REVIEW_SOURCES, parseAges } from '../src/data/camps.js';
+import { readFileSync } from 'node:fs';
+import { allCamps, REVIEW_SOURCES, parseAges, AGE_SPAN } from '../src/data/camps.js';
+import { SEASON_YEAR } from '../src/data/season.js';
+import { FAQ_ITEMS } from '../src/data/faq.js';
 
 const validSourceKeys = new Set(Object.keys(REVIEW_SOURCES));
 let errors = 0;
@@ -35,11 +38,25 @@ for (const camp of allCamps) {
   if (typeof camp.country !== 'string' || camp.country.trim() === '') {
     fail(camp.id, camp.name, `country must be a non-empty string, got: ${camp.country}`);
   }
-  if (parseAges(camp.ages) === null) {
+  const ages = parseAges(camp.ages);
+  if (ages === null) {
     fail(camp.id, camp.name, `ages must read like "6-17 years", "6+ years (families)" or "All ages (families)", got: ${camp.ages}`);
+  } else if (ages.min !== null && ages.min < 1) {
+    fail(camp.id, camp.name, `ages minimum must be at least 1, got: ${camp.ages}`);
+  } else if (ages.max !== null && ages.max <= ages.min) {
+    fail(camp.id, camp.name, `ages range must increase, got: ${camp.ages}`);
   }
-  if (camp.bookingStatus !== undefined && (typeof camp.bookingStatus !== 'string' || camp.bookingStatus.trim() === '')) {
-    fail(camp.id, camp.name, `bookingStatus, when present, must be a non-empty string, got: ${camp.bookingStatus}`);
+  // bookingStatus is an enum the UI renders verbatim: "open", "not yet open" or "<SEASON_YEAR> dates published"
+  if (camp.bookingStatus !== undefined) {
+    const status = typeof camp.bookingStatus === 'string' ? camp.bookingStatus.trim() : '';
+    const published = /^(\d{4}) dates published$/.exec(status);
+    if (!status) {
+      fail(camp.id, camp.name, 'bookingStatus, when present, must be a non-empty string');
+    } else if (status !== 'open' && status !== 'not yet open' && !published) {
+      fail(camp.id, camp.name, `bookingStatus must be "open", "not yet open" or "<year> dates published", got: "${status}"`);
+    } else if (published && Number(published[1]) !== SEASON_YEAR) {
+      fail(camp.id, camp.name, `bookingStatus year ${published[1]} does not match SEASON_YEAR ${SEASON_YEAR} in src/data/season.js`);
+    }
   }
 
   // Basic field checks
@@ -117,6 +134,26 @@ for (const camp of allCamps) {
       }
     }
   }
+}
+
+// Static claims that no build step generates must agree with the data
+const countryCount = new Set(allCamps.map(camp => camp.country.trim())).size;
+const staticFail = (where, message) => { console.error(`  FAIL [${where}]: ${message}`); errors++; };
+const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const sitemap = readFileSync(new URL('../public/sitemap.xml', import.meta.url), 'utf8');
+const title = (html.match(/<title>(.*?)<\/title>/) || [])[1] || '';
+if (!title.includes(String(SEASON_YEAR))) {
+  staticFail('index.html', `<title> must carry SEASON_YEAR ${SEASON_YEAR} (season.js), got: "${title}"`);
+}
+if (!html.includes(`across ${countryCount} countries`)) {
+  staticFail('index.html', `descriptions and noscript must say "across ${countryCount} countries" (data has ${countryCount})`);
+}
+if (!sitemap.includes(`${allCamps.length} verified camp organizations`) || !sitemap.includes(`across ${countryCount} countries`)) {
+  staticFail('public/sitemap.xml', `image caption must say "${allCamps.length} verified camp organizations" and "across ${countryCount} countries"`);
+}
+const ageClaim = `spans ages ${AGE_SPAN.replace('-', ' to ')}`;
+if (!FAQ_ITEMS.some(item => item.answer.includes(ageClaim))) {
+  staticFail('src/data/faq.js', `an answer must state "${ageClaim}" (AGE_SPAN is ${AGE_SPAN})`);
 }
 
 console.log('');

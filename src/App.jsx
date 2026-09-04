@@ -48,7 +48,8 @@ import heroLakesideCompressed from './assets/hero-lakeside-compressed.png'
 import activitiesAvif from './assets/activities-collage.avif'
 import activitiesWebp from './assets/activities-collage.webp'
 import './App.css'
-import { allCamps, activitiesCompressed, mapCompressed, AGE_SPAN, DIRECTORY_UPDATED } from './data/camps.js'
+import { allCamps, activitiesCompressed, mapCompressed, AGE_SPAN } from './data/camps.js'
+import { SEASON_YEAR, DIRECTORY_UPDATED } from './data/season.js'
 import { FAQ_ITEMS } from './data/faq.js'
 
 // Hash-routed sections; unknown hashes (e.g. the #main-content skip link) must not change the view
@@ -96,12 +97,6 @@ const handleBookingClick = (camp) => {
   window.open(trackedUrl, '_blank', 'noopener,noreferrer')
 }
 
-// The season parents are planning for: from September onward that is next summer.
-const SEASON_YEAR = (() => {
-  const now = new Date()
-  return now.getMonth() >= 8 ? now.getFullYear() + 1 : now.getFullYear()
-})()
-
 // Booking-status badge: rendered only when a camp carries a verified bookingStatus.
 // "open" is the only green state; any other verified text (e.g. "2027 dates published") is blue.
 const getBookingBadge = (camp) => {
@@ -117,7 +112,7 @@ const BookingStatusBadge = ({ camp }) => {
   if (!badge) return null
   return (
     <div className="absolute bottom-4 right-4">
-      <Badge className={`${badge.tone} text-white backdrop-blur-sm text-xs animate-pulse motion-reduce:animate-none`}>
+      <Badge className={`${badge.tone} text-white backdrop-blur-sm text-xs`}>
         {badge.label}
       </Badge>
     </div>
@@ -2261,7 +2256,7 @@ function App() {
                     <div className="space-y-3">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Budget Excellence</span>
-                        <span className="font-semibold">€130 - €800</span>
+                        <span className="font-semibold">€130 - €800 per week</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Mid-Range Programs</span>
@@ -2364,7 +2359,7 @@ function App() {
                 <Badge className="bg-blue-100 text-blue-800 px-4 py-2 text-sm">{allCamps.length} Verified Organizations</Badge>
                 <Badge className="bg-green-100 text-green-800 px-4 py-2 text-sm">{countryList.length} Countries</Badge>
                 <Badge className="bg-orange-100 text-orange-800 px-4 py-2 text-sm">Expert Recommendations</Badge>
-                <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">€130-CHF 6,980 Range</Badge>
+                <Badge className="bg-purple-100 text-purple-800 px-4 py-2 text-sm">From €130 per week</Badge>
               </div>
             </div>
 
@@ -2420,7 +2415,7 @@ function App() {
                         <span className="font-semibold text-green-800">Excellent value</span>
                       </div>
                       <div className="flex flex-col sm:flex-row sm:justify-between">
-                        <span>💰 Budget (€130-800)</span>
+                        <span>💰 Budget (€130-800 per week)</span>
                         <span className="font-semibold text-green-800">Outstanding bargains</span>
                       </div>
                     </div>
@@ -3025,7 +3020,7 @@ function App() {
                     <div className="space-y-6">
                       <div className="border-l-4 border-green-500 pl-4">
                         <h3 className="font-bold text-green-800">Budget Camps</h3>
-                        <p className="text-gray-600">€130 - €800</p>
+                        <p className="text-gray-600">€130 - €800 per week</p>
                         <p className="text-sm text-gray-500">Day camps, municipal programs, Eastern Europe</p>
                       </div>
                       <div className="border-l-4 border-blue-500 pl-4">

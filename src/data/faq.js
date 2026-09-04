@@ -42,6 +42,6 @@ export const FAQ_ITEMS = [
   },
   {
     question: "What's the difference between premium and budget European summer camps?",
-    answer: "Premium European camps (typically \u20ac1,500 to more than \u20ac3,000 per week) offer smaller group sizes, specialized activities, luxury facilities, and prime locations like the Swiss Alps. Budget camps (under \u20ac800 per week) provide excellent value with quality programs, experienced staff, and safe environments, often in Eastern Europe. Both maintain high safety and supervision standards."
+    answer: "Premium European camps (typically \u20ac1,500 to more than \u20ac3,000 per week) offer smaller group sizes, specialized activities, luxury facilities, and prime locations like the Swiss Alps. Budget camps (under \u20ac800 per week) provide excellent value with quality programs, experienced staff, and safe environments, often in Eastern Europe. Price tier alone does not determine safety or supervision standards; they vary by camp and country, so confirm staffing, medical support, insurance and safeguarding policies directly with each organization."
   }
 ]

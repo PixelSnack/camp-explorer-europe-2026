@@ -2,15 +2,15 @@
 
 **Discover Quality European Summer Camps for Kids & Youth**
 
-A comprehensive web application featuring **36 verified summer camp organizations** representing 100+ individual programs across **21 European countries**. Built with React and modern web technologies, offering advanced search and filtering to help families find the perfect summer camp experience.
+A comprehensive web application featuring **65 verified summer camp organizations** representing 100+ individual programs across **24 European countries**. Built with React and modern web technologies, offering advanced search and filtering to help families find the perfect summer camp experience.
 
 *Last Updated: September 2026*
 
 ## 🌟 Features
 
 ### 🎯 **Verified Camp Directory**
-- **36 verified camp organizations** representing 100+ individual programs
-- **21 European countries** including Switzerland, Norway, UK, Germany, Sweden, Denmark, and more
+- **65 verified camp organizations** representing 100+ individual programs
+- **24 European countries** including Switzerland, Norway, UK, Germany, Sweden, Denmark, and more
 - **Comprehensive pricing range** from €335 to CHF 6,980
 - **Detailed camp profiles** with activities, languages, age groups, and special features
 - **Featured listings** with premium visibility for partner camps

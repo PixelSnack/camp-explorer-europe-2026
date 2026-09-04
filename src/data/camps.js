@@ -1542,15 +1542,13 @@ export const allCamps = [
 
 // ---------------------------------------------------------------------------
 // Derived directory facts. Computed once at module load so the UI never
-// hardcodes a number the data can answer. Bump DIRECTORY_UPDATED whenever camp
-// data is re-verified; it is the only dated string in this block.
+// hardcodes a number the data can answer. Dated editorial values live in season.js.
 // ---------------------------------------------------------------------------
 
-export const DIRECTORY_UPDATED = 'September 2026'
-
-const AGE_RANGE = /^(\d{1,2})\s*-\s*(\d{1,2})\s*years?\b/i      // "6-17 years"
-const AGE_OPEN_ENDED = /^(\d{1,2})\+\s*years?\b/i                 // "6+ years (families)"
-const AGE_ALL = /^all ages\b/i                                     // "All ages (families)"
+// Accepted `ages` grammar; an optional parenthetical note may follow, e.g. "(families)".
+const AGE_RANGE = /^(\d{1,2})\s*-\s*(\d{1,2})\s*years?(?:\s*\([^)]*\))?$/i   // "6-17 years"
+const AGE_OPEN_ENDED = /^(\d{1,2})\+\s*years?(?:\s*\([^)]*\))?$/i              // "6+ years (families)"
+const AGE_ALL = /^all ages(?:\s*\([^)]*\))?$/i                                  // "All ages (families)"
 
 /**
  * Parses an `ages` string into numeric bounds. Open-ended and all-ages values
@@ -1572,6 +1570,7 @@ export const AGE_SPAN = (() => {
   const bounds = allCamps.map(camp => parseAges(camp.ages)).filter(Boolean)
   const mins = bounds.map(b => b.min).filter(n => n !== null)
   const maxs = bounds.map(b => b.max).filter(n => n !== null)
+  if (mins.length === 0 || maxs.length === 0) throw new Error('AGE_SPAN: camp data has no finite age range')
   return `${Math.min(...mins)}-${Math.max(...maxs)}`
 })()
 
