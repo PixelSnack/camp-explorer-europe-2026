@@ -112,12 +112,12 @@ The Featured-tier volume pricing was retired with the tier (2 Sept 2026). A Prem
 
 ### Legal invoicing rules (PMV — non-negotiable)
 - Invoices issue from **ResourceHub, CVR 46200462** — the legal entity as registered (CVR register verified 2 Sept 2026: the name carries no "Cph" suffix, and the CVR is written without the DK prefix since that format denotes a VAT number). "European Summer Camps" appears only as the description of what was sold, never as the issuer (binavne not permitted on a PMV).
-- **No VAT, ever.** A PMV may not charge moms. Amounts are flat; every invoice carries the basis line: "Momsfri — omsætning under registreringsgrænsen, jf. momsloven § 71e, stk. 1."
+- **No VAT, ever.** A PMV may not charge moms. Amounts are flat; every invoice states plainly "VAT exempt" (Danish: "Momsfri: virksomheden er ikke momsregistreret; beløbet er uden moms"), never the reason. Owner rule 7 Sept 2026: the turnover threshold is never mentioned to a client; it tells them nothing they need and undercuts the image of a successful business. Every invoice also states that ResourceHub is the umbrella company for EuropeanSummerCamps.com.
 - **Turnover register BEFORE the first payment**: every payment received must be logged against the shared rolling-12-month 50,000 DKK cap (shared across ALL ResourceHub brands). Report each ESC payment for consolidation in the cross-brand register.
 
 ### Payment Process
 1. Agreement on listing details via email
-2. Invoice sent from ResourceHub (CVR 46200462), description e.g. "Directory listing services - 12 months - [Camp Name]", flat EUR amount, no VAT, with the § 71e stk. 1 basis line and bank details for EUR transfer
+2. Invoice sent from ResourceHub (CVR 46200462), description e.g. "Directory listing services - 12 months - [Camp Name]", flat EUR amount, no VAT, with the plain VAT-exempt line, the umbrella-company line and bank details for EUR transfer
 3. Payment received; log in turnover register
 4. Listing activated within 3 business days
 5. Confirmation email sent with activation date and renewal date
@@ -126,7 +126,7 @@ The Featured-tier volume pricing was retired with the tier (2 Sept 2026). A Prem
 ```
 Invoice from: ResourceHub (CVR 46200462)
 To: [Camp Name / Company]
-Amount: €[amount] flat (no VAT — momsloven § 71e, stk. 1)
+Amount: €[amount] flat (VAT exempt)
 Description: Directory listing services - 12 months
             [Camp Name] - [Location] on europeansummercamps.com
             Activation: [Date]
