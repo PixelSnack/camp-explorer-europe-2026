@@ -236,3 +236,30 @@ Every camp addition must include:
 
 *Document Version: 1.0 - September 14, 2025*
 *Next Review: December 2025*
+
+## ❄️ WINTER CAMP ADDENDUM (added 6 September 2026, owner-approved direction: winter section on the main site)
+
+The five-point test applies unchanged to winter camps. Winter adds a season layer, because most of what a parent needs to know about a ski camp (pass, equipment, instruction, supervision ratio on the slopes) is not covered by the summer wording. Every winter candidate is scored on both layers before it reaches the owner.
+
+### The five points, read for winter
+1. **Residential facility**: the child sleeps on site in accommodation the operator runs or has contracted, included in the price. A hotel-housed camp passes only if the operator runs the programme and says so explicitly (owner decision 17 August 2026); a hotel selling its own activity programme fails.
+2. **Camp operator status**: a ski school, boarding school, sports federation, youth association or camp company. Tour operators, travel agencies and hotels fail. Colonie-style operators pass when they run the programme with their own staff.
+3. **Camp-only per-child pricing**: one child's place, transport to the resort excluded or shown separately, with what the price includes stated. A price that exists only with coach travel included fails unless a price without transport is published.
+4. **On-site supervised residential programme** of several days with overnight supervision, accepting **individual bookings** (school-class-only or club-member-only offers fail).
+5. **Operator runs the programme and controls the facility** (not a booking agent for someone else's camp).
+
+### Winter points (one each, five in total)
+- 2026-27 season dates published on the operator's site
+- 2026-27 price published
+- Lift pass **and** instruction inclusion stated (for non-alpine camps: equipment and instruction)
+- Booking possible in English
+- Reputation footprint: reviews on Google or a platform, or established more than five years
+
+### Score and verdict
+**Score = five-point passes (0 to 5) + winter points (0 to 5), out of 10.** STRONG = all five pass and score 8 or more. POSSIBLE = all five pass, or at most one UNCLEAR, and score 5 to 7. REJECT = any FAIL. The publish gate for the winter section is four STRONG rows; every figure on a STRONG row is re-read by the lead on the operator page (a browser walk when the dates sit behind a booking widget) before it enters `src/data/winterCamps.js`.
+
+### Winter data rules (enforced by `scripts/validate-camps.js`)
+`season: "winter"`, `category: "winter"`, per-child price with exactly one slash in the unit, `dates` at most 40 characters, `bookingStatus` only `"open"` and only when the operator's enrolment form lists the session as selectable, `rating: null` and `reviews: 0` unless `reviewData` is supplied, tested https `bookingUrl`, IDs continuing the shared sequence.
+
+### Where winter dates and prices hide
+The six-step search order in the panel brief template and the verifier agent applies: dates-and-prices page by URL pattern, enrolment form (the only source that verifies "open"), brochure PDF, interactive booking widgets need a browser, unlabelled years reported as printed with the calendar year they fit, every price label reported (public, member, sibling, early booking, with or without transport).
