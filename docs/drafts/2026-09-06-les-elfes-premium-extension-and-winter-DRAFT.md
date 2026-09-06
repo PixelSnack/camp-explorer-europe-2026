@@ -14,7 +14,7 @@
 
 ## Owner decisions in brackets
 
-1. Bundle for 2027: **[Option A]** Premium at the 2027 introductory rate for the summer listing (EUR 199) and the winter listing at the base fee (EUR 79 per year), or **[Option B, recommended]** both listings under one Premium at EUR 199 for 2027, rate-locked. Delete the option not chosen.
+1. Settled 6 Sept night: a Premium covers up to three distinct cards, so the summer and winter cards sit under one Premium at EUR 199 for 2027, rate-locked. No option to choose.
 2. Reply-by date: a date about three weeks out, before the December booking season.
 
 ## Draft
@@ -31,7 +31,7 @@ Your listing has run as our Premium example since January. We have extended that
 
 The winter listing is the news. We have opened a winter section on the site, and Les Elfes is its first camp: your December to April programme, with the weekly prices and the 4 Vallées pass as published on your pages, and a "Booking open" badge because your enrolment form already takes 2026-27 sessions. It is live now at www.europeansummercamps .com/#winter. If anything on the card should read differently, tell me and I will change it the same day.
 
-From the 2027 cycle, every listing on the site carries a base fee of EUR 79 per year, because we re-verify dates, prices and ages against each operator's pages every season. Premium, which keeps the highlighted card, the video button and four updates a year, is EUR 299 per listing per year, or EUR 199 for the first year on the 2027 cycle. For Les Elfes, with two listings, [Option A: Premium at EUR 199 for the summer listing and EUR 79 for the winter listing] [Option B: both listings under one Premium at EUR 199 for 2027, rate-locked for renewals]. Nothing changes before January; I would be glad to have your answer by [date] so the invoice reaches you before the booking season.
+From the 2027 cycle, every listing on the site carries a base fee of EUR 79 per year, because we re-verify dates, prices and ages against each operator's pages every season. Premium, which keeps the highlighted card, the video button and four updates a year, is EUR 299 per listing per year, or EUR 199 for the first year on the 2027 cycle. A Premium covers up to three distinct camp cards, so your summer and winter cards sit under one Premium at EUR 199 for 2027, rate-locked for renewals. Premium camps may also supply their own card image, or have us draw one in the site's style from a description of Verbier and the chalets; tell me which you prefer. Nothing changes before January; I would be glad to have your answer by [date] so the invoice reaches you before the booking season.
 
 Thank you for the trust this year. It has been a pleasure to list you.
 

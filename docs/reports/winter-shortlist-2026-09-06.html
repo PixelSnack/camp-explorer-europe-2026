@@ -1,0 +1,326 @@
+<title>European Winter Camps Shortlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root {
+    --ground: #f4f7fa; --surface: #ffffff; --ink: #14213d; --muted: #5b6b80; --line: #d9e3ec;
+    --accent: #2e7db2; --accent-ink: #ffffff; --pine: #1f6b45; --amber: #b8701a; --rust: #b3382e;
+    --strong-bg: #e3f1e9; --possible-bg: #fbf0e0; --reject-bg: #f9e5e2; --chip: #eef3f7;
+    --pass: #1f6b45; --fail: #b3382e; --unclear: #8a6d1f; --focus: #2e7db2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0f1720; --surface: #16212c; --ink: #e6eef5; --muted: #9fb0c2; --line: #2a3947;
+      --accent: #63a9d9; --accent-ink: #0f1720; --pine: #5cc48a; --amber: #e2a04a; --rust: #ef7f73;
+      --strong-bg: #163526; --possible-bg: #3a2c14; --reject-bg: #3d1e1a; --chip: #1f2c39;
+      --pass: #5cc48a; --fail: #ef7f73; --unclear: #e2c15c; --focus: #63a9d9;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0f1720; --surface: #16212c; --ink: #e6eef5; --muted: #9fb0c2; --line: #2a3947;
+    --accent: #63a9d9; --accent-ink: #0f1720; --pine: #5cc48a; --amber: #e2a04a; --rust: #ef7f73;
+    --strong-bg: #163526; --possible-bg: #3a2c14; --reject-bg: #3d1e1a; --chip: #1f2c39;
+    --pass: #5cc48a; --fail: #ef7f73; --unclear: #e2c15c; --focus: #63a9d9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: "Public Sans", "Segoe UI", system-ui, sans-serif; font-size: 15px; line-height: 1.5; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", "Public Sans", system-ui, sans-serif; text-wrap: balance; margin: 0; }
+  a { color: var(--accent); }
+  .num { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  header.top { padding: 36px 0 20px; }
+  header.top h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.01em; }
+  header.top p { max-width: 68ch; color: var(--muted); margin: 10px 0 0; }
+  .summary { position: sticky; top: 0; z-index: 5; background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .summary .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; padding-top: 10px; padding-bottom: 10px; }
+  .stat { display: inline-flex; gap: 8px; align-items: baseline; font-size: 13px; color: var(--muted); }
+  .stat b { font-family: "IBM Plex Mono", monospace; font-size: 16px; color: var(--ink); }
+  .stat .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .sync { margin-left: auto; font-size: 12px; color: var(--muted); }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; padding: 18px 0 4px; align-items: center; }
+  .filters label { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+  .filters button, .filters select { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .filters button:focus-visible, .filters select:focus-visible, .decide button:focus-visible, .note textarea:focus-visible, .note button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .list { display: grid; gap: 16px; padding: 16px 0 60px; }
+  article.cand { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; display: grid; grid-template-columns: 6px 1fr; overflow: hidden; }
+  article.cand .stripe { background: var(--line); }
+  article.cand[data-verdict="STRONG"] .stripe { background: var(--pine); }
+  article.cand[data-verdict="POSSIBLE"] .stripe { background: var(--amber); }
+  article.cand[data-verdict="REJECT"] .stripe { background: var(--rust); }
+  article.cand[hidden] { display: none; }
+  .body { padding: 18px 20px 20px; display: grid; grid-template-columns: 1fr 260px; gap: 18px 28px; }
+  @media (max-width: 900px) { .body { grid-template-columns: 1fr; } }
+  .head { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; }
+  .head h2 { font-size: 20px; font-weight: 700; }
+  .place { color: var(--muted); font-size: 14px; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 9px; border-radius: 4px; }
+  .pill.STRONG { background: var(--strong-bg); color: var(--pine); }
+  .pill.POSSIBLE { background: var(--possible-bg); color: var(--amber); }
+  .pill.REJECT { background: var(--reject-bg); color: var(--rust); }
+  .score { font-family: "IBM Plex Mono", monospace; font-size: 14px; color: var(--muted); }
+  .score b { color: var(--ink); font-size: 18px; }
+  .src { font-size: 12px; color: var(--muted); }
+  dl.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px 20px; margin: 14px 0 0; }
+  dl.facts div { border-top: 1px solid var(--line); padding-top: 8px; }
+  dl.facts dt { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  dl.facts dd { margin: 2px 0 0; font-size: 14px; }
+  .points { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .pt { font-family: "IBM Plex Mono", monospace; font-size: 12px; padding: 3px 8px; border-radius: 4px; background: var(--chip); border: 1px solid var(--line); cursor: help; }
+  .pt.P { color: var(--pass); } .pt.F { color: var(--fail); } .pt.U { color: var(--unclear); }
+  .winter { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); padding: 3px 8px; }
+  .lead { margin: 14px 0 0; font-size: 14px; }
+  .lead strong { font-weight: 600; }
+  .ask { margin: 8px 0 0; font-size: 14px; color: var(--amber); }
+  .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; font-size: 14px; }
+  .links a { overflow-wrap: anywhere; }
+  aside.decide h3 { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-family: "Public Sans", sans-serif; font-weight: 600; }
+  .decide .seg { display: grid; gap: 6px; margin-top: 8px; }
+  .decide button { font: inherit; font-weight: 600; font-size: 14px; text-align: left; padding: 10px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .decide button span.k { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--muted); }
+  .decide button[aria-pressed="true"].accept { background: var(--pine); border-color: var(--pine); color: #fff; }
+  .decide button[aria-pressed="true"].reject { background: var(--rust); border-color: var(--rust); color: #fff; }
+  .decide button[aria-pressed="true"].investigate { background: var(--amber); border-color: var(--amber); color: #fff; }
+  .decide button[aria-pressed="true"] span.k { color: rgba(255,255,255,0.8); }
+  .decide button:disabled { opacity: 0.5; cursor: default; }
+  .note { margin-top: 10px; display: grid; gap: 6px; }
+  .note textarea { font: inherit; font-size: 13px; width: 100%; min-height: 64px; padding: 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); resize: vertical; }
+  .note button { font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; justify-self: start; }
+  .stamp { font-size: 12px; color: var(--muted); margin-top: 6px; min-height: 1.2em; }
+  .offline { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  footer { padding: 0 0 40px; color: var(--muted); font-size: 13px; }
+  @media (prefers-reduced-motion: no-preference) { .decide button { transition: background-color 120ms ease, color 120ms ease; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <h1>European Winter Camps Shortlist</h1>
+    <p>Every residential winter camp found by five research agents, two Astra passes and the lead's own vetting on 6 September 2026, scored on the winter rubric: the five verification points plus five winter points, out of 10. Every figure carries the page it was read on; NOT FOUND stays visible. Your choice on each card is saved for the lead to read back. Nothing here is published until the lead has re-read the operator's pages.</p>
+  </div>
+</header>
+
+<div class="summary" role="region" aria-label="Summary">
+  <div class="wrap">
+    <span class="stat"><span class="dot" style="background: var(--pine)"></span>STRONG <b id="c-strong" class="num">0</b></span>
+    <span class="stat"><span class="dot" style="background: var(--amber)"></span>POSSIBLE <b id="c-possible" class="num">0</b></span>
+    <span class="stat"><span class="dot" style="background: var(--rust)"></span>REJECT <b id="c-reject" class="num">0</b></span>
+    <span class="stat">Accepted <b id="d-accept" class="num">0</b></span>
+    <span class="stat">Investigate <b id="d-investigate" class="num">0</b></span>
+    <span class="stat">Rejected <b id="d-reject" class="num">0</b></span>
+    <span class="stat">Undecided <b id="d-none" class="num">0</b></span>
+    <span class="sync" id="sync">Connecting to the shared record</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="filters" role="group" aria-label="Filters">
+    <label>Show</label>
+    <button type="button" data-filter="ALL" aria-pressed="true">All</button>
+    <button type="button" data-filter="STRONG" aria-pressed="false">Strong</button>
+    <button type="button" data-filter="POSSIBLE" aria-pressed="false">Possible</button>
+    <button type="button" data-filter="REJECT" aria-pressed="false">Reject</button>
+    <label for="country">Country</label>
+    <select id="country"><option value="">All countries</option></select>
+    <label for="undecided">Only undecided</label>
+    <input type="checkbox" id="undecided">
+  </div>
+  <div class="list" id="list"></div>
+</main>
+
+<footer class="wrap">
+  <p>Rubric: CAMP_VERIFICATION_CRITERIA.md, winter addendum (6 September 2026). Sources: five Opus research agents (Alps DACH, France and Italy, Nordics, Central and Eastern Europe with the UK, competitor and niche lane), GPT-6 Astra web passes 1 and 2, and the lead's vetting of Les Elfes, La Garenne and HIF. The DACH and niche agents' reports were cut by the channel after their sixth and fifth candidates; those two lists are partial. Already on file and not re-scored here: UCPA (France, 2027 departures not on sale), Leirikesä (Finland, 2026-27 not published), Lyngmo (Norway, no programme page found), Scottish Ski Club Bormio (rejected, transfers in the price).</p>
+</footer>
+
+<script>
+  const CANDIDATES = [
+    { id: "les-elfes-winter", name: "Les Elfes International Winter Camp", place: "Verbier", country: "Switzerland", operator: "Family-run camp company, founded 1987", ages: "6 to 17", dates: "12 Dec 2026 to 24 Apr 2027, weekly sessions", price: "CHF 2,200 to 2,950 per week", includes: "Accommodation, 4 meals a day, ski or snowboard programme, 4 Vallées pass, supervision, après-ski, weekly excursions. Equipment hire, language courses and Geneva transfer extra.", stay: "Two own chalets, 70 beds each, 4-bed ensuite rooms", pts: ["P","P","P","P","P"], ev: ["own chalets", "family-run camp", "weekly per-child price, transfer extra", "individual enrolment, 1:7 slopes, night guard", "Les Elfes staff run it"], winter: 5, score: 10, verdict: "STRONG", src: "Lead vetted 6 Sept (programme page, dates page, enrolment form)", lead: "The anchor of the section. The enrolment form lists every 2026-27 session as selectable with its price, so the Booking open badge is verified. Already in the preview.", ask: "", links: [["Programme", "https://www.leselfes.com/winter-camp/"], ["Dates and prices", "https://www.leselfes.com/dates-and-pricing/"], ["Enrolment form", "https://www.leselfes.com/winter-camp/enrol/"]] },
+    { id: "lovell-schonried", name: "Lovell International Camps", place: "Schönried, Saanen (Gstaad)", country: "Switzerland", operator: "Camp company (AG), established 2011", ages: "5 to 16 (application PDF; programme page says 5 to 15)", dates: "Weekly 13 Dec 2026 to 20 Mar 2027; no boarding places 10 to 30 Jan 2027", price: "CHF 2,600 per week boarding, plus CHF 100 registration per week; day option CHF 1,900", includes: "Room and board, ski or snowboard lessons, lift pass, English or French lessons, excursions, ski-hill transport. Rentals, insurance and airport transfers extra.", stay: "Mountain Lodge with designated overnight staff", pts: ["P","P","P","P","P"], ev: ["room and board included", "Lovell International Camps AG", "individual tariff, transfers excluded", "individual applications, overnight staffing", "operates programme and lodge"], winter: 5, score: 10, verdict: "STRONG", src: "Astra pass 2 (enrolment PDF) and niche agent, independent reads agree", lead: "Two independent reads agree on dates, price and inclusions from the operator's 2026-27 application PDF. A shop page shows CHF 2,357.50 for a week plus deposit, season unstated; the PDF figure is the listing figure. Strongest new candidate.", ask: "Confirm the age band (15 or 16) and whether online enrolment is live or on request.", links: [["Programme", "https://lovellcamps.ch/winter-camp/"], ["2026-27 application PDF", "https://lovellcamps.ch/wp-content/uploads/2026/08/Session-Application-202627.pdf"]] },
+    { id: "ecole-humanite", name: "Ecole d'Humanité Winter Basecamp", place: "Hasliberg", country: "Switzerland", operator: "Boarding school, founded 1934", ages: "12 to 16", dates: "31 Jan to 13 Feb 2027 (one two-week session)", price: "CHF 5,000 for the two weeks", includes: "Full board, project-based language instruction, daily snowsports with equipment and lift passes, the Basecamp kit, guided excursions. Zürich transfers included.", stay: "Chalets on the school's own campus", pts: ["P","P","P","P","P"], ev: ["own campus", "school, not an agency", "one child, all-in", "14-day supervised", "owns the site"], winter: 5, score: 10, verdict: "STRONG", src: "DACH agent (dates and price on the programme page)", lead: "One fixed session at a high price, but everything is stated on one page including equipment and passes, which is rare. A boarding-school product for older children.", ask: "Confirm that the Zürich transfer is included rather than optional, and the application route.", links: [["Programme, dates and price", "https://ecole.ch/winter-camp"]] },
+    { id: "frilingue-braunwald", name: "friLingue Ski and Language Camp", place: "Braunwald", country: "Switzerland", operator: "Language camp organisation", ages: "8 to 17", dates: "Weekly starts 17 Jan to 28 Feb 2027", price: "CHF 1,200 to 1,800 per week by room type", includes: "15 hours ski or snowboard lessons with lift pass, 12 hours language lessons, full board, excursions, 24/7 supervision. Equipment CHF 200 to 300 per week and Zürich transfer CHF 150 extra.", stay: "Camp house, dormitory to single rooms", pts: ["P","P","P","P","P"], ev: ["full board in camp house", "camp organisation", "transfer separate", "individuals, 24/7", "own camp"], winter: 5, score: 10, verdict: "STRONG", src: "Niche agent (programme page and prices page)", lead: "Language plus ski at a mid price, English booking, clear inclusions. friLingue runs a second site at Liddes (below); one operator, two rows if both verify.", ask: "Founding year, and the exact price per room type for the listing floor.", links: [["Programme", "https://www.frilingue.ch/en/juniors/learn-languages-switzerland-youth/braunwald/skicamp-braunwald"], ["Prices and dates", "https://www.frilingue.ch/fr/sejours-linguistiques-suisse/prix-dates"]] },
+    { id: "frilingue-liddes", name: "friLingue St. Bernhard Ski and Snowboard Camp", place: "Liddes, Valais", country: "Switzerland", operator: "Camp company (friLingue)", ages: "8 to 17", dates: "Weekly starts 20 Dec 2026 to 28 Feb 2027", price: "CHF 1,300 for one week, 2,300 for two, 3,300 for three, 4,300 for four", includes: "15 hours ski or snowboard lessons per week, 12 hours language lessons, lift pass for three ski areas, full board.", stay: "Group houses, 4, 6 and 8-bed rooms", pts: ["P","P","P","P","P"], ev: ["group houses included", "camp company", "per-child weekly", "weekly residential", "runs the programme"], winter: 4, score: 9, verdict: "STRONG", src: "DACH agent (German programme page)", lead: "Same operator as Braunwald with a lower price point and a three-area pass. Founding year not verified.", ask: "Founding year; English booking path.", links: [["Programme (German)", "https://www.frilingue.ch/jugendliche/sprachaufenthalt-schweiz-jugendliche/liddes-saint-bernard/skicamp-wallis-franzoesisch-lernen"]] },
+    { id: "filolo-diablerets", name: "FILOLO Ski and Snowboard Camp", place: "Les Diablerets", country: "Switzerland", operator: "Camp company, Romanshorn", ages: "10 to 17", dates: "Weekly 20 Dec 2026 to 27 Feb 2027 (seven sessions)", price: "From CHF 999 per week", includes: "25-hour ski or snowboard course, six nights full board, lift pass for three ski areas, transfers, 24/7 supervision.", stay: "Chalet Budokan, 8-bed dormitory or 4 to 6-bed rooms (+CHF 200)", pts: ["P","P","P","P","P"], ev: ["chalet included", "camp company", "per-child weekly", "7-day residential", "runs the programme"], winter: 4, score: 9, verdict: "STRONG", src: "DACH agent (English programme page)", lead: "The cheapest Swiss week with a pass and a 25-hour course. Founding year and reviews not verified; transfers appear included, which needs the transport-free reading confirmed.", ask: "Is the CHF 999 price without transfers, and what is the founding year?", links: [["Programme", "https://filolo.ch/en/sports-camps/ski-camp-and-snowboard"]] },
+    { id: "prefleuri-villars", name: "Préfleuri International Alpine School", place: "Villars", country: "Switzerland", operator: "Alpine boarding school, since 1948", ages: "3 to 14", dates: "10 Jan to 20 Mar 2027, minimum two weeks; Paris ski camp weeks 6 to 20 Feb 2027", price: "2027 price NOT FOUND; winter 2026 fees CHF 6,000 for two weeks, 8,550 three, 10,950 four", includes: "Ski lessons, language class, ski pass, equipment (skis, boots, suit, helmet), full board, laundry, health and accident insurance. Airport transfer CHF 600 individual, 250 group.", stay: "School chalet, 4 to 5 beds per room", pts: ["P","P","P","P","P"], ev: ["school chalet", "school", "per-child", "multi-week residential", "owns the site"], winter: 3, score: 8, verdict: "STRONG", src: "DACH and niche agents agree; both note the 2026 fee page", lead: "Everything is included down to the helmet, but the fee page is last season's and the minimum stay is two weeks. Listable once the 2027 fees appear.", ask: "2027 fees, and whether the January to March window accepts two-week entries at any point.", links: [["Winter programme", "https://www.prefleuricamps.ch/en/winter/"], ["Fees page", "https://www.prefleuricamps.ch/en/winter-fees/"]] },
+    { id: "ar-sport-bialka", name: "AR-Sport ski and snowboard camp", place: "Groń near Białka Tatrzańska", country: "Poland", operator: "Sports school AR-SPORT, founded 2003", ages: "8 to 18", dates: "Six Saturday-start weeks 16 Jan to 26 Feb 2027 (as printed, year fits the weekdays)", price: "PLN 2,949 per week", includes: "Chairlift pass for five days, accommodation in 3 to 6-bed rooms, three meals a day, instructors and educators, tuition, accident insurance, one thermal-bath entry. Transport PLN 260 to 350 and equipment PLN 280 extra.", stay: "Lodge in Groń, 3 km from Białka, contracted, central heating", pts: ["P","P","P","P","P"], ev: ["lodging in price", "sports school", "transport priced separately", "7-day residential, form per child", "own instructors run it"], winter: 4, score: 9, verdict: "STRONG", src: "Central and Eastern Europe agent", lead: "A complete, honestly itemised Polish week at a fraction of Swiss prices. The lodge is contracted rather than owned, which the rubric allows when the operator runs the programme. Polish-only site.", ask: "Can a family book in English, and is the lodge exclusively theirs during camp weeks?", links: [["Programme and prices (Polish)", "https://ar-sport.pl/oboz-narciarski-snowboardowy/"]] },
+    { id: "djuringa-juniors", name: "Djuringa Juniors winter colonies", place: "Vercors, Hauteluce, Vars", country: "France", operator: "Colonie operator, Jeunesse et Sports 069ORG0708, own permanent centres", ages: "6 to 17 across eleven séjours", dates: "Weekly 7 Feb to 6 Mar 2027", price: "EUR 735 to 980 per week by séjour (for example EUR 800 to 820 for the 6 to 10 ski week)", includes: "Full board, ESF ski lesson daily on the ski séjours, supervision one BAFA per eight. Equipment hire EUR 50 extra on some séjours; travel a separate booking field.", stay: "Own centres, rooms of 2 to 8 beds", pts: ["P","P","P","P","P"], ev: ["own centre", "colonie operator", "per-child, transport separate", "7-day supervised, individual booking", "own centre"], winter: 3, score: 8, verdict: "POSSIBLE", src: "France agent (scored 7) and niche agent (scored 8); lift-pass inclusion not verified by either", lead: "Two agents, two séjours, one operator. The French colonie model at its best, but neither read found the lift pass stated, and one URL served a different séjour than its name. Needs one careful read per séjour before a row.", ask: "Is the lift pass in the séjour price, and which séjour fits the listing (ski for 6 to 10, or the teen ski week)?", links: [["Winter ski séjours", "https://www.djuringa-juniors.fr/colonies-de-vacances/hiver/ski/"], ["Sample séjour", "https://www.djuringa-juniors.fr/japprends-a-skier-2421.html"]] },
+    { id: "camp-suisse", name: "Camp Suisse Ski and Snowboard", place: "Les Crosets", country: "Switzerland", operator: "Camp company with Swiss Ski School instructors", ages: "7 to 17", dates: "7 to 27 Feb 2027, three weeks plus two-week combinations", price: "CHF 2,500 or GBP 2,350 per week; CHF 5,500 or GBP 5,200 for two", includes: "Six nights full board, lift passes, five days instruction, equipment and helmet, insurance, airport and station transfers.", stay: "Hotel Télécabine, 2 to 6 per room, operator runs the programme", pts: ["P","P","U","P","P"], ev: ["operator-run hotel stay", "camp company", "transfers inside the price", "individuals welcome", "runs the programme"], winter: 4, score: 9, verdict: "POSSIBLE", src: "Niche agent", lead: "Already a summer listing of ours. The winter price bundles transfers, which the rubric reads as unclear rather than a fail because they are airport transfers within Switzerland; a price without transfers would make it STRONG.", ask: "Is there a price without transfers, and is the hotel exclusively theirs during camp?", links: [["Winter camp", "https://www.campsuisse.com/"]] },
+    { id: "la-garenne-winter", name: "La Garenne Winter Camp", place: "Villars-sur-Ollon", country: "Switzerland", operator: "Boarding school, family-run since 1947", ages: "5 to 14 (Super Ski 8 to 14)", dates: "Super Ski weekly 10 Jan to 13 Mar 2027; English+Ski and Integration to 19 Mar 2027", price: "Super Ski boarders from CHF 4,400 per week (day CHF 3,750); two-week programmes from CHF 7,950", includes: "Five full ski days a week on Super Ski. Lift pass, equipment and meals NOT STATED for the winter camp fee.", stay: "School campus, boarders on campus all week", pts: ["P","P","U","P","P"], ev: ["boarders on campus", "boarding school", "price published, inclusions not", "weekly sessions, individual form", "school runs it"], winter: 4, score: 8, verdict: "POSSIBLE", src: "Lead vetted 6 Sept (winter page, two PDFs)", lead: "The 4,200 versus 4,400 conflict is closed: neither PDF carries a winter price, the live page says 4,400. One question away from STRONG. Already in the preview with the unsupported highlight removed.", ask: "What does the CHF 4,400 boarder week include: lift pass, equipment hire, meals?", links: [["Winter camps 2027", "https://www.la-garenne.ch/winter-camps/"], ["School-year conditions PDF", "https://www.la-garenne.ch/PDF/General_Conditions_School_Year_2026-2027.pdf"]] },
+    { id: "hif-ftan", name: "HIF Winter Camp", place: "Ftan, Lower Engadin", country: "Switzerland", operator: "Boarding school (Hochalpines Institut Ftan)", ages: "10 to 16", dates: "9 to 19 Feb 2027", price: "CHF 4,586 for 11 days and 10 nights", includes: "Residential stay, meals, ability-based ski and snowboard instruction, applied learning, day-and-night pastoral care. Zürich pickup CHF 300 and single rooms extra. Lift pass and hire NOT STATED.", stay: "Boarding campus, staff live on site, maximum 30 students", pts: ["P","P","U","P","P"], ev: ["boarding campus", "school runs its camp", "price published, pass not stated", "enquiry then application", "resident staff"], winter: 4, score: 8, verdict: "POSSIBLE", src: "Lead vetted 6 Sept (page read in Chrome; the site refuses curl)", lead: "Excellent residential evidence and an English programme; the only gap is what the fee includes on the mountain. Already in the preview.", ask: "Is the lift pass in the CHF 4,586, and is ski or snowboard hire available and at what cost?", links: [["Winter Camp 2027", "https://hif.ch/camps/winter-camp-2027/"]] },
+    { id: "croq-vacances", name: "Croq' Vacances winter séjours", place: "Châtel, Haute-Savoie", country: "France", operator: "Association agréée Jeunesse et Sports 044ORG0408", ages: "9 to 17 across three séjours (Neige 9 to 12, Passion Ski and Snowboard 12 to 17)", dates: "6 to 12 Feb, 13 to 19 Feb, 20 to 26 Feb 2027", price: "EUR 999, 999 and 959 per week", includes: "Tout compris: lift passes, accommodation, meals, local minibus transfers, supervision, repatriation insurance, five ESF sessions with star exams. Travel to the resort is a separate supplement.", stay: "Savoyard centre de vacances, rooms of 4 to 8 beds with bathrooms", pts: ["P","P","P","P","U"], ev: ["centre included", "agréée association", "per-child, travel separate", "supervised weeks", "centre ownership not stated"], winter: 3, score: 7, verdict: "POSSIBLE", src: "France agent", lead: "The most complete French inclusions list found, passes included. Only the facility-control point is open; a colonie association renting a centre it runs would pass on the summer precedent.", ask: "Does the association run the Châtel centre itself, and what is the founding year?", links: [["Mon Séjour à la Neige", "https://croqvacances.org/colonie-de-vacances-mon-sejour-a-la-neige_68.html"]] },
+    { id: "nuovaera-san-valentino", name: "Nuovaera Vacanze winter camp", place: "San Valentino, Brentonico, Trentino", country: "Italy", operator: "Youth camp organiser", ages: "8 to 17", dates: "21 to 27 Feb and 28 Feb to 6 Mar 2027", price: "EUR 1,000 per week", includes: "Full board, ski course, ski, boot and helmet hire, Brentonico ski pass, staff assistance day and night, accident insurance. Coach travel optional, EUR 25 to 150 each way.", stay: "Hotel Bucaneve, rooms of 4 to 5 beds, one assistant per ten plus a nurse", pts: ["P","P","P","P","U"], ev: ["hotel-housed, operator runs programme and nights", "camp organiser", "per-child, travel optional", "supervised week", "third-party hotel"], winter: 3, score: 7, verdict: "POSSIBLE", src: "France and Italy agent", lead: "Hotel-housed, which the rubric allows when the operator runs the programme and says so; here it does, including night supervision. Founding year not found.", ask: "Founding year and how long they have used the Bucaneve; English booking.", links: [["Winter camp", "https://www.nuovaeravacanze.it/camp-san-valentino-inverno/"]] },
+    { id: "lpm-etoile", name: "LPM Étoile des Alpes", place: "Baratier, Hautes-Alpes", country: "France", operator: "Youth and education association, founded 1969, own holiday house", ages: "6 to 12", dates: "14 to 20 Feb and 21 to 27 Feb 2027", price: "EUR 869 on site; EUR 964 to 1,129 with return travel from French cities", includes: "Full board, three ski days, eight hours ESF tuition, archery, evening activities. Lift pass inclusion NOT FOUND.", stay: "Own house, Le Val Saint-Paul", pts: ["P","P","P","U","P"], ev: ["own house", "association", "on-site price published", "overnight duty not verified", "own house and programme"], winter: 3, score: 7, verdict: "POSSIBLE", src: "Astra pass 2", lead: "A rare French operator that prints a transport-free price beside the travel-inclusive ones. Only three ski days in the week, which the listing must say.", ask: "Is the lift pass included, and who is on duty overnight?", links: [["Programme and tariffs", "https://www.lpm.asso.fr/colo/sejours/colonies-de-vacances-hiver-2027/etoile-des-alpes-2029"]] },
+    { id: "vpt-brixlegg", name: "Vacances pour tous, Glisse en Autriche", place: "Brixlegg and Radfeld, Tyrol", country: "Austria", operator: "Ligue de l'enseignement youth association (French)", ages: "8 to 17", dates: "21 to 27 Feb and 28 Feb to 6 Mar 2027", price: "From EUR 995 for 7 days; travel supplements EUR 178 to 359 separate", includes: "Chalet accommodation, meals, equipment, supervised skiing and snowboarding. Lift pass and professional instruction NOT FOUND.", stay: "Exclusive-use chalet; three different property names across the programme page, the PDF and the booking form", pts: ["P","P","P","U","P"], ev: ["exclusive chalet included", "youth association", "base price and supplements separated", "overnight coverage not verified", "association team"], winter: 3, score: 7, verdict: "POSSIBLE", src: "Astra pass 2", lead: "A French association running an Austrian week: the price is clean, but the accommodation is named three different ways and the pass is not stated.", ask: "Which property, is the pass included, and is instruction professional?", links: [["Programme", "https://www.vacances-pour-tous.org/vv/vpt/colonies-de-vacances/autriche-brixlegg-glisse-en-autriche-sejour-40560/"], ["Technical PDF", "https://document.vacances-pour-tous.org//pdf/fiche_technique/46783.pdf"]] },
+    { id: "kazimirka", name: "Kazimírka winter camp", place: "Josefův Důl, Jizera Mountains", country: "Czech Republic", operator: "Nonprofit youth association, founded 2003", ages: "5 to 15", dates: "28 Feb to 6 Mar 2027", price: "NOT FOUND (to be published in September)", includes: "Accommodation, meals, activities, continuous supervision, Prague coach travel proposed; lift pass and lift transport excluded.", stay: "Penzion Kamenice, exclusively occupied", pts: ["P","P","U","P","P"], ev: ["accommodation included", "youth association", "no price yet, coach bundled", "individual participation", "whole guesthouse reserved"], winter: 3, score: 7, verdict: "POSSIBLE", src: "Astra pass 2", lead: "Wait for the September price; if it separates coach travel it is a clean budget row.", ask: "Price without coach travel.", links: [["Winter camp 2027", "https://www.kazimirka.cz/zimni-tabor-2027/"]] },
+    { id: "mountain-action", name: "mountain-action Snowcamp", place: "Kleinwalsertal (operator in Kempten, DE)", country: "Austria", operator: "Operator type unclear (youth travel company)", ages: "9 to 13", dates: "2 to 6 Jan 2027", price: "EUR 495 for 5 days; lift ticket about EUR 115 extra", includes: "Accommodation, full board, course, supervision, evening programme.", stay: "Whole Schwandalpe hut rented, 6-bed bunk rooms", pts: ["P","U","P","P","P"], ev: ["whole hut rented", "operator type unclear", "per-child, lift extra", "5-day residential", "runs the programme"], winter: 3, score: 7, verdict: "POSSIBLE", src: "DACH agent", lead: "A cheap five-day hut camp for younger children; whether the operator is a camp company or a travel agency decides it.", ask: "What kind of company is mountain-action, and who instructs?", links: [["Snowcamp 2027", "https://www.mountain-action.de/jugendliche/camps-reisen-winter/2027-01-02-snowcamp-kleinwalsertal.php"]] },
+    { id: "piispala", name: "Nuorisokeskus Piispala autumn-holiday camp", place: "Kannonkoski", country: "Finland", operator: "National youth centre, own site", ages: "4 to 16", dates: "12 to 16 Oct and 19 to 23 Oct 2026", price: "EUR 130 per person for 2 nights and 3 days; from EUR 61 per person per day", includes: "Accommodation in 2 to 4-bed rooms, full board, guided programme.", stay: "Own youth centre", pts: ["P","P","P","U","P"], ev: ["own centre", "youth centre", "per child", "individuals or groups unclear", "own site"], winter: 3, score: 7, verdict: "POSSIBLE", src: "Nordics agent", lead: "An autumn-holiday camp with no snow sport; it fits a broader winter-season definition only. No February 2027 camp published.", ask: "Is there a February 2027 residential camp?", links: [["Autumn camp", "https://piispala.fi/nuorten-syyslomaleiri-piispalassa/"], ["Price list", "https://piispala.fi/piispala-info/hinnasto/"]] },
+    { id: "volareza", name: "Volareza winter children's camps", place: "Špindlerův Mlýn", country: "Czech Republic", operator: "State organisation with its own recreation facility", ages: "8 to 17", dates: "Six 8-day sessions 30 Jan to 13 Mar 2027, 38 places each", price: "NOT FOUND (2027 prices in preparation)", includes: "Seven nights full board, whole programme including ski pass, transport from a collection point.", stay: "Two-bed rooms in the facility annex", pts: ["P","P","U","P","P"], ev: ["own facility", "state organisation", "price unpublished, transport bundled", "8-day sessions", "owns facility"], winter: 2, score: 6, verdict: "POSSIBLE", src: "Central and Eastern Europe agent", lead: "Wait for the price; the transport bundle may fail point 3 unless a collection-point-free price exists.", ask: "Price without transport.", links: [["Winter camps", "https://www.volareza.cz/tabory/cz/zimni-tabory"]] },
+    { id: "one-ski-school", name: "One Ski School camps", place: "Poiana Brașov and Bran", country: "Romania", operator: "Ski school", ages: "5 to 16", dates: "Last season 8 to 27 Feb 2026 in three weeks; 2027 NOT FOUND", price: "RON 3,260 (5 to 11) and RON 3,580 (12 to 16) per week, last season", includes: "Villa accommodation in Bran, three meals a day, equipment, ski pass, slope transfer. Travel to camp excluded.", stay: "Contracted villa", pts: ["P","P","P","P","U"], ev: ["villa included", "ski school", "per child, travel excluded", "weekly residential", "villa contracted"], winter: 2, score: 6, verdict: "POSSIBLE", src: "Central and Eastern Europe agent", lead: "English site, clean inclusions, last season's dates. Re-check when 2027 appears.", ask: "2027 dates and prices.", links: [["Camps", "https://www.oneskischool.ro/en/tabere/"]] },
+    { id: "poszukiwacze", name: "Poszukiwacze Przygód ski camp", place: "Poronin", country: "Poland", operator: "Camp operator, Gdańsk", ages: "11 to 18", dates: "18 Jan to 21 Feb 2027 in five weeks (all shown as expired)", price: "PLN 2,099 to 2,149 per week; lift pass +650, equipment +270, transport +260 to 420", includes: "Programme, staff, six nights, meals, accident insurance.", stay: "Limba Resort Komfort, 3 to 5-bed rooms with bathrooms", pts: ["P","P","P","P","U"], ev: ["resort included", "camp operator", "per child, extras itemised", "residential week", "resort contracted"], winter: 2, score: 6, verdict: "POSSIBLE", src: "Central and Eastern Europe agent", lead: "Odd status: a 2027 page whose every session reads expired. Possibly sold out or a stale template.", ask: "Are the 2027 weeks sold out or not yet open?", links: [["Ski camp", "https://www.poszukiwaczeprzygod.pl/zimowiska/zimowiskanartysnowboard/zimowiskonarciarskie.html"]] },
+    { id: "tul-ruka", name: "TUL alpine ski camp", place: "Ruka, Kuusamo", country: "Finland", operator: "National sports federation", ages: "13 to 18", dates: "19 to 24 Feb 2026 (last season); no 2026-27 edition published", price: "NOT FOUND", includes: "Three days skiing and one day hiking, accommodation and meals at Retki-Konttainen. Lift pass NOT FOUND.", stay: "Federation lodging at Ruka", pts: ["P","P","U","P","P"], ev: ["lodging included", "federation", "no price", "supervised", "own programme"], winter: 1, score: 5, verdict: "POSSIBLE", src: "Nordics agent", lead: "Re-check in November for a 2027 edition and a price.", ask: "2027 edition, price, lift pass.", links: [["Camp page", "https://tul.fi/tapahtumakalenteri/lasketteluleiri-2/"]] },
+    { id: "kfum-vatnaskogur", name: "KFUM og KFUK Vetrarstuð í Vatnaskógi", place: "Hvalfjarðarsveit", country: "Iceland", operator: "Youth association, own camp site", ages: "10 to 12", dates: "20 to 22 Mar 2026 (last season)", price: "NOT FOUND, behind a five-step booking flow", includes: "NOT FOUND", stay: "Own camp site 80 km from Reykjavík", pts: ["P","P","U","P","P"], ev: ["own site", "association", "no price visible", "supervised weekend", "own programme"], winter: 1, score: 5, verdict: "POSSIBLE", src: "Nordics agent", lead: "A weekend, Icelandic only, price behind a booking flow. Low priority; a browser walk would settle it.", ask: "Price and 2027 date.", links: [["Camp page", "https://kfum.is/vetrarstud-i-vatnaskogi/"]] },
+    { id: "lingvo-mary-poppins", name: "Lingvo Center Mary Poppins Christmas Language Camp", place: "Jyväskylä", country: "Finland", operator: "Language school", ages: "8 and older", dates: "2 to 9 Jan 2026 (last edition)", price: "EUR 1,080, early bird 890", includes: "Accommodation in 2 or 4-bed rooms, four meals a day, native-speaker lessons, visits to Helsinki and Tampere. Flights, visa, insurance, transport to Jyväskylä excluded.", stay: "Hotel or student residence, not owned", pts: ["U","P","P","P","P"], ev: ["housing not owned", "language school", "per child", "supervised", "own programme"], winter: 1, score: 5, verdict: "POSSIBLE", src: "Nordics agent", lead: "Language camp with a two-city excursion element that edges toward a tour; last edition's page. Weak fit for a ski-led section.", ask: "2027 edition and where children sleep.", links: [["Winter camps", "https://www.lingvocenterfinland.com/winter-camps"]] },
+    { id: "nlm-ost", name: "NLM Region Øst winter camps", place: "Hurdal, Solåsen, Livoll", country: "Norway", operator: "Mission organisation with own camp sites", ages: "School grades 2 to 7", dates: "Three weekends Jan to Feb 2026", price: "NOT LISTED", includes: "NOT FOUND", stay: "Own camp sites", pts: ["P","P","U","P","P"], ev: ["own sites", "organisation", "no price", "individual sign-up", "own sites"], winter: 1, score: 5, verdict: "POSSIBLE", src: "Nordics agent", lead: "Weekend camps, Norwegian only, no prices. A future budget entry at most.", ask: "Prices and 2027 dates.", links: [["Camp overview", "https://www.nlm.no/ressursbank/region-ost/leiroversikt-region-ost/"]] },
+    { id: "snowfun4kids", name: "snowfun4kids", place: "Radstadt, Salzburg", country: "Austria", operator: "Non-profit winter sports association, 20 years of camps", ages: "6 and older", dates: "1 to 7 Feb 2026 (last season); 2027 pre-registration only", price: "EUR 950 last season, including transfer", includes: "Transfer, full board, lift pass, supervision around the clock including on the slopes. Equipment hire extra.", stay: "ya! Simonyhof guesthouse, 4 to 6-bed rooms", pts: ["P","P","U","P","U"], ev: ["guesthouse included", "association", "transfer bundled", "7-day residential", "facility control not verified"], winter: 1, score: 5, verdict: "POSSIBLE", src: "DACH agent (scored 5) and Astra pass 2 (scored 4, REJECT on the bundled transfer)", lead: "Two reads disagree on how to treat the bundled transfer; either way, nothing is published for 2027. Revisit when it is.", ask: "2027 dates and a price without transfer.", links: [["Site", "https://snowfun4kids.at/"]] },
+    { id: "wachumba", name: "Wachumba SnowCamp Junior", place: "Ždiar, High Tatras", country: "Slovakia", operator: "Children's camp company", ages: "7 and older", dates: "15 to 28 Feb 2026 in two weeks, sold out; 2027 behind the booking flow", price: "Renders as EUR 0; needs a browser", includes: "Ski passes and five meals a day stated; transport EUR 35 and equipment EUR 50 extra.", stay: "Penzión Jánošík, 2 to 4-bed rooms", pts: ["P","P","U","P","U"], ev: ["guesthouse included", "camp company", "price not readable", "supervised", "guesthouse contracted"], winter: 1, score: 4, verdict: "POSSIBLE", src: "Central and Eastern Europe agent", lead: "Interactive booking flow hides the price; a browser walk decides whether this is a clean budget row.", ask: "Price and 2027 dates from the booking flow.", links: [["Spring ski camp", "https://www.wachumba.eu/detske-zimne-jarne-tabory/jarny-lyziarsky-tabor"]] },
+    { id: "casa-scoiattoli", name: "Casa degli Scoiattoli", place: "Sfruz, Trentino", country: "Italy", operator: "Association running its own house", ages: "5 to 14", dates: "15 to 21 Feb 2026 (last season); calendar empty", price: "NOT FOUND", includes: "NOT FOUND", stay: "Own house, Via Murzent 1", pts: ["P","P","U","P","P"], ev: ["own house", "association", "no price", "supervised", "own house"], winter: 0, score: 4, verdict: "POSSIBLE", src: "France and Italy agent", lead: "Own facility is the attraction. Worth one email when the 2027 calendar appears.", ask: "2027 dates and price.", links: [["Winter camps", "https://casadegliscoiattoli.it/campi-invernali/"]] },
+    { id: "tabory-mamut", name: "Tábory Mamut spring-holiday ski camp", place: "Staré Město, Jeseníky", country: "Czech Republic", operator: "Camp association with its own mountain base", ages: "10 to 17", dates: "Spring holidays Feb to Mar, no day-dates printed", price: "NOT FOUND", includes: "Discounted ski passes mentioned; nothing itemised.", stay: "Own mountain camp base", pts: ["P","P","U","P","P"], ev: ["own base", "association", "no price", "enrolment offered", "owns the base"], winter: 1, score: 4, verdict: "POSSIBLE", src: "Central and Eastern Europe agent", lead: "Needs a browser pass or an enquiry before anything can be said.", ask: "Dates, price, inclusions.", links: [["Spring holidays", "https://taborymamut.cz/jarni-prazdniny/"]] },
+    { id: "champions-camp", name: "Champions' Camp winter camp", place: "Andalo, Trentino", country: "Italy", operator: "Self-described travel agency and tour operator, since 2006", ages: "8 to 17", dates: "8 to 14 Mar 2026 (past); 2027 NOT FOUND", price: "EUR 1,290 (early EUR 990) last season", includes: "Hotel full board, 21 hours instruction, Dolomiti Paganella ski pass, insurance, 24-hour care. Transfer EUR 50 each way.", stay: "Hotel Olimpia, rooms of 3 to 4", pts: ["P","F","P","P","U"], ev: ["hotel included", "travel agency by its own description", "transfer separate", "individual enrolment", "hotel control not verified"], winter: 2, score: 5, verdict: "REJECT", src: "Astra pass 2 (operator page); the Italy agent scored it 6 without that page", lead: "The operator calls itself a tour operator on its own about page. Point 2 fails on the rubric, whatever the programme quality.", ask: "", links: [["Winter camp", "https://www.championscamp.it/winter-camp/"], ["About the operator", "https://www.championscamp.it/chi-siamo/"]] },
+    { id: "ski-club-rotteln", name: "Ski-Club Rötteln ski and snowboard camp", place: "Elsigenalp (club from Lörrach, DE)", country: "Switzerland", operator: "Ski club, 75th anniversary", ages: "9 to 15", dates: "3 to 8 Jan 2027", price: "EUR 650 non-members, 570 members, including coach travel", includes: "Coach travel, five nights, full board, lift pass, lessons, 24-hour supervision.", stay: "Self-catering accommodation, control not verified", pts: ["P","P","F","P","U"], ev: ["accommodation included", "ski club", "only coach-inclusive price", "non-member tariff, supervision", "facility control not verified"], winter: 3, score: 6, verdict: "REJECT", src: "Astra pass 2", lead: "Good value and open to non-members, but the only price includes the coach from Germany, which fails point 3 as written.", ask: "", links: [["Camp page", "https://ski-club-roetteln.de/ski-snowboardcamp/"]] },
+    { id: "helsingin-nuoret-kotkat", name: "Helsingin Nuoret Kotkat winter camp", place: "Urjala", country: "Finland", operator: "Youth association, own camp centre", ages: "7 to 13", dates: "20 to 26 Feb 2027 (homepage says 20 to 27)", price: "EUR 195 per person including the charter coach from Helsinki", includes: "Accommodation, full board, coach, accident insurance, outdoor and craft activities. No snow-sport programme.", stay: "Association-owned Kankaan Torppa", pts: ["P","P","F","U","P"], ev: ["own centre", "association", "coach-inclusive only", "overnight supervision not verified", "own site"], winter: 2, score: 5, verdict: "REJECT", src: "Astra pass 2", lead: "A budget nature camp, not a ski camp, with the coach in the price. Outside the section's promise.", ask: "", links: [["Camp page", "https://lastenleirit.fi/2013/05/11/urjala-16-22-2-2013/"]] }
+  ];
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const POINT_NAMES = ["Residential facility", "Camp operator", "Camp-only per-child price", "Supervised programme, individual bookings", "Operator runs it"];
+  const DECISIONS = ["accept", "investigate", "reject"];
+  const state = { filter: "ALL", country: "", undecided: false, decisions: {} };
+  let db = null;
+
+  function esc(text) {
+    return String(text).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+  }
+
+  function renderCard(c) {
+    const points = c.pts.map((p, i) => `<span class="pt ${p}" title="${esc(POINT_NAMES[i])}: ${esc(c.ev[i])}">${i + 1} ${p}</span>`).join("");
+    const links = c.links.map(([label, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`).join("");
+    const controls = DECISIONS.map(d => `<button type="button" class="${d}" data-decide="${d}" aria-pressed="false">${d[0].toUpperCase() + d.slice(1)}<span class="k">${d === "accept" ? "add to the section" : d === "reject" ? "drop" : "one more check"}</span></button>`).join("");
+    return `
+      <article class="cand" id="cand-${esc(c.id)}" data-id="${esc(c.id)}" data-verdict="${esc(c.verdict)}" data-country="${esc(c.country)}">
+        <div class="stripe"></div>
+        <div class="body">
+          <div>
+            <div class="head">
+              <h2>${esc(c.name)}</h2>
+              <span class="place">${esc(c.place)}, ${esc(c.country)}</span>
+              <span class="pill ${esc(c.verdict)}">${esc(c.verdict)}</span>
+              <span class="score"><b>${c.score}</b>/10</span>
+            </div>
+            <div class="src">${esc(c.src)}</div>
+            <dl class="facts">
+              <div><dt>Operator</dt><dd>${esc(c.operator)}</dd></div>
+              <div><dt>Ages</dt><dd>${esc(c.ages)}</dd></div>
+              <div><dt>Dates as printed</dt><dd>${esc(c.dates)}</dd></div>
+              <div><dt>Price as printed</dt><dd>${esc(c.price)}</dd></div>
+              <div><dt>What the price includes</dt><dd>${esc(c.includes)}</dd></div>
+              <div><dt>Where children sleep</dt><dd>${esc(c.stay)}</dd></div>
+            </dl>
+            <div class="points">${points}<span class="winter">winter points ${c.winter}/5</span></div>
+            <p class="lead"><strong>Lead's view.</strong> ${esc(c.lead)}</p>
+            ${c.ask ? `<p class="ask">Open question: ${esc(c.ask)}</p>` : ""}
+            <div class="links">${links}</div>
+          </div>
+          <aside class="decide" aria-label="Your decision">
+            <h3>Your decision</h3>
+            <div class="seg">${controls}</div>
+            <div class="note">
+              <textarea placeholder="A note for the lead (optional)" aria-label="Note for the lead"></textarea>
+              <button type="button" data-save-note>Save note</button>
+            </div>
+            <div class="stamp" aria-live="polite"></div>
+          </aside>
+        </div>
+      </article>`;
+  }
+
+  function applyFilters() {
+    for (const card of $$("article.cand")) {
+      const id = card.dataset.id;
+      const decided = Boolean(state.decisions[id] && state.decisions[id].decision);
+      const show = (state.filter === "ALL" || card.dataset.verdict === state.filter)
+        && (!state.country || card.dataset.country === state.country)
+        && (!state.undecided || !decided);
+      card.hidden = !show;
+    }
+  }
+
+  function paintDecision(id) {
+    const card = $(`#cand-${CSS.escape(id)}`);
+    if (!card) return;
+    const rec = state.decisions[id] || {};
+    for (const button of $$("[data-decide]", card)) button.setAttribute("aria-pressed", String(rec.decision === button.dataset.decide));
+    const area = $("textarea", card);
+    if (document.activeElement !== area) area.value = rec.note || "";
+    const stamp = $(".stamp", card);
+    stamp.textContent = rec.updatedAt ? `Saved ${new Date(rec.updatedAt).toLocaleString()}` : "";
+  }
+
+  function paintSummary() {
+    const counts = { STRONG: 0, POSSIBLE: 0, REJECT: 0 };
+    const decided = { accept: 0, investigate: 0, reject: 0, none: 0 };
+    for (const c of CANDIDATES) {
+      counts[c.verdict] += 1;
+      const d = state.decisions[c.id] && state.decisions[c.id].decision;
+      decided[d && decided[d] !== undefined ? d : "none"] += 1;
+    }
+    $("#c-strong").textContent = counts.STRONG; $("#c-possible").textContent = counts.POSSIBLE; $("#c-reject").textContent = counts.REJECT;
+    $("#d-accept").textContent = decided.accept; $("#d-investigate").textContent = decided.investigate; $("#d-reject").textContent = decided.reject; $("#d-none").textContent = decided.none;
+  }
+
+  async function save(id, patch) {
+    const current = state.decisions[id] || {};
+    const next = { decision: current.decision || null, note: current.note || "", ...patch, updatedAt: new Date().toISOString() };
+    state.decisions[id] = next;
+    paintDecision(id); paintSummary(); applyFilters();
+    if (!db) return;
+    try {
+      await db.doc(`decisions/${id}`).set(next);
+    } catch (error) {
+      $(`#cand-${CSS.escape(id)} .stamp`).textContent = `Not saved (${error.code || "error"}); try again`;
+    }
+  }
+
+  function wireCards() {
+    $("#list").addEventListener("click", event => {
+      const button = event.target.closest("[data-decide], [data-save-note]");
+      if (!button) return;
+      const card = button.closest("article.cand");
+      const id = card.dataset.id;
+      if (button.dataset.decide) {
+        const current = state.decisions[id] && state.decisions[id].decision;
+        save(id, { decision: current === button.dataset.decide ? null : button.dataset.decide });
+      } else {
+        save(id, { note: $("textarea", card).value.trim() });
+      }
+    });
+    for (const button of $$("[data-filter]")) button.addEventListener("click", () => {
+      state.filter = button.dataset.filter;
+      for (const other of $$("[data-filter]")) other.setAttribute("aria-pressed", String(other === button));
+      applyFilters();
+    });
+    $("#country").addEventListener("change", event => { state.country = event.target.value; applyFilters(); });
+    $("#undecided").addEventListener("change", event => { state.undecided = event.target.checked; applyFilters(); });
+  }
+
+  function build() {
+    const sorted = [...CANDIDATES].sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+    $("#list").innerHTML = sorted.map(renderCard).join("");
+    const countries = [...new Set(CANDIDATES.map(c => c.country))].sort();
+    $("#country").insertAdjacentHTML("beforeend", countries.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join(""));
+    wireCards();
+    for (const c of CANDIDATES) paintDecision(c.id);
+    paintSummary();
+  }
+
+  async function connect() {
+    const sync = $("#sync");
+    try {
+      db = await window.claude.use("db");
+    } catch (error) {
+      db = null;
+    }
+    if (!db) {
+      sync.textContent = "Shared record unavailable in this view; choices stay on this screen only";
+      return;
+    }
+    db.collection("decisions").onSnapshot(snapshot => {
+      for (const doc of snapshot.docs) {
+        state.decisions[doc.id] = doc.data() || {};
+        paintDecision(doc.id);
+      }
+      paintSummary(); applyFilters();
+      sync.textContent = `Shared record connected, ${snapshot.size} decision${snapshot.size === 1 ? "" : "s"} on file`;
+    }, error => { sync.textContent = `Shared record error: ${error.code}`; });
+  }
+
+  build();
+  connect();
+</script>

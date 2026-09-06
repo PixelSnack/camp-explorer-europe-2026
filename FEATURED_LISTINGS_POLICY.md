@@ -37,6 +37,8 @@ The €99/year Featured tier was retired by owner decision on 2 Sept 2026 ("99 E
 | **List price** | €299 per listing per year |
 | **Introductory rate** | €199 first year, rate-locked for renewals (2027-cycle premium listings; renamed from "Founding Partner" 17 Aug 2026) |
 | **Video button** | "Watch Camp Video" button on card (Premium only) |
+| **Cards per Premium** | Up to three camp cards under one Premium when they are distinct programmes (for example summer, winter, a second site or a clearly different camp type). More cards by request only, at a yearly add-on agreed with the owner. Owner decision 6 Sept 2026 |
+| **Card image** | Premium camps may supply their own photo or image for the card, or receive a hand-drawn illustration in the site's style made from a written description of their setting (no photograph is fed to a model). Non-Premium cards use the shared illustrations. Owner decision 6 Sept 2026 |
 | **Category cap** | Maximum 3 premium slots per category — committed scarcity |
 | **Tracking** | UTM-tagged outbound links, verifiable in the camp's own Google Analytics |
 | **Commission** | 0% — all traffic goes direct to the camp's site; they own the parent relationship |
@@ -60,7 +62,7 @@ The €99/year Featured tier was retired by owner decision on 2 Sept 2026 ("99 E
 | Premium introductory rate (2027 cycle) | €199 first year, rate-locked |
 
 ### Volume Discounts
-The Featured-tier volume pricing was retired with the tier (2 Sept 2026). A Premium subscription covers one listing, and most will stay at one; multi-listing bundles under Premium are negotiated case by case with the owner.
+The Featured-tier volume pricing was retired with the tier (2 Sept 2026). A Premium subscription covers up to three distinct camp cards (owner decision 6 Sept 2026); a fourth card and beyond is a yearly add-on, offered by request only and priced by the owner.
 
 ---
 
