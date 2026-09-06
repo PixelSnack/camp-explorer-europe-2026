@@ -377,15 +377,17 @@ Mobile variant uses the mobile classes (`block px-6 py-4 rounded-lg text-lg font
 
 Precondition: at least four winter camps verified STRONG on all five points, each number re-read by the lead on the operator page (winter research report plus Chrome for pages that do not render).
 
-- [ ] **Step 1: Data rows** in the `allCamps` shape plus `season: "winter"`, `category: "winter"`, `image: winterImage`, `type` such as "Ski & Snowboard Camp", `dates` under 40 characters (for example "Dec 12, 2026 - Apr 24, 2027"), provenance comments on `price` and `dates`, `bookingStatus: "open"` only with a dated verification comment.
+- [ ] **Step 1: Data rows** in the `allCamps` shape plus `season: "winter"`, `category: "winter"`, `image` imported in winterCamps.js from one of the three card assets `src/assets/european-winter-camp-{snowboard-lesson-teenagers-alps,cross-country-skiing-children-nordic,chalet-evening-snow}.webp` (the ski-lesson hero stays a hero, not a card), `type` such as "Ski & Snowboard Camp", `dates` under 40 characters (for example "Dec 12, 2026 - Apr 24, 2027"), provenance comments on `price` and `dates`, `bookingStatus: "open"` only with a dated verification comment.
 - [ ] **Step 2: FAQ entry** appended to `FAQ_ITEMS`:
 
 ```js
 {
   question: "Are there European winter camps for children?",
-  answer: "Yes. Alongside the summer directory we list residential winter camps in Europe that run from December to April: ski and snowboard camps and winter sports schools where children stay on site with full board, supervised tuition and evening activities. Every winter listing passes the same five-point verification as our summer camps (a residential facility run by the operator, a camp operator, per-child pricing, an on-site supervised programme and an operator-run facility) and shows dates, prices and inclusions as published by the operator. Open the Winter Camps section from the menu."
+  answer: "Yes. Alongside the summer directory we list residential winter camps in Europe that run from December to April: ski and snowboard camps and winter sports schools where children typically stay on site with full board and supervised tuition. Every winter listing passes the same five-point verification as our summer camps and shows dates, per-child prices and ages as published by the operator. Open the Winter Camps section from the menu."
 }
 ```
+
+Conditional wording (Fable SEO review, 6 Sept): only if the verified rows actually run those weeks, extend the first sentence with "with weekly sessions across the Christmas, February half-term and Easter school holidays"; only once the rows are verified, name their countries after "winter camps in Europe" (for example "in Switzerland and France"). Never claim a holiday week or a country that no row carries.
 
 - [ ] **Step 3: `scripts/sync-faq-jsonld.mjs`** reads `FAQ_ITEMS`, builds the FAQPage object with 2-space indentation matching the existing block, and replaces the block between `<!-- FAQ Structured Data for Rich Snippets -->` and the closing `</script>` in index.html. Run it, then `npm run validate:faq` must pass.
 - [ ] **Step 4: index.html** ItemList: add position 8 `{"@type": "ListItem", "position": 8, "name": "Winter Camps", "description": "Residential ski, snowboard and winter sports camps for children, December to April", "url": "https://www.europeansummercamps.com/#winter"}` and set `numberOfItems` to 8; Organization `knowsAbout` gains "European Winter Camps" and "Ski Camps for Kids". Sitemap `lastmod` to the release date.

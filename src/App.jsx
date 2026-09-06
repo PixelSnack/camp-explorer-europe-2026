@@ -1625,7 +1625,7 @@ function App() {
               <source srcSet={winterHeroWebp} type="image/webp" />
               <img
                 src={winterHeroJpg}
-                alt="Children at a supervised residential ski camp in the European Alps"
+                alt="Children in ski jackets following an instructor down a beginner slope beside a wooden chalet in the Alps"
                 className="rounded-lg shadow-xl w-full h-auto"
                 width="1376"
                 height="774"
@@ -1635,9 +1635,11 @@ function App() {
             <div>
               <h2 id="winter-teaser-heading" className="text-3xl font-bold text-gray-900 mb-4">Winter Camps in Europe</h2>
               <p className="text-gray-600 mb-6">
-                Our winter section lists residential ski camps for kids and winter sports schools that run from December to April, verified against the same five-point criteria as every summer camp. Each listing shows dates, per-child prices, ages and what the price includes, with a direct link to the operator.
+                Our winter section lists residential ski camps for kids and winter sports schools that run from December to April, verified against the same five-point criteria as every summer camp. Each listing shows dates, per-child prices and ages, with a direct link to the operator.
               </p>
-              <Button className="btn-primary" onClick={() => handleNavigation('winter')}>View European Winter Camps</Button>
+              <Button asChild className="btn-primary">
+                <a href="#winter" onClick={(event) => { event.preventDefault(); handleNavigation('winter') }}>View European Winter Camps</a>
+              </Button>
             </div>
           </div>
         </section>
@@ -1863,11 +1865,12 @@ function App() {
             <source srcSet={winterHeroWebp} type="image/webp" />
             <img
               src={winterHeroJpg}
-              alt="Children following a ski instructor on a gentle slope beside a wooden chalet at a European winter camp"
+              alt="Children in ski jackets following an instructor down a beginner slope beside a wooden chalet in the Alps"
               className="w-full h-full object-cover"
               width="1376"
               height="774"
               loading="eager"
+              fetchpriority="high"
             />
           </picture>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/55 to-black/70"></div>
@@ -1880,7 +1883,7 @@ function App() {
               Dates and prices are shown for the {WINTER_SEASON} winter season as published by each operator.
             </p>
             {winterCamps.length > 0 && (
-              <p className="mt-6 text-sm text-gray-100">{winterCamps.length} winter camps in {winterCountryCount} countries</p>
+              <p className="mt-6 text-sm text-gray-100">{winterCamps.length} winter {winterCamps.length === 1 ? 'camp' : 'camps'} in {winterCountryCount} {winterCountryCount === 1 ? 'country' : 'countries'}</p>
             )}
           </div>
         </section>
@@ -1918,7 +1921,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Compare Summer Camps
+                {selectedCamps.some(camp => camp.season === 'winter') ? 'Compare Camps' : 'Compare Summer Camps'}
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Compare up to 3 camps side by side to find the perfect match for your child
@@ -1965,9 +1968,9 @@ function App() {
                       <div className="p-6">
                         <img 
                           src={camp.image} 
-                          alt={`${camp.name} - ${camp.type} summer camp in ${camp.location} for ages ${camp.ages}`}
+                          alt={`${camp.name} - ${camp.type} ${camp.season === 'winter' ? 'winter' : 'summer'} camp in ${camp.location} for ages ${camp.ages}`}
                           className="w-full h-32 object-cover rounded-lg mb-4"
-                          title={`${camp.name} - European Summer Camp ${camp.ages}`}
+                          title={`${camp.name} - European ${camp.season === 'winter' ? 'Winter' : 'Summer'} Camp ${camp.ages}`}
                           loading="lazy"
                         />
                         
