@@ -51,6 +51,8 @@ import './App.css'
 import { allCamps, activitiesCompressed, mapCompressed, AGE_SPAN, parseAges } from './data/camps.js'
 import { SEASON_YEAR, DIRECTORY_UPDATED } from './data/season.js'
 import { FAQ_ITEMS } from './data/faq.js'
+import CampCard from './components/CampCard.jsx'
+import { BookingStatusBadge } from './components/BookingStatusBadge.jsx'
 
 // Hash-routed sections; unknown hashes (e.g. the #main-content skip link) must not change the view
 const KNOWN_SECTIONS = new Set(['home', 'discover', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])
@@ -110,32 +112,12 @@ const handleVideoClick = (camp) => {
   window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
 }
 
-// Booking-status badge: rendered only when a camp carries a verified bookingStatus.
-// "open" is the only green state; any other verified text (e.g. "2027 dates published") is blue.
-const getBookingBadge = (camp) => {
-  const status = typeof camp.bookingStatus === 'string' ? camp.bookingStatus.trim() : ''
-  if (!status || status === 'not yet open') return null
-  return status === 'open'
-    ? { label: 'Booking open', tone: 'bg-green-500/90' }
-    : { label: status, tone: 'bg-blue-500/90' }
-}
-
 // Explains why most cards still show last season's dates until operators publish the next ones.
 const SeasonNotice = () => (
   <p className="text-sm text-gray-600 text-center max-w-2xl mx-auto mb-8">
     Most organizations publish their {SEASON_YEAR} dates between September and December. Cards show the latest verified dates; a blue badge marks camps with {SEASON_YEAR} dates published.
   </p>
 )
-
-const BookingStatusBadge = ({ camp }) => {
-  const badge = getBookingBadge(camp)
-  if (!badge) return null
-  return (
-    <Badge className={`${badge.tone} text-white backdrop-blur-sm text-xs ml-auto`}>
-      {badge.label}
-    </Badge>
-  )
-}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -1792,178 +1774,14 @@ function App() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Sort featured camps first */}
               {[...filteredCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
-                <Card key={camp.id} data-camp-card={camp.id} className={`camp-card overflow-hidden group flex flex-col ${
-                  camp.featured
-                    ? 'border-[3px] border-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.4)] ring-4 ring-amber-100'
-                    : 'border-0 shadow-lg'
-                }`}>
-                  <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={camp.image}
-                      alt={`${camp.name} - ${camp.type} summer camp in ${camp.location} for ages ${camp.ages}`}
-                      className={`w-full h-full group-hover:scale-105 transition-transform duration-500 ${
-                        camp.image === mapCompressed ? 'object-contain bg-sky-50' : 'object-cover'
-                      }`}
-                      title={`${camp.name} - European Summer Camp ${camp.ages}`}
-                      loading="lazy"
-                    />
-                    {/* Featured Camp Badge */}
-                    {camp.featured && (
-                      <div className="absolute top-0 left-0 z-10">
-                        <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-white text-sm font-bold px-4 py-2 shadow-lg flex items-center gap-1.5 rounded-br-lg">
-                          <Star className="w-4 h-4 fill-white" />
-                          <span>{camp.priceRange === 'premium' || camp.priceRange === 'luxury' ? 'PREMIUM' : 'FEATURED'}</span>
-                        </div>
-                      </div>
-                    )}
-                    <div className={`absolute ${camp.featured ? 'top-10' : 'top-4'} left-4`}>
-                      <Badge className={`${
-                        camp.priceRange === 'luxury' ? 'bg-purple-500' :
-                        camp.priceRange === 'premium' ? 'bg-blue-500' :
-                        camp.priceRange === 'mid' ? 'bg-green-500' : 'bg-orange-500'
-                      } text-white px-3 py-1`}>
-                        {camp.type}
-                      </Badge>
-                    </div>
-                    <div className="absolute top-4 right-4 flex gap-2">
-                      {camp.rating !== null && (
-                      <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
-                        <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
-                        {camp.rating}
-                      </Badge>
-                      )}
-                      <Button
-                        size="sm"
-                        variant={selectedCamps.find(c => c.id === camp.id) ? "default" : "outline"}
-                        className="h-8 px-2"
-                        onClick={(e) => { e.stopPropagation(); handleCampSelection(camp); }}
-                        aria-pressed={!!selectedCamps.find(c => c.id === camp.id)}
-                        aria-label={selectedCamps.find(c => c.id === camp.id) ? `Remove ${camp.name} from comparison` : `Add ${camp.name} to comparison`}
-                      >
-                        {selectedCamps.find(c => c.id === camp.id) ? '✓' : '+'}
-                      </Button>
-                    </div>
-                    {/* Bottom overlay row: date chip left, verified booking badge right; wraps instead of overlapping on narrow phones */}
-                    <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end gap-2">
-                      <Badge className="bg-black/70 text-white backdrop-blur-sm whitespace-normal text-left">
-                        <Calendar className="w-3 h-3 mr-1 flex-shrink-0" />
-                        {camp.dates}
-                      </Badge>
-                      <BookingStatusBadge camp={camp} />
-                    </div>
-                  </div>
-                  
-                  <CardHeader className="pb-3">
-                    <div className="flex justify-between items-start gap-3">
-                      <div className="min-w-0 flex-1">
-                        <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">
-                          {camp.name}
-                        </CardTitle>
-                        <CardDescription className="flex items-center text-gray-600 mt-1">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          {camp.location}
-                        </CardDescription>
-                      </div>
-                      <div className="text-right flex-shrink-0">
-                        {camp.price.split('/')[0].startsWith('From ') && (
-                          <div className="camp-from-label">From</div>
-                        )}
-                        <div className="camp-price">{camp.price.split('/')[0].replace('From ', '')}</div>
-                        {camp.price.includes('/') && (
-                          <div className="camp-duration">{camp.price.split('/')[1]}</div>
-                        )}
-                      </div>
-                    </div>
-                  </CardHeader>
-
-                  <CardContent className="pt-0 flex-1 flex flex-col">
-                    <div className="space-y-4 flex-grow">
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-gray-600 flex items-center">
-                          <Users className="w-4 h-4 mr-1" />
-                          Ages {camp.ages}
-                        </span>
-                        <span className="text-gray-600 flex items-center">
-                          <Globe className="w-4 h-4 mr-1" />
-                          {camp.capacity ? `${camp.capacity} max` : 'Capacity on request'}
-                        </span>
-                      </div>
-
-                      <div className="flex flex-wrap gap-1">
-                        {camp.activities.slice(0, 3).map((activity, index) => (
-                          <Badge key={index} variant="secondary" className="badge-responsive">
-                            {activity}
-                          </Badge>
-                        ))}
-                        {camp.activities.length > 3 && (
-                          <Badge variant="secondary" className="badge-responsive">
-                            +{camp.activities.length - 3} more
-                          </Badge>
-                        )}
-                      </div>
-
-                      <div className="space-y-2">
-                        <div className="text-sm font-medium text-gray-900">Languages:</div>
-                        <div className="flex flex-wrap gap-1">
-                          {camp.languages.map((lang, index) => (
-                            <Badge key={index} variant="outline" className="badge-responsive">
-                              {lang}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        <div className="text-sm font-medium text-gray-900">Highlights:</div>
-                        <ul className="text-sm text-gray-600 space-y-1">
-                          {camp.highlights.slice(0, camp.featured ? 3 : 2).map((highlight, index) => (
-                            <li key={index} className="flex items-center">
-                              <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2"></div>
-                              {highlight}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="flex items-center justify-between pt-4 border-t">
-                        {camp.established && (
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Award className="w-4 h-4 mr-1" />
-                          Est. {camp.established}
-                        </div>
-                        )}
-                        {camp.reviews > 0 && (
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Heart className="w-4 h-4 mr-1" />
-                          {camp.reviews} reviews
-                        </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="mt-4 space-y-2">
-                      <Button
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                        onClick={() => handleBookingClick(camp)}
-                        aria-label={`View details and book ${camp.name}`}
-                      >
-                        View Details & Book
-                      </Button>
-                      {camp.videoUrl && (
-                        <Button
-                          className="w-full bg-red-600 hover:bg-red-700 text-white text-sm h-9"
-                          onClick={(e) => { e.stopPropagation(); handleVideoClick(camp) }}
-                          aria-label={`Watch ${camp.name} video`}
-                        >
-                          <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                          Watch Camp Video
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
+                <CampCard
+                  key={camp.id}
+                  camp={camp}
+                  isSelected={!!selectedCamps.find(c => c.id === camp.id)}
+                  onToggleCompare={handleCampSelection}
+                  onBook={handleBookingClick}
+                  onVideo={handleVideoClick}
+                />
               ))}
             </div>
 
