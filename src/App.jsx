@@ -84,6 +84,7 @@ const trackOutboundClick = (camp) => {
       camp_id: camp.id,
       camp_category: camp.category,
       camp_country: camp.country,
+      camp_season: camp.season || 'summer',
       is_featured: camp.featured || false,
       destination_url: camp.bookingUrl
     })
@@ -95,6 +96,18 @@ const handleBookingClick = (camp) => {
   trackOutboundClick(camp)
   const trackedUrl = buildOutboundUrl(camp.bookingUrl, camp)
   window.open(trackedUrl, '_blank', 'noopener,noreferrer')
+}
+
+// Video button: one event per click, then the YouTube link (window.open stays synchronous for iOS)
+const handleVideoClick = (camp) => {
+  if (window.gtag) {
+    window.gtag('event', 'video_click', {
+      camp_name: camp.name,
+      camp_id: camp.id,
+      camp_season: camp.season || 'summer'
+    })
+  }
+  window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
 }
 
 // Booking-status badge: rendered only when a camp carries a verified bookingStatus.
@@ -1393,16 +1406,7 @@ function App() {
                     {camp.videoUrl && (
                       <Button
                         className="w-full bg-red-600 hover:bg-red-700 text-white text-sm h-9"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          if (window.gtag) {
-                            window.gtag('event', 'video_click', {
-                              camp_name: camp.name,
-                              camp_id: camp.id
-                            })
-                          }
-                          window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
-                        }}
+                        onClick={(e) => { e.stopPropagation(); handleVideoClick(camp) }}
                         aria-label={`Watch ${camp.name} video`}
                       >
                         <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
@@ -1948,16 +1952,7 @@ function App() {
                       {camp.videoUrl && (
                         <Button
                           className="w-full bg-red-600 hover:bg-red-700 text-white text-sm h-9"
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            if (window.gtag) {
-                              window.gtag('event', 'video_click', {
-                                camp_name: camp.name,
-                                camp_id: camp.id
-                              })
-                            }
-                            window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
-                          }}
+                          onClick={(e) => { e.stopPropagation(); handleVideoClick(camp) }}
                           aria-label={`Watch ${camp.name} video`}
                         >
                           <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
@@ -2131,16 +2126,7 @@ function App() {
                           {camp.videoUrl && (
                             <Button
                               className="w-full bg-red-600 hover:bg-red-700 text-white text-sm h-9 mt-2"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                if (window.gtag) {
-                                  window.gtag('event', 'video_click', {
-                                    camp_name: camp.name,
-                                    camp_id: camp.id
-                                  })
-                                }
-                                window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
-                              }}
+                              onClick={(e) => { e.stopPropagation(); handleVideoClick(camp) }}
                               aria-label={`Watch ${camp.name} video`}
                             >
                               <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
