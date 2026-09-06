@@ -394,6 +394,13 @@ function App() {
       .map(([name, count]) => ({ name, count }))
   }, [])
 
+  // Countries not shown on the Guide country cards; keeps the "Plus camps in ..." line true as countries are added
+  const guideOtherCountries = useMemo(() => {
+    const featured = new Set(['Switzerland', 'United Kingdom', 'Spain', 'France', 'Czech Republic', 'Italy'])
+    const rest = countryList.map(c => c.name).filter(name => !featured.has(name))
+    return rest.length > 1 ? `${rest.slice(0, -1).join(', ')} and ${rest[rest.length - 1]}` : rest.join('')
+  }, [countryList])
+
   const priceTierOptions = [
     { value: 'budget', label: 'Budget', description: 'Under €800/week' },
     { value: 'mid', label: 'Mid-Range', description: '€800-€1,500/week' },
@@ -2521,7 +2528,7 @@ function App() {
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Premium Alpine experiences with world-class facilities. Home to Les Elfes International and Camp Suisse.</p>
                   <div className="text-xs text-gray-500">
-                    <div>• CHF 975 - 6,980</div>
+                    <div>• CHF 975 per week to CHF 6,980 per two weeks</div>
                     <div>• Ages 3-17</div>
                     <div>• Multilingual programs</div>
                   </div>
@@ -2534,8 +2541,8 @@ function App() {
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Academic excellence and comprehensive family programs. Oxford Summer Courses and Bede's Summer School.</p>
                   <div className="text-xs text-gray-500">
-                    <div>• £1,595 - 6,995</div>
-                    <div>• Ages 6-20</div>
+                    <div>• £139 per short break to £6,995 per two weeks</div>
+                    <div>• Ages 5-20</div>
                     <div>• Historic locations</div>
                   </div>
                 </div>
@@ -2547,9 +2554,9 @@ function App() {
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Spanish immersion with beach activities. Enforex camps blend language learning with Mediterranean fun.</p>
                   <div className="text-xs text-gray-500">
-                    <div>• €1,200 - 3,800</div>
-                    <div>• Ages 5-17</div>
-                    <div>• 50% local integration</div>
+                    <div>• €235 per 5 days to €2,789 per week</div>
+                    <div>• Ages 5-18</div>
+                    <div>• Language, sports, academic and farm camps</div>
                   </div>
                 </div>
                 
@@ -2558,10 +2565,10 @@ function App() {
                     <span className="text-2xl mr-3">🇫🇷</span>
                     <h4 className="font-bold text-lg">France</h4>
                   </div>
-                  <p className="text-sm text-gray-600 mb-3">French language immersion in châteaux and Alps. Alpine French School and château programs.</p>
+                  <p className="text-sm text-gray-600 mb-3">French immersion, Atlantic coast and Alpine adventure. Alpine French School, Evasoleil and École des Roches.</p>
                   <div className="text-xs text-gray-500">
-                    <div>• €1,200 - 4,500</div>
-                    <div>• Ages 8-18</div>
+                    <div>• €575 per week to €3,950 per two weeks</div>
+                    <div>• Ages 6-17</div>
                     <div>• Historic settings</div>
                   </div>
                 </div>
@@ -2584,17 +2591,17 @@ function App() {
                     <span className="text-2xl mr-3">🇮🇹</span>
                     <h4 className="font-bold text-lg">Italy</h4>
                   </div>
-                  <p className="text-sm text-gray-600 mb-3">Arts, sports academies, and cultural immersion. AC Milan camps and Renaissance art programs.</p>
+                  <p className="text-sm text-gray-600 mb-3">Football academy, sailing, beach and cultural camps. AC Milan, Campi del Vento, AERAT and Alphabet.</p>
                   <div className="text-xs text-gray-500">
-                    <div>• €1,200 - 2,800</div>
-                    <div>• Ages 8-16</div>
+                    <div>• €490 per two weeks to €1,440 per week</div>
+                    <div>• Ages 6-19</div>
                     <div>• Cultural heritage focus</div>
                   </div>
                 </div>
               </div>
               
               <div className="mt-8 text-center">
-                <p className="text-gray-600 mb-4">Plus camps in Germany, Austria, Netherlands, Belgium, Denmark, Sweden, Norway, and Greece!</p>
+                <p className="text-gray-600 mb-4">{`Plus camps in ${guideOtherCountries}.`}</p>
                 <Button 
                   onClick={() => handleNavigation('discover')}
                   className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
@@ -2691,7 +2698,7 @@ function App() {
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-3">Typical Booking Patterns</h4>
                     <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Save 10-20% on camp fees</li>
+                      <li>• Early-booking discounts at camps that publish one</li>
                       <li>• First choice of dates & activities</li>
                       <li>• Payment plan options</li>
                       <li>• Better accommodation selection</li>
@@ -2769,12 +2776,12 @@ function App() {
                     <Badge className="bg-blue-500 text-white px-3 py-1 mr-3">Premium</Badge>
                     <h4 className="font-bold text-lg">Les Elfes International</h4>
                   </div>
-                  <p className="text-sm text-gray-600 mb-3">Switzerland's gold-standard Alpine camp with 37+ years experience. 25,000+ alumni from 75+ countries.</p>
+                  <p className="text-sm text-gray-600 mb-3">Switzerland's gold-standard Alpine camp, established in 1987, welcomes 10,000+ campers a year from 75+ countries.</p>
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div><strong>Ages:</strong> 6-17</div>
-                    <div><strong>Price:</strong> CHF 4,550</div>
+                    <div><strong>Price:</strong> From CHF 4,750 per 2 weeks</div>
                     <div><strong>Languages:</strong> 5+ languages</div>
-                    <div><strong>Special:</strong> 24/7 medical center</div>
+                    <div><strong>Special:</strong> On-site nurse, 24/7 care</div>
                   </div>
                 </div>
                 
@@ -2800,7 +2807,7 @@ function App() {
                   <p className="text-sm text-gray-600 mb-3">University preparation in Oxford's historic colleges. Medicine, engineering, and business programs.</p>
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div><strong>Ages:</strong> 13-18</div>
-                    <div><strong>Price:</strong> £6,995</div>
+                    <div><strong>Price:</strong> From £6,995 per 2 weeks</div>
                     <div><strong>Languages:</strong> English</div>
                     <div><strong>Special:</strong> College accommodation</div>
                   </div>
@@ -2814,7 +2821,7 @@ function App() {
                   <p className="text-sm text-gray-600 mb-3">Train with official AC Milan coaches at professional facilities. San Siro stadium tours included.</p>
                   <div className="grid grid-cols-2 gap-4 text-xs">
                     <div><strong>Ages:</strong> 8-16</div>
-                    <div><strong>Price:</strong> €1,440</div>
+                    <div><strong>Price:</strong> €1,440 per week</div>
                     <div><strong>Languages:</strong> English/Italian</div>
                     <div><strong>Special:</strong> Pro coaching, stadium access</div>
                   </div>
@@ -3077,7 +3084,7 @@ function App() {
                     <div className="mt-8 p-4 bg-blue-50 rounded-lg">
                       <h3 className="font-bold text-blue-800 mb-2">Money-Saving Tips</h3>
                       <ul className="text-sm text-blue-700 space-y-1">
-                        <li>• Book early for 10-20% discounts</li>
+                        <li>• Ask about early-booking discounts</li>
                         <li>• Look for sibling discounts</li>
                         <li>• Consider shoulder season dates</li>
                         <li>• Factor in currency exchange timing</li>
