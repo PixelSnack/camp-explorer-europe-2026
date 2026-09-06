@@ -135,7 +135,7 @@ export const allCamps = [
     category: "budget_excellence", // Budget Excellence for day camps
     type: "Day & Residential Camps",
     activities: ["English Immersion", "Mountain Adventure", "Outdoor Skills", "Marmots Program"],
-    dates: "Jun 28 - Aug 13, 2027", // Verified 6 Sept 2026 (altitude-camps.com/day-camp and /residential-camp): day camp Mon 28 Jun to Fri 13 Aug, residential Sunday-to-Saturday weeks 27 Jun to 31 Jul. The page prints no year; these weekdays exist only in the 2027 calendar and replace the 2026 dates the same page carried in Aug 2026 (29 Jun-14 Aug, 28 Jun-1 Aug). No badge: the booking form still describes the 2026 season
+    dates: "Jun 28 - Aug 13, 2027 (not yet bookable)", // Verified 6 Sept 2026 (altitude-camps.com/day-camp and /residential-camp): day camp Mon 28 Jun to Fri 13 Aug, residential Sunday-to-Saturday weeks 27 Jun to 31 Jul. The page prints no year; these weekdays exist only in the 2027 calendar and replace the 2026 dates the same page carried in Aug 2026 (29 Jun-14 Aug, 28 Jun-1 Aug). Booking checked in Chrome the same day: the widget still runs on 2026 eligibility windows and its calendar cannot move past Sept 2026, so 2027 is not bookable yet and no badge is set
     highlights: ["Youngest accepted (3 years)", "Day & residential options", "English focus", "Swiss Alps setting"],
     languages: ["English", "French"],
     specialFeatures: ["Marmots Program (3-5 years)", "Day Camp Options", "Residential Camps (7-14)"],
