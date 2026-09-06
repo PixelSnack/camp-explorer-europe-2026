@@ -62,7 +62,7 @@ export const WINTER_PUBLISHED = false
 // Rules: per-child price with unit and provenance comment; dates under 40 characters; bookingStatus
 // only "open" and only when verified; rating null / reviews 0 unless reviewData is supplied;
 // category "winter"; IDs continue the shared sequence (scripts/validate-camps.js enforces all of this).
-import winterImage from '../assets/winter-alpine-hero.webp'
+import winterImage from '../assets/european-winter-camp-ski-lesson-children-alps.webp'
 
 export const winterCamps = [
 ]
@@ -265,9 +265,9 @@ Markup, classes, aria-label and the SVG stay exactly as they are.
 ```js
 import { winterCamps } from './data/winterCamps.js'
 import { SEASON_YEAR, DIRECTORY_UPDATED, WINTER_SEASON, WINTER_PUBLISHED } from './data/season.js'
-import winterHeroAvif from './assets/winter-alpine-hero.avif'
-import winterHeroWebp from './assets/winter-alpine-hero.webp'
-import winterHeroJpg from './assets/winter-alpine-hero.jpg'
+import winterHeroAvif from './assets/european-winter-camp-ski-lesson-children-alps.avif'
+import winterHeroWebp from './assets/european-winter-camp-ski-lesson-children-alps.webp'
+import winterHeroJpg from './assets/european-winter-camp-ski-lesson-children-alps.jpg'
 const KNOWN_SECTIONS = new Set(['home', 'discover', 'winter', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])
 ```
 

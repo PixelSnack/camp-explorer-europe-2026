@@ -3,7 +3,7 @@
 // Rules: per-child price with unit and provenance comment; dates under 40 characters; bookingStatus
 // only "open" and only when verified; rating null / reviews 0 unless reviewData is supplied;
 // category "winter"; IDs continue the shared sequence (scripts/validate-camps.js enforces all of this).
-import winterImage from '../assets/winter-alpine-hero.webp'
+import winterImage from '../assets/european-winter-camp-ski-lesson-children-alps.webp'
 
 export const winterCamps = [
 ]

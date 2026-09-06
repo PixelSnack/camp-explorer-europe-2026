@@ -54,9 +54,9 @@ import { FAQ_ITEMS } from './data/faq.js'
 import CampCard from './components/CampCard.jsx'
 import { BookingStatusBadge } from './components/BookingStatusBadge.jsx'
 import { winterCamps } from './data/winterCamps.js'
-import winterHeroAvif from './assets/winter-alpine-hero.avif'
-import winterHeroWebp from './assets/winter-alpine-hero.webp'
-import winterHeroJpg from './assets/winter-alpine-hero.jpg'
+import winterHeroAvif from './assets/european-winter-camp-ski-lesson-children-alps.avif'
+import winterHeroWebp from './assets/european-winter-camp-ski-lesson-children-alps.webp'
+import winterHeroJpg from './assets/european-winter-camp-ski-lesson-children-alps.jpg'
 
 // Hash-routed sections; unknown hashes (e.g. the #main-content skip link) must not change the view
 const KNOWN_SECTIONS = new Set(['home', 'discover', 'winter', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])

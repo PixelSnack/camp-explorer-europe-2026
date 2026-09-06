@@ -6,7 +6,7 @@
 
 **Goal.** Give www.europeansummercamps.com a winter camps section that (a) catches winter demand in the September to November window, which is the summer directory's quiet season, (b) rides the existing domain's ranking instead of starting a new domain from zero, (c) sells Premium placements to winter operators on real traffic, and (d) is built so the winter data and copy can be lifted into a standalone site later without a rewrite.
 
-**Non-goals for this build.** No separate domain site (the owner buys europeanwintercamps.com as a defensive registration and points it at the winter section). No change to the title tag, H1, meta description or the summer headline numbers. No winter filters beyond a count line (with five to eight listings, filters would be noise). Header backdrop: a generated Alpine ski-camp scene (owner request 6 Sept; `src/assets/winter-alpine-hero.{avif,webp,jpg}`, ledgered in docs/reference/GENERATED_ASSETS.md) with the same gradient overlay and picture element pattern as the summer hero.
+**Non-goals for this build.** No separate domain site (the owner buys europeanwintercamps.com as a defensive registration and points it at the winter section). No change to the title tag, H1, meta description or the summer headline numbers. No winter filters beyond a count line (with five to eight listings, filters would be noise). Header backdrop: a generated Alpine ski-camp scene (owner request 6 Sept; `src/assets/european-winter-camp-ski-lesson-children-alps.{avif,webp,jpg}`, ledgered in docs/reference/GENERATED_ASSETS.md) with the same gradient overlay and picture element pattern as the summer hero.
 
 ## 2. Data
 
