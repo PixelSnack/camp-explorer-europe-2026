@@ -1,11 +1,11 @@
 # DRAFT, never sent: Wave 2 data request to listed camps, with the base fee and the Premium option
 
-*Written 6 September 2026 by ESC Claude at the owner's direction. Status: DRAFT awaiting two owner decisions (below). Every message to a camp is sent by the owner from partnerships@, one camp at a time; Claude only drafts. Links are written with a space before the top-level domain, as in "www.site .com", and the owner closes the space (Gmail draft rule).*
+*Written 6 September 2026 by ESC Claude at the owner's direction. Status: DRAFT approved in substance by the owner the same night (fee per year; stay-listed rule confirmed); the owner verifies each message before sending. Every message to a camp is sent by the owner from partnerships@, one camp at a time; Claude only drafts. Links are written with a space before the top-level domain, as in "www.site .com", and the owner closes the space (Gmail draft rule).*
 
-## Owner decisions needed before the first send
+## Owner decisions (6 September 2026, night)
 
-1. **The base fee figure and its unit.** FEATURED_LISTINGS_POLICY.md already defines a Basic onboarding and verification fee of EUR 79, one payment, for camps that ask to be listed. The owner's direction on 6 September extends a base fee to camps we listed editorially, on the grounds that verification and upkeep now cost more than we can absorb. This draft uses EUR 79 as one payment; if the owner prefers an annual base fee or a different figure, change it in the template and in the policy file together.
-2. **Confirm the "stay listed" rule.** Owner's words on 6 September: a camp that does not respond or will not pay stays listed for now. The template reflects that: nothing changes on the site when the message goes out.
+1. **Base fee: EUR 79 per year**, because the date, price and age work has to be redone every season. The policy file carries the same figure. The message promises nothing beyond the listing and its seasonal upkeep.
+2. **Stay-listed rule confirmed:** a camp that does not respond or will not pay stays listed for now; nothing changes on the site when the message goes out.
 
 ## When to send
 
@@ -28,7 +28,7 @@ We are now updating every listing for the 2027 season. Could you send us, or poi
 
 We check every detail against your own pages before it goes live, and we correct it as soon as you tell us.
 
-One change from this season. Until now every camp has been listed free of charge. The verification and upkeep behind each listing now take more work than we can absorb, so from the 2027 cycle each listing carries a base fee of EUR 79, one payment that covers the verification and the updates to your listing for the season. Camps that want more visibility can take a Premium listing instead: EUR 299 a year, or EUR 199 for the first year on the 2027 cycle, which gives your camp a highlighted card at the top of its category, a video button and up to four updates a year. The base fee is waived with Premium.
+One change from this season. Until now every camp has been listed free of charge. Each season we re-verify every listing's dates, prices and ages against the operator's own pages, and that work has grown beyond what we can absorb, so from the 2027 cycle each listing carries a base fee of EUR 79 per year. It covers the listing itself and its yearly update, nothing more. Camps that want more visibility can take a Premium listing instead: EUR 299 a year, or EUR 199 for the first year on the 2027 cycle, which gives your camp a highlighted card at the top of its category, a video button and up to four updates a year. The base fee is waived while a Premium listing runs.
 
 Your listing stays online while you decide, and nothing changes on the site today.
 

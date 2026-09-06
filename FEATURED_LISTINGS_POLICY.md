@@ -13,14 +13,14 @@
 
 ### The core distinction: editorial vs. inbound
 
-- **Editorial listings** (WE initiate): camps we research and add on our own initiative. Free, unpaid both ways, not requestable. This preserves editorial independence and builds the directory asset.
+- **Editorial listings** (WE initiate): camps we research and add on our own initiative. Unpaid both ways until the 2027 cycle. **Owner decision 6 September 2026:** from the 2027 cycle every listing, editorial or inbound, carries the base fee of EUR 79 per year, because the date, price and age verification has to be redone every season. The message to existing camps says exactly that and promises nothing beyond the listing and its seasonal upkeep. A camp that does not respond or does not pay stays listed for now (owner's call, revisited per camp). Editorial independence is unchanged: we still decide who is listed.
 - **Inbound listings** (THEY request): a camp asking to be added is requesting a service (research, 5-point verification, data entry, maintenance). Services have prices. No business inquiry hears the word "free" anymore.
 
-### Basic Listing (inbound: €79 one-time onboarding)
+### Basic Listing (€79 per year from the 2027 cycle, editorial and inbound alike)
 | Aspect | Details |
 |--------|---------|
-| **Price** | €79 one-time onboarding & verification fee (WAIVED if camp takes Premium in year one) |
-| **What it covers** | Hand verification: pricing, facilities, operator status, 5-point criteria check, data entry |
+| **Price** | €79 per year, base fee (WAIVED while the camp holds a Premium listing). Before 6 Sept 2026 this was a one-time onboarding fee for inbound camps only |
+| **What it covers** | Hand verification at onboarding (pricing, facilities, operator status, 5-point criteria check, data entry) and the seasonal re-verification of dates, prices and ages every year |
 | **Visibility** | Standard placement in category |
 | **Card Design** | Standard card design |
 | **Badge** | None |
@@ -55,7 +55,7 @@ The €99/year Featured tier was retired by owner decision on 2 Sept 2026 ("99 E
 ### Standard Pricing
 | Item | Price |
 |------|-------|
-| Inbound Basic onboarding (one-time) | €79 (waived with Premium year one) |
+| Basic listing base fee (every listing, from the 2027 cycle) | €79 per year (waived while Premium is held) |
 | Premium listing (any verified camp) | €299/year list |
 | Premium introductory rate (2027 cycle) | €199 first year, rate-locked |
 
