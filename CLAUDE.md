@@ -783,7 +783,7 @@ Decision: Accuracy and basic security without harming SEO
 
 ### 4.8 External AI Second Opinions (Multi-Model Panel) ⭐ USE ACTIVELY
 
-**The `multi-model-second-opinions` skill (user-level, loads in every project) gives access to a stable of external frontier models. Owner directive (16 Aug 2026): actively use them as tools whenever it makes sense — not as a novelty, but as part of normal quality work.** Invoke via `Skill(multi-model-second-opinions)` for full doctrine; this section is the ESC-adapted operating summary.
+**ESC complement (6 Sept 2026): `docs/reference/EXTERNAL_AI_PANEL.md` holds the ESC task-to-seat table, the brief template, the runner `scripts/ai-review.sh` and the generated-image ledger rules; the seats are now GPT-6 Astra (adversarial, replaced SOL on 5 Sept) and Gemini 3.8 Flash (third seat). Read it with the skill.** **The `multi-model-second-opinions` skill (user-level, loads in every project) gives access to a stable of external frontier models. Owner directive (16 Aug 2026): actively use them as tools whenever it makes sense — not as a novelty, but as part of normal quality work.** Invoke via `Skill(multi-model-second-opinions)` for full doctrine; this section is the ESC-adapted operating summary.
 
 #### The stable (verified live 16 Aug 2026 — re-verify at time of use, model IDs rot)
 
