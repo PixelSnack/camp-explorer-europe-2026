@@ -4,7 +4,9 @@
 #   GPT-5.6 SOL as the cheaper fallback on the same API.
 #   Gemini 3.8 Flash (generateContent, thinking_level high) as the third seat (SEO, copy, idea generation).
 #
-# Usage:  scripts/ai-review.sh <astra|sol|gemini> <brief-file> <out-dir> [label]
+# Usage:  scripts/ai-review.sh <astra|sol|gemini> <brief-file> <out-dir> [label] [web]
+#         "web" as the fifth argument enables OpenAI's hosted web_search tool (astra/sol only): the model
+#         browses in its own context, which keeps research out of the Claude session's context window.
 # Output: <out-dir>/<label>.<provider>.response.json (raw) and <out-dir>/<label>.<provider>.md (extracted text)
 #
 # Requires OPENAI_API_KEY or GEMINI_API_KEY exported in the environment (run `source ~/.bashrc` first).
@@ -15,10 +17,11 @@
 # reason / DEFERRED) in the plan record. Doctrine: docs/reference/EXTERNAL_AI_PANEL.md
 set -euo pipefail
 
-PROVIDER="${1:?usage: ai-review.sh <astra|sol|gemini> <brief-file> <out-dir> [label]}"
-BRIEF="${2:?usage: ai-review.sh <astra|sol|gemini> <brief-file> <out-dir> [label]}"
-OUT_DIR="${3:?usage: ai-review.sh <astra|sol|gemini> <brief-file> <out-dir> [label]}"
+PROVIDER="${1:?usage: ai-review.sh <astra|sol|gemini> <brief-file> <out-dir> [label] [web]}"
+BRIEF="${2:?usage: ai-review.sh <astra|sol|gemini> <brief-file> <out-dir> [label] [web]}"
+OUT_DIR="${3:?usage: ai-review.sh <astra|sol|gemini> <brief-file> <out-dir> [label] [web]}"
 LABEL="${4:-review}"
+WEB="${5:-}"
 
 [ -f "$BRIEF" ] || { echo "ERROR: brief file not found: $BRIEF" >&2; exit 1; }
 case "$LABEL" in *[!A-Za-z0-9_-]*|'') echo "ERROR: label must match [A-Za-z0-9_-]+" >&2; exit 1;; esac
@@ -38,16 +41,19 @@ case "$PROVIDER" in
     MODEL="gpt-6-astra"
     [ "$PROVIDER" = "sol" ] && MODEL="gpt-5.6-sol"
     printf 'header = "Authorization: Bearer %s"\n' "$OPENAI_API_KEY" > "$AUTH_FILE"
-    AI_MODEL="$MODEL" python -X utf8 - "$BRIEF" > "$PAYLOAD_FILE" <<'PY'
+    AI_MODEL="$MODEL" AI_WEB="$WEB" python -X utf8 - "$BRIEF" > "$PAYLOAD_FILE" <<'PY'
 import json, os, sys
 brief = open(sys.argv[1], encoding="utf-8").read()
 # Reasoning is billed as output and consumed first; under ~25k the answer arrives as status=incomplete with no text.
-print(json.dumps({
+payload = {
     "model": os.environ["AI_MODEL"],
     "input": brief,
     "reasoning": {"effort": "high"},
     "max_output_tokens": 30000,
-}))
+}
+if os.environ.get("AI_WEB") == "web":
+    payload["tools"] = [{"type": "web_search"}]
+print(json.dumps(payload))
 PY
     URL="https://api.openai.com/v1/responses"
     ;;
@@ -69,7 +75,7 @@ PY
     echo "ERROR: provider must be astra, sol or gemini (got '$PROVIDER')" >&2; exit 1;;
 esac
 
-echo "[$PROVIDER/$MODEL] sending $(wc -c < "$BRIEF") bytes, label '$LABEL' ..." >&2
+echo "[$PROVIDER/$MODEL${WEB:+ +web_search}] sending $(wc -c < "$BRIEF") bytes, label '$LABEL' ..." >&2
 HTTP_CODE="$(curl -sS --ssl-no-revoke --max-time 1500 -w '%{http_code}' -o "$RESP" \
   -X POST "$URL" -K "$AUTH_FILE" -H "Content-Type: application/json" --data-binary @"$PAYLOAD_FILE")"
 
@@ -83,6 +89,7 @@ except Exception as e:
 if isinstance(d, dict) and d.get("error"):
     sys.stderr.write("ERROR (HTTP %s): %s\n" % (os.environ["AI_HTTP"], json.dumps(d["error"])[:600])); sys.exit(1)
 out = []
+searches = 0
 if os.environ["AI_PROVIDER"] == "gemini":
     for c in d.get("candidates", []):
         for p in c.get("content", {}).get("parts", []):
@@ -94,6 +101,8 @@ else:
     if status != "completed":
         sys.stderr.write("WARNING: status=%s (an incomplete response carries no text but is still billed)\n" % status)
     for item in d.get("output", []):
+        if item.get("type") == "web_search_call":
+            searches += 1
         if item.get("type") == "message":
             for c in item.get("content", []):
                 if c.get("type") == "output_text":
@@ -101,5 +110,5 @@ else:
     meta = d.get("usage", {})
 text = "\n".join(out)
 open(text_path, "w", encoding="utf-8").write(text)
-print("saved %s (%d chars); usage %s" % (text_path, len(text), json.dumps(meta)[:300]))
+print("saved %s (%d chars); web searches %d; usage %s" % (text_path, len(text), searches, json.dumps(meta)[:300]))
 PY
