@@ -52,7 +52,7 @@ export const allCamps = [
     location: "Verbier, Switzerland",
     country: "Switzerland",
     ages: "6-17 years",
-    price: "From CHF 4,750/2 weeks", // Verified Aug 2026 (leselfes.com/dates-and-pricing): summer sold as two-week sessions only; 2027 sessions CHF 4,750-6,500 per two weeks. Jan 2026 value 4,550/1 week no longer shown
+    price: "From CHF 4,750/2 weeks", // Verified Aug 2026, re-read 6 Sept 2026 (leselfes.com/dates-and-pricing): summer sold as two-week sessions only; 2027 sessions CHF 4,750-6,500 per two weeks. Jan 2026 value 4,550/1 week no longer shown
     priceRange: "luxury",
     rating: 4.7,
     reviews: 259,
@@ -67,8 +67,8 @@ export const allCamps = [
     category: "premium",
     type: "Alpine Adventure",
     activities: ["Rock Climbing", "5 Languages", "Glacier Expeditions", "Cultural Tours"],
-    dates: "June 6 - Aug 28, 2027", // Verified Aug 2026: 2027 dates published on operator site
-    bookingStatus: "2027 dates published",
+    dates: "June 6 - Aug 28, 2027", // Verified 6 Sept 2026 (leselfes.com/dates-and-pricing): six two-week sessions, 6 Jun to 28 Aug 2027
+    bookingStatus: "open", // Verified 6 Sept 2026: every 2027 session shows Enrol now and is selectable with its price on leselfes.com/summer-camp/enrol/
     highlights: ["38+ years experience", "10,000+ campers annually", "45+ activities offered", "Swiss Alps at 1,500m"],
     languages: ["English", "French", "German", "Spanish", "Mandarin"],
     specialFeatures: ["On-site Nurse & 24/7 Care", "Traditional Swiss Chalets", "European Travel Awards 2024"],
@@ -511,7 +511,7 @@ export const allCamps = [
     location: "Cartaxo, Ribatejo",
     country: "Portugal",
     ages: "6-17 years",
-    price: "€570/1 week", // Verified Jan 2026: was €1,140 (2-week total), actual €570/week
+    price: "€620/1 week", // Verified 6 Sept 2026: 2026 brochure (mycamp.pt/pdf/2026/camposdeferias.pdf p.11) "1 semana 620€", VAT included, per child; €570 is the returning-participant or second-sibling discount and €530 the partner rate. The Jan 2026 value €570 was that discount
     priceRange: "budget",
     rating: 4.7,
     reviews: 95,
@@ -519,13 +519,13 @@ export const allCamps = [
     category: "budget_excellence",
     type: "Adventure Camp",
     activities: ["Swimming", "High Ropes", "Climbing", "Horse Riding", "Kayaking", "Water Sports"],
-    dates: "June 23 - September 7, 2026",
+    dates: "Jun 28 - Sep 5, 2026 (weekly sessions)", // Verified 6 Sept 2026: 2026 brochure calendar (p.7), Sunday check-in 28 Jun to Saturday check-out 5 Sep
     highlights: ["30+ years experience", "10-hectare adventure facility", "100+ activities", "Close to Lisbon"],
     languages: ["Portuguese", "English", "Spanish"],
     specialFeatures: ["2 Swimming Pools", "Climbing Tower", "Horse Facilities", "Full Board Included"],
     established: 1992,
     capacity: 450,
-    bookingUrl: "https://www.mycamp.pt/camposdeferias/" // Programme page verified 6 Sept 2026 (homepage was generic); price not re-readable (verification wall), Jan 2026 value kept
+    bookingUrl: "https://www.mycamp.pt/camposdeferias/" // Programme page verified 6 Sept 2026 (homepage was generic); price and dates read from the operator's 2026 brochures the same day
   },
   // Geographic Expansion - Family Programs
   {
