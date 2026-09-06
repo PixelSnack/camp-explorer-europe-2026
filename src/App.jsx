@@ -3714,6 +3714,18 @@ function App() {
                     Unique Experiences
                   </button>
                 </li>
+              {WINTER_PUBLISHED && (
+                  <li>
+                    <a
+                      href="#winter"
+                      className="hover:text-white cursor-pointer transition-colors text-left w-full block"
+                      onClick={(event) => { event.preventDefault(); handleNavigation('winter') }}
+                      aria-label="Open the winter camps section"
+                    >
+                      Winter Camps
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
 

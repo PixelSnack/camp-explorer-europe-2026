@@ -235,6 +235,33 @@ if (!FAQ_ITEMS.some(item => item.answer.includes(countryClaim))) {
   staticFail('src/data/faq.js', `an answer must state "${countryClaim}" (data has ${countryCount})`);
 }
 
+// Owner rule (6 Sept 2026): every hand-typed figure follows the data whenever camps are added.
+// README counts
+const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8');
+if (!readme.includes(`${allCamps.length} verified`) || !readme.includes(`${countryCount} European countries`)) {
+  staticFail('README.md', `must say "${allCamps.length} verified ..." and "${countryCount} European countries" (data has ${allCamps.length} and ${countryCount})`);
+}
+// FAQ country answer names every country in the data
+const countryAnswer = FAQ_ITEMS.map(item => item.answer).find(answer => answer.includes(countryClaim)) || '';
+for (const country of new Set(allCamps.map(camp => camp.country.trim()))) {
+  if (!countryAnswer.includes(country)) staticFail('src/data/faq.js', `the country answer must name "${country}"`);
+}
+// Weekly EUR price floor quoted on the guide badge and in the FAQ cost answer
+const eurWeekly = allCamps
+  .map(camp => (typeof camp.price === 'string' ? camp.price.match(/^(?:From )?€([\d,]+)\/(?:1 )?week$/) : null))
+  .filter(Boolean)
+  .map(match => Number(match[1].replace(/,/g, '')));
+if (eurWeekly.length > 0) {
+  const floor = Math.min(...eurWeekly);
+  const appSource = readFileSync(new URL('../src/App.jsx', import.meta.url), 'utf8');
+  if (!appSource.includes(`From €${floor} per week`)) {
+    staticFail('src/App.jsx', `the guide badge must say "From €${floor} per week" (cheapest EUR weekly price in the data)`);
+  }
+  if (!FAQ_ITEMS.some(item => item.answer.includes(`from €${floor} per week`))) {
+    staticFail('src/data/faq.js', `the cost answer must say "from €${floor} per week" (cheapest EUR weekly price in the data)`);
+  }
+}
+
 console.log('');
 if (errors > 0) {
   console.error(`VALIDATION FAILED: ${errors} error(s) found. Fix before building.\n`);
