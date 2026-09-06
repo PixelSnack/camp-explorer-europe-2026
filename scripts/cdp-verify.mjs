@@ -11,8 +11,8 @@
 // Prints: title, card count, nav labels, document width vs viewport, horizontal overflow, console errors.
 // Chrome path: CHROME_PATH env or the default Windows install. Each run uses a throwaway profile.
 
-import { spawn } from 'node:child_process'
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { spawn, spawnSync } from 'node:child_process'
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -24,25 +24,33 @@ const url = args.url || 'http://localhost:4173/'
 const hash = args.hash || 'home'
 const width = Number(args.width || 1280)
 const height = Number(args.height || 900)
-const port = 9222 + Math.floor(Math.random() * 500)
 const chrome = process.env.CHROME_PATH || 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe'
 const profile = mkdtempSync(join(tmpdir(), 'esc-cdp-'))
 
 const proc = spawn(chrome, [
-  '--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`,
+  '--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`,
   '--no-first-run', '--no-default-browser-check', '--disable-gpu', `--window-size=${width},${height}`, 'about:blank'
 ], { stdio: 'ignore' })
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms))
+// proc.kill() only signals the launcher on Windows and leaves the browser and its renderers alive;
+// taskkill /T ends the whole tree. Leftover browsers pile up (216 processes on 6 Sept 2026) and eat memory.
+const killChrome = () => {
+  if (process.platform === 'win32') spawnSync('taskkill', ['/PID', String(proc.pid), '/T', '/F'], { stdio: 'ignore' })
+  else proc.kill()
+}
+let port = 0
 let target = null
 for (let i = 0; i < 40 && !target; i++) {
   await sleep(250)
   try {
+    if (!port) port = Number(readFileSync(join(profile, 'DevToolsActivePort'), 'utf8').split(/\r?\n/)[0])
+    if (!port) continue
     const list = await (await fetch(`http://127.0.0.1:${port}/json`)).json()
     target = list.find(t => t.type === 'page')
   } catch { /* not up yet */ }
 }
-if (!target) { console.error('Chrome did not expose a page target'); proc.kill(); process.exit(1) }
+if (!target) { console.error('Chrome did not expose a page target'); killChrome(); process.exit(1) }
 
 const ws = new WebSocket(target.webSocketDebuggerUrl)
 await new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej })
@@ -114,7 +122,8 @@ if (args.shot) {
   console.log(`screenshot ${args.shot}`)
 }
 
+await Promise.race([send('Browser.close'), sleep(1500)])
 ws.close()
-proc.kill()
+killChrome()
 await sleep(300)
 try { rmSync(profile, { recursive: true, force: true }) } catch { /* profile may still be locked briefly */ }
