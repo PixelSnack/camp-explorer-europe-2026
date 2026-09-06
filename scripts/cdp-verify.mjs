@@ -12,9 +12,9 @@
 // Chrome path: CHROME_PATH env or the default Windows install. Each run uses a throwaway profile.
 
 import { spawn, spawnSync } from 'node:child_process'
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { basename, join } from 'node:path'
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => {
   if (a.startsWith('--')) acc.push([a.slice(2), arr[i + 1] && !arr[i + 1].startsWith('--') ? arr[i + 1] : true])
@@ -26,6 +26,50 @@ const width = Number(args.width || 1280)
 const height = Number(args.height || 900)
 const chrome = process.env.CHROME_PATH || 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe'
 const profile = mkdtempSync(join(tmpdir(), 'esc-cdp-'))
+const profileName = basename(profile) // unique per run; the only safe kill key on Windows
+
+// Windows: chrome.exe can hand off to the real browser process and exit, so killing the spawned PID
+// (even with /T) can reap a corpse and leave the tree alive (Playground lesson 2026-07-14, shared-machine
+// facts). The reliable kill matches the unique profile name in each process's command line. Any harness
+// timeout kills this script without running exit handlers, so every launch first reaps strays from earlier
+// runs whose profile is older than three minutes (a concurrent fresh run is never touched).
+const sweepChrome = (match, olderThanMinutes = 0) => {
+  if (process.platform !== 'win32') return
+  const age = olderThanMinutes > 0 ? ` -and $_.CreationDate -lt (Get-Date).AddMinutes(-${olderThanMinutes})` : ''
+  spawnSync('powershell', ['-NoProfile', '-Command',
+    `Get-CimInstance Win32_Process -Filter "name='chrome.exe'" | Where-Object { $_.CommandLine -like '*${match}*'${age} } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }`
+  ], { stdio: 'ignore', timeout: 20000 })
+}
+sweepChrome('esc-cdp-', 3)
+const pause = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms)
+const removeDir = (dir) => {
+  for (let attempt = 0; attempt < 8; attempt++) {
+    try { rmSync(dir, { recursive: true, force: true }) } catch { /* still locked */ }
+    if (!existsSync(dir)) return true
+    pause(250)
+  }
+  return false
+}
+// Orphan profiles from runs that were killed before their cleanup ran (older than three minutes).
+try {
+  for (const name of readdirSync(tmpdir())) {
+    if (!name.startsWith('esc-cdp-')) continue
+    const dir = join(tmpdir(), name)
+    if (Date.now() - statSync(dir).mtimeMs > 3 * 60 * 1000) removeDir(dir)
+  }
+} catch { /* temp dir listing is best effort */ }
+
+let cleaned = false
+const cleanup = () => {
+  if (cleaned) return
+  cleaned = true
+  sweepChrome(profileName)
+  if (process.platform !== 'win32') { try { proc.kill() } catch { /* already gone */ } }
+  if (!removeDir(profile)) console.error(`profile still locked, left for the next launch: ${profile}`)
+}
+process.on('exit', cleanup)
+process.on('SIGINT', () => process.exit(130))
+process.on('uncaughtException', (err) => { console.error(err); process.exit(1) })
 
 const proc = spawn(chrome, [
   '--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`,
@@ -33,15 +77,11 @@ const proc = spawn(chrome, [
 ], { stdio: 'ignore' })
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms))
-// proc.kill() only signals the launcher on Windows and leaves the browser and its renderers alive;
-// taskkill /T ends the whole tree. Leftover browsers pile up (216 processes on 6 Sept 2026) and eat memory.
-const killChrome = () => {
-  if (process.platform === 'win32') spawnSync('taskkill', ['/PID', String(proc.pid), '/T', '/F'], { stdio: 'ignore' })
-  else proc.kill()
-}
+// Only the DevToolsActivePort file says whether the browser is up (the launcher may exit early). AV-delayed
+// starts can take a while, so poll for up to 30 s.
 let port = 0
 let target = null
-for (let i = 0; i < 40 && !target; i++) {
+for (let i = 0; i < 120 && !target; i++) {
   await sleep(250)
   try {
     if (!port) port = Number(readFileSync(join(profile, 'DevToolsActivePort'), 'utf8').split(/\r?\n/)[0])
@@ -50,7 +90,7 @@ for (let i = 0; i < 40 && !target; i++) {
     target = list.find(t => t.type === 'page')
   } catch { /* not up yet */ }
 }
-if (!target) { console.error('Chrome did not expose a page target'); killChrome(); process.exit(1) }
+if (!target) { console.error('Chrome did not expose a page target'); process.exit(1) }
 
 const ws = new WebSocket(target.webSocketDebuggerUrl)
 await new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej })
@@ -124,6 +164,5 @@ if (args.shot) {
 
 await Promise.race([send('Browser.close'), sleep(1500)])
 ws.close()
-killChrome()
 await sleep(300)
-try { rmSync(profile, { recursive: true, force: true }) } catch { /* profile may still be locked briefly */ }
+cleanup()
