@@ -86,3 +86,11 @@ The Haiku tests replied (PONG; WebFetch ok). The seven Opus research agents deli
 
 ### Observation, not acted on
 `handleCampSelection` builds the next selection from the closure value rather than a functional update, so two clicks in one tick lose one selection. Humans cannot produce that; the gate now clicks with a render between. Candidate for a later scalpel change.
+
+### Night addendum (after the owner's push and the OpenAI top-up)
+- Production verified after the push with the fixed verify script; live Discover DOM identical to the build; zero console errors; zero leftover browsers.
+- Altitude: the owner's screenshots and the lead's walk through the booking flow in Chrome show the widget on 2026 eligibility windows with a calendar that cannot move past September 2026. Listing now reads "Jun 28 - Aug 13, 2027 (not yet bookable)" (55943d4); the year stays because the programme pages' Sunday-to-Saturday weeks fit only 2027.
+- cdp-verify moved to Playground's proven cleanup after their July lessons were found (profile-name sweep, launch self-heal, exit handlers, profile removal retry); validated sequentially (4ee0bc9). The first PID-based fix would have leaked again.
+- Astra SEO review ran with web search and is adjudicated in the spec (66b770a): hero and teaser wording, empty-state anchor, FAQ draft, two publish-time additions; three rejections with reasons; nav-to-anchors deferred to Phase 2; generated-illustration label left to the owner.
+- Research method: six-step date-finding order in the local verifier agent file and the panel brief template; lessons recorded (enrolment form verifies "open"; interactive booking flows need a browser).
+- Outreach: draft with the base fee and Premium option at `docs/drafts/2026-09-06-wave2-data-request-and-base-fee-DRAFT.md`, two owner decisions pending; nothing sent.
