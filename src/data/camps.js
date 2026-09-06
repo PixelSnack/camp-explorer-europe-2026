@@ -658,7 +658,7 @@ export const allCamps = [
     category: "unique",
     type: "Wilderness Adventure Camp",
     activities: ["Hiking", "Archery", "Ziplining", "Mountain Biking", "Survival Skills"],
-    dates: "July 3-8, 2026",
+    dates: "Jul 3-8, 2025 (next dates unpublished)", // Verified 6 Sept 2026: romanianunitedfund.org/semenic_explorer25 is the July 2025 edition (USD 650, ages 8-14); no 2026 or 2027 edition published; operator asked via draft
     highlights: ["UNESCO-protected National Park", "700m zipline experience", "1,400m mountain elevation", "Bilingual environment"],
     languages: ["Romanian", "English"],
     specialFeatures: ["Carpathian Mountain Setting", "Nature Education Focus", "Small Group Experience"],
