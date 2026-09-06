@@ -394,7 +394,7 @@ function App() {
   }, [])
 
   // Winter section: its own counts, never mixed into the summer numbers
-  const winterCountryCount = useMemo(() => new Set(winterCamps.map(camp => camp.country)).size, [])
+  const winterCountryCount = useMemo(() => new Set(winterCamps.map(camp => camp.country.trim())).size, [])
 
   // Countries not shown on the Guide country cards; keeps the "Plus camps in ..." line true as countries are added
   const guideOtherCountries = useMemo(() => {
@@ -593,7 +593,10 @@ function App() {
       // Supports "#section?search=term" (the WebSite SearchAction schema in index.html
       // links to #discover?search=...); previously the whole string became the section name
       const [section, query] = rawHash.split('?')
-      if (KNOWN_SECTIONS.has(section)) setActiveSection(section)
+      if (KNOWN_SECTIONS.has(section)) {
+        setActiveSection(section)
+        setFilterSheetOpen(false) // back/forward or a typed hash must not leave the filter drawer over the new view
+      }
       // Filter parameters belong to the summer directory; #winter?category=... must not touch summer state
       if (query && (section === 'discover' || section === 'home')) {
         const params = new URLSearchParams(query)
@@ -1867,17 +1870,17 @@ function App() {
               loading="eager"
             />
           </picture>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/55 to-black/70"></div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center text-white">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">European Winter Camps</h2>
-            <p className="text-lg text-gray-200 max-w-2xl mx-auto mb-6">
+            <p className="text-lg text-white max-w-2xl mx-auto mb-6">
               Residential ski and snowboard camps and winter sports schools for children and teenagers, running from December to April and booked for one child at a time.
             </p>
             <p className="text-sm text-orange-200 bg-black/20 rounded-lg py-2 px-4 inline-block">
               Dates and prices are shown for the {WINTER_SEASON} winter season as published by each operator.
             </p>
             {winterCamps.length > 0 && (
-              <p className="mt-6 text-sm text-gray-300">{winterCamps.length} winter camps in {winterCountryCount} countries</p>
+              <p className="mt-6 text-sm text-gray-100">{winterCamps.length} winter camps in {winterCountryCount} countries</p>
             )}
           </div>
         </section>

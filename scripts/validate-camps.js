@@ -55,9 +55,11 @@ function validateCamp(camp, season) {
   for (const key of REQUIRED_ARRAYS) {
     if (!Array.isArray(camp[key]) || camp[key].length === 0) {
       fail(camp.id, camp.name, `${key} must be a non-empty array`);
+    } else if (camp[key].some(item => typeof item !== 'string' || item.trim() === '')) {
+      fail(camp.id, camp.name, `${key} must contain only non-empty strings (the card renders each one)`);
     }
   }
-  if (!camp.image) fail(camp.id, camp.name, 'image must be an imported asset');
+  if (typeof camp.image !== 'string' || camp.image === '') fail(camp.id, camp.name, 'image must be an imported asset (resolves to a URL string)');
   if (!PRICE_RANGES.has(camp.priceRange)) {
     fail(camp.id, camp.name, `priceRange must be budget, mid, premium or luxury, got: ${camp.priceRange}`);
   }
@@ -95,6 +97,10 @@ function validateCamp(camp, season) {
       fail(camp.id, camp.name, `dates must be 40 characters or fewer on winter rows (card chip on phones), got ${camp.dates.length}`);
     }
     if (camp.reviews > 0 && !camp.reviewData) fail(camp.id, camp.name, 'winter rows with reviews must carry reviewData');
+    // The card shows the text before the first slash as the price and the text after it as the unit
+    if (typeof camp.price === 'string' && !/^(From )?[^/]+\/[^/]+$/.test(camp.price)) {
+      fail(camp.id, camp.name, `winter price must read "<amount>/<unit>" with exactly one slash, got: ${camp.price}`);
+    }
   } else if (camp.season !== undefined) {
     fail(camp.id, camp.name, `summer rows must not carry a season field, got: ${camp.season}`);
   }
