@@ -109,3 +109,51 @@ Root cause: Norton's AI-agent "Webovervågning" intercepted TLS for Claude Code'
 - Investigate set (17): all checked; table in WINTER_VETTING (commit d173a4a). Tábory Mamut is the best new find (own base, six 2027 sessions, CZK 7,100 without transport). Champions' Camp, Ski-Club Rötteln and snowfun4kids rejects confirmed; nine parked with a month to look again; Helsingin Nuoret Kotkat waits for the owner's call on the coach-inclusive price.
 - Winter operator questions drafted (Gmail, owner sends): AR-Sport (arek@ar-sport.pl, Arkadiusz Ziółkowski), LPM (colonies@lpm.asso.fr), Djuringa (contact@djuringa-juniors.fr), Croq' Vacances (contact@croqvacances.org), Vacances pour tous (vpt-individuels@laligue.org), Helsingin Nuoret Kotkat (nuoretkotkat@hnk.fi), Tábory Mamut (mamut@taborymamut.cz), HIF (no email printed; draft with empty recipient, contact form route in the first line). Each draft says the listing is free for the coming winter season; the owner may want to adjust that line before sending, since the base fee starts with the 2027 cycle. Camp Suisse and La Garenne are listed summer camps, so their winter questions are merged into their per-camp drafts.
 - The Djuringa domain is blocked for the Chrome tab (permission), so its pages were read through the fetch tool.
+
+### Draft ledger as of 23:55 (Gmail draft ids; none sent)
+
+
+## Tailored (existing threads or listed camps with winter questions)
+| Camp | Recipient | Draft id | Note |
+|---|---|---|---|
+| Les Elfes (ID 1) | alexandra@leselfes.com | r-6419407952440273814 | updated: recipient and greeting; reply-by date still bracketed |
+| Funside (ID 30) | nagy.reka@funside.hu | r6627307021630645155 | reply in thread 19daf5926de4fc58 |
+| Camp Suisse (ID 3, plus winter) | info@campsuisse.com | r-573909198661542216 | summer 2027 request, base fee, two winter questions |
+| LINEŠA (ID 43) | none | none | exempt: 2 Sept message promised the standard listing stays free for 2027; their 24 Aug reply said not relevant this season |
+
+## Winter operator questions (new candidates)
+| Camp | Recipient | Draft id |
+|---|---|---|
+| AR-Sport | arek@ar-sport.pl | r1030468815107546589 |
+| LPM Étoile des Alpes | colonies@lpm.asso.fr | r-8047920596236481383 |
+| Djuringa Juniors | contact@djuringa-juniors.fr | r2562843363409963899 |
+| Croq' Vacances | contact@croqvacances.org | r6108796507476127408 |
+| Vacances pour tous | vpt-individuels@laligue.org | r8947891127705072504 |
+| Helsingin Nuoret Kotkat | nuoretkotkat@hnk.fi | r-1821826031913427858 |
+| Tábory Mamut | mamut@taborymamut.cz | r3659839542680091208 |
+| HIF Ftan | (empty; contact form only) | r1166323437083834905 |
+
+## Template drafts (2027 data request plus base fee), batch from contacts-b
+| ID | Camp | Recipient | Draft id |
+|---|---|---|---|
+| 21 | Summer Camp Finland International | info@summercamp.fi | r-5172879353309206268 |
+| 23 | Myhre Gård Riding Camp | post@myhregard.com | r833240798563296350 |
+| 24 | Warsaw Montessori Farm Summer Camp | summercamp@wmf.edu.pl | r1375942539203306617 |
+| 25 | My Camp at Quinta da Broeira | geral@mycamp.pt | r-543163152445588244 |
+| 26 | Nationalpark Kalkalpen Family Camp | office@kalkalpen.at | r-4111013600524959444 |
+| 28 | Jagiellonian University Explorers' Summer Camp | plschool@uj.edu.pl | r-7347024184790866511 |
+| 29 + 58 | Village Camps (Santa Cruz and Zell am See, one message) | camps@villagecamps.com | r8031981155356938682 |
+| 32 | Explorer International Kids' Camps | office@explorercamps.com | r-1695036901074899112 |
+| 34 | Camp California Croatia | info@campcalifornia.com | r-4427743656649120987 |
+| 35 | PGL Family Adventures Barton Hall | adventureteam@pgl.co.uk | r2692954093220536670 |
+| 36 | Carlingford Adventure Centre | info@carlingfordadventure.com | r5380621336703304762 |
+| 37 | Filmkollo | filmkollo@filmkollo.se | r-2806166847552756516 |
+| 27 | Auersperg-International Summer Camp | office@auersperg-summercamp.at (decoded in Chrome on /about/) | r-4370982269624045497 |
+| 33 | Ridgway Adventure | rebecca@ridgway-adventure.co.uk (decoded in Chrome on /contact/) | r8192888653883205784 |
+| 31 | Camp Semenic Explorer | (empty; contact form only) | r122774199187076350 |
+
+## Address checks
+All thirteen contacts-b addresses confirmed as strings on the cited pages (curl grep), except 24 and 36 which were confirmed by a second fetch. Auersperg and Ridgway decoded in Chrome (Cloudflare email protection).
+
+## Wave 2 corrections found tonight
+- ID 31 Camp Semenic Explorer: `dates: "July 3-8, 2026"` has no provenance; the booking page (romanianunitedfund.org/semenic_explorer25) is the July 3 to 8, 2025 edition, USD 650, ages 8 to 14; no 2026 or 2027 edition published. Correct the dates field to the 2025 edition with a note, and ask the operator (draft made).
