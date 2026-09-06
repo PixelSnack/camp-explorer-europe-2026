@@ -49,13 +49,17 @@ import activitiesAvif from './assets/activities-collage.avif'
 import activitiesWebp from './assets/activities-collage.webp'
 import './App.css'
 import { allCamps, activitiesCompressed, mapCompressed, AGE_SPAN, parseAges } from './data/camps.js'
-import { SEASON_YEAR, DIRECTORY_UPDATED } from './data/season.js'
+import { SEASON_YEAR, DIRECTORY_UPDATED, WINTER_SEASON, WINTER_PUBLISHED } from './data/season.js'
 import { FAQ_ITEMS } from './data/faq.js'
 import CampCard from './components/CampCard.jsx'
 import { BookingStatusBadge } from './components/BookingStatusBadge.jsx'
+import { winterCamps } from './data/winterCamps.js'
+import winterHeroAvif from './assets/winter-alpine-hero.avif'
+import winterHeroWebp from './assets/winter-alpine-hero.webp'
+import winterHeroJpg from './assets/winter-alpine-hero.jpg'
 
 // Hash-routed sections; unknown hashes (e.g. the #main-content skip link) must not change the view
-const KNOWN_SECTIONS = new Set(['home', 'discover', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])
+const KNOWN_SECTIONS = new Set(['home', 'discover', 'winter', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])
 const KNOWN_CATEGORIES = new Set(['premium', 'academic', 'language', 'sports', 'family', 'budget_excellence', 'unique'])
 
 // Scroll navigation constants
@@ -389,6 +393,9 @@ function App() {
       .map(([name, count]) => ({ name, count }))
   }, [])
 
+  // Winter section: its own counts, never mixed into the summer numbers
+  const winterCountryCount = useMemo(() => new Set(winterCamps.map(camp => camp.country)).size, [])
+
   // Countries not shown on the Guide country cards; keeps the "Plus camps in ..." line true as countries are added
   const guideOtherCountries = useMemo(() => {
     const featured = new Set(['Switzerland', 'United Kingdom', 'Spain', 'France', 'Czech Republic', 'Italy'])
@@ -430,6 +437,9 @@ function App() {
       case 'discover':
         crumbs.push({ name: 'Discover Camps', href: '#discover', current: true })
         break
+      case 'winter':
+        crumbs.push({ name: 'Winter Camps', href: '#winter', current: true })
+        break
       case 'compare':
         crumbs.push({ name: 'Compare', href: '#compare', current: true })
         break
@@ -454,6 +464,7 @@ function App() {
 
   // Navigation handlers
   const handleNavigation = (section) => {
+    setFilterSheetOpen(false)
     setActiveSection(section)
     window.location.hash = section
     // Delay scroll to allow React to render the new section content first
@@ -583,7 +594,8 @@ function App() {
       // links to #discover?search=...); previously the whole string became the section name
       const [section, query] = rawHash.split('?')
       if (KNOWN_SECTIONS.has(section)) setActiveSection(section)
-      if (query) {
+      // Filter parameters belong to the summer directory; #winter?category=... must not touch summer state
+      if (query && (section === 'discover' || section === 'home')) {
         const params = new URLSearchParams(query)
         const term = params.get('search')
         if (term) setSearchTerm(term.slice(0, 200))
@@ -893,6 +905,9 @@ function App() {
               <div className="ml-10 flex items-baseline space-x-4">
                 <button onClick={() => handleNavigation('home')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'home' ? 'text-blue-600' : 'text-gray-900 hover:text-blue-600'}`}>Home</button>
                 <button onClick={() => handleNavigation('discover')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'discover' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Discover Camps</button>
+                {WINTER_PUBLISHED && (
+                  <button onClick={() => handleNavigation('winter')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'winter' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Winter Camps</button>
+                )}
                 <button onClick={() => handleNavigation('compare')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'compare' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Compare</button>
                 <button onClick={() => handleNavigation('plan')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'plan' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Plan Your Summer</button>
                 <button onClick={() => handleNavigation('guide')} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === 'guide' ? 'text-blue-600' : 'text-gray-500 hover:text-blue-600'}`}>Guide</button>
@@ -925,6 +940,9 @@ function App() {
             <div className="px-4 pt-4 pb-6 space-y-2 mobile-nav-enhanced">
               <button onClick={() => { handleNavigation('home'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'home' ? 'text-blue-600 bg-blue-50' : 'text-gray-900 hover:bg-gray-50'}`}>Home</button>
               <button onClick={() => { handleNavigation('discover'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'discover' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Discover Camps</button>
+              {WINTER_PUBLISHED && (
+                <button onClick={() => { handleNavigation('winter'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'winter' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Winter Camps</button>
+              )}
               <button onClick={() => { handleNavigation('compare'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'compare' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Compare</button>
               <button onClick={() => { handleNavigation('plan'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'plan' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Plan Your Summer</button>
               <button onClick={() => { handleNavigation('guide'); setIsMenuOpen(false); }} className={`block px-6 py-4 rounded-lg text-lg font-medium w-full text-left touch-target transition-colors ${activeSection === 'guide' ? 'text-blue-600 bg-blue-50' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'}`}>Guide</button>
@@ -1595,6 +1613,32 @@ function App() {
           </div>
         </div>
       </section>
+      {/* Winter teaser: the crawlable entry point to the winter section (hash views are invisible to crawlers) */}
+      {WINTER_PUBLISHED && (
+        <section id="winter-preview" className="py-16 bg-white" aria-labelledby="winter-teaser-heading">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 items-center">
+            <picture>
+              <source srcSet={winterHeroAvif} type="image/avif" />
+              <source srcSet={winterHeroWebp} type="image/webp" />
+              <img
+                src={winterHeroJpg}
+                alt="Children at a supervised residential ski camp in the European Alps"
+                className="rounded-lg shadow-xl w-full h-auto"
+                width="1376"
+                height="774"
+                loading="lazy"
+              />
+            </picture>
+            <div>
+              <h2 id="winter-teaser-heading" className="text-3xl font-bold text-gray-900 mb-4">Winter Camps in Europe</h2>
+              <p className="text-gray-600 mb-6">
+                Our winter section lists residential ski camps for kids and winter sports schools that run from December to April, verified against the same five-point criteria as every summer camp. Each listing shows dates, per-child prices, ages and what the price includes, with a direct link to the operator.
+              </p>
+              <Button className="btn-primary" onClick={() => handleNavigation('winter')}>View European Winter Camps</Button>
+            </div>
+          </div>
+        </section>
+      )}
         </>
       )}
 
@@ -1800,6 +1844,64 @@ function App() {
                 >
                   Clear Filters
                 </Button>
+              </div>
+            )}
+          </div>
+        </section>
+        </>
+      )}
+
+      {/* Winter Section: residential ski, snowboard and winter sports camps (data in winterCamps.js) */}
+      {activeSection === 'winter' && (
+        <>
+        <section className="relative overflow-hidden bg-gray-900">
+          <picture className="absolute inset-0 w-full h-full">
+            <source srcSet={winterHeroAvif} type="image/avif" />
+            <source srcSet={winterHeroWebp} type="image/webp" />
+            <img
+              src={winterHeroJpg}
+              alt="Children following a ski instructor on a gentle slope beside a wooden chalet at a European winter camp"
+              className="w-full h-full object-cover"
+              width="1376"
+              height="774"
+              loading="eager"
+            />
+          </picture>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">European Winter Camps</h2>
+            <p className="text-lg text-gray-200 max-w-2xl mx-auto mb-6">
+              Residential ski and snowboard camps and winter sports schools for children and teenagers, running from December to April and booked for one child at a time.
+            </p>
+            <p className="text-sm text-orange-200 bg-black/20 rounded-lg py-2 px-4 inline-block">
+              Dates and prices are shown for the {WINTER_SEASON} winter season as published by each operator.
+            </p>
+            {winterCamps.length > 0 && (
+              <p className="mt-6 text-sm text-gray-300">{winterCamps.length} winter camps in {winterCountryCount} countries</p>
+            )}
+          </div>
+        </section>
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {winterCamps.length === 0 ? (
+              <div className="text-center py-12">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Winter listings are being verified</h3>
+                <p className="text-gray-600 mb-6">Browse the summer directory in the meantime.</p>
+                <Button className="btn-secondary" onClick={() => handleNavigation('discover')}>Discover Summer Camps</Button>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Paid placements first, then by ID, as in the summer grids */}
+                {[...winterCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
+                  <CampCard
+                    key={camp.id}
+                    camp={camp}
+                    isSelected={!!selectedCamps.find(c => c.id === camp.id)}
+                    onToggleCompare={handleCampSelection}
+                    onBook={handleBookingClick}
+                    onVideo={handleVideoClick}
+                  />
+                ))}
               </div>
             )}
           </div>

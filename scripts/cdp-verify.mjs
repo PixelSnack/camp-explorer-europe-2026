@@ -3,7 +3,7 @@
 //
 // Usage:
 //   node scripts/cdp-verify.mjs --url http://localhost:4173/ --hash discover --width 1280 [--height 900]
-//        [--dump cards.txt] [--shot view.png] [--mobile] [--eval "js expression"]
+//        [--dump cards.txt] [--shot view.png] [--mobile] [--eval "js expression"] [--then <hash>]
 //   --dump  writes the concatenated outerHTML of every [data-camp-card] (for before/after diffs)
 //   --shot  captures a viewport screenshot after the section rendered
 //   --mobile emulates a touch device (iPhone-class user agent + device scale factor 3)
@@ -92,6 +92,14 @@ const report = await evaluate(`(() => ({
 }))()`)
 console.log(JSON.stringify({ hash, width, mobile: !!args.mobile, ...report, consoleErrors }, null, 2))
 
+if (args.then) {
+  const second = await evaluate(`new Promise((resolve) => { location.hash = ${JSON.stringify(args.then)}; setTimeout(() => resolve({
+    cards: document.querySelectorAll('[data-camp-card]').length,
+    chips: [...document.querySelectorAll('[aria-label="Active filters"] span')].map(s => s.textContent.trim()),
+    nav: [...document.querySelectorAll('nav button')].map(b => b.textContent.trim()).filter(Boolean),
+  }), 1200) })`)
+  console.log('after navigating to #' + args.then + ':', JSON.stringify(second))
+}
 if (args.dump) {
   const html = await evaluate(`[...document.querySelectorAll('[data-camp-card]')].map(c => c.outerHTML).join('\\n<!-- card -->\\n')`)
   writeFileSync(args.dump, html || '', 'utf8')
