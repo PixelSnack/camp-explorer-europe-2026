@@ -251,7 +251,7 @@ The five-point test applies unchanged to winter camps. Winter adds a season laye
 ### Winter points (one each, five in total)
 - 2026-27 season dates published on the operator's site
 - 2026-27 price published
-- Lift pass **and** instruction inclusion stated (for non-alpine camps: equipment and instruction)
+- The core activity's equipment and instruction inclusion stated (a lift pass only where the activity is skiing or snowboarding). Owner correction 6 Sept 2026: winter camps are not only ski camps; nature, language, hockey, skating and wilderness winter camps qualify on the same footing
 - Booking possible in English
 - Reputation footprint: reviews on Google or a platform, or established more than five years
 
