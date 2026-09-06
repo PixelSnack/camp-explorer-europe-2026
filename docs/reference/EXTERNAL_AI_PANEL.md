@@ -11,6 +11,7 @@
 | Cheap fallback | `gpt-5.6-sol` | Same API and prompts, about 2.5x cheaper, roughly twice Astra's hallucination rate | live |
 | Third seat | `gemini-3.8-flash` (`thinking_level: high`) | SEO and competitive second opinions, outward copy review (FAQ, teasers, meta text), idea generation, science or statistics questions | live, $0.75/$3.75 per M until 31 Dec 2026 |
 | Vision pair partner | Grok 4.6 | Not available: primary xAI key out of credit since August 2026; the ALT key carries an exfiltration-incident history and is never used for ESC | blocked |
+| Off-context web research | `gpt-6-astra` with the hosted `web_search` tool (`scripts/ai-review.sh astra <brief> <out> <label> web`) | Bounded research and verification runs that would otherwise cost this session's context: operator pages, fee tables, booking forms. Proven 6 Sept 2026: 25 pages opened in about 7 minutes, resolved a fee table the WebFetch agents could not render, reported NOT FOUND honestly where a value was missing. The lead still re-checks every number that enters camps.js on the operator page. | live |
 | Image generation | `gemini-3-pro-image` (GA), `gpt-image-1.5` (transparent backgrounds), `gpt-image-2` (rejects transparency), `imagen-4.0-*` (unexplored) | Hero and section backdrops, illustrative assets for the winter section, badge or icon artwork | live |
 
 Verify IDs against the live `/models` endpoints before every dispatch; stale IDs and stale tiers have both bitten. The check is free and takes one curl.
