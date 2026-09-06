@@ -203,13 +203,13 @@ export const allCamps = [
     category: "language",
     type: "Spanish Immersion",
     activities: ["Spanish Classes", "Beach Sports", "Cultural Tours", "Water Activities"],
-    dates: "June 29 - August 23, 2026",
+    dates: "July 5 - Aug 22, 2026", // Verified 6 Sept 2026 (enforex.com/es/campamentos-de-verano/barcelona-playa); 2027 not published
     highlights: ["Beach location", "80% international campers", "UPC university campus", "1-4 week options"],
     languages: ["Spanish", "English"],
     specialFeatures: ["Beach Activities", "Cultural Exchange", "Full Board Included"],
     established: 1989,
     capacity: 180,
-    bookingUrl: "https://www.enforex.com/summercamps/dates-prices.html"
+    bookingUrl: "https://www.enforex.com/summercamps/barcelona/" // Programme page (verified 6 Sept 2026); the shared dates-prices page still loads but is not Barcelona-specific
   },
   {
     id: 8,
@@ -248,7 +248,7 @@ export const allCamps = [
     category: "budget_excellence",
     type: "English Immersion",
     activities: ["English Classes", "River Activities", "Cave Exploration", "Cultural Games"],
-    dates: "July 15-25, 2026",
+    dates: "Jul 2 - Aug 28, 2026 (10-day sessions)", // Verified 6 Sept 2026 (euro-camp.eu: six sessions 2-11 Jul to 19-28 Aug 2026; price EUR 335 and ages 7-17 confirmed); 2027 not published
     highlights: ["10-day program", "Bilingual leaders", "30+ years experience", "Exceptional value"],
     languages: ["English", "Czech"],
     specialFeatures: ["Bilingual Approach", "River Setting", "Cultural Immersion"],
@@ -485,11 +485,11 @@ export const allCamps = [
   // Geographic Expansion - Budget Excellence
   {
     id: 24,
-    name: "Warsaw Montessori Family Camp",
+    name: "Warsaw Montessori Farm Summer Camp", // Renamed 6 Sept 2026: the operator runs a children-only residential camp (teachers on site, parents drop off); no parent-present family camp exists
     location: "Bialka, Lublin Voivodeship",
     country: "Poland",
     ages: "6-16 years",
-    price: "€640/1 week", // Verified Jan 2026: was €1,260 (2-week total), actual PLN 2,700/week
+    price: "PLN 2,900/1 week", // Verified 6 Sept 2026 (elementaryschool.wmf.edu.pl/en/summer-camps-2026: final tier from 1 Apr 2026; PLN 2,700 was the early-booking tier; full board and 24h care included)
     priceRange: "budget",
     rating: 4.7,
     reviews: 85,
@@ -497,13 +497,13 @@ export const allCamps = [
     category: "budget_excellence",
     type: "Educational Farm Camp",
     activities: ["Farm Work", "Kayaking", "Swimming", "Survival Skills", "Arts & Crafts", "Cooking"],
-    dates: "June 28 - August 8, 2026",
+    dates: "Jun 27 - Aug 7, 2026 (weekly sessions)", // Verified 6 Sept 2026 (six one-week sessions); 2027 not published
     highlights: ["Montessori philosophy", "Working farm experience", "Qualified teacher supervision", "30+ years education experience"],
     languages: ["English", "Polish"],
     specialFeatures: ["Animal Care", "Agricultural Activities", "Small Group Sizes", "24-hour Supervision"],
     established: null,
     capacity: 60,
-    bookingUrl: "https://wmf.edu.pl/en/our-summer-camps-2025/"
+    bookingUrl: "https://elementaryschool.wmf.edu.pl/en/summer-camps-2026/" // English programme page verified 6 Sept 2026 (old link was the 2025 page)
   },
   {
     id: 25,
@@ -525,7 +525,7 @@ export const allCamps = [
     specialFeatures: ["2 Swimming Pools", "Climbing Tower", "Horse Facilities", "Full Board Included"],
     established: 1992,
     capacity: 450,
-    bookingUrl: "https://www.mycamp.pt/"
+    bookingUrl: "https://www.mycamp.pt/camposdeferias/" // Programme page verified 6 Sept 2026 (homepage was generic); price not re-readable (verification wall), Jan 2026 value kept
   },
   // Geographic Expansion - Family Programs
   {
@@ -580,7 +580,7 @@ export const allCamps = [
     location: "Kraków, Lesser Poland",
     country: "Poland",
     ages: "12-16 years",
-    price: "PLN 7,730/2 weeks",
+    price: "PLN 8,260/2 weeks", // Verified 6 Sept 2026 (plschool.uj.edu.pl payment section: 8,260 per participant incl. 500 prepayment; dormitory and full board included, insurance extra)
     priceRange: "mid",
     rating: 4.8,
     reviews: 203,
@@ -594,7 +594,7 @@ export const allCamps = [
     specialFeatures: ["Historic university setting", "Deep cultural immersion", "Southern Poland excursions"],
     established: 1364,
     capacity: 40,
-    bookingUrl: "https://plschool.uj.edu.pl/en_GB/wakacyjny-kurs-jezyka-polskiego-dla-mlodziezy-online"
+    bookingUrl: "https://plschool.uj.edu.pl/en_GB/wakacyjny-kurs-jezyka-polskiego-dla-mlodziezy-online" // Verified 6 Sept 2026: this page describes the in-person residential course despite "online" in the slug
   },
   // Outdoor Adventures Expansion - Portugal
   {
@@ -681,7 +681,7 @@ export const allCamps = [
     category: "unique",
     type: "Tech-Free Adventure Camp",
     activities: ["White Water Rafting", "Rock Climbing", "Kayaking", "Canyoning", "Mountain Biking"],
-    dates: "Summer 2026 (multiple sessions)",
+    dates: "Jul 5 - Aug 8, 2026 (weekly sessions)", // Verified 6 Sept 2026 (explorercamps.com/dates-and-prices: EUR 845 per week confirmed); 2027 not published
     highlights: ["Technology-free camp", "12+ hours daily in nature", "40+ nationalities", "4:1 staff ratio for young campers"],
     languages: ["English"],
     specialFeatures: ["90% Outdoor Time", "Lake Velenje Setting", "Age-Specific Programs"],
@@ -727,7 +727,7 @@ export const allCamps = [
     category: "unique",
     type: "American-Style Adventure Camp",
     activities: ["Sea Kayaking", "Rock Climbing", "Mountain Biking", "Snorkeling", "Challenge Course"],
-    dates: "June-August 2026 (weekly sessions)",
+    dates: "Jun 21 - Aug 22, 2026 (1 or 2 weeks)", // Verified 6 Sept 2026 (campcalifornia.com/dates-prices: 1-week 21-27 Jun EUR 1,095; 2-week sessions EUR 1,975); 2027 not published
     highlights: ["Europe's first American-style camp", "14,000+ alumni since 2003", "Adriatic coast location", "40+ countries represented"],
     languages: ["English"],
     specialFeatures: ["Bamboo Cabin Village", "Teen Adventure Expeditions", "Near Kornati National Park"],
@@ -1427,7 +1427,7 @@ export const allCamps = [
   // Finland - Sports Specialty (ice hockey - uniquely Nordic)
   {
     id: 65,
-    name: "Vierumäki Finnhockey School",
+    name: "Vierumäki Finnhockey Camp", // Renamed 6 Sept 2026 per operator (formerly Finnhockey School); 2026 price and dates below are the Feb 2026 verification, not re-readable on 6 Sept; re-verify when 2027 is published
     location: "Vierumäki, Päijät-Häme",
     country: "Finland",
     ages: "9-12 years", // Manual verification Feb 2026: U9-U12 per official site (ages 9-12)
