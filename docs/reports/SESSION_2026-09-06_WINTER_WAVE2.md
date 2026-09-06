@@ -49,3 +49,40 @@ No operator among the eleven has published 2027 dates or opened 2027 registratio
 - Bash heredocs above roughly 5 KB fail on this tool with an unmatched-quote error; multi-line files go through the Write tool and short Bash commands.
 - Refactor gate that works: dump the outerHTML of every card over the DevTools protocol before and after, compare bytes (`scripts/cdp-verify.mjs --dump`).
 - camps.js carries 12 pre-existing em dashes (mostly in comments); the outward-text scan of the 65 descriptions remains open debt.
+
+## Afternoon continuation (after the lead's context compaction, 6 September 2026)
+
+### Reviews adjudicated, fixes landed (a0f9e67)
+Fable code review: SHIP, two MEDIUM (Compare view season labels, count-line plurals) and four LOW. Fable SEO review: SEO-safe to publish, seven findings (anchor CTA, holiday and country wording at publish, unverifiable promises removed, scene-description alt text, asset naming already done, image sizing deferred, ItemList fine). Every finding is recorded ACCEPTED, DEFERRED or ALREADY DONE in the spec's adjudication section. GPT-6 Astra SEO review NOT RUN: HTTP 429 `credit_balance_exhausted` on the OpenAI organisation; owner adds credits, then re-run the brief. Gates: build and validators, lint, zero U+2014, Discover DOM byte-identical to the live production dump, compare view with two summer camps unchanged, home at 390 clean.
+
+### Wave 2 round 1b, read by the lead on operator sources (53b506f, Altitude in the following commit)
+- Les Elfes (ID 1), owner tip: six two-week 2027 sessions 6 Jun to 28 Aug, CHF 4,750 to 6,500; the enrolment form lists every 2027 session as selectable with its price. Badge moved from "2027 dates published" to "open" (green Booking open, the first verified 2027 badge). Winter and spring 2027 dates on the same page match the winter research.
+- My Camp (ID 25): the 2026 price list in both operator brochures gives 620 euro per week VAT included as the public price; 570 euro is the returning-participant or second-sibling discount, 530 euro the partner rate. Price 570 to 620; season 28 Jun to 5 Sep 2026 weekly (brochure calendar). Ages 6 to 17 and inclusions confirmed (dormitory or glamping, five meals, activities, insurance; transport and bedding excluded).
+- Altitude (ID 4): the residential page now shows Sunday-to-Saturday weeks 27 Jun to 31 Jul and the day camp Mon 28 Jun to Fri 13 Aug. No year is printed, but those weekdays exist only in 2027 and replace the 2026 dates the same page carried in August. Dates field moved to 2027; no badge, since the booking form still describes the 2026 season. Prices unchanged (CHF 975 day week, CHF 2,950 residential week).
+- Still open for October: Camp California's 1,095 euro applies to session 1 only (two-week sessions from 1,975 euro); Explorer operator 845 euro against a third-party 830 (use the operator); Kalkalpen 2026 event past with nothing bookable; Vierumaki 460 euro unverifiable (the 9-12 camp has no product page).
+
+### Tracking verified on production (owner priority, 6 September)
+On both the Discover cards and the Home grid a booking click fires exactly one `camp_booking_click` with camp_name, camp_id, camp_category, camp_country, camp_season, is_featured and destination_url, and opens the operator URL with utm_source, utm_medium, utm_campaign and utm_content. The `noopener,noreferrer` flag predates today (four occurrences at the pre-winter tag), so operators have always attributed us through the UTM parameters, and that path is unchanged. The GA4 MCP could not confirm event counts: it dials an IPv6 address and this PC has no IPv6 route (curl -6 fails, curl -4 works); bridge note to Playground. Human check for the owner: GA4 Realtime while clicking a card.
+
+### Tooling defect found and fixed (86f8310)
+`scripts/cdp-verify.mjs` ended runs with proc.kill(), which on Windows leaves the browser and its renderers alive: 216 headless Chrome processes from one day of gates, which also explains the low-memory kills of the preview server. The random DevTools port in a shared 500-port range collided with a leftover browser still sitting on the app URL; a same-URL navigation is a hash-only change, so that browser never reloaded and one screenshot showed a stale bundle. Fix: Chrome picks its own port (read from DevToolsActivePort in the throwaway profile) and teardown sends Browser.close then taskkill /T /F. Verified with two consecutive runs and zero leftovers. Rule: a gate that contradicts itself is explained before anything is committed.
+
+### Agent channel: working, not broken
+The Haiku tests replied (PONG; WebFetch ok). The seven Opus research agents delivered full reports 40 to 70 minutes after dispatch; the earlier "idle without reports" reading came from truncated idle notifications. The Node WebFetch hook is not implicated. The lesson in LESSONS_LEARNED is corrected. `research-winter` died at the session limit before re-sending its report; Astra's winter research covers the same ground.
+
+### Late research (Opus agents), for the four-new-camps target
+| Candidate | Verdict | Key facts (operator pages) | Next step |
+|---|---|---|---|
+| Club Adventure, Overasselt (NL) | STRONG | Own group accommodation with dormitories; 7-day Outdoor Kids Camp ages 5-8 EUR 789, Survivalkamp ages 8-13 EUR 795, programme, lodging, all meals, instruction included; 2026 weeks 12 Jul to 22 Aug sold out; 2027 not published | Lead re-reads both camp pages, then add |
+| Stadium Sports Camp, Norrkoping (SE) | STRONG | Ice hockey week ages 10-14; 2027 weeks 27 Jun to 3 Jul and 4 to 10 Jul; SEK 4,595 per week incl. four meals, activities, insurance; on-campus lodging with leaders sleeping alongside | Confirm card payment without a Swedish address, then add |
+| Leksands Hockeyskola (SE) | STRONG per Opus (weak point 1) | 2027 form: SEK 5,995 per week plus SEK 1,295 boarding; boarders sleep on the floor in Tegera Arena on their own mattress, awake night staff | Owner judgment on the arena-floor boarding |
+| ADEPS, Wallonia (BE) | POSSIBLE | Public sports body, residential stages in its own 18 centres, all five points pass; catalogue stops at October 2026, no summer 2027 date or price | Re-check when the summer catalogue opens |
+| UGDA music school (LU) | POSSIBLE | Only Luxembourg operator with 2027 dates (16 to 26 Jul 2027, ages 14-21); venue is a state youth centre (point 5) | Owner call on point 5 |
+| Kolping Ferienland Salem (DE, family) | POSSIBLE | Own family centre, 14-day stays with childcare; pricing is per person per day (child 7-13 EUR 55.50) | Needs a per-child unit decision before listing |
+| Stella Maris Cuxhaven (DE, family) | POSSIBLE | All five pass; summer 2027 not published | October |
+| Manusurf Camp Ado (FR) | POSSIBLE | Own surf house, ages 10-17; two prices on the site (830 and 950) | Resolve the price first |
+| Move-It Sportcamps (DE), Slapshot Academy (CZ), Lysekil (SE), Hockey Talent School Trinec (CZ), Groupe Animateur (LU) | POSSIBLE | One open question each (venue ownership, unnamed hotel, 2027 dates) | Later |
+| Kazou (BE), Sport Vlaanderen (BE) | REJECT / unverifiable | Bus travel in the price; JavaScript-only booking platform | none |
+
+### Observation, not acted on
+`handleCampSelection` builds the next selection from the closure value rather than a functional update, so two clicks in one tick lose one selection. Humans cannot produce that; the gate now clicks with a render between. Candidate for a later scalpel change.

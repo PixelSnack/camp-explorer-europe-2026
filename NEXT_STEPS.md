@@ -1,32 +1,43 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 6, 2026 (evening exit protocol: Wave 2 round 1, winter section built dark, external panel)
+**Last Updated:** September 6, 2026 (late evening: reviews adjudicated, Wave 2 round 1b, tracking verified, verify-script fix)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** weekly GSC watch -> ILC payment and activation -> Wave 2 per-camp 2027 dates -> winter camps decision -> new camp research
 
 ---
 
-## 🔴 **START HERE — SESSION PICKUP (written 6 September 2026, evening)**
+## 🔴 **START HERE — SESSION PICKUP (written 6 September 2026, late evening)**
 
 ### State on exit
-The owner pushed 11 commits at ~15:00 (through a118899); production verified: live title unchanged, live Discover DOM byte-identical to the pre-extraction baseline, no winter entry points visible (flag off), `#winter` renders its empty state, zero console errors. **Unpushed on exit (owner pushes in GitHub Desktop):** e218404 Astra review fixes, 612e065 Wave 2 round 1 corrections, 4950e63 winter assets renamed plus three card images, and the closing docs commit. After the push: production check via Claude in Chrome (desktop) plus `node scripts/cdp-verify.mjs --url https://www.europeansummercamps.com/ --hash discover --width 1280 --dump x.txt` and `--hash home --width 390 --mobile`, console clean, title unchanged. Full record: `docs/reports/SESSION_2026-09-06_WINTER_WAVE2.md`.
+**Unpushed on exit (owner pushes in GitHub Desktop):** a0f9e67 winter review fixes (dark surface only), 53b506f Les Elfes 2027 booking open plus My Camp public price, 86f8310 cdp-verify fix, the Altitude 2027 dates commit and the closing docs commit. **After the push, production check with the fixed verify script:** `node scripts/cdp-verify.mjs --url https://www.europeansummercamps.com/ --hash discover --width 1280 --dump x.txt` (65 cards, title unchanged, Les Elfes card green "Booking open", My Camp "€620" and "Jun 28 - Sep 5, 2026 (weekly sessions)", Altitude "Jun 28 - Aug 13, 2027"), `--hash home --width 390 --mobile` (no winter entry points), `--hash winter` (empty state), zero console errors; then a Claude in Chrome look at the Les Elfes card on desktop and phone width. Full record: `docs/reports/SESSION_2026-09-06_WINTER_WAVE2.md` (afternoon continuation section).
 
-### Where the winter section stands
-Built dark, behind `WINTER_PUBLISHED = false` in `src/data/season.js`: Tasks 0 to 4 of `docs/superpowers/plans/2026-09-06-winter-camps-section.md` are done and reviewed (Astra diff review adjudicated in the spec; a Fable code review agent `review-winter-fable` and a Fable SEO agent `seo-winter-fable` were dispatched and had not reported at exit; Astra's SEO review lands in `docs/reports/external-reviews-2026-09-06/winter-seo-astra.astra.md` if it finished, otherwise re-run `scripts/ai-review.sh astra` with the brief pattern in `docs/reference/EXTERNAL_AI_PANEL.md`). Task 5 (publish) waits for four STRONG winter camps: Les Elfes Winter is STRONG; La Garenne (fee conflict CHF 4,400 vs 4,200), HIF Ftan (pass and hire inclusion) and UCPA (2027 dates) are one check each from STRONG. Winter card images with descriptive names are in `src/assets/european-winter-camp-*.{avif,webp,jpg}` (ledger: `docs/reference/GENERATED_ASSETS.md`). Owner action at publish: point europeanwintercamps.com at `https://www.europeansummercamps.com/#winter` and test that the fragment survives the redirect.
+### Reviews: adjudicated
+Fable code review (SHIP) and Fable SEO review (SEO-safe) landed in a0f9e67 and are recorded in the spec's adjudication section. **Astra SEO review did not run: the OpenAI organisation is out of credit (HTTP 429).** Owner adds credits; then `scripts/ai-review.sh astra <brief> <out> winter-seo-astra` with the brief pattern in `docs/reference/EXTERNAL_AI_PANEL.md` (the winter SEO brief text is preserved in `docs/reports/external-reviews-2026-09-06/winter-seo.brief.md` if that file exists, otherwise rebuild it from the spec). Astra web research is blocked by the same credit state.
 
-### Claude, next session, in this order
-1. Startup protocol (bridge inbox; Playground owes a reply on the GSC MCP TLS failure; the Cloudflare security-insights CSV `Cloudflare_...SecurityInsights_20260906_1415.csv` sits in the bridge for a later security review with the security agent plus Astra).
-2. Ask the owner to push if `git rev-list --count origin/main..HEAD` is not zero, then verify production as above.
-3. Collect the two Fable review reports (`SendMessage` to `review-winter-fable` and `seo-winter-fable` asking for the report as their reply) and Astra's SEO review; adjudicate all three in the spec's adjudication section; land fixes; SEO changes to the winter section are cheap now and expensive later (owner rule 6 Sept).
-4. **Agent channel diagnosis**: seven Opus research agents went idle without reports and ignored a ping; two Haiku test agents (`ping-test`, `webfetch-test`) were dispatched to isolate whether replies arrive at all and whether WebFetch is the blocker. Suspect: the user-level PreToolUse hook on WebSearch|WebFetch in `~/.claude/settings.json` spawns `node -e` with no timeout (shared-machine facts: hooks must be pure bash on this machine). If confirmed, tell Playground via the bridge (shared config) and replace the hook with a pure-bash allow. Until fixed, research runs on Astra web mode (`scripts/ai-review.sh astra <brief> <out> <label> web`), proven today at 20 to 28 pages per run.
-5. **Four new summer camps (owner target)**: best candidate Furudals Hockeyskola (SE, 2027 form, own residence, SEK 6,640 per week plus SEK 650 boarding) as ID 71 after the lead re-reads the form and residence page; Leksand and Stadium need one operator answer each; Benelux and France/Germany local-camp briefs (`research-benelux`, `research-fr-de` prompts) have not produced results yet, re-run them on Astra web mode. Every number re-verified by the lead before camps.js; sitemap caption count and README counts change with each addition.
-6. **Wave 2 round 2** in October: 2027 dates as operators publish (none of eleven had them on 6 Sept); Vierumäki price and dates; My Camp price; the remaining top-clicked camps.
-7. **ILC**: invoice 2026-001 due 17 Sept; reminder draft (never send) on 10 Sept if unpaid; on payment activate as ID 70.
-8. Weekly GSC watch (standalone script; MCP still broken) from the week of 7 Sept.
-9. Open debt: 12 pre-existing em dashes in camps.js (mostly comments) and the 65-description outward-text scan; the alignment line (four places, one short line, owner decides).
+### Tracking (owner priority 6 Sept): verified, unchanged
+One `camp_booking_click` per click with the full payload plus camp_season, UTM parameters on every operator URL, on Discover and Home, on production. `noreferrer` predates today; operators attribute through UTM. GA4 MCP is blocked by a missing IPv6 route on this PC (bridge note sent; Playground's custody). Owner's human check: GA4 Realtime while clicking a card. Design question for the owner, no action taken: dropping `noreferrer` would also give operators the referrer domain; UTM already carries the attribution.
 
-**Standing rules:** live income site, scalpel not axe, plan first; the lead orchestrates and decides, primary Fable review then Astra second opinion on significant changes, Gemini third seat for SEO; research agents on Opus; SEO saturated into everything, winter included; commit after every step with explicit paths; never find-and-replace camps.js; no badge without a verified status; drafts only, never message third parties; em-dash ban in outward text; multi-line files through the Write tool (Bash heredocs above ~5 KB fail on this tool).
+### Winter section: dark, publish gate unchanged
+`WINTER_PUBLISHED = false`; Task 5 needs four STRONG winter camps (Les Elfes Winter STRONG, 12 Dec 2026 to 24 Apr 2027 re-confirmed on the operator page today; La Garenne, HIF Ftan, UCPA one check each). Redirect of europeanwintercamps.com to `/#winter` is the owner's action at publish.
+
+### Four new summer camps (IDs from 71; 70 reserved for ILC), ranked from all research
+1. Furudals Hockeyskola (SE): 2027 form, own residence, SEK 6,640 plus 650 boarding (Astra). Lead re-reads the form and residence page, then add.
+2. Club Adventure (NL): STRONG on the Opus report, EUR 789 and 795 per 7 days, ages 5 to 13, own dormitories; 2027 dates not published. Lead re-reads both camp pages, then add with the 2026 season and a provenance comment.
+3. Stadium Sports Camp, Norrkoping (SE): STRONG, 2027 hockey weeks, SEK 4,595. Confirm card payment without a Swedish address.
+4. Leksands Hockeyskola (SE): 2027 prices on the form; arena-floor boarding is the weak point (owner judgment).
+Reserve: ADEPS (BE) when the summer catalogue opens; Kolping Ferienland Salem (DE family, per-person-per-day pricing); Stella Maris (DE family, 2027 unpublished); Manusurf (FR, price conflict). Every number re-read by the lead on the operator page before camps.js; sitemap caption and README counts change with each addition.
+
+### Wave 2 round 2 (October)
+2027 dates as operators publish; Camp California session structure in the price unit; Explorer 845 (operator) not 830; Kalkalpen 2027 date; Vierumaki price and dates; the remaining top-clicked camps.
+
+### Then, in order
+1. Startup protocol (bridge inbox: Playground owes replies on the GSC MCP TLS failure and the GA4 MCP IPv6 failure; the Cloudflare security-insights CSV waits for a security review with the security agent, Astra when credit returns).
+2. ILC: invoice 2026-001 due 17 Sept; reminder draft (never send) on 10 Sept if unpaid; on payment activate as ID 70.
+3. Weekly GSC watch (standalone script; MCP still broken) from the week of 7 Sept.
+4. Open debt: 12 pre-existing em dashes in camps.js (mostly comments) and the 65-description outward-text scan; the alignment line (owner decides); `handleCampSelection` functional update (scalpel, low).
+
+**Standing rules:** live income site, scalpel not axe, plan first; the lead orchestrates and decides, primary Fable review then Astra second opinion on significant changes, Gemini third seat for SEO; research agents on Opus and given an hour; SEO saturated into everything, winter included; commit after every step with explicit paths; never find-and-replace camps.js; no badge without a verified status; drafts only, never message third parties; em-dash ban in outward text; multi-line files through the Write tool; a gate that contradicts itself is explained before commit.
 
 ---
 
