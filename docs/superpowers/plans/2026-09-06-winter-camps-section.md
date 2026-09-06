@@ -383,11 +383,13 @@ Precondition: at least four winter camps verified STRONG on all five points, eac
 ```js
 {
   question: "Are there European winter camps for children?",
-  answer: "Yes. Alongside the summer directory we list residential winter camps in Europe that run from December to April: ski and snowboard camps and winter sports schools where children typically stay on site with full board and supervised tuition. Every winter listing passes the same five-point verification as our summer camps and shows dates, per-child prices and ages as published by the operator. Open the Winter Camps section from the menu."
+  answer: "Yes. Our winter directory covers residential ski, snowboard and winter sports programmes that accept individual bookings for children and teenagers, with sessions between December and April. Listings show ages, dates and per-child prices as published by the operator. Check each programme's accommodation, supervision, ability requirements and availability before booking. Open the Winter Camps section from the menu."
 }
 ```
 
 Conditional wording (Fable SEO review, 6 Sept): only if the verified rows actually run those weeks, extend the first sentence with "with weekly sessions across the Christmas, February half-term and Easter school holidays"; only once the rows are verified, name their countries after "winter camps in Europe" (for example "in Switzerland and France"). Never claim a holiday week or a country that no row carries.
+
+Two publish-time additions accepted from the Astra SEO review (6 Sept): (a) name two verified programmes inside the teaser paragraph (country, ages, session dates) so the crawlable surface carries concrete evidence; (b) send a `winter_view` GA4 event when `activeSection` becomes `winter` (one per section entry, `event_category: 'navigation'`), so teaser clicks and winter views can be read next to the season-tagged booking events.
 
 - [ ] **Step 3: `scripts/sync-faq-jsonld.mjs`** reads `FAQ_ITEMS`, builds the FAQPage object with 2-space indentation matching the existing block, and replaces the block between `<!-- FAQ Structured Data for Rich Snippets -->` and the closing `</script>` in index.html. Run it, then `npm run validate:faq` must pass.
 - [ ] **Step 4: index.html** ItemList: add position 8 `{"@type": "ListItem", "position": 8, "name": "Winter Camps", "description": "Residential ski, snowboard and winter sports camps for children, December to April", "url": "https://www.europeansummercamps.com/#winter"}` and set `numberOfItems` to 8; Organization `knowsAbout` gains "European Winter Camps" and "Ski Camps for Kids". Sitemap `lastmod` to the release date.

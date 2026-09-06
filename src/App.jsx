@@ -1635,7 +1635,7 @@ function App() {
             <div>
               <h2 id="winter-teaser-heading" className="text-3xl font-bold text-gray-900 mb-4">Winter Camps in Europe</h2>
               <p className="text-gray-600 mb-6">
-                Our winter section lists residential ski camps for kids and winter sports schools that run from December to April, verified against the same five-point criteria as every summer camp. Each listing shows dates, per-child prices and ages, with a direct link to the operator.
+                Browse residential ski and snowboard camps for kids and teenagers in Europe, with sessions between December and April, checked the same way as every summer listing. Compare ages, dates and per-child prices, then check availability directly with the operator.
               </p>
               <Button asChild className="btn-primary">
                 <a href="#winter" onClick={(event) => { event.preventDefault(); handleNavigation('winter') }}>View European Winter Camps</a>
@@ -1877,7 +1877,7 @@ function App() {
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center text-white">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">European Winter Camps</h2>
             <p className="text-lg text-white max-w-2xl mx-auto mb-6">
-              Residential ski and snowboard camps and winter sports schools for children and teenagers, running from December to April and booked for one child at a time.
+              Residential ski and snowboard camps and winter sports schools for children and teenagers, running from December to April and accepting individual bookings.
             </p>
             <p className="text-sm text-orange-200 bg-black/20 rounded-lg py-2 px-4 inline-block">
               Dates and prices are shown for the {WINTER_SEASON} winter season as published by each operator.
@@ -1893,7 +1893,9 @@ function App() {
               <div className="text-center py-12">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Winter listings are being verified</h3>
                 <p className="text-gray-600 mb-6">Browse the summer directory in the meantime.</p>
-                <Button className="btn-secondary" onClick={() => handleNavigation('discover')}>Discover Summer Camps</Button>
+                <Button asChild className="btn-secondary">
+                  <a href="#discover" onClick={(event) => { event.preventDefault(); handleNavigation('discover') }}>Discover Summer Camps</a>
+                </Button>
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
