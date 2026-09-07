@@ -284,3 +284,10 @@ Owner 7 Sept 01:05: the sent ILC invoice stays; brand the invoice template with 
 Progress 03:20: done also 34, 35, 36, 37, 27, 33, 31, 2, 4, 6, 7+51, 8, 9, 11, 12, 14, 15, 20. Remaining: 38, 39, 40, 41, 42, 44, 45, 46, 47, 48, 49, 50, 52, 53, 54, 55, 56, 57, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 10, 18, 17, then Funside, Les Elfes, Camp Suisse.
 Progress 03:35: done also 38, 39, 40, 41, 42, 44, 45, 46, 47, 48, 49, 50, 52, 53, 54, 55, 56, 57, 59, 60, 61, 62. Now sending: 63, 64, 65, 66, 67, 68, 69, 10, 18, 17, Funside, Les Elfes, Camp Suisse (verify with list_drafts if in doubt). Hooks refreshed in .claude/settings.local.json (git-ignored). Browser tab already closed.
 Progress 03:45: RE-FRAMING COMPLETE. All 56 fee-bearing drafts (48 template incl. two-camp Enforex and Village Camps, plus Auersperg, Ridgway, Camp Semenic, Bold Earth, Funside, Les Elfes, Camp Suisse, La Garenne) carry the 7 Sept template. The eight winter question drafts are unchanged by design (no fee text). Atlas was sent through its form with the earlier text.
+
+### 03:50 to 04:25, 7 Sept (after the re-framing)
+- NEXT_STEPS START HERE rewritten for the 7 Sept pickup (commit da9dc4c); eight lessons appended to LESSONS_LEARNED; memory index updated; compaction hooks refreshed (git-ignored settings file).
+- Invoice template branded with restraint (mark, wordmark, blue rule, soft VAT note), rendered with headless Chrome and checked (3cb42e6).
+- Wave 2: ID 5 renamed to Atlas Summer Courses, Oxford, with 2027 season, ages 13-17, Plus tier GBP 6,995 re-read on the new site, booking URL updated (6c63d1a). EUROCAM Bohemia organiser confirmed as SYKA AGENCY a.s., a Prague travel agency by its own words; owner decision, no change.
+- Weekly watch started: docs/reports/WEEKLY_WATCH_2026-09-07.md (2c2d7d8).
+- Running: new-camps-four (re-verification of Furudals, Club Adventure, Stadium Sports Camp, Leksand) and cloudflare-csv-review (security agent on the owner CSV in the bridge).
