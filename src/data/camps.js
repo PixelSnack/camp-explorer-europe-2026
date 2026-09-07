@@ -146,11 +146,11 @@ export const allCamps = [
   // Academic & STEM Programs
   {
     id: 5,
-    name: "Oxford Summer Courses",
+    name: "Atlas Summer Courses, Oxford", // Renamed 7 Sept 2026: the operator rebranded from Oxford Summer Courses to Atlas Summer Courses (atlassummercourses.com, "formerly known as Oxford Summer Courses"); old domain redirects
     location: "Oxford, England",
     country: "United Kingdom",
-    ages: "13-18 years",
-    price: "From £6,995/2 weeks", // Verified Jan 2026: Plus tier, 2-week program
+    ages: "13-17 years", // Verified 7 Sept 2026 (atlassummercourses.com/oxford): Oxford courses for 13-15 and 16-17; the 18-24 courses are adult
+    price: "From £6,995/2 weeks", // Verified 7 Sept 2026 (atlassummercourses.com/oxford): Plus tier GBP 6,995 per 2-week course incl. tuition, meals, standard Heathrow transfer and insurance (Superior 7,995, Premier 9,995)
     priceRange: "luxury",
     rating: 4.9,
     reviews: 567,
@@ -158,13 +158,13 @@ export const allCamps = [
     category: "academic",
     type: "University Prep",
     activities: ["Medicine", "Engineering", "Business", "Creative Arts"],
-    dates: "July 6-20, 2026 (2 weeks)",
-    highlights: ["Oxford University colleges", "University preparation", "3 pricing tiers available", "Historic setting"],
+    dates: "Jun - Aug 2027 (2-week courses)", // Verified 7 Sept 2026 (atlassummercourses.com/oxford): "Courses begin from June 2027, end in Aug 2027", exact dates by age group on the prices-and-dates page
+    highlights: ["Oxford University colleges", "University preparation", "Formerly Oxford Summer Courses", "3 pricing tiers available"],
     languages: ["English"],
     specialFeatures: ["College Accommodation", "University Application Guidance", "Airport Transfers Included"],
     established: 1985,
     capacity: 200,
-    bookingUrl: "https://www.oxfordsummercourses.com/"
+    bookingUrl: "https://atlassummercourses.com/oxford"
   },
   {
     id: 6,
