@@ -1,13 +1,48 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 6, 2026 (night: all three winter reviews adjudicated, Wave 2 round 1b incl. Altitude booking-flow check, tracking verified, verify script on Playground's cleanup, outreach draft with base fee)
+**Last Updated:** September 7, 2026, 03:50 (AFK night run: 56 outreach drafts re-framed, winter selection fully followed up, invoice wording fixed, Camp Semenic corrected)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** weekly GSC watch -> ILC payment and activation -> Wave 2 per-camp 2027 dates -> winter camps decision -> new camp research
 
 ---
 
-## 🔴 **START HERE — SESSION PICKUP (written 6 September 2026, late evening)**
+## 🔴 **START HERE — SESSION PICKUP (written 7 September 2026, 03:50, during the owner's AFK night run)**
+
+### State on exit
+**The night's work is committed; the owner pushes in GitHub Desktop** (check `git rev-list --count origin/main..HEAD`). Full record: `docs/reports/SESSION_2026-09-06_WINTER_WAVE2.md` (AFK stretch and the draft ledger), `docs/reports/WINTER_VETTING_2026-09-06.md` (every winter answer followed up; gate status at the end), `docs/reports/GA4_PULL_2026-09-06.md`.
+
+### The owner's first job is DONE: one Gmail draft per listed camp, none sent
+- **56 fee-bearing drafts** in Gmail (owner reviews and sends from partnerships@): 48 template drafts for the summer listings (Enforex and Village Camps as one two-camp message each), plus tailored letters to Les Elfes (Alexandra, one Premium at EUR 199 covering summer and winter), Funside (reply in Réka's thread), Camp Suisse and La Garenne (winter lines included), Auersperg and Ridgway (addresses decoded in Chrome), Camp Semenic and Bold Earth (empty recipient: form only, or phone only). All carry the **7 September template** (`docs/drafts/2026-09-06-wave2-data-request-and-base-fee-DRAFT.md`): invoicing details requested, value stated, listing continues through 2026, fee or Premium now to stay listed in 2027, next invoice 1 September 2027.
+- **8 winter question drafts** (AR-Sport, LPM, Djuringa, Croq' Vacances, Vacances pour tous, Helsingin Nuoret Kotkat, Tábory Mamut, HIF with empty recipient). They say the winter listing is free this season; the owner may want the fee line added before sending.
+- **Sent:** Atlas Summer Courses (formerly Oxford Summer Courses) received the message through its contact form on the owner's authorisation; confirmation page seen. **Not sendable:** HIF (admissions form demands a phone number and a student), Romanian United Fund (domain blocked for the browser tab). **Exempt:** LINEŠA (the 2 September message promised the standard listing stays free for 2027).
+- Every address was read on the operator's own domain by four agents and then confirmed by a string check on the cited page (curl), by a second fetch, or by decoding Cloudflare and entity-encoded addresses; none was guessed.
+
+### Invoice (owner rule 7 Sept)
+`docs/templates/INVOICE_TEMPLATE.html`, `FEATURED_LISTINGS_POLICY.md` and the ILC draft in the bridge reference folder now say "VAT exempt" with no reason, and state that ResourceHub is the umbrella company for EuropeanSummerCamps.com. The PDF already sent to ILC stays as it is. **Open:** give the template restrained European Summer Camps branding (owner: nice, not overdone).
+
+### Winter: every owner answer followed up (WINTER_VETTING, Gate status)
+**STRONG on figures and footprint (eight, gate needs four):** Les Elfes, Lovell, Ecole d'Humanité, friLingue Braunwald, friLingue Liddes, FILOLO, Préfleuri (2027 PDF), La Garenne. Rows wait for the owner's go; at row-writing time the lead re-reads every figure in a browser and reads the Google rating there (no agent could reach Google). **Waiting on operators (drafts made):** AR-Sport, Camp Suisse, HIF, LPM, Nuovaera (booking opens 1 Nov), Djuringa, Croq' Vacances, Vacances pour tous, Tábory Mamut. **Owner decisions:** Djuringa (Trustpilot allegation pattern), Camp Suisse (bundled airport transfer), Helsingin Nuoret Kotkat (coach-inclusive EUR 195), Tábory Mamut (entity registered 2023 against a 2008 claim), Piispala (closed: no individually bookable winter camp). **Parked with a month:** Kazimírka, Poszukiwacze, Volareza, Wachumba (Oct); One Ski School, Lingvo, snowfun4kids (Nov); KFUM (Feb 2027). **Rejects confirmed:** Champions' Camp, Ski-Club Rötteln, mountain-action.
+
+### Wave 2 items found this night
+- **ID 31 Camp Semenic:** dates corrected to the July 2025 edition (commit 2bd99c7); the operator was asked whether 2027 runs.
+- **ID 5 Oxford Summer Courses is now Atlas Summer Courses** (new domain atlassummercourses.com, the old one redirects; company 08011543, since 2010; Oxford courses for 13 to 15 and 16 to 17). Name, booking URL, price and dates need a re-read before the card changes; the operator's reply may bring them.
+- **ID 9 EUROCAM Bohemia** is operated by SYKA AGENCY a.s., which its own contact page calls a travel agency; the camp is our most-clicked listing (86 referrals). Check the operator criterion before the 2027 update; do not remove anything without the owner.
+- **ID 65 Vierumäki** sales desk asked for 2027 dates and prices (card shows the 2026 EUR 460 camp).
+
+### Then, in order
+1. Invoice template branding (restrained), then the owner's morning report.
+2. Wave 2 round 2 as replies arrive: 2027 dates and prices camp by camp, the Atlas rename, the EUROCAM check, Camp California session structure, Explorer 845, Kalkalpen 2027, Vierumäki.
+3. Winter rows once the owner says go (preview worktree `D:/OneDrive/Documents/GitHub/esc-winter-preview` on port 5174; publish gate met on figures); Task 5 of the winter plan (FAQ, ItemList, flag, footer link, `winter_view` event, sitemap).
+4. Four new summer camps (IDs from 71; 70 reserved for ILC): Furudals Hockeyskola, Club Adventure, Stadium Sports Camp, Leksands Hockeyskola; every figure re-read by the lead before camps.js.
+5. Weekly GSC and GA4 watch (connectors work; `scripts/ga4-pull.py` is the fallback); ILC invoice due 17 Sept; the standing open debt (em dashes in camps.js, description scan, alignment line, `handleCampSelection`).
+
+**Standing rules:** live income site, scalpel not axe; drafts only, never message third parties; never git push; no em dash in outward text; never find-and-replace camps.js; commit after every step with explicit paths; blocked sites through the curl_cffi recipe (memory `blocked-site-scraping-recipe`); every commit complete and safe.
+
+---
+
+
+## Pickup notes from 6 September 2026 (history; the block above is current and wins where they differ)
 
 ### State on exit
 **Pushed and production-verified at 6 Sept ~18:45:** a0f9e67, 53b506f, 86f8310, 8f1d6de, 2b73456 (title unchanged, live Discover DOM identical to the build, Les Elfes green Booking open, My Camp 620, Altitude 2027, zero console errors). **Unpushed on exit (owner pushes in GitHub Desktop):** 55943d4 Altitude dates "(not yet bookable)" after the lead walked the booking flow in Chrome, 4ee0bc9 cdp-verify on Playground's proven cleanup, 66b770a Astra SEO adjudication landed plus lessons, and the closing docs commit. **After the push, production check with the verify script:** `node scripts/cdp-verify.mjs --url https://www.europeansummercamps.com/ --hash discover --width 1280 --dump x.txt` (65 cards, title unchanged, Les Elfes card green "Booking open", My Camp "€620" and "Jun 28 - Sep 5, 2026 (weekly sessions)", Altitude "Jun 28 - Aug 13, 2027"), `--hash home --width 390 --mobile` (no winter entry points), `--hash winter` (empty state), zero console errors; then a Claude in Chrome look at the Les Elfes card on desktop and phone width. Full record: `docs/reports/SESSION_2026-09-06_WINTER_WAVE2.md` (afternoon continuation section).
