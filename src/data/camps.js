@@ -1538,6 +1538,28 @@ export const allCamps = [
     established: 1999,
     capacity: 240,
     bookingUrl: "https://www.ferienfussball.de/fussballcamp/international-football-camp-germany/"
+  },
+  {
+    id: 71,
+    name: "Furudals Hockeyskola", // Added 7 Sept 2026; every figure read by the lead on svenskalag.se/furudalshockeyskola (the club site; furudalshockeyskola.se redirects there)
+    location: "Furudal, Dalarna",
+    country: "Sweden",
+    ages: "11-18 years", // Verified 7 Sept 2026 (2027 form): weeks 26-27 for ages 11-15, week 28 for 14-18, four-day camps weeks 29-31 for 11-14 and 15-18, match camps 11-12 and 13-14
+    price: "From SEK 6,640/1 week", // Verified 7 Sept 2026 (2027 form): "Vecka 26 t o m 28: 6.640kr (sön-lör)"; boarding at the Hockeyborg player hotel SEK 650 extra with full board; four-day camps weeks 29-31 SEK 3,690 incl. accommodation
+    priceRange: "budget",
+    rating: null,
+    reviews: 0,
+    image: activitiesCompressed,
+    category: "sports",
+    type: "Ice Hockey School",
+    activities: ["Ice Hockey Training", "Skating Technique", "Shooting and Passing", "Goalkeeper Training", "Match Play", "Off-ice Training"],
+    dates: "Jun 27 - Aug 7, 2027 (weekly)", // Verified 7 Sept 2026 (2027 form): V26 27/6-3/7, V27 4/7-10/7, V28 11/7-17/7 (Sun-Sat); camps V29-V31 18/7 to 7/8 in four-day blocks
+    highlights: ["Run by the IFK Ore club since 1980", "Players sleep at the Hockeyborg player hotel, 4 to 6 per room", "Leaders live in the hotel evenings and nights", "Boarding SEK 650 extra, full board included"],
+    languages: ["Swedish", "English"],
+    specialFeatures: ["Own ice hall, player hotel and restaurant", "Four-day camps and match camps for ages 11 to 18"],
+    established: 1980, // Verified 7 Sept 2026 (club history page): ice hall opened 3 Jan 1980, hockey school run with IFK Ore from 1980
+    capacity: null,
+    bookingUrl: "https://www.svenskalag.se/furudalshockeyskola/formular/furudals-hockeyskola-2027/41062"
   }
 ]
 
