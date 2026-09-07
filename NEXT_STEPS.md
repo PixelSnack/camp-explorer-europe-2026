@@ -34,7 +34,7 @@
 1. Invoice template branding (restrained), then the owner's morning report.
 2. Wave 2 round 2 as replies arrive: 2027 dates and prices camp by camp, the Atlas rename, the EUROCAM check, Camp California session structure, Explorer 845, Kalkalpen 2027, Vierumäki.
 3. Winter rows once the owner says go (preview worktree `D:/OneDrive/Documents/GitHub/esc-winter-preview` on port 5174; publish gate met on figures); Task 5 of the winter plan (FAQ, ItemList, flag, footer link, `winter_view` event, sitemap).
-4. Four new summer camps (IDs from 71; 70 reserved for ILC): Furudals Hockeyskola, Club Adventure, Stadium Sports Camp, Leksands Hockeyskola; every figure re-read by the lead before camps.js.
+4. New summer camps: Furudals Hockeyskola (ID 71) and Stadium Sports Camp (ID 72) ADDED 7 Sept after the lead read every figure; Club Adventure HELD for the owner (2026 dates only; iDeal, Bancontact or invoice payment); Leksands Hockeyskola HELD (agent section cut; arena-floor boarding is the weak point). Next camp ID 73; 70 stays reserved for ILC. README and sitemap say 67.
 5. Weekly GSC and GA4 watch (connectors work; `scripts/ga4-pull.py` is the fallback); ILC invoice due 17 Sept; the standing open debt (em dashes in camps.js, description scan, alignment line, `handleCampSelection`).
 
 **Standing rules:** live income site, scalpel not axe; drafts only, never message third parties; never git push; no em dash in outward text; never find-and-replace camps.js; commit after every step with explicit paths; blocked sites through the curl_cffi recipe (memory `blocked-site-scraping-recipe`); every commit complete and safe.

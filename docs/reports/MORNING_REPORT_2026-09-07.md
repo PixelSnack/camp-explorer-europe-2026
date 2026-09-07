@@ -83,3 +83,16 @@ v=DMARC1; p=none; rua=mailto:contact@europeansummercamps.com; fo=1; adkim=r; asp
 ```
 
 Zero delivery risk at `p=none`; aggregate reports arrive as XML attachments for a few weeks. The caveat that matters: mail sent from the five addresses through Gmail's "send mail as" without a custom SMTP server is signed by gmail.com and would fail a strict policy, so stay on `p=none` until 30 days of reports show our own sources aligned, then `p=quarantine; pct=25`, then full quarantine; reject is not worth the risk. A CAA record is optional and a wrong one breaks Vercel's certificate renewal, so not now.
+
+## Appended 05:40: two of the four new summer camps added, two held
+
+The research agent re-verified all four on the operators' own pages; I then read every figure myself before anything reached camps.js.
+
+| Camp | Outcome |
+|---|---|
+| Furudals Hockeyskola (ID 71, Sweden) | ADDED (73e54ba). IFK Ore's hockey school since 1980; 2027 weeks 27 June to 7 August; ages 11 to 18 by week; from SEK 6,640 per week plus SEK 650 boarding at the club's own player hotel with full board and leaders sleeping on site. Payment is Bankgiro or Swish (Swedish), stated in the row's comment. |
+| Stadium Sports Camp (ID 72, Sweden) | ADDED (933cf32). Norrköping, since 1995; 2027 weeks 27 June to 10 July; ages 10 to 15; from SEK 4,595 with four meals and accident insurance; two ice sessions a day; lodging in school halls on the Stadium Arena site (4 to 90 beds, own bedding), stated on the card. Card payment through Walley. |
+| Club Adventure (Netherlands) | HELD for the owner. Passes the five points, Klantenvertellen 8.9 from 1,262 reviews, own group accommodation at Overasselt and Oldebroek, ages 5 to 13, EUR 789 to 795 for seven days. Two holds: only 2026 dates are published, and payment is iDeal, Bancontact or invoice, which suits Dutch and Belgian families; a listing would say so. |
+| Leksands Hockeyskola (Sweden) | HELD. The agent's section on it was cut by the channel and re-requested; arena-floor boarding was already the weak point. |
+
+README and sitemap now say 67 organizations; the hero and footer counts update from the data. After the push, the production check should show 67 cards on Discover and the two new Swedish cards.
