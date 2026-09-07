@@ -1560,6 +1560,28 @@ export const allCamps = [
     established: 1980, // Verified 7 Sept 2026 (club history page): ice hall opened 3 Jan 1980, hockey school run with IFK Ore from 1980
     capacity: null,
     bookingUrl: "https://www.svenskalag.se/furudalshockeyskola/formular/furudals-hockeyskola-2027/41062"
+  },
+  {
+    id: 72,
+    name: "Stadium Sports Camp", // Added 7 Sept 2026; every figure read by the lead on stadiumsportscamp.se
+    location: "Norrköping, Östergötland",
+    country: "Sweden",
+    ages: "10-15 years", // Verified 7 Sept 2026 (stadiumsportscamp.se/sporter/ishockey): "10-14 år (15 år på specifika veckor)" for ice hockey; the camp as a whole takes 10-15
+    price: "From SEK 4,595/1 week", // Verified 7 Sept 2026 (stadiumsportscamp.se/sports-camp/anmal-och-betala): "Sports Camp 4 595 kr", sibling or multi-week 4,095; includes all scheduled sports, four meals a day, t-shirt, bottle and accident insurance; card, bank, invoice or instalments through Walley
+    priceRange: "budget",
+    rating: null,
+    reviews: 0,
+    image: activitiesCompressed,
+    category: "sports",
+    type: "Multi-Sport Camp",
+    activities: ["Ice Hockey", "Football", "Basketball", "Sport-specific Training", "Camp Activities"],
+    dates: "Jun 27 - Jul 10, 2027 (two weeks)", // Verified 7 Sept 2026 (home page and ishockey page): Vecka 1 Sön 27 juni - Lör 3 juli, Vecka 2 Sön 4 juli - Lör 10 juli
+    highlights: ["Two ice sessions a day in the Stallet ice hall on the camp site", "Four meals a day and accident insurance included", "Participants sleep in school halls on site, 4 to 90 beds, own bedding", "Leaders sleep close to the participants"],
+    languages: ["Swedish"],
+    specialFeatures: ["Camp on the Stadium Arena site since 1995", "Run by Stadium Sports Camp AB, a Stadium subsidiary with a profit-sharing form"],
+    established: 1995, // Verified 7 Sept 2026 (om-stadium-sports-camp): first camp 1995; the company formed 2006
+    capacity: null,
+    bookingUrl: "https://www.stadiumsportscamp.se/sports-camp/anmal-och-betala"
   }
 ]
 
