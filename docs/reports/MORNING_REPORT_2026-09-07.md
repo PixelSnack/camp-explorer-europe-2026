@@ -96,3 +96,9 @@ The research agent re-verified all four on the operators' own pages; I then read
 | Leksands Hockeyskola (Sweden) | HELD. The agent's section on it was cut by the channel and re-requested; arena-floor boarding was already the weak point. |
 
 README and sitemap now say 67 organizations; the hero and footer counts update from the data. After the push, the production check should show 67 cards on Discover and the two new Swedish cards.
+
+## Appended 05:55: Leksands Hockeyskola, the agent's cut section arrived
+
+Leksands IF's hockey school (hockeyskolan.se; the .se domain in our notes does not resolve), "Sveriges äldsta hockeyskola", ages 10 to 15, 2027 form prices SEK 5,995 for the hockey school (elite week 7,250, goalie camp 6,695) plus SEK 1,295 for boarding; card, Swish, invoice or instalments; enquiry address hockeyskolan@leksandsif.se. **HELD, not added:** boarders sleep in conference rooms in Tegera Arena and must bring their own mattress; no night-staff statement is printed; 2027 is sold by week number with no calendar dates; and the Swedish price page and the English page still carry 2025 and 2024 figures against the 2027 form. Your earlier note (arena-floor boarding is the weak point) stands; it needs your call and, if you want it, a question to the operator about night supervision.
+
+For Stadium Sports Camp, one point from the agent for the record: the camp is run on municipal school and arena premises "initierat av Stadium och Norrköpings Kommun" with no lease statement printed; the card says the lodging is school halls on the arena site, which is the honest description.
