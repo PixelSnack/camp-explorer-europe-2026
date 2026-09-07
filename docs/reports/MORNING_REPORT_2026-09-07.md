@@ -63,3 +63,23 @@ A research agent re-verifying the four new summer camps (Furudals, Club Adventur
 - Session record: `docs/reports/SESSION_2026-09-06_WINTER_WAVE2.md` (AFK stretch, draft ledger with every draft id).
 - Pickup block: NEXT_STEPS.md START HERE (rewritten 03:50).
 - Lessons: eight new entries at the end of LESSONS_LEARNED.md.
+
+## Appended 05:05: Cloudflare security-insights review (security agent, adjudicated by the lead)
+
+The agent read your CSV and verified every claim against live DNS. Both hostnames are DNS-only (nothing passes through Cloudflare's proxy), which settles three of the five rows.
+
+| Cloudflare row | Verdict | Why |
+|---|---|---|
+| Unproxied A record (moderate) | Ignore | The exposed address is Vercel's anycast edge, not an origin of ours; proxying would put two CDNs in series, risk redirect loops, hide visitor IPs from Vercel Analytics and add a hop to a site whose speed is a ranking asset. |
+| Bot Fight Mode (moderate) | Ignore | Inert while DNS-only; if proxied it would challenge the AI crawlers robots.txt deliberately admits (ChatGPT referrals were about a fifth of sessions). |
+| AI Labyrinth (low) | Ignore | Feeds decoy content to the AI crawlers we court. |
+| security.txt (low) | Done in the repo | `public/.well-known/security.txt` added (contact@, expires 7 Sept 2027); live after the push. |
+| DMARC (low in the CSV, the one real finding) | Your action in Cloudflare DNS | `_dmarc.europeansummercamps.com` does not exist. SPF and the Cloudflare DKIM selector are fine for the forwarding. |
+
+**The DMARC record to add** (Cloudflare DNS, type TXT, name `_dmarc`):
+
+```
+v=DMARC1; p=none; rua=mailto:contact@europeansummercamps.com; fo=1; adkim=r; aspf=r
+```
+
+Zero delivery risk at `p=none`; aggregate reports arrive as XML attachments for a few weeks. The caveat that matters: mail sent from the five addresses through Gmail's "send mail as" without a custom SMTP server is signed by gmail.com and would fail a strict policy, so stay on `p=none` until 30 days of reports show our own sources aligned, then `p=quarantine; pct=25`, then full quarantine; reject is not worth the risk. A CAA record is optional and a wrong one breaks Vercel's certificate renewal, so not now.
