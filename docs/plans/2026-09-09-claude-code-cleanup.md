@@ -254,6 +254,8 @@ Keep the single copy at Step 3 (lines 347-356). It carries the parts that are NO
 `src/data/camps.js` holds **67** organizations, max id **72**, so next id is **73**.
 `CLAUDE.md` says "65 organizations" in 8 places and "next: 70" in 2.
 
+⚠️ **When correcting the id, keep the reservation.** **70 is deliberately reserved for ILC**, the Premium listing awaiting payment, per `NEXT_STEPS.md`. So 70 is a held slot, not a gap to backfill, and 71 and 72 were assigned around it. Write "next camp ID: 73 (70 reserved for ILC)" rather than a bare 73, or the reason for the gap is lost. Owner's note, 10 Sept: the specific numbers do not matter much, but the reservation should not be silently dropped.
+
 Four of those occurrences (lines 208, 218, 439, and one in the migrated workflow section) sit inside blocks that Group E moves out. The six survivors need correcting:
 
 - L258 "Content Expansion: 65 organizations across 24 countries" -> 67
