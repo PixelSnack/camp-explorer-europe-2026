@@ -3,8 +3,8 @@
 *Tracking document for paid Premium listings (€299/year list, €199 introductory; the €99 Featured tier was discontinued 2 Sept 2026)*
 
 **Created:** January 18, 2026
-**Last Updated:** September 3, 2026
-**Status:** First paid Premium listing sold (ILC, invoice 2026-001 sent 3 Sept 2026, payment pending); Les Elfes remains the demo
+**Last Updated:** September 10, 2026
+**Status:** TWO Premium listings sold. ILC (invoice 2026-001 sent 3 Sept, due 17 Sept, payment pending) and **Les Elfes (accepted 8 Sept 2026, EUR 199 introductory, invoice NOT yet raised)**. Les Elfes converts from demo to paying partner on the 2027 cycle.
 
 ---
 
@@ -19,18 +19,44 @@ This document tracks all Featured camp listings, including verification status, 
 
 ## Current Featured Listings
 
-### 1. Les Elfes International (DEMO/TEST)
+### 1. Les Elfes International — **PREMIUM ACCEPTED 8 SEPT 2026** (was the demo)
 
 | Field | Value |
 |-------|-------|
-| **Camp ID** | 1 |
-| **Status** | DEMO - For showing potential partners |
-| **Tier** | Featured (Demo) |
+| **Camp ID** | 1 (summer) + winter card, both under one Premium |
+| **Status** | **ACCEPTED, awaiting invoice.** Complimentary Premium runs to 31 Dec 2026; paid Premium starts on the 2027 cycle |
+| **Tier** | Premium, EUR 199 introductory first year, **rate-locked for renewals** |
 | **Category** | Premium Alpine |
 | **Country** | Switzerland |
-| **Verified** | January 18, 2026 |
-| **Featured Since** | January 18, 2026 (demo) |
-| **Paid Listing** | No (internal demo) |
+| **Verified** | January 18, 2026; re-verified Aug 2026 |
+| **Featured Since** | January 18, 2026 (as demo) |
+| **Paid Listing** | Yes, from the 2027 season. Next invoice date after that: 1 September 2027 |
+
+#### Acceptance and invoicing details (from the operator, 8 Sept 2026 17:54 UTC)
+
+Alexandra Stettler, Chief Executive Officer, replying in the thread opened 7 Sept:
+
+> "I'm also happy to confirm that we would like to continue with the Premium listing for 2027 at the first-year rate of EUR 199, covering both our summer and winter cards."
+
+| Field | Value |
+|---|---|
+| **Legal name** | Les Elfes International S.A. |
+| **Address** | Rue du Centre sportif 20, 1936 Verbier, Switzerland |
+| **Company / UID number** | CH-621.3.006.911-2 |
+| **Invoice email** | compta@leselfes.com |
+| **Contact** | Alexandra Stettler, CEO, alexandra@leselfes.com, +41 27 775 35 90 |
+| **Gmail thread** | `1a0796e2af5be68d` |
+
+**Card image:** she chose to supply their own photograph rather than have us illustrate one, and shared three Google Drive folders (Campus, Summer, Winter) for us to pick from. Links are in the thread. Nothing downloaded yet.
+
+#### Open commitments to this partner (we promised these in writing)
+
+1. **Winter section live Monday 14 September 2026** at `www.europeansummercamps.com/#winter`. The date was stated to her explicitly. This is now a commitment to a paying partner.
+2. **Send her the live link** once it is up; she wants to review the winter card for accuracy.
+3. **Same-day corrections** on anything she flags on the card.
+4. **Raise the 2027 invoice** (next number: 2026-002). We said it "follows as soon as we have" the billing details. We have them.
+
+⚠️ **Check before invoicing:** Switzerland is outside the EU, unlike ILC. Confirm the "VAT exempt" wording on `docs/templates/INVOICE_TEMPLATE.html` is right for a non-EU recipient before sending. Owner decision, not Claude's.
 
 #### Verification Summary
 
@@ -235,10 +261,11 @@ Before activating any Featured listing:
 | Month | New Featured | Renewals | Revenue | Notes |
 |-------|--------------|----------|---------|-------|
 | Jan 2026 | 0 | 0 | €0 | Demo phase |
-| Sep 2026 | 1 (ILC) | 0 | €0 received; €199 invoiced (2026-001) | First sale; payment pending |
+| Sep 2026 | 2 (ILC, Les Elfes) | 0 | €0 received; €199 invoiced (2026-001); €199 accepted but **not yet invoiced** (Les Elfes) | ILC payment pending, due 17 Sept. Les Elfes accepted 8 Sept, invoice 2026-002 to raise |
 
-**Total Revenue (2026):** €0 received, €199 invoiced
-**Active Paid Listings:** 0 (1 pending payment)
+**Total Revenue (2026):** €0 received · €199 invoiced · €199 accepted and awaiting invoice
+**Committed annual value from the 2027 cycle:** €398 (two Premium at the €199 introductory rate, both rate-locked)
+**Active Paid Listings:** 0 (1 pending payment, 1 pending invoice)
 
 ---
 
@@ -262,6 +289,7 @@ See FEATURED_LISTINGS_POLICY.md for full pricing and operations details.
 | Jan 18, 2026 | Created document, added Les Elfes as demo listing | Claude Code |
 | Jan 24, 2026 | Added Partner Inquiries section with Boundless Life and LINEŠA correspondence | Claude Code |
 | Sep 3, 2026 | ILC recorded as first paid Premium listing (invoice 2026-001 issued); Boundless closed; LINEŠA dormant | Claude Code |
+| Sep 10, 2026 | **Les Elfes accepted Premium for 2027 at the EUR 199 introductory rate** (reply 8 Sept, CEO Alexandra Stettler), covering summer and winter cards under one Premium, rate-locked. Billing details recorded, own photograph chosen over illustration. Converts from demo to paying partner. Invoice 2026-002 outstanding; winter section promised live Mon 14 Sept | Claude Code |
 
 ---
 

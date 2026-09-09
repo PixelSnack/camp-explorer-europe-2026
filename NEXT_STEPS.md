@@ -4,6 +4,9 @@
 **Last Updated:** September 7, 2026, 03:50 (AFK night run: 56 outreach drafts re-framed, winter selection fully followed up, invoice wording fixed, Camp Semenic corrected)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** weekly GSC watch -> ILC payment and activation -> Wave 2 per-camp 2027 dates -> winter camps decision -> new camp research
+**🔴 Deadline:** winter section promised live to Les Elfes for **Monday 14 September 2026**. She is a paying partner as of 8 Sept.
+**Second sale:** Les Elfes accepted Premium 2027 at EUR 199 (summer + winter, rate-locked). Billing details in hand, invoice 2026-002 outstanding.
+**Reported defect:** wrong-continent map link for Village Camps Santa Cruz (ID 29, Portugal). Not in our code; surface still to be found.
 **Pending owner decision (evening of 10 Sept 2026):** Claude Code cleanup plan, `docs/plans/2026-09-09-claude-code-cleanup.md`. Diagnosed, nothing applied, Playground impact audited.
 
 ---
@@ -37,6 +40,80 @@
 3. Winter rows once the owner says go (preview worktree `D:/OneDrive/Documents/GitHub/esc-winter-preview` on port 5174; publish gate met on figures); Task 5 of the winter plan (FAQ, ItemList, flag, footer link, `winter_view` event, sitemap).
 4. New summer camps: Furudals Hockeyskola (ID 71) and Stadium Sports Camp (ID 72) ADDED 7 Sept after the lead read every figure; Club Adventure HELD for the owner (2026 dates only; iDeal, Bancontact or invoice payment); Leksands Hockeyskola HELD (agent section cut; arena-floor boarding is the weak point). Next camp ID 73; 70 stays reserved for ILC. README and sitemap say 67.
 5. Weekly GSC and GA4 watch (connectors work; `scripts/ga4-pull.py` is the fallback); ILC invoice due 17 Sept; the standing open debt (em dashes in camps.js, description scan, alignment line, `handleCampSelection`).
+
+### 💰 **SECOND SALE: Les Elfes accepted Premium 2027 at EUR 199 (reply 8 Sept). Carries a HARD DEADLINE of Monday 14 September.**
+
+Alexandra Stettler, **CEO** of Les Elfes International S.A., replied 8 Sept 2026 17:54 UTC in thread `1a0796e2af5be68d`:
+
+> "I'm also happy to confirm that we would like to continue with the Premium listing for 2027 at the first-year rate of EUR 199, covering both our summer and winter cards."
+
+Les Elfes converts from **demo** to **paying partner**. Full record in `FEATURED_CAMPS.md`. With ILC that is **EUR 398 committed annual value** from the 2027 cycle, both rate-locked.
+
+**Billing details received (nothing left to ask her for):**
+
+| Field | Value |
+|---|---|
+| Legal name | Les Elfes International S.A. |
+| Address | Rue du Centre sportif 20, 1936 Verbier, Switzerland |
+| Company / UID | CH-621.3.006.911-2 |
+| Invoice email | compta@leselfes.com |
+
+**Four things we promised her in writing, in deadline order:**
+
+1. 🔴 **Winter section live Monday 14 September 2026** at `www.europeansummercamps.com/#winter`. We named that date to her. It is now a commitment to a paying partner, not just an internal target. **Four days out.** The winter rows still wait on the owner's go, and Task 5 of the winter plan (FAQ, ItemList, flag, footer link, `winter_view` event, sitemap) is unfinished. If the date is going to slip, she should be told before it slips, not after.
+2. **Send her the live link** once it is up. She explicitly wants to review the winter card for accuracy.
+3. **Same-day corrections** on anything she flags.
+4. **Raise invoice 2026-002.** We said it follows as soon as we have the billing details. We have them.
+
+**Two decisions for the owner, neither of which Claude should make alone:**
+- ⚠️ **Switzerland is outside the EU**, unlike ILC. Confirm the "VAT exempt" wording in `docs/templates/INVOICE_TEMPLATE.html` is correct for a non-EU recipient before anything is sent.
+- **Card image.** She chose to supply their own photograph over an illustration and shared three Google Drive folders (Campus, Summer, Winter) for us to pick from. Links are in the thread. Nothing downloaded yet; the Gmail MCP cannot fetch these, so it is a browser job.
+
+**Not done and not to be done without a per-message go-ahead:** no reply has been sent to her. Drafts only.
+
+### 🔴 **HIGH PRIORITY, FIRST JOB 10 SEPT: wrong-continent map link for Village Camps Santa Cruz (ID 29, Portugal)**
+
+Owner report, night of 9/10 Sept: a map link for the Portuguese camp points at **Santa Cruz in the United States**. On a directory whose proposition is verified accuracy, sending a parent to California is a serious defect.
+
+**CONFIRMED BY THE OWNER ON A REAL IPHONE: tapping the location line opened Maps and took him to the United States.** Screenshot: `Claude bridge/Error map.png` (10 Sept 00:23).
+
+**Mechanism: iOS Safari data detectors.** Safari on iOS automatically turns address-like plain text into a tappable Maps link. We do nothing to stop it:
+
+- `src/components/CampCard.jsx:88-90` renders `<MapPin />` followed by **bare `{camp.location}` text** inside `CardDescription`. Nothing wraps or escapes it.
+- `index.html` has **no `format-detection` meta tag**. Confirmed by grep; the meta list contains no such entry.
+- So iOS linkifies the location string on **every card**, not just this one.
+- For ID 29 the string is `"Santa Cruz, West Coast"` (`camps.js:603`), which Apple Maps resolves to **Santa Cruz, California**.
+
+**This is not cosmetic and not one card.** Per CLAUDE.md, **iOS is 50% of all traffic**. Half the audience gets auto-generated map links we never wrote, never verified and cannot see in desktop testing. Grepping for a maps URL finds nothing precisely because we did not author the link; iOS did.
+
+**Compounding it, the card image is `mapCompressed`** (`camps.js:611`), the generic Europe map graphic. On the screenshot it shows pins on the UK, France and Italy and **none in Portugal**. So the card visually corroborates the wrong answer.
+
+**Two layers to fix, in this order:**
+
+1. **Correctness, ID 29.** Give the location a country anchor so any resolver lands in Portugal. Verify the place name against the operator page (`villagecamps.com/summer-camp-programmes-in-santa-cruz-portugal`) first; Santa Cruz sits in Torres Vedras on the Silver Coast. Candidate: `"Santa Cruz, Silver Coast"` or `"Santa Cruz, Torres Vedras"`.
+2. **Systemic, site-wide.** Decide what we want iOS to do with location text at all:
+   - **Suppress it**: add `<meta name="format-detection" content="telephone=no, address=no, date=no, email=no">` to `index.html`. One line, low risk. ⚠️ `address=no` support has varied across iOS versions, so this **must be verified on a real iPhone**; Chrome MCP cannot reproduce data detectors.
+   - **Or own it**: render the location as a deliberate, correct map link we author ourselves. Turns the bug into a feature, but adds an outbound link to every card, which is an SEO and mobile-UX decision, not a quick fix. Owner's call.
+
+   Whichever route, **the acceptance test is the owner's iPhone**, not a build passing.
+
+**Fix, but verify first, do not guess the place name.** Santa Cruz is in the Torres Vedras municipality on Portugal's Silver Coast. Confirm against the operator's own page (`villagecamps.com/summer-camp-programmes-in-santa-cruz-portugal`) before editing, then set something unambiguous such as `"Santa Cruz, Silver Coast"` or `"Santa Cruz, Torres Vedras"`.
+
+**The image is the harder half and needs an owner decision.** Options: use a real Village Camps or Santa Cruz photograph if one can be sourced and licensed, generate one in the site style via the external AI panel and log it in `docs/reference/GENERATED_ASSETS.md`, or at minimum stop using a Europe map that omits the country. Do not ship a new image without the owner seeing it.
+
+**Scope checked the same night: `image: mapCompressed` is used by 23 of the 67 camps** (camps.js lines 112, 179, 247, 316, 361, 496, 610, 657, 726, 772, 841, 932, 1000, 1023, 1046, 1069, 1138, 1207, 1253, 1322, 1392, 1461, 1507). So a third of the directory is illustrated by the same Europe map graphic. That is a presentation weakness across the board, but only ID 29 also carries a **wrong-continent location string**, because every other one of the 23 names a country or an unmistakably European region.
+
+**One adjacent risk found while checking:** ID 34 is **"Camp California Croatia"** at Pakostane, Dalmatia. The name leads with a US state and the card image is the same Europe map. Its `location` is unambiguous, so it is not the reported defect, but it is the next most likely card to be misread. Worth a look in the same pass.
+
+**Fix ID 29 first and separately.** It is the accuracy defect. The broader "23 cards share one map graphic" issue is a design backlog item, not an emergency, and should not be bundled into the same commit.
+
+**Also visible on the screenshot, worth folding into the same pass:**
+- Dates still read **"July 5-18, July 19-Aug 1, Aug 2-15, 2026"**. Stale, a Wave 2 item.
+- Rating shows **4.8 / 412 reviews**, the unverified legacy figure.
+
+**Related live risk, check before implementing anything.** The Feb Google Maps pass recorded **4.4 / 25** for ID 29; `REVIEW_SYSTEM_NEXT_STEPS.md:40` lists **4.8 / 412**. ID 29 currently carries **no `reviewData`**, so nothing wrong has shipped. But if that 4.4/25 was read off the California listing, implementing it would put US review data on a Portuguese camp. Re-verify the source listing is the Portugal one before touching Review Phase 2 for this camp.
+
+**Also worth a look while in there:** ID 29's card image is `mapCompressed`, the generic map graphic, not a camp photo.
 
 ### ⏸️ **AWAITING OWNER DECISION: Claude Code cleanup plan (deferred to the evening of 10 Sept 2026)**
 
