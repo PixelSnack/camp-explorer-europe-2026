@@ -600,7 +600,7 @@ export const allCamps = [
   {
     id: 29,
     name: "Village Camps Santa Cruz",
-    location: "Santa Cruz, West Coast",
+    location: "Santa Cruz, Portugal", // Fixed 10 Sept 2026: was "Santa Cruz, West Coast", which iOS data detectors auto-linked to Santa Cruz, California. Country anchor verified on the operator's own page (villagecamps.com/summer-camp-programmes-in-santa-cruz-portugal), which names no broader region
     country: "Portugal",
     ages: "10-17 years", // Verified Jan 2026: was 13-17
     price: "€3,500/1 week", // Verified Jan 2026: was €2,700
