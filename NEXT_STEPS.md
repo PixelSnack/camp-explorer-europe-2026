@@ -84,18 +84,33 @@ Owner report, night of 9/10 Sept: a map link for the Portuguese camp points at *
 - So iOS linkifies the location string on **every card**, not just this one.
 - For ID 29 the string is `"Santa Cruz, West Coast"` (`camps.js:603`), which Apple Maps resolves to **Santa Cruz, California**.
 
-**This is not cosmetic and not one card.** Per CLAUDE.md, **iOS is 50% of all traffic**. Half the audience gets auto-generated map links we never wrote, never verified and cannot see in desktop testing. Grepping for a maps URL finds nothing precisely because we did not author the link; iOS did.
+**This is not cosmetic and not one card.** Per CLAUDE.md, **70% of traffic is mobile and sees only the phone version, with iOS alone at 50%**. So for the clear majority of visitors the location line is a primary UI element, and for half of all visitors it is a **tappable map link we never wrote, never verified, and cannot see in desktop testing**. Grepping for a maps URL finds nothing precisely because we did not author the link; iOS generated it from our text.
+
+Treat `location` as an interactive, outward-facing field from now on, not a caption.
 
 **Compounding it, the card image is `mapCompressed`** (`camps.js:611`), the generic Europe map graphic. On the screenshot it shows pins on the UK, France and Italy and **none in Portugal**. So the card visually corroborates the wrong answer.
 
 **Two layers to fix, in this order:**
 
 1. **Correctness, ID 29.** Give the location a country anchor so any resolver lands in Portugal. Verify the place name against the operator page (`villagecamps.com/summer-camp-programmes-in-santa-cruz-portugal`) first; Santa Cruz sits in Torres Vedras on the Silver Coast. Candidate: `"Santa Cruz, Silver Coast"` or `"Santa Cruz, Torres Vedras"`.
-2. **Systemic, site-wide.** Decide what we want iOS to do with location text at all:
-   - **Suppress it**: add `<meta name="format-detection" content="telephone=no, address=no, date=no, email=no">` to `index.html`. One line, low risk. ⚠️ `address=no` support has varied across iOS versions, so this **must be verified on a real iPhone**; Chrome MCP cannot reproduce data detectors.
-   - **Or own it**: render the location as a deliberate, correct map link we author ourselves. Turns the bug into a feature, but adds an outbound link to every card, which is an SEO and mobile-UX decision, not a quick fix. Owner's call.
+2. **Systemic, site-wide. OWNER DECISION, 10 Sept: KEEP the tap-to-map behaviour.** His words: *"I like the location thing but only when our location is set accurately."*
 
-   Whichever route, **the acceptance test is the owner's iPhone**, not a build passing.
+   So **do NOT add `format-detection` / `address=no`**, and do not suppress data detection. The feature stays. The obligation moves to the data: **every `location` string must resolve to the right place.** That reframes this from a bug to a data-quality standard.
+
+   **Audit run 10 Sept: 45 of 67 camps have a `location` string that does not name its country.** Most are safe because the region is unmistakable to a resolver ("Torquay, Devon", "Bad Schussenried, Baden-Württemberg"). The ones that share ID 29's weakness need checking first:
+
+   | ID | Camp | Location string | Risk |
+   |---|---|---|---|
+   | 29 | Village Camps Santa Cruz | `Santa Cruz, West Coast` | **CONFIRMED BROKEN.** Resolves to California |
+   | 51 | Enforex Summer Camp Salamanca | `Salamanca` | Single token. Salamanca also exists in New York and Mexico |
+   | 53 | Piccola Università Italiana Junior Camp | `Trieste` | Single token. Lower risk, Trieste is fairly unique, but unanchored |
+   | 45 | Sirdal Huskyfarm | `Tonstad, Sirdal` | Obscure, no country anchor |
+   | 56 | Kids Camp America Family Camp | `Edersee, Hessen` | Location is fine; the **name** leads with "America" |
+   | 34 | Camp California Croatia | `Pakostane, Dalmatia` | Location is fine; the **name** leads with a US state |
+
+   **The durable fix is mechanical, not manual.** Add a rule to `scripts/validate-camps.js` (which already runs on every build via `prebuild`) that fails when a `location` lacks a country anchor, or is a single token, or names a region that does not belong to its `country`. That is the same enforcement pattern already used for static claims, and it stops this drifting back in the next time a camp is added.
+
+   **Acceptance test is the owner's iPhone**, not a passing build. Chrome MCP cannot reproduce iOS data detectors, so this cannot be verified from here.
 
 **Fix, but verify first, do not guess the place name.** Santa Cruz is in the Torres Vedras municipality on Portugal's Silver Coast. Confirm against the operator's own page (`villagecamps.com/summer-camp-programmes-in-santa-cruz-portugal`) before editing, then set something unambiguous such as `"Santa Cruz, Silver Coast"` or `"Santa Cruz, Torres Vedras"`.
 
@@ -105,7 +120,9 @@ Owner report, night of 9/10 Sept: a map link for the Portuguese camp points at *
 
 **One adjacent risk found while checking:** ID 34 is **"Camp California Croatia"** at Pakostane, Dalmatia. The name leads with a US state and the card image is the same Europe map. Its `location` is unambiguous, so it is not the reported defect, but it is the next most likely card to be misread. Worth a look in the same pass.
 
-**Fix ID 29 first and separately.** It is the accuracy defect. The broader "23 cards share one map graphic" issue is a design backlog item, not an emergency, and should not be bundled into the same commit.
+**SCOPE AGREED 10 SEPT: fix all 67 location strings in one pass**, not just ID 29. Owner: *"We'll fix it tomorrow for all of them."* Work through the audit table above, verify each place name against the operator's own page rather than guessing, then add the `validate-camps.js` rule so it cannot drift back. Commit in batches of 3-6 camps per the context-protection rule, not one giant commit.
+
+**Keep the image question separate.** The "23 of 67 cards share one Europe map graphic" issue is a design backlog item, not an accuracy defect, and should not be bundled into the location commits.
 
 **Also visible on the screenshot, worth folding into the same pass:**
 - Dates still read **"July 5-18, July 19-Aug 1, Aug 2-15, 2026"**. Stale, a Wave 2 item.
