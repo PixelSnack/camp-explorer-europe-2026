@@ -4,6 +4,7 @@
 **Last Updated:** September 7, 2026, 03:50 (AFK night run: 56 outreach drafts re-framed, winter selection fully followed up, invoice wording fixed, Camp Semenic corrected)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** weekly GSC watch -> ILC payment and activation -> Wave 2 per-camp 2027 dates -> winter camps decision -> new camp research
+**Pending owner decision (evening of 10 Sept 2026):** Claude Code cleanup plan, `docs/plans/2026-09-09-claude-code-cleanup.md`. Diagnosed, nothing applied, Playground impact audited.
 
 ---
 
@@ -36,6 +37,22 @@
 3. Winter rows once the owner says go (preview worktree `D:/OneDrive/Documents/GitHub/esc-winter-preview` on port 5174; publish gate met on figures); Task 5 of the winter plan (FAQ, ItemList, flag, footer link, `winter_view` event, sitemap).
 4. New summer camps: Furudals Hockeyskola (ID 71) and Stadium Sports Camp (ID 72) ADDED 7 Sept after the lead read every figure; Club Adventure HELD for the owner (2026 dates only; iDeal, Bancontact or invoice payment); Leksands Hockeyskola HELD (agent section cut; arena-floor boarding is the weak point). Next camp ID 73; 70 stays reserved for ILC. README and sitemap say 67.
 5. Weekly GSC and GA4 watch (connectors work; `scripts/ga4-pull.py` is the fallback); ILC invoice due 17 Sept; the standing open debt (em dashes in camps.js, description scan, alignment line, `handleCampSelection`).
+
+### ⏸️ **AWAITING OWNER DECISION: Claude Code cleanup plan (deferred to the evening of 10 Sept 2026)**
+
+`/doctor` ran 9 Sept. Full diagnosis and every proposed edit: **`docs/plans/2026-09-09-claude-code-cleanup.md`**. **Nothing has been applied.** The owner reviews and decides after work on 10 Sept.
+
+Six independent groups, any of which can be taken or skipped:
+- **A** setup fixes: the user-level `multi-model-second-opinions` skill has **no frontmatter**, so its description falls back to the body's first line and the skill does not trigger on its own (this is why CLAUDE.md 4.8's "USE ACTIVELY" has not been happening); plus one shadowed agent file.
+- **B** disable 5 never-used plugins, and the owner runs `/mcp disable` for `googleDrive` and seven unused claude.ai connectors.
+- **C** (highest value) three blocks in the auto-memory `MEMORY.md` now contradict CLAUDE.md: it still describes the **default-green badge system replaced on 4 Sept**, says Chrome MCP does not connect (284 calls in 36 days, and 5.7 makes it mandatory), and says jq is unavailable (it is installed).
+- **D** cut ~2,850 chars of duplicate and derivable text from CLAUDE.md, and correct **65 organizations to 67** and **next id 70 to 73** in the six places that survive the trim.
+- **E** move ~29,200 chars (sections 3 and 4, plus shipped history) into `docs/`, leaving pointers. Every safety rule stays in CLAUDE.md verbatim.
+- **F** separate permission decision: make auto mode the persisted default. Machine-wide, so it reaches Playground too.
+
+D and E together take CLAUDE.md from 82,288 to about 51,400 chars, roughly **7,700 fewer context tokens per session**.
+
+**Playground safety was audited and written into the plan.** B (the four ESC plugins), C, D and E cannot reach Playground. A1, the discord disable and F are user scope; each was checked against Playground's actual config and found safe, with F flagged as a deliberate machine-wide choice.
 
 **Standing rules:** live income site, scalpel not axe; drafts only, never message third parties; never git push; no em dash in outward text; never find-and-replace camps.js; commit after every step with explicit paths; blocked sites through the curl_cffi recipe (memory `blocked-site-scraping-recipe`); every commit complete and safe.
 
