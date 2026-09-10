@@ -83,3 +83,85 @@ Both addresses were read on the operators' own contact pages. Two answers would 
 - Five figure rules for every illustration are in `docs/reference/GENERATED_ASSETS.md`: an adult leader always present, every child different, the scene populated, warm light dominant, never a face toward the viewer and never a blank one.
 - Card highlights: three for standard, up to four for Premium.
 - The web search budget for a session is 200 calls and was exhausted tonight by the research agents. Chrome is the fallback.
+
+---
+
+# Continued, into the early hours of 11 September
+
+## Shipped and verified live
+
+- **The Back button was dead after entering any hash section.** Reproduced on production
+  first: home to #winter then Back cleared the URL but left the winter view on screen.
+  On mobile, 70 percent of traffic, Back is the main way out of a section. Fixed, and
+  re-verified working on the live site afterwards.
+- **Analytics could swallow a booking click.** `trackOutboundClick` ran before
+  `window.open`, so a gtag that is truthy but not callable, which ad blockers and
+  extensions install, would throw and the booking window would never open. That is a lost
+  referral, the thing operators pay for. Telemetry is now best effort in a try/catch.
+- Also: `winter_view` now requires real consent, the winter grid sort applies the ID
+  tiebreak its comment always promised, and a camp with no `rating` key no longer renders
+  a star with no number.
+- **AR-Sport coach fare corrected.** We listed a flat PLN 270; the operator publishes three
+  tiers, 270, 300 and 350 by departure city. Found by a manual Chrome check of four
+  randomly chosen winter camps against the operators' own pages. The other three
+  (Ecole d'Humanite, REC Rimini, Neige et Soleil) matched exactly.
+- **Two fabricated schema addresses corrected** in index.html. Oxford's real address was
+  left alone. See SCHEMA_AND_H1_DECISION_2026-09-10.md.
+
+## Decided and deliberately NOT done
+
+- **The Bing "H1 tag missing" warning: leave it.** Bing indexes us and we rank 1 to 5 using
+  content that exists nowhere in the raw HTML, which proves Bingbot renders JS. The error
+  comes from a static lint that does not count `<noscript>`. A placeholder h1 would buy a
+  probable lint fix for a certain layout shift and a visible mobile flash.
+- **The ItemList `numberOfItems: 3` is not a defect** and was not changed. Full reasoning,
+  including my own adjudication failure that led to it being treated as one, is in
+  SCHEMA_AND_H1_DECISION_2026-09-10.md.
+
+## Gmail drafts: the audit is COMPLETE
+
+All 70 read end to end. Beyond the three cleaned earlier:
+
+- **Camp Adventure** carried a raw Gmail tracking URL (`google.com/url?q=...`) instead of
+  the camp's own domain. It had a recipient, so it was one click from going out. Fixed.
+- **KRIK** said "two things" then asked five questions. Fixed.
+- **Six winter drafts said "65 camp operators"**; we list 67. Fixed, and they no longer say
+  we "are adding" a winter section that is already live.
+- **La Garenne** still said we "would like to include" a winter camp that is now live. Fixed.
+- **Four un-sendable drafts renamed "DELETE THIS - ..."** with the reason, so the text is
+  still there if the owner wants it for a contact form.
+- **Djuringa is marked "HOLD, DO NOT SEND YET"** rather than DELETE: it is the
+  safety-adjacent Trustpilot decision the owner has not made, not obsolete work.
+- One draft in the folder is **not ESC** (Torveakademiet, marked FORTROLIGT) and was left
+  completely untouched.
+
+**Every referral figure was verified against GA4** (property 521172443,
+`camp_booking_click` by `customEvent:camp_name`, 1 Mar to 10 Sept). No draft overstates.
+Five understate by one or two because clicks accrued since 6 September, which is the safe
+direction. A suspicion that three identical "32" figures were a copy-paste error was
+**wrong**: GA4 confirms all three.
+
+**Separate tracking finding worth attention:** `camp_name` is "(not set)" on 107
+`camp_booking_click` events in that window, roughly 8 percent of outbound clicks arriving
+with no camp attribution. Per-camp referral counts are the product we sell to operators.
+
+## Les Elfes
+
+Draft reply is in the existing thread to Alexandra, CC compta@ as she asked. Invoice
+2026-002 is rendered to PDF at
+`Claude bridge/reference/ESC-Invoice-2026-002-Les-Elfes.pdf`, single page, and says
+"up to four listing update requests per year" rather than promising four updates.
+
+**Before sending: attach the PDF by hand** (the body says it is attached), **switch From to
+partnerships@**, and **close the space** in the web address.
+
+The attachment could not be added from here: the Gmail connector takes attachments as
+inline base64 and this PDF is 62,780 base64 characters, which cannot be transcribed
+reliably. A corrupt invoice to a paying customer is worse than one drag-and-drop.
+
+## Useful capability gained
+
+`Page.printToPDF` over CDP renders HTML to PDF reliably on this machine, where the
+headless print had failed repeatedly. Root cause of the two-page invoice was not the
+footer: content measured 1035px against 1045px of printable height, so a rounding error
+spilled it. Trimmed to 943px.
