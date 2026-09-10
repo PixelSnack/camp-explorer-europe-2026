@@ -488,6 +488,7 @@ export const allCamps = [
     name: "Warsaw Montessori Farm Summer Camp", // Renamed 6 Sept 2026: the operator runs a children-only residential camp (teachers on site, parents drop off); no parent-present family camp exists
     location: "Białka, Radzyń Podlaski, Poland",
     country: "Poland",
+    searchAliases: ["Lublin Voivodeship"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "6-16 years",
     price: "PLN 2,900/1 week", // Verified 6 Sept 2026 (elementaryschool.wmf.edu.pl/en/summer-camps-2026: final tier from 1 Apr 2026; PLN 2,700 was the early-booking tier; full board and 24h care included)
     priceRange: "budget",
@@ -533,6 +534,7 @@ export const allCamps = [
     name: "Nationalpark Kalkalpen Family Camp",
     location: "Rossleithen, Austria",
     country: "Austria",
+    searchAliases: ["Upper Austria"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "6+ years (families)",
     price: "From €145/3 days", // Verified Jan 2026: €145 child/€369 adult
     priceRange: "budget",
@@ -579,6 +581,7 @@ export const allCamps = [
     name: "Jagiellonian University Explorers' Summer Camp",
     location: "Kraków, Poland",
     country: "Poland",
+    searchAliases: ["Lesser Poland", "Malopolska"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "12-16 years",
     price: "PLN 8,260/2 weeks", // Verified 6 Sept 2026 (plschool.uj.edu.pl payment section: 8,260 per participant incl. 500 prepayment; dormitory and full board included, insurance extra)
     priceRange: "mid",
@@ -649,6 +652,7 @@ export const allCamps = [
     name: "Camp Semenic Explorer",
     location: "Semenic, Caraș-Severin, Romania",
     country: "Romania",
+    searchAliases: ["Semenic National Park", "Caras Gorge"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "8-14 years",
     price: "$650/6 days", // Verified Jan 2026
     priceRange: "budget",
@@ -695,6 +699,7 @@ export const allCamps = [
     name: "Ridgway Adventure",
     location: "Ardmore, Sutherland, Scotland",
     country: "United Kingdom",
+    searchAliases: ["Scottish Highlands"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "11-17 years",
     price: "£950/1 week", // Verified Jan 2026
     priceRange: "mid",
@@ -833,6 +838,7 @@ export const allCamps = [
     name: "Din Camp SportsCamp",
     location: "Kolding & Juelsminde, Denmark",
     country: "Denmark",
+    searchAliases: ["Jutland"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "7-15 years",
     price: "DKK 3,695/6 days", // Verified Jan 2026 - 5 nights Mon-Sat
     priceRange: "budget",
@@ -924,6 +930,7 @@ export const allCamps = [
     name: "LINEŠA Camp Pasaka",
     location: "Kukuliškiai, Klaipėda, Lithuania",
     country: "Lithuania",
+    searchAliases: ["Klaipeda District"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "8-18 years",
     price: "€440/1 week", // Verified Aug 2026 (linesa.lt/stovyklaviete-pasaka: 7-day shift 440 EUR; a 45 EUR code expired 15 Aug; was 410-440)
     priceRange: "budget",
@@ -1015,6 +1022,7 @@ export const allCamps = [
     name: "CERAN Academy Juniors",
     location: "Ferrières, Liège, Belgium",
     country: "Belgium",
+    searchAliases: ["Liege Province"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "9-17 years",
     price: "€1,790/1 week", // Verified Jan 2026: per-child residential rate
     priceRange: "premium",
@@ -1038,6 +1046,7 @@ export const allCamps = [
     name: "Evasoleil",
     location: "Montalivet-les-Bains, France",
     country: "France",
+    searchAliases: ["Gironde"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "6-17 years",
     price: "€685/1 week", // Verified Jan 2026: per-child residential rate
     priceRange: "budget",
@@ -1268,6 +1277,7 @@ export const allCamps = [
     name: "Village Camps Zell am See",
     location: "Zell am See, Austria",
     country: "Austria",
+    searchAliases: ["Austrian Alps"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "10-17 years", // Verified Feb 2026: Austria location age range
     price: "€3,550/2 weeks", // Verified Feb 2026: per-child all-inclusive residential rate
     priceRange: "premium",
@@ -1338,6 +1348,7 @@ export const allCamps = [
     name: "École des Roches Summer Camp",
     location: "Verneuil d'Avre et d'Iton, France",
     country: "France",
+    searchAliases: ["Normandy"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "9-17 years",
     price: "€3,950/2 weeks", // Verified Feb 2026: French Classic program, per-child residential
     priceRange: "premium",
@@ -1361,6 +1372,7 @@ export const allCamps = [
     name: "Humboldt-Institut Bad Schussenried",
     location: "Bad Schussenried, Germany",
     country: "Germany",
+    searchAliases: ["Baden-Wurttemberg"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "10-17 years",
     price: "€1,395/1 week", // Verified Feb 2026: 2+ week courses, +€50/wk summer surcharge Jun-Aug
     priceRange: "mid",
@@ -1522,6 +1534,7 @@ export const allCamps = [
     name: "Ferienfussball International Football Camp",
     location: "Hinsbeck, Nettetal, Germany",
     country: "Germany",
+    searchAliases: ["North Rhine-Westphalia"], // Region names dropped from the card line on 10 Sept 2026 when locations were anchored to their country; kept searchable
     ages: "11-16 years", // Verified Feb 2026: International Football Camp age range from official site
     price: "From €730/1 week", // Updated Feb 2026: €729.60 early bird (regular €768), 7 days per official site
     priceRange: "budget",

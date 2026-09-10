@@ -74,6 +74,13 @@ function validateCamp(camp, season) {
     }
   }
 
+  // Optional: region names kept searchable after being dropped from the card's location line
+  if (camp.searchAliases !== undefined) {
+    if (!Array.isArray(camp.searchAliases) || camp.searchAliases.length === 0 || camp.searchAliases.some(a => typeof a !== 'string' || a.trim() === '')) {
+      fail(camp.id, camp.name, 'searchAliases must be a non-empty array of non-empty strings when present');
+    }
+  }
+
   for (const key of REQUIRED_ARRAYS) {
     if (!Array.isArray(camp[key]) || camp[key].length === 0) {
       fail(camp.id, camp.name, `${key} must be a non-empty array`);
