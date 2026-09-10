@@ -467,3 +467,20 @@ When you encounter an error and find a fix, add it here using this template:
 6. **Some domains are blocked for the Chrome tab with "Navigation to this domain is not allowed"** (djuringa-juniors.fr, campadventure.de, dincamp.dk, kidscampamerica.com, romanianunitedfund.org this night). Use the fetch tool or curl (curl_cffi with Chrome impersonation when a site returns 403; recipe in memory) rather than retrying the tab.
 7. **Invoice and outreach wording carry the business image.** The owner struck the line that explained the VAT exemption by a turnover threshold: it tells a client nothing they need and undercuts the picture of a successful business. Invoices say "VAT exempt" and name ResourceHub as the umbrella company; outreach asks for the invoicing details, states the value delivered, and frames the fee as the way to stay listed, never as a cost we cannot absorb. Read every outward line as the client would.
 8. **Winter camps are not ski camps** (owner correction 6 Sept, applied throughout the vetting): the winter point is "the core activity's equipment and instruction stated"; a coach-inclusive price is the only fail that can sink an otherwise good non-ski camp, and that is the owner's call, not the rubric's.
+
+### Lesson: Bulk drafting produces outward-facing errors, and two of them are dangerous (September 2026)
+
+**Problem**: In the 7 September AFK run, about 60 Gmail drafts were created in one pass. The owner found two faults when he came to send them, and stopped sending as a result:
+1. **Internal notes to the owner were left inside the draft body.** A note meant for him sat in a message addressed to a camp operator. Had he been tired and sent it, an internal remark would have gone out under his name to a business contact.
+2. **The sender was never switched to partnerships@.** Drafts default to the owner's personal Gmail address, so a partnership message would have arrived from a private address rather than the business one.
+
+**Root cause**: Volume. Quality control does not survive sixty repetitions in a single unbroken run, and neither fault is visible unless each draft is read as the recipient would read it. The bulk itself was the defect, not any individual draft.
+
+**Impact**: The owner stopped sending the outreach batch. Real revenue work stalled, which is a worse outcome than a slower, smaller batch would have been.
+
+**Rule**:
+1. **Draft in batches of 5 to 10, never more.** After each batch, re-read every draft end to end as the recipient before starting the next.
+2. **Nothing addressed to the owner ever goes inside a draft body.** Anything he needs to know goes in the chat message or the session report, never in the message itself. If a draft genuinely cannot be completed (no address found, a figure missing), say so in chat and leave the recipient field empty rather than writing a note into the text.
+3. **The Gmail API cannot set the sender.** `create_draft` has no `from` field, so every draft is created on the owner's default address. State explicitly, every time drafts are handed over, that the From address must be switched to partnerships@ before sending. Do not assume he remembers.
+4. **Read each finished draft once as the recipient.** Not as the author checking facts: as a camp operator receiving a cold message. That is the pass that catches an internal note, a placeholder or a wrong sender.
+5. A smaller batch that can actually be sent beats a complete batch that stalls.
