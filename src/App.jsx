@@ -54,9 +54,9 @@ import { FAQ_ITEMS } from './data/faq.js'
 import CampCard from './components/CampCard.jsx'
 import { BookingStatusBadge } from './components/BookingStatusBadge.jsx'
 import { winterCamps } from './data/winterCamps.js'
-import winterHeroAvif from './assets/european-winter-camp-ski-lesson-children-alps.avif'
-import winterHeroWebp from './assets/european-winter-camp-ski-lesson-children-alps.webp'
-import winterHeroJpg from './assets/european-winter-camp-ski-lesson-children-alps.jpg'
+import winterHeroAvif from './assets/european-winter-camp-alpine-valley-chalets.avif'
+import winterHeroWebp from './assets/european-winter-camp-alpine-valley-chalets.webp'
+import winterHeroJpg from './assets/european-winter-camp-alpine-valley-chalets.jpg'
 
 // Hash-routed sections; unknown hashes (e.g. the #main-content skip link) must not change the view
 const KNOWN_SECTIONS = new Set(['home', 'discover', 'winter', 'compare', 'plan', 'guide', 'resources', 'privacy', 'about', 'impressum', 'terms'])
@@ -1625,7 +1625,7 @@ function App() {
               <source srcSet={winterHeroWebp} type="image/webp" />
               <img
                 src={winterHeroJpg}
-                alt="Children in ski jackets following an instructor down a beginner slope beside a wooden chalet in the Alps"
+                alt="A snowy mountain valley in late afternoon light, with timber camp chalets and children walking towards them"
                 className="rounded-lg shadow-xl w-full h-auto"
                 width="1376"
                 height="774"
@@ -1865,7 +1865,7 @@ function App() {
             <source srcSet={winterHeroWebp} type="image/webp" />
             <img
               src={winterHeroJpg}
-              alt="Children in ski jackets following an instructor down a beginner slope beside a wooden chalet in the Alps"
+              alt="A snowy mountain valley in late afternoon light, with timber camp chalets and children walking towards them"
               className="w-full h-full object-cover"
               width="1376"
               height="774"
