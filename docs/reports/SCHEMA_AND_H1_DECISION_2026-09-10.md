@@ -95,13 +95,78 @@ content. All 67 mount in the DOM today, so 67 in schema is honest. The day virtu
 scrolling ships, roughly 15 items are in the DOM and a 67-item schema becomes a mismatch.
 Treat expanding the ItemList and shipping virtual scrolling as coupled roadmap items.
 
-## Status
+## Final status, 11 September 2026: NOT IMPLEMENTED, tooling removed
 
-Nothing implemented. The owner asked explicitly for a scalpel and no rash change.
-The H1 decision is "leave it", which needs no code. The ItemList expansion is recommended
-but not started, and items 1 and 2 under "problems that exist right now" should be fixed
-whether or not we expand.
+**Decision: do not expand the ItemList. Do not touch the H1. Keep the two address fixes.**
 
-Also satisfied tonight: the caveat about sequencing after the location fix. All 67
-`location` strings now end with a country anchor and `validate-camps.js` enforces it, so
-deriving `addressLocality` can no longer encode the ID 29 wrong-continent defect.
+The owner challenged the premise and was right. `numberOfItems: 3` is **not a defect**.
+That list contains three items and declares three. It is an honestly labelled featured
+subset and it is internally consistent. Astra said the same: a three-entry featured subset
+was never a formal claim that only three camps exist.
+
+What actually happened: the SEO agent framed it as "we present as a directory of three
+camps", I carried that framing into my report instead of adjudicating it, and the owner
+reasonably said "repair it". The moment to push back was when I first reported it.
+
+### The adjudication failure, recorded so it is not repeated
+
+Three times in one night I relayed a finding instead of judging it. The doctrine is that
+external findings are input, never authority, and the lead adjudicates because the lead
+has full project knowledge and the agents do not.
+
+1. **"Paid placement" and `rel="sponsored"`.** Repeated from Astra. Wrong for this
+   business, and it worried the owner. Premium does not buy inclusion: every camp passes
+   the same five-point verification, and payment changes nothing about whether a camp is
+   listed or what we say about it. `rel="sponsored"` covers links paid for **as links**;
+   ours exist for all 67 camps regardless. The PREMIUM badge is the disclosure, and a
+   visible badge is the normal convention for a directory. We follow the intent of the
+   rules and run an honest business. We are not the angels in the class.
+2. **"numberOfItems 3 is a problem."** Not a defect, as above.
+3. **"The three entries carry invented street addresses."** My own over-generalisation.
+   The agent flagged only "Verbier Resort Area" plus the scaling risk. Oxford's address
+   was real.
+
+Rule now in auto-memory as `adjudicate-agents-never-relay`.
+
+### Why the tooling was removed rather than parked
+
+The generator was the only thing in the repository capable of writing to `index.html`,
+which carries the protected title, the meta descriptions and four other JSON-LD blocks.
+Leaving an inert writer aimed at that file, on a live site ranking 1 to 5, is a risk with
+no matching benefit while the change is not wanted. The knowledge is the valuable part and
+it is all in this file.
+
+### What was kept
+
+The two address corrections, verified per entry, built and live. "Verbier Resort Area" was
+not an address and the operator had given us the real one. "Slavnovice village area, near
+Luznice River" was a description, not an address. Oxford's was left alone.
+
+Production verified healthy afterwards: all five JSON-LD blocks parse, 67 cards render,
+H1 and meta intact, hero loaded, no horizontal overflow, and the Back button fix confirmed
+working on the live site.
+
+### If this is ever revisited
+
+Everything needed is above: the node shape, the omissions and why, the ISO mapping
+requirement, the validator rules, and the measured page weight (53.4 KB raw, but only
+5.4 KB gzipped over the wire; index.html would go from 5.7 KB to 11.2 KB gzipped).
+
+Astra's four genuine technical findings, which any future attempt must handle:
+
+1. `serviceType` belongs to `Service`, not `EducationalOrganization`, and `audience` is not
+   in `Organization`'s domain. Both were wrong in the plan.
+2. A closing script sequence inside any generated string would break out of the script
+   element. Escape every literal `<` as a unicode escape. Ordinary camp names never
+   exercise this, so it needs a deliberate test fixture.
+3. A per-listing `@id` falsely asserts that two programmes from one operator are two
+   different organisations. Omit it; merging is the correct behaviour.
+4. Moving the block to the end of body does not improve LCP, because the bytes still
+   precede the module script. Google supports JSON-LD in head or body, so placement is
+   neutral and the block should simply stay where it is.
+
+Also satisfied: the caveat about sequencing after the location fix. All 67 `location`
+strings now end with a country anchor and `validate-camps.js` enforces it.
+
+The hard dependency on TanStack Virtual stands: 67 entries in schema describes the page
+only while all 67 mount in the DOM.
