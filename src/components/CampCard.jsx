@@ -142,7 +142,7 @@ export default function CampCard({ camp, isSelected, onToggleCompare, onBook, on
           <div className="space-y-2">
             <div className="text-sm font-medium text-gray-900">Highlights:</div>
             <ul className="text-sm text-gray-600 space-y-1">
-              {camp.highlights.slice(0, camp.featured ? 3 : 2).map((highlight, index) => (
+              {camp.highlights.slice(0, camp.featured ? 4 : 3).map((highlight, index) => (
                 <li key={index} className="flex items-center">
                   <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2"></div>
                   {highlight}

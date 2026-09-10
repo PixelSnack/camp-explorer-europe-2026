@@ -237,6 +237,30 @@ export const winterCamps = [
     established: null, // The operator claims "over 16 years of experience" but prints no founding year; the company was registered in 2015 (checked 10 Sept 2026)
     capacity: null,
     bookingUrl: "https://taberestraja.ro/en/tabara/tabara-vacantei-de-schi-snowboard/"
+  },
+  {
+    id: 82,
+    name: "Neige et Soleil Competition Ski Camp",
+    location: "Bramans, Savoie, France",
+    country: "France",
+    season: "winter",
+    ages: "12-17 years", // Read in Chrome 10 Sept 2026. The product prints no age sentence; these are the operator's OWN age categories on the product meta line ("12-13 ans", "12-14 ans", "15-17 ans"), which span 12 to 17. A plain fetch could not tell those apart from related products
+    price: "EUR 1,195/1 week", // Verified 10 Sept 2026 on the product page: a single public price, no member or sibling rate. A child membership of EUR 20 is added, and travel from a departure city costs EUR 12.50 to 117.50 and is optional
+    priceRange: "mid",
+    rating: null,
+    reviews: 0,
+    image: skiSlopeInstructor,
+    category: "winter",
+    type: "Competition Ski Camp",
+    activities: ["Alpine Ski Racing", "Gate Training", "Video Analysis", "ESF Tests"],
+    dates: "Feb 14 - Apr 10, 2027", // Verified 10 Sept 2026 in the booking selector: four sessions, 14 to 20 Feb, 21 to 27 Feb, 28 Feb to 6 Mar and 3 to 10 Apr 2027
+    highlights: ["Skis, boots, poles and helmet provided", "Etoile d'Or level required, this is a racing camp", "Compulsory child membership of EUR 20 on top of the fee"],
+    languages: ["French"],
+    specialFeatures: ["Five days of coaching with ESF instructors", "Fleche and Chamois ESF tests included", "The association's own village club, apartments of four to eight"],
+    established: 1951,
+    capacity: null,
+    bookingUrl: "https://www.neige-et-soleil.com/produit/colo-ado-ski-competition/",
+    bookingStatus: "open" // Verified 10 Sept 2026: all four 2027 sessions are selectable in the product's own booking selector
   }
 ]
 
