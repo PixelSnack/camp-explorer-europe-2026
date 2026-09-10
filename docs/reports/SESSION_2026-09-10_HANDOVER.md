@@ -40,7 +40,13 @@ Also shipped: all 67 summer location strings anchored to their country (closing 
 
 The owner stopped sending the 7 September outreach batch after finding two faults. Both are now understood and the rule is in `LESSONS_LEARNED.md` and auto-memory.
 
-**Fault 1: internal notes inside draft bodies.** Root cause found: the 7 September procedure explicitly instructed it ("if no address is found, leave the recipient empty and say so in the draft's first line"). The procedure was the bug. The notes are therefore confined to the **four drafts with no recipient**, which cannot be sent without adding an address.
+**Fault 1: internal notes inside draft bodies. SCOPE IS UNKNOWN AND MUST BE TREATED AS UNKNOWN.**
+
+The 7 September procedure instructed a note in the first line whenever no address was found, so the four recipient-less drafts certainly carry one. I inferred from that that the notes were confined to those four. **The owner corrected me: they are not.** Notes also exist in drafts that DO have a recipient, which is the dangerous case, because those can be sent in one click with no extra step to make anyone pause.
+
+I could not scope it before running out of context. A Gmail search for the obvious phrases returned nothing useful, so the notes are not reliably findable by query and every draft body has to be read.
+
+**Therefore: no draft in this batch may be sent until it has been read end to end.** Do not trust the four-draft theory that appears in earlier commit messages from this session; it is wrong. The audit is the batch-of-ten read, and it is the first ESC task of the next session.
 
 Three of the four are now cleaned: the bracketed note is removed from the body and the warning moved into the subject, where it cannot be emailed.
 - `r-8028380094569286557` Bold Earth: CLEANED

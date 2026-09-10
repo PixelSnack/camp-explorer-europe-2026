@@ -484,3 +484,9 @@ When you encounter an error and find a fix, add it here using this template:
 3. **The Gmail API cannot set the sender.** `create_draft` has no `from` field, so every draft is created on the owner's default address. State explicitly, every time drafts are handed over, that the From address must be switched to partnerships@ before sending. Do not assume he remembers.
 4. **Read each finished draft once as the recipient.** Not as the author checking facts: as a camp operator receiving a cold message. That is the pass that catches an internal note, a placeholder or a wrong sender.
 5. A smaller batch that can actually be sent beats a complete batch that stalls.
+
+**Correction to the above, same evening.** I first concluded that the stray internal notes were confined to the four drafts that had no recipient, because the 7 September procedure instructed a note there. The owner corrected me: notes also appear in drafts that do have a recipient. That is the more dangerous case, since those can be sent in a single click.
+
+Two lessons on top of the original:
+1. **Do not generalise a root cause from the samples you happened to open.** I read four drafts, found a pattern that matched a known instruction, and treated it as the full explanation. A believable mechanism is not the same as a measured scope.
+2. **When the scope of a defect is unknown, say unknown.** The safe instruction is "read every draft before sending", not "the ones with recipients are fine". Stating a reassuring boundary that has not been verified is worse than stating none, because it stops the person checking.
