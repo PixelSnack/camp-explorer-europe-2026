@@ -3,6 +3,7 @@
 import heroImage from '../assets/hero-lakeside.webp' // Same 1680x720 image as the PNG original (127KB vs 1,674KB); PNG stays in public/ for og:image
 import activitiesCompressed from '../assets/activities-collage-compressed.png'
 import mapCompressed from '../assets/camps-map-compressed.png'
+import lesElfesSummer from '../assets/les-elfes-summer-camp-verbier-mountain-biking-alps.webp' // Les Elfes' own summer photograph
 
 /**
  * Review source platform registry with tier-based weighting.
@@ -63,7 +64,7 @@ export const allCamps = [
         worldcamps: { rating: 5.0, count: 1 }
       }
     },
-    image: heroImage,
+    image: lesElfesSummer, // Les Elfes' own photograph from their summer camps page, cdn.leselfes.com/wp-content/uploads/2024/04/Mountain-biking-21.jpg, taken 11 Sept 2026. TEMPORARY: they offered Summer and Campus folders and we have asked which picture they would prefer. No identifiable faces, all riders are seen from behind
     category: "premium",
     type: "Alpine Adventure",
     activities: ["Rock Climbing", "5 Languages", "Glacier Expeditions", "Cultural Tours"],
