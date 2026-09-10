@@ -67,10 +67,10 @@ export const allCamps = [
     image: lesElfesSummer, // Les Elfes' own photograph from their summer camps page, cdn.leselfes.com/wp-content/uploads/2024/04/Mountain-biking-21.jpg, taken 11 Sept 2026. TEMPORARY: they offered Summer and Campus folders and we have asked which picture they would prefer. No identifiable faces, all riders are seen from behind
     category: "premium",
     type: "Alpine Adventure",
-    activities: ["Rock Climbing", "5 Languages", "Glacier Expeditions", "Cultural Tours"],
+    activities: ["Rock Climbing", "Mountain Biking", "Water Skiing", "Tree Top Adventure"], // Read on leselfes.com/summer-camps/ 11 Sept 2026. "5 Languages" was removed: it is not an activity and it duplicated the Languages row directly beneath it on the card
     dates: "June 6 - Aug 28, 2027", // Verified 6 Sept 2026 (leselfes.com/dates-and-pricing): six two-week sessions, 6 Jun to 28 Aug 2027
     bookingStatus: "open", // Verified 6 Sept 2026: every 2027 session shows Enrol now and is selectable with its price on leselfes.com/summer-camp/enrol/
-    highlights: ["38+ years experience", "10,000+ campers annually", "45+ activities offered", "Swiss Alps at 1,500m"],
+    highlights: ["Two day hike with a night in a mountain hut, in the first week", "A weekly excursion the camper chooses: Zermatt, Chamonix or Geneva", "Language lessons taught by Verbier Language School teachers", "On site nurse and 24/7 care"], // Rewritten 11 Sept 2026 from leselfes.com/summer-camps/. The previous four were brand claims ("38+ years experience", "10,000+ campers annually", "45+ activities offered", "Swiss Alps at 1,500m") that told a parent nothing about the week. The nurse and 24/7 care is corroborated by the winter card, verified 10 Sept
     languages: ["English", "French", "German", "Spanish", "Mandarin"],
     specialFeatures: ["On-site Nurse & 24/7 Care", "Traditional Swiss Chalets", "European Travel Awards 2024"],
     established: 1987,
