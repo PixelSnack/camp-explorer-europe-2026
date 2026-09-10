@@ -52,7 +52,7 @@ export default function CampCard({ camp, isSelected, onToggleCompare, onBook, on
           </Badge>
         </div>
         <div className="absolute top-4 right-4 flex gap-2">
-          {camp.rating !== null && (
+          {camp.rating != null && (
           <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
             <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
             {camp.rating}

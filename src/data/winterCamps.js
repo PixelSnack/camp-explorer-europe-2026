@@ -151,7 +151,7 @@ export const winterCamps = [
     country: "Poland",
     season: "winter",
     ages: "8-18 years", // Verified 10 Sept 2026 on ar-sport.pl/obozy-zimowe/: "dla dzieci i mlodziezy w wieku 8-18 lat"
-    price: "PLN 2,949/1 week", // Verified 10 Sept 2026: all six 2027 sessions are PLN 2,949 per child, five-day Kotelnica lift pass included. Coach travel is PLN 270 extra; families making their own way pay a compulsory PLN 150 slope-transfer fee; ski or snowboard hire is PLN 280 per week with a free helmet
+    price: "PLN 2,949/1 week", // Verified 10 Sept 2026: all six 2027 sessions are PLN 2,949 per child, five-day Kotelnica lift pass included. Coach travel is PLN 270, 300 or 350 depending on the departure city (verified in Chrome 10 Sept 2026 on the operator page, three tiers); families making their own way pay a compulsory PLN 150 slope-transfer fee; ski or snowboard hire is PLN 280 per week with a free helmet
     priceRange: "budget",
     rating: null,
     reviews: 0,
@@ -160,7 +160,7 @@ export const winterCamps = [
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Thermal Baths", "Evening Programme"],
     dates: "Jan 16 - Feb 26, 2027", // Verified 10 Sept 2026: six weekly sessions listed under "TERMINY 2027", 16 to 22 Jan through 20 to 26 Feb
-    highlights: ["Five-day Kotelnica lift pass included in the price", "Coach travel PLN 270 extra, or PLN 150 if you travel there yourself", "Rooms of three to six with bathroom, three meals a day"],
+    highlights: ["Five-day Kotelnica lift pass included in the price", "Coach travel PLN 270 to 350 by departure city, or PLN 150 if you travel yourself", "Rooms of three to six with bathroom, three meals a day"],
     languages: ["Polish"],
     specialFeatures: ["Groups by age and ability, beginner to advanced", "One entry to the Terma Bania thermal baths", "Accident insurance included"],
     established: null, // The operator states "20 years" of camps but prints no founding year (checked 10 Sept 2026)

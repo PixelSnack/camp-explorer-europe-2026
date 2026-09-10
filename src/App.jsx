@@ -93,7 +93,11 @@ const buildOutboundUrl = (baseUrl, camp) => {
 
 // GA4 Outbound Click Tracking - All camps for business intelligence
 const trackOutboundClick = (camp) => {
-  if (window.gtag) {
+  // Best effort only. This runs BEFORE window.open in handleBookingClick, so a gtag that is
+  // truthy but not callable (ad blockers and extensions replace it with a stub) would throw
+  // here and the booking window would never open, losing the referral the operator pays for.
+  try {
+    if (typeof window.gtag !== 'function') return
     window.gtag('event', 'camp_booking_click', {
       camp_name: camp.name,
       camp_id: camp.id,
@@ -103,6 +107,8 @@ const trackOutboundClick = (camp) => {
       is_featured: camp.featured || false,
       destination_url: camp.bookingUrl
     })
+  } catch {
+    // An analytics failure must never cost a booking
   }
 }
 
@@ -115,12 +121,17 @@ const handleBookingClick = (camp) => {
 
 // Video button: one event per click, then the YouTube link (window.open stays synchronous for iOS)
 const handleVideoClick = (camp) => {
-  if (window.gtag) {
-    window.gtag('event', 'video_click', {
-      camp_name: camp.name,
-      camp_id: camp.id,
-      camp_season: camp.season || 'summer'
-    })
+  // Best effort, for the same reason as trackOutboundClick: the click must survive a broken gtag.
+  try {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'video_click', {
+        camp_name: camp.name,
+        camp_id: camp.id,
+        camp_season: camp.season || 'summer'
+      })
+    }
+  } catch {
+    // An analytics failure must never cost a video view
   }
   window.open(camp.videoUrl, '_blank', 'noopener,noreferrer')
 }
@@ -408,8 +419,12 @@ function App() {
   // One winter_view event per entry into the winter section, so teaser clicks and winter traffic
   // can be read next to the season-tagged camp_booking_click events.
   useEffect(() => {
-    if (activeSection === 'winter' && window.gtag) {
+    if (activeSection !== 'winter' || cookieConsent !== true) return
+    try {
+      if (typeof window.gtag !== 'function') return
       window.gtag('event', 'winter_view', { event_category: 'navigation', winter_camps: winterCamps.length })
+    } catch {
+      // An analytics failure must never break the winter view
     }
   }, [activeSection, cookieConsent])
 
@@ -606,7 +621,13 @@ function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const rawHash = window.location.hash.slice(1)
-      if (!rawHash) return
+      // An empty hash is the home view. Returning early here left the Back button dead:
+      // home -> #winter -> Back dropped the hash from the URL but kept the winter view on screen.
+      if (!rawHash) {
+        setActiveSection('home')
+        setFilterSheetOpen(false)
+        return
+      }
       // Supports "#section?search=term" (the WebSite SearchAction schema in index.html
       // links to #discover?search=...); previously the whole string became the section name
       const [section, query] = rawHash.split('?')
@@ -1919,7 +1940,7 @@ function App() {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Paid placements first, then by ID, as in the summer grids */}
-                {[...winterCamps].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)).map((camp) => (
+                {[...winterCamps].sort((a, b) => ((b.featured ? 1 : 0) - (a.featured ? 1 : 0)) || (a.id - b.id)).map((camp) => (
                   <CampCard
                     key={camp.id}
                     camp={camp}
