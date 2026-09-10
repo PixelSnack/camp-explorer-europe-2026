@@ -59,3 +59,22 @@ The lesson carried forward: **the warmth came from the prompt, not the provider.
 | 2026-09-10 | `src/assets/european-winter-camp-alpine-valley-chalets.{avif,webp,jpg}` (1376x774 from a 1536x1024 raw, centre crop) | `37a56faebb0bbbacd88128ee511115c2c97ca203f77fea3f53e6bb560a995fab` | `gpt-image-2.5-flare` | size 1536x1024, quality high | Hand-painted gouache and watercolour 16:9 header, snowy alpine valley in the last golden hour, timber camp chalets with amber windows and woodsmoke, path of trodden snow, four children walking from behind with a sledge, layered ridges in rose and lilac haze; upper half open sky and a calm low-contrast centre so overlaid white text stays readable; every figure seen from behind, never a blank face; no text or logos | Winter section header. Replaces the first Gemini hero of the same morning |
 | 2026-09-10 | `src/assets/european-winter-camp-fireside-lodge-evening.{avif,webp,jpg}` (1024x768) | `a872ffd82f63015865681413cb0d72095863a328822a2e0cc20b13b4dd36f29e` | `gemini-3-pro-image` | aspect 4:3 | Interior of a timber camp lodge on a winter evening, stone fireplace with a real fire, five children gathered on a rug and benches facing the fire seen from behind and in soft profile with mugs and blankets, a dog asleep by the hearth, mittens drying by the chimney, deep blue snow at the window; fire as the main light source; every child turned away, never a blank face | Card image: boarding-school and chalet winter camps (Ecole d'Humanite). The warmest image in the set |
 
+
+### The supervision and variety rule, 10 September 2026 (late evening)
+
+The owner reviewed the cards and named two that felt wrong: an alpine village that was "two children walking alone in a deserted town", and an ice rink of children "no adult supervision, and all of them wearing the exact same clothes ... ghost like".
+
+He was right, and the diagnosis matters more than the two fixes. On a directory that sells supervised residential camps to parents, an image of unaccompanied, identically dressed children in an empty place signals the opposite of the product. It is a trust failure before it is an aesthetic one. His own example of a card that works, the fireside interior, is warm, close, populated and sociable.
+
+**Rule for every figure in this set, from now on:**
+1. A recognisable adult camp leader is present with the children. Children are never unaccompanied.
+2. Every child wears a different colour, with a different hat or scarf, and a different height and posture. No two are dressed alike.
+3. The place is alive: other people, lit windows, signs of company. Never deserted.
+4. Warm light dominates. Cold, sparse and wide reads lonely; close, golden and populated reads welcoming.
+5. Every figure is seen from behind or in profile. Never a face toward the viewer, and never a blank face.
+
+| Date | Asset | Raw hash (SHA-256) | Model | Params | Prompt | Status |
+|---|---|---|---|---|---|---|
+| 2026-09-10 | `src/assets/european-winter-camp-alpine-village-snow.{avif,webp,jpg}` (1024x768 from a 1024x1024 raw, centre crop) | `2ebcfc4d02e67dfffba801ba70c2ba4341985b0cdf74fc2ef4062236b61a0cb7` | `gpt-image-2.5-flare` | size 1024x1024, quality high | Lively alpine village in warm late-afternoon light, six children in an assortment of bright coats walking in with an adult camp leader in amber orange and a towed sledge, villagers moving between lit houses, church tower, woodsmoke; the five mandatory figure rules above | Card image: village and boarding-school camps (La Garenne). Replaces the deserted-village version |
+| 2026-09-10 | `src/assets/european-winter-camp-ice-skating-frozen-lake.{avif,webp,jpg}` (1024x768 from a 1024x1024 raw, centre crop) | `1cd8ef4e978b084380c7f99ac152b690223043452e30acffe1907f78685dcbc2` | `gpt-image-2.5-flare` | size 1024x1024, quality high | Busy outdoor rink in bright afternoon light, seven children each in a different colour, one wobbling and two holding hands, an adult instructor in amber orange steadying the youngest, two more adults watching from a lit warming hut with mugs, skates on a rail, more skaters beyond; the five mandatory figure rules above | Card image: skating and multi-activity winter camps (Prefleuri). Replaces the identically dressed unsupervised version |
+
