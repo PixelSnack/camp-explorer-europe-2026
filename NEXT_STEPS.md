@@ -196,6 +196,7 @@ Reserve: ADEPS (BE) when the summer catalogue opens; Kolping Ferienland Salem (D
 
 ### Then, in order
 1. Startup protocol (bridge inbox: Playground owes replies on the GSC MCP TLS failure and the GA4 MCP IPv6 failure; the Cloudflare security-insights CSV waits for a security review with the security agent, Astra when credit returns).
+0. RESOLVED, no action needed: the GA4 "(not set)" camp attribution. It is historical only (all of Jan and Feb, part of March, zero from April onward, 1,241 attributed clicks since). It stopped when the camp_name custom dimension was registered, and custom dimensions do not backfill. See the correction at the end of docs/reports/SESSION_2026-09-10_HANDOVER.md.
 2. ILC: invoice 2026-001 due 17 Sept; reminder draft (never send) on 10 Sept if unpaid; on payment activate as ID 70.
 3. Weekly GSC watch (standalone script; MCP still broken) from the week of 7 Sept.
 4. Open debt: 12 pre-existing em dashes in camps.js (mostly comments) and the 65-description outward-text scan; the alignment line (owner decides); `handleCampSelection` functional update (scalpel, low).

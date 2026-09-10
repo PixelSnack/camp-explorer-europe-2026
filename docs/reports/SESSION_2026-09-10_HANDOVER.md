@@ -219,3 +219,38 @@ checked against GA4.
 Two drafts wait on the owner, both needing From switched to partnerships@ and the
 spaces closed in web addresses: **Les Elfes** (in-thread, also needs the invoice
 PDF attached by hand) and **ILC** (in-thread, no attachment).
+
+## CORRECTION: the camp-attribution gap is historical and already fixed
+
+Earlier in this handover I flagged that `camp_name` was "(not set)" on 107
+`camp_booking_click` events and called it roughly 8 percent of outbound clicks
+with no attribution. The owner rightly marked that high priority. **It is not a
+live problem and needs no work.**
+
+Checked properly, by month, GA4 property 521172443:
+
+| Month | camp_booking_click | of which "(not set)" |
+|---|---|---|
+| Jan 2026 | 73 | 73, all of them |
+| Feb 2026 | 266 | 266, all of them |
+| Mar 2026 | 160 | 107, partial |
+| Apr 2026 | 244 | 0 |
+| May 2026 | 214 | 0 |
+| Jun 2026 | 355 | 0 |
+| Jul 2026 | 284 | 0 |
+| Aug 2026 | 105 | 0 |
+| Sep 2026 to date | 39 | 0 |
+
+The gap stops dead in March, which is when the `camp_name` custom dimension was
+registered in GA4. Custom dimensions never backfill, so everything before
+registration reads "(not set)" for ever and nothing can be recovered. **From April
+onward, 1,241 booking clicks, every single one attributed to a camp.**
+
+**Why I got it wrong:** I queried from 1 March, which caught the tail of the
+pre-registration window, and reported a fixed historical artifact as an ongoing
+8 percent leak. The lesson is the same one as `adjudicate-agents-never-relay`,
+turned on my own findings: check whether a number is a trend or an artifact before
+raising an alarm. A per-month breakdown would have answered it in one query.
+
+Note this also confirms the outreach drafts are correct to say "Since March, when
+we began counting referrals per camp". That wording matches the data exactly.
