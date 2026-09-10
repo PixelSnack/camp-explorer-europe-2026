@@ -51,7 +51,7 @@ export const winterCamps = [
     established: 1987, // "Founded in 1987, Les Elfes is a family-run camp" (winter page, read 10 Sept 2026)
     capacity: 140, // Two purpose-built chalets of 70 beds (operator campus page, read 6 Sept 2026)
     bookingUrl: "https://www.leselfes.com/winter-camp/",
-    videoUrl: "https://www.youtube.com/watch?v=Z9--hHAq40g",
+    videoUrl: "https://www.youtube.com/watch?v=tVg3zXhl-_o", // Operator's own winter film, "Les Elfes International, Winter Camp in Switzerland", embedded on leselfes.com/winter-camp/ (verified 10 Sept 2026). The summer card keeps the separate summer film
     bookingStatus: "open" // Verified 10 Sept 2026: every 2026-27 session in the dates table carries a live "ENROL NOW"
   },
   {
