@@ -17,12 +17,10 @@
 // held out rather than published: see docs/reports/WINTER_LAUNCH_2026-09-10.md for the hold list.
 import lesElfesWinter from '../assets/les-elfes-winter-camp-verbier-skiers-4-vallees.jpg'
 import skiSlopeInstructor from '../assets/european-winter-camp-ski-slope-instructor-alps.jpg'
-import chaletEvening from '../assets/european-winter-camp-chalet-evening-lit-windows.jpg'
 import alpineVillage from '../assets/european-winter-camp-alpine-village-snow.jpg'
 import iceSkating from '../assets/european-winter-camp-ice-skating-frozen-lake.jpg'
-import crossCountryNordic from '../assets/european-winter-camp-cross-country-forest-nordic.jpg'
-import huskySled from '../assets/european-winter-camp-husky-sled-trail.jpg'
-import northernLights from '../assets/european-winter-camp-northern-lights-lodge.jpg'
+import tatraSkiSchool from '../assets/european-winter-camp-tatra-ski-school-poland.jpg'
+import sleddingForest from '../assets/european-winter-camp-sledding-forest-lodge.jpg'
 import seasideChristmas from '../assets/european-winter-camp-seaside-christmas-promenade.jpg'
 import carpathianSlope from '../assets/european-winter-camp-carpathian-slope-guesthouse.jpg'
 import firesideLodge from '../assets/european-winter-camp-fireside-lodge-evening.jpg'
@@ -157,7 +155,7 @@ export const winterCamps = [
     priceRange: "budget",
     rating: null,
     reviews: 0,
-    image: skiSlopeInstructor,
+    image: tatraSkiSchool,
     category: "winter",
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Thermal Baths", "Evening Programme"],
@@ -181,7 +179,7 @@ export const winterCamps = [
     priceRange: "budget",
     rating: null,
     reviews: 0,
-    image: crossCountryNordic,
+    image: sleddingForest,
     category: "winter",
     type: "Winter Holiday Camp",
     activities: ["Sledding", "Torchlit Walks", "Thermal Baths", "Crafts", "Excursions"],
@@ -242,5 +240,5 @@ export const winterCamps = [
   }
 ]
 
-export { lesElfesWinter, skiSlopeInstructor, chaletEvening, alpineVillage, iceSkating, crossCountryNordic, huskySled, northernLights, seasideChristmas, carpathianSlope, firesideLodge }
+export { lesElfesWinter, skiSlopeInstructor, tatraSkiSchool, sleddingForest, alpineVillage, iceSkating, seasideChristmas, carpathianSlope, firesideLodge }
 export default winterCamps

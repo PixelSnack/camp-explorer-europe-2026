@@ -78,3 +78,28 @@ He was right, and the diagnosis matters more than the two fixes. On a directory 
 | 2026-09-10 | `src/assets/european-winter-camp-alpine-village-snow.{avif,webp,jpg}` (1024x768 from a 1024x1024 raw, centre crop) | `2ebcfc4d02e67dfffba801ba70c2ba4341985b0cdf74fc2ef4062236b61a0cb7` | `gpt-image-2.5-flare` | size 1024x1024, quality high | Lively alpine village in warm late-afternoon light, six children in an assortment of bright coats walking in with an adult camp leader in amber orange and a towed sledge, villagers moving between lit houses, church tower, woodsmoke; the five mandatory figure rules above | Card image: village and boarding-school camps (La Garenne). Replaces the deserted-village version |
 | 2026-09-10 | `src/assets/european-winter-camp-ice-skating-frozen-lake.{avif,webp,jpg}` (1024x768 from a 1024x1024 raw, centre crop) | `1cd8ef4e978b084380c7f99ac152b690223043452e30acffe1907f78685dcbc2` | `gpt-image-2.5-flare` | size 1024x1024, quality high | Busy outdoor rink in bright afternoon light, seven children each in a different colour, one wobbling and two holding hands, an adult instructor in amber orange steadying the youngest, two more adults watching from a lit warming hut with mugs, skates on a rail, more skaters beyond; the five mandatory figure rules above | Card image: skating and multi-activity winter camps (Prefleuri). Replaces the identically dressed unsupervised version |
 
+
+### One house style, 10 September 2026 (night): the whole winter set moves to gpt-image-2.5-flare
+
+Owner direction after seeing Flare and Gemini cards side by side in the grid: "I think you got to go with flare for all of it, style consistency. It's a one time thing since we just need to get these illustrations right one time and then we have them."
+
+He was right that the grid read as two different products. The flat pale gouache sat badly next to the Flare paintings, and the pale ones were also the ones carrying the earlier faults: children alone by dark water on the Rimini card, a sparse unpeopled slope on the Straja card.
+
+Every card illustration is now `gpt-image-2.5-flare`, generated from one shared brief carrying the five figure rules above plus a fixed light instruction ("warm golden light dominates, whether from a low sun or from lit windows, with cool blue snow shadows as the counterpoint; the image should feel lit from within"). The one Gemini image kept is the fireside interior, which the owner himself named as the card that works; it is rich and warm rather than flat, so it belongs to this family.
+
+Two cards gained their own scene rather than sharing one: AR-Sport moved off the shared alpine slope to a Tatra ski-school scene, and Kinderland moved off a cross-country image to a sledding scene, which is what that camp actually does.
+
+Four flat-style assets that no card used any more were removed: cross-country-forest-nordic, husky-sled-trail, northern-lights-lodge, chalet-evening-lit-windows. Keeping them would have invited a future card to pick a mismatched style. New library images get generated in Flare when a camp needs them.
+
+**Compression note.** Flare paintings carry far more detail than the flat gouache, so they compress worse: the first encode came out at 225 KB AVIF per card against 33 to 93 KB before. Card images are lazy-loaded and render at 384 px wide, so quality 45 AVIF was tested against quality 60 and shows no visible loss at display size. The set was re-encoded at 45 (hero at 50), taking the seven card images from about 1.5 MB to 0.78 MB of AVIF. For scale, the existing summer cards share PNGs of 285 to 354 KB, so these are lighter than what the site already served.
+
+| Date | Asset | Raw hash (SHA-256) | Model | Params |
+|---|---|---|---|---|
+| 2026-09-10 | `european-winter-camp-ski-slope-instructor-alps` | `57d4f9bc7cbf3ada0650da96b6ef4bd7c0b36c9298b3e91903132ea8b798d1ba` | `gpt-image-2.5-flare` | 1024x1024, quality high |
+| 2026-09-10 | `european-winter-camp-tatra-ski-school-poland` | `f2b93b3c47c21d87d94ccf4b9b997cc2480e77c8903335cd44370a1aa5b0c496` | `gpt-image-2.5-flare` | 1024x1024, quality high |
+| 2026-09-10 | `european-winter-camp-seaside-christmas-promenade` | `f6558fa38a8274f768ebb2dfd186b28812bf8bcca5b3d2c0102ddf5aa4bf22bb` | `gpt-image-2.5-flare` | 1024x1024, quality high |
+| 2026-09-10 | `european-winter-camp-carpathian-slope-guesthouse` | `03c4d357867c2a08496011fc54dd09ba3a3d1d00db900ee5277929f791c92302` | `gpt-image-2.5-flare` | 1024x1024, quality high |
+| 2026-09-10 | `european-winter-camp-sledding-forest-lodge` | `e22f69400ffec9ceae62806051920413803e5f8583bb602139b7b9ec757c3cc1` | `gpt-image-2.5-flare` | 1024x1024, quality high |
+
+Prompts are the shared brief plus one scene paragraph each, kept in the session scratchpad as `flare-*.txt`; the scene paragraph is quoted in the commit for each.
+
