@@ -23,6 +23,9 @@ import iceSkating from '../assets/european-winter-camp-ice-skating-frozen-lake.j
 import crossCountryNordic from '../assets/european-winter-camp-cross-country-forest-nordic.jpg'
 import huskySled from '../assets/european-winter-camp-husky-sled-trail.jpg'
 import northernLights from '../assets/european-winter-camp-northern-lights-lodge.jpg'
+import seasideChristmas from '../assets/european-winter-camp-seaside-christmas-promenade.jpg'
+import carpathianSlope from '../assets/european-winter-camp-carpathian-slope-guesthouse.jpg'
+import firesideLodge from '../assets/european-winter-camp-fireside-lodge-evening.jpg'
 
 export const winterCamps = [
   {
@@ -85,7 +88,7 @@ export const winterCamps = [
     priceRange: "premium",
     rating: null,
     reviews: 0,
-    image: chaletEvening,
+    image: firesideLodge,
     category: "winter",
     type: "Boarding School Winter Camp",
     activities: ["Skiing", "Snowboarding", "Language Classes", "Workshops", "Weekend Excursions"],
@@ -113,7 +116,7 @@ export const winterCamps = [
     type: "Boarding School Ski Camp",
     activities: ["Skiing", "Academic Lessons", "Evening Activities", "Excursions"],
     dates: "Jan 10 - Mar 13, 2027", // Verified 10 Sept 2026: eight weekly sessions, 10 Jan to 13 Mar 2027. The operator's page mistypes the year on two sessions as 2026; the sequence is unambiguous
-    highlights: ["Five full ski days a week above Villars", "Boarding at an international school since 1947", "Intermediate ski level required for Super Ski"],
+    highlights: ["Five full ski days a week, intermediate ski level required", "Compulsory medical insurance is charged per day on top of the fee", "Boarding at an international school since 1947"],
     languages: ["English", "French"],
     specialFeatures: ["Minimum stay one week, sessions can be combined", "Full-day skiing or skiing combined with lessons", "Boarders stay through the weekend"],
     established: 1947,
@@ -159,15 +162,85 @@ export const winterCamps = [
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Thermal Baths", "Evening Programme"],
     dates: "Jan 16 - Feb 26, 2027", // Verified 10 Sept 2026: six weekly sessions listed under "TERMINY 2027", 16 to 22 Jan through 20 to 26 Feb
-    highlights: ["Five-day Kotelnica lift pass included in the price", "Three sessions on the slopes each day", "Rooms of three to six with bathroom, three meals a day"],
+    highlights: ["Five-day Kotelnica lift pass included in the price", "Coach travel PLN 270 extra, or PLN 150 if you travel there yourself", "Rooms of three to six with bathroom, three meals a day"],
     languages: ["Polish"],
     specialFeatures: ["Groups by age and ability, beginner to advanced", "One entry to the Terma Bania thermal baths", "Accident insurance included"],
     established: null, // The operator states "20 years" of camps but prints no founding year (checked 10 Sept 2026)
     capacity: null,
     bookingUrl: "https://ar-sport.pl/obozy-zimowe/",
     bookingStatus: "open" // Verified 10 Sept 2026: every one of the six 2027 sessions is marked "wolne miejsca" (places available) above the sign-up form
+  },
+  {
+    id: 79,
+    name: "Kinderland Winter Camp Harz",
+    location: "Sudharz, Germany",
+    country: "Germany",
+    season: "winter",
+    ages: "7-14 years", // Verified 10 Sept 2026 on kindercamp.de/de/ferienlager/winter-camp/: "Alter: 7 bis 14"
+    price: "EUR 379/1 week", // Verified 10 Sept 2026: "Teilnehmerbeitrag: 379,00 EUR" for the seven-day session. Travel to the venue is not included; the operator publishes road and rail directions instead
+    priceRange: "budget",
+    rating: null,
+    reviews: 0,
+    image: crossCountryNordic,
+    category: "winter",
+    type: "Winter Holiday Camp",
+    activities: ["Sledding", "Torchlit Walks", "Thermal Baths", "Crafts", "Excursions"],
+    dates: "Jan 31 - Feb 6, 2027", // Verified 10 Sept 2026: "Winter Camp 2027 Durchgang 1 von 31.01.2027 bis 06.02.2027"
+    highlights: ["Sledding by day and by night in the Harz", "All entry fees and three meals a day included", "Not a ski camp: snow play, thermal baths and crafts"],
+    languages: ["German"],
+    specialFeatures: ["Torchlit walk through the winter forest", "Accommodation in the Forsthaus holiday village", "Accident and liability insurance included"],
+    established: null, // The association states "over 30 years" but prints no founding year (checked 10 Sept 2026)
+    capacity: null,
+    bookingUrl: "https://kindercamp.de/de/ferienlager/winter-camp/",
+    bookingStatus: "open" // Verified 10 Sept 2026: the site states "Anmeldung fuer unsere Camps 2027 ist gestartet" and the session carries a live "Jetzt buchen"
+  },
+  {
+    id: 80,
+    name: "REC Christmas Camp Rimini",
+    location: "Rimini, Italy",
+    country: "Italy",
+    season: "winter",
+    ages: "6-17 years", // Verified 10 Sept 2026 on mondorec.it: "bambini e adolescenti di eta compresa tra i 6 e i 17 anni"
+    price: "From EUR 240/4 days", // Verified 10 Sept 2026: short stay EUR 240 for 4 days and 3 nights, full stay EUR 390 for 7 days and 6 nights, both VAT included. A day-only option at EUR 90 exists and is not residential
+    priceRange: "budget",
+    rating: null,
+    reviews: 0,
+    image: seasideChristmas,
+    category: "winter",
+    type: "Christmas Holiday Camp",
+    activities: ["Workshops", "Shows and Entertainment", "Excursions", "Evening Activities"],
+    dates: "Dec 27, 2026 - Jan 2, 2027", // Verified 10 Sept 2026: "DAL 27 DICEMBRE 2026 AL 2 GENNAIO 2027", with a shorter 27 to 30 December turn
+    highlights: ["Christmas and New Year by the winter sea", "Full board and 24-hour supervision included", "Not a ski camp: a seaside holiday camp in winter"],
+    languages: ["Italian"],
+    specialFeatures: ["Rooms of two to five with private bathrooms", "New Year's Eve dinner on the seven-day stay", "Excursion to San Marino on the longer stay"],
+    established: null,
+    capacity: null,
+    bookingUrl: "https://www.mondorec.it/rec-christmas-camp-la-colonia-invernale-per-bambini-e-ragazzi-a-rimini/"
+  },
+  {
+    id: 81,
+    name: "Tabere Straja Ski & Snowboard Camp",
+    location: "Straja, Romania",
+    country: "Romania",
+    season: "winter",
+    ages: "6-18 years", // Verified 10 Sept 2026 on the operator's English page: "ages 6-18 and accompanying adults"
+    price: "From RON 2,490/4-5 nights", // Verified 10 Sept 2026 on taberestraja.ro/en/: "de la 2.490 lei/copil", sessions of 4 to 5 nights. The operator states plainly that the ski pass is NOT included; travel is not included either
+    priceRange: "budget",
+    rating: null,
+    reviews: 0,
+    image: carpathianSlope,
+    category: "winter",
+    type: "Ski & Snowboard Camp",
+    activities: ["Skiing", "Snowboarding", "Ski Lessons", "Camp Contest"],
+    dates: "Dec 18, 2026 - Mar 14, 2027", // Verified 10 Sept 2026: "Period 18.12.2026-14.03.2027" across a series of sessions
+    highlights: ["Skis, boots, poles and helmet included, ski pass is extra", "One instructor for every two to ten children", "Up to five hours on the slopes a day"],
+    languages: ["Romanian", "English"],
+    specialFeatures: ["Camp pages and booking available in English", "Three meals a day planned with a dietician", "Ski pass is bought separately, as the operator states"],
+    established: null, // The operator claims "over 16 years of experience" but prints no founding year; the company was registered in 2015 (checked 10 Sept 2026)
+    capacity: null,
+    bookingUrl: "https://taberestraja.ro/en/tabara/tabara-vacantei-de-schi-snowboard/"
   }
 ]
 
-export { lesElfesWinter, skiSlopeInstructor, chaletEvening, alpineVillage, iceSkating, crossCountryNordic, huskySled, northernLights }
+export { lesElfesWinter, skiSlopeInstructor, chaletEvening, alpineVillage, iceSkating, crossCountryNordic, huskySled, northernLights, seasideChristmas, carpathianSlope, firesideLodge }
 export default winterCamps

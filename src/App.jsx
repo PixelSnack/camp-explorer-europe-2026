@@ -67,6 +67,11 @@ const SCROLL_SHOW_THRESHOLD = 300
 const SCROLL_DEAD_ZONE_MOBILE = 50
 const SCROLL_DEAD_ZONE_DESKTOP = 10
 
+// Diacritic-insensitive matching for search. A parent typing "Krakow", "Bialka" or "Wildschonau"
+// should find the camp whose data spells it "Krakow", "Bialka" or "Wildschoenau". This was already a
+// gap before the location strings were anchored to their countries; anchoring made it visible.
+const foldAccents = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\u0142/g, 'l').toLowerCase()
+
 // UTM Parameter Helper for Partner Analytics
 const buildOutboundUrl = (baseUrl, camp) => {
   try {
@@ -78,7 +83,7 @@ const buildOutboundUrl = (baseUrl, camp) => {
     // Season is additive: utm_source, medium, campaign and content keep the values they have always
     // had, so an operator's historical reporting is unbroken, while a camp holding both a summer and
     // a winter card (Les Elfes) can split the two streams in its own analytics.
-    url.searchParams.set('utm_term', camp.season || 'summer')
+    if (!url.searchParams.has('utm_term')) url.searchParams.set('utm_term', camp.season || 'summer')
     return url.toString()
   } catch {
     // If URL parsing fails, return original
@@ -339,11 +344,11 @@ function App() {
       }
 
       const searchTerms = getMultilingualSearchTerms(searchTerm)
-      const matchesSearch = searchTerms.some(term =>
-        camp.name.toLowerCase().includes(term) ||
-        camp.location.toLowerCase().includes(term) ||
-        camp.country.toLowerCase().includes(term)
-      )
+      // Fold accents on both sides so "Krakow" finds "Krakow", "Bialka" finds "Bialka" and
+      // "Wildschonau" finds "Wildschoenau". searchAliases carries region names that are not on the
+      // card, so shortening a location for the card line never costs a search match.
+      const haystack = foldAccents([camp.name, camp.location, camp.country, ...(camp.searchAliases || [])].join(' '))
+      const matchesSearch = searchTerms.some(term => haystack.includes(foldAccents(term)))
 
       return baseMatch && matchesSearch
     })
@@ -406,7 +411,7 @@ function App() {
     if (activeSection === 'winter' && window.gtag) {
       window.gtag('event', 'winter_view', { event_category: 'navigation', winter_camps: winterCamps.length })
     }
-  }, [activeSection])
+  }, [activeSection, cookieConsent])
 
   // Countries not shown on the Guide country cards; keeps the "Plus camps in ..." line true as countries are added
   const guideOtherCountries = useMemo(() => {
@@ -1895,7 +1900,9 @@ function App() {
               Dates and prices are shown for the {WINTER_SEASON} winter season as published by each operator.
             </p>
             {winterCamps.length > 0 && (
-              <p className="mt-6 text-sm text-gray-100">{winterCamps.length} winter {winterCamps.length === 1 ? 'camp' : 'camps'} in {winterCountryCount} {winterCountryCount === 1 ? 'country' : 'countries'}</p>
+              <p className="mt-6 text-base text-gray-100" aria-live="polite">
+                <span className="font-semibold text-orange-300">{winterCamps.length}</span> winter {winterCamps.length === 1 ? 'camp' : 'camps'} in <span className="font-semibold text-orange-300">{winterCountryCount}</span> {winterCountryCount === 1 ? 'country' : 'countries'}
+              </p>
             )}
           </div>
         </section>
