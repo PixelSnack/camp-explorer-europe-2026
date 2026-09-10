@@ -12,7 +12,12 @@
        Write the CVR without the DK prefix: "DK + number" is the VAT-number format,
        which a non-VAT-registered PMV should not display. "European Summer Camps"
        appears only in the service description, never as the issuer.
-    2. No VAT, ever. Flat amounts. Keep both exemption lines (Danish + English).
+    2. No VAT, ever. Flat amounts. The invoice states only "VAT: not applicable".
+       NEVER explain why, and never print registration status or turnover (owner rule,
+       7 and 10 Sept 2026). "Not registered for VAT" reads to any business as "under the
+       threshold": it tells the client nothing they need and undercuts the picture of an
+       established business. For a customer outside the EU the line is doubly correct,
+       since the place of supply is outside Denmark.
     3. Bank details (IBAN/BIC) are entered per invoice, privately, at send time.
        NEVER commit real bank details, buyer data, or a filled invoice to this repo.
     4. Invoice numbers are sequential across ALL ResourceHub invoicing: 2026-001, 2026-002, ...
@@ -126,8 +131,7 @@
 </table>
 
 <div class="vatnote">
-  <strong>Momsfri:</strong> virksomheden er ikke momsregistreret; beløbet er uden moms.<br>
-  <strong>VAT exempt:</strong> ResourceHub is not registered for VAT. No VAT is charged; the amount is a flat fee.
+  <strong>VAT:</strong> not applicable. No VAT is charged on this invoice. The amount shown is the total payable.
 </div>
 
 <div class="payment">
