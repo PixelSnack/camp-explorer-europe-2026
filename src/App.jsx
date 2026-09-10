@@ -75,6 +75,10 @@ const buildOutboundUrl = (baseUrl, camp) => {
     url.searchParams.set('utm_medium', 'directory')
     url.searchParams.set('utm_campaign', camp.featured ? 'featured' : 'standard')
     url.searchParams.set('utm_content', camp.name.toLowerCase().replace(/\s+/g, '-'))
+    // Season is additive: utm_source, medium, campaign and content keep the values they have always
+    // had, so an operator's historical reporting is unbroken, while a camp holding both a summer and
+    // a winter card (Les Elfes) can split the two streams in its own analytics.
+    url.searchParams.set('utm_term', camp.season || 'summer')
     return url.toString()
   } catch {
     // If URL parsing fails, return original
@@ -395,6 +399,14 @@ function App() {
 
   // Winter section: its own counts, never mixed into the summer numbers
   const winterCountryCount = useMemo(() => new Set(winterCamps.map(camp => camp.country.trim())).size, [])
+
+  // One winter_view event per entry into the winter section, so teaser clicks and winter traffic
+  // can be read next to the season-tagged camp_booking_click events.
+  useEffect(() => {
+    if (activeSection === 'winter' && window.gtag) {
+      window.gtag('event', 'winter_view', { event_category: 'navigation', winter_camps: winterCamps.length })
+    }
+  }, [activeSection])
 
   // Countries not shown on the Guide country cards; keeps the "Plus camps in ..." line true as countries are added
   const guideOtherCountries = useMemo(() => {
@@ -1635,7 +1647,7 @@ function App() {
             <div>
               <h2 id="winter-teaser-heading" className="text-3xl font-bold text-gray-900 mb-4">Winter Camps in Europe</h2>
               <p className="text-gray-600 mb-6">
-                Browse residential ski and snowboard camps for kids and teenagers in Europe, with sessions between December and April, checked the same way as every summer listing. Compare ages, dates and per-child prices, then check availability directly with the operator.
+                Browse residential winter camps for kids and teenagers in Europe, with sessions between December and April, checked the same way as every summer listing. They run from a week in the Polish Tatras for ages 8 to 18 with the lift pass included, to two weeks inside a Swiss boarding school on the Hasliberg for ages 13 to 16. Compare ages, dates and per-child prices, then check availability directly with the operator.
               </p>
               <Button asChild className="btn-primary">
                 <a href="#winter" onClick={(event) => { event.preventDefault(); handleNavigation('winter') }}>View European Winter Camps</a>
@@ -1877,7 +1889,7 @@ function App() {
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center text-white">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">European Winter Camps</h2>
             <p className="text-lg text-white max-w-2xl mx-auto mb-6">
-              Residential ski and snowboard camps and winter sports schools for children and teenagers, running from December to April and accepting individual bookings.
+              Residential winter camps for children and teenagers, from ski and snowboard weeks to boarding-school winter terms, running from December to April and accepting individual bookings.
             </p>
             <p className="text-sm text-orange-200 bg-black/20 rounded-lg py-2 px-4 inline-block">
               Dates and prices are shown for the {WINTER_SEASON} winter season as published by each operator.

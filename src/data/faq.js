@@ -49,6 +49,10 @@ export const FAQ_ITEMS = [
     answer: "Our directory covers 24 countries: Austria, Belgium, Croatia, the Czech Republic, Denmark, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Lithuania, the Netherlands, Norway, Poland, Portugal, Romania, Slovenia, Spain, Sweden, Switzerland and the United Kingdom. Spain and Norway have the most listings. Use the country filter or the footer links to browse a single country."
   },
   {
+    question: "Are there European winter camps for children?",
+    answer: "Yes. Our winter directory covers residential winter camps in Switzerland and Poland that accept individual bookings for children and teenagers, with weekly sessions between December and April covering the Christmas, February half-term and Easter school holidays. Listings show ages, dates and per-child prices as published by the operator, from a Polish ski week with the lift pass included to a two-week stay inside a Swiss boarding school. Check each programme's accommodation, supervision, ability requirements and availability before booking. Open the Winter Camps section from the menu."
+  },
+  {
     question: "Are there European summer camps where parents can attend?",
     answer: "Yes. The Family Programs category lists organizations in Austria, Germany, Greece, Ireland, Spain and the United Kingdom, from short family adventure breaks to a Greek sailing holiday and a German family camp. Check each listing for whether parents stay on site or children attend alone."
   }

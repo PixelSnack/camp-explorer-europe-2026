@@ -19,4 +19,4 @@ export const WINTER_SEASON = '2026-27'
  * The #winter hash renders regardless so the view can be tested dark.
  * Flip to true only when at least four winter camps are verified STRONG on all five points.
  */
-export const WINTER_PUBLISHED = false
+export const WINTER_PUBLISHED = true
