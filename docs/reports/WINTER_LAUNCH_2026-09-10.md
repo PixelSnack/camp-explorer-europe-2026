@@ -112,3 +112,33 @@ Events confirmed firing on the winter cards: `camp_booking_click` with `camp_sea
 3. **friLingue year conflict** and **Lovell reachability**: two emails, two camps recovered.
 4. **Norway again in October or November.**
 5. The FAQ answer names Switzerland and Poland. It must be updated whenever a third country lands, and `validate-camps.js` does not yet enforce that.
+
+---
+
+## Norway, resolved properly (late 10 September 2026)
+
+The owner pushed back on the first Norway answer, and he was right to. The dedicated agent had eleven Norwegian search terms and still came back almost entirely with Christian youth organisations, missing the ski schools, sports clubs and youth centres those terms should have reached. That was a shallow sweep, not an empty market. The lead searched Norwegian sources directly and found two operators the agent never surfaced.
+
+**The finding stands, but it is now evidence-based rather than inferred: Norwegian operators publish winter DATES in autumn and PRICES and REGISTRATION in January.** Both new finds say so in their own words. `vinterleiren.no` publishes 4 to 8 April 2027 and then "Mer informasjon om Vinterleiren 2027 og påmelding blir publisert ved årsskiftet". Lyngmo publishes "Vinterleirane - påmelding startar 2. Januar".
+
+### Stiftelsen Vinterleiren: rejected, and not for the reason expected
+
+The owner suggested listing it with a note that dates follow in January, which is the pattern already used for camp ID 24. Reading the whole page settled it differently: the foundation runs a camp "tilrettelagt for personer med utviklingshemming", adapted for people with intellectual disabilities, funded by Sparebankstiftelsen DNB, for "personer" rather than children specifically, with no published price, no age range and no individual booking route. It is a genuine and worthwhile organisation but a different product from what this directory sells, and the same ground on which the Austrian camp Kinderfreunde Klaffer was rejected. Owner agreed.
+
+Worth recording as a strategic thought rather than a task: **inclusive and disability-adapted camps are an underserved category** and could be a deliberate section one day. That is a scope decision, not a listing decision.
+
+### Lyngmo Ungdomssenter AS, Hafslo: the closest miss, email sent to the owner as a draft
+
+Publishes **Crossroad, 19 to 22 February 2027, kr 1,265**, with a live "Påmelding Crossroad" button, so individual registration is already open for that camp even though the general winter registration opens 2 January. That is a 2027 date and a 2027 price, which is more than any other Norwegian operator offers today.
+
+Held on three open questions, all in one draft to `bua@lyngmoinfo.com`, their named child and youth worker:
+1. What ages or school years Crossroad is for. The page states none.
+2. Whether it is open to children outside a church or Christian group. Lyngmo is a Christian youth centre, and if the programme carries Christian content the listing will say so plainly. Owner's instruction: state it clearly rather than omit it.
+3. Whether an individual family can register one child, or whether the camps are aimed at school classes. Several pages are sold by "klasse", which is the school-group signal the owner spotted in the screenshots.
+Plus what the programme involves, whether kr 1,265 covers everything, and whether a non-Norwegian family can complete the registration.
+
+### KRIK Offpiste: held, draft sent to the owner
+
+Dates 20 to 24 March 2027 at Stranda and ages 13 to 22 are published; the 2027 price is not, and the operator's own page carries "All informasjon for dette arrangementet er ikke helt oppdatert". Publishing last season's price from a page the operator actively disclaims is a step below listing a camp whose next season simply has not been published yet, so it waits. Draft to `krik@krik.no`, taken from their own contact page, asks for the 2027 non-member price, confirmation of the ages, whether non-members may book, what the price includes, and whether a non-Norwegian family can register. It offers to follow up after the new year if that is easier.
+
+**Both drafts are in Gmail and unsent.** Two answers would plausibly make Norway two listings without lowering the bar.
