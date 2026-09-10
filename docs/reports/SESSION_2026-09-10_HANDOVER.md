@@ -254,3 +254,56 @@ raising an alarm. A per-month breakdown would have answered it in one query.
 
 Note this also confirms the outreach drafts are correct to say "Since March, when
 we began counting referrals per camp". That wording matches the data exactly.
+
+## NEXT SESSION: card content is thin on the older cards, and one field never renders
+
+The owner noticed white space and little information on the Les Elfes summer card
+and asked whether we lost something in the night's work. **We did not.** Those
+highlights are byte-identical to commit 625c18a, the original January "Featured
+Listing: Les Elfes demo". The only other commit touching them was 1011cb7, which
+merely moved the data into camps.js. The card was never rich.
+
+Three separate findings, in order of value:
+
+### 1. `specialFeatures` is dead data on all 68 camps
+
+**Zero references in any component.** Verified: `grep -rn specialFeatures src/
+--include=*.jsx` returns nothing. Every camp carries the field, no parent ever
+sees it. Les Elfes' entry is "On-site Nurse & 24/7 Care", "Traditional Swiss
+Chalets", "European Travel Awards 2024". The first of those is exactly what a
+parent wants to know and it is invisible.
+
+This is the highest-value item: real, already-verified content that costs nothing
+to surface. It is a UI change touching every card, so it needs a proper look at
+card height and the mobile layout, not a quick edit.
+
+### 2. Older highlights are brand claims, not decision-useful facts
+
+Compare the same operator's two cards:
+
+- **Summer (written Jan 2026):** "38+ years experience", "10,000+ campers
+  annually", "45+ activities offered", "Swiss Alps at 1,500m"
+- **Winter (written 10 Sept 2026):** "4 Vallees ski pass and six hours on snow
+  daily", "Four meals a day, rooms of four with ensuite", "24/7 supervision with
+  an onsite nurse and night guard"
+
+The winter set tells a parent what the week actually contains. The summer set
+tells them the brand is old and large. ILC's new card is in the newer style and
+reads visibly better in the owner's own screenshot.
+
+This is a content pass over the older cards, not a code change. It is also the
+open debt already recorded about the 65 camp descriptions never having been
+scanned under the em-dash and tone rules. Do both in one pass.
+
+### 3. "5 Languages" is not an activity
+
+Les Elfes' `activities` array is ["Rock Climbing", "5 Languages", "Glacier
+Expeditions", "Cultural Tours"]. One of only four visible activity slots is spent
+on a fact that duplicates the Languages row rendered directly beneath it. Worth
+checking the other cards for the same pattern.
+
+### On the white space itself
+
+That is a grid artifact, not a bug: cards stretch to the tallest in the row, and
+ILC's longer highlights set the height. Fixing 1 and 2 closes the gap naturally.
+Do not chase it with CSS.
