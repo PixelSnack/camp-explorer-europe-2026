@@ -1559,7 +1559,7 @@ export const allCamps = [
     location: "Megeve, Haute-Savoie, France",
     country: "France",
     ages: "6-16 years", // Verified 11 Sept 2026 in the operator's own Summer 2026 brochure: three programmes, Fun 6-9, Adrenaline 10-13, Mont-Blanc 14-16
-    price: "From CHF 3,840/1 week", // Verified 11 Sept 2026 from the brochure rate table: residential, per child, one week on the Fun programme. Adrenaline is CHF 3,930 and Mont-Blanc CHF 4,020. The day-camp option starts at CHF 2,760 and is NOT residential. The same camp is sold in euros on languesacademy.com; we publish the operator's CHF international prices per the owner decision of 13 Aug 2026
+    price: "From CHF 3,840/1 week", // Verified 11 Sept 2026 from the brochure rate table: residential, per child, one week on the Fun programme. Adrenaline is CHF 3,930 and Mont-Blanc CHF 4,020. The day-camp option starts at CHF 2,760 and is NOT residential. Geneva airport transfers are CHF 340 to 460 and optional. The same camp is sold in euros on languesacademy.com; ILC confirmed in writing on 1 Sept 2026 that the CHF international prices are the ones to publish, because the euro offer is a separate local-market product from Langues Academy
     priceRange: "luxury",
     rating: null,
     reviews: 0,
@@ -1568,11 +1568,12 @@ export const allCamps = [
     type: "Alpine Language Camp",
     activities: ["Language Immersion", "Rafting and Canyoning", "Via Ferrata", "Horse Riding", "Glacier Excursions"],
     dates: "Jun 28 - Aug 1, 2026", // Verified 11 Sept 2026: all three programmes run 28 June to 1 August 2026, stays of one to five weeks. 2027 is not published, so the card carries 2026 exactly as camp ID 24 does
-    highlights: ["Language classes of no more than eight, in English or French", "An alpine hotel in Megeve, rooms of two children", "Registration fee CHF 200, and laundry CHF 70 is compulsory from two weeks", "Geneva airport transfers CHF 340 to 460, optional"],
+    highlights: ["Language classes of no more than eight, in English or French", "Hotel Au Vieux Moulin in Megeve, rooms of two children", "Registration fee CHF 200, and laundry CHF 70 is compulsory from two weeks", "Around 40 campers a week, with ILC staff on site overnight"],
     languages: ["English", "French"],
-    specialFeatures: ["One counsellor to every five campers", "Three age programmes: Fun 6-9, Adrenaline 10-13, Mont-Blanc 14-16", "Optional tennis, golf, climbing and horse riding at extra cost"],
+    specialFeatures: ["One counsellor to every five campers, with ILC staff on site overnight", "Three age programmes: Fun 6-9, Adrenaline 10-13, Mont-Blanc 14-16", "Optional tennis, golf, climbing and horse riding at extra cost"],
+    capacity: 40, // Stated by ILC in their own email of 14 Aug 2026: "a maximum of around 40 children per week". Not in the brochure
     searchAliases: ["Megeve", "ILC", "Mont Blanc", "Haute Savoie"], // "Megeve" also carries the accented spelling through the accent-folding search
-    bookingUrl: "https://www.internationallanguagecamps.com" // Verified 11 Sept 2026, HTTP 200. The brochure directs parents here to enrol. The /enrollment/ path still returns 404, as first found on 17 Aug 2026, so no bookingStatus badge is set
+    bookingUrl: "https://www.internationallanguagecamps.com" // Verified 11 Sept 2026, HTTP 200. The operator asked us to link here specifically (Elodie Guillot, 1 Sept 2026): enrolment runs per programme via an "Enroll Now" button on each programme page, which is why /enrollment/ returns 404. No bookingStatus badge, because no single enrolment form can be checked
   },
   {
     id: 71,
