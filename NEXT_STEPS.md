@@ -38,7 +38,7 @@
 1. Invoice template branding (restrained), then the owner's morning report.
 2. Wave 2 round 2 as replies arrive: 2027 dates and prices camp by camp, the Atlas rename, the EUROCAM check, Camp California session structure, Explorer 845, Kalkalpen 2027, Vierumäki.
 3. Winter rows once the owner says go (preview worktree `D:/OneDrive/Documents/GitHub/esc-winter-preview` on port 5174; publish gate met on figures); Task 5 of the winter plan (FAQ, ItemList, flag, footer link, `winter_view` event, sitemap).
-4. New summer camps: Furudals Hockeyskola (ID 71) and Stadium Sports Camp (ID 72) ADDED 7 Sept after the lead read every figure; Club Adventure HELD for the owner (2026 dates only; iDeal, Bancontact or invoice payment); Leksands Hockeyskola HELD (agent section cut; arena-floor boarding is the weak point). Next camp ID 73; 70 stays reserved for ILC. README and sitemap say 67.
+4. New summer camps: Furudals Hockeyskola (ID 71) and Stadium Sports Camp (ID 72) ADDED 7 Sept after the lead read every figure; Club Adventure HELD for the owner (2026 dates only; iDeal, Bancontact or invoice payment); Leksands Hockeyskola HELD (agent section cut; arena-floor boarding is the weak point). Next camp ID 73. ID 70 is USED: ILC activated 11 Sept 2026. README and sitemap say 68.
 5. Weekly GSC and GA4 watch (connectors work; `scripts/ga4-pull.py` is the fallback); ILC invoice due 17 Sept; the standing open debt (em dashes in camps.js, description scan, alignment line, `handleCampSelection`).
 
 ### 💰 **SECOND SALE: Les Elfes accepted Premium 2027 at EUR 199 (reply 8 Sept). Carries a HARD DEADLINE of Monday 14 September.**
@@ -184,7 +184,7 @@ Up to three distinct cards per Premium (summer, winter, second site or type); mo
 ### Winter section: dark, publish gate unchanged
 `WINTER_PUBLISHED = false`; Task 5 needs four STRONG winter camps (Les Elfes Winter STRONG, 12 Dec 2026 to 24 Apr 2027 re-confirmed on the operator page today; La Garenne, HIF Ftan, UCPA one check each). Redirect of europeanwintercamps.com to `/#winter` is the owner's action at publish.
 
-### Four new summer camps (IDs from 71; 70 reserved for ILC), ranked from all research
+### Four new summer camps (IDs from 73; ID 70 is USED, ILC activated 11 Sept 2026), ranked from all research
 1. Furudals Hockeyskola (SE): 2027 form, own residence, SEK 6,640 plus 650 boarding (Astra). Lead re-reads the form and residence page, then add.
 2. Club Adventure (NL): STRONG on the Opus report, EUR 789 and 795 per 7 days, ages 5 to 13, own dormitories; 2027 dates not published. Lead re-reads both camp pages, then add with the 2026 season and a provenance comment.
 3. Stadium Sports Camp, Norrkoping (SE): STRONG, 2027 hockey weeks, SEK 4,595. Confirm card payment without a Swedish address.
@@ -759,7 +759,7 @@ Update `.claude/agents/camp-content-researcher.md` and `.claude/agents/camp-data
 **⚠️ Key context for new sessions:**
 - All 5 agents are permanently READ-ONLY (Bash/Edit/Write removed via `/agents` UI)
 - Camp data is in `src/data/camps.js` (65 orgs, ~1,545 lines, extracted Feb 2)
-- Next camp ID to use: 70
+- Next camp ID to use: 73 (70 was ILC, activated 11 Sept 2026; 71 and 72 added 7 Sept)
 - Review system Phase 1 complete, Phase 2 in progress (1/40 camps verified)
 - Build includes `validate:camps` prebuild hook
 

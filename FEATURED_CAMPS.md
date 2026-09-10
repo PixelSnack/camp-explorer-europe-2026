@@ -4,7 +4,7 @@
 
 **Created:** January 18, 2026
 **Last Updated:** September 10, 2026
-**Status:** TWO Premium listings sold. ILC (invoice 2026-001 sent 3 Sept, due 17 Sept, payment pending) and **Les Elfes (accepted 8 Sept 2026, EUR 199 introductory, invoice NOT yet raised)**. Les Elfes converts from demo to paying partner on the 2027 cycle.
+**Status:** TWO Premium listings sold, BOTH now live on the site. ILC (invoice 2026-001 due 17 Sept, unpaid; card activated 11 Sept as goodwill) and **Les Elfes (accepted 8 Sept, invoice 2026-002 raised 10 Sept, PDF ready, reply drafted in thread)**. Les Elfes converts from demo to paying partner on the 2027 cycle.
 
 ---
 
@@ -101,7 +101,7 @@ Alexandra Stettler, Chief Executive Officer, replying in the thread opened 7 Sep
 
 | Camp | Contact | Inquiry Date | Status | Notes |
 |------|---------|--------------|--------|-------|
-| The International Language Camps (ILC), Megève | ILC admissions office | Aug 13, 2026 | ✅ Accepted Premium at the €199 introductory rate (1 Sept 2026) | Invoice 2026-001 sent 3 Sept 2026 from partnerships@ (PDF attached), due 17 Sept. On payment: activate within 3 business days as new camp ID 70 (featured, video button, hotel named on card, CHF international prices) |
+| The International Language Camps (ILC), Megève | ILC admissions office | Aug 13, 2026 | ✅ Accepted Premium at the €199 introductory rate (1 Sept 2026) | Invoice 2026-001 sent 3 Sept 2026 from partnerships@ (PDF attached), due 17 Sept, STILL UNPAID. **ACTIVATED 11 Sept 2026 as camp ID 70 ahead of payment, on the owner decision, to show goodwill.** Featured, hotel named (Hotel Au Vieux Moulin), CHF international prices per their written confirmation of 1 Sept. Still owed BY them: a card photograph (brochure images show identifiable children, no publication permission), the promotional video link they offered, the founding year (brochure says 1996 and 30 years, signature says 28th anniversary, so no established field is published), and 2027 dates and prices |
 | Boundless Life | Megan Miller | Jan 16, 2026 | ❌ No response since Jan 17, 2026 | Treat as closed |
 | LINEŠA | Jolita Bečienė | Jan 2026 | Dormant (closed by LINEŠA 24 Aug 2026, may return for 2027) | Free listing stands; Camp Pasaka (ID 43) listed editorially |
 

@@ -165,3 +165,57 @@ reliably. A corrupt invoice to a paying customer is worse than one drag-and-drop
 headless print had failed repeatedly. Root cause of the two-page invoice was not the
 footer: content measured 1035px against 1045px of printable height, so a rounding error
 spilled it. Trimmed to 943px.
+
+## ILC activated as camp ID 70 (11 September)
+
+Built on the owner's instruction to show goodwill, ahead of invoice 2026-001 being
+paid (due 17 Sept, unpaid at exit). Every figure read by the lead from ILC's own
+Summer 2026 brochure AND from Elodie Guillot's written answers of 1 September.
+
+Two August verification caveats are now CLOSED by the operator in writing:
+- **Pricing.** ILC confirmed the CHF international prices are the ones to publish;
+  the cheaper euro offer on languesacademy.com is a separate local-market product.
+- **The /enrollment/ 404.** Not a fault. Enrolment runs per programme via an
+  "Enroll Now" button on each programme page, and ILC asked us to link to the
+  home page so families choose their programme first. That is what the card does.
+
+Deliberately omitted, because the honest state is "we do not know":
+- **No `established`.** The brochure says "Since 1996" and "30 years"; the email
+  signature says 28th anniversary; our 17 Aug research found the 1996 claim
+  borrows the French school's history for a 2012 Swiss entity. The draft asks.
+- **No `bookingStatus`**, so no badge, since no single enrolment form is checkable.
+- **No rating**, no review footprint.
+
+Still owed BY ILC, all requested in the drafted reply: a card photograph, the
+promotional video link they offered, the founding year, and 2027 dates and prices.
+
+## Images: a gap worth planning for
+
+**All 68 summer cards share just three images** (23 mapCompressed, 23
+activitiesCompressed, 22 heroImage). The winter section now looks markedly better
+than summer, because those ten cards got bespoke Flare illustrations plus Les
+Elfes' own photograph.
+
+Specifically: **Les Elfes has no summer image and never did.** They supplied a
+winter photo on 8 Sept, which is on the winter card. Their summer card, for a
+paying Premium customer, still shows the generic hero. Both the Les Elfes and the
+ILC drafts now ask for a picture.
+
+## Gmail draft gotcha, learned the hard way
+
+**`update_draft` DETACHES a reply draft from its thread.** Editing the Les Elfes
+reply moved its threadId to its own messageId, so it would have sent as a
+standalone email rather than a reply in Alexandra's conversation. Caught before
+exit. The fix is to recreate with `create_draft` and `replyToMessageId`, then mark
+the orphan. Never edit a reply draft in place.
+
+## State at exit, 11 September
+
+Repo clean. Production healthy and verified. The winter section is live with 10
+camps; the summer directory is 68 organisations in 24 countries. Next camp ID is
+**73**. The Gmail draft audit is complete at 70 drafts, every referral figure
+checked against GA4.
+
+Two drafts wait on the owner, both needing From switched to partnerships@ and the
+spaces closed in web addresses: **Les Elfes** (in-thread, also needs the invoice
+PDF attached by hand) and **ILC** (in-thread, no attachment).
