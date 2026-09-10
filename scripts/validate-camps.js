@@ -19,6 +19,14 @@ const PRICE_RANGES = new Set(['budget', 'mid', 'premium', 'luxury']);
 const REQUIRED_TEXT = ['name', 'location', 'country', 'ages', 'price', 'dates', 'type'];
 const REQUIRED_ARRAYS = ['activities', 'highlights', 'languages'];
 const FEATURED_CAP_PER_CATEGORY = 3;
+/**
+ * Names that may stand in for a country at the end of a location string.
+ * iOS Safari and Android turn the location line into a tappable Maps link, so the string has to
+ * resolve on its own: a bare town, or a region without its country, can land on another continent
+ * (camp ID 29 resolved to Santa Cruz, California until 10 September 2026).
+ */
+const COUNTRY_ALIASES = { 'United Kingdom': ['England', 'Scotland', 'Wales', 'Northern Ireland'] };
+const LOCATION_MAX = 40;
 let errors = 0;
 
 function fail(campId, campName, message) {
@@ -52,6 +60,20 @@ function validateCamp(camp, season) {
       fail(camp.id, camp.name, `${key} must be a non-empty string, got: ${camp[key]}`);
     }
   }
+  // The location line is an interactive surface: mobile browsers auto-link it to a map, so it must
+  // name its own country (or a constituent country) and stay short enough not to wrap awkwardly
+  // on a 320px phone.
+  if (typeof camp.location === 'string' && camp.location.trim() !== '' && typeof camp.country === 'string') {
+    const country = camp.country.trim();
+    const accepted = [country, ...(COUNTRY_ALIASES[country] || [])];
+    if (!accepted.some(name => camp.location.endsWith(`, ${name}`))) {
+      fail(camp.id, camp.name, `location must end with a country anchor (one of: ${accepted.join(', ')}) so it resolves on a map, got: "${camp.location}"`);
+    }
+    if (camp.location.length > LOCATION_MAX) {
+      fail(camp.id, camp.name, `location must be ${LOCATION_MAX} characters or fewer for the card line, got ${camp.location.length}`);
+    }
+  }
+
   for (const key of REQUIRED_ARRAYS) {
     if (!Array.isArray(camp[key]) || camp[key].length === 0) {
       fail(camp.id, camp.name, `${key} must be a non-empty array`);

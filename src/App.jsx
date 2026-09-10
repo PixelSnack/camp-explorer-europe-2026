@@ -1314,8 +1314,8 @@ function App() {
                       <CardTitle className="card-title text-gray-900 group-hover:text-blue-600 transition-colors">
                         {camp.name}
                       </CardTitle>
-                      <CardDescription className="body-text flex items-center text-gray-600 mt-1">
-                        <MapPin className="w-4 h-4 mr-1" />
+                      <CardDescription className="body-text flex items-start text-gray-600 mt-1">
+                        <MapPin className="w-4 h-4 mr-1 shrink-0 mt-1" aria-hidden="true" />
                         {camp.location}
                       </CardDescription>
                     </div>
@@ -1977,8 +1977,8 @@ function App() {
                         />
                         
                         <h3 className="font-bold text-lg text-gray-900 mb-2">{camp.name}</h3>
-                        <p className="text-gray-600 text-sm mb-4 flex items-center">
-                          <MapPin className="w-4 h-4 mr-1" />
+                        <p className="text-gray-600 text-sm mb-4 flex items-start">
+                          <MapPin className="w-4 h-4 mr-1 shrink-0 mt-0.5" aria-hidden="true" />
                           {camp.location}
                         </p>
 

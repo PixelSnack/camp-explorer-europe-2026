@@ -85,8 +85,8 @@ export default function CampCard({ camp, isSelected, onToggleCompare, onBook, on
             <CardTitle className="text-xl text-gray-900 group-hover:text-blue-600 transition-colors">
               {camp.name}
             </CardTitle>
-            <CardDescription className="flex items-center text-gray-600 mt-1">
-              <MapPin className="w-4 h-4 mr-1" />
+            <CardDescription className="flex items-start text-gray-600 mt-1">
+              <MapPin className="w-4 h-4 mr-1 shrink-0 mt-0.5" aria-hidden="true" />
               {camp.location}
             </CardDescription>
           </div>

@@ -486,7 +486,7 @@ export const allCamps = [
   {
     id: 24,
     name: "Warsaw Montessori Farm Summer Camp", // Renamed 6 Sept 2026: the operator runs a children-only residential camp (teachers on site, parents drop off); no parent-present family camp exists
-    location: "Bialka, Lublin Voivodeship",
+    location: "Białka, Radzyń Podlaski, Poland",
     country: "Poland",
     ages: "6-16 years",
     price: "PLN 2,900/1 week", // Verified 6 Sept 2026 (elementaryschool.wmf.edu.pl/en/summer-camps-2026: final tier from 1 Apr 2026; PLN 2,700 was the early-booking tier; full board and 24h care included)
@@ -508,7 +508,7 @@ export const allCamps = [
   {
     id: 25,
     name: "My Camp at Quinta da Broeira",
-    location: "Cartaxo, Ribatejo",
+    location: "Cartaxo, Ribatejo, Portugal",
     country: "Portugal",
     ages: "6-17 years",
     price: "€620/1 week", // Verified 6 Sept 2026: 2026 brochure (mycamp.pt/pdf/2026/camposdeferias.pdf p.11) "1 semana 620€", VAT included, per child; €570 is the returning-participant or second-sibling discount and €530 the partner rate. The Jan 2026 value €570 was that discount
@@ -531,7 +531,7 @@ export const allCamps = [
   {
     id: 26,
     name: "Nationalpark Kalkalpen Family Camp",
-    location: "Rossleithen, Upper Austria",
+    location: "Rossleithen, Austria",
     country: "Austria",
     ages: "6+ years (families)",
     price: "From €145/3 days", // Verified Jan 2026: €145 child/€369 adult
@@ -554,7 +554,7 @@ export const allCamps = [
   {
     id: 27,
     name: "Auersperg-International Summer Camp",
-    location: "Wildschönau, Tyrol",
+    location: "Wildschönau, Tyrol, Austria",
     country: "Austria",
     ages: "8-15 years",
     price: "From €1,377/1 week", // Verified Jan 2026: 1-week €1,377, 2-week €2,940
@@ -577,7 +577,7 @@ export const allCamps = [
   {
     id: 28,
     name: "Jagiellonian University Explorers' Summer Camp",
-    location: "Kraków, Lesser Poland",
+    location: "Kraków, Poland",
     country: "Poland",
     ages: "12-16 years",
     price: "PLN 8,260/2 weeks", // Verified 6 Sept 2026 (plschool.uj.edu.pl payment section: 8,260 per participant incl. 500 prepayment; dormitory and full board included, insurance extra)
@@ -624,7 +624,7 @@ export const allCamps = [
   {
     id: 30,
     name: "Funside Balaton International Camp",
-    location: "Balatongyörök, Lake Balaton",
+    location: "Balatongyörök, Lake Balaton, Hungary",
     country: "Hungary",
     ages: "8-17 years",
     price: "From €639/1 week", // Verified Aug 2026 (funside.hu/en/pricing-balaton-2: early bird 639, standard 722 EUR; was 625, Jan 2026)
@@ -647,7 +647,7 @@ export const allCamps = [
   {
     id: 31,
     name: "Camp Semenic Explorer",
-    location: "Semenic-Caras Gorge National Park, Caras-Severin",
+    location: "Semenic, Caraș-Severin, Romania",
     country: "Romania",
     ages: "8-14 years",
     price: "$650/6 days", // Verified Jan 2026
@@ -693,7 +693,7 @@ export const allCamps = [
   {
     id: 33,
     name: "Ridgway Adventure",
-    location: "Ardmore, Sutherland, Scottish Highlands",
+    location: "Ardmore, Sutherland, Scotland",
     country: "United Kingdom",
     ages: "11-17 years",
     price: "£950/1 week", // Verified Jan 2026
@@ -716,7 +716,7 @@ export const allCamps = [
   {
     id: 34,
     name: "Camp California Croatia",
-    location: "Pakostane, Dalmatia",
+    location: "Pakostane, Dalmatia, Croatia",
     country: "Croatia",
     ages: "7-16 years",
     price: "€1,095/1 week", // Verified Jan 2026
@@ -739,7 +739,7 @@ export const allCamps = [
   {
     id: 35,
     name: "PGL Family Adventures Barton Hall",
-    location: "Torquay, Devon",
+    location: "Torquay, Devon, England",
     country: "United Kingdom",
     ages: "5-18 years",
     price: "From £139/2-4 nights", // Verified Jan 2026: 2-4 night breaks
@@ -762,7 +762,7 @@ export const allCamps = [
   {
     id: 36,
     name: "Carlingford Adventure Centre",
-    location: "Carlingford, County Louth",
+    location: "Carlingford, County Louth, Ireland",
     country: "Ireland",
     ages: "6-17 years",
     price: "From €240/3 days", // Verified Jan 2026: 3-day residential (5-day €399)
@@ -785,7 +785,7 @@ export const allCamps = [
   {
     id: 37,
     name: "Filmkollo",
-    location: "Trollhättan, Västra Götaland",
+    location: "Trollhättan, Västra Götaland, Sweden",
     country: "Sweden",
     ages: "10-17 years",
     price: "SEK 7,800/1 week", // Verified 4 Sept 2026 (filmkollo.se/anmalan: 7800 kr per week for 2027; was 7,600 in Jan 2026)
@@ -808,7 +808,7 @@ export const allCamps = [
   {
     id: 38,
     name: "Wild Camp Beckershof",
-    location: "Katrineholm, Södermanland",
+    location: "Katrineholm, Södermanland, Sweden",
     country: "Sweden",
     ages: "10-16 years",
     price: "From SEK 10,900/1 week", // Verified Jan 2026
@@ -831,7 +831,7 @@ export const allCamps = [
   {
     id: 39,
     name: "Din Camp SportsCamp",
-    location: "Kolding & Juelsminde, Jutland",
+    location: "Kolding & Juelsminde, Denmark",
     country: "Denmark",
     ages: "7-15 years",
     price: "DKK 3,695/6 days", // Verified Jan 2026 - 5 nights Mon-Sat
@@ -853,7 +853,7 @@ export const allCamps = [
   {
     id: 40,
     name: "Nordisk Sommerlejr",
-    location: "Hillerød, North Zealand",
+    location: "Hillerød, North Zealand, Denmark",
     country: "Denmark",
     ages: "11-15 years",
     price: "DKK 3,000/5 days", // Verified Jan 2026 (DKK 2,500 for members)
@@ -877,7 +877,7 @@ export const allCamps = [
   {
     id: 41,
     name: "Summer Camps Holland - Sailing",
-    location: "Idskenhuizen, Friesland",
+    location: "Idskenhuizen, Friesland, Netherlands",
     country: "Netherlands",
     ages: "7-17 years",
     price: "€730/1 week",
@@ -899,7 +899,7 @@ export const allCamps = [
   {
     id: 42,
     name: "Zeilschool De Kikkert",
-    location: "Lemmer, Friesland",
+    location: "Lemmer, Friesland, Netherlands",
     country: "Netherlands",
     ages: "6-18 years",
     price: "From €715/1 week",
@@ -922,7 +922,7 @@ export const allCamps = [
   {
     id: 43,
     name: "LINEŠA Camp Pasaka",
-    location: "Kukuliškiai, Klaipėda District",
+    location: "Kukuliškiai, Klaipėda, Lithuania",
     country: "Lithuania",
     ages: "8-18 years",
     price: "€440/1 week", // Verified Aug 2026 (linesa.lt/stovyklaviete-pasaka: 7-day shift 440 EUR; a 45 EUR code expired 15 Aug; was 410-440)
@@ -945,7 +945,7 @@ export const allCamps = [
   {
     id: 44,
     name: "RS Sjøleir",
-    location: "Horten, Vestfold",
+    location: "Horten, Vestfold, Norway",
     country: "Norway",
     ages: "9-15 years",
     price: "From NOK 8,190/5 days", // Verified Aug 2026 (sjoliv.rs.no: 8190/8490 NOK, five days Sun-Fri; was NOK 7,900)
@@ -967,7 +967,7 @@ export const allCamps = [
   {
     id: 45,
     name: "Sirdal Huskyfarm",
-    location: "Tonstad, Sirdal",
+    location: "Tonstad, Sirdal, Norway",
     country: "Norway",
     ages: "10-14 years",
     price: "NOK 4,260/4 days",
@@ -990,7 +990,7 @@ export const allCamps = [
   {
     id: 46,
     name: "SceneKunst Sommercamp",
-    location: "Ganløse & Holte, Zealand",
+    location: "Ganløse & Holte, Zealand, Denmark",
     country: "Denmark",
     ages: "8-18 years",
     price: "DKK 3,995/1 week",
@@ -1013,7 +1013,7 @@ export const allCamps = [
   {
     id: 47,
     name: "CERAN Academy Juniors",
-    location: "Ferrières, Liège Province",
+    location: "Ferrières, Liège, Belgium",
     country: "Belgium",
     ages: "9-17 years",
     price: "€1,790/1 week", // Verified Jan 2026: per-child residential rate
@@ -1036,7 +1036,7 @@ export const allCamps = [
   {
     id: 48,
     name: "Evasoleil",
-    location: "Montalivet-les-Bains, Gironde",
+    location: "Montalivet-les-Bains, France",
     country: "France",
     ages: "6-17 years",
     price: "€685/1 week", // Verified Jan 2026: per-child residential rate
@@ -1059,7 +1059,7 @@ export const allCamps = [
   {
     id: 49,
     name: "GLS Berlin Splash Water Sports Camp",
-    location: "Blossin, Brandenburg",
+    location: "Blossin, Brandenburg, Germany",
     country: "Germany",
     ages: "12-16 years",
     price: "€1,290/1 week", // Verified Jan 2026: per-child residential rate
@@ -1082,7 +1082,7 @@ export const allCamps = [
   {
     id: 50,
     name: "King's College Summer Camp Madrid",
-    location: "Soto de Viñuelas, Madrid",
+    location: "Soto de Viñuelas, Madrid, Spain",
     country: "Spain",
     ages: "6-17 years", // Verified Feb 2026: residential from age 8
     price: "€2,675/2 weeks", // Verified Feb 2026: per-child Core+ residential rate
@@ -1105,7 +1105,7 @@ export const allCamps = [
   {
     id: 51,
     name: "Enforex Summer Camp Salamanca",
-    location: "Salamanca",
+    location: "Salamanca, Spain",
     country: "Spain",
     ages: "5-18 years", // Verified Feb 2026
     price: "€1,950/2 weeks", // Verified Feb 2026: per-child residential rate
@@ -1128,7 +1128,7 @@ export const allCamps = [
   {
     id: 52,
     name: "Alphabet International Camps",
-    location: "Castiglione del Lago, Umbria",
+    location: "Castiglione del Lago, Umbria, Italy",
     country: "Italy",
     ages: "6-16 years", // Verified Feb 2026
     price: "€1,390/1 week", // Verified Feb 2026: per-child residential rate
@@ -1151,7 +1151,7 @@ export const allCamps = [
   {
     id: 53,
     name: "Piccola Università Italiana Junior Camp",
-    location: "Trieste",
+    location: "Trieste, Italy",
     country: "Italy",
     ages: "12-17 years", // Verified Feb 2026: was estimated 12-16
     price: "€2,100/2 weeks", // Verified Feb 2026: per-child residential rate
@@ -1174,7 +1174,7 @@ export const allCamps = [
   {
     id: 54,
     name: "Campamento La Serrana",
-    location: "Buñol, Valencia",
+    location: "Buñol, Valencia, Spain",
     country: "Spain",
     ages: "6-13 years", // Verified Feb 2026: children's camp age range
     price: "€425/1 week", // Verified Feb 2026: per-child residential rate (7 days)
@@ -1197,7 +1197,7 @@ export const allCamps = [
   {
     id: 55,
     name: "Granja Escuela Huerto Alegre",
-    location: "Albuñuelas, Granada",
+    location: "Albuñuelas, Granada, Spain",
     country: "Spain",
     ages: "5-16 years", // Verified Feb 2026: age-specific sessions (5-8, 6-13, 8-13, 12-16)
     price: "From €235/5 days", // Historical verified price; inquiry-based pricing model
@@ -1220,7 +1220,7 @@ export const allCamps = [
   {
     id: 56,
     name: "Kids Camp America Family Camp",
-    location: "Edersee, Hessen",
+    location: "Edersee, Hessen, Germany",
     country: "Germany",
     ages: "All ages (families)", // Verified Feb 2026: family camp, no minimum age
     price: "€745/1 week", // Verified Feb 2026: per-person all-inclusive rate
@@ -1243,7 +1243,7 @@ export const allCamps = [
   {
     id: 57,
     name: "Les Florimontains",
-    location: "Plancherine, Savoie",
+    location: "Plancherine, Savoie, France",
     country: "France",
     ages: "9-17 years", // Verified Feb 2026: 9-13 and 14-17 age groups
     price: "€575/1 week", // Verified Feb 2026: per-child residential rate
@@ -1266,7 +1266,7 @@ export const allCamps = [
   {
     id: 58,
     name: "Village Camps Zell am See",
-    location: "Zell am See, Austrian Alps",
+    location: "Zell am See, Austria",
     country: "Austria",
     ages: "10-17 years", // Verified Feb 2026: Austria location age range
     price: "€3,550/2 weeks", // Verified Feb 2026: per-child all-inclusive residential rate
@@ -1289,7 +1289,7 @@ export const allCamps = [
   {
     id: 59,
     name: "Milias Camps",
-    location: "Gravia, Mount Parnassos",
+    location: "Gravia, Mount Parnassos, Greece",
     country: "Greece",
     ages: "7-17 years", // Verified Feb 2026: 7-15 standard, 12-17 advanced mountaineering
     price: "€610/1 week", // Verified Feb 2026: per-child residential rate
@@ -1336,7 +1336,7 @@ export const allCamps = [
   {
     id: 61,
     name: "École des Roches Summer Camp",
-    location: "Verneuil d'Avre et d'Iton, Normandy",
+    location: "Verneuil d'Avre et d'Iton, France",
     country: "France",
     ages: "9-17 years",
     price: "€3,950/2 weeks", // Verified Feb 2026: French Classic program, per-child residential
@@ -1359,7 +1359,7 @@ export const allCamps = [
   {
     id: 62,
     name: "Humboldt-Institut Bad Schussenried",
-    location: "Bad Schussenried, Baden-Württemberg",
+    location: "Bad Schussenried, Germany",
     country: "Germany",
     ages: "10-17 years",
     price: "€1,395/1 week", // Verified Feb 2026: 2+ week courses, +€50/wk summer surcharge Jun-Aug
@@ -1382,7 +1382,7 @@ export const allCamps = [
   {
     id: 63,
     name: "AERAT Colonia al Mare Cesenatico",
-    location: "Cesenatico, Emilia-Romagna",
+    location: "Cesenatico, Emilia-Romagna, Italy",
     country: "Italy",
     ages: "6-15 years",
     price: "€490/14 days", // Verified Feb 2026: includes insurance, excursions, 24h medical
@@ -1405,7 +1405,7 @@ export const allCamps = [
   {
     id: 64,
     name: "Campi del Vento Sailing Camp",
-    location: "Isola d'Elba, Tuscany",
+    location: "Isola d'Elba, Tuscany, Italy",
     country: "Italy",
     ages: "7-19 years",
     price: "€850/1 week", // Verified Feb 2026: per-child, €790 for siblings
@@ -1428,7 +1428,7 @@ export const allCamps = [
   {
     id: 65,
     name: "Vierumäki Finnhockey Camp", // Renamed 6 Sept 2026 per operator (formerly Finnhockey School); 2026 price and dates below are the Feb 2026 verification, not re-readable on 6 Sept; re-verify when 2027 is published
-    location: "Vierumäki, Päijät-Häme",
+    location: "Vierumäki, Päijät-Häme, Finland",
     country: "Finland",
     ages: "9-12 years", // Manual verification Feb 2026: U9-U12 per official site (ages 9-12)
     price: "From €460/4 days", // Verified Feb 2026: €460 basic, €490 development camp
@@ -1451,7 +1451,7 @@ export const allCamps = [
   {
     id: 66,
     name: "Nautical Club of Vouliagmeni Summer Camp",
-    location: "Vouliagmeni, Athens Riviera",
+    location: "Vouliagmeni, Athens Riviera, Greece",
     country: "Greece",
     ages: "5-13 years",
     price: "From €380/1 week", // Research Feb 2026: morning program; extended €480/week
@@ -1474,7 +1474,7 @@ export const allCamps = [
   {
     id: 67,
     name: "Rafa Nadal Academy Summer Camp",
-    location: "Manacor, Mallorca",
+    location: "Manacor, Mallorca, Spain",
     country: "Spain",
     ages: "6-18 years", // Verified Feb 2026: Kids Camp 6-10 (parents required), Junior Camp 8-18, Tennis & Language 12-18, Padel 12-18
     price: "From €2,789/week", // Verified Feb 2026: cheapest boarding option per user review of official site
@@ -1497,7 +1497,7 @@ export const allCamps = [
   {
     id: 68,
     name: "SKITEN International Summer Camp",
-    location: "Château d'Emines, Namur",
+    location: "Château d'Emines, Namur, Belgium",
     country: "Belgium",
     ages: "7-15 years", // Verified Feb 2026: confirmed via job listing + RCF Namur article (juniors 7-10, teens 11-15)
     price: "€950/week", // Verified Feb 2026: €950/1wk, €1,890/2wk — visually verified on skitenfamily.com
@@ -1520,7 +1520,7 @@ export const allCamps = [
   {
     id: 69,
     name: "Ferienfussball International Football Camp",
-    location: "Hinsbeck, North Rhine-Westphalia",
+    location: "Hinsbeck, Nettetal, Germany",
     country: "Germany",
     ages: "11-16 years", // Verified Feb 2026: International Football Camp age range from official site
     price: "From €730/1 week", // Updated Feb 2026: €729.60 early bird (regular €768), 7 days per official site
@@ -1542,7 +1542,7 @@ export const allCamps = [
   {
     id: 71,
     name: "Furudals Hockeyskola", // Added 7 Sept 2026; every figure read by the lead on svenskalag.se/furudalshockeyskola (the club site; furudalshockeyskola.se redirects there)
-    location: "Furudal, Dalarna",
+    location: "Furudal, Dalarna, Sweden",
     country: "Sweden",
     ages: "11-18 years", // Verified 7 Sept 2026 (2027 form): weeks 26-27 for ages 11-15, week 28 for 14-18, four-day camps weeks 29-31 for 11-14 and 15-18, match camps 11-12 and 13-14
     price: "From SEK 6,640/1 week", // Verified 7 Sept 2026 (2027 form): "Vecka 26 t o m 28: 6.640kr (sön-lör)"; boarding at the Hockeyborg player hotel SEK 650 extra with full board; four-day camps weeks 29-31 SEK 3,690 incl. accommodation
@@ -1564,7 +1564,7 @@ export const allCamps = [
   {
     id: 72,
     name: "Stadium Sports Camp", // Added 7 Sept 2026; every figure read by the lead on stadiumsportscamp.se
-    location: "Norrköping, Östergötland",
+    location: "Norrköping, Östergötland, Sweden",
     country: "Sweden",
     ages: "10-15 years", // Verified 7 Sept 2026 (stadiumsportscamp.se/sporter/ishockey): "10-14 år (15 år på specifika veckor)" for ice hockey; the camp as a whole takes 10-15
     price: "From SEK 4,595/1 week", // Verified 7 Sept 2026 (stadiumsportscamp.se/sports-camp/anmal-och-betala): "Sports Camp 4 595 kr", sibling or multi-week 4,095; includes all scheduled sports, four meals a day, t-shirt, bottle and accident insurance; card, bank, invoice or instalments through Walley
