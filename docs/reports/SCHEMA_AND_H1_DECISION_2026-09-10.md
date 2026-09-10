@@ -53,9 +53,21 @@ These are live today and are the reason this is not merely a nice-to-have:
    paying customer at position 1 conflates paid placement with editorial selection.
    `position` implies ranking. This needs a plain descriptive name, stable id order, and
    paid status kept out of the schema entirely.
-2. **The three hand-written entries carry invented street addresses.** `index.html:171`
-   has `"streetAddress": "Verbier Resort Area"`, which is not a street address.
-   `camps.js` holds no street addresses at all, only `location` and `country`.
+2. **Two of the three hand-written entries carry a descriptor where a street address belongs.**
+   CORRECTION: an earlier version of this file said all three were invented. That was my
+   own imprecision, not the reviewer's. The SEO agent said only that the three entries
+   *carry* streetAddress fields, that `camps.js` has none, and that scaling that shape to
+   67 would mean inventing 64 addresses. It singled out `"Verbier Resort Area"` alone.
+   Checked each by hand:
+   - Les Elfes: `"Verbier Resort Area"` is not a street address. FIXED to
+     "Rue du Centre sportif 20", which the operator supplied in her own invoicing
+     details on 8 September 2026.
+   - Oxford Summer Courses: "18 Beaumont Street, OX1 2NA" is a real, specific address.
+     LEFT ALONE. There was never any evidence against it.
+   - EUROCAM Bohemia: "Slavnovice village area, near Luznice River" is a description,
+     not an address. streetAddress REMOVED; locality, postcode and country kept.
+   The lesson is the one from earlier tonight repeating: do not generalise a finding
+   across a set from one confirmed instance. Verify each member.
 
 ## If we expand it, the rules (adjudicated, not yet implemented)
 
