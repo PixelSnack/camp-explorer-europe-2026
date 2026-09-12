@@ -521,3 +521,22 @@ The batch script applied the wording rules correctly but silently skipped the GA
 - The Chrome MCP window resize did not change the viewport; `scripts/cdp-verify.mjs --width 390 --mobile --shot` is the phone-width check that works.
 - A click that changes React state must be measured after a tick (`await new Promise(r => setTimeout(r, 400))` in the eval), or the DOM still shows the old state.
 - Revolut Business Merchant: public fee pages return 403/404 to WebFetch; fees are only readable in the app. The web session expires quickly; the owner logs in, Claude never enters credentials.
+
+### Payment wording: the invoice comes first, the link is an option
+The first payment sentence for the outreach drafts said the invoice "can be paid by card or by bank transfer through a secure payment link". The owner read it as a bookkeeper would: a link from an unknown sender feels risky. Rewritten so the standard invoice, payable by bank transfer, is the primary and the online card payment is offered "should you prefer that"; the word "link" is gone.
+**Rule**: when money is asked for, name the ordinary route first and the convenient one second, and never make the convenient one sound like the only one. Words that trigger fraud instincts ("link", "click", "pay now") stay out of first contact.
+
+### A partner reply is not a changelog
+The reply drafts to ILC and Les Elfes listed every highlight and every label change. The owner: they want to know the card is updated as they asked and that we value them; they will not read the rest.
+**Rule**: a reply to a paying partner about work done says three things: done as you asked, tell us if anything should change, thank you. Detail lives on the card itself, not in the mail.
+
+### Gmail drafts through the connector: three mechanics
+- `update_draft` with only `body` keeps recipients and subject, regenerates the HTML, and is safe for a standalone draft. A draft inside a partner's thread must be replaced (`create_draft` with `replyToMessageId` on the partner's latest message) and the old one retitled [SUPERSEDED, DISCARD]; updating it detaches it from the thread.
+- `list_drafts` page tokens go stale as soon as drafts change. Reusing a token from an earlier listing returns a different slice and makes drafts look missing. Always page from a fresh page 1.
+- Bash prints UTF-8 as mojibake on this machine (Søren, Viñuelas); set `PYTHONIOENCODING=utf-8` before printing text that will be pasted into a draft.
+
+### Revolut Business in the browser
+- The web app renders dropdowns, date pickers and uploads through requestAnimationFrame. When the tab is not the visible tab (`document.visibilityState === "hidden"`) nothing renders and uploads sit on "Verifying image" forever. Ask the owner to keep the tab in front; check visibility before blaming the page.
+- Leading zeros are stripped from invoice numbers, in the default and per invoice: the format is `2026-N`.
+- "Create" on an invoice makes it Open and payable; the next screen offers "Send" and "Later". "Later" keeps it unsent. Cancel it from the "..." menu if it was a test.
+- Payment-page branding, contact email and invoice numbering are account-wide, so they touch every ResourceHub brand; Playground is told through the bridge when they change.
