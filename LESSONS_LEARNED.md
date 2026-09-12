@@ -490,3 +490,34 @@ When you encounter an error and find a fix, add it here using this template:
 Two lessons on top of the original:
 1. **Do not generalise a root cause from the samples you happened to open.** I read four drafts, found a pattern that matched a known instruction, and treated it as the full explanation. A believable mechanism is not the same as a measured scope.
 2. **When the scope of a defect is unknown, say unknown.** The safe instruction is "read every draft before sending", not "the ones with recipients are fine". Stating a reassuring boundary that has not been verified is worse than stating none, because it stops the person checking.
+
+---
+
+## 12 September 2026: Premium cards, labels, drafts, Revolut
+
+### Reviews check facts; nobody pressed the card
+Three fact-checking reviews in one month passed a "+N more" activities chip that did nothing on any of 68 cards, and a "Via Ferrata" chip no non-alpine parent understands. The owner found both on his phone in a minute.
+**Rule**: every review of anything a parent sees includes one pass as a first-time parent who presses everything. Now in the panel brief template (item 8). Jargon in activity and highlight strings gets a plain-language rendering ("Via Ferrata Climbing").
+
+### One word, three meanings
+"Premium" was the paid product (band on the card), the editorial category "Premium Alpine", and a price tier. The band read as a quality rating, and the paid label would have been a lesser word (FEATURED) for cheaper camps buying the same product.
+**Rule**: the public label for paid placement is FEATURED, whatever the price tier; the category name may carry "Premium" because it is editorial; the product may be called a Premium listing in partner communication because the partner gets premium treatment. Never let a label depend on the camp's price class. Never promise a top row; the promise is "placed ahead of the standard listings".
+
+### Majority rule for layout changes
+Four cards per row measured as a 27 percent narrower card for every desktop visitor, or a change for at most 15 percent of sessions if gated. Neither benefits a majority.
+**Rule**: before a layout change, count who is better off, worse off and unchanged from GA4 and measure the change on the real build (inject the style through the CDP script). A "nicer for wide screens" idea is a preference until measured.
+
+### Outward mail: "we", verified numbers, a threshold
+The owner rewrote the sent mails to "we" and added the indirect-referral sentence; the drafts still said "I", carried 11-to-19 referral figures that look weak, and promised "top of its category".
+**Rule**: outward mail says "we", never "I". A referral figure appears only when re-read in GA4 on the day and only at 20 or more, with the indirect sentence; below that, the indirect sentence alone. Two-camp operators get the combined figure. Read the owner's own sent mails before drafting more of the same kind; his edits are the standard.
+
+### A script that transforms drafts still needs the eye
+The batch script applied the wording rules correctly but silently skipped the GA4 figure update it was supposed to make (a map defined and never used) and failed to match two sentences with a different shape (Altitude, Village Camps). Reading every generated body caught all three.
+**Rule**: generate, then read each output as the recipient before it goes into a draft. Never trust a transformation on the sample that happened to look right.
+
+### Small tool facts worth keeping
+- Gmail `search_threads` can miss a reply received hours earlier; `get_thread` shows it. When a partner says a reply exists, read the thread, do not trust the search.
+- Drive folders shared by link cannot be listed through the Drive connectors; read the file ids from the Drive page DOM and fetch `drive.google.com/thumbnail?id=...&sz=w480`, full size from `uc?export=download&id=...`.
+- The Chrome MCP window resize did not change the viewport; `scripts/cdp-verify.mjs --width 390 --mobile --shot` is the phone-width check that works.
+- A click that changes React state must be measured after a tick (`await new Promise(r => setTimeout(r, 400))` in the eval), or the DOM still shows the old state.
+- Revolut Business Merchant: public fee pages return 403/404 to WebFetch; fees are only readable in the app. The web session expires quickly; the owner logs in, Claude never enters credentials.
