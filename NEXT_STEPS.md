@@ -1,7 +1,7 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 12, 2026, 15:20 (AFK run: ILC 2027 card applied from their 11 Sept update, Les Elfes summer card on her campus photo, Premium cards render six highlights; record in `docs/reports/SESSION_2026-09-12_PREMIUM_CARDS.md`)
+**Last Updated:** September 12, 2026, 18:30 (handoff at end of session: Premium cards done, Featured band, activities toggle, 63 drafts vetted, Revolut Merchant investigated; next job is the Revolut setup and the ILC test invoice)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** weekly GSC watch -> ILC payment and activation -> Wave 2 per-camp 2027 dates -> winter camps decision -> new camp research
 **🔴 Deadline:** winter section promised live to Les Elfes for **Monday 14 September 2026**. She is a paying partner as of 8 Sept.
@@ -11,15 +11,43 @@
 
 ---
 
-## 🔴 **START HERE — 12 September 2026 (Premium partner cards), then the 7 September block below**
+## 🔴 **START HERE — handoff written 12 September 2026, 18:30 (session ended on context, everything committed and pushed)**
 
-**Done and live (commit 851544b, pushed and production-verified):** ILC (ID 70) carries its Summer 2027 data from Elodie's 11 Sept email and price list (27 June to 31 July 2027, ages 6 to 17 with the new Teens Mountain Adventure 14 to 17, from CHF 3,995 a week, "2027 dates published" badge, Est. 1996), their own photograph with written permission, their film, six highlights in the order they asked for with the hotel first, and a rendered price note "plus CHF 200 registration". Premium cards render up to six highlights (standard three) in both `CampCard.jsx` and the Home grid copy; bullets anchor to the first line; new optional `priceNote` field.
+The next session starts almost blank. Read this block, then `docs/reports/SESSION_2026-09-12_PREMIUM_CARDS.md` and `docs/reports/CARD_CLICK_AND_GRID_ANALYSIS_2026-09-12.md`. Auto-memory `esc-session-2026-09-12-handoff` carries the same facts in short form.
 
-**Committed, NOT pushed (3a6500d plus the docs commit):** Les Elfes summer card (ID 1) shows her campus chalet photograph from the Campus folder she shared (her words: "our own photograph of Verbier and the campus"), both Les Elfes cards carry six highlights re-read on leselfes.com, ILC price note shortened to one line at phone width. **Owner: push, then check production** (Les Elfes summer image, ILC one-line price note).
+### FIRST JOB: Revolut Business Merchant, invoice settings, branding, ILC test invoice (owner approved 12 Sept, nothing done yet)
 
-**Two Gmail drafts waiting, never sent, sender must be switched to partnerships@ before sending:** ILC (thread `1a000381ff4af71a`, card updated, what it says, why the hotel is named rather than graded, why Est. 1996 freed the sixth slot for the teen programme) and Les Elfes (thread `1a0796e2af5be68d`, campus photo and six highlights, invite a swap).
+The owner's Revolut Business account ("ResourceHub", DKK main account) has an active Merchant section with three empty tools: Payment links (no-code hosted page: title, amount with currency selector, "customer sets the price", multiple payments, expiry, custom field; payer sees Revolut Pay, card, Apple Pay), Invoices (online invoices with a pay button, a Recurring tab, Settings), and Subscriptions (plans, trials, card on file). Investigated read-only on 12 Sept; no link, invoice or plan was created. The session was logged out before setup; **the owner logs in himself at business.revolut.com, Claude never enters credentials.**
 
-**Still open on ILC:** invoice 2026-001 due 17 Sept, unpaid on 12 Sept; a new 2027 film will come later. Full adjudication record (including the Astra review) in `docs/reports/SESSION_2026-09-12_PREMIUM_CARDS.md`.
+What the owner approved: set up the invoice settings and branding as well as possible, and create the ILC invoice as a TEST, saved as a draft, NEVER sent. The decision whether to use Revolut invoicing is taken afterwards. The owner is checking the merchant fees himself (the public fee pages return 403/404 to our tools; the fee is shown in the app under Merchant, Get paid).
+
+Set-up facts (from `docs/templates/INVOICE_TEMPLATE.html` and the sent PDFs):
+- Issuer: ResourceHub, CVR 46200462 written without a DK prefix (PMV, not VAT registered), partnerships@europeansummercamps.com. The street address is a placeholder in the template; Revolut already holds the registered address.
+- No VAT ever; fixed note: "VAT: not applicable. No VAT is charged on this invoice. The amount shown is the total payable."
+- Currency EUR, payment terms net 14 days, invoice numbers sequential across all ResourceHub invoicing: 2026-001 (ILC, sent 3 Sept as PDF, due 17 Sept, unpaid on 12 Sept) and 2026-002 (Les Elfes, sent 10 Sept as PDF). The test invoice reuses 2026-001 so it can be compared with the PDF; if Revolut refuses a duplicate number, use 2026-001-TEST and say so.
+- ILC buyer: International Summer Camps (ISC) SARL, Quai Gustave Ador 34, 1207 Geneva, Switzerland; email info@internationallanguagecamps.com (Elodie Ughetto Guillot, Admission Officer). One line: "Premium listing for The International Language Camps (Megeve, France) on europeansummercamps.com. 12 months from activation." EUR 199.00. Payment reference 2026-001.
+- Branding: site blue (Tailwind blue-600, #2563EB) with the orange accent; the only logo files in the repo are `public/favicon.svg` and `public/apple-touch-icon.png` (180 px). Ask the owner for a larger logo if Revolut needs one.
+- Open questions to settle in the app: can links and invoices be issued in EUR on the DKK account without a conversion on our side; the exact card fee per transaction. Then the owner decides.
+- Recommendation on record: Revolut invoices for the Premium and EUR 79 fees (pay button, no bank details in any document), a payment link per amount as a supplement, subscriptions not now (fixed 1 September renewal, rate-locked prices).
+
+### State of the site (all pushed, production verified)
+
+Commits of 12 Sept, in order: 851544b (ILC 2027 card, six highlights on Premium cards, priceNote, bullet fix), 3a6500d (Les Elfes campus photo), 2a4028b (docs), 20018e0 (hotel line), e43e97e (FEATURED band, Premium Alpine chips, ILC reviews 5.0 from 21, ensuite), 9bad2cb (policy), 7171f0b (rating one decimal), 9484f42 (four-column analysis), 07c02ca (activities toggle, Via Ferrata Climbing, card-click analysis), 5ac06b5 (no pointer cursor on cards), abbab10 (outreach template). Zero commits ahead of origin at the end.
+
+Owner decisions of 12 Sept: band reads FEATURED on every paying card; product stays "Premium listing" in communication; chip carries the category name on the five Premium Alpine cards; three columns stay (four columns would reach at most 15 percent of sessions); no whole-card click, pointer cursor removed, zoom kept; in-site detail view PARKED (an extra click before booking, needs more analysis); "+N more" now expands in place on every card; jargon pass over activity strings still to do.
+
+Partner status: ILC (ID 70) fully updated from Elodie's 11 Sept reply and live; invoice 2026-001 due 17 Sept, unpaid on 12 Sept; after the 17th draft a reminder, never send. Les Elfes (IDs 1 and 73) both on her own photographs, six highlights each, no reply since 8 Sept. Reply drafts to both are in their threads, short and in the "we" voice.
+
+### Gmail drafts: all 63 ESC drafts vetted on 12 Sept, ready to send
+
+Standard applied to every draft: "we" voice, never "I"; referral figure only at 20 or more, verified in GA4 that day, in the owner's own wording ("sent N families directly through to your site, and hopefully many more indirectly, as we are one of the leading summer camp sites in Europe"); below 20 no number, just the indirect sentence; two-camp operators get the combined figure; "sign up for our new Premium option"; "EUR 199 for the first full year"; Premium described as the gold-framed Featured card placed ahead of the standard listings, six highlights, own photograph, video button, four updates; signature carries "www.europeansummercamps .com"; closing "reply to this email and we will answer promptly"; no links, no em dashes, no internal notes (mechanically scanned). The template file carries the same rules. Before sending, the owner switches the sender to partnerships@ on each draft and discards the nine drafts retitled "[SUPERSEDED, DISCARD]". Djuringa keeps its HOLD subject until the owner decides the Trustpilot question. The owner's personal drafts in the same mailbox are never touched.
+
+### Then, in order
+1. Revolut setup and the ILC test invoice (above).
+2. After 17 Sept: ILC payment check; if unpaid, draft a reminder, never send.
+3. Wave 2 as replies arrive: Camp California, Explorer 845, Kalkalpen 2027, Vierumaki, EUROCAM operator check, Warsaw Montessori, Atlas.
+4. Jargon pass over all activity and highlight strings (Via Ferrata was the first).
+5. Parked: in-site detail view (option 3 in the card-click analysis), specialFeatures surfacing, FilterBar extraction, and the 7 September pickup list below.
 
 ## 🔴 **SESSION PICKUP (written 7 September 2026, 03:50, during the owner's AFK night run)**
 
