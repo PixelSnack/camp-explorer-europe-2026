@@ -322,7 +322,7 @@
 /* Enhanced Card Interactions - Premium Feel */
 .camp-card {
   transition: all 0.3s ease;
-  cursor: pointer;
+  /* No pointer cursor: the card itself is not clickable (owner decision 12 Sept 2026; the image hover zoom stays). Exits are the buttons. */
 }
 
 .camp-card:hover {
