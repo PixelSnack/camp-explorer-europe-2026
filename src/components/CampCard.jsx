@@ -1,6 +1,7 @@
 // Camp card as rendered in the Discover grid (and the winter grid). Extracted from App.jsx on 6 Sept 2026
 // with an identical rendered DOM (before/after dump diff over the DevTools protocol). The Home grid keeps
 // its own copy on purpose (indexed view, zero-touch rule); every grid calls the same shared handlers.
+import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Button } from '@/components/ui/button.jsx'
@@ -17,6 +18,9 @@ import { BookingStatusBadge } from './BookingStatusBadge.jsx'
  * @param {(camp: object) => void} props.onVideo tracked video click
  */
 export default function CampCard({ camp, isSelected, onToggleCompare, onBook, onVideo }) {
+  // "+N more" on the activities row was a static badge until 12 Sept 2026; every camp has more than three
+  // activities and the rest were visible nowhere on the site. It is now a button that expands the row in place.
+  const [showAllActivities, setShowAllActivities] = useState(false)
   return (
     <Card data-camp-card={camp.id} className={`camp-card overflow-hidden group flex flex-col ${
       camp.featured
@@ -118,16 +122,23 @@ export default function CampCard({ camp, isSelected, onToggleCompare, onBook, on
             </span>
           </div>
 
-          <div className="flex flex-wrap gap-1">
-            {camp.activities.slice(0, 3).map((activity, index) => (
+          <div className="flex flex-wrap gap-1" id={`activities-${camp.season === 'winter' ? 'winter' : 'discover'}-${camp.id}`}>
+            {(showAllActivities ? camp.activities : camp.activities.slice(0, 3)).map((activity, index) => (
               <Badge key={index} variant="secondary" className="badge-responsive">
                 {activity}
               </Badge>
             ))}
             {camp.activities.length > 3 && (
-              <Badge variant="secondary" className="badge-responsive">
-                +{camp.activities.length - 3} more
-              </Badge>
+              <button
+                type="button"
+                className="badge-responsive activities-toggle"
+                aria-expanded={showAllActivities}
+                aria-controls={`activities-${camp.season === 'winter' ? 'winter' : 'discover'}-${camp.id}`}
+                aria-label={showAllActivities ? `Show fewer activities for ${camp.name}` : `Show all ${camp.activities.length} activities for ${camp.name}`}
+                onClick={(e) => { e.stopPropagation(); setShowAllActivities(v => !v) }}
+              >
+                {showAllActivities ? 'Show fewer' : `+${camp.activities.length - 3} more`}
+              </button>
             )}
           </div>
 

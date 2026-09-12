@@ -149,6 +149,9 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [activeSection, setActiveSection] = useState('home')
   const [selectedCamps, setSelectedCamps] = useState([])
+  // Home grid copy of the card: which cards show all activities (CampCard keeps its own local state)
+  const [expandedActivityCards, setExpandedActivityCards] = useState(() => new Set())
+  const toggleActivities = (id) => setExpandedActivityCards(prev => { const next = new Set(prev); next.has(id) ? next.delete(id) : next.add(id); return next })
   const [selectedCountries, setSelectedCountries] = useState([])
   const [selectedPriceTier, setSelectedPriceTier] = useState('all')
   const [selectedAgeGroups, setSelectedAgeGroups] = useState([])
@@ -1385,16 +1388,23 @@ function App() {
                       </span>
                     </div>
                     
-                    <div className="flex flex-wrap gap-1">
-                      {camp.activities.slice(0, 3).map((activity, index) => (
+                    <div className="flex flex-wrap gap-1" id={`activities-home-${camp.id}`}>
+                      {(expandedActivityCards.has(camp.id) ? camp.activities : camp.activities.slice(0, 3)).map((activity, index) => (
                         <Badge key={index} variant="secondary" className="badge-responsive">
                           {activity}
                         </Badge>
                       ))}
                       {camp.activities.length > 3 && (
-                        <Badge variant="secondary" className="badge-responsive">
-                          +{camp.activities.length - 3} more
-                        </Badge>
+                        <button
+                          type="button"
+                          className="badge-responsive activities-toggle"
+                          aria-expanded={expandedActivityCards.has(camp.id)}
+                          aria-controls={`activities-home-${camp.id}`}
+                          aria-label={expandedActivityCards.has(camp.id) ? `Show fewer activities for ${camp.name}` : `Show all ${camp.activities.length} activities for ${camp.name}`}
+                          onClick={(e) => { e.stopPropagation(); toggleActivities(camp.id) }}
+                        >
+                          {expandedActivityCards.has(camp.id) ? 'Show fewer' : `+${camp.activities.length - 3} more`}
+                        </button>
                       )}
                     </div>
                     

@@ -341,7 +341,7 @@ export const allCamps = [
     image: heroImage,
     category: "unique",
     type: "Adventure Expedition",
-    activities: ["Sea Kayaking", "Summit Hiking", "Via Ferrata", "Cultural Immersion"],
+    activities: ["Sea Kayaking", "Summit Hiking", "Via Ferrata Climbing", "Cultural Immersion"],
     dates: "June 29-July 14 & July 18-August 2, 2026",
     highlights: ["Galdhøpiggen summit", "16-day expedition", "High fitness required", "Viking history"],
     languages: ["English", "Norwegian"],
@@ -1576,7 +1576,7 @@ export const allCamps = [
     image: ilcMegeveSummer, // ILC's own photograph (campers and staff above Megeve with the Mont Blanc massif behind), attached to Elodie Ughetto Guillot's email of 11 Sept 2026 with the words "a photograph that you are welcome to use on our Premium card". Written permission on file in the Gmail thread. Resized to 1200x675 from the 1365x768 original
     category: "premium",
     type: "Premium Alpine Language Camp", // Category name on the chip, see ID 1
-    activities: ["Language Immersion", "Rafting and Canyoning", "Via Ferrata", "Mountain Expeditions", "Glacier Excursions"], // "Horse Riding" removed 12 Sept 2026: riding is a paid option (CHF 470 a week on the 2027 price list), not part of the programme. Mountain expeditions are on the operator's home page for the oldest group
+    activities: ["Language Immersion", "Rafting and Canyoning", "Via Ferrata Climbing", "Mountain Expeditions", "Glacier Excursions"], // "Horse Riding" removed 12 Sept 2026: riding is a paid option (CHF 470 a week on the 2027 price list), not part of the programme. Mountain expeditions are on the operator's home page for the oldest group
     dates: "Jun 27 - Jul 31, 2027", // Verified 12 Sept 2026: ILC's written 2027 update and the 2027 price list both state 27 June to 31 July 2027, stays of one to five weeks
     bookingStatus: "2027 dates published", // Verified 12 Sept 2026 from the operator's own 2027 price list and written update. Not "open": the site still carries the 2026 reservation flow and no single enrolment form can be checked
     highlights: ["Accommodation at Hotel Au Vieux Moulin in the heart of Megeve", "One adult for every five campers", "A deliberately small camp, around 40 campers a week", "Language classes of no more than eight", "English or French with native speaking teachers", "New for 2027: Teens Mountain Adventure, ages 14 to 17"], // Rewritten 12 Sept 2026 to the six points ILC asked for in writing on 11 Sept, in card style. The hotel leads because they asked for it to be prominent. "High end" was not adopted: the hotel is a 3-star boutique hotel (its own site), so the card names it and its location instead. Owner correction 12 Sept: the line must say the camp is accommodated AT the hotel, so a parent does not read the camp as being a hotel. "30+ years, Est. 1996" is carried by the Est. 1996 footer, which freed the sixth slot for the new teen programme. Ratio, class size and native teachers are on the operator's home page; the 40-a-week figure is ILC's own email of 14 Aug 2026

@@ -53,6 +53,7 @@ Every brief carries these lines, in this order:
 5. **The artefact**: the diff, spec, data rows or copy, inline. Paste code, do not describe it.
 6. **The ask, ranked**: "Return findings ranked by severity, each with the concrete evidence line and the smallest fix. State what you checked and found clean. Under 1,500 words."
 7. **Format**: "Prose or short tables, no preamble" (Astra defaults to long, heavily formatted answers).
+8. **For anything a parent sees**: "Walk the card as a first-time parent and press everything: every chip, badge, button and hover; report anything that looks clickable and is not, and any term a non-specialist parent would not understand." Added 12 Sept 2026 after the owner found a dead "+N more" chip on every card and an unexplained "Via Ferrata" that three fact-checking reviews had passed.
 
 For data passes add the no-fabrication clause used for the agents: quote a source for every number, write NOT FOUND rather than guess, never infer a per-child price from a group or facility rate. For date and price passes also paste the six-step search order from `.claude/agents/camp-data-verifier.md` (dates page by URL pattern, enrolment form, brochure PDF, interactive widgets need a browser, unlabelled years reported as printed, every price label reported); the enrolment form is the only source that verifies "open".
 
