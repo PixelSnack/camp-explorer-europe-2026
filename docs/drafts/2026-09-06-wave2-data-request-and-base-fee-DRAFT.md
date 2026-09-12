@@ -15,9 +15,9 @@ Subject: Your listing on European Summer Camps: the 2027 season, and your listin
 
 Dear [name or team at CAMP],
 
-We list CAMP on European Summer Camps (www.europeansummercamps .com), the directory of verified residential camps that families across Europe use to plan their children's summers. Your listing has been live since [month year], and it is kept accurate for you: every season we re-verify dates, prices and ages against your own pages, and every family who clicks through arrives on your booking page tagged as coming from us, visible in your analytics under the source "europeansummercamps". [If ten or more: Since March, when we began counting referrals per camp, your listing has sent N families through to your site.]
+We list CAMP on European Summer Camps (www.europeansummercamps .com), the directory of verified residential camps that families across Europe use to plan their children's summers. Your listing has been live since [month year], and it is kept accurate for you: every season we re-verify dates, prices and ages against your own pages, and every family who clicks through arrives on your booking page tagged as coming from us, visible in your analytics under the source "europeansummercamps". [If 20 or more: Since March, when we began counting referrals per camp, your listing has sent N families directly through to your site, and hopefully many more indirectly, as we are one of the leading summer camp sites in Europe.] [If fewer than 20, no number; instead end the previous sentence with: , and as one of the leading summer camp sites in Europe we hope to have sent many more families your way indirectly.]
 
-Your listing continues for the full 2026 season at no charge. From the 2027 season every listing carries an annual administration fee of EUR 79, which covers the listing and its yearly re-verification, and we very much hope you will pay it now, or sign up for Premium, so that CAMP stays listed for 2027. Premium is EUR 299 a year, or EUR 199 for the first year when taken on the 2027 cycle, and gives your camp a gold-framed Featured card placed ahead of the standard listings in its category, six highlights instead of three, your own photograph, a video button and up to four updates a year, with the administration fee included. Your invoice for the 2027 season follows as soon as we have your details; the next invoice date after that is 1 September 2027.
+Your listing continues for the full 2026 season at no charge. From the 2027 season every listing carries an annual administration fee of EUR 79, which covers the listing and its yearly re-verification, and we very much hope you will pay it now, or sign up for our new Premium option, so that CAMP stays listed for 2027. Premium is EUR 299 a year, or EUR 199 for the first full year when taken on the 2027 cycle, and gives your camp a gold-framed Featured card placed ahead of the standard listings in its category, six highlights instead of three, your own photograph, a video button and up to four updates a year, with the administration fee included. Your invoice for the 2027 season follows as soon as we have your details; the next invoice date after that is 1 September 2027.
 
 So that we can invoice you correctly, please send us:
 
@@ -27,17 +27,18 @@ So that we can invoice you correctly, please send us:
 
 And for the 2027 listing itself: session dates, the per-child price for one session and what it includes, ages accepted, and the page where families should book.
 
-We check every detail against your own pages before it goes live, and we correct it as soon as you tell us. If you have any questions, reply to this email and I will answer personally.
+We check every detail against your own pages before it goes live, and we correct it as soon as you tell us. If you have any questions, reply to this email and we will answer promptly.
 
 Kind regards,
 
 Søren Thoning
 European Summer Camps
-partnerships@europeansummercamps .com
+www.europeansummercamps .com
+partnerships@europeansummercamps.com
 
 ## Notes for the sender
 
-- Fill the bracketed fields from camps.js (the listing month from the first commit that added the camp) and the referral figure from `scripts/ga4-pull.py --camp "<name>"` (only where ten or more).
+- Fill the bracketed fields from camps.js (the listing month from the first commit that added the camp) and the referral figure from GA4 (`scripts/ga4-pull.py --camp "<name>"` or the GA4 connector), re-read on the day the draft is finalised. Owner rule 12 Sept 2026: state a figure only at 20 or more; a small number is counterproductive. Two-camp operators get the combined figure. Every outward mail says "we", never "I".
 - Camps already in a thread (Funside, Les Elfes) get the same substance inside their thread. LINEŠA is exempt for 2027 (the 2 September message promised the standard listing stays free).
 - Two-camp operators (Enforex, Village Camps) get one message covering both listings; a Premium covers up to three cards.
 - Invoicing follows FEATURED_LISTINGS_POLICY.md section 4 (ResourceHub, EUR, VAT exempt, bank details only on the invoice, never in the repo).
