@@ -1305,7 +1305,7 @@ function App() {
                     <div className="absolute top-0 left-0 z-10">
                       <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-white text-sm font-bold px-4 py-2 shadow-lg flex items-center gap-1.5 rounded-br-lg">
                         <Star className="w-4 h-4 fill-white" />
-                        <span>{camp.priceRange === 'premium' || camp.priceRange === 'luxury' ? 'PREMIUM' : 'FEATURED'}</span>
+                        <span>FEATURED</span>
                       </div>
                     </div>
                   )}

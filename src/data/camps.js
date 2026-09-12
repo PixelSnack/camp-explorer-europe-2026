@@ -67,7 +67,7 @@ export const allCamps = [
     },
     image: lesElfesSummer, // Les Elfes' own photograph of the Verbier campus chalet with the peaks behind (file dsc02356 in the Campus folder Alexandra Stettler shared on 8 Sept 2026 with "please feel free to pick a picture from one of our folders"; she asked for "our own photograph of Verbier and the campus"). Chosen 12 Sept 2026; cropped to 16:9 at 1200x675. No people in the frame. Replaced the mountain-biking photo taken from their website on 11 Sept, which the owner had told her was temporary
     category: "premium",
-    type: "Alpine Adventure",
+    type: "Premium Alpine Adventure", // Owner direction 12 Sept 2026: the chip carries the category name "Premium Alpine" on every card in that category, because the card prints no category and the band now reads Featured
     activities: ["Rock Climbing", "Mountain Biking", "Water Skiing", "Tree Top Adventure"], // Read on leselfes.com/summer-camps/ 11 Sept 2026. "5 Languages" was removed: it is not an activity and it duplicated the Languages row directly beneath it on the card
     dates: "June 6 - Aug 28, 2027", // Verified 6 Sept 2026 (leselfes.com/dates-and-pricing): six two-week sessions, 6 Jun to 28 Aug 2027
     bookingStatus: "open", // Verified 6 Sept 2026: every 2027 session shows Enrol now and is selectable with its price on leselfes.com/summer-camp/enrol/
@@ -91,7 +91,7 @@ export const allCamps = [
     reviews: 423,
     image: activitiesCompressed,
     category: "premium",
-    type: "Luxury Boarding",
+    type: "Premium Alpine Boarding", // Category name on the chip, see ID 1
     activities: ["Academic Enrichment", "Professional Sports", "Cultural Immersion", "Leadership"],
     dates: "June 14-28, 2026",
     highlights: ["Luxury Alpine setting", "50+ nationalities", "Boarding school experience", "Premium facilities"],
@@ -113,7 +113,7 @@ export const allCamps = [
     reviews: 356,
     image: mapCompressed,
     category: "premium",
-    type: "Adventure Sports",
+    type: "Premium Alpine Adventure Sports", // Category name on the chip, see ID 1
     activities: ["Multi-Sport", "Language Learning", "Leadership Training", "Environmental Ed"],
     dates: "June 21-July 5, 2026",
     highlights: ["40+ countries", "Bilingual environment", "Adventure focus", "Lake Geneva"],
@@ -1564,11 +1564,18 @@ export const allCamps = [
     price: "From CHF 3,995/1 week", // Verified 12 Sept 2026 against the operator's "PRICE LIST INTERNATIONAL SUMMER CAMPS 2027" PDF and email of 11 Sept: full-board residential, per child, one week on the Fun programme. Adrenaline CHF 4,095, Teens Mountain Adventure CHF 4,195. Registration fee CHF 200 per stay; laundry CHF 70 compulsory from a two-week stay; Geneva airport transfer CHF 350 per transfer, optional. Day camper is a separate non-residential rate. ILC confirmed in writing on 1 Sept 2026 that the CHF international prices are the ones to publish
     priceNote: "plus CHF 200 registration", // Rendered in small text under the price. Added 12 Sept 2026: the fee is compulsory on every stay (operator's 2027 price list and email of 11 Sept), so "From CHF 3,995" alone would understate the minimum payable. Laundry CHF 70 applies only from two weeks and stays in the comment
     priceRange: "luxury",
-    rating: null,
-    reviews: 0,
+    rating: 5.0, // Weighted aggregate per REVIEW_METHODOLOGY: Google 5.0 x 20 (tier 2) and TripAdvisor 5.0 x 1 (tier 2)
+    reviews: 21,
+    reviewData: {
+      lastVerified: "2026-09", // 12 Sept 2026: Google Maps listing "International Language Camps", 126 Rte de Rochebrune, 74120 Megeve, phone +41 22 346 14 42 (matches the operator's signature), read in Chrome: 5,0 (20). TripAdvisor attraction d19852358: 5.0 bubbles, 1 review. World-camps.org: no reviews yet
+      sources: {
+        google: { rating: 5.0, count: 20 },
+        tripadvisor: { rating: 5.0, count: 1 }
+      }
+    },
     image: ilcMegeveSummer, // ILC's own photograph (campers and staff above Megeve with the Mont Blanc massif behind), attached to Elodie Ughetto Guillot's email of 11 Sept 2026 with the words "a photograph that you are welcome to use on our Premium card". Written permission on file in the Gmail thread. Resized to 1200x675 from the 1365x768 original
     category: "premium",
-    type: "Alpine Language Camp",
+    type: "Premium Alpine Language Camp", // Category name on the chip, see ID 1
     activities: ["Language Immersion", "Rafting and Canyoning", "Via Ferrata", "Mountain Expeditions", "Glacier Excursions"], // "Horse Riding" removed 12 Sept 2026: riding is a paid option (CHF 470 a week on the 2027 price list), not part of the programme. Mountain expeditions are on the operator's home page for the oldest group
     dates: "Jun 27 - Jul 31, 2027", // Verified 12 Sept 2026: ILC's written 2027 update and the 2027 price list both state 27 June to 31 July 2027, stays of one to five weeks
     bookingStatus: "2027 dates published", // Verified 12 Sept 2026 from the operator's own 2027 price list and written update. Not "open": the site still carries the 2026 reservation flow and no single enrolment form can be checked

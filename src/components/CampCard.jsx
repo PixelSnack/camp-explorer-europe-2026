@@ -33,12 +33,12 @@ export default function CampCard({ camp, isSelected, onToggleCompare, onBook, on
           title={`${camp.name} - European ${camp.season === 'winter' ? 'Winter' : 'Summer'} Camp ${camp.ages}`}
           loading="lazy"
         />
-        {/* Featured Camp Badge */}
+        {/* Featured band: every paying (featured) card reads FEATURED regardless of price tier. Owner decision 12 Sept 2026: "Premium" on the band read as a rating; the partner product keeps the name Premium listing, the public label is Featured */}
         {camp.featured && (
           <div className="absolute top-0 left-0 z-10">
             <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-white text-sm font-bold px-4 py-2 shadow-lg flex items-center gap-1.5 rounded-br-lg">
               <Star className="w-4 h-4 fill-white" />
-              <span>{camp.priceRange === 'premium' || camp.priceRange === 'luxury' ? 'PREMIUM' : 'FEATURED'}</span>
+              <span>FEATURED</span>
             </div>
           </div>
         )}
