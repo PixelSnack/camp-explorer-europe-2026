@@ -31,7 +31,7 @@ The €99/year Featured tier was retired by owner decision on 2 Sept 2026 ("99 E
 **Outstanding quotes:** the 17 Aug 2026 replies to LayosCamp, BELT, CBS, Samiad and Sharena Fabrika quoted Featured at €99 in writing. LayosCamp's September follow-up was rewritten to the new terms before sending (2 Sept, states the discontinuation plainly). If any of the other four replies accepting €99, the owner decides case by case; do not honor or refuse without asking him.
 
 ### Premium Listing (€299/year list — the only paid visibility tier)
-**Eligibility (owner decision 2 Sept 2026, supersedes the 18 Aug "cut above" gate):** open to ANY camp that passes verification. Buying Premium grants the premium feature set (badge, priority placement, highlighted card, video button); it does NOT re-categorize the camp on the site, move it into a premium price tier, or imply a quality designation. A mid-range camp with a Premium listing stays presented as what it is, with premium visibility features. Includes:
+**Eligibility (owner decision 2 Sept 2026, supersedes the 18 Aug "cut above" gate):** open to ANY camp that passes verification. Buying Premium grants the premium feature set (Featured band, placement ahead of standard listings, gold-framed card, six highlights, video button, own image); it does NOT re-categorize the camp on the site, move it into a premium price tier, or imply a quality designation. A mid-range camp with a Premium listing stays presented as what it is, with premium visibility features. Includes:
 | Aspect | Details |
 |--------|---------|
 | **List price** | €299 per listing per year |
@@ -211,9 +211,9 @@ Every listing card displays the following information:
 ## 7. PREMIUM LISTING BENEFITS (What Premium Adds)
 
 ### Visual Elements (Premium Only)
-- **Badge on camp card, label derived from the camp's price class (owner decision 2 Sept 2026):** camps with priceRange premium or luxury show PREMIUM; camps with priceRange mid or budget show FEATURED. Same product, same price; the label follows the price class already displayed on the card. The rule is objective and NOT negotiable per camp — never let a camp choose its label
+- **Featured band on the card (owner decision 12 Sept 2026, replaces the 2 Sept price-class rule):** every Premium card carries the gold FEATURED band, whatever its price class. "Premium" on the band read as a quality rating, and the category "Premium Alpine" already uses the word. The product is still called a Premium listing in partner communication, because the partner gets premium treatment (gold frame, six highlights, video button, own image, four edits a year), and the public label on the card is Featured. Never let a camp choose its label
 - **Highlighted card border** (distinguished from standard cards)
-- **Priority position** in category listing (premium camps appear first)
+- **Placement ahead of the standard listings** in its category and in the all-camps view (Premium cards sort first). Communicate it exactly that way: "placed ahead of the standard listings". Never promise the top row or a fixed position: as more Premium partners join, the order among Premium cards follows the listing date, and on a phone the grid is a single column
 - **"Watch Camp Video" button** when the camp supplies a video link
 
 ### Placement Rules
