@@ -1109,6 +1109,7 @@ europeansummercamps/
   country: "Country Name",      // Full name, not country code
   ages: "X-Y years",            // Parsed by parseAges(); "6+ years" and "All ages" also accepted
   price: "From €X,XXX/1 week",  // Local currency, per-child, with the unit; provenance comment on the line
+  priceNote: "plus CHF 200 registration",  // OPTIONAL, rendered under the price: only for a compulsory charge the "From" price omits
   priceRange: "budget",         // budget | mid | premium | luxury (EUR/week equivalent)
   rating: X.X,                  // Weighted aggregate, or null when no reviews exist
   reviews: XXX,                 // Total review count (0 hides the review row)
@@ -1117,7 +1118,7 @@ europeansummercamps/
   type: "Short label",          // Card chip, e.g. "Alpine Adventure"
   activities: ["activity1", "activity2", "activity3"],
   dates: "June 6 - Aug 28, 2027",  // Keep under ~40 characters; provenance comment on the line
-  highlights: ["highlight1", "highlight2", "highlight3"],
+  highlights: ["highlight1", "highlight2", "highlight3"],  // Cards render 3; Premium (featured) cards render up to 6, about 45 characters each
   languages: ["Language1", "Language2"],
   specialFeatures: ["feature1"],
   established: YYYY,            // Year established

@@ -296,9 +296,21 @@ className={camp.featured
   </div>
 )}
 
-// Shows 3 highlights instead of 2
-camp.highlights.slice(0, camp.featured ? 3 : 2)
+// Premium cards render up to six highlights, standard cards three (since 12 Sept 2026; was 4 : 3).
+// The same slice lives in CampCard.jsx and in the Home grid copy in App.jsx: change both together.
+camp.highlights.slice(0, camp.featured ? 6 : 3)
+
+// Highlight bullets are anchored to the first line (items-start, mt-[7px]) so a wrapped
+// highlight keeps its dot at the top instead of centred between the lines.
+
+// Optional priceNote (camps.js) renders in small grey text under the duration, e.g. ILC's
+// "plus CHF 200 registration". Use it only for a compulsory charge that the "From" price omits.
+{camp.priceNote && <div className="camp-price-note">{camp.priceNote}</div>}
 ```
+
+Writing Premium highlights: six lines, each about 45 characters so it stays on one line at 390px;
+facts about the week, in the order the partner asked for, every line traceable to the operator's
+page, brochure or written email (quote it in the provenance comment).
 
 ---
 

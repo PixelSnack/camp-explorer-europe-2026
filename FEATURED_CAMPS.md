@@ -3,7 +3,7 @@
 *Tracking document for paid Premium listings (€299/year list, €199 introductory; the €99 Featured tier was discontinued 2 Sept 2026)*
 
 **Created:** January 18, 2026
-**Last Updated:** September 10, 2026
+**Last Updated:** September 12, 2026
 **Status:** TWO Premium listings sold, BOTH now live on the site. ILC (invoice 2026-001 due 17 Sept, unpaid; card activated 11 Sept as goodwill) and **Les Elfes (accepted 8 Sept, invoice 2026-002 raised 10 Sept, PDF ready, reply drafted in thread)**. Les Elfes converts from demo to paying partner on the 2027 cycle.
 
 ---
@@ -47,7 +47,7 @@ Alexandra Stettler, Chief Executive Officer, replying in the thread opened 7 Sep
 | **Contact** | Alexandra Stettler, CEO, alexandra@leselfes.com, +41 27 775 35 90 |
 | **Gmail thread** | `1a0796e2af5be68d` |
 
-**Card image:** she chose to supply their own photograph rather than have us illustrate one, and shared three Google Drive folders (Campus, Summer, Winter) for us to pick from. Links are in the thread. Nothing downloaded yet.
+**Card images (done 12 Sept 2026):** she chose to supply their own photographs and shared three Google Drive folders (Campus, Summer, Winter). The winter card uses a skiers photograph from the Winter folder (10 Sept). The summer card uses the campus chalet photograph from the Campus folder (file dsc02356, chosen 12 Sept, matching her words "our own photograph of Verbier and the campus"); it replaced the temporary mountain-biking photo taken from their website on 11 Sept. Both cards carry six highlights since 12 Sept, every line re-read on leselfes.com that day. A reply draft in her thread tells her both and invites a swap.
 
 #### Open commitments to this partner (we promised these in writing)
 
@@ -101,7 +101,7 @@ Alexandra Stettler, Chief Executive Officer, replying in the thread opened 7 Sep
 
 | Camp | Contact | Inquiry Date | Status | Notes |
 |------|---------|--------------|--------|-------|
-| The International Language Camps (ILC), Megève | ILC admissions office | Aug 13, 2026 | ✅ Accepted Premium at the €199 introductory rate (1 Sept 2026) | Invoice 2026-001 sent 3 Sept 2026 from partnerships@ (PDF attached), due 17 Sept, STILL UNPAID. **ACTIVATED 11 Sept 2026 as camp ID 70 ahead of payment, on the owner decision, to show goodwill.** Featured, hotel named (Hotel Au Vieux Moulin), CHF international prices per their written confirmation of 1 Sept. Still owed BY them: a card photograph (brochure images show identifiable children, no publication permission), the promotional video link they offered, the founding year (brochure says 1996 and 30 years, signature says 28th anniversary, so no established field is published), and 2027 dates and prices |
+| The International Language Camps (ILC), Megève | Elodie Ughetto Guillot, Admission Officer | Aug 13, 2026 | ✅ Accepted Premium at the €199 introductory rate (1 Sept 2026) | Invoice 2026-001 sent 3 Sept 2026 from partnerships@ (PDF attached), due 17 Sept, unpaid as of 12 Sept. **ACTIVATED 11 Sept 2026 as camp ID 70 ahead of payment, on the owner decision.** **Summer 2027 update received 11 Sept and applied 12 Sept (live from commit 851544b):** dates 27 June to 31 July 2027, ages 6 to 17 (new Teens Mountain Adventure 14 to 17), from CHF 3,995 a week (Fun; Adrenaline 4,095; Teens 4,195), registration CHF 200 per stay shown as a price note, their own photograph with written permission, their promotional film, Est. 1996 confirmed, six highlights in the order they asked for with the hotel first. Their "high end hotel" wording was rendered as "Boutique hotel Au Vieux Moulin in the heart of Megeve" (the hotel's own description; it is 3-star). Still to come from them: a new 2027 film later, and any correction to the card. Reply draft in thread (owner sends from partnerships@) |
 | Boundless Life | Megan Miller | Jan 16, 2026 | ❌ No response since Jan 17, 2026 | Treat as closed |
 | LINEŠA | Jolita Bečienė | Jan 2026 | Dormant (closed by LINEŠA 24 Aug 2026, may return for 2027) | Free listing stands; Camp Pasaka (ID 43) listed editorially |
 

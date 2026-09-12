@@ -1,7 +1,7 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 7, 2026, 03:50 (AFK night run: 56 outreach drafts re-framed, winter selection fully followed up, invoice wording fixed, Camp Semenic corrected)
+**Last Updated:** September 12, 2026, 15:20 (AFK run: ILC 2027 card applied from their 11 Sept update, Les Elfes summer card on her campus photo, Premium cards render six highlights; record in `docs/reports/SESSION_2026-09-12_PREMIUM_CARDS.md`)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** weekly GSC watch -> ILC payment and activation -> Wave 2 per-camp 2027 dates -> winter camps decision -> new camp research
 **🔴 Deadline:** winter section promised live to Les Elfes for **Monday 14 September 2026**. She is a paying partner as of 8 Sept.
@@ -11,7 +11,17 @@
 
 ---
 
-## 🔴 **START HERE — SESSION PICKUP (written 7 September 2026, 03:50, during the owner's AFK night run)**
+## 🔴 **START HERE — 12 September 2026 (Premium partner cards), then the 7 September block below**
+
+**Done and live (commit 851544b, pushed and production-verified):** ILC (ID 70) carries its Summer 2027 data from Elodie's 11 Sept email and price list (27 June to 31 July 2027, ages 6 to 17 with the new Teens Mountain Adventure 14 to 17, from CHF 3,995 a week, "2027 dates published" badge, Est. 1996), their own photograph with written permission, their film, six highlights in the order they asked for with the hotel first, and a rendered price note "plus CHF 200 registration". Premium cards render up to six highlights (standard three) in both `CampCard.jsx` and the Home grid copy; bullets anchor to the first line; new optional `priceNote` field.
+
+**Committed, NOT pushed (3a6500d plus the docs commit):** Les Elfes summer card (ID 1) shows her campus chalet photograph from the Campus folder she shared (her words: "our own photograph of Verbier and the campus"), both Les Elfes cards carry six highlights re-read on leselfes.com, ILC price note shortened to one line at phone width. **Owner: push, then check production** (Les Elfes summer image, ILC one-line price note).
+
+**Two Gmail drafts waiting, never sent, sender must be switched to partnerships@ before sending:** ILC (thread `1a000381ff4af71a`, card updated, what it says, why the hotel is named rather than graded, why Est. 1996 freed the sixth slot for the teen programme) and Les Elfes (thread `1a0796e2af5be68d`, campus photo and six highlights, invite a swap).
+
+**Still open on ILC:** invoice 2026-001 due 17 Sept, unpaid on 12 Sept; a new 2027 film will come later. Full adjudication record (including the Astra review) in `docs/reports/SESSION_2026-09-12_PREMIUM_CARDS.md`.
+
+## 🔴 **SESSION PICKUP (written 7 September 2026, 03:50, during the owner's AFK night run)**
 
 ### State on exit
 **The night's work is committed; the owner pushes in GitHub Desktop** (check `git rev-list --count origin/main..HEAD`). Full record: `docs/reports/SESSION_2026-09-06_WINTER_WAVE2.md` (AFK stretch and the draft ledger), `docs/reports/WINTER_VETTING_2026-09-06.md` (every winter answer followed up; gate status at the end), `docs/reports/GA4_PULL_2026-09-06.md`.
@@ -198,7 +208,7 @@ Reserve: ADEPS (BE) when the summer catalogue opens; Kolping Ferienland Salem (D
 1. Startup protocol (bridge inbox: Playground owes replies on the GSC MCP TLS failure and the GA4 MCP IPv6 failure; the Cloudflare security-insights CSV waits for a security review with the security agent, Astra when credit returns).
 0a. CARD CONTENT PASS, owner direction 11 Sept: **Premium cards first, one at a time, and the facts must stay correct on all the rest.** The older cards carry brand claims rather than useful facts. Les Elfes summer is DONE as the worked example (was "38+ years experience" and "10,000+ campers annually"; now the mountain-hut hike, the chosen weekly excursion, who teaches the language lessons, and the on site nurse). Remaining Premium cards to do: La Garenne (ID 2) reads "Luxury Alpine setting", "50+ nationalities", "Boarding school experience". ILC (ID 70) and the ten winter cards are already in the newer style. **Also note the specialFeatures field is dead data on all 68 camps, zero references in any .jsx component, and it holds real verified facts like Les Elfes' "On-site Nurse & 24/7 Care". Surfacing it is a UI change touching every card, so it needs a proper look at card height and mobile.** Full evidence at the end of docs/reports/SESSION_2026-09-10_HANDOVER.md.
 0. RESOLVED, no action needed: the GA4 "(not set)" camp attribution. It is historical only (all of Jan and Feb, part of March, zero from April onward, 1,241 attributed clicks since). It stopped when the camp_name custom dimension was registered, and custom dimensions do not backfill. See the correction at the end of docs/reports/SESSION_2026-09-10_HANDOVER.md.
-2. ILC: invoice 2026-001 due 17 Sept, STILL UNPAID. **Already activated as camp ID 70 on 11 Sept, ahead of payment, on the owner decision to show goodwill.** A reply is drafted in-thread telling them the card is live and asking for a card photograph, the promotional video link they offered, the founding year (their brochure says 1996 and 30 years, their signature says 28th anniversary, so no established field is published) and the 2027 dates and prices. If still unpaid after 17 Sept, draft a reminder and never send it.
+2. ILC: invoice 2026-001 due 17 Sept, unpaid on 12 Sept. Activated as camp ID 70 on 11 Sept ahead of payment (owner decision). **The 11 Sept reply answered everything: photograph, film, founding year 1996, 2027 dates and prices, all applied 12 Sept.** If still unpaid after 17 Sept, draft a reminder and never send it.
 3. Weekly GSC watch (standalone script; MCP still broken) from the week of 7 Sept.
 4. Open debt: 12 pre-existing em dashes in camps.js (mostly comments) and the 65-description outward-text scan; the alignment line (owner decides); `handleCampSelection` functional update (scalpel, low).
 
