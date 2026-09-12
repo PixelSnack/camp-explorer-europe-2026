@@ -1,7 +1,7 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 12, 2026, 18:30 (handoff at end of session: Premium cards done, Featured band, activities toggle, 63 drafts vetted, Revolut Merchant investigated; next job is the Revolut setup and the ILC test invoice)
+**Last Updated:** September 12, 2026, 23:40 (King's College sent by the owner; his wording applied to all 56 remaining outreach drafts and verified; Revolut Merchant done earlier the same day)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** weekly GSC watch -> ILC payment and activation -> Wave 2 per-camp 2027 dates -> winter camps decision -> new camp research
 **🔴 Deadline:** winter section promised live to Les Elfes for **Monday 14 September 2026**. She is a paying partner as of 8 Sept.
@@ -12,6 +12,11 @@
 ---
 
 ## 🔴 **START HERE — handoff written 12 September 2026, 18:30 (session ended on context, everything committed and pushed)**
+
+### ✅ DONE 12 Sept 2026, 23:40: all 56 outreach drafts carry the owner's King's College wording
+
+The owner sent King's College Madrid himself at 22:58 (info@kingscollege.es, from partnerships@) after editing the draft. His seven edits, recorded in auto-memory `outreach-wording-owner-edits-2026-09-12` and in the template file: a founder line after the greeting ("My name is Soren, and I'm the founder of Camp Explorer Europe and European Summer Camps."), a paragraph break before "Your listing has been live since", "we very much hope you will decide to pay it now", "stays listed for the full 2027 season", a paragraph break before "Premium is EUR 299", "If you decide to continue European Summer Camps for the 2027 season, in order for us to invoice you correctly, please send us:", and "simply reply to this email". Applied by script (one regex per sentence, each matched exactly once) to the 55 standalone outreach drafts, updated in place in batches of four; every draft re-read from Gmail afterwards and diffed against the intended text: 55 of 55 identical, referral figures, listing months, greetings and language lines unchanged, no URL, no em dash, no internal note. The Funside reply in Réka's thread was replaced by a new threaded draft (four of the seven edits: no founder line, she knows Soren; no first split, different opening) and the old one retitled [SUPERSEDED, DISCARD]: the owner now has **14** drafts to discard. ILC and Les Elfes reply drafts untouched on the owner's instruction. Camp Suisse, Camp Semenic and Bold Earth drafts are no longer in the mailbox (not in any listing on 12 Sept). Owner rule the same evening: small batches, be diligent; a wakeup was scheduled for 02:03 on 13 Sept to survive the session limit.
+
 
 The next session starts almost blank. Read this block, then `docs/reports/SESSION_2026-09-12_PREMIUM_CARDS.md` and `docs/reports/CARD_CLICK_AND_GRID_ANALYSIS_2026-09-12.md`. Auto-memory `esc-session-2026-09-12-handoff` carries the same facts in short form.
 

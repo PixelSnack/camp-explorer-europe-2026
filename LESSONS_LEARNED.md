@@ -540,3 +540,10 @@ The reply drafts to ILC and Les Elfes listed every highlight and every label cha
 - Leading zeros are stripped from invoice numbers, in the default and per invoice: the format is `2026-N`.
 - "Create" on an invoice makes it Open and payable; the next screen offers "Send" and "Later". "Later" keeps it unsent. Cancel it from the "..." menu if it was a test.
 - Payment-page branding, contact email and invoice numbering are account-wide, so they touch every ResourceHub brand; Playground is told through the bridge when they change.
+
+## 12 September 2026, late: the owner's edits to the outreach mail are the tone rule
+
+**What happened:** the owner sent King's College himself after editing my template in seven places (see NEXT_STEPS START HERE and auto-memory `outreach-wording-owner-edits-2026-09-12`). Every edit moved the mail the same way: name the sender, keep paragraphs short, phrase the ask as their decision, make the benefit concrete, make replying easy.
+
+**Rule:** outward drafts open with the founder line, run four-to-five-line paragraphs, say "if you decide" and "we hope you will decide", state what the fee buys ("the full 2027 season"), close with "simply reply". When a template change is applied to existing drafts: one regex per shared sentence, each asserted to match exactly once, per-camp facts never touched, small batches, and every draft re-read from Gmail and diffed afterwards before "done" is said. The owner's reason for small batches: a large batch once leaked internal notes into the mails.
+
