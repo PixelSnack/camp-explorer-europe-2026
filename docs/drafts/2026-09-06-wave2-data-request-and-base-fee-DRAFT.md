@@ -2,6 +2,8 @@
 
 *Written 6 September 2026 by ESC Claude at the owner's direction; re-framed 7 September 2026 on the owner's instruction (invoice details requested, value made clear, listing continues through 2026, next invoice 1 September 2027, successful-business tone). Every message is sent by the owner from partnerships@, one camp at a time; Claude only drafts. Web addresses are written with a space before the top-level domain, as in "www.site .com", and the owner closes the space (Gmail draft rule). The Gmail drafts created on 6 and 7 September carry this text with each camp's own lines.*
 
+*Re-worded 12 September 2026 to the version the owner sent to King's College Madrid himself: founder line after the greeting, shorter paragraphs, "decide to pay it now", "the full 2027 season", the invoice details conditional on their yes, "simply reply". Applied the same evening to all 56 remaining outreach drafts.*
+
 ## Owner decisions
 
 1. **Administration fee: EUR 79 per year** for every listing from the 2027 cycle; it covers the listing and its seasonal re-verification. Premium EUR 299 a year, EUR 199 the first year on the 2027 cycle, up to three camp cards, own image allowed; the administration fee is included in Premium.
@@ -15,11 +17,16 @@ Subject: Your listing on European Summer Camps: the 2027 season, and your listin
 
 Dear [name or team at CAMP],
 
-We list CAMP on European Summer Camps (www.europeansummercamps .com), the directory of verified residential camps that families across Europe use to plan their children's summers. Your listing has been live since [month year], and it is kept accurate for you: every season we re-verify dates, prices and ages against your own pages, and every family who clicks through arrives on your booking page tagged as coming from us, visible in your analytics under the source "europeansummercamps". [If 20 or more: Since March, when we began counting referrals per camp, your listing has sent N families directly through to your site, and hopefully many more indirectly, as we are one of the leading summer camp sites in Europe.] [If fewer than 20, no number; instead end the previous sentence with: , and as one of the leading summer camp sites in Europe we hope to have sent many more families your way indirectly.]
+My name is Soren, and I'm the founder of Camp Explorer Europe and European Summer Camps.
+We list CAMP on European Summer Camps (www.europeansummercamps .com), the directory of verified residential camps that families across Europe use to plan their children's summers.
 
-Your listing continues for the full 2026 season at no charge. From the 2027 season every listing carries an annual administration fee of EUR 79, which covers the listing and its yearly re-verification, and we very much hope you will pay it now, or sign up for our new Premium option, so that CAMP stays listed for 2027. Premium is EUR 299 a year, or EUR 199 for the first full year when taken on the 2027 cycle, and gives your camp a gold-framed Featured card placed ahead of the standard listings in its category, six highlights instead of three, your own photograph, a video button and up to four updates a year, with the administration fee included. Your invoice for the 2027 season follows as soon as we have your details. It is a standard invoice, payable by bank transfer, and it also offers a secure online card payment should you prefer that; either way there is nothing to set up on your side. The next invoice date after that is 1 September 2027.
+Your listing has been live since [month year], and it is kept accurate for you: every season we re-verify dates, prices and ages against your own pages, and every family who clicks through arrives on your booking page tagged as coming from us, visible in your analytics under the source "europeansummercamps". [If 20 or more: Since March, when we began counting referrals per camp, your listing has sent N families directly through to your site, and hopefully many more indirectly, as we are one of the leading summer camp sites in Europe.] [If fewer than 20, no number; instead end the previous sentence with: , and as one of the leading summer camp sites in Europe we hope to have sent many more families your way indirectly.]
 
-So that we can invoice you correctly, please send us:
+Your listing continues for the full 2026 season at no charge. From the 2027 season every listing carries an annual administration fee of EUR 79, which covers the listing and its yearly re-verification, and we very much hope you will decide to pay it now, or sign up for our new Premium option, so that CAMP stays listed for the full 2027 season.
+
+Premium is EUR 299 a year, or EUR 199 for the first full year when taken on the 2027 cycle, and gives your camp a gold-framed Featured card placed ahead of the standard listings in its category, six highlights instead of three, your own photograph, a video button and up to four updates a year, with the administration fee included. Your invoice for the 2027 season follows as soon as we have your details. It is a standard invoice, payable by bank transfer, and it also offers a secure online card payment should you prefer that; either way there is nothing to set up on your side. The next invoice date after that is 1 September 2027.
+
+If you decide to continue European Summer Camps for the 2027 season, in order for us to invoice you correctly, please send us:
 
 - The legal name of the operator and the invoicing address
 - Your VAT or company registration number
@@ -27,7 +34,7 @@ So that we can invoice you correctly, please send us:
 
 And for the 2027 listing itself: session dates, the per-child price for one session and what it includes, ages accepted, and the page where families should book.
 
-We check every detail against your own pages before it goes live, and we correct it as soon as you tell us. If you have any questions, reply to this email and we will answer promptly.
+We check every detail against your own pages before it goes live, and we correct it as soon as you tell us. If you have any questions, simply reply to this email and we will answer promptly. [Where the operator's country is not English-speaking: You are welcome to answer in LANGUAGE.]
 
 Kind regards,
 
