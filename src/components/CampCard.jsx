@@ -55,7 +55,7 @@ export default function CampCard({ camp, isSelected, onToggleCompare, onBook, on
           {camp.rating != null && (
           <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
             <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
-            {camp.rating}
+            {Number(camp.rating).toFixed(1)}
           </Badge>
           )}
           <Button

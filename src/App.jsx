@@ -1322,7 +1322,7 @@ function App() {
                     {camp.rating !== null && (
                     <Badge className="bg-white/90 text-gray-900 backdrop-blur-sm">
                       <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
-                      {camp.rating}
+                      {Number(camp.rating).toFixed(1)}
                     </Badge>
                     )}
                     <Button
@@ -2046,7 +2046,7 @@ function App() {
                             <span className="text-gray-600">Rating:</span>
                             <span className="font-semibold flex items-center">
                               <Star className="w-3 h-3 mr-1 fill-yellow-400 text-yellow-400" />
-                              {camp.rating}
+                              {Number(camp.rating).toFixed(1)}
                             </span>
                           </div>
                           )}
