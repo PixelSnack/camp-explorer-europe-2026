@@ -30,7 +30,13 @@ What is in the account now (owner logged in himself; every step below was done i
 
 **Owner rule, 12 Sept 21:40 (agreed):** this session set things up; nothing is sent. ILC already has the PDF invoice of 3 Sept and must not be chased with a second one; the Revolut copy is for comparison only. Every other operator has NOT had an invoice yet, so the choice for them is open: PDF attached, a Revolut pay link in the mail, or both. Whichever is chosen, the mail text has to say so, and the tone stays unpushy.
 
-**Owner decisions still open:** (1) adopt Revolut invoicing for the Premium and EUR 79 fees or stay with PDF plus bank transfer, and whether a link in the mail beats an attachment; (2) the `2026-N` numbering; (3) whether the ESC branding on the shared payment page is acceptable for the other brands; (4) what to do with the test invoice `2026-1` (void it before any real invoice is issued, so the real sequence is not confused with the test).
+**Owner decisions taken 12 Sept, 22:00:**
+1. **ILC and Les Elfes** (the two that already hold a PDF invoice, 2026-001 due 17 Sept and 2026-002 due 24 Sept): no second invoice. If unpaid after the due date, the reminder carries a Revolut **payment link** (Merchant, Payment links, EUR 199, titled "Invoice 2026-001" or "Invoice 2026-002"), one sentence, as a convenience. Reminder drafts are written only after the due date, not before (owner and Claude agreed 12 Sept). Calendar reminders set on the owner's Google Calendar: 18 Sept 09:00 (ILC) and 25 Sept 09:00 (Les Elfes).
+2. **Everyone else, after their first reply:** a Revolut invoice created in the app and closed with "Later" (never Revolut's own send), then PDF plus pay link in our own reply from partnerships@. Card fee EUR 2.19 accepted for the control it gives.
+3. **First contact:** no link, no invoice. One sentence added to the template and to all 57 outreach drafts on 12 Sept: "It can be paid by card or by bank transfer through a secure payment link, so there is nothing to set up on your side." (56 standalone drafts updated in place; the Funside reply in Réka's thread was replaced by a new threaded draft and the old one retitled [SUPERSEDED, DISCARD], so the owner now discards ten such drafts.)
+4. **Void the test invoice 2026-1 and create the two payment links**: approved, blocked on 12 Sept because Revolut logged the session out (SSO). First thing once the owner is logged in again.
+
+Still open: the `2026-N` numbering (cosmetic), and the ESC branding on the shared payment page for the other brands (Playground informed).
 
 The original brief follows for reference.
 
