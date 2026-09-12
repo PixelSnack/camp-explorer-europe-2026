@@ -3,7 +3,7 @@
 import heroImage from '../assets/hero-lakeside.webp' // Same 1680x720 image as the PNG original (127KB vs 1,674KB); PNG stays in public/ for og:image
 import activitiesCompressed from '../assets/activities-collage-compressed.png'
 import mapCompressed from '../assets/camps-map-compressed.png'
-import lesElfesSummer from '../assets/les-elfes-summer-camp-verbier-mountain-biking-alps.webp' // Les Elfes' own summer photograph
+import lesElfesSummer from '../assets/les-elfes-summer-camp-verbier-campus-chalet.webp' // Les Elfes' own photograph of their Verbier campus, from the Campus folder they shared on 8 Sept 2026
 import ilcMegeveSummer from '../assets/ilc-megeve-summer-camp-group-mont-blanc.webp' // ILC's own photograph, sent 11 Sept 2026 with written permission for the card
 
 /**
@@ -65,7 +65,7 @@ export const allCamps = [
         worldcamps: { rating: 5.0, count: 1 }
       }
     },
-    image: lesElfesSummer, // Les Elfes' own photograph from their summer camps page, cdn.leselfes.com/wp-content/uploads/2024/04/Mountain-biking-21.jpg, taken 11 Sept 2026. TEMPORARY: they offered Summer and Campus folders and we have asked which picture they would prefer. No identifiable faces, all riders are seen from behind
+    image: lesElfesSummer, // Les Elfes' own photograph of the Verbier campus chalet with the peaks behind (file dsc02356 in the Campus folder Alexandra Stettler shared on 8 Sept 2026 with "please feel free to pick a picture from one of our folders"; she asked for "our own photograph of Verbier and the campus"). Chosen 12 Sept 2026; cropped to 16:9 at 1200x675. No people in the frame. Replaced the mountain-biking photo taken from their website on 11 Sept, which the owner had told her was temporary
     category: "premium",
     type: "Alpine Adventure",
     activities: ["Rock Climbing", "Mountain Biking", "Water Skiing", "Tree Top Adventure"], // Read on leselfes.com/summer-camps/ 11 Sept 2026. "5 Languages" was removed: it is not an activity and it duplicated the Languages row directly beneath it on the card
@@ -1562,7 +1562,7 @@ export const allCamps = [
     country: "France",
     ages: "6-17 years", // Updated 12 Sept 2026 from ILC's written Summer 2027 update (Elodie Ughetto Guillot, 11 Sept 2026): Fun 6-9, Adrenaline 10-13, and the new Teens Mountain Adventure 14-17, which replaces the 2026 Mont-Blanc 14-16 programme. The 2027 price list PDF still prints "Mont-Blanc 14 to 16"; the email is the later and explicit statement and the prices match
     price: "From CHF 3,995/1 week", // Verified 12 Sept 2026 against the operator's "PRICE LIST INTERNATIONAL SUMMER CAMPS 2027" PDF and email of 11 Sept: full-board residential, per child, one week on the Fun programme. Adrenaline CHF 4,095, Teens Mountain Adventure CHF 4,195. Registration fee CHF 200 per stay; laundry CHF 70 compulsory from a two-week stay; Geneva airport transfer CHF 350 per transfer, optional. Day camper is a separate non-residential rate. ILC confirmed in writing on 1 Sept 2026 that the CHF international prices are the ones to publish
-    priceNote: "plus CHF 200 registration per stay", // Rendered in small text under the price. Added 12 Sept 2026: the fee is compulsory on every stay (operator's 2027 price list and email of 11 Sept), so "From CHF 3,995" alone would understate the minimum payable. Laundry CHF 70 applies only from two weeks and stays in the comment
+    priceNote: "plus CHF 200 registration", // Rendered in small text under the price. Added 12 Sept 2026: the fee is compulsory on every stay (operator's 2027 price list and email of 11 Sept), so "From CHF 3,995" alone would understate the minimum payable. Laundry CHF 70 applies only from two weeks and stays in the comment
     priceRange: "luxury",
     rating: null,
     reviews: 0,
@@ -1572,7 +1572,7 @@ export const allCamps = [
     activities: ["Language Immersion", "Rafting and Canyoning", "Via Ferrata", "Mountain Expeditions", "Glacier Excursions"], // "Horse Riding" removed 12 Sept 2026: riding is a paid option (CHF 470 a week on the 2027 price list), not part of the programme. Mountain expeditions are on the operator's home page for the oldest group
     dates: "Jun 27 - Jul 31, 2027", // Verified 12 Sept 2026: ILC's written 2027 update and the 2027 price list both state 27 June to 31 July 2027, stays of one to five weeks
     bookingStatus: "2027 dates published", // Verified 12 Sept 2026 from the operator's own 2027 price list and written update. Not "open": the site still carries the 2026 reservation flow and no single enrolment form can be checked
-    highlights: ["Boutique hotel Au Vieux Moulin in the heart of Megeve", "One adult for every five campers", "A small camp of around 40 campers a week", "Language classes of no more than eight", "English or French with native speaking teachers", "New for 2027: Teens Mountain Adventure, ages 14 to 17"], // Rewritten 12 Sept 2026 to the six points ILC asked for in writing on 11 Sept, in card style. The hotel leads because they asked for it to be prominent. "High end" was not adopted: the hotel is a 3-star boutique hotel (its own site), so the card names it and its location instead. "30+ years, Est. 1996" is carried by the Est. 1996 footer, which freed the sixth slot for the new teen programme. Ratio, class size and native teachers are on the operator's home page; the 40-a-week figure is ILC's own email of 14 Aug 2026
+    highlights: ["Boutique hotel Au Vieux Moulin in the heart of Megeve", "One adult for every five campers", "A deliberately small camp, around 40 campers a week", "Language classes of no more than eight", "English or French with native speaking teachers", "New for 2027: Teens Mountain Adventure, ages 14 to 17"], // Rewritten 12 Sept 2026 to the six points ILC asked for in writing on 11 Sept, in card style. The hotel leads because they asked for it to be prominent. "High end" was not adopted: the hotel is a 3-star boutique hotel (its own site), so the card names it and its location instead. "30+ years, Est. 1996" is carried by the Est. 1996 footer, which freed the sixth slot for the new teen programme. Ratio, class size and native teachers are on the operator's home page; the 40-a-week figure is ILC's own email of 14 Aug 2026
     languages: ["English", "French"],
     specialFeatures: ["Three programmes: Fun 6-9, Adrenaline 10-13, Teens Mountain Adventure 14-17", "Registration fee CHF 200 per stay; laundry CHF 70 compulsory from two weeks", "Optional tennis, golf, climbing and riding at extra cost", "Supervisors' rooms next to the children's rooms in the hotel"],
     established: 1996, // Confirmed in writing by ILC on 11 Sept 2026: "1996 is the correct founding year"; the "28th anniversary" in an older signature was outdated
