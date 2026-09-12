@@ -355,6 +355,16 @@
   white-space: nowrap;
 }
 
+/* Optional compulsory-fee note under the price (camps.js priceNote), e.g. "plus CHF 200 registration per stay" */
+.camp-price-note {
+  font-size: 0.7rem; /* 11px */
+  line-height: 1.25;
+  color: theme('colors.gray.500');
+  max-width: 9.5rem;
+  margin-top: 2px;
+  margin-left: auto;
+}
+
 /* Enhanced Information Hierarchy */
 .camp-info-section {
   border-top: 1px solid theme('colors.gray.100');

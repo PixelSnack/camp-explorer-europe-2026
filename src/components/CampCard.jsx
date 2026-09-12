@@ -98,6 +98,9 @@ export default function CampCard({ camp, isSelected, onToggleCompare, onBook, on
             {camp.price.includes('/') && (
               <div className="camp-duration">{camp.price.split('/')[1]}</div>
             )}
+            {camp.priceNote && (
+              <div className="camp-price-note">{camp.priceNote}</div>
+            )}
           </div>
         </div>
       </CardHeader>
@@ -142,9 +145,9 @@ export default function CampCard({ camp, isSelected, onToggleCompare, onBook, on
           <div className="space-y-2">
             <div className="text-sm font-medium text-gray-900">Highlights:</div>
             <ul className="text-sm text-gray-600 space-y-1">
-              {camp.highlights.slice(0, camp.featured ? 4 : 3).map((highlight, index) => (
-                <li key={index} className="flex items-center">
-                  <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2"></div>
+              {camp.highlights.slice(0, camp.featured ? 6 : 3).map((highlight, index) => (
+                <li key={index} className="flex items-start">
+                  <div className="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2 mt-[7px] shrink-0"></div>
                   {highlight}
                 </li>
               ))}

@@ -4,6 +4,7 @@ import heroImage from '../assets/hero-lakeside.webp' // Same 1680x720 image as t
 import activitiesCompressed from '../assets/activities-collage-compressed.png'
 import mapCompressed from '../assets/camps-map-compressed.png'
 import lesElfesSummer from '../assets/les-elfes-summer-camp-verbier-mountain-biking-alps.webp' // Les Elfes' own summer photograph
+import ilcMegeveSummer from '../assets/ilc-megeve-summer-camp-group-mont-blanc.webp' // ILC's own photograph, sent 11 Sept 2026 with written permission for the card
 
 /**
  * Review source platform registry with tier-based weighting.
@@ -70,7 +71,7 @@ export const allCamps = [
     activities: ["Rock Climbing", "Mountain Biking", "Water Skiing", "Tree Top Adventure"], // Read on leselfes.com/summer-camps/ 11 Sept 2026. "5 Languages" was removed: it is not an activity and it duplicated the Languages row directly beneath it on the card
     dates: "June 6 - Aug 28, 2027", // Verified 6 Sept 2026 (leselfes.com/dates-and-pricing): six two-week sessions, 6 Jun to 28 Aug 2027
     bookingStatus: "open", // Verified 6 Sept 2026: every 2027 session shows Enrol now and is selectable with its price on leselfes.com/summer-camp/enrol/
-    highlights: ["Two day hike with a night in a mountain hut, in the first week", "A weekly excursion the camper chooses: Zermatt, Chamonix or Geneva", "Language lessons taught by Verbier Language School teachers", "On site nurse and 24/7 care"], // Rewritten 11 Sept 2026 from leselfes.com/summer-camps/. The previous four were brand claims ("38+ years experience", "10,000+ campers annually", "45+ activities offered", "Swiss Alps at 1,500m") that told a parent nothing about the week. The nurse and 24/7 care is corroborated by the winter card, verified 10 Sept
+    highlights: ["Two day hike with a night in a mountain hut, in the first week", "A weekly excursion the camper chooses: Zermatt, Chamonix or Geneva", "Verbier Language School teachers, classes of eight at most", "On site nurse and 24/7 care", "Hot lunches at their private mountain restaurant at 2,200 m", "Two purpose built chalets, with a pool two minutes away"], // Rewritten 11 Sept 2026 from leselfes.com/summer-camps/; extended to six on 12 Sept 2026 when Premium cards began rendering six. Every line re-read on leselfes.com/summer-camp/summer-camps-activities/ on 12 Sept: "maximum class size of 8 students per teacher" with the Verbier Language School; "our private mountain restaurant welcomes our students for warm lunches" at 2,200 m (the page also calls it "a unique privatized restaurant"); "two purpose built wood and stone chalets"; indoor and outdoor pool "next to the campus (2 minute walk)"; the 2-day hiking trip "during the first week of each summer camp session"; nurse "available every day" and a night guard on the staff list. The previous four (Jan 2026) were brand claims
     languages: ["English", "French", "German", "Spanish", "Mandarin"],
     specialFeatures: ["On-site Nurse & 24/7 Care", "Traditional Swiss Chalets", "European Travel Awards 2024"],
     established: 1987,
@@ -1559,22 +1560,26 @@ export const allCamps = [
     name: "International Language Camps Megeve",
     location: "Megeve, Haute-Savoie, France",
     country: "France",
-    ages: "6-16 years", // Verified 11 Sept 2026 in the operator's own Summer 2026 brochure: three programmes, Fun 6-9, Adrenaline 10-13, Mont-Blanc 14-16
-    price: "From CHF 3,840/1 week", // Verified 11 Sept 2026 from the brochure rate table: residential, per child, one week on the Fun programme. Adrenaline is CHF 3,930 and Mont-Blanc CHF 4,020. The day-camp option starts at CHF 2,760 and is NOT residential. Geneva airport transfers are CHF 340 to 460 and optional. The same camp is sold in euros on languesacademy.com; ILC confirmed in writing on 1 Sept 2026 that the CHF international prices are the ones to publish, because the euro offer is a separate local-market product from Langues Academy
+    ages: "6-17 years", // Updated 12 Sept 2026 from ILC's written Summer 2027 update (Elodie Ughetto Guillot, 11 Sept 2026): Fun 6-9, Adrenaline 10-13, and the new Teens Mountain Adventure 14-17, which replaces the 2026 Mont-Blanc 14-16 programme. The 2027 price list PDF still prints "Mont-Blanc 14 to 16"; the email is the later and explicit statement and the prices match
+    price: "From CHF 3,995/1 week", // Verified 12 Sept 2026 against the operator's "PRICE LIST INTERNATIONAL SUMMER CAMPS 2027" PDF and email of 11 Sept: full-board residential, per child, one week on the Fun programme. Adrenaline CHF 4,095, Teens Mountain Adventure CHF 4,195. Registration fee CHF 200 per stay; laundry CHF 70 compulsory from a two-week stay; Geneva airport transfer CHF 350 per transfer, optional. Day camper is a separate non-residential rate. ILC confirmed in writing on 1 Sept 2026 that the CHF international prices are the ones to publish
+    priceNote: "plus CHF 200 registration per stay", // Rendered in small text under the price. Added 12 Sept 2026: the fee is compulsory on every stay (operator's 2027 price list and email of 11 Sept), so "From CHF 3,995" alone would understate the minimum payable. Laundry CHF 70 applies only from two weeks and stays in the comment
     priceRange: "luxury",
     rating: null,
     reviews: 0,
-    image: heroImage, // Placeholder. Ask ILC for a card photograph as we did for Les Elfes; the brochure images show identifiable children and carry no publication permission
+    image: ilcMegeveSummer, // ILC's own photograph (campers and staff above Megeve with the Mont Blanc massif behind), attached to Elodie Ughetto Guillot's email of 11 Sept 2026 with the words "a photograph that you are welcome to use on our Premium card". Written permission on file in the Gmail thread. Resized to 1200x675 from the 1365x768 original
     category: "premium",
     type: "Alpine Language Camp",
-    activities: ["Language Immersion", "Rafting and Canyoning", "Via Ferrata", "Horse Riding", "Glacier Excursions"],
-    dates: "Jun 28 - Aug 1, 2026", // Verified 11 Sept 2026: all three programmes run 28 June to 1 August 2026, stays of one to five weeks. 2027 is not published, so the card carries 2026 exactly as camp ID 24 does
-    highlights: ["Language classes of no more than eight, in English or French", "Hotel Au Vieux Moulin in Megeve, rooms of two children", "Registration fee CHF 200, and laundry CHF 70 is compulsory from two weeks", "Around 40 campers a week, with ILC staff on site overnight"],
+    activities: ["Language Immersion", "Rafting and Canyoning", "Via Ferrata", "Mountain Expeditions", "Glacier Excursions"], // "Horse Riding" removed 12 Sept 2026: riding is a paid option (CHF 470 a week on the 2027 price list), not part of the programme. Mountain expeditions are on the operator's home page for the oldest group
+    dates: "Jun 27 - Jul 31, 2027", // Verified 12 Sept 2026: ILC's written 2027 update and the 2027 price list both state 27 June to 31 July 2027, stays of one to five weeks
+    bookingStatus: "2027 dates published", // Verified 12 Sept 2026 from the operator's own 2027 price list and written update. Not "open": the site still carries the 2026 reservation flow and no single enrolment form can be checked
+    highlights: ["Boutique hotel Au Vieux Moulin in the heart of Megeve", "One adult for every five campers", "A small camp of around 40 campers a week", "Language classes of no more than eight", "English or French with native speaking teachers", "New for 2027: Teens Mountain Adventure, ages 14 to 17"], // Rewritten 12 Sept 2026 to the six points ILC asked for in writing on 11 Sept, in card style. The hotel leads because they asked for it to be prominent. "High end" was not adopted: the hotel is a 3-star boutique hotel (its own site), so the card names it and its location instead. "30+ years, Est. 1996" is carried by the Est. 1996 footer, which freed the sixth slot for the new teen programme. Ratio, class size and native teachers are on the operator's home page; the 40-a-week figure is ILC's own email of 14 Aug 2026
     languages: ["English", "French"],
-    specialFeatures: ["One counsellor to every five campers, with ILC staff on site overnight", "Three age programmes: Fun 6-9, Adrenaline 10-13, Mont-Blanc 14-16", "Optional tennis, golf, climbing and horse riding at extra cost"],
+    specialFeatures: ["Three programmes: Fun 6-9, Adrenaline 10-13, Teens Mountain Adventure 14-17", "Registration fee CHF 200 per stay; laundry CHF 70 compulsory from two weeks", "Optional tennis, golf, climbing and riding at extra cost", "Supervisors' rooms next to the children's rooms in the hotel"],
+    established: 1996, // Confirmed in writing by ILC on 11 Sept 2026: "1996 is the correct founding year"; the "28th anniversary" in an older signature was outdated
     capacity: 40, // Stated by ILC in their own email of 14 Aug 2026: "a maximum of around 40 children per week". Not in the brochure
     searchAliases: ["Megeve", "ILC", "Mont Blanc", "Haute Savoie"], // "Megeve" also carries the accented spelling through the accent-folding search
-    bookingUrl: "https://www.internationallanguagecamps.com" // Verified 11 Sept 2026, HTTP 200. The operator asked us to link here specifically (Elodie Guillot, 1 Sept 2026): enrolment runs per programme via an "Enroll Now" button on each programme page, which is why /enrollment/ returns 404. No bookingStatus badge, because no single enrolment form can be checked
+    bookingUrl: "https://www.internationallanguagecamps.com", // Verified 11 Sept 2026, HTTP 200. The operator asked us to link here specifically (Elodie Guillot, 1 Sept 2026): enrolment runs per programme via an "Enroll Now" button on each programme page, which is why /enrollment/ returns 404
+    videoUrl: "https://youtu.be/-HKzc8K6Zt0" // ILC's current promotional film, link supplied by ILC on 1 and 11 Sept 2026 (tracking parameter removed); verified 12 Sept 2026 via the YouTube oEmbed endpoint: "Experience the Magic of Our Summer Camp in Megeve", channel International Language Camp. They will send a new 2027 film later
   },
   {
     id: 71,
