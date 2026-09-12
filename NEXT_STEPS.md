@@ -15,7 +15,26 @@
 
 The next session starts almost blank. Read this block, then `docs/reports/SESSION_2026-09-12_PREMIUM_CARDS.md` and `docs/reports/CARD_CLICK_AND_GRID_ANALYSIS_2026-09-12.md`. Auto-memory `esc-session-2026-09-12-handoff` carries the same facts in short form.
 
-### FIRST JOB: Revolut Business Merchant, invoice settings, branding, ILC test invoice (owner approved 12 Sept, nothing done yet)
+### ✅ DONE 12 Sept 2026, 21:30: Revolut Merchant configured, ILC test invoice created (status Open, NOT sent)
+
+What is in the account now (owner logged in himself; every step below was done in his open session):
+- **Invoice numbering**: prefix `2026`, next number shows `2026-2`. ⚠️ Revolut strips leading zeros in the default AND in the per-invoice editor, so `2026-001` is impossible; the format is `2026-N`. Owner decision needed: accept `2026-N` from Revolut for future invoices (the two PDFs already sent stay `2026-001` and `2026-002`), or keep PDF invoicing.
+- **Payment schedule** default: due 14 days after sending (verify on each new invoice; the first one opened at 7 days).
+- **Payment methods**: Revolut Pay, cards, bank transfer, all on.
+- **PDF template "Default"** (saved): logo on (the tent mark, uploaded as business avatar under Settings, Business info), title "Invoice", bank details on PDF OFF, no VAT number, header `CVR 46200462 | partnerships@europeansummercamps.com | europeansummercamps.com`, footer "Invoice note" = the VAT line from the HTML template.
+- **Branding** (Merchant, Payment page, published): tent logo from `public/favicon.svg` rendered at 1024 px, colour #2563EB, website on, phone on, address hidden. **Merchant details** email on the payment page changed from the Gmail address to partnerships@. Statement descriptor left at "ResourceHub". ⚠️ These are account-wide, so any other ResourceHub brand taking payments would show ESC branding; Playground was told (bridge note 2026-09-12).
+- **Test invoice** `2026-1`: customer International Summer Camps (ISC) SARL, Quai Gustave Ador 34, 1207 Geneva, Switzerland, info@internationallanguagecamps.com, contact Elodie Ughetto Guillot; one line EUR 199.00, no tax; issue date 12 Sept, supply date 3 Sept 2026 (the date of the PDF invoice, owner instruction), due 26 Sept; automatic reminders OFF; template Default. Revolut's "Share" step was closed with "Later": no email went out, the timeline shows only "Invoice issued". It has a payment link that exists but was not shared. Delete or void it from the "..." menu if it is not to be used.
+- **Fees** (Revolut support chat, 12 Sept): EEA consumer Visa/Mastercard and Revolut Pay 1% + EUR 0.20 (EUR 2.19 on 199, net 196.81); EEA Amex 1.7% + 0.20; commercial and non-EEA cards 2.8% + 0.20. EUR lands in the EUR pocket unconverted; EUR to DKK is free on weekdays within DKK 13,500 a month, 0.6% above, 1% extra at weekends. Payment link and invoice cost the same; no software fee.
+- **API**: Merchant API key is available on Basic (Settings, APIs, Merchant API); none generated, custody is Playground's. Business API needs Grow or higher.
+- **Gotcha**: business.revolut.com stops rendering dropdowns and uploads when its tab is not the visible tab. Keep the tab in front while Claude works in it.
+
+**Owner rule, 12 Sept 21:40 (agreed):** this session set things up; nothing is sent. ILC already has the PDF invoice of 3 Sept and must not be chased with a second one; the Revolut copy is for comparison only. Every other operator has NOT had an invoice yet, so the choice for them is open: PDF attached, a Revolut pay link in the mail, or both. Whichever is chosen, the mail text has to say so, and the tone stays unpushy.
+
+**Owner decisions still open:** (1) adopt Revolut invoicing for the Premium and EUR 79 fees or stay with PDF plus bank transfer, and whether a link in the mail beats an attachment; (2) the `2026-N` numbering; (3) whether the ESC branding on the shared payment page is acceptable for the other brands; (4) what to do with the test invoice `2026-1` (void it before any real invoice is issued, so the real sequence is not confused with the test).
+
+The original brief follows for reference.
+
+### Revolut brief as approved 12 Sept (executed above)
 
 The owner's Revolut Business account ("ResourceHub", DKK main account) has an active Merchant section with three empty tools: Payment links (no-code hosted page: title, amount with currency selector, "customer sets the price", multiple payments, expiry, custom field; payer sees Revolut Pay, card, Apple Pay), Invoices (online invoices with a pay button, a Recurring tab, Settings), and Subscriptions (plans, trials, card on file). Investigated read-only on 12 Sept; no link, invoice or plan was created. The session was logged out before setup; **the owner logs in himself at business.revolut.com, Claude never enters credentials.**
 
