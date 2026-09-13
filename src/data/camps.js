@@ -249,12 +249,13 @@ export const allCamps = [
     image: mapCompressed,
     category: "budget_excellence",
     type: "English Immersion",
-    activities: ["English Classes", "River Activities", "Cave Exploration", "Cultural Games"],
-    dates: "Jul 2 - Aug 28, 2026 (10-day sessions)", // Verified 6 Sept 2026 (euro-camp.eu: six sessions 2-11 Jul to 19-28 Aug 2026; price EUR 335 and ages 7-17 confirmed); 2027 not published
-    highlights: ["10-day program", "Bilingual leaders", "Own site in a Bohemian river valley", "30+ years experience"], // Valley line added 13 Sept 2026 (euro-camp.eu about-us: private forest site by the Luznice, used 31 years)
+    activities: ["English Immersion", "River Swimming", "Rowing", "Football", "Volleyball", "Team Games"], // Re-read 13 Sept 2026 (euro-camp.eu about-us, program, kids-invitation): native-speaker leaders all day, "rowing in small boats or swimming" on the Luznice, football, volleyball, petanque, cricket, the camp-wide game; no caves anywhere on the site, and EUROCAMP is not a lesson-based course
+    dates: "Jul 2 - Aug 28, 2027 (10-day sessions)", // Verified 13 Sept 2026 (syka.cz/en/calendar.php, "SUMMER TIME CAMPS 2027 Terms Overview": EUROCAMP terms 2-11 Jul, 11-20 Jul, 20-29 Jul, 1-10 Aug, 10-19 Aug, 19-28 Aug 2027, each with a BOOK NOW link to euro-camp.eu); 2027 price not published, EUR 335 is the 2026 price and the operator has been asked
+    bookingStatus: "2027 dates published",
+    highlights: ["10-day program", "Bilingual leaders", "Own site in a Bohemian river valley", "Organiser running camps since 1994"], // Valley line added 13 Sept 2026 (euro-camp.eu about-us: private forest site by the Luznice, used 31 years)
     languages: ["English", "Czech"],
     specialFeatures: ["Bilingual Approach", "River Setting", "Cultural Immersion"],
-    established: 1995,
+    established: 2006, // EUROCAMP itself (euro-camp.eu: "since 2006"); the organiser SYKA has run camps since 1994
     capacity: 120,
     bookingUrl: "https://www.euro-camp.eu/"
   },
@@ -264,19 +265,19 @@ export const allCamps = [
     location: "Bayerischer Wald, Germany",
     country: "Germany",
     ages: "7-17 years", // Verified Aug 2026 (bookacamp.de: 7-17 on every summer row; was 9-16)
-    price: "From €435/1 week", // Verified Aug 2026 (bookacamp.de summer 2027: €435-585/week, most weeks €495; was €445)
+    price: "From €395/1 week", // Re-read 13 Sept 2026 (bookacamp.de booking form, summer 2027 weeks: 5-11 Sept €395, 22-28 Aug and 29 Aug-4 Sept €435, 27 Jun-3 Jul €495, 8-14 Aug €525, 1-7 Aug €585; ages 7-17 on the summer rows; was €435)
     priceRange: "budget",
     rating: 4.6,
     reviews: 189,
     image: heroImage,
     category: "budget_excellence",
     type: "Outdoor Adventure",
-    activities: ["Canoeing", "Rock Climbing", "German Culture", "Survival Skills"],
+    activities: ["Survival Skills", "Rock Climbing", "Husky Adventures", "Skating", "English Lessons", "Swimming"], // Re-read 13 Sept 2026 (campadventure.de/en destination page: "Survival, Husky, Skating, Creative, or English", climbing 12-17, swimming, leadership); German culture, castles and folk content appear nowhere on the operator site
     dates: "June 27 - Sept 11, 2027", // Verified Aug 2026: 2027 calendar published (bookacamp.de)
-    bookingStatus: "2027 dates published",
-    highlights: ["Bavarian Forest", "Mountain lake", "German traditions", "Great value"],
+    bookingStatus: "open", // 13 Sept 2026: summer 2027 weeks are individually selectable with prices on the operator booking form (bookacamp.de)
+    highlights: ["Bavarian Forest", "Riverside camp in tents or cabins", "English and German programme", "Great value"], // Re-read 13 Sept 2026 (campadventure.de/en: "campsite directly by the river", "tents or cabins at the campground", "Main languages: English / German"); the earlier "Mountain lake" and "German traditions" were not on the operator site
     languages: ["German", "English"],
-    specialFeatures: ["Traditional Crafts", "Castle Visits", "Folk Culture"],
+    specialFeatures: ["Survival Programme", "Husky Adventures", "Leadership Programmes"], // Re-read 13 Sept 2026 (campadventure.de/en)
     established: 2003,
     capacity: 90,
     bookingUrl: "https://www.campadventure.de/en/destinations/germany-adventure-camp-bayerischer-wald"
