@@ -22,7 +22,7 @@
 - **Architecture.** 19 country pages, a page per camp, season and category facets, a map, filters, an AI advisor, eight languages. Hundreds of indexable pages against our one.
 - **Content per camp.** Ages, price, parent rating and count, Google rating, founding year, a "choosing a camp in X" guide, FAQ, methodology block. Their Swiss rows read "6–17 yrs from $4,750" and "4.4 on Google".
 - **Revenue, read by the lead on their pricing page.** Free listing; Marketplace Partner at USD 0 a year with a 15 percent service fee on bookings through their checkout; Pro at USD 990 a year per camp profile; Premium at USD 1,590 a year per camp profile; both with 0 percent fee on direct booking requests and optional checkout at 9 or 7 percent. JSON-LD on the page confirms price 1590 USD.
-- **Weaknesses, verified.** Prices in US dollars for a European audience; most listings carry "Typically open in June — 2026 dates coming soon" in mid-September 2026 (their rollover is unfinished); prices on a minority of rows; three ski camps; Nordic and Central Europe near-empty.
+- **Weaknesses, verified.** Prices in US dollars for a European audience; their winter and ski pages still carry "2026 dates coming soon" on every listing (60 and 28 rows re-read on the evening of 13 September), while the summer country pages have rolled to "Typically open in June — 2027 dates coming soon" (88 rows on the Switzerland page, same evening; the SEO seat of the council caught the difference); so the winter rollover is unfinished, the summer one has happened, and neither shows dates; prices on a minority of rows; three ski camps; Nordic and Central Europe near-empty.
 
 ## 3. Winter
 

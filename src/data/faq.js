@@ -50,7 +50,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Are there European winter camps for children?",
-    answer: "Yes. Our winter directory covers residential winter camps in Switzerland and Poland that accept individual bookings for children and teenagers, with weekly sessions between December and April covering the Christmas, February half-term and Easter school holidays. Listings show ages, dates and per-child prices as published by the operator, from a Polish ski week with the lift pass included to a two-week stay inside a Swiss boarding school. Check each programme's accommodation, supervision, ability requirements and availability before booking. Open the Winter Camps section from the menu."
+    answer: "Yes. Our winter directory covers residential winter camps in Switzerland, France, Germany, Italy, Poland and Romania that accept individual bookings for children and teenagers, with weekly sessions between December and April covering the Christmas, February half-term and Easter school holidays. Listings show ages, dates and per-child prices as published by the operator, from a Polish ski week with the lift pass included to a two-week stay inside a Swiss boarding school. Check each programme's accommodation, supervision, ability requirements and availability before booking. Open the Winter Camps section from the menu."
   },
   {
     question: "Are there European summer camps where parents can attend?",
