@@ -134,11 +134,11 @@ export const allCamps = [
     rating: 4.8, // Verified Jan 2026 - highly rated Swiss camp
     reviews: 234,
     image: heroImage,
-    category: "budget_excellence", // Budget Excellence for day camps
+    category: "language", // Owner decision 13 Sept 2026: operator headline is "English Summer Camps in Switzerland"; CHF 975 is a day-camp week (about EUR 1,045), so not Budget Excellence
     type: "Day & Residential Camps",
     activities: ["English Immersion", "Mountain Adventure", "Outdoor Skills", "Marmots Program"],
     dates: "Jun 28 - Aug 13, 2027 (not yet bookable)", // Verified 6 Sept 2026 (altitude-camps.com/day-camp and /residential-camp): day camp Mon 28 Jun to Fri 13 Aug, residential Sunday-to-Saturday weeks 27 Jun to 31 Jul. The page prints no year; these weekdays exist only in the 2027 calendar and replace the 2026 dates the same page carried in Aug 2026 (29 Jun-14 Aug, 28 Jun-1 Aug). Booking checked in Chrome the same day: the widget still runs on 2026 eligibility windows and its calendar cannot move past Sept 2026, so 2027 is not bookable yet and no badge is set
-    highlights: ["Youngest accepted (3 years)", "Day & residential options", "English focus", "Swiss Alps setting"],
+    highlights: ["Day camp from CHF 975, ages 3-14", "Residential from CHF 2,950, ages 7-14", "English immersion in Verbier", "Swiss Alps setting"], // Owner decision 13 Sept 2026: both products and their prices on the card (altitude-camps.com/day-camp and /residential-camp, re-read 6 Sept)
     languages: ["English", "French"],
     specialFeatures: ["Marmots Program (3-5 years)", "Day Camp Options", "Residential Camps (7-14)"],
     established: 2008,
