@@ -24,6 +24,10 @@ LABEL="${4:-review}"
 WEB="${5:-}"
 
 [ -f "$BRIEF" ] || { echo "ERROR: brief file not found: $BRIEF" >&2; exit 1; }
+# Size guard (13 Sept 2026): a 1.7 MB brief assembled from raw agent transcripts was sent to Astra by mistake and
+# drained the OpenAI credit balance. Anything over 400 KB is almost certainly not a brief; refuse it.
+BRIEF_BYTES="$(wc -c < "$BRIEF")"
+[ "$BRIEF_BYTES" -le 400000 ] || { echo "ERROR: brief is $BRIEF_BYTES bytes; over the 400000-byte guard. Trim it (no raw transcripts) or raise the guard deliberately." >&2; exit 1; }
 case "$LABEL" in *[!A-Za-z0-9_-]*|'') echo "ERROR: label must match [A-Za-z0-9_-]+" >&2; exit 1;; esac
 mkdir -p "$OUT_DIR"
 
