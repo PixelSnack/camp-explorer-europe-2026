@@ -567,3 +567,9 @@ The mail went out from the owner's personal address. The draft tool has no From 
 **What happened:** the rebuttal brief for the council was assembled by concatenating the two Fable seats' task output files, which are full transcripts (869 KB and 1.2 MB), not reports. The 1.7 MB file went to Astra and Gemini; the curl processes were killed within seconds but the API had accepted the request, and the next correctly sized dispatch (96 KB) was refused with "no credits remaining" (HTTP 429, insufficient_quota). The Astra rebuttal seat was lost. Separately, editing `scripts/ai-review.sh` while the Gemini run was still executing made bash read shifted bytes and fail at line 84 after the response had been saved; the text was recovered from the response JSON by hand.
 
 **Rule:** a seat's report is the text in the task-notification result, saved to its own file under the council folder before it is reused; task output files are transcripts and never go into a brief. Check `wc -c` on every brief before dispatch; the runner now refuses anything over 400 KB. Never edit a script that has a live process; wait for the log to show the response saved. When a dispatch is stopped, assume it was billed.
+
+## 13 September 2026: never kill node.exe by image name
+
+**What happened:** after a local `vite preview` check I ran `taskkill //F //IM node.exe` to stop the preview server. Every MCP server that runs on Node died with it (the Google Drive connector disconnected mid-session). The preview was one process; the command took four.
+
+**Rule:** stop a background server by its own PID (capture `$!` when starting it, or find the PID by port with `netstat -ano | findstr :4173`), never by image name. The same applies to python.exe and curl.exe: kill the PID you started.
