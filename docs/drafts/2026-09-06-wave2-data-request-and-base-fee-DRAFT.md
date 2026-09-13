@@ -48,7 +48,7 @@ partnerships@europeansummercamps.com
 
 ## Notes for the sender
 
-- Fill the bracketed fields from camps.js (the listing month from the first commit that added the camp) and the referral figure from GA4 (`scripts/ga4-pull.py --camp "<name>"` or the GA4 connector), re-read on the day the draft is finalised. Owner rule 12 Sept 2026: state a figure only at 20 or more; a small number is counterproductive. Two-camp operators get the combined figure. Every outward mail says "we", never "I".
+- Fill the bracketed fields from camps.js (the listing month from the first commit that added the camp) and the referral figure from GA4 (`scripts/ga4-pull.py --camp "<name>"` or the GA4 connector), re-read on the day the draft is finalised. Owner rule 12 Sept 2026: state a figure only at 20 or more; a small number is counterproductive. Two-camp operators get the combined figure. Owner decision 13 Sept 2026: the figure is the GA4 booking-click event count (`camp_booking_click`), not distinct users; a family that clicks twice is extra interested, and the "families sent through" wording stays. Rank claims ("the highest figure") are checked against the same pull on the day. Every outward mail says "we", never "I".
 - Camps already in a thread (Funside, Les Elfes) get the same substance inside their thread. LINEŠA is exempt for 2027 (the 2 September message promised the standard listing stays free).
 - Two-camp operators (Enforex, Village Camps) get one message covering both listings; a Premium covers up to three cards.
 - Invoicing follows FEATURED_LISTINGS_POLICY.md section 4 (ResourceHub, EUR, VAT exempt, bank details only on the invoice, never in the repo).
