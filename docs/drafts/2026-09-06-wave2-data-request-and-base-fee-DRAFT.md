@@ -53,3 +53,7 @@ partnerships@europeansummercamps.com
 - Two-camp operators (Enforex, Village Camps) get one message covering both listings; a Premium covers up to three cards.
 - Invoicing follows FEATURED_LISTINGS_POLICY.md section 4 (ResourceHub, EUR, VAT exempt, bank details only on the invoice, never in the repo).
 - No em dash anywhere in the message; under 300 words.
+
+## Owner's third round of edits (Camp Adventure, sent 13 Sept 2026 14:10 from partnerships@), applied to all 52 remaining drafts the same evening
+
+Diffed against the draft body: (1) a blank line after the founder line, so "We list ..." starts its own paragraph; (2) a line break before "Since March, when we began counting referrals per camp" (stats variant only); (3) "your own chosen photograph" instead of "your own photograph"; (4) a line break before "The next invoice date after that will be 1 September 2027." Everything else identical. Applied by direct replacement with each count asserted, 52 drafts verified afterwards against the intended text (recipients, subjects, no URL, no em dash, spaced dot, all four edits present). Camp California was sent by the owner at 13:44 with the previous wording. The EUROCAMP draft now opens "Dear Mrs Martincová" (owner decision: Czech contact). Greetings elsewhere stay as they are (team names or first names); titles are not used unless the culture and the person's preference are known.
