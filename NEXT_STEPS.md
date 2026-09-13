@@ -1,7 +1,7 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 12, 2026, 23:40 (King's College sent by the owner; his wording applied to all 56 remaining outreach drafts and verified; Revolut Merchant done earlier the same day)
+**Last Updated:** September 13, 2026, 11:30 (GLS sent by the owner on 12 Sept; his eight further edits applied to all 54 remaining outreach drafts and verified)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** weekly GSC watch -> ILC payment and activation -> Wave 2 per-camp 2027 dates -> winter camps decision -> new camp research
 **🔴 Deadline:** winter section promised live to Les Elfes for **Monday 14 September 2026**. She is a paying partner as of 8 Sept.
@@ -12,6 +12,10 @@
 ---
 
 ## 🔴 **START HERE — handoff written 12 September 2026, 18:30 (session ended on context, everything committed and pushed)**
+
+### ✅ DONE 13 Sept 2026, 11:30: all 54 outreach drafts carry the owner's GLS wording
+
+The owner sent GLS Berlin himself on 12 Sept at 21:41 UTC (german@gls-berlin.de, from his personal address by mistake; nothing to do about it). Compared with the draft he made eight further edits, recorded in auto-memory `outreach-wording-owner-edits-2026-09-12` and in the template file: "we hope to have also sent many more families your way indirectly" (no-stats variant only), "I'm writing to let you know that your listing continues for the full 2026 season at no charge." on its own line, "decide to pay it already now, as we're nearing the end of 2026", "EUR 199 for the first full year (locked in at the introductory rate)", "The next invoice date after that will be 1 September 2027", "If you decide to continue on European Summer Camps", and "please send us your session dates" in the data line. Applied by script (one regex per sentence, each matched exactly once; the "also" edit to the 37 no-stats drafts only; the four drafts whose data line was already a sentence, Altitude, Filmkollo, Vierumaki and Camp Adventure, left as they were) to all 54 remaining standalone drafts in batches of four, then every draft re-read from Gmail and diffed against the intended text: 54 of 54 identical, referral figures, listing months, greetings and language lines unchanged, no URL, no em dash, no internal note. Funside, ILC and Les Elfes drafts untouched. **Before sending each draft the owner still switches the sender to partnerships@ and closes the space in the signature address, keeping the dot** (the GLS mail went out as "www.europeansummercamps com"). The 14 [SUPERSEDED, DISCARD] drafts still wait for the owner.
 
 ### ✅ DONE 12 Sept 2026, 23:40: all 56 outreach drafts carry the owner's King's College wording
 

@@ -4,6 +4,8 @@
 
 *Re-worded 12 September 2026 to the version the owner sent to King's College Madrid himself: founder line after the greeting, shorter paragraphs, "decide to pay it now", "the full 2027 season", the invoice details conditional on their yes, "simply reply". Applied the same evening to all 56 remaining outreach drafts.*
 
+*Re-worded again 13 September 2026 to the version the owner sent to GLS Berlin on 12 September (a no-stats mail): "also sent" in the indirect sentence, "I'm writing to let you know that" on its own line before the free-2026 sentence, "pay it already now, as we're nearing the end of 2026", "(locked in at the introductory rate)", "will be 1 September 2027", "continue on European Summer Camps", "please send us your session dates". Applied on 13 September to all 54 remaining outreach drafts; the "also" edit applies only to the no-stats variant.*
+
 ## Owner decisions
 
 1. **Administration fee: EUR 79 per year** for every listing from the 2027 cycle; it covers the listing and its seasonal re-verification. Premium EUR 299 a year, EUR 199 the first year on the 2027 cycle, up to three camp cards, own image allowed; the administration fee is included in Premium.
@@ -20,19 +22,20 @@ Dear [name or team at CAMP],
 My name is Soren, and I'm the founder of Camp Explorer Europe and European Summer Camps.
 We list CAMP on European Summer Camps (www.europeansummercamps .com), the directory of verified residential camps that families across Europe use to plan their children's summers.
 
-Your listing has been live since [month year], and it is kept accurate for you: every season we re-verify dates, prices and ages against your own pages, and every family who clicks through arrives on your booking page tagged as coming from us, visible in your analytics under the source "europeansummercamps". [If 20 or more: Since March, when we began counting referrals per camp, your listing has sent N families directly through to your site, and hopefully many more indirectly, as we are one of the leading summer camp sites in Europe.] [If fewer than 20, no number; instead end the previous sentence with: , and as one of the leading summer camp sites in Europe we hope to have sent many more families your way indirectly.]
+Your listing has been live since [month year], and it is kept accurate for you: every season we re-verify dates, prices and ages against your own pages, and every family who clicks through arrives on your booking page tagged as coming from us, visible in your analytics under the source "europeansummercamps". [If 20 or more: Since March, when we began counting referrals per camp, your listing has sent N families directly through to your site, and hopefully many more indirectly, as we are one of the leading summer camp sites in Europe.] [If fewer than 20, no number; instead end the previous sentence with: , and as one of the leading summer camp sites in Europe we hope to have also sent many more families your way indirectly.]
 
-Your listing continues for the full 2026 season at no charge. From the 2027 season every listing carries an annual administration fee of EUR 79, which covers the listing and its yearly re-verification, and we very much hope you will decide to pay it now, or sign up for our new Premium option, so that CAMP stays listed for the full 2027 season.
+I'm writing to let you know that your listing continues for the full 2026 season at no charge.
+From the 2027 season every listing carries an annual administration fee of EUR 79, which covers the listing and its yearly re-verification, and we very much hope you will decide to pay it already now, as we're nearing the end of 2026, or sign up for our new Premium option, so that CAMP stays listed for the full 2027 season.
 
-Premium is EUR 299 a year, or EUR 199 for the first full year when taken on the 2027 cycle, and gives your camp a gold-framed Featured card placed ahead of the standard listings in its category, six highlights instead of three, your own photograph, a video button and up to four updates a year, with the administration fee included. Your invoice for the 2027 season follows as soon as we have your details. It is a standard invoice, payable by bank transfer, and it also offers a secure online card payment should you prefer that; either way there is nothing to set up on your side. The next invoice date after that is 1 September 2027.
+Premium is EUR 299 a year, or EUR 199 for the first full year (locked in at the introductory rate) when taken on the 2027 cycle, and gives your camp a gold-framed Featured card placed ahead of the standard listings in its category, six highlights instead of three, your own photograph, a video button and up to four updates a year, with the administration fee included. Your invoice for the 2027 season follows as soon as we have your details. It is a standard invoice, payable by bank transfer, and it also offers a secure online card payment should you prefer that; either way there is nothing to set up on your side. The next invoice date after that will be 1 September 2027.
 
-If you decide to continue European Summer Camps for the 2027 season, in order for us to invoice you correctly, please send us:
+If you decide to continue on European Summer Camps for the 2027 season, in order for us to invoice you correctly, please send us:
 
 - The legal name of the operator and the invoicing address
 - Your VAT or company registration number
 - The email address that should receive the invoice
 
-And for the 2027 listing itself: session dates, the per-child price for one session and what it includes, ages accepted, and the page where families should book.
+And for the 2027 listing itself: please send us your session dates, the per-child price for one session and what it includes, ages accepted, and the page where families should book.
 
 We check every detail against your own pages before it goes live, and we correct it as soon as you tell us. If you have any questions, simply reply to this email and we will answer promptly. [Where the operator's country is not English-speaking: You are welcome to answer in LANGUAGE.]
 
