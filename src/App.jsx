@@ -2545,7 +2545,7 @@ function App() {
                     <span className="text-2xl mr-3">🇨🇿</span>
                     <h4 className="font-bold text-lg">Czech Republic</h4>
                   </div>
-                  <p className="text-sm text-gray-600 mb-3">Exceptional value programs. EUROCAM Bohemia offers 10-day adventures for incredible prices.</p>
+                  <p className="text-sm text-gray-600 mb-3">Exceptional value programs. EUROCAMP offers 10-day adventures for incredible prices.</p>
                   <div className="text-xs text-gray-500">
                     <div>• €335 (10 days!)</div>
                     <div>• Ages 7-17</div>
@@ -2755,7 +2755,7 @@ function App() {
                 <div className="bg-gradient-to-br from-green-50 to-white p-6 rounded-lg">
                   <div className="flex items-center mb-4">
                     <Badge className="bg-green-500 text-white px-3 py-1 mr-3">Budget</Badge>
-                    <h4 className="font-bold text-lg">EUROCAM Bohemia</h4>
+                    <h4 className="font-bold text-lg">EUROCAMP</h4>
                   </div>
                   <p className="text-sm text-gray-600 mb-3">Czech Republic's hidden gem offering incredible value. 30+ years experience with bilingual programming.</p>
                   <div className="grid grid-cols-2 gap-4 text-xs">

@@ -238,7 +238,7 @@ export const allCamps = [
   // Budget Excellence
   {
     id: 9,
-    name: "EUROCAM Bohemia",
+    name: "EUROCAMP", // Renamed 13 Sept 2026 to the operator's own spelling (euro-camp.eu; was "EUROCAM Bohemia"; GA4 camp_name changes with it)
     location: "South Bohemia, Czech Republic",
     country: "Czech Republic",
     ages: "7-17 years",
@@ -251,7 +251,7 @@ export const allCamps = [
     type: "English Immersion",
     activities: ["English Classes", "River Activities", "Cave Exploration", "Cultural Games"],
     dates: "Jul 2 - Aug 28, 2026 (10-day sessions)", // Verified 6 Sept 2026 (euro-camp.eu: six sessions 2-11 Jul to 19-28 Aug 2026; price EUR 335 and ages 7-17 confirmed); 2027 not published
-    highlights: ["10-day program", "Bilingual leaders", "30+ years experience", "Exceptional value"],
+    highlights: ["10-day program", "Bilingual leaders", "Own site in a Bohemian river valley", "30+ years experience"], // Valley line added 13 Sept 2026 (euro-camp.eu about-us: private forest site by the Luznice, used 31 years)
     languages: ["English", "Czech"],
     specialFeatures: ["Bilingual Approach", "River Setting", "Cultural Immersion"],
     established: 1995,
