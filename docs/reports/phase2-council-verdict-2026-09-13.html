@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 2 Council Verdict</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #f4f6fa;
+    --paper-2: #ffffff;
+    --paper-3: #e8edf5;
+    --ink: #14213d;
+    --ink-2: #3d4a63;
+    --ink-3: #6b768c;
+    --line: #d3dae6;
+    --accent: #2563eb;
+    --accent-soft: #dbe6fb;
+    --gold: #b8860b;
+    --gold-soft: #f6ecd0;
+    --good: #1a7f4b;
+    --good-soft: #d9f0e3;
+    --warn: #b85c00;
+    --warn-soft: #fbe8d3;
+    --bad: #b3261e;
+    --bad-soft: #f9dcda;
+    --shadow: 0 1px 2px rgba(20,33,61,.06), 0 8px 24px rgba(20,33,61,.08);
+    --display: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    --mono: "IBM Plex Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0f1626; --paper-2: #182036; --paper-3: #1f2a44; --ink: #eef2f9; --ink-2: #c3cbdb; --ink-3: #8d98ad; --line: #2c3854;
+      --accent: #7ea4ff; --accent-soft: #223462; --gold: #e0b64a; --gold-soft: #3d3218;
+      --good: #5ccf8f; --good-soft: #163725; --warn: #f0a24c; --warn-soft: #3b2a14; --bad: #ff8c85; --bad-soft: #421d1b;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0f1626; --paper-2: #182036; --paper-3: #1f2a44; --ink: #eef2f9; --ink-2: #c3cbdb; --ink-3: #8d98ad; --line: #2c3854;
+    --accent: #7ea4ff; --accent-soft: #223462; --gold: #e0b64a; --gold-soft: #3d3218;
+    --good: #5ccf8f; --good-soft: #163725; --warn: #f0a24c; --warn-soft: #3b2a14; --bad: #ff8c85; --bad-soft: #421d1b;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 0 80px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.02; font-weight: 800; }
+  h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 700; line-height: 1.15; }
+  h3 { font-size: 1.1rem; font-weight: 700; }
+  p { margin: 0; }
+  .eyebrow { font-family: var(--mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  a { color: var(--accent); }
+
+  /* Header */
+  header.hero { padding-block: 56px 40px; display: grid; gap: 22px; border-bottom: 1px solid var(--line); }
+  .hero-top { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+  .hero p.lede { font-size: 1.2rem; max-width: 62ch; color: var(--ink-2); }
+  .verdict { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 8px; }
+  .verdict > div { background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; }
+  .verdict b { font-family: var(--display); font-size: 1.35rem; font-weight: 700; line-height: 1.1; }
+  .verdict span { color: var(--ink-3); font-size: .9rem; }
+
+  /* Layout with rail */
+  .layout { display: grid; grid-template-columns: 210px 1fr; gap: 40px; align-items: start; margin-top: 36px; }
+  nav.rail { position: sticky; top: 20px; display: grid; gap: 6px; font-size: .9rem; }
+  nav.rail a { color: var(--ink-2); text-decoration: none; padding: 5px 10px; border-left: 2px solid var(--line); }
+  nav.rail a:hover, nav.rail a:focus-visible { border-left-color: var(--accent); color: var(--accent); outline: none; }
+  main { display: grid; gap: 64px; min-width: 0; }
+  section { display: grid; gap: 18px; scroll-margin-top: 20px; }
+  section > p, .prose p { max-width: 68ch; color: var(--ink-2); }
+  .prose { display: grid; gap: 10px; }
+
+  /* Before / after */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .compare > div { border-radius: 12px; padding: 20px; display: grid; gap: 10px; align-content: start; }
+  .compare .was { background: var(--paper-3); border: 1px dashed var(--line); }
+  .compare .now { background: var(--paper-2); border: 1px solid var(--accent); box-shadow: var(--shadow); }
+  .compare ul { margin: 0; padding-left: 18px; color: var(--ink-2); display: grid; gap: 6px; }
+  .compare .tag { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+  .was .tag { color: var(--ink-3); } .now .tag { color: var(--accent); }
+
+  /* Seats */
+  .seats { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .seat { background: var(--paper-2); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 10px; align-content: start; }
+  .seat .who { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+  .seat .who small { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); white-space: nowrap; }
+  .seat p { font-size: .95rem; color: var(--ink-2); }
+  .seat .gave { border-top: 1px solid var(--line); padding-top: 10px; font-size: .9rem; }
+  .seat .gave b { color: var(--ink); }
+  .lead { border-color: var(--gold); background: linear-gradient(180deg, var(--gold-soft), var(--paper-2) 60%); }
+
+  /* Timeline */
+  .timeline { display: grid; gap: 0; border-left: 3px solid var(--line); margin-left: 8px; }
+  .batch { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 18px 0 22px 22px; position: relative; }
+  .batch::before { content: ""; position: absolute; left: -9px; top: 26px; width: 15px; height: 15px; border-radius: 50%; background: var(--accent); border: 3px solid var(--paper); }
+  .batch.later::before { background: var(--ink-3); }
+  .batch .when { font-family: var(--display); font-weight: 700; font-size: 1.15rem; line-height: 1.15; }
+  .batch .when small { display: block; font-family: var(--mono); font-weight: 400; font-size: .74rem; color: var(--ink-3); margin-top: 4px; letter-spacing: .06em; }
+  .batch .what { display: grid; gap: 8px; }
+  .batch .what p { color: var(--ink-2); max-width: 66ch; }
+  .pages { display: flex; flex-wrap: wrap; gap: 6px; }
+  .page { font-family: var(--mono); font-size: .8rem; background: var(--accent-soft); color: var(--ink); padding: 3px 9px; border-radius: 6px; }
+  .page.muted { background: var(--paper-3); color: var(--ink-2); }
+  .season { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 6px; }
+  .season div { font-family: var(--mono); font-size: .72rem; text-align: center; padding: 8px 4px; border-radius: 6px; background: var(--paper-3); color: var(--ink-3); }
+  .season div.build { background: var(--accent-soft); color: var(--ink); }
+  .season div.book { background: var(--gold-soft); color: var(--ink); }
+  .season div.book.build { background: linear-gradient(90deg, var(--accent-soft), var(--gold-soft)); }
+
+  /* Why cards */
+  .why { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+  .why > div { display: grid; gap: 8px; padding: 18px; border-radius: 12px; background: var(--paper-2); border: 1px solid var(--line); }
+  .why .fig { font-family: var(--display); font-size: 2rem; font-weight: 800; line-height: 1; color: var(--accent); }
+  .why p { font-size: .95rem; color: var(--ink-2); }
+
+  /* Tables */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-2); }
+  table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  tr:last-child td { border-bottom: 0; }
+  td.k { font-weight: 600; white-space: nowrap; }
+
+  /* Pills */
+  .pill { display: inline-block; font-family: var(--mono); font-size: .72rem; padding: 2px 8px; border-radius: 999px; letter-spacing: .04em; }
+  .pill.good { background: var(--good-soft); color: var(--good); }
+  .pill.warn { background: var(--warn-soft); color: var(--warn); }
+  .pill.bad { background: var(--bad-soft); color: var(--bad); }
+  .pill.gold { background: var(--gold-soft); color: var(--gold); }
+
+  /* Risks */
+  .risks { display: grid; gap: 10px; }
+  .risk { display: grid; grid-template-columns: 6px 1fr; gap: 14px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .risk .stripe { background: var(--warn); }
+  .risk .body { padding: 14px 16px 14px 4px; display: grid; gap: 6px; }
+  .risk .body p { font-size: .95rem; color: var(--ink-2); max-width: 70ch; }
+  .risk .body .test { font-size: .9rem; }
+  .risk .body .test b { color: var(--good); }
+
+  /* Actions */
+  .actions { display: grid; gap: 10px; }
+  .action { display: grid; grid-template-columns: 34px 1fr; gap: 14px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .action .n { font-family: var(--display); font-weight: 800; font-size: 1.3rem; color: var(--gold); line-height: 1.2; }
+  .action .body { display: grid; gap: 6px; }
+  .action ol { margin: 6px 0 0; padding-left: 18px; color: var(--ink-2); display: grid; gap: 4px; font-size: .95rem; }
+  .action p { color: var(--ink-2); font-size: .95rem; max-width: 70ch; }
+  code { font-family: var(--mono); font-size: .86em; background: var(--paper-3); padding: 1px 5px; border-radius: 4px; }
+
+  .untouch { background: var(--ink); color: var(--paper); border-radius: 12px; padding: 22px 24px; display: grid; gap: 10px; }
+  .untouch h3 { color: var(--gold); }
+  .untouch p { color: var(--paper); opacity: .9; max-width: 70ch; }
+  footer { margin-top: 30px; color: var(--ink-3); font-size: .85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+
+  @media (max-width: 820px) {
+    .layout { grid-template-columns: 1fr; gap: 24px; }
+    nav.rail { position: static; display: flex; flex-wrap: wrap; gap: 6px; }
+    nav.rail a { border-left: 0; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+    .compare { grid-template-columns: 1fr; }
+    .batch { grid-template-columns: 1fr; gap: 8px; }
+    .season { grid-template-columns: repeat(7, 1fr); }
+    .season div { font-size: .62rem; padding: 6px 2px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .seat, .why > div, .action { transition: transform .15s ease, box-shadow .15s ease; }
+    .seat:hover, .why > div:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-top">
+      <span class="eyebrow">European Summer Camps · Phase 2 council · 13 September 2026</span>
+    </div>
+    <h1>The council said: publish beside the homepage, never inside it.</h1>
+    <p class="lede">Five seats, two rounds, one rebuttal round. The 2025 plan to rebuild the site on a router is dead. In its place: a small, evidence-gated wave of static pages, generated after the normal build, that cannot touch the one URL earning 87 percent of our clicks.</p>
+    <div class="verdict">
+      <div><b>Unanimous</b><span>on not executing the 2025 plan</span></div>
+      <div><b>5 seats</b><span>lead, SEO, engineering, GPT-6 Astra, Gemini 3.8</span></div>
+      <div><b>3 batches</b><span>22 Sept to 20 Oct, then wave two in November</span></div>
+      <div><b>0 changes</b><span>to the homepage's title, H1, canonical or booking behaviour</span></div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="rail" aria-label="Sections">
+      <a href="#shift">What changed</a>
+      <a href="#seats">The seats</a>
+      <a href="#plan">The plan</a>
+      <a href="#why">Why this plan</a>
+      <a href="#gates">Gates on every page</a>
+      <a href="#risks">What could go wrong</a>
+      <a href="#upside">Upside, honestly</a>
+      <a href="#you">What you do</a>
+      <a href="#ai">AI answer engines</a>
+    </nav>
+
+    <main>
+      <section id="shift">
+        <span class="eyebrow">01 · What changed</span>
+        <h2>From a rebuild to a sidecar</h2>
+        <div class="compare">
+          <div class="was">
+            <span class="tag">The 2025 plan</span>
+            <h3>React Router + static generation across the whole app</h3>
+            <ul>
+              <li>Real routes for guide, countries, categories and every camp</li>
+              <li>The 4,700-line homepage component rendered on the server and hydrated</li>
+              <li>A duplicate discovery URL beside the homepage</li>
+              <li>Gated on 1,000 monthly sessions</li>
+              <li>Promised 3 to 5x traffic within 60 days</li>
+            </ul>
+          </div>
+          <div class="now">
+            <span class="tag">The council's decision</span>
+            <h3>A post-build generator that only adds files</h3>
+            <ul>
+              <li>Runs after the unchanged Vite build, writes <span class="num">dist/slug/index.html</span></li>
+              <li>Never imports the app; plain HTML, no React on the client</li>
+              <li>Homepage protected by a hash check on every build</li>
+              <li>Gated on verification, ranking risk and the season calendar</li>
+              <li>Funded as a bounded experiment with no promised return</li>
+            </ul>
+          </div>
+        </div>
+        <p>The 1,000-session gate is retired. Traffic never was the constraint. Verified facts, the ranking URL and the booking window are.</p>
+      </section>
+
+      <section id="seats">
+        <span class="eyebrow">02 · The seats</span>
+        <h2>Who said what, and what each one gave up</h2>
+        <p>Every seat read the same 67 KB brief: the 2025 plan, the round-one record with all traffic and ranking data, and the competitor analysis. Every finding was adjudicated by the lead against the repository and the live pages. Thinking effort was recorded per seat.</p>
+        <div class="seats">
+          <div class="seat lead">
+            <div class="who"><h3>Lead (Fable 5.1)</h3><small>council head</small></div>
+            <p>Twelve pages in late October on a build-time render step, homepage untouched, partner-only camp pages later.</p>
+            <div class="gave"><b>Moved on:</b> the single late-October window. Batches beat one window because the winter booking window is open now.</div>
+          </div>
+          <div class="seat">
+            <div class="who"><h3>SEO seat (Fable agent)</h3><small>161k tokens · 7 file reads</small></div>
+            <p>Switzerland is the wrong first page: nine directories deep, four Swiss camps against 32. Winter first, then the Nordics. Found a live FAQ defect (fixed).</p>
+            <div class="gave"><b>Withdrew:</b> Switzerland-in-November and "Nordics uncontested". <b>Won:</b> winter first, no digits in prose, Switzerland as a price page.</div>
+          </div>
+          <div class="seat">
+            <div class="who"><h3>Engineering seat (Fable agent)</h3><small>208k tokens · 19 files by line</small></div>
+            <p>Verified the routing on the live site: no catch-all rewrite exists, unknown paths already return 404. Named the asset loader as the one unproven part.</p>
+            <div class="gave"><b>Withdrew:</b> trailing-slash change in batch one. <b>Won:</b> the shared outbound code extraction, tested on all 78 rows.</div>
+          </div>
+          <div class="seat">
+            <div class="who"><h3>GPT-6 Astra</h3><small>effort high · 3.6k + 2k reasoning</small></div>
+            <p>Fourteen URLs by 2 October, per-claim verification, keyed evidence packets, a scenario model with stated assumptions.</p>
+            <div class="gave"><b>Withdrew:</b> the 14-URL deadline, the September English page, and every traffic "floor", including its own. <b>Won:</b> the protection contract for the homepage.</div>
+          </div>
+          <div class="seat">
+            <div class="who"><h3>Gemini 3.8 Flash</h3><small>thinking high · 7.9k + 9.2k thinking</small></div>
+            <p>Ten pages by 15 October, a four-camp minimum per country page, thin-page dilution as the unnamed risk.</p>
+            <div class="gave"><b>Withdrew:</b> its click forecasts and their 75 percent confidence ("cannot model yield on queries where we hold zero clicks"). <b>Won:</b> the four-operator floor.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="plan">
+        <span class="eyebrow">03 · The plan</span>
+        <h2>Three batches before November, each earning the next</h2>
+        <div class="season" aria-label="Season calendar">
+          <div class="build">Sep<br>build</div>
+          <div class="build book">Oct<br>2027 queries</div>
+          <div class="book">Nov<br>booking</div>
+          <div class="book">Dec</div>
+          <div class="book">Jan</div>
+          <div class="book">Feb<br>booking</div>
+          <div>Mar</div>
+        </div>
+        <div class="timeline">
+          <div class="batch">
+            <div class="when">Batch 1a<small>target 22 Sept</small></div>
+            <div class="what">
+              <div class="pages"><span class="page">/how-we-verify</span></div>
+              <p>A page with no camp facts and no images. It proves the whole pipeline: routing, 404, headers, the content security policy, the external consent and analytics script, the sitemap, the canonical. Its indexing time is the first real measurement.</p>
+            </div>
+          </div>
+          <div class="batch">
+            <div class="when">Batch 1b<small>target 26 Sept</small></div>
+            <div class="what">
+              <div class="pages"><span class="page">/winter-camps-europe</span></div>
+              <p>Built from the eleven verified winter records: exact 2026-27 dates, per-child prices, what the price includes. Ships once the image mapping is proven on a preview. Nobody in the field shows this; World Camps' winter pages still say "2026 dates coming soon".</p>
+            </div>
+          </div>
+          <div class="batch">
+            <div class="when">Batch 2<small>target 5 Oct</small></div>
+            <div class="what">
+              <div class="pages"><span class="page">/summer-camps-norway</span><span class="page">/summer-camps-denmark</span><span class="page">/summer-camps-sweden</span><span class="page">/nordic-summer-camps</span></div>
+              <p>Markets we hold and few contest. Norway 6, Denmark 4, Sweden 4 as standalone pages; Finland's three camps ride on the Nordic page. Each camp gets its Wave 2 date and price re-check first.</p>
+            </div>
+          </div>
+          <div class="batch">
+            <div class="when">Batch 3<small>target 20 Oct</small></div>
+            <div class="what">
+              <div class="pages"><span class="page">/summer-camps-switzerland</span><span class="page">/summer-camps-spain</span><span class="page">/summer-camps-france</span><span class="page">/summer-camps-united-kingdom</span><span class="page">/summer-camps-germany</span><span class="page">/summer-camps-italy</span></div>
+              <p>The high-value terms, shipped once the template has a live read. Switzerland is a price-transparency page: what a Swiss camp costs for 2027 with dated sources. It makes no camp-count claim anywhere, because four against 32 loses on sight.</p>
+            </div>
+          </div>
+          <div class="batch later">
+            <div class="when">Wave two<small>November</small></div>
+            <div class="what">
+              <div class="pages"><span class="page muted">English-learning camps</span><span class="page muted">cost comparison</span><span class="page muted">Central and Eastern Europe</span><span class="page muted">2 partner pages, if decided 5 Oct</span></div>
+              <p>The English page waits for programme fields that do not exist yet (the data records languages present, not hours taught). Partner pages for Les Elfes and ILC are a paid feature, released only with material the card cannot hold.</p>
+            </div>
+          </div>
+        </div>
+        <p><b>Trigger:</b> if the how-we-verify page is not indexed within ten days of its request, batch two reorders to Switzerland and Spain on query value. The winter page ships regardless; it costs nothing in verification and it is what the paying winter partner bought into.</p>
+      </section>
+
+      <section id="why">
+        <span class="eyebrow">04 · Why this plan</span>
+        <h2>Five facts the decision rests on</h2>
+        <div class="why">
+          <div><span class="fig num">87%</span><h3>of clicks land on one URL</h3><p>1,095 of 1,258 Search Console clicks in twelve months came to the homepage. Anything that edits it is a risk to the whole business. So nothing does.</p></div>
+          <div><span class="fig num">71</span><h3>country-query impressions, zero clicks</h3><p>We hold none of the geographic intent today. Country pages are net-new demand, not a reshuffle of what we have. They are also unmeasured demand, which is why no forecast is a promise.</p></div>
+          <div><span class="fig num">0</span><h3>competitors with dated, sourced prices</h3><p>World Camps has 206 European camps and charges operators USD 990 to 1,590 a year, but shows US dollars, no dates and one price in 32 Swiss rows. Verified 2027 dates with per-child prices is the moat.</p></div>
+          <div><span class="fig num">4</span><h3>verified operators, or no page</h3><p>Thin country pages can drag the whole hostname's quality signal down. A standalone page needs four verified operators and a fact the ranking pages lack. Czech Republic with one camp gets no page.</p></div>
+          <div><span class="fig num">Nov</span><h3>is when 2027 booking starts</h3><p>Queries for 2027 begin in October; booking runs November to February. Pages need indexing lead time, and the winter window is open now. That is why winter goes first and why nothing waits for a quiet month.</p></div>
+          <div><span class="fig num">1</span><h3>engineer is not the constraint</h3><p>You corrected the council: build capacity is ample and parallel. The scarce resources are your review time and verified facts. The plan spends build capacity freely and your attention only on decisions.</p></div>
+        </div>
+      </section>
+
+      <section id="gates">
+        <span class="eyebrow">05 · Gates and guardrails</span>
+        <h2>What every page must pass</h2>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Gate</th><th>The rule</th><th>Why it exists</th></tr></thead>
+            <tbody>
+              <tr><td class="k">Wave 2 re-check</td><td>Every camp on a page has its 2027 dates and price re-read on the operator's page before the page ships.</td><td>A page that advertises verification cannot carry a stale season.</td></tr>
+              <tr><td class="k">Four operators</td><td>A standalone country page needs four verified operators; a regional page needs four in total.</td><td>Thin pages hurt the hostname, not just themselves.</td></tr>
+              <tr><td class="k">A fact they lack</td><td>The page carries a dated per-child price with a source, or confirmed 2027 sessions, that the pages ranking for its query do not.</td><td>Otherwise it is one more listicle.</td></tr>
+              <tr><td class="k">No digits in prose</td><td>Every price, date, age and count is interpolated from the data files; the validator fails the build if a printed figure is not byte-equal to its source, in the text and in the JSON-LD.</td><td>Two surfaces for one fact will drift. This makes drift impossible.</td></tr>
+              <tr><td class="k">Keyed offers</td><td>Every rendered offer is keyed by operator, programme, session and package; incompatible joins fail the build.</td><td>Astra's most-likely failure: a day-camp price joined to a residential session's ages, each true, the offer false.</td></tr>
+              <tr><td class="k">Expiry</td><td>Each page carries a valid-until date from the sessions it shows. A weekly scheduled rebuild checks it; an expired page becomes a noindex stub and leaves the sitemap.</td><td>Validators only run on a push. The repository had no push between 25 February and 16 August. Time passing is the failure.</td></tr>
+              <tr><td class="k">Homepage contract</td><td>On every build the generator hashes the root HTML and existing assets before and after it runs and fails if either changed. The only permitted edits: one visible link block and the shared outbound and consent code, each proven by DOM parity, golden fixtures on all 78 rows, and both consent paths.</td><td>"Untouched" was a slogan; this is a test.</td></tr>
+              <tr><td class="k">External script only</td><td>Consent gate and analytics on static pages live in one shared external file, never inline.</td><td>The content security policy has no unsafe-inline. Inline script works today and dies silently the day it is enforced.</td></tr>
+              <tr><td class="k">Booking contract</td><td>Static booking buttons are plain links with the UTM string baked at build time by the same code the app uses; the click event fires with identical parameters.</td><td>Paying partners buy the click report. A second hand-written UTM builder fragments it.</td></tr>
+              <tr><td class="k">Rollback</td><td>A withdrawn page becomes a noindex stub for 90 days, never a deletion.</td><td>Google needs a signal, and a 404 is the slow one.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="risks">
+        <span class="eyebrow">06 · What could go wrong</span>
+        <h2>The failures the seats named, and the cheap test for each</h2>
+        <div class="risks">
+          <div class="risk"><div class="stripe"></div><div class="body"><h3>The winter page cannot rank inside its own booking window</h3><p>New paths on a one-URL hostname can take six to sixteen weeks to settle. Shipped 26 September for demand peaking October to December, it may arrive as the window closes. Two seats named this as the decision most likely to be wrong.</p><p class="test"><b>Test:</b> days to indexing and to first impression of the how-we-verify page. More than ten days, and batch two reorders to query value.</p></div></div>
+          <div class="risk"><div class="stripe"></div><div class="body"><h3>Prose goes stale and nobody owns it</h3><p>Today every fact has one surface, the card, generated from the data. A second surface is a second place to be wrong, and it needs no mistake, only time. World Camps' "2026 dates coming soon" in mid-September is exactly this disease.</p><p class="test"><b>Test:</b> already run. Pushes reached production on 13 of the last 30 days and none for six months this spring. Hence the expiry rule and the weekly rebuild.</p></div></div>
+          <div class="risk"><div class="stripe"></div><div class="body"><h3>Valid sources joined into an invalid offer</h3><p>A day-camp price, another session's age range and an operator-wide language claim, each true, combined into a programme that does not exist. The current validators check fields, not joins.</p><p class="test"><b>Test:</b> a rendered-offer evidence packet per page, keyed by operator, programme, session and package, reviewed before release.</p></div></div>
+          <div class="risk"><div class="stripe"></div><div class="body"><h3>Thin country pages drag the hostname down</h3><p>A cluster of pages with 85 percent boilerplate and two cards can lower the aggregate quality signal on the root that earns everything.</p><p class="test"><b>Test:</b> the four-operator floor, and the fixed head-query cohort on the homepage watched weekly by device and country. Sustained deterioration pauses expansion and triggers diagnosis. Technical or consent regressions stop deployment at once.</p></div></div>
+          <div class="risk"><div class="stripe"></div><div class="body"><h3>The demand is not there</h3><p>Every upside number any seat produced rests on search volumes nobody has measured. Our own history is 71 impressions.</p><p class="test"><b>Test:</b> the keyword pull before batch 1a, including Astra's reconstruction: can documented visibility assumptions on the mapped queries produce the 8,000 monthly impressions its own February scenario needs? If not, that scenario is discarded before anything is built on it.</p></div></div>
+        </div>
+      </section>
+
+      <section id="upside">
+        <span class="eyebrow">07 · Upside, honestly</span>
+        <h2>No number in this record is a promise</h2>
+        <div class="prose">
+          <p>Round one produced ranges. Round two produced a scenario model. The rebuttal round retired all of it as budget evidence: Gemini withdrew its forecasts, Astra withdrew its "floor", and the lead accepted both. What remains is a bounded experiment with sensitivity cases, not forecasts.</p>
+        </div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Figure</th><th>Where it came from</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td class="k">3 to 5x in 60 days</td><td>The 2025 plan</td><td><span class="pill bad">rejected, unsourced</span></td></tr>
+              <tr><td class="k num">610 clicks in Feb 2027 (75% confidence)</td><td>Gemini, round two</td><td><span class="pill bad">withdrawn by its author</span></td></tr>
+              <tr><td class="k num">+200 clicks, +70 booking clicks a month (Feb base)</td><td>Astra's scenario model</td><td><span class="pill warn">sensitivity case, tested by the keyword pull</span></td></tr>
+              <tr><td class="k num">5 to 17 clicks a page a month</td><td>Astra's round-one read of observed rows</td><td><span class="pill warn">not a floor, its author says so</span></td></tr>
+              <tr><td class="k">Coverage, impressions per URL, booking clicks per landing page</td><td>The measurement plan</td><td><span class="pill good">what will actually be reported</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>What the wave certainly earns: text a non-rendering crawler can quote (today the raw homepage HTML carries no camp names, prices or dates, and ChatGPT brings roughly a quarter of organic sessions), a verification page no competitor has, and the winter page owed to a paying partner. Traffic beyond that is measured, not assumed.</p>
+      </section>
+
+      <section id="you">
+        <span class="eyebrow">08 · What you do</span>
+        <h2>Four things only you can do</h2>
+        <div class="actions">
+          <div class="action"><div class="n">1</div><div class="body">
+            <h3>Create the Vercel deploy hook (about three minutes)</h3>
+            <p>The weekly rebuild workflow is already committed and does nothing until this secret exists.</p>
+            <ol>
+              <li>Open vercel.com, pick the European Summer Camps project, then <b>Settings</b> in the project's top bar.</li>
+              <li>In the left menu choose <b>Git</b>, scroll to <b>Deploy Hooks</b>.</li>
+              <li>Name it <code>weekly-rebuild</code>, branch <code>main</code>, click <b>Create Hook</b>, then <b>Copy</b> the URL it shows. Treat that URL like a password: anyone holding it can start builds.</li>
+              <li>Open the GitHub repository in a browser, <b>Settings</b> tab, then <b>Secrets and variables</b>, then <b>Actions</b>, then <b>New repository secret</b>.</li>
+              <li>Name: <code>VERCEL_DEPLOY_HOOK_URL</code>. Value: paste the URL. Save.</li>
+              <li>Optional check: GitHub <b>Actions</b> tab, workflow "Weekly rebuild", <b>Run workflow</b>. A green run means Vercel answered; a new deployment appears in Vercel a minute later.</li>
+            </ol>
+          </div></div>
+          <div class="action"><div class="n">2</div><div class="body">
+            <h3>Rendered page: done, and it settles the prerender question <span class="pill good">closed</span></h3>
+            <p>Your crawled-page copy from Search Console shows Googlebot rendering the full application: 68 camp cards, 60 euro and 7 franc prices, both booking badges, the hero H1. Google holds the 2027 title. So there is no rendering failure to fix, and no release will edit the homepage to prerender it. Static text on the new URLs still serves the fetchers that do not run JavaScript (ChatGPT, Bing). You have since resubmitted the sitemap and requested fresh indexing, so the next crawl will carry the EUROCAMP rename and the eleventh winter camp.</p>
+          </div></div>
+          <div class="action"><div class="n">3</div><div class="body">
+            <h3>Decide on the Les Elfes card</h3>
+            <p>Her page lists ski equipment rental and the Geneva transfer as extras. Her Premium card has six highlights and does not say so. Ask her, or leave it: partner cards are not edited without the partner.</p>
+          </div></div>
+          <div class="action"><div class="n">4</div><div class="body">
+            <h3>Push</h3>
+            <p>Eight commits from today are local: the council record, the winter row, the FAQ fix, the workflow. GitHub Desktop, Push origin.</p>
+          </div></div>
+        </div>
+      </section>
+
+      <section id="ai">
+        <span class="eyebrow">09 · AI answer engines</span>
+        <h2>Staying attractive to ChatGPT and Gemini</h2>
+        <p>ChatGPT brings roughly a quarter of organic sessions. The two engines reach us by different roads, and the plan serves both without touching the homepage.</p>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Engine</th><th>How it reads us today</th><th>What the plan adds</th></tr></thead>
+            <tbody>
+              <tr><td class="k">ChatGPT</td><td>Two roads. Its search answers draw on Bing's index, where we rank second and are cited. Its own fetchers (GPTBot, OAI-SearchBot, ChatGPT-User) are all allowed in robots.txt, but they do not run JavaScript, so on the homepage they see only the title, the description and the structured data: no camp names, no prices, no dates.</td><td>Every wave-one page is plain HTML: the winter page, the how-we-verify page and the country pages give these fetchers verified 2027 dates and per-child prices to quote, with a page to cite as the source of the verification claim.</td></tr>
+              <tr><td class="k">Gemini and AI Overviews</td><td>Google's own crawler, which renders the full grid (your crawled-page copy proves it). One flag: robots.txt disallows Google-Extended, the token Google uses for Gemini training and grounding. Google says AI Overviews and AI Mode use the ordinary crawler and are unaffected; the Gemini app's grounding may be. This was a deliberate anti-scraping choice in 2025.</td><td>Your decision: keep Google-Extended blocked (no training on our verified data) or allow it (more Gemini citations, at the cost of feeding training). The lead recommends allowing it: the data is public on the page anyway, and a citation is worth more than the principle.</td></tr>
+              <tr><td class="k">Perplexity, Claude</td><td>Allowed (PerplexityBot, Perplexity-User, ClaudeBot). Same JavaScript limit on the homepage.</td><td>Same benefit from the static pages.</td></tr>
+              <tr><td class="k">Common Crawl</td><td>Blocked (CCBot). Feeds many training sets, sends no visitors.</td><td>Stays blocked.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose">
+          <p><b>Three cheap moves on top of the plan.</b> First, structured data on every static page (ItemList and BreadcrumbList, no review schema until provenance exists), because fetchers read it first. Second, an llms.txt at the root naming the verification page, the winter page and the country pages with one line each; Astra called it optional hygiene, and it costs an hour. Third, keep the "verified on the operator's page, date shown" line visible on every card and page, since answer engines prefer sources that state their provenance. None of these edits the homepage.</p>
+        </div>
+        <div class="untouch">
+          <h3>What stays untouchable through all of it</h3>
+          <p>The homepage's title, H1, canonical URL and booking behaviour. The 79 / 199 / 299 pricing you are mailing operators on this week. The rule that every fact on a page was read on the operator's own page. And the rule that agents and external models are adjudicated, never relayed.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer>Source of record: docs/reports/PHASE_2_COUNCIL_2026-09-13.md, sections 1 to 6.6, and COMPETITOR_ANALYSIS_2026-09-13.md. Every figure on this page is taken from those records; nothing here is new.</footer>
+</div>
+
+</body>
+</html>
