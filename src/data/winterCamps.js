@@ -68,7 +68,7 @@ export const winterCamps = [
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Language Courses", "Evening Programme"],
     dates: "Dec 20, 2026 - Feb 27, 2027", // Verified 10 Sept 2026: seven weekly sessions listed, 20 Dec 2026 to 27 Feb 2027
-    highlights: ["25 hours of ski or snowboard tuition a week", "Accommodation, full board and ski pass included", "Three linked ski areas including Glacier 3000"],
+    highlights: ["25 hours of ski or snowboard tuition a week", "Full board and ski pass included, hire CHF 150 a week", "Three linked ski areas including Glacier 3000"], // Inclusions re-read 13 Sept 2026 on filolo.ch: "The weekly price includes 25-hour ski or snowboard course, 6 nights' accommodation with full board, ski pass for 3 ski areas, transfers"; extras "Equipment rental (ski + poles/snowboard, boots, and helmet): 150 CHF per week", airport transfer CHF 100 one way
     languages: ["English", "French", "German"],
     specialFeatures: ["Stays of one to three weeks", "232 km of slopes from 1200 m to 3010 m", "Optional language course alongside the snow programme"],
     established: null, // Founding year not stated on the operator's site (checked 10 Sept 2026)
@@ -160,7 +160,7 @@ export const winterCamps = [
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Thermal Baths", "Evening Programme"],
     dates: "Jan 16 - Feb 26, 2027", // Verified 10 Sept 2026: six weekly sessions listed under "TERMINY 2027", 16 to 22 Jan through 20 to 26 Feb
-    highlights: ["Five-day Kotelnica lift pass included in the price", "Coach travel PLN 270 to 350 by departure city, or PLN 150 if you travel yourself", "Rooms of three to six with bathroom, three meals a day"],
+    highlights: ["Five-day Kotelnica lift pass included in the price", "Coach travel PLN 270 to 350 by departure city, or PLN 150 if you travel yourself", "Ski or board hire PLN 280 a week, helmet free"], // Inclusions re-read 13 Sept 2026 on ar-sport.pl/obozy-zimowe/: "Cena obejmuje: karnet na wyciągi ... na 5 dni", rental "narty + buty lub deska + buty płatne na miejscu gotówką 280zł/os/tydzień, osoby wypożyczające sprzęt dostają kask gratis"
     languages: ["Polish"],
     specialFeatures: ["Groups by age and ability, beginner to advanced", "One entry to the Terma Bania thermal baths", "Accident insurance included"],
     established: null, // The operator states "20 years" of camps but prints no founding year (checked 10 Sept 2026)
@@ -261,6 +261,27 @@ export const winterCamps = [
     capacity: null,
     bookingUrl: "https://www.neige-et-soleil.com/produit/colo-ado-ski-competition/",
     bookingStatus: "open" // Verified 10 Sept 2026: all four 2027 sessions are selectable in the product's own booking selector
+  },
+  {
+    id: 83,
+    name: "friLingue St. Bernard Ski & Snowboard Camp",
+    location: "Liddes, Switzerland",
+    country: "Switzerland",
+    season: "winter",
+    ages: "8-17 years", // Verified 13 Sept 2026: "Age range: 8 - 17 Years" on the St. Bernard ski camp page
+    price: "From CHF 1,300/1 week", // Verified 13 Sept 2026: weekly price table on the St. Bernard ski camp page, 1 week 1300 CHF, 2 weeks 2300, 3 weeks 3300, 4 weeks 4300; ski pass, 15 hours of lessons, 12 hours of language classes, full board and excursions included; equipment rental CHF 200 a week extra; 4-bed and 6-bed rooms cost CHF 100 to 300 a week more than the 8-bed dormitory
+    priceRange: "mid",
+    rating: null,
+    reviews: 0,
+    image: alpineVillage,
+    category: "winter",
+    type: "Ski & Language Camp",
+    activities: ["Skiing", "Snowboarding", "Language Lessons", "Excursions", "Evening Programme"],
+    dates: "Dec 20, 2026 - Mar 6, 2027", // Verified 13 Sept 2026: eleven weekly start dates on the operator's page, 20.12 / 27.12.2026 / 03.01 / 10.01 / 17.01 / 24.01 / 31.01 / 07.02 / 14.02 / 21.02 / 28.02.2027, arrival Sunday, departure Saturday
+    highlights: ["Ski pass for four areas and 15 hours of lessons", "12 hours of French, English or German a week", "Equipment hire CHF 200 a week, dorms of 4 to 8"], // Verified 13 Sept 2026 on the same page: "Ski pass for 4 ski areas", "15 hours of ski or snowboard lessons", "12 hours of language classes per week in groups of around 6 students", "SKI EQUIPMENT RENTAL (ski/snowboard, helmet, ski shoes & ski poles) - 200 CHF per week", rooms of 4, 6 and 8 beds at Relais de Dranse. Held on 10 Sept 2026 because the 2026-27 dates and price were not yet on the page; published once they were. Founding year not stated on the operator's pages, so no established field
+    languages: ["French", "English", "German"],
+    specialFeatures: ["Ten extra ski hours instead of language classes at no cost", "Three chalets in the Pays du St-Bernard, by week", "Vicheres-Liddes slopes five minutes from the chalet"],
+    bookingUrl: "https://www.frilingue.ch/en/juniors/learn-languages-switzerland-youth/liddes-saint-bernard/st-bernhard-ski-camp"
   }
 ]
 
