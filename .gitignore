@@ -126,3 +126,7 @@ tmpclaude-*
 CLAUDE-BACKUP-*.md
 # Office lock files
 ~$*
+
+# Python bytecode from scripts/ga4-pull.py probes
+__pycache__/
+*.pyc
