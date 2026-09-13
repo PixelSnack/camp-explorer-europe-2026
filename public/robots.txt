@@ -57,8 +57,10 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
+# Google-Extended controls Gemini grounding and training. Allowed since 13 Sept 2026 (owner decision):
+# ChatGPT already brings about a quarter of organic sessions and Gemini must be able to cite us too.
 User-agent: Google-Extended
-Disallow: /
+Allow: /
 
 User-agent: Bytespider
 Disallow: /
