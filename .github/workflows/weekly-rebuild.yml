@@ -1,0 +1,31 @@
+# Weekly production rebuild (Phase 2 council decision 6.5, 13 Sept 2026).
+#
+# Why: the build-time validators only run when something is pushed. Between pushes a generated page
+# whose season has ended is never examined. This workflow asks Vercel to rebuild main once a week so
+# the contentValidUntil check on generated pages gets an occasion to run even in a quiet month.
+#
+# Setup (owner, once): Vercel dashboard > the project > Settings > Git > Deploy Hooks > create a hook
+# named "weekly-rebuild" on branch "main" > copy the URL. GitHub > this repository > Settings >
+# Secrets and variables > Actions > New repository secret > name VERCEL_DEPLOY_HOOK_URL > paste the URL.
+# Until the secret exists the job exits quietly and does nothing. The URL is a secret: anyone holding
+# it can trigger builds, so it never goes into the repository.
+name: Weekly rebuild
+on:
+  schedule:
+    - cron: "0 4 * * 1" # Mondays 04:00 UTC
+  workflow_dispatch:
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the Vercel deploy hook
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "VERCEL_DEPLOY_HOOK_URL is not set; nothing to do."
+            exit 0
+          fi
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$HOOK")
+          echo "Vercel answered HTTP $code"
+          case "$code" in 2*) exit 0;; *) exit 1;; esac
