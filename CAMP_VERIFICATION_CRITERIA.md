@@ -13,7 +13,7 @@
 
 **RESIDENTIAL CAMPS (Primary Focus):**
 - **✅ RESIDENTIAL CAMP FACILITY**: Dedicated camp accommodation (cabins, dormitories, camp buildings, boarding-school or college halls). **Hotel-based camps (owner decision 17 Aug 2026):** on-site dedicated housing remains the preferred and stronger configuration. A camp that houses its campers in a hotel is NOT disqualified by that alone, provided the operator runs the supervised programme itself, the accommodation is included in the per-child price, and the listing states explicitly that campers are housed in a hotel (name it). Treat it as a weaker point in the assessment, not as equal to on-site housing. Hotels selling their own activity programmes, and tour lodging, remain disqualified.
-- **✅ CAMP OPERATOR STATUS**: Camp organization - NOT travel agency, tour operator, or hospitality company
+- **✅ CAMP OPERATOR STATUS**: Camp organization - NOT travel agency, tour operator, or hospitality company. **Travel-agency licence rule (13 Sept 2026, EUROCAM Bohemia case):** the words "travel agency", "cestovní kancelář", "organizator turystyki" or a tourism-licence number on a camp operator's pages are NOT a disqualifier by themselves. In the Czech Republic Act 159/1999 Sb. obliges every organiser of children's camps to become a licensed travel agency (SYKA AGENCY a.s. was created for that reason and sells only its own three camps at its own two sites); other Central European countries have similar rules. Test the substance instead: what does the company sell (only its own camps passes; tours, flights, hotels or stays for third parties fail), does it own or operate the site, and does it run the programme with its own staff. Report the licence and what the company sells; never reject or flag on the label alone.
 - **✅ CAMP-ONLY PRICING**: Pricing excludes flights, transportation, and travel packages
 - **✅ ON-SITE CAMP PROGRAMS**: Multi-day residential programs with camp supervision - NOT guided tours or travel itineraries
 - **✅ CAMP FACILITY OWNERSHIP**: Camp owns/operates the facility - NOT booking accommodations for clients
@@ -28,7 +28,7 @@
 **AUTOMATIC DISQUALIFIERS:**
 - ❌ Tour operators offering travel packages
 - ❌ Hotels selling their own activity programs (a camp operator housing its campers in a hotel is handled under the residential-facility rule above)
-- ❌ Travel agencies with family tours
+- ❌ Travel agencies with family tours (a statutory travel-agency licence held by a company that sells only its own camps is not this; see the rule above)
 - ❌ Pricing that includes flights/transportation
 - ❌ Multi-country travel itineraries
 - ❌ Day camps not clearly labeled as such
@@ -243,7 +243,7 @@ The five-point test applies unchanged to winter camps. Winter adds a season laye
 
 ### The five points, read for winter
 1. **Residential facility**: the child sleeps on site in accommodation the operator runs or has contracted, included in the price. A hotel-housed camp passes only if the operator runs the programme and says so explicitly (owner decision 17 August 2026); a hotel selling its own activity programme fails.
-2. **Camp operator status**: a ski school, boarding school, sports federation, youth association or camp company. Tour operators, travel agencies and hotels fail. Colonie-style operators pass when they run the programme with their own staff.
+2. **Camp operator status**: a ski school, boarding school, sports federation, youth association or camp company. Tour operators, travel agencies and hotels fail. Colonie-style operators pass when they run the programme with their own staff. A camp company that holds a travel-agency licence because national law requires it (Czech Act 159/1999) passes when it sells only its own camps at its own site.
 3. **Camp-only per-child pricing**: one child's place, transport to the resort excluded or shown separately, with what the price includes stated. A price that exists only with coach travel included fails unless a price without transport is published.
 4. **On-site supervised residential programme** of several days with overnight supervision, accepting **individual bookings** (school-class-only or club-member-only offers fail).
 5. **Operator runs the programme and controls the facility** (not a booking agent for someone else's camp).
