@@ -70,6 +70,7 @@ export const allCamps = [
     type: "Premium Alpine Adventure", // Owner direction 12 Sept 2026: the chip carries the category name "Premium Alpine" on every card in that category, because the card prints no category and the band now reads Featured
     activities: ["Rock Climbing", "Mountain Biking", "Water Skiing", "Tree Top Adventure"], // Read on leselfes.com/summer-camps/ 11 Sept 2026. "5 Languages" was removed: it is not an activity and it duplicated the Languages row directly beneath it on the card
     dates: "June 6 - Aug 28, 2027", // Verified 6 Sept 2026 (leselfes.com/dates-and-pricing): six two-week sessions, 6 Jun to 28 Aug 2027
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     bookingStatus: "open", // Verified 6 Sept 2026: every 2027 session shows Enrol now and is selectable with its price on leselfes.com/summer-camp/enrol/
     highlights: ["Two day hike with a night in a mountain hut, in the first week", "A weekly excursion the camper chooses: Zermatt, Chamonix or Geneva", "Verbier Language School teachers, classes of eight at most", "On site nurse and 24/7 care", "Hot lunches at their private mountain restaurant at 2,200 m", "Two purpose built chalets, with a pool two minutes away"], // Rewritten 11 Sept 2026 from leselfes.com/summer-camps/; extended to six on 12 Sept 2026 when Premium cards began rendering six. Every line re-read on leselfes.com/summer-camp/summer-camps-activities/ on 12 Sept: "maximum class size of 8 students per teacher" with the Verbier Language School; "our private mountain restaurant welcomes our students for warm lunches" at 2,200 m (the page also calls it "a unique privatized restaurant"); "two purpose built wood and stone chalets"; indoor and outdoor pool "next to the campus (2 minute walk)"; the 2-day hiking trip "during the first week of each summer camp session"; nurse "available every day" and a night guard on the staff list. The previous four (Jan 2026) were brand claims
     languages: ["English", "French", "German", "Spanish", "Mandarin"],
@@ -94,6 +95,7 @@ export const allCamps = [
     type: "Premium Alpine Boarding", // Category name on the chip, see ID 1
     activities: ["Academic Enrichment", "Professional Sports", "Cultural Immersion", "Leadership"],
     dates: "June 14-28, 2026",
+    verifiedOn: "2026-01-18", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["Luxury Alpine setting", "50+ nationalities", "Boarding school experience", "Premium facilities"],
     languages: ["English", "French"],
     specialFeatures: ["On-site Health Center", "Age-grouped Programs", "Academic Focus"],
@@ -116,6 +118,7 @@ export const allCamps = [
     type: "Premium Alpine Adventure Sports", // Category name on the chip, see ID 1
     activities: ["Multi-Sport", "Language Learning", "Leadership Training", "Environmental Ed"],
     dates: "June 21-July 5, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["40+ countries", "Bilingual environment", "Adventure focus", "Lake Geneva"],
     languages: ["French", "Spanish", "English", "German"],
     specialFeatures: ["Leadership Training", "Environmental Education", "Cultural Excursions"],
@@ -138,6 +141,7 @@ export const allCamps = [
     type: "Day & Residential Camps",
     activities: ["English Immersion", "Mountain Adventure", "Outdoor Skills", "Marmots Program"],
     dates: "Jun 28 - Aug 13, 2027 (not yet bookable)", // Verified 6 Sept 2026 (altitude-camps.com/day-camp and /residential-camp): day camp Mon 28 Jun to Fri 13 Aug, residential Sunday-to-Saturday weeks 27 Jun to 31 Jul. The page prints no year; these weekdays exist only in the 2027 calendar and replace the 2026 dates the same page carried in Aug 2026 (29 Jun-14 Aug, 28 Jun-1 Aug). Booking checked in Chrome the same day: the widget still runs on 2026 eligibility windows and its calendar cannot move past Sept 2026, so 2027 is not bookable yet and no badge is set
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Day camp from CHF 975, ages 3-14", "Residential from CHF 2,950, ages 7-14", "English immersion in Verbier", "Swiss Alps setting"], // Owner decision 13 Sept 2026: both products and their prices on the card (altitude-camps.com/day-camp and /residential-camp, re-read 6 Sept)
     languages: ["English", "French"],
     specialFeatures: ["Marmots Program (3-5 years)", "Day Camp Options", "Residential Camps (7-14)"],
@@ -161,6 +165,7 @@ export const allCamps = [
     type: "University Prep",
     activities: ["Medicine", "Engineering", "Business", "Creative Arts"],
     dates: "Jun - Aug 2027 (2-week courses)", // Verified 7 Sept 2026 (atlassummercourses.com/oxford): "Courses begin from June 2027, end in Aug 2027", exact dates by age group on the prices-and-dates page
+    verifiedOn: "2026-09-07", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Oxford University colleges", "University preparation", "Formerly Oxford Summer Courses", "3 pricing tiers available"],
     languages: ["English"],
     specialFeatures: ["College Accommodation", "University Application Guidance", "Airport Transfers Included"],
@@ -183,6 +188,7 @@ export const allCamps = [
     type: "Comprehensive Education",
     activities: ["English Classes", "Sports Specialties", "Arts & Crafts", "Cultural Excursions"],
     dates: "July 13-27, 2026 (2 weeks)",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Day and residential options", "1,700+ students annually", "62 countries", "6 campus locations"],
     languages: ["English"],
     specialFeatures: ["Little Explorers (6-11)", "Specialist Tracks", "Airport Transfers Included"],
@@ -206,6 +212,7 @@ export const allCamps = [
     type: "Spanish Immersion",
     activities: ["Spanish Classes", "Beach Sports", "Cultural Tours", "Water Activities"],
     dates: "July 5 - Aug 22, 2026", // Verified 6 Sept 2026 (enforex.com/es/campamentos-de-verano/barcelona-playa); 2027 not published
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Beach location", "80% international campers", "UPC university campus", "1-4 week options"],
     languages: ["Spanish", "English"],
     specialFeatures: ["Beach Activities", "Cultural Exchange", "Full Board Included"],
@@ -228,6 +235,7 @@ export const allCamps = [
     type: "Day Camp - French Immersion",
     activities: ["French Classes", "Alpine Hiking", "White Water Rafting", "Mountain Biking"],
     dates: "July 6 - August 14, 2026 (9am-4:30pm)",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["⚠️ DAY CAMP - No accommodation", "French Alps setting", "Parent/guardian must be in area", "Morning classes + afternoon adventures"],
     languages: ["French", "English"],
     specialFeatures: ["Day Program Only", "Family Accommodation Available Separately", "Native French Instructors"],
@@ -251,6 +259,7 @@ export const allCamps = [
     type: "English Immersion",
     activities: ["English Immersion", "River Swimming", "Rowing", "Football", "Volleyball", "Team Games"], // Re-read 13 Sept 2026 (euro-camp.eu about-us, program, kids-invitation): native-speaker leaders all day, "rowing in small boats or swimming" on the Luznice, football, volleyball, petanque, cricket, the camp-wide game; no caves anywhere on the site, and EUROCAMP is not a lesson-based course
     dates: "Jul 2 - Aug 28, 2027 (10-day sessions)", // Verified 13 Sept 2026 (syka.cz/en/calendar.php, "SUMMER TIME CAMPS 2027 Terms Overview": EUROCAMP terms 2-11 Jul, 11-20 Jul, 20-29 Jul, 1-10 Aug, 10-19 Aug, 19-28 Aug 2027, each with a BOOK NOW link to euro-camp.eu); 2027 price not published, EUR 335 is the 2026 price and the operator has been asked
+    verifiedOn: "2026-09-13", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     bookingStatus: "2027 dates published",
     highlights: ["10-day program", "Bilingual leaders", "Own site in a Bohemian river valley", "Organiser running camps since 1994"], // Valley line added 13 Sept 2026 (euro-camp.eu about-us: private forest site by the Luznice, used 31 years)
     languages: ["English", "Czech"],
@@ -274,6 +283,7 @@ export const allCamps = [
     type: "Outdoor Adventure",
     activities: ["Survival Skills", "Rock Climbing", "Husky Adventures", "Skating", "English Lessons", "Swimming"], // Re-read 13 Sept 2026 (campadventure.de/en destination page: "Survival, Husky, Skating, Creative, or English", climbing 12-17, swimming, leadership); German culture, castles and folk content appear nowhere on the operator site
     dates: "June 27 - Sept 11, 2027", // Verified Aug 2026: 2027 calendar published (bookacamp.de)
+    verifiedOn: "2026-08-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     bookingStatus: "open", // 13 Sept 2026: summer 2027 weeks are individually selectable with prices on the operator booking form (bookacamp.de)
     highlights: ["Bavarian Forest", "Riverside camp in tents or cabins", "English and German programme", "Great value"], // Re-read 13 Sept 2026 (campadventure.de/en: "campsite directly by the river", "tents or cabins at the campground", "Main languages: English / German"); the earlier "Mountain lake" and "German traditions" were not on the operator site
     languages: ["German", "English"],
@@ -298,6 +308,7 @@ export const allCamps = [
     type: "Football Academy",
     activities: ["Professional Coaching", "Stadium Tours", "Technical Training", "Cultural Activities"],
     dates: "August 5-12, 2026",
+    verifiedOn: "2026-01-18", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["AC Milan coaches", "San Siro stadium", "Professional training", "Cultural immersion"],
     languages: ["English", "Italian"],
     specialFeatures: ["Professional Coaching", "Stadium Access", "Player Meetings"],
@@ -321,6 +332,7 @@ export const allCamps = [
     type: "Family Sailing Resort",
     activities: ["Dinghy Sailing", "Catamaran Sailing", "Windsurfing", "SUP", "Beach Activities"],
     dates: "May-October 2026 (Mon-Fri sessions)",
+    verifiedOn: "2026-01-18", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["⚠️ FAMILY RESORT - Parents must book holiday", "Youth sailing while parents sail", "RYA-certified instructors", "Splash Club (beginners) & Youth Squad (intermediate)"],
     languages: ["English"],
     specialFeatures: ["Parents Required On-Site", "Kids Club 10am-5pm Daily", "Family Package Only"],
@@ -344,6 +356,7 @@ export const allCamps = [
     type: "Adventure Expedition",
     activities: ["Sea Kayaking", "Summit Hiking", "Via Ferrata Climbing", "Cultural Immersion"],
     dates: "June 29-July 14 & July 18-August 2, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Galdhøpiggen summit", "16-day expedition", "High fitness required", "Viking history"],
     languages: ["English", "Norwegian"],
     specialFeatures: ["Norway's Highest Peak", "Advanced Outdoor Skills", "Cultural Experiences"],
@@ -366,6 +379,7 @@ export const allCamps = [
     type: "Olympic Sports Heritage",
     activities: ["Cross-Country Skiing", "Biathlon Training", "Nordic Walking", "Mountain Hiking"],
     dates: "July 12-26, 2026",
+    verifiedOn: "2026-01-18", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["1994 Olympic venues", "Professional Nordic coaches", "Fjord excursions", "Cultural immersion"],
     languages: ["Norwegian", "English", "Danish"],
     specialFeatures: ["Olympic Training Facilities", "Fjord Adventures", "Viking History Programs"],
@@ -389,6 +403,7 @@ export const allCamps = [
     type: "Expedition Adventure Camp",
     activities: ["Glacier Hiking", "Volcano Studies", "Geothermal Science", "Kayaking"],
     dates: "July 20-August 3, 2026 (14 days)",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Expedition-style camping", "45+ years experience", "13 students + 2 leaders", "ACA-listed program"],
     languages: ["English"],
     specialFeatures: ["Tent Camping Provided", "No Fixed Facility - Traveling Program", "Wilderness First Aid Certified Leaders"],
@@ -411,6 +426,7 @@ export const allCamps = [
     type: "Day Camp - Adventure Academics",
     activities: ["Kayaking", "Rock Climbing", "Hiking", "Surfing", "STEM Learning"],
     dates: "July 7-11 & July 14-18, 2026 (8:30-15:30 daily)",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["DAY CAMP - No overnight stay", "Academics meets adventure", "Lunch included", "International environment"],
     languages: ["Norwegian", "English"],
     specialFeatures: ["Day Program Only", "Daily Lunch Included", "Academic & Adventure Balance"],
@@ -433,6 +449,7 @@ export const allCamps = [
     type: "International School",
     activities: ["Danish Language", "Sports", "Arts", "Outdoor Activities", "Cultural Excursions"],
     dates: "July 5 - August 5, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Authentic efterskole experience", "1-5 week flexible duration", "40+ countries represented", "Weekly excursions included"],
     languages: ["Danish", "English"],
     specialFeatures: ["Modular Subject Selection", "All-Inclusive Meals", "Airport Transport Included"],
@@ -455,6 +472,7 @@ export const allCamps = [
     type: "International Adventure",
     activities: ["English Learning", "Cultural Exchange", "Sports", "Hiking", "Arts & Crafts"],
     dates: "July 14 - August 15, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Residential lakeside campsite", "Flexible 1-30 day programs", "Shared twin rooms with bathrooms", "5 meals daily included"],
     languages: ["English", "Finnish"],
     specialFeatures: ["Customizable Duration", "24-Hour Supervision", "9 Hours Daily Activities"],
@@ -478,6 +496,7 @@ export const allCamps = [
     type: "Equestrian Sports",
     activities: ["Horse Riding", "Trail Rides", "Jumping", "Stable Care", "Mountain Hiking"],
     dates: "June 21-26 & June 28-July 3, 2026",
+    verifiedOn: "2026-01-18", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["17+ years experience", "Professional riding instruction", "Mountain location", "Field trips included"],
     languages: ["Norwegian", "English"],
     specialFeatures: ["9 Riding Sessions", "Competition Training", "Theory Lessons", "Mountain Trail Access"],
@@ -502,6 +521,7 @@ export const allCamps = [
     type: "Educational Farm Camp",
     activities: ["Farm Work", "Kayaking", "Swimming", "Survival Skills", "Arts & Crafts", "Cooking"],
     dates: "Jun 27 - Aug 7, 2026 (weekly sessions)", // Verified 6 Sept 2026 (six one-week sessions); 2027 not published
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Montessori philosophy", "Working farm experience", "Qualified teacher supervision", "30+ years education experience"],
     languages: ["English", "Polish"],
     specialFeatures: ["Animal Care", "Agricultural Activities", "Small Group Sizes", "24-hour Supervision"],
@@ -524,6 +544,7 @@ export const allCamps = [
     type: "Adventure Camp",
     activities: ["Swimming", "High Ropes", "Climbing", "Horse Riding", "Kayaking", "Water Sports"],
     dates: "Jun 28 - Sep 5, 2026 (weekly sessions)", // Verified 6 Sept 2026: 2026 brochure calendar (p.7), Sunday check-in 28 Jun to Saturday check-out 5 Sep
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["30+ years experience", "10-hectare adventure facility", "100+ activities", "Close to Lisbon"],
     languages: ["Portuguese", "English", "Spanish"],
     specialFeatures: ["2 Swimming Pools", "Climbing Tower", "Horse Facilities", "Full Board Included"],
@@ -548,6 +569,7 @@ export const allCamps = [
     type: "Wilderness Family Camp",
     activities: ["Wilderness Survival", "Wildlife Tracking", "Campfire Cooking", "Night Adventures", "Nature Crafts", "Team Building"],
     dates: "August 14-16, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["National Park Ranger-led", "True wilderness immersion", "Multi-generational bonding", "Digital detox experience"],
     languages: ["German", "English", "Czech"],
     specialFeatures: ["Government National Park", "Dormitory Cabins", "Communal Cooking", "Alpine Setting 940m"],
@@ -571,6 +593,7 @@ export const allCamps = [
     type: "Alpine Language Camp",
     activities: ["Hiking", "German Language", "English Language", "Nature Exploration", "Alpine Adventures", "Cultural Activities"],
     dates: "June 29 - July 11, 2026 (1 or 2 week options)",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Family-run since 2005", "Traditional Tyrolean farmhouse", "Bilingual instruction", "Early bird discount available"],
     languages: ["German", "English"],
     specialFeatures: ["Intimate family atmosphere", "Owners present at all times", "Alpine mountain setting"],
@@ -595,6 +618,7 @@ export const allCamps = [
     type: "Academic Language Immersion",
     activities: ["Polish Language Classes", "Museum Visits", "City Tours", "Dance Workshops", "Art Workshops", "Culinary Workshops", "Castle Excursions", "Wieliczka Salt Mine"],
     dates: "July 19 - August 1, 2026",
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Prestigious Jagiellonian University (founded 1364)", "30 hours intensive Polish instruction", "University dormitory accommodation", "Full board included"],
     languages: ["Polish", "English"],
     specialFeatures: ["Historic university setting", "Deep cultural immersion", "Southern Poland excursions"],
@@ -618,6 +642,7 @@ export const allCamps = [
     type: "Adventure & Surf Camp",
     activities: ["Expert Surf Instruction", "Mountain Biking", "Coastal Hiking", "Beach Olympics", "Dolphin Watching", "Cultural Excursions"],
     dates: "July 5-18, July 19-Aug 1, Aug 2-15, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["50+ years camp experience (since 1972)", "Atlantic coast location", "Modern exclusive residence", "World-class surf waves"],
     languages: ["English"],
     specialFeatures: ["Education Through Recreation™ philosophy", "International camp environment", "English + Adventure or Surf tracks"],
@@ -642,6 +667,7 @@ export const allCamps = [
     type: "Bilingual Adventure Camp",
     activities: ["English Classes", "Sailing", "Windsurfing", "Tennis", "Adventure Parks"],
     dates: "12 Jul - 8 Aug 2026 (weekly sessions)", // Verified Aug 2026 (funside.hu/en/dates-2)
+    verifiedOn: "2026-08-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["18 years operating experience", "25-30 countries represented", "5:1 staff ratio", "Lake Balaton setting"],
     languages: ["English", "Hungarian"],
     specialFeatures: ["Bilingual English-Hungarian", "30+ Activities Available", "24/7 Medical Staff"],
@@ -666,6 +692,7 @@ export const allCamps = [
     type: "Wilderness Adventure Camp",
     activities: ["Hiking", "Archery", "Ziplining", "Mountain Biking", "Survival Skills"],
     dates: "Jul 3-8, 2025 (next dates unpublished)", // Verified 6 Sept 2026: romanianunitedfund.org/semenic_explorer25 is the July 2025 edition (USD 650, ages 8-14); no 2026 or 2027 edition published; operator asked via draft
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["UNESCO-protected National Park", "700m zipline experience", "1,400m mountain elevation", "Bilingual environment"],
     languages: ["Romanian", "English"],
     specialFeatures: ["Carpathian Mountain Setting", "Nature Education Focus", "Small Group Experience"],
@@ -689,6 +716,7 @@ export const allCamps = [
     type: "Tech-Free Adventure Camp",
     activities: ["White Water Rafting", "Rock Climbing", "Kayaking", "Canyoning", "Mountain Biking"],
     dates: "Jul 5 - Aug 8, 2026 (weekly sessions)", // Verified 6 Sept 2026 (explorercamps.com/dates-and-prices: EUR 845 per week confirmed); 2027 not published
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Technology-free camp", "12+ hours daily in nature", "40+ nationalities", "4:1 staff ratio for young campers"],
     languages: ["English"],
     specialFeatures: ["90% Outdoor Time", "Lake Velenje Setting", "Age-Specific Programs"],
@@ -713,6 +741,7 @@ export const allCamps = [
     type: "Wilderness Expedition Camp",
     activities: ["Sea Kayaking", "Mountain Expeditions", "Rock Climbing", "Wild Camping", "Survival Skills"],
     dates: "Summer 2026 (1 & 2 week sessions)",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Remote Scottish Highlands", "Cape Wrath expeditions", "50-year family heritage", "Duke of Edinburgh Award qualifying"],
     languages: ["English"],
     specialFeatures: ["Expedition-Style Programs", "Uninhabited Island Adventures", "Maximum 36 Participants"],
@@ -736,6 +765,7 @@ export const allCamps = [
     type: "American-Style Adventure Camp",
     activities: ["Sea Kayaking", "Rock Climbing", "Mountain Biking", "Snorkeling", "Challenge Course"],
     dates: "Jun 21 - Aug 22, 2026 (1 or 2 weeks)", // Verified 6 Sept 2026 (campcalifornia.com/dates-prices: 1-week 21-27 Jun EUR 1,095; 2-week sessions EUR 1,975); 2027 not published
+    verifiedOn: "2026-09-06", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Europe's first American-style camp", "14,000+ alumni since 2003", "Adriatic coast location", "40+ countries represented"],
     languages: ["English"],
     specialFeatures: ["Bamboo Cabin Village", "Teen Adventure Expeditions", "Near Kornati National Park"],
@@ -759,6 +789,7 @@ export const allCamps = [
     type: "Family Adventure Resort",
     activities: ["Zip-wiring", "Abseiling", "Climbing", "Archery", "Canoeing", "Giant Swing"],
     dates: "Year-round (2-4 night breaks)",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Parents and children together", "Under 5s stay FREE", "20+ on-site activities", "Heated outdoor pool"],
     languages: ["English"],
     specialFeatures: ["All-Inclusive Meals", "Evening Kids Club", "En-Suite Family Rooms"],
@@ -782,6 +813,7 @@ export const allCamps = [
     type: "Family Adventure Centre",
     activities: ["Kayaking", "Rock Climbing", "High Ropes", "Laser Combat", "Archery", "SUP"],
     dates: "Year-round (3-5 day programs)",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["30+ purpose-built activities", "Family residential programs", "Shore-side location", "3 or 5 day options"],
     languages: ["English"],
     specialFeatures: ["En-Suite Family Rooms", "Full Board Included", "24-Hour Reception"],
@@ -805,6 +837,7 @@ export const allCamps = [
     type: "Film Production Camp",
     activities: ["Film Production", "Screenwriting", "Special Effects Makeup", "Acting", "Voice Dubbing", "Night Filming"],
     dates: "June 13 - Aug 7, 2027", // Verified 4 Sept 2026: eight weekly sessions (weeks 24-31) published on filmkollo.se/anmalan
+    verifiedOn: "2026-09-04", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     bookingStatus: "open", // Verified 4 Sept 2026: 2027 registration open
     highlights: ["Professional film studio (iFocus)", "Create your own film", "Film premiere with family streaming", "15+ years experience"],
     languages: ["Swedish", "English"],
@@ -828,6 +861,7 @@ export const allCamps = [
     type: "Adventure Camp",
     activities: ["High Ropes", "Sailing", "Climbing Wall", "Archery", "Zipline", "Paintball", "Go-Kart"],
     dates: "Weeks 25-28: June 14 - July 12, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Historic manor house setting", "17 years operating", "Leadership program for ages 14-16", "90 min from Stockholm"],
     languages: ["Swedish", "English"],
     specialFeatures: ["On-Site Chef", "Adventure Obstacle Course", "Leadership Development Track"],
@@ -852,6 +886,7 @@ export const allCamps = [
     type: "Multi-Sport Camp",
     activities: ["Dance", "Trampoline", "Football", "Water Sports", "Kayaking", "SUP"],
     dates: "Week 27: June 29 - July 4 & Week 31: July 27 - Aug 1, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Authentic Danish efterskole experience", "14+ years operating", "94% 5-star Trustpilot reviews", "6 meals daily included"],
     languages: ["Danish", "English"],
     specialFeatures: ["Boarding School Dormitories", "REMA 1000 Partnership", "Multiple Sport Tracks"],
@@ -874,6 +909,7 @@ export const allCamps = [
     type: "Nordic Cultural Exchange Camp",
     activities: ["Nordic Languages", "Climbing", "Horseback Riding", "Archery", "Tivoli Visit", "Cultural Activities"],
     dates: "June 29 - July 3, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Only Nordic cultural exchange camp", "Learn Swedish/Norwegian/Finnish", "Tivoli Gardens excursion", "Make Nordic friends"],
     languages: ["Danish", "Swedish", "Norwegian", "Finnish", "English"],
     specialFeatures: ["5 Nordic Languages", "Foreningen Norden NGO", "International Nordic Community"],
@@ -898,6 +934,7 @@ export const allCamps = [
     type: "Sailing Camp",
     activities: ["Sailing", "Windsurfing", "Water Games", "Theory Lessons", "Evening Activities"],
     dates: "July-August 2026 (Weeks 29-35)",
+    verifiedOn: "2026-01-26", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["50+ years sailing tradition", "Small groups (3-4 per instructor)", "CWO sailing diploma"],
     languages: ["Dutch", "English", "German"],
     specialFeatures: ["Keurmerk Kindervakanties certified", "VZR & STO Garant", "Frisian Lakes"],
@@ -920,6 +957,7 @@ export const allCamps = [
     type: "Sailing School Camp",
     activities: ["Sailing (10 boat types)", "Catamaran Sailing", "Water Sports", "Evening Programs", "Sports"],
     dates: "Summer 2026 (weekly sessions)",
+    verifiedOn: "2026-01-26", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["46 years experience since 1979", "NWD certified instruction", "Room coach supervision"],
     languages: ["Dutch", "English"],
     specialFeatures: ["SGR consumer protection", "World Sailing certified", "Dietary needs accommodated free"],
@@ -944,6 +982,7 @@ export const allCamps = [
     type: "Government Seaside Camp",
     activities: ["Baltic Sea Swimming", "Sports", "Film Creation", "STEAM Workshops", "Creative Arts"],
     dates: "Jun 28-Jul 4, Aug 2-8, Aug 9-15, Aug 17-23, 2026", // Verified Aug 2026 (linesa.lt/stovyklaviete-pasaka)
+    verifiedOn: "2026-08-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["500m from Baltic Sea", "Government-operated facility", "Lithuanian language only"],
     languages: ["Lithuanian"],
     specialFeatures: ["Ministry of Education backed", "Renovated 2023", "5 program tracks (AI/STEAM, Movement, Creativity, Events, Leadership)", "Phone-free environment", "8 cabins in pine forest", "Lithuanian language only"],
@@ -967,6 +1006,7 @@ export const allCamps = [
     type: "Water Sports & Safety Camp",
     activities: ["Water Skiing", "Wakeboarding", "Sailing", "Wave Pool Surfing", "Lifesaving Training"],
     dates: "June-August 2026 (Weeks 26, 27, 31, 32)",
+    verifiedOn: "2026-08-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Norwegian Sea Rescue Society", "135-year organization", "Mobile-free week"],
     languages: ["Norwegian", "English"],
     specialFeatures: ["CPR/Water Safety Education", "1:6 instructor ratio", "All meals included"],
@@ -989,6 +1029,7 @@ export const allCamps = [
     type: "Husky & Adventure Camp",
     activities: ["Dog Sledding", "Horse Riding", "Archery", "Raft Building", "Mountain Hiking"],
     dates: "Weeks 26-27, 2026 (late June-early July)",
+    verifiedOn: "2026-01-26", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["35+ years family-owned", "Work with 50+ sled dogs", "Protected nature reserve"],
     languages: ["Norwegian", "English"],
     specialFeatures: ["5-star TripAdvisor", "4 meals daily included", "Cabin accommodation"],
@@ -1012,6 +1053,7 @@ export const allCamps = [
     type: "Performing Arts Camp",
     activities: ["Drama & Theater", "Singing", "Dance", "Morning Yoga", "Final Showcase Performance"],
     dates: "Weeks 27, 28, 31, 32 (July-August 2026)",
+    verifiedOn: "2026-01-26", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["Professional performing arts instruction", "Phone-free experience", "Final showcase performance"],
     languages: ["Danish", "English"],
     specialFeatures: ["5 hours daily instruction", "Age-grouped activities", "17 years experience"],
@@ -1036,6 +1078,7 @@ export const allCamps = [
     type: "Language Immersion Camp",
     activities: ["French Lessons", "English Lessons", "German Lessons", "Dutch Lessons", "Swimming", "Tennis", "Football", "Cultural Excursions"],
     dates: "June 30 - August 22, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Four languages offered", "Historic château campus", "1:3 staff ratio"],
     languages: ["French", "English", "German", "Dutch"],
     specialFeatures: ["28 lessons/week", "Indoor swimming pool", "Full-day excursions to Brussels & Bruges"],
@@ -1060,6 +1103,7 @@ export const allCamps = [
     type: "Atlantic Coast Adventure",
     activities: ["Surfing", "Sailing", "Paddleboarding", "Horse Riding", "Arts & Crafts", "Beach Activities"],
     dates: "July 5 - August 29, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Atlantic beachside location", "Child-led programming", "Government accredited since 2008"],
     languages: ["French"],
     specialFeatures: ["15 min from beach", "Surf lessons with MontaSurf School", "Non-profit association"],
@@ -1083,6 +1127,7 @@ export const allCamps = [
     type: "Water Sports & Language Camp",
     activities: ["German Lessons", "Sailing", "Windsurfing", "SUP", "Canoeing", "Swimming", "Berlin Excursions"],
     dates: "June 28 - August 2, 2026",
+    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Lakeside campus on Lake Wolzig", "20 German lessons/week", "Twice-weekly Berlin excursions"],
     languages: ["German", "English"],
     specialFeatures: ["5-time Star School Germany winner", "40km from Berlin", "1-4 week flexible duration"],
@@ -1106,6 +1151,7 @@ export const allCamps = [
     type: "British Academic & STEAM",
     activities: ["STEAM & Robotics", "Multi-Sports", "Swimming", "Performing Arts", "English Lessons", "Excursions"],
     dates: "Late June - Late July, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["British school campus", "Tenbury House residence (renovated 2024)", "STEAM & robotics programs"],
     languages: ["English", "Spanish"],
     specialFeatures: ["King's College Schools group", "Purpose-built boarding house", "Optional football & performing arts tracks"],
@@ -1129,6 +1175,7 @@ export const allCamps = [
     type: "Spanish Language Immersion",
     activities: ["Spanish Classes", "Sports", "Cultural Workshops", "Excursions", "Swimming", "Arts & Crafts"],
     dates: "June - August, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["UNESCO World Heritage city", "20 classes/week", "60% Spanish students for authentic immersion"],
     languages: ["Spanish", "English"],
     specialFeatures: ["35+ year language camp operator", "University campus residence", "4 meals/day included"],
@@ -1152,6 +1199,7 @@ export const allCamps = [
     type: "Outdoor Exploration & Cultural",
     activities: ["Archaeology", "Art History", "Outdoor Adventures", "Italian Culture", "Swimming", "Creative Arts"],
     dates: "June - August, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["ACA member camp", "Umbrian countryside setting", "Archaeology & art history programs"],
     languages: ["English", "Italian"],
     specialFeatures: ["Only ACA member camp in Italy", "Historic villa accommodation", "Small group sizes"],
@@ -1175,6 +1223,7 @@ export const allCamps = [
     type: "Italian Language Immersion",
     activities: ["Italian Lessons", "Cultural Excursions", "Sports", "Cooking Classes", "Art Workshops", "Beach Activities"],
     dates: "July 12 - August 8, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["20 Italian lessons/week", "Historic Trieste old town campus", "Mediterranean cultural immersion"],
     languages: ["Italian", "English"],
     specialFeatures: ["Dedicated campus with dormitories", "2-week session format", "Small class sizes"],
@@ -1198,6 +1247,7 @@ export const allCamps = [
     type: "Multi-Adventure Family Camp",
     activities: ["Zip-lining", "Rock Climbing", "Archery", "Mountain Biking", "Falconry", "Hiking", "Natural Pool Swimming"],
     dates: "June 21 - August 8, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["135,000m² mountain facility with wooden cabins", "SICTED tourism excellence certified", "30 min from Valencia city"],
     languages: ["Spanish"],
     specialFeatures: ["First SICTED-certified camp in Spain", "ANEACAMP member", "Family adventure weeks in August"],
@@ -1221,6 +1271,7 @@ export const allCamps = [
     type: "Eco Farm & Nature Camp",
     activities: ["Organic Farming", "Animal Care", "Astronomy", "Hiking", "Art Workshops", "Bread-Making", "Environmental Education"],
     dates: "June 29 - August 21, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Award-winning cooperative since 1982", "Starlight certified farm for astronomy", "Natural Park setting at 1,200m altitude"],
     languages: ["Spanish"],
     specialFeatures: ["Medalla de Andalucía recipient (1996)", "ISO 9001 certified", "Family camp week in August"],
@@ -1244,6 +1295,7 @@ export const allCamps = [
     type: "English Immersion Family Camp",
     activities: ["English Lessons", "Canoeing", "Archery", "Swimming", "Stand-Up Paddleboarding", "GPS Treasure Hunts"],
     dates: "July 12 - July 25, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Native English-speaking teachers", "Lakeside location in Kellerwald National Park", "Government-approved Bildungsurlaub program"],
     languages: ["English", "German"],
     specialFeatures: ["English immersion for parents and children", "DJH youth hostel lakeside huts", "Separate age-appropriate lessons"],
@@ -1267,6 +1319,7 @@ export const allCamps = [
     type: "Mountain Nature & Outdoor Camp",
     activities: ["Hiking", "Mountain Biking", "Nature Discovery", "Rock Climbing", "Swimming", "Creative Workshops", "Tour du Mont-Blanc"],
     dates: "July 5 - August 23, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["100 years of camping heritage (Est. 1925)", "French Alps setting between Annecy and Albertville", "Certified colonie de vacances operator"],
     languages: ["French"],
     specialFeatures: ["Secular popular education association", "Age-specific camp sessions (9-13, 14-17)", "Traditional French residential camp experience"],
@@ -1291,6 +1344,7 @@ export const allCamps = [
     type: "Premium Alpine Adventure Camp",
     activities: ["Alpine Hiking", "Mountain Biking", "Water Sports", "Climbing", "Tennis", "Creative Arts", "Language Classes"],
     dates: "July 5 - August 1, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["52 years international camp experience (Est. 1972)", "Stunning alpine lake setting at Kitzsteinhorn Klub", "Multi-activity adventure with language learning"],
     languages: ["English", "German", "French"],
     specialFeatures: ["ACA & BSA accredited", "International staff from 20+ countries", "Swiss-based camp organization since 1972"],
@@ -1314,6 +1368,7 @@ export const allCamps = [
     type: "Mountain Adventure Camp",
     activities: ["Rock Climbing", "Mountain Hiking", "River Kayaking", "Mountain Biking", "Archery", "Cave Exploration", "Swimming Pool"],
     dates: "June - August, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["24,000m² mountain facility on Mount Parnassos", "Stone and wood cottage accommodation", "40km from ancient Delphi"],
     languages: ["Greek", "English"],
     specialFeatures: ["Operating summer camps since 1997", "Northern slopes of Mount Parnassos", "Small group wilderness experiences"],
@@ -1337,6 +1392,7 @@ export const allCamps = [
     type: "Wilderness & Environmental Education Camp",
     activities: ["Wildlife Observation", "Forest Skills", "Canoeing", "Nature Photography", "Birdwatching", "Outdoor Survival", "Environmental Projects"],
     dates: "June - August, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["80+ years of nature education (Est. 1943)", "Finnish-language registration - use browser translation", "Non-profit environmental organization (Finnish Nature League)"],
     languages: ["Finnish"],
     specialFeatures: ["Finnish Nature League organization", "Focus on environmental stewardship", "Authentic Nordic wilderness experience"],
@@ -1362,6 +1418,7 @@ export const allCamps = [
     type: "French Academic & Elite Sports",
     activities: ["French Language Intensive", "Science & Coding", "Tennis", "Golf", "Horseback Riding", "Swimming", "Cultural Excursions"],
     dates: "June 28 - August 9, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["125-year-old prestigious boarding school campus", "60-hectare campus 1.5 hours from Paris", "50+ nationalities represented"],
     languages: ["French", "English"],
     specialFeatures: ["3 tracks: French Classic, Science, Elite Sports (€4,850)", "Paris excursions (Eiffel Tower, Louvre, Disneyland)", "IB World School campus"],
@@ -1386,6 +1443,7 @@ export const allCamps = [
     type: "German Language Boarding School",
     activities: ["German Lessons", "Sports", "Swimming", "Cultural Excursions", "Arts & Crafts", "Evening Activities"],
     dates: "Year-round with weekly starts (summer: June-August 2026)",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["47 years of German language education since 1977", "25-30 lessons/week in small classes (10-11 students)", "69 nationalities represented annually"],
     languages: ["German"],
     specialFeatures: ["Germany's largest boarding school for German as foreign language", "Twin rooms with en-suite bathrooms", "All-inclusive: meals, materials, excursions"],
@@ -1409,6 +1467,7 @@ export const allCamps = [
     type: "Adriatic Beach Camp",
     activities: ["Beach Activities", "Swimming", "Creative Workshops", "Team Sports", "Dance", "Nature Exploration", "Themed Evenings"],
     dates: "June 17 - August 30, 2026 (5 × 14-day sessions)",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Adriatic Riviera beachside location", "46 years of trusted operation since 1980", "Exceptional value: €245/week equivalent"],
     languages: ["Italian"],
     specialFeatures: ["Non-profit social cooperative", "24-hour medical assistance included", "1,370 places sold out in hours annually"],
@@ -1432,6 +1491,7 @@ export const allCamps = [
     type: "Live-Aboard Sailing & Marine Biology",
     activities: ["Sailing", "Snorkeling", "Marine Biology", "Trekking", "Astronomy", "Swimming", "Environmental Education"],
     dates: "June - September 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Live aboard sailing vessel in Tuscan Archipelago", "Marine biology and whale/dolphin observation", "Top Camp 2025 award recognized"],
     languages: ["Italian"],
     specialFeatures: ["Sleep aboard sailing vessel (4 cabins)", "UISP affiliated sports association", "Participants share shipboard duties"],
@@ -1455,6 +1515,7 @@ export const allCamps = [
     type: "Ice Hockey Training Camp",
     activities: ["Ice Hockey Training", "Skating Technique", "Shooting Drills", "Game Tactics", "Physical Training", "Team Building"],
     dates: "June 1-5, June 8-12, July 13-17, 2026",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Finland's premier sports training institute", "8+ hours ice training per camp", "Finnish Ice Hockey Association certified coaching"],
     languages: ["Finnish", "English"],
     specialFeatures: ["International Hockey Center of Excellence", "On-site dormitory accommodation", "All meals included"],
@@ -1478,6 +1539,7 @@ export const allCamps = [
     type: "Water Sports Day Camp",
     activities: ["Sailing", "Windsurfing", "Water Polo", "Swimming", "SUP", "Canoeing", "Archery", "Robotics"],
     dates: "June 15 - September 4, 2026 (4 periods)",
+    verifiedOn: "2026-02-06", // Set 14 Sept 2026 from the documented verification history (January 2026 pricing verification or the row's addition date), no dated comment on the row; the static pages print this date
     highlights: ["⚠️ DAY CAMP - No overnight accommodation", "Olympic-level coaching (est. 1937)", "14,000m² facility with Olympic pool and bay access"],
     languages: ["Greek", "English"],
     specialFeatures: ["Day Program 8:30am-2:30pm or extended to 4pm/8pm", "Optional waterskiing & wakeboarding", "Mediterranean diet meals by certified nutritionist"],
@@ -1501,6 +1563,7 @@ export const allCamps = [
     type: "Tennis Training Academy",
     activities: ["Tennis Training", "Padel", "Beach Volleyball", "Basketball", "Table Tennis", "Swimming", "Paddle Surfing"],
     dates: "May 31 - August 30, 2026 (weekly, Sunday to Sunday)",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Founded by Rafael Nadal: world-class tennis methodology", "20.5 hours tennis training per week (1:4 player-to-court ratio)", "Rafa Nadal Museum tour & Mallorca excursions included"],
     languages: ["English", "Spanish"],
     specialFeatures: ["4 programs: Tennis Junior, Tennis & Language, Tennis Kids, Padel", "En-suite twin rooms in supervised Rafa Nadal Residence, full board + airport transfers", "45 tennis courts + 19 padel courts (hard & clay, indoor & outdoor)"],
@@ -1524,6 +1587,7 @@ export const allCamps = [
     type: "Multilingual Sports & Culture Camp",
     activities: ["Football", "Volleyball", "Hockey", "Basketball", "Tennis", "Archery", "Rugby", "Water Polo", "Swimming", "Cooking", "Music", "Photography"],
     dates: "July 5 - August 29, 2026 (8 weekly sessions)",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["50+ years heritage since 1975, château-based camp", "15+ nationalities, 67% camper return rate", "1:3 staff-to-child ratio with experienced alumni counselors"],
     languages: ["French", "English", "Spanish"],
     specialFeatures: ["Historic Château d'Emines with heated pool & private pond", "Daily structure: 2h language + 2h activity choice + 2h sports/arts", "Organic & dietary-inclusive meals (vegetarian, vegan, gluten-free)"],
@@ -1548,6 +1612,7 @@ export const allCamps = [
     type: "International Football Training Camp",
     activities: ["Football Training", "Goalkeeper Training", "Street Soccer", "Beach Volleyball", "Basketball", "Table Tennis", "Trampoline", "E-Sports"],
     dates: "July 26 - August 8, 2026 (7 or 14 day sessions)",
+    verifiedOn: "2026-02-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["25+ years experience since 1999, Germany's premier football camp", "Bilingual coaching staff (German & English)", "Bundesliga stadium visit included in every session"],
     languages: ["German", "English"],
     specialFeatures: ["Sport- und Erlebnisdorf Hinsbeck: 30 houses with 24h supervision", "2-3 football training sessions daily with certified coaches", "Also offers Junior Camps (ages 8-14) and Girls Camps (ages 12-18)"],
@@ -1579,6 +1644,7 @@ export const allCamps = [
     type: "Premium Alpine Language Camp", // Category name on the chip, see ID 1
     activities: ["Language Immersion", "Rafting and Canyoning", "Via Ferrata Climbing", "Mountain Expeditions", "Glacier Excursions"], // "Horse Riding" removed 12 Sept 2026: riding is a paid option (CHF 470 a week on the 2027 price list), not part of the programme. Mountain expeditions are on the operator's home page for the oldest group
     dates: "Jun 27 - Jul 31, 2027", // Verified 12 Sept 2026: ILC's written 2027 update and the 2027 price list both state 27 June to 31 July 2027, stays of one to five weeks
+    verifiedOn: "2026-09-12", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     bookingStatus: "2027 dates published", // Verified 12 Sept 2026 from the operator's own 2027 price list and written update. Not "open": the site still carries the 2026 reservation flow and no single enrolment form can be checked
     highlights: ["Accommodation at boutique Hotel Au Vieux Moulin in the heart of Megeve", "One adult for every five campers", "A deliberately small camp, around 40 campers a week", "Language classes of no more than eight", "English or French with native speaking teachers", "New for 2027: Teens Mountain Adventure, ages 14 to 17"], // Rewritten 12 Sept 2026 to the six points ILC asked for in writing on 11 Sept, in card style. The hotel leads because they asked for it to be prominent. "High end" was not adopted: the hotel is a 3-star boutique hotel (its own site), so the card names it and its location instead. Owner correction 12 Sept: the line must say the camp is accommodated AT the hotel, so a parent does not read the camp as being a hotel. "30+ years, Est. 1996" is carried by the Est. 1996 footer, which freed the sixth slot for the new teen programme. Ratio, class size and native teachers are on the operator's home page; the 40-a-week figure is ILC's own email of 14 Aug 2026
     languages: ["English", "French"],
@@ -1604,6 +1670,7 @@ export const allCamps = [
     type: "Ice Hockey School",
     activities: ["Ice Hockey Training", "Skating Technique", "Shooting and Passing", "Goalkeeper Training", "Match Play", "Off-ice Training"],
     dates: "Jun 27 - Aug 7, 2027 (weekly)", // Verified 7 Sept 2026 (2027 form): V26 27/6-3/7, V27 4/7-10/7, V28 11/7-17/7 (Sun-Sat); camps V29-V31 18/7 to 7/8 in four-day blocks
+    verifiedOn: "2026-09-07", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Run by the IFK Ore club since 1980", "Players sleep at the Hockeyborg player hotel, 4 to 6 per room", "Leaders live in the hotel evenings and nights", "Boarding SEK 650 extra, full board included"],
     languages: ["Swedish", "English"],
     specialFeatures: ["Own ice hall, player hotel and restaurant", "Four-day camps and match camps for ages 11 to 18"],
@@ -1626,6 +1693,7 @@ export const allCamps = [
     type: "Multi-Sport Camp",
     activities: ["Ice Hockey", "Football", "Basketball", "Sport-specific Training", "Camp Activities"],
     dates: "Jun 27 - Jul 10, 2027 (two weeks)", // Verified 7 Sept 2026 (home page and ishockey page): Vecka 1 Sön 27 juni - Lör 3 juli, Vecka 2 Sön 4 juli - Lör 10 juli
+    verifiedOn: "2026-09-07", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Two ice sessions a day in the Stallet ice hall on the camp site", "Four meals a day and accident insurance included", "Participants sleep in school halls on site, 4 to 90 beds, own bedding", "Leaders sleep close to the participants"],
     languages: ["Swedish"],
     specialFeatures: ["Camp on the Stadium Arena site since 1995", "Run by Stadium Sports Camp AB, a Stadium subsidiary with a profit-sharing form"],

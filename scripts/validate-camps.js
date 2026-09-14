@@ -118,6 +118,16 @@ function validateCamp(camp, season) {
     }
   }
 
+  // verifiedOn: the date the row's facts were last read on the operator's own page (ISO), printed by the static pages
+  if (typeof camp.verifiedOn !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(camp.verifiedOn)) {
+    fail(camp.id, camp.name, `verifiedOn must be an ISO date string (YYYY-MM-DD), got: ${camp.verifiedOn}`);
+  } else {
+    const when = new Date(camp.verifiedOn + 'T00:00:00Z');
+    if (Number.isNaN(when.getTime()) || when > new Date() || when < new Date('2025-08-01T00:00:00Z')) {
+      fail(camp.id, camp.name, `verifiedOn must be a real date between August 2025 and today, got: ${camp.verifiedOn}`);
+    }
+  }
+
   // Season discriminator: winter rows carry it, summer rows never do
   if (season === 'winter') {
     if (camp.season !== 'winter') fail(camp.id, camp.name, 'winter rows must carry season: "winter"');

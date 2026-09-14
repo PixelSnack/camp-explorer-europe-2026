@@ -43,6 +43,7 @@ export const winterCamps = [
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Apres-Ski Activities", "Weekly Excursions", "Language Classes"],
     dates: "Dec 12, 2026 - Apr 24, 2027", // Verified 10 Sept 2026: first session 12 Dec 2026, last 17 to 24 Apr 2027, weekly, arrivals every Saturday
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["4 Vallees ski pass and six hours on snow daily", "Four meals a day, rooms of four with ensuite bathrooms", "24/7 supervision with an onsite nurse and night guard", "Camp buses to the lift each morning, two minutes away", "A weekly excursion they choose: Zermatt, Bern or Geneva", "Optional language classes, six hours a week, up to eight a class"], // First three verified 10 Sept 2026 on leselfes.com/winter-camp/. Lines four to six added 12 Sept 2026 from leselfes.com/summer-camp/summer-camps-activities/, which covers the Snow Camp too: "Les Elfes buses conveniently transport students to the bottom of the lift, just a short 2-minute ride away"; "Once a week, our campers at Les Elfes International Snow Camp can choose from various exciting excursions" listing Zermatt, Bern and Geneva; winter language course "6 hours per week from 17:00 to 19:00 on Mondays, Tuesdays and Thursday", "maximum class size of 8 students per teacher"
     languages: ["English", "French", "German", "Spanish"],
     specialFeatures: ["Purpose-built campus in Verbier", "410 km of slopes in the 4 Vallees", "Optional language courses"],
@@ -68,6 +69,7 @@ export const winterCamps = [
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Language Courses", "Evening Programme"],
     dates: "Dec 20, 2026 - Feb 27, 2027", // Verified 10 Sept 2026: seven weekly sessions listed, 20 Dec 2026 to 27 Feb 2027
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["25 hours of ski or snowboard tuition a week", "Full board and ski pass included, hire CHF 150 a week", "Three linked ski areas including Glacier 3000"], // Inclusions re-read 13 Sept 2026 on filolo.ch: "The weekly price includes 25-hour ski or snowboard course, 6 nights' accommodation with full board, ski pass for 3 ski areas, transfers"; extras "Equipment rental (ski + poles/snowboard, boots, and helmet): 150 CHF per week", airport transfer CHF 100 one way
     languages: ["English", "French", "German"],
     specialFeatures: ["Stays of one to three weeks", "232 km of slopes from 1200 m to 3010 m", "Optional language course alongside the snow programme"],
@@ -91,6 +93,7 @@ export const winterCamps = [
     type: "Boarding School Winter Camp",
     activities: ["Skiing", "Snowboarding", "Language Classes", "Workshops", "Weekend Excursions"],
     dates: "Jan 31 - Feb 13, 2027", // Verified 10 Sept 2026: "31 January to 13 February 2027", one two-week camp
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Two weeks inside a running international boarding school", "Lift passes, equipment and lessons included", "Twelve places only"],
     languages: ["German", "English", "French"],
     specialFeatures: ["Daily snowsports on the Hasliberg with professional instructors", "Project-based language classes in small groups", "Winter camp parka provided on arrival"],
@@ -114,6 +117,7 @@ export const winterCamps = [
     type: "Boarding School Ski Camp",
     activities: ["Skiing", "Academic Lessons", "Evening Activities", "Excursions"],
     dates: "Jan 10 - Mar 13, 2027", // Verified 10 Sept 2026: eight weekly sessions, 10 Jan to 13 Mar 2027. The operator's page mistypes the year on two sessions as 2026; the sequence is unambiguous
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Five full ski days a week, intermediate ski level required", "Compulsory medical insurance is charged per day on top of the fee", "Boarding at an international school since 1947"],
     languages: ["English", "French"],
     specialFeatures: ["Minimum stay one week, sessions can be combined", "Full-day skiing or skiing combined with lessons", "Boarders stay through the weekend"],
@@ -137,6 +141,7 @@ export const winterCamps = [
     type: "Alpine School Winter Camp",
     activities: ["Skiing", "Ice Skating", "Language Immersion", "Group Sports"],
     dates: "Jan 10 - Mar 19, 2027", // Derived 10 Sept 2026 from the 2027 fees PDF, which sets arrivals and departures every Saturday "except for Sunday 10 January" and "Friday 19 March, last departure before 16:00"
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Ski lifts, skis, boots, suit and helmet included", "French or English lessons five mornings a week", "Alpine school running since 1948"],
     languages: ["French", "English"],
     specialFeatures: ["Shortest stay is two weeks", "Full board, laundry and school uniform included", "Ski-Race Academy available for a full term"],
@@ -160,6 +165,7 @@ export const winterCamps = [
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Thermal Baths", "Evening Programme"],
     dates: "Jan 16 - Feb 26, 2027", // Verified 10 Sept 2026: six weekly sessions listed under "TERMINY 2027", 16 to 22 Jan through 20 to 26 Feb
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Five-day Kotelnica lift pass included in the price", "Coach travel PLN 270 to 350 by departure city, or PLN 150 if you travel yourself", "Ski or board hire PLN 280 a week, helmet free"], // Inclusions re-read 13 Sept 2026 on ar-sport.pl/obozy-zimowe/: "Cena obejmuje: karnet na wyciągi ... na 5 dni", rental "narty + buty lub deska + buty płatne na miejscu gotówką 280zł/os/tydzień, osoby wypożyczające sprzęt dostają kask gratis"
     languages: ["Polish"],
     specialFeatures: ["Groups by age and ability, beginner to advanced", "One entry to the Terma Bania thermal baths", "Accident insurance included"],
@@ -184,6 +190,7 @@ export const winterCamps = [
     type: "Winter Holiday Camp",
     activities: ["Sledding", "Torchlit Walks", "Thermal Baths", "Crafts", "Excursions"],
     dates: "Jan 31 - Feb 6, 2027", // Verified 10 Sept 2026: "Winter Camp 2027 Durchgang 1 von 31.01.2027 bis 06.02.2027"
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Sledding by day and by night in the Harz", "All entry fees and three meals a day included", "Not a ski camp: snow play, thermal baths and crafts"],
     languages: ["German"],
     specialFeatures: ["Torchlit walk through the winter forest", "Accommodation in the Forsthaus holiday village", "Accident and liability insurance included"],
@@ -208,6 +215,7 @@ export const winterCamps = [
     type: "Christmas Holiday Camp",
     activities: ["Workshops", "Shows and Entertainment", "Excursions", "Evening Activities"],
     dates: "Dec 27, 2026 - Jan 2, 2027", // Verified 10 Sept 2026: "DAL 27 DICEMBRE 2026 AL 2 GENNAIO 2027", with a shorter 27 to 30 December turn
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Christmas and New Year by the winter sea", "Full board and 24-hour supervision included", "Not a ski camp: a seaside holiday camp in winter"],
     languages: ["Italian"],
     specialFeatures: ["Rooms of two to five with private bathrooms", "New Year's Eve dinner on the seven-day stay", "Excursion to San Marino on the longer stay"],
@@ -231,6 +239,7 @@ export const winterCamps = [
     type: "Ski & Snowboard Camp",
     activities: ["Skiing", "Snowboarding", "Ski Lessons", "Camp Contest"],
     dates: "Dec 18, 2026 - Mar 14, 2027", // Verified 10 Sept 2026: "Period 18.12.2026-14.03.2027" across a series of sessions
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Skis, boots, poles and helmet included, ski pass is extra", "One instructor for every two to ten children", "Up to five hours on the slopes a day"],
     languages: ["Romanian", "English"],
     specialFeatures: ["Camp pages and booking available in English", "Three meals a day planned with a dietician", "Ski pass is bought separately, as the operator states"],
@@ -254,6 +263,7 @@ export const winterCamps = [
     type: "Competition Ski Camp",
     activities: ["Alpine Ski Racing", "Gate Training", "Video Analysis", "ESF Tests"],
     dates: "Feb 14 - Apr 10, 2027", // Verified 10 Sept 2026 in the booking selector: four sessions, 14 to 20 Feb, 21 to 27 Feb, 28 Feb to 6 Mar and 3 to 10 Apr 2027
+    verifiedOn: "2026-09-10", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Skis, boots, poles and helmet provided", "Etoile d'Or level required, this is a racing camp", "Compulsory child membership of EUR 20 on top of the fee"],
     languages: ["French"],
     specialFeatures: ["Five days of coaching with ESF instructors", "Fleche and Chamois ESF tests included", "The association's own village club, apartments of four to eight"],
@@ -278,6 +288,7 @@ export const winterCamps = [
     type: "Ski & Language Camp",
     activities: ["Skiing", "Snowboarding", "Language Lessons", "Excursions", "Evening Programme"],
     dates: "Dec 20, 2026 - Mar 6, 2027", // Verified 13 Sept 2026: eleven weekly start dates on the operator's page, 20.12 / 27.12.2026 / 03.01 / 10.01 / 17.01 / 24.01 / 31.01 / 07.02 / 14.02 / 21.02 / 28.02.2027, arrival Sunday, departure Saturday
+    verifiedOn: "2026-09-13", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
     highlights: ["Ski pass for four areas and 15 hours of lessons", "12 hours of French, English or German a week", "Equipment hire CHF 200 a week, dorms of 4 to 8"], // Verified 13 Sept 2026 on the same page: "Ski pass for 4 ski areas", "15 hours of ski or snowboard lessons", "12 hours of language classes per week in groups of around 6 students", "SKI EQUIPMENT RENTAL (ski/snowboard, helmet, ski shoes & ski poles) - 200 CHF per week", rooms of 4, 6 and 8 beds at Relais de Dranse. Held on 10 Sept 2026 because the 2026-27 dates and price were not yet on the page; published once they were. Founding year not stated on the operator's pages, so no established field
     languages: ["French", "English", "German"],
     specialFeatures: ["Ten extra ski hours instead of language classes at no cost", "Three chalets in the Pays du St-Bernard, by week", "Vicheres-Liddes slopes five minutes from the chalet"],
