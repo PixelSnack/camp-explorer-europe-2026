@@ -157,10 +157,30 @@ Files: `summer-camps-switzerland.js` (a price-transparency page: what a Swiss ca
 | Most likely failure: step 2(d) blocks derived values (count, price range, date window) in the answer block | ACCEPTED. The validator gains a narrow derivation layer (minimum, maximum, count, date window) recomputed from the source fields and compared to the printed string; the winter answer block is a day-one fixture. |
 | What must not change: homepage untouched with the hash guard; no llms.txt, extra schema or chunking; plain HTML with prices, dates and operator links; self-canonicals, cleanUrls off, no catch-all; one page one question; 90-day stubs; IndexNow for Bing with sitemap and URL Inspection for Google; the booking anchor | Confirmed. |
 
-## 16. Decisions after the three reviews (final; these override the step text above where they differ)
+## 16. Decisions after the three reviews (final; these override the step text above where they differ, and section 17 overrides both)
 
 1. Order of work: step 0b (verifiedOn field on all 79 rows, validated) and the trailingSlash plus 404 commit come first, each alone; then steps 1 and 2 with the fixture tests (three page types, three mutations, the loader test); then step 3 (three booking controls, 79-row fixture, auxclick, compare-view check); then step 4 on the shared consent runtime; then the pre-1a measurement (step 13); then batch 1a with the link block and IndexNow by hand; then 1b, 2, 3 on their gates.
 2. The validator validates by page type and lifecycle, with the permissive robots meta, uniqueness of titles and descriptions, LAST_REVIEWED per page, a derivation layer for answer blocks, and the sitemap exemption.
 3. Every multi-camp page: answer block, table, two to four question H2s, entity H3s, per-row provenance (verified date, source link, currency, unit, season, inclusions and exclusions, language, minimum age), "last checked" line, dateModified.
 4. The indexing trigger is a 14-day re-inspection, not a reordering; batch two proceeds on its content gates.
 5. Owner checkpoints gain: push a branch for each preview test; decide the "same-day fix" promise; read the winter page and the how-we-verify draft before release.
+
+## 17. Owner decision, 14 September: the full camp index moves into batch 1a, built not to compete
+
+The SEO seat proposed it, section 15.3 deferred it to 5 October, and the owner pulled it forward: a fetcher that cannot run JavaScript currently sees a one-page site, and the country pages do not close that gap until 20 October.
+
+**Page:** `/all-verified-camps`, released with batch 1a (target 22 September). It needs no new verification because it prints only what the data already holds.
+
+**Content:** one row per camp, grouped by country, in a table: camp name, town and country, ages, price with currency and unit, session dates or "2027 dates not published by the operator, checked <date>", the verified date, the operator link with the tracked URL. An answer block of two or three sentences above it (how many organisations, how many countries, the price span, the date the set was last checked). No editorial prose, no guide copy, no category essays.
+
+**How it is kept non-competing with the homepage:**
+
+1. Title: "Every verified camp, with 2027 prices and check dates | Camp Explorer Europe". H1: "Every camp we list, and when each was last checked". Neither carries "European summer camps", "summer camps in Europe" or any head term the homepage owns.
+2. The description and the answer block are written around verification and currency, not around discovery or planning, so the page answers "what does this directory actually hold" rather than "where should my child go".
+3. No filters, no marketing sections, no internal search: a reference document, not a second discovery surface.
+4. It links to the homepage for discovery and to each country page as those ship; the homepage link block lists it once, under a "Reference" label.
+5. Self-canonical, indexable, in the sitemap, with the permissive robots meta like every other generated page.
+
+**Kill switch, checked in the weekly head-query watch:** if this page appears in Search Console for any query in the fixed head-query cohort, or if the homepage's average position on that cohort moves against it for two consecutive weeks, retitle the page first; if it appears again, set it `noindex` while keeping it linked and crawlable, which preserves the reason it exists (fetchers reading the inventory) and removes the ranking overlap. Record either action in the plan.
+
+**Validator:** the page is a listing type (ItemList plus BreadcrumbList), carries `LAST_REVIEWED`, and its `contentValidUntil` is the earliest session end across the set, so it cannot outlive the season.
