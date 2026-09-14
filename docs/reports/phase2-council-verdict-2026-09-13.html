@@ -118,6 +118,35 @@
   .why .fig { font-family: var(--display); font-size: 2rem; font-weight: 800; line-height: 1; color: var(--accent); }
   .why p { font-size: .95rem; color: var(--ink-2); }
 
+  /* Pipeline diagram */
+  .pipe { display: grid; gap: 12px; }
+  .pipe-row { display: grid; grid-template-columns: 170px 1fr; gap: 16px; align-items: center; }
+  .pipe-row .lbl { font-family: var(--mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+  .node { background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; }
+  .node b { font-size: .95rem; }
+  .node span { font-size: .84rem; color: var(--ink-3); }
+  .node.data { border-color: var(--gold); background: linear-gradient(180deg, var(--gold-soft), var(--paper-2) 70%); }
+  .node.frozen { border-style: dashed; }
+  .node.fresh { border-color: var(--accent); background: var(--accent-soft); }
+  .rejected { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .rejected > div { border: 1px dashed var(--line); background: var(--paper-3); border-radius: 12px; padding: 16px; display: grid; gap: 6px; }
+  .rejected h3 { font-size: 1rem; }
+  .rejected p { font-size: .92rem; color: var(--ink-2); }
+  .rejected .verdict-tag { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--bad); }
+
+  /* Stepper */
+  .stepper { display: grid; }
+  .stepline { display: grid; grid-template-columns: 26px 1fr; gap: 14px; padding: 13px 0; border-bottom: 1px dashed var(--line); align-items: start; }
+  .stepline:last-child { border-bottom: 0; }
+  .dot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); background: var(--paper-2); display: grid; place-items: center; font-family: var(--mono); font-size: .66rem; color: var(--ink-3); margin-top: 2px; }
+  .dot.done { background: var(--good-soft); border-color: var(--good); color: var(--good); }
+  .dot.next { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .stepline .body { display: grid; gap: 3px; min-width: 0; }
+  .stepline .body b { font-size: .98rem; }
+  .stepline .body p { font-size: .9rem; color: var(--ink-2); max-width: 70ch; }
+  .stepline .body .test { font-family: var(--mono); font-size: .78rem; color: var(--ink-3); }
+
   /* Tables */
   .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-2); }
   table { border-collapse: collapse; width: 100%; font-size: .93rem; }
@@ -196,6 +225,9 @@
       <a href="#gates">Gates on every page</a>
       <a href="#risks">What could go wrong</a>
       <a href="#upside">Upside, honestly</a>
+      <a href="#generator">Why a generator</a>
+      <a href="#build">The build order</a>
+      <a href="#reviews">What review caught</a>
       <a href="#you">What you do</a>
       <a href="#ai">AI answer engines</a>
     </nav>
@@ -316,8 +348,101 @@
         <p><b>Trigger:</b> if the how-we-verify page is not indexed within ten days of its request, batch two reorders to Switzerland and Spain on query value. The winter page ships regardless; it costs nothing in verification and it is what the paying winter partner bought into.</p>
       </section>
 
+      <section id="generator">
+        <span class="eyebrow">04 · Why a generator</span>
+        <h2>A small script writes the pages, because a person typing them would make them wrong</h2>
+        <p>The site today is one HTML file plus a JavaScript bundle. A browser runs the bundle and paints 68 camp cards. That is why Google, which runs JavaScript, sees everything, and why ChatGPT's fetcher, which does not, sees a title and nothing else. We need pages that are already written when the file is served. There were four ways to get them.</p>
+        <div class="rejected">
+          <div><span class="verdict-tag">Rejected</span><h3>Rebuild the site on a router</h3><p>The 2025 plan. It rewrites the URL that earns 87 percent of our clicks, in the weeks before the booking season. The council was unanimous against it.</p></div>
+          <div><span class="verdict-tag">Rejected</span><h3>Prerender the homepage</h3><p>Fixes a problem we do not have. Your crawled-page copy proved Googlebot renders the full grid. This edits the ranking URL for no gain.</p></div>
+          <div><span class="verdict-tag">Rejected</span><h3>Write the pages by hand</h3><p>A typed price is true on the day it is typed and a lie the day the operator changes it. Our whole product is that our figures are true.</p></div>
+          <div style="border-style: solid; border-color: var(--accent); background: var(--paper-2);"><span class="verdict-tag" style="color: var(--accent);">Chosen</span><h3>Generate them from the data</h3><p>A script runs after the normal build, reads the same camp files the site reads, and writes finished HTML pages beside the untouched homepage.</p></div>
+        </div>
+        <div class="pipe">
+          <div class="pipe-row">
+            <span class="lbl">One source of truth</span>
+            <div class="flow">
+              <div class="node data"><b>camps.js</b><span>68 summer camps, every field with its source and check date</span></div>
+              <div class="node data"><b>winterCamps.js</b><span>11 winter camps, same shape</span></div>
+              <div class="node data"><b>season.js</b><span>the season year, in one place</span></div>
+            </div>
+          </div>
+          <div class="pipe-row">
+            <span class="lbl">Step one, unchanged</span>
+            <div class="flow">
+              <div class="node frozen"><b>vite build</b><span>the normal build, exactly as today</span></div>
+              <div class="node frozen"><b>dist/index.html</b><span>the homepage, byte for byte what it is now</span></div>
+            </div>
+          </div>
+          <div class="pipe-row">
+            <span class="lbl">Step two, new</span>
+            <div class="flow">
+              <div class="node fresh"><b>the generator</b><span>reads the data, never the app</span></div>
+              <div class="node fresh"><b>dist/winter-camps-europe/</b><span>plain HTML, prices and dates in the text</span></div>
+              <div class="node fresh"><b>dist/summer-camps-norway/</b><span>and one folder per page after it</span></div>
+            </div>
+          </div>
+          <div class="pipe-row">
+            <span class="lbl">Step three, the guard</span>
+            <div class="flow">
+              <div class="node"><b>hash check</b><span>the homepage and every existing file are hashed before the generator runs and after; any change fails the build</span></div>
+              <div class="node"><b>fact check</b><span>every price, date and age on a new page must match its source field exactly, or the build fails</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="prose">
+          <p><b>What that buys, in plain terms.</b> The pages cannot disagree with the cards, because both come from the same file. The homepage cannot be damaged by a page release, because the build refuses to finish if the file changed. The pages can be read by the AI fetchers that cannot run JavaScript, which is the whole reason we are doing this. And each page carries the date its facts were checked, so a stale page can be found and pulled automatically instead of sitting there being wrong.</p>
+          <p><b>What it is not.</b> It is not a new framework, a second website, or a rewrite. It is about two hundred lines of script and a folder of page templates. If it were deleted tomorrow, the site would build and serve exactly as it does today.</p>
+        </div>
+      </section>
+
+      <section id="build">
+        <span class="eyebrow">05 · The build order</span>
+        <h2>Fourteen steps, each with its own test and its own way back</h2>
+        <p>The full plan lives in the repository as the implementation plan of 14 September. Every step names the files it touches, the test that proves it worked, and the rollback if it did not. The order is deliberate: everything that could touch the homepage happens early, alone, and is proven before any page content exists.</p>
+        <div class="stepper">
+          <div class="stepline"><span class="dot done">✓</span><div class="body"><b>Verification dates in the data</b><p>Every camp row now carries the date its facts were last read on the operator's own page. It did not exist before; the SEO review found that the pages were meant to print a date that was only in code comments.</p><p class="test">Done last night. 79 rows, validator enforces it, build green.</p></div></div>
+          <div class="stepline"><span class="dot next">2</span><div class="body"><b>One URL per page, and a real 404</b><p>Today an address with a slash at the end and one without would both answer, which would split a page in two as far as Google is concerned. One line of configuration fixes it, plus a proper not-found page.</p><p class="test">Needs you to push a branch so I can test it on a preview before it goes live.</p></div></div>
+          <div class="stepline"><span class="dot">3</span><div class="body"><b>The generator skeleton</b><p>The script itself, with no page content: it finds the compiled stylesheet, resolves the camp photographs to their real file names, and writes an empty shell page.</p><p class="test">Build twice, with and without it, and prove the homepage file is identical.</p></div></div>
+          <div class="stepline"><span class="dot">4</span><div class="body"><b>The validator</b><p>The rules that fail the build: a typed number in prose, a wrong address on a page, a missing check date, a price attached to the wrong session, a page that outlived its season.</p><p class="test">Written against three sample pages and three deliberate mistakes before any real page exists.</p></div></div>
+          <div class="stepline"><span class="dot">5</span><div class="body"><b>The booking button becomes a real link</b><p>Today it is a scripted button. An AI agent reading the page cannot see where it leads without clicking. As a link, every agent and every fetcher can see the operator's address.</p><p class="test">All 79 tracked addresses compared before and after, the page compared element by element, one click checked in analytics.</p></div></div>
+          <div class="stepline"><span class="dot">6</span><div class="body"><b>Shared cookie and analytics code</b><p>The new pages use the same consent code as the site, never a copy, so the two can never drift apart. It sits in one external file, because the security policy forbids inline scripts.</p><p class="test">Consent accepted sends the event, consent refused sends nothing, on a preview.</p></div></div>
+          <div class="stepline"><span class="dot">7</span><div class="body"><b>Baselines, before anything is published</b><p>Search volumes, the AI reports, the landing-page numbers and the head-term positions, recorded while there is still only one page, so the effect of the wave can be measured at all.</p><p class="test">Recorded in the weekly watch.</p></div></div>
+          <div class="stepline"><span class="dot">8</span><div class="body"><b>Batch 1a: the how-we-verify page</b><p>Our method, our limits, who to write to about a mistake, and the paid-listing disclosure. No camp figures on it, so it tests the whole pipeline without risking a single fact. Its indexing speed is the first real measurement.</p><p class="test">Target 22 September. Link block on the homepage, sitemap, Bing ping, Google inspection the same day.</p></div></div>
+          <div class="stepline"><span class="dot">9</span><div class="body"><b>Batch 1b: the winter page</b><p>Eleven verified winter camps with exact 2027 dates, per-child prices, what the price excludes, teaching language and minimum age. Nobody in the field publishes this. It is also the page the winter partner bought into.</p><p class="test">Target 26 September, after the photograph handling is proven on a preview.</p></div></div>
+          <div class="stepline"><span class="dot">10</span><div class="body"><b>An agent walks the journey</b><p>Claude in Chrome follows a parent's question from the winter page to an operator's booking page and stops before the form. Whatever it cannot read gets fixed before we publish more.</p><p class="test">Recorded, blocking defects fixed first.</p></div></div>
+          <div class="stepline"><span class="dot">11</span><div class="body"><b>Batch 2: Norway, Denmark, Sweden and a Nordic page</b><p>Markets we hold and few contest. Every camp re-checked on the operator's page first. Finland rides on the Nordic page because three camps is under the floor.</p><p class="test">Target 5 October.</p></div></div>
+          <div class="stepline"><span class="dot">12</span><div class="body"><b>Batch 3: Switzerland, Spain, France, UK, Germany, Italy</b><p>The valuable terms, once the template has a live record. Switzerland is a price-transparency page and never claims a camp count, because four against thirty-two loses on sight.</p><p class="test">Target 20 October.</p></div></div>
+          <div class="stepline"><span class="dot">13</span><div class="body"><b>Expiry and the weekly rebuild</b><p>Each page knows the date its facts stop being current. A weekly rebuild checks; an expired page is replaced by a quiet stub and drops out of the sitemap instead of misleading a parent.</p><p class="test">Needs your Vercel deploy hook.</p></div></div>
+          <div class="stepline"><span class="dot">14</span><div class="body"><b>Wave two, November</b><p>The English-instruction page once the data can tell taught from spoken, a sourced cost comparison, a Central and Eastern Europe page, and the two partner pages if you decide yes on 5 October.</p><p class="test">Not started, not committed to.</p></div></div>
+        </div>
+      </section>
+
+      <section id="reviews">
+        <span class="eyebrow">06 · What review caught</span>
+        <h2>Three seats read the plan and found thirty-five things</h2>
+        <p>The plan was written, then handed to three independent reviewers before a line of it was built. Every finding was judged and folded in or refused with a reason. These three were the ones that would have cost us real money or real trust.</p>
+        <div class="seats">
+          <div class="seat">
+            <div class="who"><h3>SEO seat</h3><small>blocking</small></div>
+            <p>The pages were designed to print "verified on this date beside every price", and no such date existed anywhere in the data. It was only in code comments, which the generator cannot read.</p>
+            <div class="gave"><b>Fixed first, last night.</b> Every camp row now carries that date. This was the single content trait the research found experimental support for.</div>
+          </div>
+          <div class="seat">
+            <div class="who"><h3>Engineering seat</h3><small>three contradictions</small></div>
+            <p>The safety check would have failed on every build, because the build itself rewrites the sitemap. The booking change would have missed a third button in the compare view. And the row count was wrong.</p>
+            <div class="gave"><b>All corrected in the plan.</b> It also flagged that middle-clicking a link skips our tracking, which matters because that referral count is sold to operators.</div>
+          </div>
+          <div class="seat">
+            <div class="who"><h3>Astra</h3><small>two critical</small></div>
+            <p>Checking that a number appears somewhere in the data cannot catch a price attached to the wrong session. And the plan quietly built a second cookie-consent implementation, which would drift from the first.</p>
+            <div class="gave"><b>Both rewritten.</b> Offers are now keyed by operator, programme, session and package, and there is exactly one consent code path.</div>
+          </div>
+        </div>
+      </section>
+
       <section id="why">
-        <span class="eyebrow">04 · Why this plan</span>
+        <span class="eyebrow">07 · Why this plan</span>
         <h2>Five facts the decision rests on</h2>
         <div class="why">
           <div><span class="fig num">87%</span><h3>of clicks land on one URL</h3><p>1,095 of 1,258 Search Console clicks in twelve months came to the homepage. Anything that edits it is a risk to the whole business. So nothing does.</p></div>
@@ -330,7 +455,7 @@
       </section>
 
       <section id="gates">
-        <span class="eyebrow">05 · Gates and guardrails</span>
+        <span class="eyebrow">08 · Gates and guardrails</span>
         <h2>What every page must pass</h2>
         <div class="tablewrap">
           <table>
@@ -352,7 +477,7 @@
       </section>
 
       <section id="risks">
-        <span class="eyebrow">06 · What could go wrong</span>
+        <span class="eyebrow">09 · What could go wrong</span>
         <h2>The failures the seats named, and the cheap test for each</h2>
         <div class="risks">
           <div class="risk"><div class="stripe"></div><div class="body"><h3>The winter page cannot rank inside its own booking window</h3><p>New paths on a one-URL hostname can take six to sixteen weeks to settle. Shipped 26 September for demand peaking October to December, it may arrive as the window closes. Two seats named this as the decision most likely to be wrong.</p><p class="test"><b>Test:</b> days to indexing and to first impression of the how-we-verify page. More than ten days, and batch two reorders to query value.</p></div></div>
@@ -364,7 +489,7 @@
       </section>
 
       <section id="upside">
-        <span class="eyebrow">07 · Upside, honestly</span>
+        <span class="eyebrow">10 · Upside, honestly</span>
         <h2>No number in this record is a promise</h2>
         <div class="prose">
           <p>Round one produced ranges. Round two produced a scenario model. The rebuttal round retired all of it as budget evidence: Gemini withdrew its forecasts, Astra withdrew its "floor", and the lead accepted both. What remains is a bounded experiment with sensitivity cases, not forecasts.</p>
@@ -385,7 +510,7 @@
       </section>
 
       <section id="you">
-        <span class="eyebrow">08 · What you do</span>
+        <span class="eyebrow">11 · What you do</span>
         <h2>Four things only you can do</h2>
         <div class="actions">
           <div class="action"><div class="n">1</div><div class="body">
@@ -416,7 +541,7 @@
       </section>
 
       <section id="ai">
-        <span class="eyebrow">09 · AI answer engines</span>
+        <span class="eyebrow">12 · AI answer engines</span>
         <h2>Staying attractive to ChatGPT and Gemini</h2>
         <p>ChatGPT brings roughly a quarter of organic sessions. The two engines reach us by different roads, and the plan serves both without touching the homepage.</p>
         <div class="tablewrap">
