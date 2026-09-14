@@ -184,3 +184,25 @@ The SEO seat proposed it, section 15.3 deferred it to 5 October, and the owner p
 **Kill switch, checked in the weekly head-query watch:** if this page appears in Search Console for any query in the fixed head-query cohort, or if the homepage's average position on that cohort moves against it for two consecutive weeks, retitle the page first; if it appears again, set it `noindex` while keeping it linked and crawlable, which preserves the reason it exists (fetchers reading the inventory) and removes the ranking overlap. Record either action in the plan.
 
 **Validator:** the page is a listing type (ItemList plus BreadcrumbList), carries `LAST_REVIEWED`, and its `contentValidUntil` is the earliest session end across the set, so it cannot outlive the season.
+
+## 18. Why this plan, in plain terms (written down 14 September at the owner's request)
+
+**Is it better than the 2025 plan?** Yes, on every dimension that can hurt the business. The 2025 plan risked the URL that earns 87 percent of the clicks, in the weeks before the booking season, to reach goals this plan reaches without touching it. It had no truth guarantees, so its pages would have drifted from the cards within a season. It was gated on a traffic number that was never the real constraint, and it promised growth it could not source. In fairness to it, it was written before Search Console access, before the crawled-page copy proved Googlebot renders the grid, and before ChatGPT became a fifth of the traffic. It was under-informed, not foolish. Its ambition survives; only its mechanism was replaced.
+
+**Why so few pages, and why not all of them now?** The calendar is not gated on build time. Build capacity is ample and was corrected as a premise on 13 September. A country page is gated on facts that do not exist yet: every camp on it must have its 2027 dates and price re-read on the operator's own page, and most operators publish next summer's dates between September and December. Publishing a prior season's figures as current is the one failure that would destroy the product. So the first three pages are exactly the three that need no new verification: how-we-verify carries no camp facts, the index page prints only what the data already holds (including "2027 dates not published by the operator, checked on this date"), and the winter page runs on eleven camps verified on 10 September. The country pages wait for operators, not for the engineer. If the re-verification returns sooner, those dates move forward; the gate is the facts, never the calendar.
+
+**What the first page also buys.** Its indexing time measures how long a new URL on this hostname takes to reach Google, which is the number that decides whether pages released on 20 October can rank before booking season. It costs four days and replaces a guess.
+
+**Why no page per camp.** Every camp appears twice in the wave: a row on the index page and a section on its country page. Sixty-eight pages built from twelve fields would be near-duplicates, would put our page between a paying operator and their own customer, and would serve demand that does not exist (operator brand queries were 209 impressions in twelve months). A camp earns its own URL when the operator supplies material the card cannot hold. That is a Premium product sold camp by camp, not a bulk generation.
+
+**Why the index page exists.** A fetcher that cannot run JavaScript currently sees a one-page site claiming a hundred camps and showing none. The index page closes that gap on day one instead of on 20 October, and section 17 keeps it from competing with the homepage.
+
+## 19. Wave 2 re-verification starts next session, to pull the country pages forward
+
+The country pages are gated on verified 2027 facts, so the verification is the critical path and it starts immediately, in parallel with the generator work.
+
+**Order:** Norway (6), Denmark (4), Sweden (4), Finland (3) first, because they are batch 2; then Switzerland (4), Spain (6), France (5), Germany (5), Italy (5), United Kingdom (4) for batch 3.
+
+**Method:** read-only research agents in parallel, at most four at a time, each given a named list of camps with the current card values and told to report only what the operator's own page says today, with the URL and the quoted passage, and to answer NOT FOUND rather than infer. The lead re-reads every figure that will be published before it enters the data. Each confirmed row gets its `verifiedOn` date updated and a provenance comment; a row whose operator has not published 2027 keeps its price and is marked "2027 dates not published by the operator, checked <date>".
+
+**Effect on the calendar:** when a country's camps all pass, its page may ship ahead of 5 or 20 October, provided the generator, the validator and the link block are live and the page passes its gates (four verified operators, a fact class the ranking pages lack).
