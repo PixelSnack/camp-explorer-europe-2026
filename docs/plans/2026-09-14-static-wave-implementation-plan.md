@@ -1,6 +1,6 @@
-# Static wave: implementation plan (14 September 2026, draft for three-seat review)
+# Static wave: implementation plan (14 September 2026, reviewed by three seats, decisions in section 16)
 
-*Plan of record: `docs/reports/PHASE_2_COUNCIL_2026-09-13.md` sections 6.5 to 6.7, as amended by `docs/reports/AI_SEARCH_RESEARCH_2026-09-13.md` sections 8 and 12. This document turns those decisions into steps, files, tests, rollbacks and owner checkpoints. Nothing here re-opens a decision. Review seats and their adjudicated findings are in section 9.*
+*Plan of record: `docs/reports/PHASE_2_COUNCIL_2026-09-13.md` sections 6.5 to 6.7, as amended by `docs/reports/AI_SEARCH_RESEARCH_2026-09-13.md` sections 8 and 12. This document turns those decisions into steps, files, tests, rollbacks and owner checkpoints. Nothing here re-opens a decision. Review seats and their adjudicated findings are in section 15; the final decisions after review are in section 16.*
 
 ## 0. Invariants (fail the step if any is broken)
 
@@ -150,3 +150,17 @@ Files: `summer-camps-switzerland.js` (a price-transparency page: what a Swiss ca
 | High: no title formula or meta description rule | ACCEPTED. Title `<Topic> [year where load-bearing] | Camp Explorer Europe`, never leading with "European Summer Camps"; one interpolated description under 155 characters; validator asserts title and description uniqueness against the root and each other; og and twitter tags mirror them. |
 | High: Sweden and Denmark sit exactly on the four-operator floor | ACCEPTED. Decided now: a row that fails its Wave 2 re-check folds into the Nordic page and that country page waits. |
 | High: no rule for a camp whose 2027 dates are unpublished on release day | ACCEPTED in principle; exact wording adopted from the seat's continuation below. |
+| High (continued): camps without 2027 dates on release day | ACCEPTED. Rule for steps 11 and 12: print the verified price plus "2027 dates not published by the operator, checked <date>", or hold the row and recount against the four-operator floor before release. |
+| Medium: Nordic hub and spokes; the hub carries the compact full table plus Finland, the country pages carry the long sections, cross-linked; no H1 carries a head term | ACCEPTED. |
+| Medium: per-page "last checked" line and dateModified in the JSON-LD | ACCEPTED. |
+| Medium: URL Inspection request for every batch, not only 1a | ACCEPTED. |
+| Most likely failure: step 2(d) blocks derived values (count, price range, date window) in the answer block | ACCEPTED. The validator gains a narrow derivation layer (minimum, maximum, count, date window) recomputed from the source fields and compared to the printed string; the winter answer block is a day-one fixture. |
+| What must not change: homepage untouched with the hash guard; no llms.txt, extra schema or chunking; plain HTML with prices, dates and operator links; self-canonicals, cleanUrls off, no catch-all; one page one question; 90-day stubs; IndexNow for Bing with sitemap and URL Inspection for Google; the booking anchor | Confirmed. |
+
+## 16. Decisions after the three reviews (final; these override the step text above where they differ)
+
+1. Order of work: step 0b (verifiedOn field on all 79 rows, validated) and the trailingSlash plus 404 commit come first, each alone; then steps 1 and 2 with the fixture tests (three page types, three mutations, the loader test); then step 3 (three booking controls, 79-row fixture, auxclick, compare-view check); then step 4 on the shared consent runtime; then the pre-1a measurement (step 13); then batch 1a with the link block and IndexNow by hand; then 1b, 2, 3 on their gates.
+2. The validator validates by page type and lifecycle, with the permissive robots meta, uniqueness of titles and descriptions, LAST_REVIEWED per page, a derivation layer for answer blocks, and the sitemap exemption.
+3. Every multi-camp page: answer block, table, two to four question H2s, entity H3s, per-row provenance (verified date, source link, currency, unit, season, inclusions and exclusions, language, minimum age), "last checked" line, dateModified.
+4. The indexing trigger is a 14-day re-inspection, not a reordering; batch two proceeds on its content gates.
+5. Owner checkpoints gain: push a branch for each preview test; decide the "same-day fix" promise; read the winter page and the how-we-verify draft before release.
