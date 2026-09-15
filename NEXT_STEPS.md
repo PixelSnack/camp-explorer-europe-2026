@@ -17,7 +17,11 @@
 
 **32 outreach drafts remain in Gmail, all with sender partnerships@, all ready to send.** They carry the template of record. Nothing further is needed on them except the owner sending them and closing the space in the web address.
 
-**One reply still waiting to be sent:** Camp Suisse, to Jodie Parker-Hully, answering her question about what Premium includes. It is in her thread, from partnerships@. It also re-asks the two open ski-camp questions (a price without the airport transfers, and whether the Les Crosets hotel is used only by Camp Suisse during the camp weeks), which still block the February winter card.
+**Camp Suisse reply SENT 23:19** from partnerships@, in Jodie's thread: what Premium includes in full, the Google, Bing and Copilot evidence, and the two open ski-camp questions (a price without the airport transfers, and whether the Les Crosets hotel is used only by Camp Suisse during the camp weeks) which still block the February winter card. The owner warmed the opening once more: "I'm genuinely happy to hear that Camp Suisse is interested in our Premium category". **Nine mails went out in total tonight.**
+
+**🔴 Owner rule set 16 Sept, read before writing any outward mail:** never write a scarcity claim, urgency lever or commercial promise, and never make a strategic decision, without him. A first version of this reply asserted "a cap of three Premium places per category, and we do not exceed it", taken from FEATURED_LISTINGS_POLICY.md; a second replaced it with a self-invented placement-order incentive. Both were removed before sending. **A claim sitting in the policy document does NOT clear it for a customer letter.** Memory: `no-strategic-claims-without-owner`.
+
+**🟡 Owner decision 16 Sept, not yet written into the policy:** "No decisions, we simply expand if everyone says yes. We need to start earning money on the site." `FEATURED_LISTINGS_POLICY.md` still records a hard cap of three Premium per category in three places (lines 43, 223, 259) and now contradicts him. **Left untouched deliberately: it is a strategy document and the edit is his call.** Context for when he makes it: three Premium Alpine camps were approached tonight (Camp Suisse, La Garenne, Village Camps Zell am See) on top of Les Elfes and ILC, so that category could reach five Premium cards. No sent mail mentions a cap, so nothing has been promised to anyone.
 
 **To delete when convenient:** 36 drafts titled "SUPERSEDED, PLEASE DELETE - old wording", six superseded Nadal copies, one old Kalkalpen, one test draft.
 
