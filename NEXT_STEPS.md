@@ -11,6 +11,20 @@
 
 ---
 
+### ✅ OUTREACH REFRAMED AND REBUILT 15 Sept 2026: 36 drafts rewritten, all from partnerships@
+
+**Trigger:** Rafa Nadal Academy's Business Development Manager replied rejecting an "alleged partnership", surprised by a fee and an invoice with no agreement behind them. He was right on the facts. Diagnosis in `docs/drafts/2026-09-15-outreach-reframe-PROPOSAL.md`, template of record in `docs/drafts/2026-09-15-outreach-template-OF-RECORD.md`.
+
+**The fix:** first contact now asks ONE question, would you like to stay listed for 2027. It names the prices but does not request a VAT number, does not request an invoicing address, and does not say an invoice will follow; those move to a second mail after a yes. It says up front that we added the camp ourselves, and it offers removal explicitly.
+
+**The owner wrote the final wording himself.** He edited the reframed draft and sent it to Nationalpark Kalkalpen at 21:29. His seventeen edits are recorded as rules in the template file. The voice rule is refined, not flat: "I" for the founder's own acts, "we" for the company's.
+
+**State of the mailbox:** 36 rewritten drafts, one per recipient, every one with sender partnerships@europeansummercamps.com. The 36 old drafts are retitled "SUPERSEDED, PLEASE DELETE - old wording". Also live and ready: the Rafa Nadal reply (in Pedro's thread) and the Camp Suisse Premium answer to Jodie (in her thread), both from partnerships@. To bin: the 36 old outreach drafts, six superseded Nadal copies, one old Kalkalpen, one test draft.
+
+**Method note worth keeping:** API-created drafts inherit Gmail's DEFAULT "Send mail as" address. Flipping the default to partnerships@ in Settings > Accounts, creating the batch, then flipping back, sets the sender on every draft with no compose window opened. Far safer and faster than switching 36 drafts by hand. The default was restored to the personal address the same evening. For a reply already in a thread the default does not apply, so those two were switched in the composer by hand (the From row only appears once the recipient field has focus).
+
+**Still open:** the second mail (billing details) is written in the template but no draft exists; it is only written after a camp says yes.
+
 ### ✅ BING GAP CLOSED 15 Sept 2026: we are cited 14,900 times by Copilot in three months
 
 `docs/reports/BING_PULL_2026-09-15.md`. Bing Webmaster Tools was already set up and verified; nothing needed creating. **Web search, last 3 months:** 158 clicks, 4,700 impressions, 3.36% CTR, and we rank HIGHER on Bing than on Google: "summer camps in europe" position 1.0, "summer camp in europe" 1.3, "summer camp europe" 2.0, "summer programs in europe 2026" 2.0. **AI Performance (BETA): 14,900 citations across Microsoft Copilot and partners over 104 grounding queries**, with a citation share of 48 to 49 percent on the "safest / most trusted summer camps in Europe" cluster, repeating in German, Spanish and French. **The catch:** those 14,900 citations produced only 117 Bing sessions in GA4 all year. Citation is not a click. This does not contradict the 13 Sept AI-search record, which measured referral sessions; it measures a different thing. It does support the static wave's premise that machine readable verified facts are the asset, and it sharpens the open question of whether a citation without a click can be sold to an operator at all. **Country breakdown (the pre-pilot task, now answered):** US strongest named country at position 2.17, UK 11.50, Spain 31.75, Italy 45.05, so Spain and Italy have the most headroom of the batch three pages.
