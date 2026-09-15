@@ -1,7 +1,7 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 14, 2026, 02:20 (plan final and reviewed; verifiedOn shipped; model switched to Opus 5) (council closed with 6.6 and 6.7; winter row 83; AI-search research record and amendments; 52 drafts re-edited; session limit lifts 03:30 on 14 Sept)
+**Last Updated:** September 16, 2026, 00:05 (outreach reframed after the Nadal reply; 8 mails sent; Bing gap closed) | previously September 14, 2026, 02:20 (plan final and reviewed; verifiedOn shipped; model switched to Opus 5) (council closed with 6.6 and 6.7; winter row 83; AI-search research record and amendments; 52 drafts re-edited; session limit lifts 03:30 on 14 Sept)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** pre-pilot data (keyword volumes, baselines) -> batch 1a how-we-verify page (22 Sept) -> ILC payment check 18 Sept -> Wave 2 per-camp 2027 dates -> winter held list (October)
 **🔴 Deadline:** winter section promised live to Les Elfes for **Monday 14 September 2026**. She is a paying partner as of 8 Sept.
@@ -10,6 +10,37 @@
 **Pending owner decision (evening of 10 Sept 2026):** Claude Code cleanup plan, `docs/plans/2026-09-09-claude-code-cleanup.md`. Diagnosed, nothing applied, Playground impact audited.
 
 ---
+
+## 🔴 **SESSION END 16 September 2026, 00:05. START HERE.**
+
+**Eight mails went out tonight, all from partnerships@.** In order: Kalkalpen 21:29, **the Rafa Nadal Academy reply 22:24**, Les Elfes card update 22:32, ILC card update 22:38, Evasoleil 22:41, Enforex 22:42, Village Camps 22:43, La Garenne 22:47.
+
+**32 outreach drafts remain in Gmail, all with sender partnerships@, all ready to send.** They carry the template of record. Nothing further is needed on them except the owner sending them and closing the space in the web address.
+
+**One reply still waiting to be sent:** Camp Suisse, to Jodie Parker-Hully, answering her question about what Premium includes. It is in her thread, from partnerships@. It also re-asks the two open ski-camp questions (a price without the airport transfers, and whether the Les Crosets hotel is used only by Camp Suisse during the camp weeks), which still block the February winter card.
+
+**To delete when convenient:** 36 drafts titled "SUPERSEDED, PLEASE DELETE - old wording", six superseded Nadal copies, one old Kalkalpen, one test draft.
+
+### The owner's edits on La Garenne, 15 Sept 22:47 (the only one of five he changed)
+
+Evasoleil, Enforex and Village Camps went out byte-identical to the drafts. Only La Garenne was edited, and only where its content was bespoke. His changes, as rules:
+
+1. "as we are **now** one of the leading summer camp sites in Europe" (added "now").
+2. Winter framed as news: "We have also **just** opened our **new** winter section, and your Super Ski winter camp is **already** listed in it".
+3. **The free-of-charge line was moved out of the winter paragraph** and into the money-reassurance paragraph: "Your new winter listing is equally free of charge for the coming season." Rule: keep everything about money in one place, do not scatter reassurance.
+4. "because **the current** arrangement is changing" (was "that arrangement").
+5. The key question got its own line, with the "A yes is all I need" sentence starting a new line.
+
+Note: the sent La Garenne mail ends "We would genuinely love to keep working with you**-**" with a hyphen instead of a full stop. A typo, already sent, not worth chasing. Do not replicate it.
+
+**Not yet propagated:** edits 1 and 4 above are generalisable and the 32 remaining drafts do not carry them. They are small; the drafts are sendable as they stand. Owner decides whether a re-pass is worth it.
+
+### Dated items
+
+- **ILC invoice 2026-001 due 17 September**, calendar reminder 18 Sept. Reminder drafts are written only after the due date.
+- **Les Elfes invoice 2026-002 due 24 September.**
+- **Batch 1a target 22 September** (how-we-verify page plus the full camp index). Build order unchanged: trailingSlash plus 404 commit (needs a branch push for the preview), then the generator, the validator, the booking anchor.
+- **Wave 2 re-verification** has still not started. It is the critical path for the country pages and was the "start immediately" item from 14 Sept. Nordics first.
 
 ### ✅ OUTREACH REFRAMED AND REBUILT 15 Sept 2026: 36 drafts rewritten, all from partnerships@
 
