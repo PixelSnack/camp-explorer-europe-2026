@@ -11,6 +11,10 @@
 
 ---
 
+### ✅ BING GAP CLOSED 15 Sept 2026: we are cited 14,900 times by Copilot in three months
+
+`docs/reports/BING_PULL_2026-09-15.md`. Bing Webmaster Tools was already set up and verified; nothing needed creating. **Web search, last 3 months:** 158 clicks, 4,700 impressions, 3.36% CTR, and we rank HIGHER on Bing than on Google: "summer camps in europe" position 1.0, "summer camp in europe" 1.3, "summer camp europe" 2.0, "summer programs in europe 2026" 2.0. **AI Performance (BETA): 14,900 citations across Microsoft Copilot and partners over 104 grounding queries**, with a citation share of 48 to 49 percent on the "safest / most trusted summer camps in Europe" cluster, repeating in German, Spanish and French. **The catch:** those 14,900 citations produced only 117 Bing sessions in GA4 all year. Citation is not a click. This does not contradict the 13 Sept AI-search record, which measured referral sessions; it measures a different thing. It does support the static wave's premise that machine readable verified facts are the asset, and it sharpens the open question of whether a citation without a click can be sold to an operator at all. **Country breakdown (the pre-pilot task, now answered):** US strongest named country at position 2.17, UK 11.50, Spain 31.75, Italy 45.05, so Spain and Italy have the most headroom of the batch three pages.
+
 ## 🔴 **START HERE — handoff written 12 September 2026, 18:30 (session ended on context, everything committed and pushed)**
 
 ### ✅ DONE 13 Sept 2026, 11:30: all 54 outreach drafts carry the owner's GLS wording
