@@ -573,3 +573,22 @@ The mail went out from the owner's personal address. The draft tool has no From 
 **What happened:** after a local `vite preview` check I ran `taskkill //F //IM node.exe` to stop the preview server. Every MCP server that runs on Node died with it (the Google Drive connector disconnected mid-session). The preview was one process; the command took four.
 
 **Rule:** stop a background server by its own PID (capture `$!` when starting it, or find the PID by port with `netstat -ano | findstr :4173`), never by image name. The same applies to python.exe and curl.exe: kill the PID you started.
+
+## 16 September 2026: Camp Suisse, Revolut invoice 2026-3, Summer Discovery
+
+### One wrong URL is not a check
+Rebuilding the Camp Suisse card I guessed world-camps.org/camp-suisse/, got a 404, and recorded "World-camps.org not read" as if the source did not exist. The owner: World Camps is our main competitor, of course it can be found. A site-restricted search found both pages in one call (/camp/camp-suisse/ and /camp/camp-suisse-ski-camp/, 5.0 from 3 each), and the rating changed.
+**Rule**: a 404 on a guessed address means the address was wrong, not that the source is absent. Search the site (WebSearch with allowed_domains, or the site's own search) before writing "not read". For every review source named in REVIEW_METHODOLOGY.md, record found, not listed (with how that was established) or blocked, never "not read" after a single guess.
+
+### An unsourced rating hides until a card is rebuilt
+Camp Suisse showed 4.8 from 356 reviews with no provenance; no platform carries anything close (Google 4.5 from 52, WorldCamps 5.0 from 3, no Trustpilot or TripAdvisor listing). **Rule**: rebuilding a card includes re-reading its reviews with reviewData; a rating without reviewData is a claim to verify, not a value to carry forward.
+
+### Revolut Business invoices: four mechanics
+- Picking a customer on a new invoice autosaves a **Draft** and reserves the number at once (the counter moved to 2026-4 while the form was still open). Closing the form does not release it; finish or cancel the draft.
+- The Default template's footer was **empty** although the 12 Sept notes said the VAT line was set. Before pressing Create, scroll the PDF preview to the bottom and confirm the "Invoice note" carries the VAT line and the umbrella line.
+- The PDF carries its own "Pay this invoice online" section (QR code and link), so the covering mail needs no payment link.
+- "Expense info required" and the "Add expense" button belong to the paid Expenses module (DKK 60 per active team member a month, a member becomes active on the first submitted expense). Never press it; transaction categories are set on the transaction itself for free.
+
+### Browser: closing the last tab of the group opens a hidden window
+Closing the old Revolut form tab dissolved the MCP tab group; the next tab opened in a new window behind the owner's, reported visibilityState "hidden", and Revolut's panels stopped rendering. **Rule**: never close the last tab of the group while work in it continues; if a new window is created, check visibilityState before blaming the page and ask the owner to bring it forward.
+

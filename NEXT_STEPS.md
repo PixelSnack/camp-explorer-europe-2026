@@ -1,7 +1,7 @@
 # NEXT STEPS - SESSION CONTINUITY GUIDE
 *Essential roadmap for continuing Camp Explorer Europe 2026 development*
 
-**Last Updated:** September 16, 2026, 00:05 (outreach reframed after the Nadal reply; 8 mails sent; Bing gap closed) | previously September 14, 2026, 02:20 (plan final and reviewed; verifiedOn shipped; model switched to Opus 5) (council closed with 6.6 and 6.7; winter row 83; AI-search research record and amendments; 52 drafts re-edited; session limit lifts 03:30 on 14 Sept)
+**Last Updated:** September 16, 2026, evening (Camp Suisse Premium yes, invoice 2026-3, Summer Discovery lead) | previously September 16, 2026, 00:05 (outreach reframed after the Nadal reply; 8 mails sent; Bing gap closed) | previously September 14, 2026, 02:20 (plan final and reviewed; verifiedOn shipped; model switched to Opus 5) (council closed with 6.6 and 6.7; winter row 83; AI-search research record and amendments; 52 drafts re-edited; session limit lifts 03:30 on 14 Sept)
 **Current Status:** Everything LIVE and owner-verified: season rollover Wave 1, mobile-first fixes, documentation audit, footer countries, FAQ accuracy pass with five owner refinements. ILC invoice 2026-001 sent 3 Sept, due 17 Sept.
 **Ready for:** pre-pilot data (keyword volumes, baselines) -> batch 1a how-we-verify page (22 Sept) -> ILC payment check 18 Sept -> Wave 2 per-camp 2027 dates -> winter held list (October)
 **🔴 Deadline:** winter section promised live to Les Elfes for **Monday 14 September 2026**. She is a paying partner as of 8 Sept.
@@ -11,7 +11,20 @@
 
 ---
 
-## 🔴 **SESSION END 16 September 2026, 00:05. START HERE.**
+## 🔴 **SESSION 16 September 2026, evening. START HERE.**
+
+**Camp Suisse said yes to Premium (third sale).** Jodie Parker-Hully, 16 Sept 08:51: "We would be really keen to go ahead with the premium feature", with billing details, 2027 dates and prices for summer and winter, and answers to both winter questions (no transfer-free price; The Télécabine hotel is used only by Camp Suisse). **Owner decisions tonight:** (1) an airport or station transfer inside the camp fee passes the winter price rule (written into CAMP_VERIFICATION_CRITERIA.md); (2) cards stay standard until she has fully committed, Premium styling after her next reply; (3) invoice through Revolut with PDF and payment option.
+
+**Done:**
+- Commit 97b0225: summer card ID 3 rebuilt from the 2027 brochure and booking form (Torgon corrected to Les Crosets on her report, 2027 dates, badge "open", activities, highlights, languages, capacity 70, established 1982 removed as unsourced, reviews 4.8/356 had no source and are now Google 4.5 (52) plus WorldCamps 5.0 (3) = 4.5 from 55); new winter card ID 84 Camp Suisse Ski Camp (7 to 27 Feb 2027, from CHF 2,500 a week, WorldCamps 5.0 from 3, badge "open"). Validators, build, lint and a 390px render all clean. **NOT PUSHED at the time of writing: push before the Jodie reply goes out.**
+- Revolut: invoice numbering moved to 2026-3 (the PDF invoice 2026-002 to Les Elfes would otherwise collide with Revolut's 2026-2); customer International Camp Suisse Ltd created; the Default template footer now carries the VAT line and the umbrella line (it was empty); **invoice 2026-3 created and left Open, never sent by Revolut**: EUR 199 summer line plus a EUR 0 ski camp line "Included in the Premium listing above" (owner's idea), due 30 Sept. PDF downloaded to the Downloads folder on T:, file invoice_2026-3.pdf. Next Revolut number: 2026-4.
+- Gmail: reply to Jodie drafted in her thread (answers both questions, card update, ski brochure price discrepancy, invoice attached, Premium switch on her confirmation, photographs requested). **Owner before sending:** attach invoice_2026-3.pdf, check the sender is partnerships@, close the space in the web address. One superseded draft retitled "SUPERSEDED, PLEASE DELETE - Camp Suisse reply with blank link line".
+- **Summer Discovery lead** (Jordan Harps, jharps@summerdiscovery.com, contact form 16 Sept 15:05: "Looking forward to connecting regarding Summer Discovery and Atlas Summer Courses!"). Research (agent, key claims re-read by the lead): Summer Discovery owns Atlas Summer Courses (formerly Oxford Summer Courses; Companies House chain Summer Discovery Europe Ltd 08011543 to Bridgemark Education 12423697 to Summer Discovery UK Ltd since 29 Oct 2024); Atlas runs residential programmes at Oxford and Cambridge colleges (hired) and at Harrow School for ages 9 to 14 (hired, "not affiliated"); Madrid unconfirmed; Jordan's title NOT FOUND. GA4: 22 booking clicks to ID 5 since March. **Introduction and proposal drafted** (new thread): nothing owed for 2026, proposal to add Cambridge and Harrow, standard EUR 79 per listing or one Premium at EUR 199 covering the three Atlas cards, offer of a short call. **Owner decides:** the call offer, and whether a group this size gets a different bundle.
+- ID 5 card corrections noted by the research, not yet applied: meals are full board only for 13 to 15 (16 to 17 half board); the Plus Heathrow transfer is 8 AM to 3 PM only; legal operator Summer Discovery Europe Limited.
+
+**Still open tonight:** Cloudflare mail "Updates to managing AI crawlers" (16 Sept): only zones that had Block AI Bots switched on migrate; check the europeansummercamps.com zone once so Copilot and ChatGPT access is not reduced. Bridge note to Playground on the account-wide Revolut changes and the PMV foreign-services VAT question. Dated: ILC invoice due 17 Sept, Les Elfes 24 Sept, Camp Suisse 30 Sept; batch 1a 22 Sept; Wave 2 Nordics still not started.
+
+## 🔴 **SESSION END 16 September 2026, 00:05.**
 
 **Eight mails went out tonight, all from partnerships@.** In order: Kalkalpen 21:29, **the Rafa Nadal Academy reply 22:24**, Les Elfes card update 22:32, ILC card update 22:38, Evasoleil 22:41, Enforex 22:42, Village Camps 22:43, La Garenne 22:47.
 
