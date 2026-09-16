@@ -24,7 +24,7 @@ This document tracks all Featured camp listings, including verification status, 
 | Field | Value |
 |-------|-------|
 | **Camp ID** | 1 (summer) + winter card, both under one Premium |
-| **Status** | **ACCEPTED. Invoice 2026-2 issued in Revolut 16 Sept (due 30 Sept) after the 10 Sept PDF 2026-002 was found never attached.** Complimentary Premium runs to 31 Dec 2026; paid Premium starts on the 2027 cycle |
+| **Status** | **ACCEPTED. Invoice 2026-2 issued in Revolut 16 Sept (due 30 Sept) after the 10 Sept PDF 2026-002 was found never attached; sent by the owner with the PDF on 16 Sept.** Complimentary Premium runs to 31 Dec 2026; paid Premium starts on the 2027 cycle |
 | **Tier** | Premium, EUR 199 introductory first year, **rate-locked for renewals** |
 | **Category** | Premium Alpine |
 | **Country** | Switzerland |
