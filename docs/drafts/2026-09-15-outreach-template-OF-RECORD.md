@@ -121,3 +121,50 @@ partnerships@europeansummercamps.com
 - Referral figures carried across verbatim, never recalculated. A figure only at 20 or more.
 - Two-camp operators get one mail covering both, with the combined figure.
 - Sender set to partnerships@ before sending. The From row in the Gmail composer only appears once the recipient field has focus.
+
+## Danish operators get the mail in Danish (owner rule, 16 September 2026)
+
+The owner is Danish, signs with a distinctly Danish name, and ResourceHub is registered in Denmark. An English first contact to a Danish camp reads as strange, so every mail to a Danish operator is written in fluent Danish, not translated word for word. The "You are also welcome to answer in LANGUAGE" line is dropped for them. Four drafts were rewritten on 16 September (SceneKunst, Din Camp, Nordisk Sommerlejr for børn, Ranum Efterskole); the English versions are retitled SUPERSEDED, except SceneKunst, which the owner had open and discards himself.
+
+Deliberate choices in the Danish version:
+- "keep working with you" is rendered "Vi vil rigtig gerne fortsat have jer med", not "fortsætte samarbejdet", because "samarbejde" implies an agreed partnership, which is exactly what the Rafa Nadal Academy objected to.
+- "I" and "jer/jeres" throughout (plural, the normal Danish business register); months in lower case; "Venlig hilsen".
+- Prices stay in EUR as in every other mail. Whether Danish operators should see DKK is the owner's decision.
+
+## Template of record (Danish)
+
+Subject: Camp Explorer Europe: CAMP hos os og et spørgsmål om 2027
+
+Kære NAVN,
+
+Mit navn er Søren, og jeg er stifter af Camp Explorer Europe og European Summer Camps (www.europeansummercamps .com), en oversigt over verificerede sommerlejre med overnatning, som familier i hele Europa bruger, når de planlægger børnenes sommerferie.
+
+Lad mig først forklare, hvorfor I hører fra os. Vi har selv tilføjet CAMP til vores europæiske lejroversigt i MÅNED ÅR, fordi den lever op til vores kriterier. Vi gennemgår hver lejr grundigt, tjekker alle oplysninger mod arrangørens egne sider og viser datoer, priser, aldersgrupper og et direkte link til jeres egen tilmeldingsside. Vi holder oplysningerne opdaterede hver sæson.
+
+Alle familier, der klikker sig videre til jer fra os, lander på jeres tilmeldingsside med en markering, så I kan se dem i jeres egen statistik under kilden "europeansummercamps". Vi håber også, at vi indirekte har sendt mange flere familier jeres vej, da vi er en af de førende sider om sommerlejre i Europa.
+
+Jeg skriver, fordi den ordning nu ændrer sig, og jeg vil hellere sige det ligeud end lade det komme som en overraskelse senere.
+
+Vi har drevet oversigten for egen regning, siden vi startede i begyndelsen af 2025, for over to sæsoner siden. Hver sæson kontrollerer vi alle lejres datoer, priser og aldersgrupper mod arrangørernes egne sider, og det er efterhånden blevet mere arbejde, end vi kan blive ved med at bære selv.
+Derfor beder vi fra og med 2027-sæsonen de lejre, der gerne vil blive på siden, om et årligt administrationsgebyr på EUR 79. Det dækker opslaget og den årlige gennemgang.
+
+Vi har også besluttet at tilbyde en Premium-løsning til EUR 299 om året, eller EUR 199 for det første hele år, hvis I vælger den til 2027-sæsonen. Prisen er låst, så længe aftalen løber.
+Med Premium får I et guldindrammet Featured-kort, der vises før de almindelige opslag i samme kategori, så I bliver mere synlige. I får også seks højdepunkter i stedet for tre, jeres eget foto, en videoknap og op til fire opdateringer om året.
+Administrationsgebyret er inkluderet i Premium.
+
+Indtil videre kan I være helt rolige: Der skal ikke betales noget for 2026, og jeres opslag forbliver, som det er, resten af sæsonen, uanset hvad I beslutter.
+
+Så mit spørgsmål er ganske enkelt: Vil I gerne have, at CAMP fortsat er med i 2027? Et ja er alt, jeg har brug for lige nu, og så vender jeg tilbage med de praktiske detaljer i en separat mail.
+Hvis Premium har jeres interesse, så sig til, så fortæller vi præcis, hvad I får, og hvilke oplysninger vi skal bruge. Det er helt uforpligtende.
+
+Og hvis I hellere ikke vil være med hos os, så skriv det blot her, så fjerner vi opslaget. Det er helt i orden, og vi beder ikke om mere fra jeres side.
+
+Vi vil rigtig gerne fortsat have jer med.
+Hvis noget ovenfor er uklart, eller hvis noget i jeres nuværende opslag er forkert, så svar blot på denne mail, så vender jeg hurtigt tilbage.
+
+Venlig hilsen
+
+Søren Thoning
+European Summer Camps
+www.europeansummercamps .com
+partnerships@europeansummercamps.com
