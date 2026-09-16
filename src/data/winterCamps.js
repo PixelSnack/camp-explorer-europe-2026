@@ -293,6 +293,37 @@ export const winterCamps = [
     languages: ["French", "English", "German"],
     specialFeatures: ["Ten extra ski hours instead of language classes at no cost", "Three chalets in the Pays du St-Bernard, by week", "Vicheres-Liddes slopes five minutes from the chalet"],
     bookingUrl: "https://www.frilingue.ch/en/juniors/learn-languages-switzerland-youth/liddes-saint-bernard/st-bernhard-ski-camp"
+  },
+  {
+    id: 84,
+    name: "Camp Suisse Ski Camp",
+    location: "Les Crosets, Switzerland", // campsuisseski.com: "Camp Suisse @ The Télécabine, Les Crosets", Rte des Crosets 69, 1873 Crosets
+    searchAliases: ["Valais", "Portes du Soleil", "Val-d'Illiez", "Champéry"],
+    country: "Switzerland",
+    season: "winter",
+    ages: "7-17 years", // Verified 16 Sept 2026: "The camp for individual kids (aged 7-17) of all ability levels" (campsuisseski.com) and the operator's email of 16 Sept
+    price: "From CHF 2,500/1 week", // Verified 16 Sept 2026: campsuisseski.com "All priced at 2500 CHF / £2350 GBP" for the three one-week camps and "5500 CHF / £5200 GBP" for the two two-week camps, confirmed in the operator's email of 16 Sept. The last page of the 2027 ski brochure still prints CHF 2,200 / GBP 2,000 for one week; the site and the operator's written figure are used. Included: winter sports insurance, 6 nights full board, lift pass, 5 days of Swiss Ski School lessons, ski hire with helmet, return transfers from Geneva airport, Geneva Cornavin or Aigle station. Owner decision 16 Sept 2026: an airport or station transfer inside the camp fee does not count as transport in the price; no price without it exists ("There is no price change", operator email)
+    priceRange: "premium",
+    rating: 5.0, // WorldCamps only (ski camp page); Google's single listing mixes summer and winter and is counted on the summer card (ID 3)
+    reviews: 3,
+    reviewData: {
+      lastVerified: "2026-09", // 16 Sept 2026, read by the lead in Chrome: world-camps.org/camp/camp-suisse-ski-camp "Camp Suisse Ski Camp", 5.0 from 3 reviews, reviewers distinct from the summer page
+      sources: {
+        worldcamps: { rating: 5.0, count: 3 }
+      }
+    },
+    image: skiSlopeInstructor,
+    category: "winter",
+    type: "Ski Camp",
+    activities: ["Skiing", "Ski Lessons", "Ice Skating", "Swimming", "Sledging", "Torch-Lit Walk", "Disco and Movie Night"], // Read 16 Sept 2026 on campsuisseski.com: après ski and evening programme of climbing, ice skating, swimming, night skiing, torch lit walk, sledging, disco, movie night
+    dates: "Feb 7 - Feb 27, 2027", // Verified 16 Sept 2026: one-week camps Sun 7-Sat 13, Sun 14-Sat 20, Sun 21-Sat 27 Feb 2027 and two-week camps 7-20 and 14-27 Feb 2027 on campsuisseski.com, the 2027 ski brochure and the winter booking form
+    bookingStatus: "open", // Verified 16 Sept 2026: the operator's Booking Form Winter lists all five 2027 sessions as selectable
+    verifiedOn: "2026-09-16",
+    highlights: ["Lift pass, ski hire and Swiss Ski School lessons", "Hotel Télécabine, used only by the camp", "Geneva airport and Aigle transfers included", "Slopes at the door in the Portes du Soleil"], // Verified 16 Sept 2026: fee inclusions on campsuisseski.com; the operator confirmed in writing on 16 Sept that "the hotel is used exclusively by Camp Suisse campers during summer and winter camps. The hotel is The Télécabine" (the site calls it "a cosy family hotel", rooms for two to six with en-suite bathrooms); the camp sits "at the base of three modern chairlifts which link directly into the Portes du Soleil ski area"
+    languages: ["English"], // Booking and all operator material in English; the teaching language of the Swiss Ski School lessons is not stated
+    specialFeatures: ["Two-week camps CHF 5,500 with an excursion day", "UK coach travel included for the 14-20 Feb camp", "Lessons from complete beginner to race team"],
+    capacity: 70, // "With space for up to 70 guests" (campsuisseski.com)
+    bookingUrl: "https://www.campsuisse.com/crm/form.php?f=6" // The operator's own answer of 16 Sept 2026: the Camp Suisse Ski Registration Form
   }
 ]
 

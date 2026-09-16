@@ -106,25 +106,33 @@ export const allCamps = [
   {
     id: 3,
     name: "Camp Suisse",
-    location: "Torgon, Swiss Alps, Switzerland",
+    location: "Les Crosets, Switzerland", // Corrected 16 Sept 2026 from "Torgon": Jodie Parker-Hully (Business Operations Manager) wrote "both camps run in Les Crosets. I notice the current card says Torgon which is not correct"; the 2027 summer brochure gives "The Télécabine, Route des Crosets 69, 1873 Les Crosets"
+    searchAliases: ["Valais", "Portes du Soleil", "Val-d'Illiez", "Champéry"],
     country: "Switzerland",
-    ages: "7-17 years",
-    price: "CHF 4,400/2 weeks", // Verified Jan 2026
+    ages: "7-17 years", // Verified 16 Sept 2026: 2027 summer brochure ("aged 7 to 17") and the operator's email of 16 Sept
+    price: "CHF 4,400/2 weeks", // Verified 16 Sept 2026: 2027 summer brochure p.29 "Two-week sessions in 2027 (all priced at 4400 CHF)", the 2027 booking form and the operator's email. Includes full board, accompanied Geneva airport or Aigle station transfers on Saturdays within the preferred times (other times CHF 250 each way), activities and admissions, language or outdoor-education lessons, laundry, camper insurance. Custom dates CHF 320 a night or CHF 2,200 for seven nights (booking form)
     priceRange: "premium",
-    rating: 4.8,
-    reviews: 356,
+    rating: 4.5, // Weighted aggregate per REVIEW_METHODOLOGY: Google 4.5 x 52 (tier 2) and WorldCamps 5.0 x 3 (tier 1, weight 1.3) = 253.5 / 55.9 = 4.53. The earlier 4.8 from 356 had no recorded source and matches no platform
+    reviews: 55,
+    reviewData: {
+      lastVerified: "2026-09", // 16 Sept 2026, read by the lead in Chrome: Google Maps listing "Camp Suisse", Rte Des Crosets 69, 1873 Val-d'Illiez, phone +44 845 519 1031 (matches the operator's brochure), 4,5 (52); world-camps.org/camp/camp-suisse "Camp Suisse Summer Camp", 5.0 from 3 reviews (the ski camp page's three reviews are counted on the winter card only). Trustpilot: no page for campsuisse.com and not in its search. TripAdvisor: no listing for the camp
+      sources: {
+        google: { rating: 4.5, count: 52 },
+        worldcamps: { rating: 5.0, count: 3 }
+      }
+    },
     image: mapCompressed,
     category: "premium",
     type: "Premium Alpine Adventure Sports", // Category name on the chip, see ID 1
-    activities: ["Multi-Sport", "Language Learning", "Leadership Training", "Environmental Ed"],
-    dates: "June 21-July 5, 2026",
-    verifiedOn: "2026-01-01", // Set 14 Sept 2026 from the latest dated provenance comment on this row; the static pages print this date
-    highlights: ["40+ countries", "Bilingual environment", "Adventure focus", "Lake Geneva"],
-    languages: ["French", "Spanish", "English", "German"],
-    specialFeatures: ["Leadership Training", "Environmental Education", "Cultural Excursions"],
-    established: 1982,
-    capacity: 100,
-    bookingUrl: "https://www.campsuisse.com/"
+    activities: ["Hiking", "Mountain Biking", "Stand-Up Paddleboarding", "Climbing", "Glacier and Husky Day", "River Rafting (Seniors)", "Language Lessons", "Excursions"], // Read 16 Sept 2026 in the 2027 summer brochure: SUP on Lake Geneva, climbing, tennis, senior river rafting, glacier day and husky experience at Glacier 3000, mountain biking, hiking, overnight camping at an Alpine refuge, 18 hours of language or outdoor education per two-week session. Replaces "Leadership Training" and "Environmental Ed", which no operator page supports
+    dates: "June 19 - Aug 14, 2027", // Verified 16 Sept 2026: four two-week sessions 19 Jun-3 Jul, 3-17 Jul, 17-31 Jul, 31 Jul-14 Aug 2027 in the brochure (p.7), on the booking form and in the operator's email; one, three and four week stays and custom dates also offered
+    bookingStatus: "open", // Verified 16 Sept 2026: the operator's 2027 Summer Camp Booking Form lists all four 2027 two-week sessions as selectable
+    verifiedOn: "2026-09-16",
+    highlights: ["Hotel Télécabine, used only by the camp", "Geneva airport transfers included", "Phones for one hour a day only", "Campers from 40 nationalities in 2026"], // Verified 16 Sept 2026: the operator confirmed in writing that "the hotel is used exclusively by Camp Suisse campers during summer and winter camps. The hotel is The Télécabine" (25 hotel-style en-suite rooms for 2 to 6 campers, brochure p.12; the hotel is named on the card per the 17 Aug 2026 hotel rule); transfers per the brochure's fee inclusions; "access their devices for one hour each day" (p.8); "In 2026 we welcomed children from 40 different nationalities" (p.4)
+    languages: ["English", "French", "Spanish"], // "We are an English and French speaking camp"; classes in French, Spanish or English (brochure p.24). German removed: no operator page supports it
+    specialFeatures: ["Adventuremark accredited activity provider", "Nine hours a week of languages or outdoor education", "Stays of one to four weeks or custom dates"],
+    capacity: 70, // The Télécabine has "space for up to 70 guests" (campsuisseski.com, read 16 Sept 2026); the operator confirmed both camps use it. The earlier capacity of 100 and "established: 1982" had no source; no founding year is stated on the operator's pages ("over twenty years" in the directors' letter), so established is omitted
+    bookingUrl: "https://www.campsuisse.com/crm/form.php" // The operator's own answer of 16 Sept 2026 to "the page where families should book": the Camp Suisse Summer Registration Form
   },
   {
     id: 4,
